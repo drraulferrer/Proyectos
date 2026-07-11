@@ -1,0 +1,23 @@
+[
+  {
+    "nombre": "Resumen del proyecto",
+    "emoji": "🗺️",
+    "descripcion": "Explica en lenguaje claro qué hay en la carpeta elegida, cómo está organizada y en qué se ha trabajado últimamente. No cambia nada.",
+    "prompt": "Explora este proyecto y explícame en español, en lenguaje sencillo y sin tecnicismos innecesarios: qué es, cómo está organizado y en qué se ha trabajado últimamente (mira el historial de git si existe). No modifiques ningún archivo.",
+    "automatico": false
+  },
+  {
+    "nombre": "¿Qué cambió hoy?",
+    "emoji": "📝",
+    "descripcion": "Repasa los cambios de git de las últimas 24 horas y los resume en un texto listo para compartir con el equipo. No cambia nada.",
+    "prompt": "Mira el historial de git de este proyecto (por ejemplo `git log --since='1 day ago' --stat` y `git status`) y resume en español los cambios de las últimas 24 horas en 5-10 líneas, con un tono claro para compartir con el equipo. Si no hay cambios, dilo sin más. No modifiques ningún archivo.",
+    "automatico": false
+  },
+  {
+    "nombre": "Revisar y comprobar",
+    "emoji": "🧹",
+    "descripcion": "Ejecuta las comprobaciones del proyecto (tests, linter o build), arregla lo que sea trivial y cuenta el resultado. Necesita el modo automático.",
+    "prompt": "Ejecuta las comprobaciones habituales de este proyecto (tests, linter o build, lo que exista). Si algo falla por un motivo trivial, arréglalo y vuelve a comprobar. Al final, resume en español qué se comprobó, qué se arregló y qué queda pendiente.",
+    "automatico": true
+  }
+]
