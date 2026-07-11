@@ -1,0 +1,12 @@
+{
+  "name": "panel-claude",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Panel web local para Claude Code: informe diario, botones de un clic y registro de sesiones.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -28,4 +28,4 @@ Proyectos/
 
 | Proyecto | Descripción | Estado |
 |----------|-------------|--------|
-| _(todavía no hay proyectos)_ | | |
+| [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |

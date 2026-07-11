@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel de Claude Code</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛸</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="cabecera">
+    <div class="marca">
+      <span class="logo" aria-hidden="true">🛸</span>
+      <div>
+        <h1>Panel de Claude Code</h1>
+        <p class="sub">Tu actividad, tus botones y tus sesiones — sin tocar la terminal</p>
+      </div>
+    </div>
+    <div id="chip-estado" class="chip chip-neutro" title="">Comprobando…</div>
+  </header>
+
+  <nav class="pestanas" role="tablist" aria-label="Secciones del panel">
+    <button class="pestana activa" role="tab" aria-selected="true" data-tab="hoy">📊 Mi día</button>
+    <button class="pestana" role="tab" aria-selected="false" data-tab="botones">⚡ Botones</button>
+    <button class="pestana" role="tab" aria-selected="false" data-tab="sesiones">🗂️ Sesiones</button>
+  </nav>
+
+  <main>
+    <!-- ===================== MI DÍA ===================== -->
+    <section id="vista-hoy" class="vista activa" role="tabpanel">
+      <div class="fila-fecha">
+        <div class="nav-fecha">
+          <button id="dia-prev" class="boton-icono" aria-label="Día anterior">‹</button>
+          <h2 id="titulo-fecha" class="titulo-fecha"></h2>
+          <button id="dia-sig" class="boton-icono" aria-label="Día siguiente">›</button>
+          <button id="dia-hoy" class="boton-suave">Hoy</button>
+        </div>
+        <div class="acciones-dia">
+          <button id="btn-copiar" class="boton-suave" title="Copia un resumen en texto listo para pegar en el chat del equipo">📋 Copiar informe</button>
+          <button id="btn-informe-ia" class="boton-primario" title="Claude redacta el informe del día por ti">✨ Redactar con Claude</button>
+        </div>
+      </div>
+
+      <div id="tiles" class="tiles" aria-live="polite"></div>
+
+      <div class="tarjeta grafico">
+        <div class="cab-grafico">
+          <h3>Actividad por hora</h3>
+          <button id="btn-tabla" class="enlace" aria-expanded="false">Ver tabla</button>
+        </div>
+        <div id="grafico-horas" class="zona-barras"></div>
+        <div id="tabla-horas" class="tabla-horas" hidden></div>
+      </div>
+
+      <h3 class="titulo-seccion" id="titulo-sesiones-dia">Sesiones del día</h3>
+      <div id="sesiones-dia" class="lista-sesiones"></div>
+    </section>
+
+    <!-- ===================== BOTONES ===================== -->
+    <section id="vista-botones" class="vista" role="tabpanel" hidden>
+      <div class="tarjeta fila-proyecto">
+        <label for="sel-proyecto">📁 Trabajar en:</label>
+        <select id="sel-proyecto" aria-label="Proyecto en el que trabajará Claude"></select>
+        <span class="pista">Claude ejecutará los botones dentro de esta carpeta.</span>
+      </div>
+      <div id="grupos-botones"></div>
+    </section>
+
+    <!-- ===================== SESIONES ===================== -->
+    <section id="vista-sesiones" class="vista" role="tabpanel" hidden>
+      <div class="fila-filtros">
+        <input id="buscador" type="search" placeholder="Buscar por título, proyecto o rama…" aria-label="Buscar sesiones">
+        <select id="filtro-proyecto" aria-label="Filtrar por proyecto"><option value="">Todos los proyectos</option></select>
+      </div>
+      <div id="lista-sesiones"></div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    Este panel solo funciona en tu equipo (127.0.0.1) · Los datos se leen de la carpeta de Claude Code
+  </footer>
+</div>
+
+<!-- Panel lateral de ejecución -->
+<div id="velo" class="velo" hidden></div>
+<aside id="panel-ejecucion" class="panel-ejecucion" hidden aria-label="Ejecución de Claude">
+  <div class="ej-cabecera">
+    <div>
+      <div id="ej-emoji" class="ej-emoji">🚀</div>
+      <h2 id="ej-titulo">Ejecutar</h2>
+      <p id="ej-sub" class="ej-sub"></p>
+    </div>
+    <button id="ej-cerrar" class="boton-icono" aria-label="Cerrar panel">✕</button>
+  </div>
+
+  <div id="ej-config" class="ej-config">
+    <label id="ej-args-etiqueta" for="ej-args">Instrucciones extra (opcional)</label>
+    <textarea id="ej-args" rows="3" placeholder="Ej.: céntrate en la carpeta docs…"></textarea>
+    <label class="casilla" id="ej-auto-fila">
+      <input type="checkbox" id="ej-automatico">
+      <span><b>Modo automático:</b> Claude podrá editar archivos y ejecutar comandos en la carpeta elegida sin pedir permiso. Actívalo solo en botones de confianza.</span>
+    </label>
+    <button id="ej-lanzar" class="boton-primario grande">▶ Ejecutar ahora</button>
+    <div id="ej-sin-cli" class="aviso-cli" hidden>
+      <p>⚠️ En este equipo no está instalado <b>Claude Code</b>, así que el botón no se puede ejecutar desde aquí.</p>
+      <button id="ej-copiar-cmd" class="boton-suave">Copiar el comando para dárselo a alguien que sí lo tenga</button>
+    </div>
+  </div>
+
+  <div id="ej-salida" class="ej-salida" hidden aria-live="polite"></div>
+
+  <div id="ej-pie" class="ej-pie" hidden>
+    <span id="ej-estado" class="ej-estado"><span class="girando">⏳</span> Claude está trabajando…</span>
+    <button id="ej-detener" class="boton-peligro">■ Detener</button>
+  </div>
+</aside>
+
+<!-- Burbuja para volver a una ejecución en curso -->
+<button id="burbuja-ejecucion" class="burbuja" hidden>⏳ Ver ejecución en curso</button>
+
+<!-- Detalle de sesión -->
+<dialog id="modal-sesion" class="modal">
+  <div class="modal-cabecera">
+    <div>
+      <h2 id="ms-titulo">Sesión</h2>
+      <div id="ms-meta" class="ms-meta"></div>
+    </div>
+    <button id="ms-cerrar" class="boton-icono" aria-label="Cerrar detalle">✕</button>
+  </div>
+  <div id="ms-conversacion" class="conversacion"></div>
+</dialog>
+
+<div id="tooltip" class="tooltip" hidden></div>
+<div id="toast" class="toast" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
