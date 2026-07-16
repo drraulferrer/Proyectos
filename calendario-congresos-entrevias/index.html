@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario de comunicaciones — CS Entrevías</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="cabecera">
+    <div class="cabecera-titulo">
+      <h1>📅 Calendario de comunicaciones — CS Entrevías</h1>
+      <p class="subtitulo">Congresos, plazos de envío y estado de las comunicaciones del equipo</p>
+    </div>
+    <div class="cabecera-acciones">
+      <button type="button" id="boton-imprimir">🖨️ Imprimir resumen</button>
+      <button type="button" id="boton-exportar">⬇️ Exportar</button>
+      <button type="button" id="boton-importar">⬆️ Importar</button>
+      <button type="button" id="boton-restaurar">♻️ Restaurar ejemplo</button>
+      <input type="file" id="entrada-importar" accept=".json,application/json" hidden aria-hidden="true">
+    </div>
+  </header>
+
+  <nav class="pestanas" role="tablist" aria-label="Secciones del calendario">
+    <button type="button" role="tab" id="tab-plazos" aria-controls="panel-plazos" aria-selected="true">⏰ Próximos plazos</button>
+    <button type="button" role="tab" id="tab-calendario" aria-controls="panel-calendario" aria-selected="false" tabindex="-1">🗓️ Calendario</button>
+    <button type="button" role="tab" id="tab-congresos" aria-controls="panel-congresos" aria-selected="false" tabindex="-1">🏛️ Congresos</button>
+    <button type="button" role="tab" id="tab-comunicaciones" aria-controls="panel-comunicaciones" aria-selected="false" tabindex="-1">📄 Comunicaciones</button>
+  </nav>
+
+  <main>
+    <section id="panel-plazos" role="tabpanel" aria-labelledby="tab-plazos" tabindex="0"></section>
+    <section id="panel-calendario" role="tabpanel" aria-labelledby="tab-calendario" tabindex="0" hidden></section>
+    <section id="panel-congresos" role="tabpanel" aria-labelledby="tab-congresos" tabindex="0" hidden></section>
+    <section id="panel-comunicaciones" role="tabpanel" aria-labelledby="tab-comunicaciones" tabindex="0" hidden></section>
+  </main>
+
+  <p id="avisos" class="solo-lectores" aria-live="polite"></p>
+
+  <!-- Formulario de congreso -->
+  <dialog id="dialogo-congreso" aria-labelledby="titulo-dialogo-congreso">
+    <form id="formulario-congreso" novalidate>
+      <h2 id="titulo-dialogo-congreso">Congreso</h2>
+      <div class="errores" id="errores-congreso" role="alert" hidden></div>
+      <input type="hidden" name="id">
+      <div class="campo">
+        <label for="congreso-nombre">Nombre *</label>
+        <input type="text" id="congreso-nombre" name="nombre" placeholder="p. ej. 23.º Congreso de la SED">
+      </div>
+      <div class="campo">
+        <label for="congreso-organizador">Organizador</label>
+        <input type="text" id="congreso-organizador" name="organizador" placeholder="p. ej. Sociedad Española del Dolor">
+      </div>
+      <div class="fila-campos">
+        <div class="campo">
+          <label for="congreso-ambito">Ámbito</label>
+          <select id="congreso-ambito" name="ambito"></select>
+        </div>
+        <div class="campo">
+          <label for="congreso-lugar">Lugar</label>
+          <input type="text" id="congreso-lugar" name="lugar" placeholder="p. ej. Madrid, o Por confirmar">
+        </div>
+      </div>
+      <div class="fila-campos">
+        <div class="campo">
+          <label for="congreso-inicio">Fecha de inicio *</label>
+          <input type="date" id="congreso-inicio" name="inicio">
+        </div>
+        <div class="campo">
+          <label for="congreso-fin">Fecha de fin</label>
+          <input type="date" id="congreso-fin" name="fin">
+          <p class="ayuda">Si se deja vacía, se usa la de inicio.</p>
+        </div>
+      </div>
+      <div class="fila-campos">
+        <div class="campo">
+          <label for="congreso-plazo">Plazo de envío de resúmenes</label>
+          <input type="date" id="congreso-plazo" name="plazoResumenes">
+          <p class="ayuda">Déjalo vacío si aún no se ha anunciado.</p>
+        </div>
+        <div class="campo campo-casilla">
+          <label><input type="checkbox" id="congreso-plazo-confirmar" name="plazoPorConfirmar"> Plazo por confirmar (estimado)</label>
+        </div>
+      </div>
+      <div class="campo">
+        <label for="congreso-web">Página web</label>
+        <input type="text" id="congreso-web" name="web" placeholder="https://…" inputmode="url">
+      </div>
+      <div class="campo">
+        <label for="congreso-notas">Notas</label>
+        <textarea id="congreso-notas" name="notas" rows="2"></textarea>
+      </div>
+      <div class="botones-dialogo">
+        <button type="button" class="secundario" data-cerrar>Cancelar</button>
+        <button type="submit" class="principal">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Formulario de comunicación -->
+  <dialog id="dialogo-comunicacion" aria-labelledby="titulo-dialogo-comunicacion">
+    <form id="formulario-comunicacion" novalidate>
+      <h2 id="titulo-dialogo-comunicacion">Comunicación</h2>
+      <div class="errores" id="errores-comunicacion" role="alert" hidden></div>
+      <input type="hidden" name="id">
+      <div class="campo">
+        <label for="comunicacion-titulo">Título *</label>
+        <input type="text" id="comunicacion-titulo" name="titulo" placeholder="Título del trabajo">
+      </div>
+      <div class="campo">
+        <label for="comunicacion-congreso">Congreso *</label>
+        <select id="comunicacion-congreso" name="congresoId"></select>
+      </div>
+      <div class="fila-campos">
+        <div class="campo">
+          <label for="comunicacion-tipo">Tipo</label>
+          <select id="comunicacion-tipo" name="tipo"></select>
+        </div>
+        <div class="campo">
+          <label for="comunicacion-estado">Estado</label>
+          <select id="comunicacion-estado" name="estado"></select>
+        </div>
+      </div>
+      <div class="fila-campos">
+        <div class="campo">
+          <label for="comunicacion-responsable">Responsable</label>
+          <input type="text" id="comunicacion-responsable" name="responsable" placeholder="Quién la lidera">
+        </div>
+        <div class="campo">
+          <label for="comunicacion-autores">Autores</label>
+          <input type="text" id="comunicacion-autores" name="autores" placeholder="p. ej. Ferrer R, et al.">
+        </div>
+      </div>
+      <div class="campo">
+        <label for="comunicacion-notas">Notas</label>
+        <textarea id="comunicacion-notas" name="notas" rows="2"></textarea>
+      </div>
+      <div class="botones-dialogo">
+        <button type="button" class="secundario" data-cerrar>Cancelar</button>
+        <button type="submit" class="principal">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Vista que se imprime (oculta en pantalla) -->
+  <section id="vista-impresion" aria-hidden="true"></section>
+
+  <script src="logica.js"></script>
+  <script src="datos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
