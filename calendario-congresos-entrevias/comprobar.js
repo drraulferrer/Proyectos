@@ -120,6 +120,42 @@ prueba("marcasDeAnio acota fechas de fin absurdas al año (no marca fuera de 202
   Object.keys(marcasPatologicas).length === 214); // del 1 jun al 31 dic de 2026
 prueba("marcasDeAnio con fecha absurda no se cuelga (termina rápido)", Date.now() - inicioPatologico < 1000);
 
+// ---------- normalizar / coincideTexto (búsqueda RA-21) ----------
+igual("normalizar quita acentos y baja a minúsculas", L.normalizar("Atención PRIMARIA"), "atencion primaria");
+igual("normalizar tolera null", L.normalizar(null), "");
+prueba("coincideTexto ignora acentos y mayúsculas", L.coincideTexto(["Educación en dolor"], "EDUCACion") === true);
+prueba("coincideTexto busca en varios campos", L.coincideTexto(["", "Ferrer R"], "ferrer") === true);
+prueba("coincideTexto con consulta vacía siempre casa", L.coincideTexto(["lo que sea"], "  ") === true);
+prueba("coincideTexto devuelve false si no aparece", L.coincideTexto(["PainCafé"], "quirófano") === false);
+
+// ---------- situacionPlazo (filtro RA-21) ----------
+igual("situacionPlazo: sin plazo", L.situacionPlazo({ plazoResumenes: null }, "2026-07-15"), "sin-plazo");
+igual("situacionPlazo: cerrado", L.situacionPlazo({ plazoResumenes: "2026-07-01" }, "2026-07-15"), "cerrado");
+igual("situacionPlazo: abierto hoy", L.situacionPlazo({ plazoResumenes: "2026-07-15" }, "2026-07-15"), "abierto");
+igual("situacionPlazo: abierto futuro", L.situacionPlazo({ plazoResumenes: "2026-09-01" }, "2026-07-15"), "abierto");
+
+// ---------- resumen (RA-22) ----------
+const datosResumen = {
+  congresos: [
+    { id: "a", plazoResumenes: "2026-07-20" }, // abierto y urgente (5 días)
+    { id: "b", plazoResumenes: "2026-09-01" }, // abierto, no urgente
+    { id: "c", plazoResumenes: "2026-07-01" }, // cerrado
+    { id: "d", plazoResumenes: null }          // sin plazo
+  ],
+  comunicaciones: [
+    { id: "m1", estado: "idea" },
+    { id: "m2", estado: "en-preparacion" },
+    { id: "m3", estado: "enviada" },
+    { id: "m4", estado: "presentada" }
+  ]
+};
+igual("resumen cuenta plazos abiertos, urgentes, comunicaciones y en marcha",
+  L.resumen(datosResumen, "2026-07-15"),
+  { plazosAbiertos: 2, plazosUrgentes: 1, totalComunicaciones: 4, enMarcha: 2 });
+igual("resumen tolera datos vacíos",
+  L.resumen({}, "2026-07-15"),
+  { plazosAbiertos: 0, plazosUrgentes: 0, totalComunicaciones: 0, enMarcha: 0 });
+
 // ---------- validarDatos ----------
 function datosValidos() {
   return {

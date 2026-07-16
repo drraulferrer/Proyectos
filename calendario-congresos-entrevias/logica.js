@@ -46,6 +46,24 @@
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
   ];
 
+  // Pasa a minúsculas y quita acentos, para buscar sin que importen ni las
+  // mayúsculas ni las tildes.
+  function normalizar(texto) {
+    return String(texto == null ? "" : texto)
+      .toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
+  // true si la consulta está vacía o si alguno de los campos la contiene
+  // (comparando ya normalizado).
+  function coincideTexto(campos, consulta) {
+    const aguja = normalizar(consulta).trim();
+    if (!aguja) return true;
+    return [].concat(campos).some(function (campo) {
+      return normalizar(campo).indexOf(aguja) !== -1;
+    });
+  }
+
   function esFechaISO(valor) {
     if (typeof valor !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(valor)) return false;
     const [a, m, d] = valor.split("-").map(Number);
@@ -80,6 +98,13 @@
     if (dias <= 7) return "urgente";
     if (dias <= 30) return "proximo";
     return "normal";
+  }
+
+  // Situación del plazo de un congreso, para el filtro de la pestaña Congresos.
+  // "sin-plazo" (no anunciado) | "cerrado" (ya pasó) | "abierto" (hoy o futuro)
+  function situacionPlazo(congreso, hoyIso) {
+    if (!congreso.plazoResumenes) return "sin-plazo";
+    return diasHasta(congreso.plazoResumenes, hoyIso) < 0 ? "cerrado" : "abierto";
   }
 
   function textoDiasRestantes(dias) {
@@ -131,6 +156,27 @@
       if (a.inicio > b.inicio) return 1;
       return 0;
     });
+  }
+
+  // Contadores para la fila de resumen de «Próximos plazos» (RA-22).
+  function resumen(datos, hoyIso) {
+    const congresos = Array.isArray(datos.congresos) ? datos.congresos : [];
+    const comunicaciones = Array.isArray(datos.comunicaciones) ? datos.comunicaciones : [];
+    const abiertos = congresos.filter(function (c) {
+      return c.plazoResumenes && diasHasta(c.plazoResumenes, hoyIso) >= 0;
+    });
+    const urgentes = abiertos.filter(function (c) {
+      return clasificarPlazo(c.plazoResumenes, hoyIso) === "urgente";
+    });
+    const enMarcha = comunicaciones.filter(function (m) {
+      return m.estado === "en-preparacion" || m.estado === "enviada";
+    });
+    return {
+      plazosAbiertos: abiertos.length,
+      plazosUrgentes: urgentes.length,
+      totalComunicaciones: comunicaciones.length,
+      enMarcha: enMarcha.length
+    };
   }
 
   // Mapa "AAAA-MM-DD" → { congresos: [nombres], plazos: [nombres] } para un año.
@@ -251,17 +297,21 @@
     ESTADOS: ESTADOS,
     ORDEN_ESTADOS: ORDEN_ESTADOS,
     MESES_LARGOS: MESES_LARGOS,
+    normalizar: normalizar,
+    coincideTexto: coincideTexto,
     esFechaISO: esFechaISO,
     aFecha: aFecha,
     isoDe: isoDe,
     diasHasta: diasHasta,
     clasificarPlazo: clasificarPlazo,
+    situacionPlazo: situacionPlazo,
     textoDiasRestantes: textoDiasRestantes,
     formatearFecha: formatearFecha,
     formatearRango: formatearRango,
     congresosConPlazoFuturo: congresosConPlazoFuturo,
     congresosSinPlazo: congresosSinPlazo,
     congresosPorInicio: congresosPorInicio,
+    resumen: resumen,
     marcasDeAnio: marcasDeAnio,
     validarDatos: validarDatos
   };

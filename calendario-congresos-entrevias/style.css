@@ -148,6 +148,74 @@ section[role="tabpanel"] > h2 {
   padding: 1rem;
 }
 
+/* ---------- Resumen (pestaña de plazos) ---------- */
+
+.resumen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.3rem 0 1rem;
+}
+
+.resumen-dato {
+  flex: 1 1 8rem;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.resumen-numero { font-size: 1.6rem; font-weight: 700; line-height: 1; }
+
+.resumen-etiqueta { color: var(--tinta-suave); font-size: 0.85rem; }
+
+.resumen-alerta {
+  background: var(--urgente-fondo);
+  border-color: #e3b3b0;
+}
+
+.resumen-alerta .resumen-numero,
+.resumen-alerta .resumen-etiqueta { color: var(--urgente-texto); }
+
+/* ---------- Barra de filtros ---------- */
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.filtros input[type="search"] {
+  flex: 1 1 16rem;
+  min-width: 0;
+  font: inherit;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 0.4rem 0.55rem;
+  background: #fff;
+  color: var(--tinta);
+}
+
+.filtros select {
+  font: inherit;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 0.4rem 0.55rem;
+  background: #fff;
+  color: var(--tinta);
+}
+
+.contador-filtro {
+  color: var(--tinta-suave);
+  font-size: 0.85rem;
+  margin-left: auto;
+}
+
 /* ---------- Tarjetas de plazos ---------- */
 
 .lista-plazos {

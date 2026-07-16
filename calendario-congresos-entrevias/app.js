@@ -11,6 +11,8 @@
 
   let datos = cargarDatos();
   let anioCalendario = new Date().getFullYear();
+  let filtroCongresos = { texto: "", ambito: "", situacion: "" };
+  let filtroComunicaciones = { texto: "", congresoId: "", tipo: "" };
 
   // ---------- utilidades ----------
 
@@ -64,8 +66,7 @@
   }
 
   function generarId(nombre, existentes) {
-    let base = nombre.toLowerCase()
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    let base = L.normalizar(nombre)
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-+|-+$/g, "")
       .slice(0, 40);
@@ -145,10 +146,25 @@
 
   // ---------- pestaña: próximos plazos ----------
 
+  function bloqueResumen(numero, etiqueta, resaltar) {
+    return el("div", { class: "resumen-dato" + (resaltar ? " resumen-alerta" : "") }, [
+      el("span", { class: "resumen-numero", text: String(numero) }),
+      el("span", { class: "resumen-etiqueta", text: etiqueta })
+    ]);
+  }
+
   function renderPlazos() {
     const hoy = hoyISO();
     const panel = document.getElementById("panel-plazos");
     panel.textContent = "";
+
+    const r = L.resumen(datos, hoy);
+    panel.append(el("div", { class: "resumen", "aria-label": "Resumen" }, [
+      bloqueResumen(r.plazosAbiertos, r.plazosAbiertos === 1 ? "plazo abierto" : "plazos abiertos"),
+      bloqueResumen(r.plazosUrgentes, r.plazosUrgentes === 1 ? "urgente (≤ 7 días)" : "urgentes (≤ 7 días)", r.plazosUrgentes > 0),
+      bloqueResumen(r.totalComunicaciones, r.totalComunicaciones === 1 ? "comunicación" : "comunicaciones"),
+      bloqueResumen(r.enMarcha, "en marcha")
+    ]));
 
     panel.append(el("h2", { text: "Próximos plazos de envío" }));
 
@@ -282,8 +298,16 @@
 
   // ---------- pestaña: congresos ----------
 
-  function renderCongresos() {
+  function filtrarCongresos() {
     const hoy = hoyISO();
+    return L.congresosPorInicio(datos.congresos).filter(function (c) {
+      if (filtroCongresos.ambito && c.ambito !== filtroCongresos.ambito) return false;
+      if (filtroCongresos.situacion && L.situacionPlazo(c, hoy) !== filtroCongresos.situacion) return false;
+      return L.coincideTexto([c.nombre, c.organizador, c.lugar], filtroCongresos.texto);
+    });
+  }
+
+  function renderCongresos() {
     const panel = document.getElementById("panel-congresos");
     panel.textContent = "";
 
@@ -291,14 +315,51 @@
     panel.append(el("div", { class: "acciones-seccion" },
       el("button", { type: "button", class: "principal", onclick: function () { abrirFormularioCongreso(null); } }, "➕ Añadir congreso")));
 
+    const selAmbito = el("select", { "aria-label": "Filtrar por ámbito", onchange: function (ev) { filtroCongresos.ambito = ev.target.value; pintarCongresos(); } },
+      [el("option", { value: "", text: "Todos los ámbitos" })].concat(Object.entries(L.AMBITOS).map(function (par) {
+        return el("option", { value: par[0], selected: filtroCongresos.ambito === par[0] ? "" : null, text: par[1] });
+      })));
+    const selSituacion = el("select", { "aria-label": "Filtrar por situación del plazo", onchange: function (ev) { filtroCongresos.situacion = ev.target.value; pintarCongresos(); } },
+      [["", "Cualquier plazo"], ["abierto", "Plazo abierto"], ["cerrado", "Plazo cerrado"], ["sin-plazo", "Sin plazo anunciado"]].map(function (par) {
+        return el("option", { value: par[0], selected: filtroCongresos.situacion === par[0] ? "" : null, text: par[1] });
+      }));
+
+    panel.append(el("div", { class: "filtros" }, [
+      el("input", {
+        type: "search", "aria-label": "Buscar congreso", placeholder: "Buscar por nombre, organizador o lugar…",
+        value: filtroCongresos.texto,
+        oninput: function (ev) { filtroCongresos.texto = ev.target.value; pintarCongresos(); }
+      }),
+      selAmbito,
+      selSituacion,
+      el("button", { type: "button", onclick: function () { filtroCongresos = { texto: "", ambito: "", situacion: "" }; renderCongresos(); } }, "Limpiar"),
+      el("span", { class: "contador-filtro", id: "contador-congresos" })
+    ]));
+
+    panel.append(el("div", { id: "resultados-congresos" }));
+    pintarCongresos();
+  }
+
+  function pintarCongresos() {
+    const hoy = hoyISO();
+    const cont = document.getElementById("resultados-congresos");
+    cont.textContent = "";
+
+    const contador = document.getElementById("contador-congresos");
     if (datos.congresos.length === 0) {
-      panel.append(el("p", { class: "vacio", text: "Todavía no hay congresos. Añade el primero con el botón de arriba." }));
+      contador.textContent = "";
+      cont.append(el("p", { class: "vacio", text: "Todavía no hay congresos. Añade el primero con el botón de arriba." }));
       return;
     }
 
-    const ordenados = L.congresosPorInicio(datos.congresos);
+    const filas = filtrarCongresos();
+    contador.textContent = "Mostrando " + filas.length + " de " + datos.congresos.length;
+    if (filas.length === 0) {
+      cont.append(el("p", { class: "vacio", text: "Ningún congreso coincide con el filtro. Pulsa «Limpiar» para verlos todos." }));
+      return;
+    }
 
-    const filas = ordenados.map(function (c) {
+    const filasTabla = filas.map(function (c) {
       const finalizado = L.diasHasta(c.fin, hoy) < 0;
       const celdaPlazo = el("td", {});
       if (c.plazoResumenes) {
@@ -336,7 +397,7 @@
       ]);
     });
 
-    panel.append(el("div", { class: "tabla-envoltorio" },
+    cont.append(el("div", { class: "tabla-envoltorio" },
       el("table", {}, [
         el("thead", {}, el("tr", {}, [
           el("th", { scope: "col", text: "Congreso" }),
@@ -346,7 +407,7 @@
           el("th", { scope: "col", text: "Comunicaciones" }),
           el("th", { scope: "col", text: "Acciones" })
         ])),
-        el("tbody", {}, filas)
+        el("tbody", {}, filasTabla)
       ])));
   }
 
@@ -367,6 +428,14 @@
 
   // ---------- pestaña: comunicaciones ----------
 
+  function filtrarComunicaciones() {
+    return datos.comunicaciones.filter(function (m) {
+      if (filtroComunicaciones.congresoId && m.congresoId !== filtroComunicaciones.congresoId) return false;
+      if (filtroComunicaciones.tipo && m.tipo !== filtroComunicaciones.tipo) return false;
+      return L.coincideTexto([m.titulo, m.responsable, m.autores], filtroComunicaciones.texto);
+    });
+  }
+
   function renderComunicaciones() {
     const panel = document.getElementById("panel-comunicaciones");
     panel.textContent = "";
@@ -375,9 +444,42 @@
     panel.append(el("div", { class: "acciones-seccion" },
       el("button", { type: "button", class: "principal", onclick: function () { abrirFormularioComunicacion(null); } }, "➕ Añadir comunicación")));
 
+    const selCongreso = el("select", { "aria-label": "Filtrar por congreso", onchange: function (ev) { filtroComunicaciones.congresoId = ev.target.value; pintarComunicaciones(); } },
+      [el("option", { value: "", text: "Todos los congresos" })].concat(L.congresosPorInicio(datos.congresos).map(function (c) {
+        return el("option", { value: c.id, selected: filtroComunicaciones.congresoId === c.id ? "" : null, text: c.nombre });
+      })));
+    const selTipo = el("select", { "aria-label": "Filtrar por tipo", onchange: function (ev) { filtroComunicaciones.tipo = ev.target.value; pintarComunicaciones(); } },
+      [el("option", { value: "", text: "Todos los tipos" })].concat(Object.entries(L.TIPOS).map(function (par) {
+        return el("option", { value: par[0], selected: filtroComunicaciones.tipo === par[0] ? "" : null, text: par[1] });
+      })));
+
+    panel.append(el("div", { class: "filtros" }, [
+      el("input", {
+        type: "search", "aria-label": "Buscar comunicación", placeholder: "Buscar por título, responsable o autores…",
+        value: filtroComunicaciones.texto,
+        oninput: function (ev) { filtroComunicaciones.texto = ev.target.value; pintarComunicaciones(); }
+      }),
+      selCongreso,
+      selTipo,
+      el("button", { type: "button", onclick: function () { filtroComunicaciones = { texto: "", congresoId: "", tipo: "" }; renderComunicaciones(); } }, "Limpiar"),
+      el("span", { class: "contador-filtro", id: "contador-comunicaciones" })
+    ]));
+
+    panel.append(el("div", { id: "resultados-comunicaciones" }));
+    pintarComunicaciones();
+  }
+
+  function pintarComunicaciones() {
+    const cont = document.getElementById("resultados-comunicaciones");
+    cont.textContent = "";
+
+    const visibles = filtrarComunicaciones();
+    document.getElementById("contador-comunicaciones").textContent =
+      datos.comunicaciones.length === 0 ? "" : "Mostrando " + visibles.length + " de " + datos.comunicaciones.length;
+
     const tablero = el("div", { class: "tablero" });
     for (const estado of L.ORDEN_ESTADOS) {
-      const del_estado = datos.comunicaciones.filter(function (m) { return m.estado === estado; });
+      const del_estado = visibles.filter(function (m) { return m.estado === estado; });
       const columna = el("div", { class: "columna-estado" }, [
         el("h3", {}, [
           document.createTextNode(L.ESTADOS[estado] + " "),
@@ -410,10 +512,12 @@
       }
       tablero.append(columna);
     }
-    panel.append(tablero);
+    cont.append(tablero);
 
     if (datos.comunicaciones.length === 0) {
-      panel.append(el("p", { class: "vacio", text: "Todavía no hay comunicaciones. Crea la primera con el botón de arriba." }));
+      cont.append(el("p", { class: "vacio", text: "Todavía no hay comunicaciones. Crea la primera con el botón de arriba." }));
+    } else if (visibles.length === 0) {
+      cont.append(el("p", { class: "vacio", text: "Ninguna comunicación coincide con el filtro. Pulsa «Limpiar» para verlas todas." }));
     }
   }
 

@@ -15,10 +15,14 @@ internet, ni servidor, ni instalar nada.
 
 | Pestaña | Qué hay dentro |
 |---|---|
-| ⏰ **Próximos plazos** | Los plazos de envío ordenados por urgencia: en rojo si quedan ≤ 7 días, en ámbar si quedan ≤ 30. También los congresos sin plazo anunciado. |
+| ⏰ **Próximos plazos** | Una fila de **resumen** (plazos abiertos, urgentes, comunicaciones y cuántas en marcha) y, debajo, los plazos de envío ordenados por urgencia: en rojo si quedan ≤ 7 días, en ámbar si quedan ≤ 30. También los congresos sin plazo anunciado. |
 | 🗓️ **Calendario** | Los 12 meses del año con los días de congreso y los días de plazo marcados. Toca un día marcado para ver el detalle. |
-| 🏛️ **Congresos** | La lista completa (también los pasados). Añadir, editar y borrar congresos. |
-| 📄 **Comunicaciones** | Tablero por estados: idea → en preparación → enviada → aceptada/rechazada → presentada. El estado se cambia desde la propia tarjeta. |
+| 🏛️ **Congresos** | La lista completa (también los pasados). **Buscador y filtros** (por ámbito y situación del plazo). Añadir, editar y borrar congresos. |
+| 📄 **Comunicaciones** | Tablero por estados: idea → en preparación → enviada → aceptada/rechazada → presentada. **Buscador y filtros** (por congreso y tipo). El estado se cambia desde la propia tarjeta. |
+
+> Los buscadores ignoran mayúsculas y acentos; los filtros se combinan y cada
+> pestaña indica cuántos elementos muestra («Mostrando 3 de 12») con un botón
+> «Limpiar».
 
 Arriba a la derecha: **Imprimir resumen** (hoja limpia para el corcho de la
 sala), **Exportar** / **Importar** (JSON) y **Restaurar ejemplo**.

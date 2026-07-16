@@ -165,6 +165,23 @@ Cada requisito tiene un identificador **RA-nn** para poder verificarse uno a uno
   `comprobar.js`. Además, el proyecto queda añadido al índice del `README.md`
   raíz del repositorio.
 
+### Búsqueda, filtros y resumen (v2)
+
+- **RA-21** Búsqueda y filtros para cuando la lista crezca:
+  - En «Congresos»: un buscador de texto (nombre, organizador o lugar) y filtros
+    por ámbito y por situación del plazo (abierto / cerrado / sin plazo). Los
+    filtros se combinan (Y lógica). La búsqueda ignora mayúsculas y acentos.
+  - En «Comunicaciones»: un buscador de texto (título, responsable o autores) y
+    filtros por congreso y por tipo. También combinables e insensibles a
+    acentos/mayúsculas.
+  - Cada pestaña tiene un botón «Limpiar» que restablece sus filtros, e indica
+    cuántos elementos se están mostrando de cuántos («3 de 12»). Escribir en el
+    buscador no hace perder el foco del campo.
+- **RA-22** La pestaña «Próximos plazos» abre con una fila de **resumen** con
+  contadores calculados por lógica pura: plazos abiertos, de ellos cuántos
+  urgentes (≤ 7 días), total de comunicaciones y cuántas «en preparación» o
+  «enviada» (en marcha). El resumen no se comunica solo por color.
+
 ## Fuera de alcance (v1)
 
 - Sin servidor, sin cuentas de usuario, sin sincronización automática entre
