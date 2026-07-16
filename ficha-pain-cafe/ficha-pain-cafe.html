@@ -27,14 +27,14 @@
     background:var(--papel);
     color:var(--tinta);
     font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
-    line-height:1.5;
+    line-height:1.32;
     -webkit-print-color-adjust:exact;
     print-color-adjust:exact;
   }
   .hoja{
     max-width:820px;
     margin:0 auto;
-    padding:22px 26px 30px;
+    padding:16px 24px 18px;
     background:var(--superficie);
   }
 
@@ -42,10 +42,10 @@
   .cabecera{
     display:flex;align-items:center;gap:16px;
     border-bottom:3px solid var(--cafe);
-    padding-bottom:14px;margin-bottom:16px;
+    padding-bottom:10px;margin-bottom:12px;
   }
-  .taza{font-size:44px;line-height:1;}
-  .cabecera h1{margin:0;font-size:27px;color:var(--cafe-oscuro);letter-spacing:.3px;}
+  .taza{font-size:38px;line-height:1;}
+  .cabecera h1{margin:0;font-size:24px;color:var(--cafe-oscuro);letter-spacing:.3px;}
   .cabecera .kicker{
     font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;
     color:var(--tinta-suave);margin:0 0 2px;
@@ -55,16 +55,16 @@
   .intro{
     background:var(--cafe-lavado);
     border-radius:10px;
-    padding:12px 16px;margin-bottom:18px;
-    font-size:14.5px;color:var(--tinta-2);
+    padding:9px 16px;margin-bottom:10px;
+    font-size:13.5px;color:var(--tinta-2);
   }
   .intro strong{color:var(--cafe-oscuro);}
 
   /* ── Bloques ── */
-  .bloque{margin-bottom:18px;break-inside:avoid;}
+  .bloque{margin-bottom:9px;break-inside:avoid;}
   .bloque h2{
     display:flex;align-items:center;gap:9px;
-    margin:0 0 9px;font-size:17px;color:var(--cafe-oscuro);
+    margin:0 0 6px;font-size:16px;color:var(--cafe-oscuro);
   }
   .bloque h2 .n{
     display:inline-flex;align-items:center;justify-content:center;
@@ -72,7 +72,7 @@
     background:var(--cafe);color:#fff;font-size:14px;font-weight:700;flex:none;
   }
   ul.lista{margin:0;padding-left:2px;list-style:none;}
-  ul.lista li{position:relative;padding:3px 0 3px 22px;font-size:14px;}
+  ul.lista li{position:relative;padding:2px 0 2px 22px;font-size:13.5px;}
   ul.lista li::before{
     content:"";position:absolute;left:4px;top:11px;
     width:7px;height:7px;border-radius:50%;background:var(--cafe);
@@ -84,33 +84,12 @@
     border-radius:6px;padding:1px 8px;font-weight:600;color:var(--cafe-oscuro);
   }
 
-  /* ── Photovoice destacado ── */
-  .photovoice{
-    background:var(--verde-lavado);
-    border:1.5px solid #cfe1d4;
-    border-radius:12px;padding:14px 18px;break-inside:avoid;
-  }
-  .photovoice h2{color:#356047;}
-  .photovoice h2 .n{background:var(--verde);}
-  .photovoice ul.lista li::before{background:var(--verde);}
-  .aviso-llamada{
-    display:flex;gap:8px;align-items:flex-start;
-    margin-top:10px;padding:9px 12px;border-radius:8px;
-    background:#fff;border:1px dashed var(--verde);
-    font-size:13.5px;color:#356047;
-  }
-
-  /* ── Formulario de preferencias ── */
+  /* ── Formulario de preferencias (parte grapada) ── */
   .formulario{
-    border:2px dashed var(--cafe);
-    border-radius:12px;padding:16px 18px;break-inside:avoid;
-    margin-top:20px;background:var(--superficie);
+    border:1.5px solid var(--linea);
+    border-radius:12px;padding:11px 16px;break-inside:avoid;background:var(--superficie);
   }
   .formulario h2{color:var(--cafe-oscuro);}
-  .tijera{
-    text-align:center;color:var(--tinta-suave);font-size:12px;
-    letter-spacing:2px;margin:22px 0 -6px;
-  }
   .campo{margin:9px 0;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
   .campo label{font-size:13.5px;font-weight:600;color:var(--tinta-2);white-space:nowrap;}
   .linea-escritura{
@@ -123,8 +102,36 @@
   }
   .sub-opciones{font-size:12.5px;color:var(--tinta-suave);margin:2px 0 0 24px;}
 
+  /* ── Línea de corte + recortable para el paciente ── */
+  .corte{
+    display:flex;align-items:center;gap:10px;
+    margin:11px 0 8px;color:var(--tinta-suave);font-size:12px;
+  }
+  .corte::after{content:"";flex:1;border-top:2px dashed var(--cafe);opacity:.55;}
+  .corte .txt{white-space:nowrap;font-weight:600;letter-spacing:.4px;}
+
+  .recortable{
+    border:2px dashed var(--verde);
+    border-radius:12px;padding:11px 16px 13px;break-inside:avoid;
+    background:var(--verde-lavado);
+  }
+  .recortable .cab-mini{
+    display:flex;align-items:center;gap:9px;margin-bottom:8px;
+  }
+  .recortable .cab-mini .taza{font-size:26px;}
+  .recortable .cab-mini strong{font-size:16px;color:#356047;}
+  .recortable .cab-mini span{font-size:12px;color:var(--tinta-suave);}
+  .recortable h2{color:#356047;font-size:16px;margin:2px 0 8px;display:flex;align-items:center;gap:8px;}
+  .recortable ul.lista li::before{background:var(--verde);}
+  .aviso-llamada{
+    display:flex;gap:8px;align-items:flex-start;
+    margin-top:10px;padding:9px 12px;border-radius:8px;
+    background:#fff;border:1px solid #cfe1d4;
+    font-size:13.5px;color:#356047;
+  }
+
   .pie{
-    margin-top:22px;padding-top:12px;border-top:1px solid var(--linea);
+    margin-top:14px;padding-top:10px;border-top:1px solid var(--linea);
     display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
     font-size:12.5px;color:var(--tinta-suave);
   }
@@ -137,9 +144,7 @@
     .hoja{max-width:none;padding:0;box-shadow:none;}
     .no-print{display:none!important;}
   }
-  .barra{
-    max-width:820px;margin:14px auto 0;text-align:right;
-  }
+  .barra{max-width:820px;margin:14px auto 0;text-align:right;}
   .barra button{
     font:inherit;cursor:pointer;border:none;border-radius:8px;
     background:var(--cafe);color:#fff;font-weight:600;padding:9px 18px;font-size:14px;
@@ -160,14 +165,15 @@
   </header>
 
   <p class="intro">
-    Gracias por venir a tu <strong>valoración de hoy</strong>. En esta hoja te
-    explicamos en qué consiste el <strong>Pain Café</strong>, qué necesitas
-    preparar para el <strong>photovoice</strong> y te pedimos que nos digas
-    tu <strong>bebida favorita</strong> para tenerla lista en las sesiones.
+    Gracias por tu <strong>valoración de hoy</strong>. Aquí te explicamos en qué
+    consistirá la <strong>sesión del Pain Café</strong> y te pedimos tu
+    <strong>bebida favorita</strong> para ese día. <strong>Recorta la parte de
+    abajo</strong> y llévatela: te recuerda cómo preparar tus fotos para el
+    <strong>photovoice</strong>.
   </p>
 
   <section class="bloque">
-    <h2><span class="n">1</span> ¿En qué consiste la sesión?</h2>
+    <h2><span class="n">1</span> ¿En qué va a consistir la sesión?</h2>
     <ul class="lista">
       <li>Nos reunimos en un <strong>grupo pequeño</strong>, en un ambiente
           tranquilo y cercano, como si fuera una cafetería.</li>
@@ -175,72 +181,20 @@
           afecta en el día a día y qué cosas nos ayudan a convivir mejor con él.</li>
       <li>No es una consulta médica al uso. Aquí <strong>compartimos
           experiencias</strong> y aprendemos estrategias de forma sencilla.</li>
-      <li>Duración aproximada de cada encuentro: <span class="dato">unos 90 minutos</span>.</li>
-      <li>Siempre habrá <strong>café, té e infusiones</strong> para acompañar
-          la charla (por eso te preguntamos tus preferencias más abajo).</li>
+      <li>Duración aproximada de la sesión: <span class="dato">unos 60 minutos</span>.</li>
+      <li>Habrá <strong>café, té e infusiones</strong> para acompañar la charla
+          (por eso te preguntamos tus preferencias aquí debajo).</li>
       <li><strong>Confidencialidad:</strong> lo que se comparte en el grupo,
           se queda en el grupo.</li>
     </ul>
   </section>
 
-  <section class="bloque">
-    <h2><span class="n">2</span> El día de hoy: la valoración</h2>
-    <ul class="lista">
-      <li>Hacemos una <strong>primera valoración</strong> para conocerte y
-          adaptar el grupo a lo que necesitas.</li>
-      <li>Te explicaremos el <strong>calendario de sesiones</strong> y el lugar
-          de encuentro.</li>
-      <li>Resolveremos <strong>todas tus dudas</strong>. No hay preguntas
-          tontas: pregunta lo que quieras.</li>
-    </ul>
-  </section>
-
-  <section class="bloque photovoice">
-    <h2><span class="n">3</span> 📷 Prepara tu <em>photovoice</em></h2>
-    <p style="margin:0 0 8px;font-size:14px;color:#356047;">
-      El <strong>photovoice</strong> es una forma de contar con imágenes cómo
-      vives tu dolor. Nos ayuda a entenderte mejor y a arrancar la conversación
-      del grupo. Así lo preparas:
-    </p>
-    <ul class="lista">
-      <li>Piensa en <strong>1 o 2 fotos</strong> que representen cómo es tu
-          dolor, cómo convives con él o <strong>qué te ayuda</strong> a estar mejor.</li>
-      <li>Puedes hacerlas con el <strong>móvil</strong>. No hace falta que
-          salgas tú en la foto.</li>
-      <li>Evita fotos donde se reconozca a <strong>otras personas</strong>,
-          para proteger su intimidad.</li>
-      <li>Piensa una <strong>frase por foto</strong>: ¿por qué la has elegido?</li>
-    </ul>
-    <div class="aviso-llamada">
-      <span aria-hidden="true">📞</span>
-      <span><strong>Te llamaremos por teléfono</strong> para recordártelo.
-      Cuando tengas las fotos, envíalas por <strong>correo electrónico</strong> a:
-      <br><strong>______________________________</strong>
-      <span style="color:var(--tinta-suave);">(anota aquí el correo que te demos)</span></span>
-    </div>
-  </section>
-
-  <div class="tijera">✂ &nbsp;- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
-
-  <section class="formulario">
-    <h2><span class="n">4</span> ☕ Tus preferencias de bebida</h2>
+  <section class="bloque formulario">
+    <h2><span class="n">2</span> ☕ Tus preferencias de bebida</h2>
     <p style="margin:0 0 4px;font-size:13.5px;color:var(--tinta-2);">
-      Rellena estos datos y entrégaselos al equipo. ¡Gracias!
+      Dinos qué te apetece y lo tendremos listo el día de la sesión.
     </p>
 
-    <div class="campo">
-      <label>Nombre:</label><span class="linea-escritura"></span>
-    </div>
-    <div class="campo">
-      <label>Teléfono de contacto:</label><span class="linea-escritura"></span>
-    </div>
-    <div class="campo">
-      <label>Correo electrónico:</label><span class="linea-escritura"></span>
-    </div>
-
-    <p style="margin:12px 0 2px;font-size:13.5px;font-weight:600;color:var(--tinta-2);">
-      ¿Qué te apetece beber en las sesiones? (marca lo que quieras)
-    </p>
     <div class="opciones">
       <span class="opcion"><span class="casilla"></span> Café</span>
       <span class="opcion"><span class="casilla"></span> Café descafeinado</span>
@@ -258,12 +212,47 @@
     </div>
   </section>
 
+  <div class="corte">
+    <span class="txt">✂ Recorta por aquí y llévate esta parte</span>
+  </div>
+
+  <section class="recortable">
+    <div class="cab-mini">
+      <span class="taza" aria-hidden="true">☕</span>
+      <div>
+        <strong>Pain Café · para ti</strong><br>
+        <span>Recordatorio para preparar tu photovoice</span>
+      </div>
+    </div>
+
+    <h2>📷 Prepara tus fotos para el <em>photovoice</em></h2>
+    <p style="margin:0 0 6px;font-size:13.5px;color:#356047;">
+      El <strong>photovoice</strong> es contar con imágenes cómo vives tu dolor:
+      nos ayuda a entenderte mejor y a arrancar la conversación del grupo.
+    </p>
+    <ul class="lista">
+      <li>Piensa en <strong>1 o 2 fotos</strong> que representen cómo es tu
+          dolor, cómo convives con él o <strong>qué te ayuda</strong> a estar mejor.</li>
+      <li>Puedes hacerlas con el <strong>móvil</strong>. No hace falta que
+          salgas tú en la foto.</li>
+      <li>Evita fotos donde se reconozca a <strong>otras personas</strong>,
+          para proteger su intimidad.</li>
+      <li>Piensa una <strong>frase por foto</strong>: ¿por qué la has elegido?</li>
+    </ul>
+    <div class="aviso-llamada">
+      <span aria-hidden="true">✉️</span>
+      <span><strong>Te escribiremos una semana antes</strong> para recordártelo.
+      Cuando tengas las fotos, envíalas por <strong>correo electrónico</strong> a:
+      <br><strong style="font-size:15px;">raul.ferrer@salud.madrid.org</strong></span>
+    </div>
+  </section>
+
   <footer class="pie">
     <div class="contacto">
       <strong>Pain Café</strong> · EPS Dolor crónico · Centro de Salud Entrevías
     </div>
     <div>
-      Próxima sesión: ____ / ____ / ______ &nbsp;·&nbsp; Hora: ______
+      Sesión Pain Café: ____ / ____ / ______ &nbsp;·&nbsp; Hora: ______
     </div>
   </footer>
 
