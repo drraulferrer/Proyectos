@@ -280,20 +280,33 @@ function renderBlock(b) {
  * Marca Paincorp (logotipo vectorial)
  * ----------------------------------------------------------------------- */
 
-// Marca: ondas concéntricas que "se calman" hacia una línea (señal del sistema
-// nervioso que se regula). Se usa en portada, cabeceras y contraportada.
-function paincorpMark(size, color) {
-  return `<svg class="mark" width="${size}" height="${size}" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-    <path d="M6 24c3.6 0 3.6-9 7.2-9s3.6 15 7.2 15 3.6-11 7.2-11 3.6 6 7.2 6 3.6-3 7.2-3" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="24" cy="24" r="21.5" stroke="${color}" stroke-width="1.6" opacity="0.55"/>
-  </svg>`;
+// Identidad Fundación Paincorp: logotipo con el característico "tick" cuadrado
+// turquesa sobre la letra inicial. Se reproduce con tipografía y CSS.
+//
+// variant: 'onDark' (texto claro, tick turquesa) | 'onTeal'/'dark' (todo tinta)
+function tickWord(text, variant, cls = '') {
+  const txt = variant === 'onDark' ? 'var(--paper)' : 'var(--ink)';
+  const tick = variant === 'onDark' ? 'var(--teal)' : 'var(--ink)';
+  return `<span class="tw ${cls}" style="color:${txt}"><span class="tw-tick" style="background:${tick}"></span>${esc(text)}</span>`;
 }
 
-function wordmark(variant) {
-  // variant: 'light' (sobre fondo oscuro) | 'dark'
-  const pain = variant === 'light' ? 'var(--cream)' : 'var(--teal)';
-  const corp = 'var(--coral)';
-  return `<span class="wordmark"><span style="color:${pain}">Pain</span><span style="color:${corp}">corp</span></span>`;
+// Logotipo apilado "Fundación / Paincorp"
+function logoStack(variant) {
+  return `<div class="logo-stack">${tickWord('Fundación', variant, 'tw-sm')}${tickWord('Paincorp', variant)}</div>`;
+}
+
+// Logotipo en una línea "Paincorp"
+function logoInline(variant) {
+  return `<span class="logo-inline">${tickWord('Paincorp', variant)}</span>`;
+}
+
+// Patrón de marca: cuadrados en diagonal descendente (motivo Paincorp).
+function stepMotif(x, y, n, s, gap, color) {
+  let r = '';
+  for (let i = 0; i < n; i++) {
+    r += `<rect x="${x + i * (s + gap)}" y="${y + i * (s + gap)}" width="${s}" height="${s}" fill="${color}"/>`;
+  }
+  return r;
 }
 
 /* ----------------------------------------------------------------------- *
@@ -306,20 +319,18 @@ const pages = [];
 pages.push(`
 <section class="page cover">
   <div class="cover-bg"></div>
-  <svg class="cover-motif" viewBox="0 0 154 216" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    ${[0,1,2,3,4,5,6].map((i)=>`<circle cx="132" cy="30" r="${18+i*15}" fill="none" stroke="rgba(246,241,232,0.10)" stroke-width="1.1"/>`).join('')}
-    ${[0,1,2,3,4].map((i)=>`<circle cx="18" cy="200" r="${14+i*16}" fill="none" stroke="rgba(225,115,75,0.16)" stroke-width="1.1"/>`).join('')}
+  <svg class="cover-motif" viewBox="0 0 154 216" preserveAspectRatio="none" aria-hidden="true">
+    ${stepMotif(120, 18, 7, 8, 3, 'var(--teal)')}
   </svg>
   <header class="cover-top">
-    ${paincorpMark(34, 'var(--cream)')}
-    ${wordmark('light')}
+    ${logoStack('onDark')}
   </header>
   <div class="cover-main">
     <div class="cover-kicker">Programa EPS · Dolor crónico</div>
     <h1 class="cover-title">Cuaderno del<br>participante</h1>
     <p class="cover-sub">Educación Terapéutica Bioconductual con orientación al dolor</p>
     <div class="cover-rule"></div>
-    <p class="cover-tag">Mi espacio de trabajo durante las 16 semanas del programa</p>
+    <p class="cover-tag">Innovación para una vida sin dolor</p>
   </div>
   <footer class="cover-foot">
     <div class="cover-owner">
@@ -334,8 +345,7 @@ pages.push(`
 pages.push(`
 <section class="page inner-title">
   <div class="it-top">
-    ${paincorpMark(28, 'var(--teal)')}
-    ${wordmark('dark')}
+    ${logoStack('dark')}
   </div>
   <div class="it-body">
     <h2>Cuaderno del participante</h2>
@@ -365,8 +375,8 @@ pages.push(`
   <div class="content">
     <p class="lead">Este cuaderno te acompañará durante las <strong>16 semanas</strong> del programa. En él irás anotando lo que descubres, tus ejercicios y tus planes. No hay respuestas correctas o incorrectas: es tu espacio de trabajo personal.</p>
 
-    <h3 class="sec">Antes de empezar</h3>
-    <p>Antes de la primera sesión tendrás una cita de valoración con fisioterapia. Allí te explicaremos el programa, resolveremos tus dudas y firmarás el consentimiento. Te pediremos que traigas a la primera sesión —el <strong>PainCafé</strong>— una fotografía que represente qué significa el dolor para ti (puede ser un objeto, un lugar o una escena; no hay respuestas correctas). Entrégala al menos <strong>48 horas antes</strong> para poder prepararlo todo.</p>
+    <h3 class="sec">El punto de partida</h3>
+    <p>Ya has pasado por la cita de valoración: conoces el programa, has resuelto tus dudas y has firmado el consentimiento. El recorrido en grupo arranca directamente con el <strong>PainCafé</strong>, un primer encuentro en un ambiente distendido. Si aún no la has entregado, recuerda llevar la <strong>fotografía</strong> que represente qué significa el dolor para ti (puede ser un objeto, un lugar o una escena; no hay respuestas correctas).</p>
 
     <h3 class="sec">Cómo usar este cuaderno</h3>
     <ul class="bullets">
@@ -450,25 +460,26 @@ pages.push(`
   ${interiorFooter(pages.length + 1)}
 </section>`);
 
-/* --- CONTRAPORTADA ---------------------------------------------------- */
+/* --- CONTRAPORTADA (genérica; se ve desde el primer día) --------------- */
 pages.push(`
 <section class="page backcover">
   <div class="cover-bg"></div>
-  <svg class="cover-motif" viewBox="0 0 154 216" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    ${[0,1,2,3,4,5].map((i)=>`<circle cx="20" cy="26" r="${16+i*15}" fill="none" stroke="rgba(246,241,232,0.09)" stroke-width="1.1"/>`).join('')}
+  <svg class="cover-motif" viewBox="0 0 154 216" preserveAspectRatio="none" aria-hidden="true">
+    ${stepMotif(120, 16, 6, 8, 3, 'rgba(29,31,33,0.16)')}
   </svg>
+  <div class="bc-top">${logoStack('onTeal')}</div>
   <div class="bc-main">
     <blockquote class="bc-quote">“Los avances pequeños y constantes son los que funcionan.”</blockquote>
-    <p class="bc-text">Gracias por el trabajo que has hecho en estas 16 semanas. Lo aprendido sigue contigo: vuelve a tus notas siempre que lo necesites y continúa a tu ritmo.</p>
+    <p class="bc-text">Este cuaderno te acompaña durante todo el programa. Es tu espacio personal: vuelve a él siempre que lo necesites y avanza a tu ritmo.</p>
   </div>
   <footer class="bc-foot">
-    <div class="bc-brand">${paincorpMark(30, 'var(--cream)')} ${wordmark('light')}</div>
+    <div class="bc-tagline">Innovación para una vida sin dolor</div>
+    <div class="bc-services">Fisioterapia · Psicología · Anestesiología · Psiquiatría · Enfermería</div>
     <div class="bc-org">
-      <div><strong>Centro de Salud Entrevías</strong></div>
-      <div>Dirección Asistencial Sureste · SERMAS</div>
+      <div><strong>Centro de Salud Entrevías</strong> · Dirección Asistencial Sureste · SERMAS</div>
       <div>Programa EPS · Educación Terapéutica Bioconductual con orientación al dolor</div>
     </div>
-    <div class="bc-conf">Documento personal y confidencial · Uso interno del programa</div>
+    <div class="bc-conf">Documento personal y confidencial</div>
   </footer>
 </section>`);
 
@@ -477,7 +488,7 @@ pages.push(`
  * ----------------------------------------------------------------------- */
 
 function interiorHeader(title, kicker, chip, date) {
-  const chipHtml = chip ? `<div class="hdr-chip">${chip}</div>` : `<div class="hdr-chip mini">${paincorpMark(18, 'var(--cream)')}</div>`;
+  const chipHtml = chip ? `<div class="hdr-chip">${chip}</div>` : `<div class="hdr-chip mini"></div>`;
   const dateHtml = date ? `<div class="hdr-date">${esc(date)}</div>` : '';
   return `<header class="hdr">
     ${chipHtml}
@@ -491,7 +502,7 @@ function interiorHeader(title, kicker, chip, date) {
 
 function interiorFooter(n) {
   return `<footer class="ftr">
-    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-brand">Fundación Paincorp · Cuaderno del participante</span>
     <span class="ftr-no">${n}</span>
   </footer>`;
 }
@@ -504,15 +515,13 @@ function interiorFooter(n) {
 
 const css = `
 :root{
-  --teal:#0F5257;
-  --teal-2:#14726F;
-  --coral:#E1734B;
-  --cream:#F6F1E8;
+  --ink:#1D1F21;      /* Paincorp tinta  */
+  --teal:#0DB1A4;     /* Paincorp turquesa */
+  --mist:#B8CFD8;     /* Paincorp azul grisáceo */
   --paper:#FFFFFF;
-  --ink:#18272B;
-  --muted:#5D6E71;
-  --line:#CBD8D4;
-  --chip:#E8EFEC;
+  --muted:#5B6B70;
+  --line:#C7D3D8;
+  --soft:#EEF5F6;     /* fondo suave (tinte turquesa/mist) */
   --bleed:3mm;
 }
 *{box-sizing:border-box}
@@ -530,72 +539,77 @@ body{font-family:'DejaVu Sans','Liberation Sans',sans-serif;color:var(--ink);-we
 }
 .page:last-child{page-break-after:auto}
 
-/* ----- Área de contenido segura (borde doc 6mm = 3mm sangre + 3mm seguridad) ----- */
-/* Usamos 11mm laterales para respiración; el margen mínimo de seguridad (6mm) queda holgado. */
+/* ================= LOGOTIPO (tick cuadrado Paincorp) ================= */
+.tw{position:relative;display:inline-block;font-weight:700;letter-spacing:-.3pt;line-height:1;padding-left:.03em}
+.tw-tick{position:absolute;top:-.17em;left:-.05em;width:.30em;height:.30em}
+.logo-stack{line-height:1.04}
+.logo-stack .tw{display:block;font-size:1em}
+.logo-stack .tw-sm{font-size:.62em;margin-bottom:.10em;letter-spacing:0}
+.logo-inline .tw{font-size:1em}
 
 /* ================= PORTADA ================= */
-.cover,.backcover{color:var(--cream)}
-.cover-bg{position:absolute;inset:0;background:linear-gradient(160deg,#0F5257 0%,#0C4247 55%,#0A383C 100%)}
+.cover-bg{position:absolute;inset:0;background:linear-gradient(157deg,#24272B 0%,#1D1F21 55%,#141618 100%)}
 .cover-motif{position:absolute;inset:0;width:100%;height:100%}
-.cover-top{position:absolute;top:14mm;left:13mm;display:flex;align-items:center;gap:3mm}
-.wordmark{font-size:15pt;font-weight:700;letter-spacing:.2pt}
-.cover .wordmark{font-size:14pt}
-.cover-main{position:absolute;left:13mm;right:13mm;top:74mm}
-.cover-kicker{font-size:9.5pt;font-weight:700;letter-spacing:1.6pt;text-transform:uppercase;color:var(--coral);margin-bottom:6mm}
-.cover-title{font-size:33pt;line-height:1.05;font-weight:700;margin:0;letter-spacing:-.3pt}
-.cover-sub{font-size:12.5pt;line-height:1.35;margin:7mm 0 0;color:rgba(246,241,232,.9);max-width:118mm}
-.cover-rule{width:26mm;height:2.4pt;background:var(--coral);border-radius:2pt;margin:9mm 0 0}
-.cover-tag{font-size:10.5pt;margin:7mm 0 0;color:rgba(246,241,232,.78)}
+.cover-top{position:absolute;top:14mm;left:13mm}
+.cover .logo-stack{font-size:21pt;color:var(--paper)}
+.cover-main{position:absolute;left:13mm;right:13mm;top:78mm}
+.cover-kicker{font-size:9.5pt;font-weight:700;letter-spacing:1.6pt;text-transform:uppercase;color:var(--teal);margin-bottom:6mm}
+.cover-title{font-size:33pt;line-height:1.05;font-weight:700;margin:0;letter-spacing:-.4pt;color:var(--paper)}
+.cover-sub{font-size:12.5pt;line-height:1.35;margin:7mm 0 0;color:var(--mist);max-width:118mm}
+.cover-rule{width:26mm;height:2.6pt;background:var(--teal);margin:9mm 0 0}
+.cover-tag{font-size:10.5pt;font-style:italic;margin:7mm 0 0;color:rgba(184,207,216,.85)}
 .cover-foot{position:absolute;left:13mm;right:13mm;bottom:14mm}
 .cover-owner{margin-bottom:7mm}
-.cover-owner-label{display:block;font-size:8.5pt;letter-spacing:.6pt;text-transform:uppercase;color:rgba(246,241,232,.65);margin-bottom:4mm}
-.cover-owner-line{display:block;height:.9pt;background:rgba(246,241,232,.45)}
-.cover-org{font-size:8.5pt;line-height:1.4;color:rgba(246,241,232,.72);border-top:.7pt solid rgba(246,241,232,.25);padding-top:4mm}
+.cover-owner-label{display:block;font-size:8.5pt;letter-spacing:.6pt;text-transform:uppercase;color:rgba(184,207,216,.7);margin-bottom:4mm}
+.cover-owner-line{display:block;height:.9pt;background:rgba(184,207,216,.5)}
+.cover-org{font-size:8.5pt;line-height:1.4;color:rgba(184,207,216,.72);border-top:.7pt solid rgba(184,207,216,.28);padding-top:4mm}
 
 /* ================= PÁGINA DE TÍTULO ================= */
 .inner-title{padding:16mm 15mm 14mm}
-.it-top{display:flex;align-items:center;gap:3mm;margin-bottom:16mm}
-.inner-title .wordmark{font-size:13pt}
-.it-body h2{font-size:22pt;font-weight:700;color:var(--teal);margin:0 0 2mm;letter-spacing:-.2pt}
+.it-top{margin-bottom:16mm}
+.inner-title .logo-stack{font-size:17pt;color:var(--ink)}
+.it-body h2{position:relative;font-size:22pt;font-weight:700;color:var(--ink);margin:0 0 2mm;letter-spacing:-.3pt}
 .it-program{font-size:11pt;font-style:italic;color:var(--muted);margin:0 0 8mm}
 .it-lead{font-size:10.5pt;line-height:1.5;margin:0 0 10mm}
 .it-fields{display:flex;flex-direction:column;gap:6mm;margin-bottom:11mm}
 .it-field span{display:block;font-size:8.5pt;letter-spacing:.5pt;text-transform:uppercase;color:var(--muted);margin-bottom:2.5mm}
 .it-field i{display:block;height:.9pt;background:var(--line)}
-.it-conf{font-size:9.5pt;line-height:1.45;background:var(--chip);border-left:3pt solid var(--coral);border-radius:2pt;padding:5mm 6mm}
-.it-conf strong{color:var(--teal)}
+.it-conf{font-size:9.5pt;line-height:1.45;background:var(--soft);border-left:3pt solid var(--teal);padding:5mm 6mm}
+.it-conf strong{color:var(--ink)}
 .it-foot{position:absolute;left:15mm;right:15mm;bottom:12mm;display:flex;justify-content:space-between;font-size:8pt;color:var(--muted);border-top:.7pt solid var(--line);padding-top:3.5mm}
 
 /* ================= PÁGINAS ESTÁNDAR ================= */
-.std{padding:0 0 0 0;display:flex;flex-direction:column}
-.hdr{background:linear-gradient(120deg,#0F5257,#14726F);color:var(--cream);padding:12mm 13mm 6mm;display:flex;gap:5mm;align-items:flex-start}
-.hdr-chip{flex:0 0 auto;width:13mm;height:13mm;border-radius:3mm;background:var(--coral);color:#fff;font-size:14pt;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1mm}
-.hdr-chip.mini{background:rgba(246,241,232,.14)}
+.std{display:flex;flex-direction:column}
+.hdr{background:var(--ink);color:var(--paper);padding:12mm 13mm 6mm;display:flex;gap:5mm;align-items:flex-start}
+.hdr-chip{flex:0 0 auto;width:13mm;height:13mm;background:var(--teal);color:var(--ink);font-size:14pt;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1mm}
+.hdr-chip.mini{width:6mm;height:6mm;background:var(--teal)}
 .hdr-txt{flex:1 1 auto;min-width:0}
-.hdr-kicker{font-size:8.5pt;font-weight:700;letter-spacing:1.4pt;text-transform:uppercase;color:var(--coral)}
-.cover .hdr-kicker,.hdr-kicker{color:#F3B49B}
-.hdr-title{font-size:15.5pt;line-height:1.15;font-weight:700;margin:1.5mm 0 0}
-.hdr-date{font-size:9pt;color:rgba(246,241,232,.82);margin-top:1.8mm;font-style:italic}
+.hdr-kicker{font-size:8.5pt;font-weight:700;letter-spacing:1.4pt;text-transform:uppercase;color:var(--teal)}
+.hdr-title{font-size:15.5pt;line-height:1.15;font-weight:700;margin:1.5mm 0 0;color:var(--paper)}
+.hdr-date{font-size:9pt;color:var(--mist);margin-top:1.8mm;font-style:italic}
 
 .content{flex:1 1 auto;padding:7mm 13mm 4mm;min-height:0}
 .lead{font-size:10.5pt;line-height:1.5;margin:0 0 5mm}
 p{margin:0 0 3mm}
-.sec{font-size:11.5pt;color:var(--teal);font-weight:700;margin:6mm 0 2.5mm}
+.sec{position:relative;font-size:11.5pt;color:var(--ink);font-weight:700;margin:6mm 0 2.5mm;padding-left:5mm}
+.sec:before{content:"";position:absolute;left:0;top:.32em;width:2.8mm;height:2.8mm;background:var(--teal)}
 .content > p{font-size:10pt;line-height:1.5}
 .bullets{margin:0 0 3mm;padding-left:5mm}
 .bullets li{font-size:10pt;line-height:1.45;margin-bottom:2mm}
+.bullets li::marker{color:var(--teal)}
 
-.hoy{display:flex;gap:4mm;background:var(--chip);border-radius:3pt;padding:4.5mm 5mm;margin-bottom:5mm}
-.hoy-tag{flex:0 0 auto;font-size:8pt;font-weight:700;letter-spacing:1pt;text-transform:uppercase;color:#fff;background:var(--teal-2);border-radius:2pt;padding:1.6mm 3mm;height:fit-content}
+.hoy{display:flex;gap:4mm;background:var(--soft);padding:4.5mm 5mm;margin-bottom:5mm}
+.hoy-tag{flex:0 0 auto;font-size:8pt;font-weight:700;letter-spacing:1pt;text-transform:uppercase;color:var(--ink);background:var(--teal);padding:1.6mm 3mm;height:fit-content}
 .hoy p{font-size:9.8pt;line-height:1.45;margin:0;color:var(--ink)}
 
 .block{margin-bottom:5mm}
-.block-label{font-size:10.5pt;font-weight:700;color:var(--teal);margin-bottom:2.5mm}
+.block-label{position:relative;font-size:10.5pt;font-weight:700;color:var(--ink);margin-bottom:2.5mm;padding-left:5mm}
+.block-label:before{content:"";position:absolute;left:0;top:.3em;width:2.6mm;height:2.6mm;background:var(--teal)}
 .block-note{font-size:9pt;font-style:italic;color:var(--muted);margin-bottom:2.5mm;line-height:1.4}
-.reflect{font-size:9.8pt;line-height:1.5;background:#FBF9F4;border:.8pt solid var(--line);border-radius:3pt;padding:4mm 5mm}
+.reflect{font-size:9.8pt;line-height:1.5;background:var(--soft);border:.8pt solid var(--line);padding:4mm 5mm}
 
 .write{
-  border:.9pt solid var(--line);border-radius:3pt;background:var(--paper);
+  border:.9pt solid var(--line);background:var(--paper);
   background-image:repeating-linear-gradient(var(--paper) 0 7.5mm, var(--line) 7.5mm, var(--paper) calc(7.5mm + .5pt));
   height:calc(var(--lines) * 7.5mm);
 }
@@ -603,16 +617,16 @@ p{margin:0 0 3mm}
 
 .checklist{list-style:none;margin:0 0 3mm;padding:0}
 .checklist li{position:relative;font-size:10pt;line-height:1.5;padding:2mm 0 2mm 8mm;border-bottom:.7pt solid var(--line)}
-.checklist li:before{content:"";position:absolute;left:0;top:2.2mm;width:4.2mm;height:4.2mm;border:1pt solid var(--teal-2);border-radius:1.2pt}
+.checklist li:before{content:"";position:absolute;left:0;top:2.2mm;width:4.2mm;height:4.2mm;border:1.1pt solid var(--teal)}
 
 table.grid{width:100%;border-collapse:collapse;table-layout:fixed}
-table.grid th{background:var(--teal);color:var(--cream);font-size:8.6pt;font-weight:700;text-align:left;padding:2.6mm 2.4mm;line-height:1.2;border:.6pt solid var(--teal)}
+table.grid th{background:var(--teal);color:var(--ink);font-size:8.6pt;font-weight:700;text-align:left;padding:2.6mm 2.4mm;line-height:1.2;border:.6pt solid var(--teal)}
 table.grid td{border:.7pt solid var(--line);height:8.2mm;padding:1.5mm 2.4mm;font-size:9pt;vertical-align:top}
-table.grid.datos th{width:44mm;background:var(--chip);color:var(--ink);border:.7pt solid var(--line);font-size:9.5pt}
+table.grid.datos th{width:44mm;background:var(--soft);color:var(--ink);border:.7pt solid var(--line);font-size:9.5pt}
 table.grid.datos td{height:9.5mm}
 
-.tarea{display:flex;gap:4mm;align-items:flex-start;margin-top:5mm;border:.9pt dashed var(--coral);border-radius:3pt;padding:4mm 5mm;background:#FDF4EF}
-.tarea-tag{flex:0 0 auto;font-size:8pt;font-weight:700;letter-spacing:.8pt;text-transform:uppercase;color:#fff;background:var(--coral);border-radius:2pt;padding:1.6mm 3mm}
+.tarea{display:flex;gap:4mm;align-items:flex-start;margin-top:5mm;border:1pt dashed var(--teal);border-radius:2pt;padding:4mm 5mm;background:var(--soft)}
+.tarea-tag{flex:0 0 auto;font-size:8pt;font-weight:700;letter-spacing:.8pt;text-transform:uppercase;color:var(--ink);background:var(--teal);padding:1.6mm 3mm}
 .tarea p{font-size:9.6pt;line-height:1.4;margin:0}
 
 /* Modo compacto para páginas con mucho contenido */
@@ -629,19 +643,21 @@ table.grid.datos td{height:9.5mm}
 
 .ftr{margin-top:auto;padding:3.5mm 13mm 10mm;display:flex;justify-content:space-between;align-items:center;font-size:8pt;color:var(--muted)}
 .ftr-brand{letter-spacing:.3pt}
-.ftr-no{font-weight:700;color:var(--teal);font-size:9pt}
+.ftr-no{font-weight:700;color:var(--ink);font-size:9pt}
 
-/* ================= CONTRAPORTADA ================= */
-.backcover{color:var(--cream)}
-.bc-main{position:absolute;left:14mm;right:14mm;top:52mm}
-.bc-quote{font-size:16pt;line-height:1.35;font-weight:700;margin:0 0 8mm;color:var(--cream)}
-.bc-text{font-size:10.5pt;line-height:1.55;color:rgba(246,241,232,.85);margin:0}
+/* ================= CONTRAPORTADA (fondo turquesa) ================= */
+.backcover .cover-bg{background:var(--teal)}
+.bc-top{position:absolute;top:15mm;left:14mm}
+.backcover .logo-stack{font-size:19pt;color:var(--ink)}
+.bc-main{position:absolute;left:14mm;right:14mm;top:74mm}
+.bc-quote{font-size:16.5pt;line-height:1.34;font-weight:700;margin:0 0 7mm;color:var(--ink)}
+.bc-text{font-size:10.5pt;line-height:1.55;color:rgba(29,31,33,.82);margin:0}
 .bc-foot{position:absolute;left:14mm;right:14mm;bottom:14mm}
-.bc-brand{display:flex;align-items:center;gap:3mm;margin-bottom:6mm}
-.backcover .wordmark{font-size:13pt}
-.bc-org{font-size:9pt;line-height:1.55;color:rgba(246,241,232,.82);border-top:.7pt solid rgba(246,241,232,.25);padding-top:5mm}
-.bc-org strong{color:var(--cream)}
-.bc-conf{font-size:8pt;color:rgba(246,241,232,.6);margin-top:5mm;letter-spacing:.3pt}
+.bc-tagline{font-size:11pt;font-weight:700;font-style:italic;color:var(--ink);margin-bottom:3mm}
+.bc-services{font-size:8.6pt;font-weight:700;letter-spacing:.3pt;color:rgba(29,31,33,.78);margin-bottom:6mm}
+.bc-org{font-size:8.6pt;line-height:1.5;color:rgba(29,31,33,.8);border-top:.8pt solid rgba(29,31,33,.28);padding-top:4.5mm}
+.bc-org strong{color:var(--ink)}
+.bc-conf{font-size:8pt;color:rgba(29,31,33,.62);margin-top:4mm;letter-spacing:.3pt}
 `;
 
 /* ----------------------------------------------------------------------- *
@@ -652,7 +668,7 @@ const html = `<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Cuaderno del participante · Paincorp (A5)</title>
+<title>Cuaderno del participante · Fundación Paincorp (A5)</title>
 <style>${css}</style>
 </head>
 <body>

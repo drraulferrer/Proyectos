@@ -46,6 +46,22 @@ grapada»* / *«Punto metálico»*):
 23. Notas
 24. Contraportada (Paincorp)
 
+## Identidad de marca (Fundación Paincorp)
+
+Colores corporativos aplicados a portada, contraportada y cabeceras:
+
+| Color | HEX | RGB | CMYK |
+|-------|-----|-----|------|
+| Tinta | `#1d1f21` | 29, 31, 33 | 79, 67, 59, 78 |
+| Turquesa | `#0db1a4` | 13, 177, 164 | 74, 0, 43, 0 |
+| Azul grisáceo | `#b8cfd8` | 184, 207, 216 | 33, 11, 14, 0 |
+| Blanco | `#ffffff` | 255, 255, 255 | 0, 0, 0, 0 |
+
+Elementos de marca: logotipo *Fundación Paincorp* con el «tick» cuadrado
+turquesa sobre la inicial, patrón de cuadrados en diagonal y lema *«Innovación
+para una vida sin dolor»*. La contraportada es **genérica** (se ve desde el
+primer día): marca, lema, disciplinas y una cita, sin mensajes de cierre.
+
 ## Nota sobre el color (CMYK / Fogra 39)
 
 Las instrucciones piden **CMYK con perfil Fogra 39**. El archivo maestro está en
