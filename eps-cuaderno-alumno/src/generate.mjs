@@ -316,9 +316,6 @@ pages.push(`
     <div class="cover-rule"></div>
     <p class="cover-tag">Innovación para una vida sin dolor</p>
   </div>
-  <footer class="cover-foot">
-    <div class="cover-org">Centro de Salud Entrevías · Dirección Asistencial Sureste (SERMAS)</div>
-  </footer>
 </section>`);
 
 /* --- 2. BIENVENIDA ---------------------------------------------------- */
@@ -328,15 +325,19 @@ pages.push(`
   <div class="content">
     <p class="lead">Este cuaderno te acompañará durante las <strong>16 semanas</strong> del programa. En él irás anotando lo que descubres, tus ejercicios y tus planes. No hay respuestas correctas o incorrectas: es tu espacio de trabajo personal.</p>
 
-    <h3 class="sec">El punto de partida</h3>
-    <p>Ya has pasado por la cita de valoración: conoces el programa, has resuelto tus dudas y has firmado el consentimiento. El recorrido en grupo arranca directamente con el <strong>PainCafé</strong>, un primer encuentro en un ambiente distendido. Si aún no la has entregado, recuerda llevar la <strong>fotografía</strong> que represente qué significa el dolor para ti (puede ser un objeto, un lugar o una escena; no hay respuestas correctas).</p>
+    <h3 class="sec">Antes de cada sesión</h3>
+    <ul class="bullets">
+      <li>Llega con <strong>puntualidad</strong>: así podemos empezar todos a la vez.</li>
+      <li>Ven con <strong>ropa cómoda</strong>, por si hacemos algún ejercicio de movimiento.</li>
+      <li>Trae este cuaderno. Lo que escribas es confidencial.</li>
+      <li>Si tienes cualquier duda, <strong>pregunta a los instructores</strong>.</li>
+    </ul>
 
     <h3 class="sec">Cómo usar este cuaderno</h3>
     <ul class="bullets">
       <li>Cada sesión tiene su página con un pequeño resumen y los ejercicios para casa.</li>
       <li>Tómate unos minutos cada día para las tareas; los avances pequeños y constantes son los que funcionan.</li>
-      <li>Trae el cuaderno a cada sesión. Lo que escribas es confidencial.</li>
-      <li>Si algo te genera mucho malestar, coméntalo con el equipo del centro.</li>
+      <li>Si algo te genera mucho malestar, coméntalo con los instructores.</li>
     </ul>
   </div>
   ${interiorFooter(2)}
@@ -364,7 +365,7 @@ pages.push(`
     </div>
 
     <div class="it-conf" style="margin-top:5mm">
-      <strong>Confidencial.</strong> Lo que escribas en este cuaderno es privado. Tráelo a cada sesión y compártelo solo con el equipo del centro si así lo deseas.
+      <strong>Confidencial.</strong> Lo que escribas en este cuaderno es privado. Tráelo a cada sesión y compártelo solo con los instructores si así lo deseas.
     </div>
   </div>
   ${interiorFooter(3)}
@@ -396,9 +397,9 @@ pages.push(`
 <section class="page backcover">
   <div class="cover-bg"></div>
   <svg class="cover-motif" viewBox="0 0 154 216" preserveAspectRatio="none" aria-hidden="true">
-    ${stepMotif(120, 16, 6, 8, 3, 'rgba(29,31,33,0.16)')}
+    ${stepMotif(120, 16, 6, 8, 3, 'var(--teal)')}
   </svg>
-  <div class="bc-top"><img class="logo-img bc-logo" src="${LOGO_POS}" alt="Fundación Paincorp"></div>
+  <div class="bc-top"><img class="logo-img bc-logo" src="${LOGO_NEG}" alt="Fundación Paincorp"></div>
   <div class="bc-main">
     <blockquote class="bc-quote">“Los avances pequeños y constantes son los que funcionan.”</blockquote>
     <p class="bc-text">Este cuaderno te acompaña durante todo el programa. Es tu espacio personal: vuelve a él siempre que lo necesites y avanza a tu ritmo.</p>
@@ -406,10 +407,7 @@ pages.push(`
   <footer class="bc-foot">
     <div class="bc-tagline">Innovación para una vida sin dolor</div>
     <div class="bc-services">Fisioterapia · Psicología · Anestesiología · Psiquiatría · Enfermería</div>
-    <div class="bc-org">
-      <div><strong>Centro de Salud Entrevías</strong> · Dirección Asistencial Sureste · SERMAS</div>
-      <div>Programa EPS · Educación Terapéutica Bioconductual con orientación al dolor</div>
-    </div>
+    <div class="bc-org">Programa de Educación Terapéutica Bioconductual con orientación al dolor</div>
     <div class="bc-conf">Documento personal y confidencial</div>
   </footer>
 </section>`);
@@ -579,19 +577,16 @@ table.grid.datos td{height:9.5mm}
 .ftr-brand{letter-spacing:.3pt}
 .ftr-no{font-weight:700;color:var(--ink);font-size:9pt}
 
-/* ================= CONTRAPORTADA (fondo turquesa) ================= */
-.backcover .cover-bg{background:var(--teal)}
-.bc-top{position:absolute;top:15mm;left:14mm}
-.backcover .logo-stack{font-size:19pt;color:var(--ink)}
-.bc-main{position:absolute;left:14mm;right:14mm;top:74mm}
-.bc-quote{font-size:16.5pt;line-height:1.34;font-weight:700;margin:0 0 7mm;color:var(--ink)}
-.bc-text{font-size:10.5pt;line-height:1.55;color:rgba(29,31,33,.82);margin:0}
-.bc-foot{position:absolute;left:14mm;right:14mm;bottom:14mm}
-.bc-tagline{font-size:11pt;font-weight:700;font-style:italic;color:var(--ink);margin-bottom:3mm}
-.bc-services{font-size:8.6pt;font-weight:700;letter-spacing:.3pt;color:rgba(29,31,33,.78);margin-bottom:6mm}
-.bc-org{font-size:8.6pt;line-height:1.5;color:rgba(29,31,33,.8);border-top:.8pt solid rgba(29,31,33,.28);padding-top:4.5mm}
-.bc-org strong{color:var(--ink)}
-.bc-conf{font-size:8pt;color:rgba(29,31,33,.62);margin-top:4mm;letter-spacing:.3pt}
+/* ================= CONTRAPORTADA (fondo oscuro) ================= */
+.bc-top{position:absolute;top:15mm;left:13mm}
+.bc-main{position:absolute;left:13mm;right:14mm;top:74mm}
+.bc-quote{font-size:16.5pt;line-height:1.34;font-weight:700;margin:0 0 7mm;color:var(--paper)}
+.bc-text{font-size:10.5pt;line-height:1.55;color:var(--mist);margin:0}
+.bc-foot{position:absolute;left:13mm;right:14mm;bottom:14mm}
+.bc-tagline{font-size:11pt;font-weight:700;font-style:italic;color:var(--teal);margin-bottom:3mm}
+.bc-services{font-size:8.6pt;font-weight:700;letter-spacing:.3pt;color:var(--mist);margin-bottom:6mm}
+.bc-org{font-size:8.6pt;line-height:1.5;color:rgba(184,207,216,.8);border-top:.7pt solid rgba(184,207,216,.28);padding-top:4.5mm}
+.bc-conf{font-size:8pt;color:rgba(184,207,216,.6);margin-top:4mm;letter-spacing:.3pt}
 `;
 
 /* ----------------------------------------------------------------------- *

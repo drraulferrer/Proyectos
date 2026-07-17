@@ -1,10 +1,13 @@
 # Cuaderno del participante · A5 · Paincorp
 
 Adaptación del **Cuaderno del participante** del programa de Educación para la
-Salud (EPS) *«Educación Terapéutica Bioconductual con orientación al dolor»*
-(Centro de Salud Entrevías · SERMAS) a **formato A5 con portada y contraportada
-de Paincorp**, preparado para **encuadernación grapada** (saddle-stitch / punto
-metálico) según la plantilla de Pixartprinting.
+Salud (EPS) *«Educación Terapéutica Bioconductual con orientación al dolor»* a
+**formato A5 con portada y contraportada de Fundación Paincorp**, preparado para
+**encuadernación grapada** (saddle-stitch / punto metálico) según la plantilla
+de Pixartprinting.
+
+El contenido es **genérico y reutilizable en otras ediciones o centros**: no
+incluye fechas, horas ni referencias a un centro concreto.
 
 ## Archivos
 
