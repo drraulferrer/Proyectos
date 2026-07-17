@@ -26,19 +26,10 @@ const sessions = [
     dense: true,
     hoy: 'Nos conocemos en un ambiente de café (PainCafé). Compartimos una fotografía que represente tu vivencia del dolor y conversamos sobre cómo lo vives y qué necesitas. Con tu permiso, grabamos la sesión para escuchar mejor al grupo.',
     blocks: [
-      { type: 'write', label: 'Mi fotografía (Photovoice)', note: 'La fotografía que has traído sobre qué significa el dolor para ti (entregada antes de la sesión): ¿qué muestra y por qué la elegiste?', lines: 2 },
-      { type: 'write', label: 'Las dos preguntas del PainCafé', note: '1) ¿Qué supone para ti convivir con el dolor crónico? · 2) ¿Qué necesitas y qué te ayudaría a vivir mejor con el dolor?', lines: 2 },
-      { type: 'write', label: 'Mis valores: ¿qué es importante para mí?', note: 'Anota las áreas de tu vida que más te importan (familia, trabajo, ocio, salud…) y cómo te gustaría vivirlas.', lines: 2 },
-    ],
-    tarea: 'Contrato personal y autoobservación de un día con dolor.',
-  },
-  {
-    n: 1, cont: true,
-    title: 'PainCafé de bienvenida (continuación)',
-    blocks: [
-      { type: 'write', label: 'Mi contrato personal', note: 'Me comprometo a…', lines: 3 },
+      { type: 'write', label: 'Mi fotografía y las dos preguntas del PainCafé', note: 'Tu foto: ¿qué muestra y por qué la elegiste? · ¿Qué supone convivir con el dolor crónico? · ¿Qué necesitas para vivir mejor con él?', lines: 2 },
+      { type: 'write', label: 'Mis valores y mi compromiso', note: 'Áreas de tu vida que más te importan (familia, trabajo, ocio, salud…) y a qué te comprometes.', lines: 2 },
       { type: 'table', label: 'Autoobservación de un día con dolor',
-        headers: ['Momento', 'Situación', 'Qué noté en el cuerpo', 'Qué pensé o sentí', 'Qué hice'], rows: 4 },
+        headers: ['Momento', 'Situación', 'Qué noté en el cuerpo', 'Qué pensé o sentí', 'Qué hice'], rows: 3 },
     ],
     tarea: 'Contrato personal y autoobservación de un día con dolor.',
   },
@@ -316,42 +307,11 @@ pages.push(`
     <p class="cover-tag">Innovación para una vida sin dolor</p>
   </div>
   <footer class="cover-foot">
-    <div class="cover-owner">
-      <span class="cover-owner-label">Este cuaderno pertenece a</span>
-      <span class="cover-owner-line"></span>
-    </div>
     <div class="cover-org">Centro de Salud Entrevías · Dirección Asistencial Sureste (SERMAS)</div>
   </footer>
 </section>`);
 
-/* --- 2. PÁGINA DE TÍTULO / CRÉDITOS ----------------------------------- */
-pages.push(`
-<section class="page inner-title">
-  <div class="it-top">
-    ${logoStack('dark')}
-  </div>
-  <div class="it-body">
-    <h2>Cuaderno del participante</h2>
-    <p class="it-program">Educación Terapéutica Bioconductual con orientación al dolor</p>
-    <p class="it-lead">Este cuaderno es tu espacio personal de trabajo a lo largo de las 16 sesiones del programa. En él anotarás lo que descubres, tus ejercicios y tus planes. No hay respuestas correctas o incorrectas.</p>
-
-    <div class="it-fields">
-      <div class="it-field"><span>Nombre o código</span><i></i></div>
-      <div class="it-field"><span>Edición / grupo</span><i></i></div>
-      <div class="it-field"><span>Profesional de referencia</span><i></i></div>
-    </div>
-
-    <div class="it-conf">
-      <strong>Confidencial.</strong> Lo que escribas en este cuaderno es privado. Tráelo a cada sesión y compártelo solo con el equipo del centro si así lo deseas.
-    </div>
-  </div>
-  <div class="it-foot">
-    <span>Programa EPS · Dolor crónico</span>
-    <span>Centro de Salud Entrevías · SERMAS</span>
-  </div>
-</section>`);
-
-/* --- 3. BIENVENIDA ---------------------------------------------------- */
+/* --- 2. BIENVENIDA ---------------------------------------------------- */
 pages.push(`
 <section class="page std">
   ${interiorHeader('Bienvenida', 'Antes de empezar el programa')}
@@ -369,10 +329,10 @@ pages.push(`
       <li>Si algo te genera mucho malestar, coméntalo con el equipo del centro.</li>
     </ul>
   </div>
-  ${interiorFooter(3)}
+  ${interiorFooter(2)}
 </section>`);
 
-/* --- 4. MIS DATOS + MIS OBJETIVOS ------------------------------------- */
+/* --- 3. MIS DATOS + MIS OBJETIVOS ------------------------------------- */
 pages.push(`
 <section class="page std">
   ${interiorHeader('Mis datos', 'Para empezar')}
@@ -387,32 +347,21 @@ pages.push(`
       </tbody>
     </table>
 
-    <div class="block" style="margin-top:6mm">
+    <div class="block" style="margin-top:5mm">
       <div class="block-label">Mis objetivos en el programa</div>
       <div class="block-note">¿Qué te gustaría conseguir o recuperar en estas 16 semanas?</div>
-      <div class="write" style="--lines:6"></div>
+      <div class="write" style="--lines:5"></div>
+    </div>
+
+    <div class="it-conf" style="margin-top:5mm">
+      <strong>Confidencial.</strong> Lo que escribas en este cuaderno es privado. Tráelo a cada sesión y compártelo solo con el equipo del centro si así lo deseas.
     </div>
   </div>
-  ${interiorFooter(4)}
+  ${interiorFooter(3)}
 </section>`);
 
-/* --- 5. REGISTRO DE AUTOOBSERVACIÓN ----------------------------------- */
-pages.push(`
-<section class="page std">
-  ${interiorHeader('Registro de autoobservación', 'Puedes usarlo cualquier día')}
-  <div class="content">
-    <p class="lead">Usa esta tabla cuando quieras observar cómo se relacionan las situaciones, tu cuerpo, tus pensamientos y lo que haces. No hay que rellenarla entera: anota lo que te sirva.</p>
-    <table class="grid">
-      <colgroup><col style="width:14%"><col style="width:22%"><col style="width:24%"><col style="width:22%"><col style="width:18%"></colgroup>
-      <thead><tr><th>Día</th><th>Situación</th><th>Qué noté en el cuerpo</th><th>Qué pensé o sentí</th><th>Qué hice</th></tr></thead>
-      <tbody>${'<tr><td></td><td></td><td></td><td></td><td></td></tr>'.repeat(9)}</tbody>
-    </table>
-  </div>
-  ${interiorFooter(5)}
-</section>`);
-
-/* --- 6..N. SESIONES --------------------------------------------------- */
-let pageNo = 5;
+/* --- SESIONES --------------------------------------------------------- */
+let pageNo = 3;
 for (const s of sessions) {
   pageNo++;
   const chip = s.cont ? `${s.n}·` : `${s.n}`;
@@ -431,17 +380,6 @@ for (const s of sessions) {
   ${interiorFooter(pageNo)}
 </section>`);
 }
-
-/* --- NOTAS ------------------------------------------------------------ */
-pages.push(`
-<section class="page std">
-  ${interiorHeader('Notas', 'Un espacio para ti')}
-  <div class="content">
-    <p class="lead">Usa estas páginas para lo que necesites: ideas, dudas para la próxima sesión, avances que quieras recordar.</p>
-    <div class="write big" style="--lines:16"></div>
-  </div>
-  ${interiorFooter(pages.length + 1)}
-</section>`);
 
 /* --- CONTRAPORTADA (genérica; se ve desde el primer día) --------------- */
 pages.push(`
@@ -619,10 +557,12 @@ table.grid.datos td{height:9.5mm}
 .session.dense .block{margin-bottom:3mm}
 .session.dense .block-label{margin-bottom:2mm}
 .session.dense .block-note{margin-bottom:1.8mm}
-.session.dense .write{background-image:repeating-linear-gradient(var(--paper) 0 7mm, var(--line) 7mm, var(--paper) calc(7mm + .5pt));height:calc(var(--lines) * 7mm)}
-.session.dense table.grid td{height:7mm}
+.session.dense .write{background-image:repeating-linear-gradient(var(--paper) 0 6.5mm, var(--line) 6.5mm, var(--paper) calc(6.5mm + .5pt));height:calc(var(--lines) * 6.5mm)}
+.session.dense table.grid td{height:6.5mm}
+.session.dense table.grid th{padding:2mm 2.4mm}
 .session.dense .reflect{padding:3mm 4mm;font-size:9pt;line-height:1.4}
-.session.dense .tarea{margin-top:3.5mm;padding:3.2mm 4mm}
+.session.dense .tarea{margin-top:3mm;padding:3mm 4mm}
+.session.dense .ftr{padding-bottom:8mm}
 
 .ftr{margin-top:auto;padding:3.5mm 13mm 10mm;display:flex;justify-content:space-between;align-items:center;font-size:8pt;color:var(--muted)}
 .ftr-brand{letter-spacing:.3pt}

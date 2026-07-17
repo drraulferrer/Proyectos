@@ -27,7 +27,7 @@ grapada»* / *«Punto metálico»*):
 - **Área de seguridad:** 3 mm hacia dentro del corte (textos y logotipos quedan
   holgadamente dentro).
 - **Páginas individuales, en orden de lectura** (no pliegos ni dobles páginas).
-- **24 páginas** en total → **múltiplo de 4**, requisito de la grapa.
+- **20 páginas** en total → **múltiplo de 4**, requisito de la grapa.
 - **Sin marcas de corte ni de registro.**
 - **Fuentes incrustadas** (no trazadas a curvas); tamaño mínimo usado ≥ 8 pt
   (mínimo admitido 6 pt).
@@ -35,16 +35,13 @@ grapada»* / *«Punto metálico»*):
 - Contenido **vectorial** (texto y formas): resolución independiente, sin
   imágenes rasterizadas (equivale a > 300 dpi).
 
-### Orden de las 24 páginas
+### Orden de las 20 páginas
 
 1. Portada (Paincorp)
-2. Página de título / créditos
-3. Bienvenida
-4. Mis datos + Mis objetivos
-5. Registro de autoobservación
-6–22. Sesiones 1 a 16 (la sesión 1 ocupa 2 páginas)
-23. Notas
-24. Contraportada (Paincorp)
+2. Bienvenida
+3. Mis datos + Mis objetivos
+4–19. Sesiones 1 a 16 (una página por sesión)
+20. Contraportada (Paincorp)
 
 ## Identidad de marca (Fundación Paincorp)
 
