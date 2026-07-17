@@ -23,7 +23,6 @@ const sessions = [
   {
     n: 1,
     title: 'PainCafé de bienvenida: presentación, valores y necesidades',
-    date: 'viernes 4-sep-2026 · 18:00–19:00 h',
     dense: true,
     hoy: 'Nos conocemos en un ambiente de café (PainCafé). Compartimos una fotografía que represente tu vivencia del dolor y conversamos sobre cómo lo vives y qué necesitas. Con tu permiso, grabamos la sesión para escuchar mejor al grupo.',
     blocks: [
@@ -36,7 +35,6 @@ const sessions = [
   {
     n: 1, cont: true,
     title: 'PainCafé de bienvenida (continuación)',
-    date: 'viernes 4-sep-2026 · 18:00–19:00 h',
     blocks: [
       { type: 'write', label: 'Mi contrato personal', note: 'Me comprometo a…', lines: 3 },
       { type: 'table', label: 'Autoobservación de un día con dolor',
@@ -47,7 +45,6 @@ const sessions = [
   {
     n: 2,
     title: 'Dolor no es daño: reconceptualización',
-    date: 'viernes 11-sep-2026 · 18:00–19:00 h',
     hoy: 'Veremos por qué el dolor y el daño no son lo mismo: el dolor es una alarma del sistema nervioso que a veces se vuelve demasiado sensible.',
     blocks: [
       { type: 'table', label: 'Registro de pensamientos y conductas ante el dolor',
@@ -58,7 +55,6 @@ const sessions = [
   {
     n: 3,
     title: 'Neurofisiología y neuroplasticidad',
-    date: 'viernes 18-sep-2026 · 18:00–19:00 h',
     hoy: 'Tu sistema nervioso aprende. Si ha aprendido a protegerte de más, también puede reaprender: a eso lo llamamos neuroplasticidad.',
     blocks: [
       { type: 'write', label: 'Una idea nueva sobre el dolor y la neuroplasticidad', note: 'Escribe con tus palabras una idea que te haya sorprendido o ayudado hoy.', lines: 8 },
@@ -68,7 +64,6 @@ const sessions = [
   {
     n: 4,
     title: 'Imaginería motora',
-    date: 'viernes 25-sep-2026 · 18:00–19:00 h',
     hoy: 'Entrenaremos el movimiento desde el cerebro: imaginería y lateralidad, un primer paso seguro para reactivar el sistema motor.',
     blocks: [
       { type: 'table', label: 'Registro de práctica de imaginería y lateralidad',
@@ -79,7 +74,6 @@ const sessions = [
   {
     n: 5,
     title: 'Recaídas y afrontamiento',
-    date: 'viernes 2-oct-2026 · 18:00–19:00 h',
     hoy: 'El dolor sube y baja: es normal. Hoy preparas tu plan para los días malos, para que no te pillen desprevenido.',
     blocks: [
       { type: 'table', label: 'Mi plan ante recaídas',
@@ -90,7 +84,6 @@ const sessions = [
   {
     n: 6,
     title: 'Atención al cuerpo y homúnculo sensoriomotor',
-    date: 'viernes 9-oct-2026 · 18:00–19:00 h',
     hoy: "Afinaremos cómo percibes tu cuerpo: el dolor puede 'desdibujar' zonas, y entrenarlas ayuda a verlas con más claridad.",
     blocks: [
       { type: 'table', label: 'Registro de ejercicios de atención y discriminación corporal',
@@ -101,7 +94,6 @@ const sessions = [
   {
     n: 7,
     title: 'Aprendizaje y miedo-evitación',
-    date: 'viernes 16-oct-2026 · 18:00–19:00 h',
     hoy: 'Cuando algo duele, es natural evitarlo; pero evitar mantiene el miedo. Veremos cómo romper ese círculo acercándote poco a poco.',
     blocks: [
       { type: 'table', label: 'Registro de evitaciones y pequeñas aproximaciones',
@@ -112,7 +104,6 @@ const sessions = [
   {
     n: 8,
     title: 'Exposición graduada: jerarquía de movimientos',
-    date: 'viernes 23-oct-2026 · 18:00–19:00 h',
     hoy: 'Ordenaremos de menor a mayor los movimientos que te dan respeto y empezaremos a practicarlos de forma segura, peldaño a peldaño.',
     blocks: [
       { type: 'table', label: 'Mi jerarquía de exposición',
@@ -123,7 +114,6 @@ const sessions = [
   {
     n: 9,
     title: 'Emoción y regulación emocional',
-    date: 'viernes 30-oct-2026 · 18:00–19:00 h',
     hoy: 'El dolor y las emociones van de la mano. Practicaremos respiración y regulación para bajar la intensidad cuando aparece el malestar.',
     blocks: [
       { type: 'table', label: 'Registro de práctica de respiración y emociones',
@@ -135,7 +125,6 @@ const sessions = [
     n: 10,
     dense: true,
     title: 'Contexto, expectativas y creencias',
-    date: 'viernes 6-nov-2026 · 18:00–19:00 h',
     hoy: 'Lo que esperas, crees y el contexto en el que estás cambian tu dolor. Revisaremos algunas reglas y buscaremos alternativas más útiles.',
     blocks: [
       { type: 'table', label: 'Mis creencias sobre el dolor',
@@ -150,7 +139,6 @@ const sessions = [
   {
     n: 11,
     title: 'Diseño del programa de exposición graduada',
-    date: 'viernes 13-nov-2026 · 18:00–19:00 h',
     hoy: 'Convertiremos tu jerarquía en un plan concreto de exposición, ajustado a tu ritmo, para avanzar semana a semana con confianza.',
     blocks: [
       { type: 'table', label: 'Mi programa de exposición',
@@ -161,7 +149,6 @@ const sessions = [
   {
     n: 12,
     title: 'Sueño y autorregulación',
-    date: 'viernes 20-nov-2026 · 18:00–19:00 h',
     hoy: 'Dormir peor aumenta el dolor y el dolor empeora el sueño. Diseñaremos una rutina nocturna que rompa ese círculo.',
     blocks: [
       { type: 'checklist', label: 'Mi rutina de sueño (hábitos que voy a cuidar)',
@@ -179,7 +166,6 @@ const sessions = [
   {
     n: 13,
     title: 'Actividad graduada',
-    date: 'viernes 27-nov-2026 · 18:00–19:00 h',
     hoy: 'Ni pasarte ni quedarte corto: aprenderás a dosificar la actividad partiendo de una línea base y avanzando poco a poco.',
     blocks: [
       { type: 'table', label: 'Mi plan de actividad graduada',
@@ -190,7 +176,6 @@ const sessions = [
   {
     n: 14,
     title: 'Análisis de barreras',
-    date: 'viernes 4-dic-2026 · 18:00–19:00 h',
     hoy: '¿Qué podría hacer que abandones lo aprendido? Hoy anticipamos esas barreras y entrenamos cómo resolverlas.',
     blocks: [
       { type: 'table', label: 'Mis barreras y cómo las afrontaré',
@@ -201,7 +186,6 @@ const sessions = [
   {
     n: 15,
     title: 'Variabilidad motora y aprendizaje a través del movimiento',
-    date: 'viernes 11-dic-2026 · 18:00–19:00 h',
     hoy: 'Hay muchas maneras de moverse. Explorar esa variedad, con seguridad, ayuda a recuperar un movimiento más libre y confiado.',
     blocks: [
       { type: 'write', label: 'Mi exploración del movimiento', note: 'Movimientos o formas nuevas que probé y cómo me sentí:', lines: 8 },
@@ -211,7 +195,6 @@ const sessions = [
   {
     n: 16,
     title: 'Síntesis y proyecto de continuidad',
-    date: 'viernes 18-dic-2026 · 18:00–19:00 h',
     hoy: 'Recogemos lo aprendido y lo convertimos en metas concretas y en un plan para seguir avanzando por tu cuenta a 3 y 6 meses.',
     blocks: [
       { type: 'table', label: 'Mis metas SMART',
