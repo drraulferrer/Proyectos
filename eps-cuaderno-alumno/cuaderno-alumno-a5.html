@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cuaderno del participante · Paincorp (A5)</title>
+<style>
+:root{
+  --teal:#0F5257;
+  --teal-2:#14726F;
+  --coral:#E1734B;
+  --cream:#F6F1E8;
+  --paper:#FFFFFF;
+  --ink:#18272B;
+  --muted:#5D6E71;
+  --line:#CBD8D4;
+  --chip:#E8EFEC;
+  --bleed:3mm;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'DejaVu Sans','Liberation Sans',sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+@page{size:154mm 216mm;margin:0}
+
+.page{
+  position:relative;
+  width:154mm;height:216mm;
+  overflow:hidden;
+  page-break-after:always;
+  background:var(--paper);
+}
+.page:last-child{page-break-after:auto}
+
+/* ----- Área de contenido segura (borde doc 6mm = 3mm sangre + 3mm seguridad) ----- */
+/* Usamos 11mm laterales para respiración; el margen mínimo de seguridad (6mm) queda holgado. */
+
+/* ================= PORTADA ================= */
+.cover,.backcover{color:var(--cream)}
+.cover-bg{position:absolute;inset:0;background:linear-gradient(160deg,#0F5257 0%,#0C4247 55%,#0A383C 100%)}
+.cover-motif{position:absolute;inset:0;width:100%;height:100%}
+.cover-top{position:absolute;top:14mm;left:13mm;display:flex;align-items:center;gap:3mm}
+.wordmark{font-size:15pt;font-weight:700;letter-spacing:.2pt}
+.cover .wordmark{font-size:14pt}
+.cover-main{position:absolute;left:13mm;right:13mm;top:74mm}
+.cover-kicker{font-size:9.5pt;font-weight:700;letter-spacing:1.6pt;text-transform:uppercase;color:var(--coral);margin-bottom:6mm}
+.cover-title{font-size:33pt;line-height:1.05;font-weight:700;margin:0;letter-spacing:-.3pt}
+.cover-sub{font-size:12.5pt;line-height:1.35;margin:7mm 0 0;color:rgba(246,241,232,.9);max-width:118mm}
+.cover-rule{width:26mm;height:2.4pt;background:var(--coral);border-radius:2pt;margin:9mm 0 0}
+.cover-tag{font-size:10.5pt;margin:7mm 0 0;color:rgba(246,241,232,.78)}
+.cover-foot{position:absolute;left:13mm;right:13mm;bottom:14mm}
+.cover-owner{margin-bottom:7mm}
+.cover-owner-label{display:block;font-size:8.5pt;letter-spacing:.6pt;text-transform:uppercase;color:rgba(246,241,232,.65);margin-bottom:4mm}
+.cover-owner-line{display:block;height:.9pt;background:rgba(246,241,232,.45)}
+.cover-org{font-size:8.5pt;line-height:1.4;color:rgba(246,241,232,.72);border-top:.7pt solid rgba(246,241,232,.25);padding-top:4mm}
+
+/* ================= PÁGINA DE TÍTULO ================= */
+.inner-title{padding:16mm 15mm 14mm}
+.it-top{display:flex;align-items:center;gap:3mm;margin-bottom:16mm}
+.inner-title .wordmark{font-size:13pt}
+.it-body h2{font-size:22pt;font-weight:700;color:var(--teal);margin:0 0 2mm;letter-spacing:-.2pt}
+.it-program{font-size:11pt;font-style:italic;color:var(--muted);margin:0 0 8mm}
+.it-lead{font-size:10.5pt;line-height:1.5;margin:0 0 10mm}
+.it-fields{display:flex;flex-direction:column;gap:6mm;margin-bottom:11mm}
+.it-field span{display:block;font-size:8.5pt;letter-spacing:.5pt;text-transform:uppercase;color:var(--muted);margin-bottom:2.5mm}
+.it-field i{display:block;height:.9pt;background:var(--line)}
+.it-conf{font-size:9.5pt;line-height:1.45;background:var(--chip);border-left:3pt solid var(--coral);border-radius:2pt;padding:5mm 6mm}
+.it-conf strong{color:var(--teal)}
+.it-foot{position:absolute;left:15mm;right:15mm;bottom:12mm;display:flex;justify-content:space-between;font-size:8pt;color:var(--muted);border-top:.7pt solid var(--line);padding-top:3.5mm}
+
+/* ================= PÁGINAS ESTÁNDAR ================= */
+.std{padding:0 0 0 0;display:flex;flex-direction:column}
+.hdr{background:linear-gradient(120deg,#0F5257,#14726F);color:var(--cream);padding:12mm 13mm 6mm;display:flex;gap:5mm;align-items:flex-start}
+.hdr-chip{flex:0 0 auto;width:13mm;height:13mm;border-radius:3mm;background:var(--coral);color:#fff;font-size:14pt;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1mm}
+.hdr-chip.mini{background:rgba(246,241,232,.14)}
+.hdr-txt{flex:1 1 auto;min-width:0}
+.hdr-kicker{font-size:8.5pt;font-weight:700;letter-spacing:1.4pt;text-transform:uppercase;color:var(--coral)}
+.cover .hdr-kicker,.hdr-kicker{color:#F3B49B}
+.hdr-title{font-size:15.5pt;line-height:1.15;font-weight:700;margin:1.5mm 0 0}
+.hdr-date{font-size:9pt;color:rgba(246,241,232,.82);margin-top:1.8mm;font-style:italic}
+
+.content{flex:1 1 auto;padding:7mm 13mm 4mm;min-height:0}
+.lead{font-size:10.5pt;line-height:1.5;margin:0 0 5mm}
+p{margin:0 0 3mm}
+.sec{font-size:11.5pt;color:var(--teal);font-weight:700;margin:6mm 0 2.5mm}
+.content > p{font-size:10pt;line-height:1.5}
+.bullets{margin:0 0 3mm;padding-left:5mm}
+.bullets li{font-size:10pt;line-height:1.45;margin-bottom:2mm}
+
+.hoy{display:flex;gap:4mm;background:var(--chip);border-radius:3pt;padding:4.5mm 5mm;margin-bottom:5mm}
+.hoy-tag{flex:0 0 auto;font-size:8pt;font-weight:700;letter-spacing:1pt;text-transform:uppercase;color:#fff;background:var(--teal-2);border-radius:2pt;padding:1.6mm 3mm;height:fit-content}
+.hoy p{font-size:9.8pt;line-height:1.45;margin:0;color:var(--ink)}
+
+.block{margin-bottom:5mm}
+.block-label{font-size:10.5pt;font-weight:700;color:var(--teal);margin-bottom:2.5mm}
+.block-note{font-size:9pt;font-style:italic;color:var(--muted);margin-bottom:2.5mm;line-height:1.4}
+.reflect{font-size:9.8pt;line-height:1.5;background:#FBF9F4;border:.8pt solid var(--line);border-radius:3pt;padding:4mm 5mm}
+
+.write{
+  border:.9pt solid var(--line);border-radius:3pt;background:var(--paper);
+  background-image:repeating-linear-gradient(var(--paper) 0 7.5mm, var(--line) 7.5mm, var(--paper) calc(7.5mm + .5pt));
+  height:calc(var(--lines) * 7.5mm);
+}
+.write.big{background-image:repeating-linear-gradient(var(--paper) 0 8.5mm, var(--line) 8.5mm, var(--paper) calc(8.5mm + .5pt));height:calc(var(--lines) * 8.5mm)}
+
+.checklist{list-style:none;margin:0 0 3mm;padding:0}
+.checklist li{position:relative;font-size:10pt;line-height:1.5;padding:2mm 0 2mm 8mm;border-bottom:.7pt solid var(--line)}
+.checklist li:before{content:"";position:absolute;left:0;top:2.2mm;width:4.2mm;height:4.2mm;border:1pt solid var(--teal-2);border-radius:1.2pt}
+
+table.grid{width:100%;border-collapse:collapse;table-layout:fixed}
+table.grid th{background:var(--teal);color:var(--cream);font-size:8.6pt;font-weight:700;text-align:left;padding:2.6mm 2.4mm;line-height:1.2;border:.6pt solid var(--teal)}
+table.grid td{border:.7pt solid var(--line);height:8.2mm;padding:1.5mm 2.4mm;font-size:9pt;vertical-align:top}
+table.grid.datos th{width:44mm;background:var(--chip);color:var(--ink);border:.7pt solid var(--line);font-size:9.5pt}
+table.grid.datos td{height:9.5mm}
+
+.tarea{display:flex;gap:4mm;align-items:flex-start;margin-top:5mm;border:.9pt dashed var(--coral);border-radius:3pt;padding:4mm 5mm;background:#FDF4EF}
+.tarea-tag{flex:0 0 auto;font-size:8pt;font-weight:700;letter-spacing:.8pt;text-transform:uppercase;color:#fff;background:var(--coral);border-radius:2pt;padding:1.6mm 3mm}
+.tarea p{font-size:9.6pt;line-height:1.4;margin:0}
+
+/* Modo compacto para páginas con mucho contenido */
+.session.dense .content{padding-top:4mm}
+.session.dense .hoy{padding:3.5mm 4mm;margin-bottom:4mm}
+.session.dense .hoy p{font-size:9.2pt;line-height:1.34}
+.session.dense .block{margin-bottom:3mm}
+.session.dense .block-label{margin-bottom:2mm}
+.session.dense .block-note{margin-bottom:1.8mm}
+.session.dense .write{background-image:repeating-linear-gradient(var(--paper) 0 7mm, var(--line) 7mm, var(--paper) calc(7mm + .5pt));height:calc(var(--lines) * 7mm)}
+.session.dense table.grid td{height:7mm}
+.session.dense .reflect{padding:3mm 4mm;font-size:9pt;line-height:1.4}
+.session.dense .tarea{margin-top:3.5mm;padding:3.2mm 4mm}
+
+.ftr{margin-top:auto;padding:3.5mm 13mm 10mm;display:flex;justify-content:space-between;align-items:center;font-size:8pt;color:var(--muted)}
+.ftr-brand{letter-spacing:.3pt}
+.ftr-no{font-weight:700;color:var(--teal);font-size:9pt}
+
+/* ================= CONTRAPORTADA ================= */
+.backcover{color:var(--cream)}
+.bc-main{position:absolute;left:14mm;right:14mm;top:52mm}
+.bc-quote{font-size:16pt;line-height:1.35;font-weight:700;margin:0 0 8mm;color:var(--cream)}
+.bc-text{font-size:10.5pt;line-height:1.55;color:rgba(246,241,232,.85);margin:0}
+.bc-foot{position:absolute;left:14mm;right:14mm;bottom:14mm}
+.bc-brand{display:flex;align-items:center;gap:3mm;margin-bottom:6mm}
+.backcover .wordmark{font-size:13pt}
+.bc-org{font-size:9pt;line-height:1.55;color:rgba(246,241,232,.82);border-top:.7pt solid rgba(246,241,232,.25);padding-top:5mm}
+.bc-org strong{color:var(--cream)}
+.bc-conf{font-size:8pt;color:rgba(246,241,232,.6);margin-top:5mm;letter-spacing:.3pt}
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <div class="cover-bg"></div>
+  <svg class="cover-motif" viewBox="0 0 154 216" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <circle cx="132" cy="30" r="18" fill="none" stroke="rgba(246,241,232,0.10)" stroke-width="1.1"/><circle cx="132" cy="30" r="33" fill="none" stroke="rgba(246,241,232,0.10)" stroke-width="1.1"/><circle cx="132" cy="30" r="48" fill="none" stroke="rgba(246,241,232,0.10)" stroke-width="1.1"/><circle cx="132" cy="30" r="63" fill="none" stroke="rgba(246,241,232,0.10)" stroke-width="1.1"/><circle cx="132" cy="30" r="78" fill="none" stroke="rgba(246,241,232,0.10)" stroke-width="1.1"/><circle cx="132" cy="30" r="93" fill="none" stroke="rgba(246,241,232,0.10)" stroke-width="1.1"/><circle cx="132" cy="30" r="108" fill="none" stroke="rgba(246,241,232,0.10)" stroke-width="1.1"/>
+    <circle cx="18" cy="200" r="14" fill="none" stroke="rgba(225,115,75,0.16)" stroke-width="1.1"/><circle cx="18" cy="200" r="30" fill="none" stroke="rgba(225,115,75,0.16)" stroke-width="1.1"/><circle cx="18" cy="200" r="46" fill="none" stroke="rgba(225,115,75,0.16)" stroke-width="1.1"/><circle cx="18" cy="200" r="62" fill="none" stroke="rgba(225,115,75,0.16)" stroke-width="1.1"/><circle cx="18" cy="200" r="78" fill="none" stroke="rgba(225,115,75,0.16)" stroke-width="1.1"/>
+  </svg>
+  <header class="cover-top">
+    <svg class="mark" width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <path d="M6 24c3.6 0 3.6-9 7.2-9s3.6 15 7.2 15 3.6-11 7.2-11 3.6 6 7.2 6 3.6-3 7.2-3" stroke="var(--cream)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="24" cy="24" r="21.5" stroke="var(--cream)" stroke-width="1.6" opacity="0.55"/>
+  </svg>
+    <span class="wordmark"><span style="color:var(--cream)">Pain</span><span style="color:var(--coral)">corp</span></span>
+  </header>
+  <div class="cover-main">
+    <div class="cover-kicker">Programa EPS · Dolor crónico</div>
+    <h1 class="cover-title">Cuaderno del<br>participante</h1>
+    <p class="cover-sub">Educación Terapéutica Bioconductual con orientación al dolor</p>
+    <div class="cover-rule"></div>
+    <p class="cover-tag">Mi espacio de trabajo durante las 16 semanas del programa</p>
+  </div>
+  <footer class="cover-foot">
+    <div class="cover-owner">
+      <span class="cover-owner-label">Este cuaderno pertenece a</span>
+      <span class="cover-owner-line"></span>
+    </div>
+    <div class="cover-org">Centro de Salud Entrevías · Dirección Asistencial Sureste (SERMAS)</div>
+  </footer>
+</section>
+
+<section class="page inner-title">
+  <div class="it-top">
+    <svg class="mark" width="28" height="28" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <path d="M6 24c3.6 0 3.6-9 7.2-9s3.6 15 7.2 15 3.6-11 7.2-11 3.6 6 7.2 6 3.6-3 7.2-3" stroke="var(--teal)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="24" cy="24" r="21.5" stroke="var(--teal)" stroke-width="1.6" opacity="0.55"/>
+  </svg>
+    <span class="wordmark"><span style="color:var(--teal)">Pain</span><span style="color:var(--coral)">corp</span></span>
+  </div>
+  <div class="it-body">
+    <h2>Cuaderno del participante</h2>
+    <p class="it-program">Educación Terapéutica Bioconductual con orientación al dolor</p>
+    <p class="it-lead">Este cuaderno es tu espacio personal de trabajo a lo largo de las 16 sesiones del programa. En él anotarás lo que descubres, tus ejercicios y tus planes. No hay respuestas correctas o incorrectas.</p>
+
+    <div class="it-fields">
+      <div class="it-field"><span>Nombre o código</span><i></i></div>
+      <div class="it-field"><span>Edición / grupo</span><i></i></div>
+      <div class="it-field"><span>Profesional de referencia</span><i></i></div>
+    </div>
+
+    <div class="it-conf">
+      <strong>Confidencial.</strong> Lo que escribas en este cuaderno es privado. Tráelo a cada sesión y compártelo solo con el equipo del centro si así lo deseas.
+    </div>
+  </div>
+  <div class="it-foot">
+    <span>Programa EPS · Dolor crónico</span>
+    <span>Centro de Salud Entrevías · SERMAS</span>
+  </div>
+</section>
+
+<section class="page std">
+  <header class="hdr">
+    <div class="hdr-chip mini"><svg class="mark" width="18" height="18" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <path d="M6 24c3.6 0 3.6-9 7.2-9s3.6 15 7.2 15 3.6-11 7.2-11 3.6 6 7.2 6 3.6-3 7.2-3" stroke="var(--cream)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="24" cy="24" r="21.5" stroke="var(--cream)" stroke-width="1.6" opacity="0.55"/>
+  </svg></div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Antes de empezar el programa</div>
+      <h2 class="hdr-title">Bienvenida</h2>
+      
+    </div>
+  </header>
+  <div class="content">
+    <p class="lead">Este cuaderno te acompañará durante las <strong>16 semanas</strong> del programa. En él irás anotando lo que descubres, tus ejercicios y tus planes. No hay respuestas correctas o incorrectas: es tu espacio de trabajo personal.</p>
+
+    <h3 class="sec">Antes de empezar</h3>
+    <p>Antes de la primera sesión tendrás una cita de valoración con fisioterapia. Allí te explicaremos el programa, resolveremos tus dudas y firmarás el consentimiento. Te pediremos que traigas a la primera sesión —el <strong>PainCafé</strong>— una fotografía que represente qué significa el dolor para ti (puede ser un objeto, un lugar o una escena; no hay respuestas correctas). Entrégala al menos <strong>48 horas antes</strong> para poder prepararlo todo.</p>
+
+    <h3 class="sec">Cómo usar este cuaderno</h3>
+    <ul class="bullets">
+      <li>Cada sesión tiene su página con un pequeño resumen y los ejercicios para casa.</li>
+      <li>Tómate unos minutos cada día para las tareas; los avances pequeños y constantes son los que funcionan.</li>
+      <li>Trae el cuaderno a cada sesión. Lo que escribas es confidencial.</li>
+      <li>Si algo te genera mucho malestar, coméntalo con el equipo del centro.</li>
+    </ul>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">3</span>
+  </footer>
+</section>
+
+<section class="page std">
+  <header class="hdr">
+    <div class="hdr-chip mini"><svg class="mark" width="18" height="18" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <path d="M6 24c3.6 0 3.6-9 7.2-9s3.6 15 7.2 15 3.6-11 7.2-11 3.6 6 7.2 6 3.6-3 7.2-3" stroke="var(--cream)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="24" cy="24" r="21.5" stroke="var(--cream)" stroke-width="1.6" opacity="0.55"/>
+  </svg></div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Para empezar</div>
+      <h2 class="hdr-title">Mis datos</h2>
+      
+    </div>
+  </header>
+  <div class="content">
+    <table class="grid datos">
+      <tbody>
+        <tr><th>Nombre o código</th><td></td></tr>
+        <tr><th>Sexo</th><td></td></tr>
+        <tr><th>Edad</th><td></td></tr>
+        <tr><th>Edición / grupo</th><td></td></tr>
+        <tr><th>Profesional de referencia</th><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="block" style="margin-top:6mm">
+      <div class="block-label">Mis objetivos en el programa</div>
+      <div class="block-note">¿Qué te gustaría conseguir o recuperar en estas 16 semanas?</div>
+      <div class="write" style="--lines:6"></div>
+    </div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">4</span>
+  </footer>
+</section>
+
+<section class="page std">
+  <header class="hdr">
+    <div class="hdr-chip mini"><svg class="mark" width="18" height="18" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <path d="M6 24c3.6 0 3.6-9 7.2-9s3.6 15 7.2 15 3.6-11 7.2-11 3.6 6 7.2 6 3.6-3 7.2-3" stroke="var(--cream)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="24" cy="24" r="21.5" stroke="var(--cream)" stroke-width="1.6" opacity="0.55"/>
+  </svg></div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Puedes usarlo cualquier día</div>
+      <h2 class="hdr-title">Registro de autoobservación</h2>
+      
+    </div>
+  </header>
+  <div class="content">
+    <p class="lead">Usa esta tabla cuando quieras observar cómo se relacionan las situaciones, tu cuerpo, tus pensamientos y lo que haces. No hay que rellenarla entera: anota lo que te sirva.</p>
+    <table class="grid">
+      <colgroup><col style="width:14%"><col style="width:22%"><col style="width:24%"><col style="width:22%"><col style="width:18%"></colgroup>
+      <thead><tr><th>Día</th><th>Situación</th><th>Qué noté en el cuerpo</th><th>Qué pensé o sentí</th><th>Qué hice</th></tr></thead>
+      <tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></tbody>
+    </table>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">5</span>
+  </footer>
+</section>
+
+<section class="page std session dense">
+  <header class="hdr">
+    <div class="hdr-chip">1</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 1</div>
+      <h2 class="hdr-title">PainCafé de bienvenida: presentación, valores y necesidades</h2>
+      <div class="hdr-date">viernes 4-sep-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Nos conocemos en un ambiente de café (PainCafé). Compartimos una fotografía que represente tu vivencia del dolor y conversamos sobre cómo lo vives y qué necesitas. Con tu permiso, grabamos la sesión para escuchar mejor al grupo.</p></div>
+    <div class="block">
+    <div class="block-label">Mi fotografía (Photovoice)</div>
+    <div class="block-note">La fotografía que has traído sobre qué significa el dolor para ti (entregada antes de la sesión): ¿qué muestra y por qué la elegiste?</div>
+    <div class="write" style="--lines:2"></div>
+  </div><div class="block">
+    <div class="block-label">Las dos preguntas del PainCafé</div>
+    <div class="block-note">1) ¿Qué supone para ti convivir con el dolor crónico? · 2) ¿Qué necesitas y qué te ayudaría a vivir mejor con el dolor?</div>
+    <div class="write" style="--lines:2"></div>
+  </div><div class="block">
+    <div class="block-label">Mis valores: ¿qué es importante para mí?</div>
+    <div class="block-note">Anota las áreas de tu vida que más te importan (familia, trabajo, ocio, salud…) y cómo te gustaría vivirlas.</div>
+    <div class="write" style="--lines:2"></div>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Contrato personal y autoobservación de un día con dolor.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">6</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">1·</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión · continuación</div>
+      <h2 class="hdr-title">PainCafé de bienvenida (continuación)</h2>
+      <div class="hdr-date">viernes 4-sep-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    
+    <div class="block">
+    <div class="block-label">Mi contrato personal</div>
+    <div class="block-note">Me comprometo a…</div>
+    <div class="write" style="--lines:3"></div>
+  </div><div class="block">
+    <div class="block-label">Autoobservación de un día con dolor</div>
+    <table class="grid"><thead><tr><th>Momento</th><th>Situación</th><th>Qué noté en el cuerpo</th><th>Qué pensé o sentí</th><th>Qué hice</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Contrato personal y autoobservación de un día con dolor.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">7</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">2</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 2</div>
+      <h2 class="hdr-title">Dolor no es daño: reconceptualización</h2>
+      <div class="hdr-date">viernes 11-sep-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Veremos por qué el dolor y el daño no son lo mismo: el dolor es una alarma del sistema nervioso que a veces se vuelve demasiado sensible.</p></div>
+    <div class="block">
+    <div class="block-label">Registro de pensamientos y conductas ante el dolor</div>
+    <table class="grid"><thead><tr><th>Situación</th><th>¿Qué pensé sobre el dolor?</th><th>¿Qué hice o dije?</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Registro de pensamientos y conductas verbales ante el dolor.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">8</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">3</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 3</div>
+      <h2 class="hdr-title">Neurofisiología y neuroplasticidad</h2>
+      <div class="hdr-date">viernes 18-sep-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Tu sistema nervioso aprende. Si ha aprendido a protegerte de más, también puede reaprender: a eso lo llamamos neuroplasticidad.</p></div>
+    <div class="block">
+    <div class="block-label">Una idea nueva sobre el dolor y la neuroplasticidad</div>
+    <div class="block-note">Escribe con tus palabras una idea que te haya sorprendido o ayudado hoy.</div>
+    <div class="write" style="--lines:8"></div>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Visionado breve sobre neuroplasticidad y registro de una idea nueva.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">9</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">4</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 4</div>
+      <h2 class="hdr-title">Imaginería motora</h2>
+      <div class="hdr-date">viernes 25-sep-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Entrenaremos el movimiento desde el cerebro: imaginería y lateralidad, un primer paso seguro para reactivar el sistema motor.</p></div>
+    <div class="block">
+    <div class="block-label">Registro de práctica de imaginería y lateralidad</div>
+    <table class="grid"><colgroup><col style="width:22%"><col style="width:26%"><col style="width:52%"></colgroup><thead><tr><th>Día</th><th>¿La hice? (sí/no)</th><th>Notas</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Práctica diaria breve de imaginería y lateralidad.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">10</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">5</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 5</div>
+      <h2 class="hdr-title">Recaídas y afrontamiento</h2>
+      <div class="hdr-date">viernes 2-oct-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>El dolor sube y baja: es normal. Hoy preparas tu plan para los días malos, para que no te pillen desprevenido.</p></div>
+    <div class="block">
+    <div class="block-label">Mi plan ante recaídas</div>
+    <table class="grid"><thead><tr><th>Señales de alarma (cómo sé que recaigo)</th><th>Qué haré</th><th>A quién acudo</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Completar el plan personal de recaídas.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">11</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">6</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 6</div>
+      <h2 class="hdr-title">Atención al cuerpo y homúnculo sensoriomotor</h2>
+      <div class="hdr-date">viernes 9-oct-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Afinaremos cómo percibes tu cuerpo: el dolor puede 'desdibujar' zonas, y entrenarlas ayuda a verlas con más claridad.</p></div>
+    <div class="block">
+    <div class="block-label">Registro de ejercicios de atención y discriminación corporal</div>
+    <table class="grid"><colgroup><col style="width:22%"><col style="width:40%"><col style="width:38%"></colgroup><thead><tr><th>Día</th><th>Ejercicio realizado</th><th>¿Qué noté?</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Ejercicios diarios de atención y discriminación corporal.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">12</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">7</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 7</div>
+      <h2 class="hdr-title">Aprendizaje y miedo-evitación</h2>
+      <div class="hdr-date">viernes 16-oct-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Cuando algo duele, es natural evitarlo; pero evitar mantiene el miedo. Veremos cómo romper ese círculo acercándote poco a poco.</p></div>
+    <div class="block">
+    <div class="block-label">Registro de evitaciones y pequeñas aproximaciones</div>
+    <table class="grid"><thead><tr><th>Situación</th><th>Lo que evité</th><th>Pequeña aproximación que probé</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Registro de evitaciones y de pequeñas aproximaciones.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">13</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">8</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 8</div>
+      <h2 class="hdr-title">Exposición graduada: jerarquía de movimientos</h2>
+      <div class="hdr-date">viernes 23-oct-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Ordenaremos de menor a mayor los movimientos que te dan respeto y empezaremos a practicarlos de forma segura, peldaño a peldaño.</p></div>
+    <div class="block">
+    <div class="block-label">Mi jerarquía de exposición</div>
+    <table class="grid"><colgroup><col style="width:16%"><col style="width:46%"><col style="width:22%"><col style="width:16%"></colgroup><thead><tr><th>Peldaño</th><th>Movimiento o actividad</th><th>Dificultad (0-10)</th><th>Logrado</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Practicar el primer peldaño de exposición en casa.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">14</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">9</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 9</div>
+      <h2 class="hdr-title">Emoción y regulación emocional</h2>
+      <div class="hdr-date">viernes 30-oct-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>El dolor y las emociones van de la mano. Practicaremos respiración y regulación para bajar la intensidad cuando aparece el malestar.</p></div>
+    <div class="block">
+    <div class="block-label">Registro de práctica de respiración y emociones</div>
+    <table class="grid"><colgroup><col style="width:18%"><col style="width:28%"><col style="width:30%"><col style="width:24%"></colgroup><thead><tr><th>Día</th><th>¿Practiqué respiración?</th><th>Emoción predominante</th><th>Intensidad (0-10)</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Práctica diaria de respiración y registro emocional.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">15</span>
+  </footer>
+</section>
+
+<section class="page std session dense">
+  <header class="hdr">
+    <div class="hdr-chip">10</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 10</div>
+      <h2 class="hdr-title">Contexto, expectativas y creencias</h2>
+      <div class="hdr-date">viernes 6-nov-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Lo que esperas, crees y el contexto en el que estás cambian tu dolor. Revisaremos algunas reglas y buscaremos alternativas más útiles.</p></div>
+    <div class="block">
+    <div class="block-label">Mis creencias sobre el dolor</div>
+    <table class="grid"><colgroup><col style="width:34%"><col style="width:15%"><col style="width:15%"><col style="width:36%"></colgroup><thead><tr><th>Creencia sobre el dolor</th><th>¿Me ayuda?</th><th>¿Es cierta?</th><th>Alternativa más útil</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div><div class="block">
+    <div class="block-label">Contextos que modulan mi dolor</div>
+    <table class="grid"><colgroup><col style="width:56%"><col style="width:44%"></colgroup><thead><tr><th>Contexto / situación</th><th>¿Aumenta o reduce mi dolor?</th></tr></thead><tbody><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>
+  </div><div class="block">
+    <div class="block-label">Para reflexionar: dolor y roles de género</div>
+    <div class="reflect">¿Crees que el dolor se vive o se atiende de forma distinta en mujeres y en hombres? ¿Cómo influyen los roles (cuidados, trabajo, expectativas) en tu dolor y en el tiempo que dedicas a cuidarte?</div>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Registro de creencias y de contextos que aumentan o reducen el dolor.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">16</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">11</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 11</div>
+      <h2 class="hdr-title">Diseño del programa de exposición graduada</h2>
+      <div class="hdr-date">viernes 13-nov-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Convertiremos tu jerarquía en un plan concreto de exposición, ajustado a tu ritmo, para avanzar semana a semana con confianza.</p></div>
+    <div class="block">
+    <div class="block-label">Mi programa de exposición</div>
+    <table class="grid"><colgroup><col style="width:16%"><col style="width:34%"><col style="width:20%"><col style="width:30%"></colgroup><thead><tr><th>Semana</th><th>Peldaño trabajado</th><th>Cómo fue (0-10)</th><th>Siguiente paso</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Avanzar en la jerarquía de exposición.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">17</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">12</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 12</div>
+      <h2 class="hdr-title">Sueño y autorregulación</h2>
+      <div class="hdr-date">viernes 20-nov-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Dormir peor aumenta el dolor y el dolor empeora el sueño. Diseñaremos una rutina nocturna que rompa ese círculo.</p></div>
+    <div class="block">
+    <div class="block-label">Mi rutina de sueño (hábitos que voy a cuidar)</div>
+    <ul class="checklist"><li>Horario regular para acostarme y levantarme</li><li>Reducir pantallas antes de dormir</li><li>Ambiente oscuro, silencioso y a buena temperatura</li><li>Evitar cafeína/estimulantes por la tarde</li><li>Rutina relajante antes de acostarme (respiración, lectura…)</li></ul>
+  </div><div class="block">
+    <div class="block-label">Mi plan personal de sueño</div>
+    <div class="block-note">Esta semana voy a…</div>
+    <div class="write" style="--lines:3"></div>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Implantar la rutina de higiene del sueño.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">18</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">13</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 13</div>
+      <h2 class="hdr-title">Actividad graduada</h2>
+      <div class="hdr-date">viernes 27-nov-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Ni pasarte ni quedarte corto: aprenderás a dosificar la actividad partiendo de una línea base y avanzando poco a poco.</p></div>
+    <div class="block">
+    <div class="block-label">Mi plan de actividad graduada</div>
+    <table class="grid"><colgroup><col style="width:28%"><col style="width:20%"><col style="width:26%"><col style="width:26%"></colgroup><thead><tr><th>Actividad</th><th>Línea base</th><th>Progresión semanal</th><th>Notas</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Registrar la línea base y la primera progresión.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">19</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">14</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 14</div>
+      <h2 class="hdr-title">Análisis de barreras</h2>
+      <div class="hdr-date">viernes 4-dic-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>¿Qué podría hacer que abandones lo aprendido? Hoy anticipamos esas barreras y entrenamos cómo resolverlas.</p></div>
+    <div class="block">
+    <div class="block-label">Mis barreras y cómo las afrontaré</div>
+    <table class="grid"><thead><tr><th>Barrera</th><th>Cómo la afrontaré</th><th>Apoyo (persona/recurso)</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Plan de afrontamiento de una o dos barreras propias.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">20</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">15</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 15</div>
+      <h2 class="hdr-title">Variabilidad motora y aprendizaje a través del movimiento</h2>
+      <div class="hdr-date">viernes 11-dic-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Hay muchas maneras de moverse. Explorar esa variedad, con seguridad, ayuda a recuperar un movimiento más libre y confiado.</p></div>
+    <div class="block">
+    <div class="block-label">Mi exploración del movimiento</div>
+    <div class="block-note">Movimientos o formas nuevas que probé y cómo me sentí:</div>
+    <div class="write" style="--lines:8"></div>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Integrar la variabilidad en la rutina diaria.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">21</span>
+  </footer>
+</section>
+
+<section class="page std session">
+  <header class="hdr">
+    <div class="hdr-chip">16</div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Sesión 16</div>
+      <h2 class="hdr-title">Síntesis y proyecto de continuidad</h2>
+      <div class="hdr-date">viernes 18-dic-2026 · 18:00–19:00 h</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="hoy"><span class="hoy-tag">Hoy</span><p>Recogemos lo aprendido y lo convertimos en metas concretas y en un plan para seguir avanzando por tu cuenta a 3 y 6 meses.</p></div>
+    <div class="block">
+    <div class="block-label">Mis metas SMART</div>
+    <table class="grid"><colgroup><col style="width:46%"><col style="width:34%"><col style="width:20%"></colgroup><thead><tr><th>Meta</th><th>Cómo la mediré</th><th>Plazo</th></tr></thead><tbody><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
+  </div><div class="block">
+    <div class="block-label">Mi proyecto de continuidad (3 a 6 meses)</div>
+    <div class="block-note">¿Qué vas a seguir haciendo para mantener y ampliar lo conseguido?</div>
+    <div class="write" style="--lines:3"></div>
+  </div>
+    <div class="tarea"><span class="tarea-tag">Mi tarea para casa</span><p>Ejecutar el plan personal de continuidad a tres y seis meses.</p></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">22</span>
+  </footer>
+</section>
+
+<section class="page std">
+  <header class="hdr">
+    <div class="hdr-chip mini"><svg class="mark" width="18" height="18" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <path d="M6 24c3.6 0 3.6-9 7.2-9s3.6 15 7.2 15 3.6-11 7.2-11 3.6 6 7.2 6 3.6-3 7.2-3" stroke="var(--cream)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="24" cy="24" r="21.5" stroke="var(--cream)" stroke-width="1.6" opacity="0.55"/>
+  </svg></div>
+    <div class="hdr-txt">
+      <div class="hdr-kicker">Un espacio para ti</div>
+      <h2 class="hdr-title">Notas</h2>
+      
+    </div>
+  </header>
+  <div class="content">
+    <p class="lead">Usa estas páginas para lo que necesites: ideas, dudas para la próxima sesión, avances que quieras recordar.</p>
+    <div class="write big" style="--lines:16"></div>
+  </div>
+  <footer class="ftr">
+    <span class="ftr-brand">Paincorp · Cuaderno del participante</span>
+    <span class="ftr-no">23</span>
+  </footer>
+</section>
+
+<section class="page backcover">
+  <div class="cover-bg"></div>
+  <svg class="cover-motif" viewBox="0 0 154 216" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <circle cx="20" cy="26" r="16" fill="none" stroke="rgba(246,241,232,0.09)" stroke-width="1.1"/><circle cx="20" cy="26" r="31" fill="none" stroke="rgba(246,241,232,0.09)" stroke-width="1.1"/><circle cx="20" cy="26" r="46" fill="none" stroke="rgba(246,241,232,0.09)" stroke-width="1.1"/><circle cx="20" cy="26" r="61" fill="none" stroke="rgba(246,241,232,0.09)" stroke-width="1.1"/><circle cx="20" cy="26" r="76" fill="none" stroke="rgba(246,241,232,0.09)" stroke-width="1.1"/><circle cx="20" cy="26" r="91" fill="none" stroke="rgba(246,241,232,0.09)" stroke-width="1.1"/>
+  </svg>
+  <div class="bc-main">
+    <blockquote class="bc-quote">“Los avances pequeños y constantes son los que funcionan.”</blockquote>
+    <p class="bc-text">Gracias por el trabajo que has hecho en estas 16 semanas. Lo aprendido sigue contigo: vuelve a tus notas siempre que lo necesites y continúa a tu ritmo.</p>
+  </div>
+  <footer class="bc-foot">
+    <div class="bc-brand"><svg class="mark" width="30" height="30" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <path d="M6 24c3.6 0 3.6-9 7.2-9s3.6 15 7.2 15 3.6-11 7.2-11 3.6 6 7.2 6 3.6-3 7.2-3" stroke="var(--cream)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="24" cy="24" r="21.5" stroke="var(--cream)" stroke-width="1.6" opacity="0.55"/>
+  </svg> <span class="wordmark"><span style="color:var(--cream)">Pain</span><span style="color:var(--coral)">corp</span></span></div>
+    <div class="bc-org">
+      <div><strong>Centro de Salud Entrevías</strong></div>
+      <div>Dirección Asistencial Sureste · SERMAS</div>
+      <div>Programa EPS · Educación Terapéutica Bioconductual con orientación al dolor</div>
+    </div>
+    <div class="bc-conf">Documento personal y confidencial · Uso interno del programa</div>
+  </footer>
+</section>
+</body>
+</html>
