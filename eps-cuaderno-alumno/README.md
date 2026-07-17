@@ -26,25 +26,32 @@ Tomadas de la plantilla y de las instrucciones de Pixartprinting (*«Encuadernac
 grapada»* / *«Punto metálico»*):
 
 - **Tamaño de corte (trim):** 148 × 210 mm (A5 vertical).
-- **Documento con sangrado:** 154 × 216 mm (**3 mm de sangrado por cada lado**).
+- **Documento con sangrado:** 154 × 216 mm exactos (**3 mm de sangrado por cada
+  lado**); el tamaño se normaliza con Ghostscript tras el render.
 - **Área de seguridad:** 3 mm hacia dentro del corte (textos y logotipos quedan
   holgadamente dentro).
 - **Páginas individuales, en orden de lectura** (no pliegos ni dobles páginas).
-- **20 páginas** en total → **múltiplo de 4**, requisito de la grapa.
+- **20 caras** en total → **múltiplo de 4**, requisito de la grapa; incluye las
+  **4 caras de cubierta** (2.ª y 3.ª de cubierta con contenido, no en blanco).
 - **Sin marcas de corte ni de registro.**
 - **Fuentes incrustadas** (no trazadas a curvas); tamaño mínimo usado ≥ 8 pt
   (mínimo admitido 6 pt).
 - **Trazos vectoriales** ≥ 0,6 pt (mínimo admitido 0,25 pt).
-- Contenido **vectorial** (texto y formas): resolución independiente, sin
-  imágenes rasterizadas (equivale a > 300 dpi).
+- Contenido **vectorial** (texto y formas). La única imagen rasterizada es el
+  logotipo, incrustado a ~**1050–1140 dpi** en su tamaño final (muy por encima
+  de los 300 dpi).
+- **PDF a escala 1:1, sin contraseña**, sin sobreimpresión.
 
-### Orden de las 20 páginas
+### Orden de las 20 caras (incluye las 4 caras de cubierta)
 
-1. Portada (Paincorp)
-2. Bienvenida
-3. Mis datos + Mis objetivos
-4–19. Sesiones 1 a 16 (una página por sesión)
-20. Contraportada (Paincorp)
+Según las indicaciones de Pixartprinting, en el total se cuentan también **las
+cuatro caras de la cubierta**, que van en la secuencia de páginas:
+
+1. **1.ª de cubierta** — Portada (logotipo en negativo)
+2. **2.ª de cubierta** — Bienvenida y pautas (sin escritura)
+3–18. Sesiones 1 a 16 (una cara por sesión)
+19. **3.ª de cubierta** — El programa y la Fundación (sin escritura)
+20. **4.ª de cubierta** — Contraportada (logotipo en negativo)
 
 ## Identidad de marca (Fundación Paincorp)
 

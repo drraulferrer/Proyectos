@@ -343,36 +343,8 @@ pages.push(`
   ${interiorFooter(2)}
 </section>`);
 
-/* --- 3. MIS DATOS + MIS OBJETIVOS ------------------------------------- */
-pages.push(`
-<section class="page std">
-  ${interiorHeader('Mis datos', 'Para empezar')}
-  <div class="content">
-    <table class="grid datos">
-      <tbody>
-        <tr><th>Nombre o código</th><td></td></tr>
-        <tr><th>Sexo</th><td></td></tr>
-        <tr><th>Edad</th><td></td></tr>
-        <tr><th>Edición / grupo</th><td></td></tr>
-        <tr><th>Profesional de referencia</th><td></td></tr>
-      </tbody>
-    </table>
-
-    <div class="block" style="margin-top:5mm">
-      <div class="block-label">Mis objetivos en el programa</div>
-      <div class="block-note">¿Qué te gustaría conseguir o recuperar en estas 16 semanas?</div>
-      <div class="write" style="--lines:5"></div>
-    </div>
-
-    <div class="it-conf" style="margin-top:5mm">
-      <strong>Confidencial.</strong> Lo que escribas en este cuaderno es privado. Tráelo a cada sesión y compártelo solo con los instructores si así lo deseas.
-    </div>
-  </div>
-  ${interiorFooter(3)}
-</section>`);
-
-/* --- SESIONES --------------------------------------------------------- */
-let pageNo = 3;
+/* --- SESIONES (3.ª a 18.ª cara) --------------------------------------- */
+let pageNo = 2;
 for (const s of sessions) {
   pageNo++;
   const chip = s.cont ? `${s.n}·` : `${s.n}`;
@@ -392,7 +364,24 @@ for (const s of sessions) {
 </section>`);
 }
 
-/* --- CONTRAPORTADA (genérica; se ve desde el primer día) --------------- */
+/* --- 3.ª DE CUBIERTA: información del programa y la Fundación (sin escritura) --- */
+pages.push(`
+<section class="page std">
+  ${interiorHeader('El programa y la Fundación', 'Información')}
+  <div class="content">
+    <h3 class="sec">Sobre el programa</h3>
+    <p>La <strong>Educación Terapéutica Bioconductual con orientación al dolor</strong> es un programa grupal de 16 sesiones que combina educación en neurociencia del dolor, exposición graduada al movimiento y regulación emocional.</p>
+    <p>El dolor crónico no significa daño permanente: tu sistema nervioso puede reaprender. A lo largo del programa entrenarás herramientas prácticas para comprender tu dolor, afrontar los días difíciles y recuperar, paso a paso, una vida más activa y plena.</p>
+
+    <h3 class="sec">Fundación Paincorp</h3>
+    <p>Dedicada al <strong>abordaje integral del dolor crónico</strong>, la Fundación reúne distintas especialidades para acompañarte de forma coordinada, combinando la evidencia científica con un trato cercano.</p>
+    <div class="disciplines">Fisioterapia · Psicología · Anestesiología · Psiquiatría · Enfermería</div>
+    <p class="claim">Innovación para una vida sin dolor.</p>
+  </div>
+  ${interiorFooter(pages.length + 1)}
+</section>`);
+
+/* --- 4.ª DE CUBIERTA: contraportada (genérica; se ve desde el primer día) --- */
 pages.push(`
 <section class="page backcover">
   <div class="cover-bg"></div>
@@ -537,6 +526,8 @@ p{margin:0 0 3mm}
 .block-label:before{content:"";position:absolute;left:0;top:.3em;width:2.6mm;height:2.6mm;background:var(--teal)}
 .block-note{font-size:9pt;font-style:italic;color:var(--muted);margin-bottom:2.5mm;line-height:1.4}
 .reflect{font-size:9.8pt;line-height:1.5;background:var(--soft);border:.8pt solid var(--line);padding:4mm 5mm}
+.disciplines{margin:3mm 0 0;font-size:10pt;font-weight:700;color:var(--ink);background:var(--soft);border-left:3pt solid var(--teal);padding:4mm 5mm}
+.claim{margin-top:7mm;font-size:12pt;font-weight:700;font-style:italic;color:var(--teal)}
 
 .write{
   border:.9pt solid var(--line);background:var(--paper);
