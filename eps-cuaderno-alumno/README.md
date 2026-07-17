@@ -54,10 +54,17 @@ Colores corporativos aplicados a portada, contraportada y cabeceras:
 | Azul grisáceo | `#b8cfd8` | 184, 207, 216 | 33, 11, 14, 0 |
 | Blanco | `#ffffff` | 255, 255, 255 | 0, 0, 0, 0 |
 
-Elementos de marca: logotipo *Fundación Paincorp* con el «tick» cuadrado
-turquesa sobre la inicial, patrón de cuadrados en diagonal y lema *«Innovación
-para una vida sin dolor»*. La contraportada es **genérica** (se ve desde el
-primer día): marca, lema, disciplinas y una cita, sin mensajes de cierre.
+Logotipo oficial *Fundación Paincorp* (a partir del vectorial `.ai` facilitado),
+incrustado en dos versiones:
+
+- `assets/logo-fundacion-paincorp-negativo.png` — texto blanco + tick turquesa,
+  para la **portada** (fondo oscuro).
+- `assets/logo-fundacion-paincorp.png` — texto tinta + tick turquesa, para la
+  **contraportada**.
+
+Otros elementos: patrón de cuadrados en diagonal y lema *«Innovación para una
+vida sin dolor»*. La contraportada es **genérica** (se ve desde el primer día):
+marca, lema, disciplinas y una cita, sin mensajes de cierre.
 
 ## Nota sobre el color (CMYK / Fogra 39)
 

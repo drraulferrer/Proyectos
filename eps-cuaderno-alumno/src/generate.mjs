@@ -9,11 +9,21 @@
 //
 // Salida: HTML de una página por hoja, en orden de lectura, listo para exportar a PDF.
 
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Logotipo oficial Fundación Paincorp (vectorial .ai → PNG a alta resolución,
+// fondo transparente). Se incrusta en base64 para que el HTML sea autónomo.
+//   · negativo  → texto blanco + tick turquesa, para la portada (fondo oscuro)
+//   · positivo  → texto tinta + tick turquesa, para la contraportada
+const logoAsset = (file) =>
+  'data:image/png;base64,' +
+  readFileSync(resolve(__dirname, '..', 'assets', file)).toString('base64');
+const LOGO_NEG = logoAsset('logo-fundacion-paincorp-negativo.png');
+const LOGO_POS = logoAsset('logo-fundacion-paincorp.png');
 
 /* ----------------------------------------------------------------------- *
  * Contenido de las sesiones (extraído del cuaderno original)
@@ -297,7 +307,7 @@ pages.push(`
     ${stepMotif(120, 18, 7, 8, 3, 'var(--teal)')}
   </svg>
   <header class="cover-top">
-    ${logoStack('onDark')}
+    <img class="logo-img" src="${LOGO_NEG}" alt="Fundación Paincorp">
   </header>
   <div class="cover-main">
     <div class="cover-kicker">Programa EPS · Dolor crónico</div>
@@ -388,7 +398,7 @@ pages.push(`
   <svg class="cover-motif" viewBox="0 0 154 216" preserveAspectRatio="none" aria-hidden="true">
     ${stepMotif(120, 16, 6, 8, 3, 'rgba(29,31,33,0.16)')}
   </svg>
-  <div class="bc-top">${logoStack('onTeal')}</div>
+  <div class="bc-top"><img class="logo-img bc-logo" src="${LOGO_POS}" alt="Fundación Paincorp"></div>
   <div class="bc-main">
     <blockquote class="bc-quote">“Los avances pequeños y constantes son los que funcionan.”</blockquote>
     <p class="bc-text">Este cuaderno te acompaña durante todo el programa. Es tu espacio personal: vuelve a él siempre que lo necesites y avanza a tu ritmo.</p>
@@ -471,8 +481,9 @@ body{font-family:'DejaVu Sans','Liberation Sans',sans-serif;color:var(--ink);-we
 /* ================= PORTADA ================= */
 .cover-bg{position:absolute;inset:0;background:linear-gradient(157deg,#24272B 0%,#1D1F21 55%,#141618 100%)}
 .cover-motif{position:absolute;inset:0;width:100%;height:100%}
-.cover-top{position:absolute;top:14mm;left:13mm}
-.cover .logo-stack{font-size:21pt;color:var(--paper)}
+.cover-top{position:absolute;top:15mm;left:13mm}
+.logo-img{display:block;width:53mm;height:auto}
+.bc-logo{width:49mm}
 .cover-main{position:absolute;left:13mm;right:13mm;top:78mm}
 .cover-kicker{font-size:9.5pt;font-weight:700;letter-spacing:1.6pt;text-transform:uppercase;color:var(--teal);margin-bottom:6mm}
 .cover-title{font-size:33pt;line-height:1.05;font-weight:700;margin:0;letter-spacing:-.4pt;color:var(--paper)}
