@@ -29,3 +29,4 @@ Proyectos/
 | Proyecto | Descripción | Estado |
 |----------|-------------|--------|
 | [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |
+| [eps-cuaderno-alumno](eps-cuaderno-alumno/) | Cuaderno del participante del programa EPS de dolor, adaptado a A5 con portada y contraportada de Paincorp y listo para encuadernación grapada. | En uso |
