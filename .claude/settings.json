@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "council-of-high-intelligence": {
+      "source": {
+        "source": "github",
+        "repo": "0xNyk/council-of-high-intelligence"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "council@council-of-high-intelligence": true
+  }
+}
