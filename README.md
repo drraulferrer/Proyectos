@@ -28,4 +28,5 @@ Proyectos/
 
 | Proyecto | Descripción | Estado |
 |----------|-------------|--------|
+| [web-personal](web-personal/) | Web personal de raulferrer.org: sitio estático (HTML/CSS/JS) que reúne todas las facetas profesionales, trayectoria, proyectos y contacto. Modo claro/oscuro y responsive. | En desarrollo |
 | [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |
