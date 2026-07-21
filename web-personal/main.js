@@ -1,87 +1,75 @@
 /* ══════════════════════════════════════════════════════════════════
-   raulferrer.org  ·  Interacciones
-   Sin dependencias externas. Vanilla JS.
+   raulferrer.org · Interacciones (vanilla JS, sin dependencias)
+   Tema claro/oscuro · menú móvil · logo/animaciones al hacer scroll
    ══════════════════════════════════════════════════════════════════ */
 (function () {
   "use strict";
 
-  /* ── Año dinámico en el footer ── */
-  var yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  var y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
 
-  /* ── Tema claro / oscuro (respeta preferencia guardada o del sistema) ── */
+  /* Tema claro / oscuro (guarda la preferencia) */
   var root = document.documentElement;
-  var toggle = document.getElementById("theme-toggle");
   var stored = null;
   try { stored = localStorage.getItem("theme"); } catch (e) {}
+  if (stored) root.setAttribute("data-theme", stored);
 
-  var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  var initial = stored || (prefersDark ? "dark" : "light");
-  root.setAttribute("data-theme", initial);
+  var t = document.getElementById("theme");
+  if (t) t.addEventListener("click", function () {
+    var c = root.getAttribute("data-theme");
+    if (!c) c = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+    var next = c === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
 
-  if (toggle) {
-    toggle.addEventListener("click", function () {
-      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      root.setAttribute("data-theme", next);
-      try { localStorage.setItem("theme", next); } catch (e) {}
+  /* Menú móvil */
+  var mb = document.getElementById("menu"), lk = document.querySelector(".nav__links");
+  if (mb && lk) {
+    mb.addEventListener("click", function () {
+      var o = lk.classList.toggle("open");
+      mb.setAttribute("aria-expanded", o ? "true" : "false");
     });
-  }
-
-  /* ── Menú móvil ── */
-  var burger = document.getElementById("menu-toggle");
-  var links = document.querySelector(".nav__links");
-  if (burger && links) {
-    burger.addEventListener("click", function () {
-      var open = links.classList.toggle("is-open");
-      burger.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-    links.querySelectorAll("a").forEach(function (a) {
+    lk.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () {
-        links.classList.remove("is-open");
-        burger.setAttribute("aria-expanded", "false");
+        lk.classList.remove("open");
+        mb.setAttribute("aria-expanded", "false");
       });
     });
   }
 
-  /* ── Sombra/borde de la nav al hacer scroll ── */
-  var nav = document.getElementById("nav");
-  function onScroll() {
-    if (!nav) return;
-    nav.classList.toggle("is-scrolled", window.scrollY > 8);
-  }
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
+  /* Sombra de la nav al hacer scroll */
+  var nv = document.getElementById("nav");
+  function sc() { if (nv) nv.classList.toggle("scrolled", window.scrollY > 8); }
+  sc();
+  window.addEventListener("scroll", sc, { passive: true });
 
-  /* ── Reveal al entrar en viewport ── */
-  var reveals = document.querySelectorAll(".reveal");
+  /* Reveal al entrar en viewport (con salvavidas anti-secciones-en-blanco) */
+  var rv = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          io.unobserve(entry.target);
-        }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("vis"); io.unobserve(e.target); }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-    reveals.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0, rootMargin: "0px 0px -6% 0px" });
+    rv.forEach(function (el) { io.observe(el); });
+    setTimeout(function () { rv.forEach(function (el) { el.classList.add("vis"); }); }, 2500);
   } else {
-    reveals.forEach(function (el) { el.classList.add("is-visible"); });
+    rv.forEach(function (el) { el.classList.add("vis"); });
   }
 
-  /* ── Enlace activo de la navegación según la sección visible ── */
-  var sections = document.querySelectorAll("main section[id]");
-  var navLinks = document.querySelectorAll('.nav__links a[href^="#"]');
-  if ("IntersectionObserver" in window && sections.length) {
-    var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var id = entry.target.getAttribute("id");
-          navLinks.forEach(function (a) {
-            a.classList.toggle("is-active", a.getAttribute("href") === "#" + id);
-          });
+  /* Enlace activo de la navegación según la sección visible */
+  var secs = document.querySelectorAll("main section[id]");
+  var nls = document.querySelectorAll('.nav__links a[href^="#"]');
+  if ("IntersectionObserver" in window && secs.length) {
+    var sp = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) {
+          var id = e.target.getAttribute("id");
+          nls.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + id); });
         }
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    sections.forEach(function (s) { spy.observe(s); });
+    secs.forEach(function (s) { sp.observe(s); });
   }
 })();
