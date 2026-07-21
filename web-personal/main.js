@@ -58,6 +58,54 @@
     rv.forEach(function (el) { el.classList.add("vis"); });
   }
 
+  /* Publicaciones: actualización automática desde PubMed (NCBI E-utilities).
+     Si la petición falla (p. ej. sin red o CSP restrictiva), se conserva la
+     selección estática ya presente en el HTML. */
+  (function pubmed() {
+    var list = document.getElementById("pub-list");
+    if (!list || !window.fetch) return;
+    var author = list.getAttribute("data-pubmed-author") || "Ferrer-Peña R";
+    var base = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
+    var term = encodeURIComponent(author + "[Author]");
+    var esearch = base + "esearch.fcgi?db=pubmed&sort=date&retmax=6&retmode=json&term=" + term;
+
+    fetch(esearch)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (d) {
+        var ids = d && d.esearchresult && d.esearchresult.idlist;
+        if (!ids || !ids.length) return Promise.reject();
+        return fetch(base + "esummary.fcgi?db=pubmed&retmode=json&id=" + ids.join(","))
+          .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+          .then(function (s) { return { ids: ids, res: s.result }; });
+      })
+      .then(function (data) {
+        var res = data.res; if (!res) return;
+        var frag = document.createDocumentFragment();
+        data.ids.forEach(function (id) {
+          var a = res[id]; if (!a) return;
+          var year = (a.sortpubdate || a.pubdate || "").slice(0, 4);
+          var journal = a.fulljournalname || a.source || "";
+          var li = document.createElement("li");
+          li.className = "pub reveal vis";
+          var t = document.createElement("a");
+          t.className = "pub__t"; t.target = "_blank"; t.rel = "noopener";
+          t.href = "https://pubmed.ncbi.nlm.nih.gov/" + id + "/";
+          t.textContent = (a.title || "").replace(/\.$/, "");
+          var meta = document.createElement("span");
+          meta.className = "pub__meta";
+          meta.textContent = [journal, year, "PMID " + id].filter(Boolean).join(" · ");
+          li.appendChild(t); li.appendChild(meta); frag.appendChild(li);
+        });
+        if (frag.childNodes.length) {
+          list.innerHTML = "";
+          list.appendChild(frag);
+          var st = document.getElementById("pub-status");
+          if (st) st.textContent = "Últimas publicaciones, actualizadas automáticamente desde PubMed.";
+        }
+      })
+      .catch(function () { /* se mantiene la selección estática */ });
+  })();
+
   /* Enlace activo de la navegación según la sección visible */
   var secs = document.querySelectorAll("main section[id]");
   var nls = document.querySelectorAll('.nav__links a[href^="#"]');

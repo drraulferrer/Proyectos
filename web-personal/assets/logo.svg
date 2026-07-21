@@ -4,7 +4,7 @@
       <path d="M0,0 L7,3.2 L0,6.4 Z" fill="currentColor"/>
     </marker>
     <marker id="ahc" markerWidth="7" markerHeight="7" refX="4" refY="3.2" orient="auto">
-      <path d="M0,0 L7,3.2 L0,6.4 Z" fill="#f15a38"/>
+      <path d="M0,0 L7,3.2 L0,6.4 Z" fill="#f27a16"/>
     </marker>
   </defs>
   <!-- Flechas negras (ejes) -->
@@ -16,7 +16,7 @@
     <line x1="182" y1="42" x2="240" y2="42" marker-end="url(#ah)"/>
   </g>
   <!-- Flechas coral (dinamismo) -->
-  <g stroke="#f15a38" stroke-width="4" fill="none" stroke-linecap="round">
+  <g stroke="#f27a16" stroke-width="4" fill="none" stroke-linecap="round">
     <line x1="170" y1="22" x2="212" y2="22" marker-end="url(#ahc)"/>
     <line x1="184" y1="74" x2="236" y2="74" marker-end="url(#ahc)"/>
     <line x1="182" y1="98" x2="228" y2="103" marker-end="url(#ahc)"/>

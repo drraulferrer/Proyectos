@@ -15,8 +15,8 @@ Ligero, rápido, accesible, responsive y con modo claro/oscuro.
 - **Logo**: monograma RF con flechas en todas las direcciones (negro + coral),
   recreado en SVG vectorial y **animado** (las flechas se despliegan al cargar).
   Fichero: `assets/logo.svg`.
-- **Paleta**: negro (`--ink`) + blanco + **coral** (`--coral: #f15a38`, el color
-  de las flechas) como acento. Editable al principio de `styles.css`.
+- **Paleta**: negro (`--ink`) + blanco + **naranja** (`--coral: #f27a16`, el
+  color de las flechas) como acento. Editable al principio de `styles.css`.
 - **Tipografía**: Poppins (títulos) + Inter (texto), vía Google Fonts.
 - **Motivo**: la flecha `→` se repite en botones, tarjetas y secciones para
   transmitir el dinamismo de la marca.
@@ -37,7 +37,8 @@ web-personal/
 ## Secciones
 
 Hero · cifras de autoridad · Sobre mí · Áreas (a qué me dedico) ·
-Trayectoria y reconocimientos · Proyectos · Contacto.
+Trayectoria y reconocimientos · Proyectos · **Publicaciones** (se actualizan
+automáticamente desde PubMed) · Contacto.
 
 ## Ver en local
 
