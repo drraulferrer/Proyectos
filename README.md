@@ -29,3 +29,4 @@ Proyectos/
 | Proyecto | Descripción | Estado |
 |----------|-------------|--------|
 | [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |
+| [master-dolor-edemas](master-dolor-edemas/) | Documentación de autoría (modalidad semipresencial) del Módulo 4 «Tratamientos específicos: dolor y edemas» del máster: ficha de estructura desarrollada, cuestionarios por unidad y plan de impartición. | En uso |
