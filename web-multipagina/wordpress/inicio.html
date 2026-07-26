@@ -1,0 +1,283 @@
+<!-- ═══════════════════════════════════════════════════════════════════
+     INICIO — Propuesta editorial multipágina · Dr. Raúl Ferrer Peña
+     Bloque autónomo para WordPress/Divi (página con plantilla en blanco).
+     Marcadores: __FOTO_HERO__ __LOGO__ __FIRMA__ → URLs de la biblioteca de medios.
+     ═══════════════════════════════════════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,700;0,800;0,900;1,700&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
+.rfw{ --ink:#171310; --nar:#F27A16; --nard:#D9630C; --line:#E3D8C5; --mut:#7C7161; --cream:#F6F1E7;
+  font-family:'Inter',system-ui,sans-serif; background:#fff; color:var(--ink); line-height:1.6; -webkit-font-smoothing:antialiased; }
+.rfw *{ box-sizing:border-box; margin:0; }
+.rfw img{ max-width:100%; display:block; }
+.rfw a{ color:inherit; text-decoration:none; }
+.rfw ::selection{ background:var(--nar); color:#fff; }
+.rfw-wrap{ max-width:1240px; margin:0 auto; padding:0 24px; }
+.rfw-disp{ font-family:'Archivo',sans-serif; font-weight:900; line-height:.95; letter-spacing:-.035em; }
+.rfw-kick{ font-family:'Archivo',sans-serif; font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.28em; color:var(--nar); }
+.rfw-serif{ font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; color:var(--nar); }
+.rfw-lead{ font-size:clamp(1.05rem,2vw,1.25rem); color:var(--mut); line-height:1.6; }
+.rfw-btn{ display:inline-flex; align-items:center; gap:.5rem; border-radius:999px; font-family:'Archivo',sans-serif; font-size:.82rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:.9rem 1.6rem; transition:all .2s; }
+.rfw-btn--ink{ background:var(--ink); color:#fff; } .rfw-btn--ink:hover{ background:var(--nar); transform:translateY(-2px); }
+.rfw-btn--nar{ background:var(--nar); color:#fff; } .rfw-btn--nar:hover{ background:var(--ink); transform:translateY(-2px); }
+.rfw-btn--gh{ border:1px solid rgba(23,19,16,.25); color:var(--ink); } .rfw-btn--gh:hover{ border-color:var(--nar); color:var(--nar); transform:translateY(-2px); }
+.rfw-card{ background:#fff; border:1px solid var(--line); border-radius:18px; transition:all .3s; }
+.rfw-card:hover{ border-color:rgba(242,122,22,.5); box-shadow:0 18px 40px -20px rgba(23,19,16,.25); transform:translateY(-4px); }
+/* NAV */
+.rfw-nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.rfw-nav__in{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+.rfw-nav__brand{ display:flex; align-items:center; gap:.7rem; font-family:'Archivo',sans-serif; font-weight:800; font-size:.95rem; }
+.rfw-nav__brand img{ height:36px; width:auto; }
+.rfw-nav__brand small{ display:block; font-size:.6rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--mut); }
+.rfw-nav__links{ display:none; gap:1.5rem; font-size:.85rem; font-weight:600; color:rgba(23,19,16,.7); }
+.rfw-nav__links a:hover{ color:var(--nar); }
+@media(min-width:1100px){ .rfw-nav__links{ display:flex; } }
+.rfw-nav__cta{ padding:.6rem 1.2rem !important; }
+/* HERO */
+.rfw-hero{ position:relative; overflow:hidden; padding:64px 0 56px; }
+.rfw-hero__wm{ position:absolute; right:-100px; top:50%; transform:translateY(-50%); width:540px; opacity:.05; pointer-events:none; }
+.rfw-hero__grid{ position:relative; display:grid; gap:48px; align-items:center; }
+@media(min-width:1024px){ .rfw-hero__grid{ grid-template-columns:1.35fr 1fr; } }
+.rfw-hero h1{ font-size:clamp(3rem,8vw,6.2rem); margin-top:20px; }
+.rfw-hero__cta{ display:flex; flex-wrap:wrap; gap:.8rem; margin-top:34px; }
+.rfw-hero__ph{ position:relative; }
+.rfw-hero__ph::before{ content:''; position:absolute; left:-16px; top:-16px; width:100%; height:100%; border-radius:26px; background:var(--nar); }
+.rfw-hero__ph img{ position:relative; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:top; border-radius:26px; }
+.rfw-hero__badge{ position:absolute; bottom:-20px; left:24px; background:#fff; border:1px solid var(--line); border-radius:16px; padding:14px 20px; box-shadow:0 10px 30px -12px rgba(23,19,16,.3); }
+.rfw-hero__badge b{ font-family:'Archivo',sans-serif; font-size:1.5rem; font-weight:900; color:var(--nar); }
+.rfw-hero__badge span{ display:block; font-size:.7rem; font-weight:600; color:var(--mut); }
+/* STATS */
+.rfw-stats{ display:grid; gap:16px; margin:64px 0 72px; grid-template-columns:repeat(2,1fr); }
+@media(min-width:1024px){ .rfw-stats{ grid-template-columns:repeat(4,1fr); } }
+.rfw-stat{ padding:24px; } .rfw-stat b{ font-family:'Archivo',sans-serif; font-size:1.6rem; font-weight:900; letter-spacing:-.02em; }
+.rfw-stat p{ margin-top:6px; font-size:.82rem; color:var(--mut); line-height:1.4; }
+/* MARQUEE */
+.rfw-marq{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:rgba(246,241,231,.6); padding:14px 0; overflow:hidden; }
+.rfw-marq__row{ display:flex; gap:3rem; width:max-content; white-space:nowrap; animation:rfwmarq 36s linear infinite;
+  font-family:'Archivo',sans-serif; font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.18em; color:var(--mut); }
+@keyframes rfwmarq{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+/* SECTIONS */
+.rfw-sec{ padding:80px 0; }
+.rfw-sec--cream{ background:rgba(246,241,231,.5); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.rfw-h2{ font-size:clamp(2.2rem,5vw,3.6rem); margin-top:16px; }
+.rfw-h3{ font-family:'Archivo',sans-serif; font-weight:800; letter-spacing:-.02em; }
+/* niveles */
+.rfw-niv{ display:grid; gap:12px; grid-template-columns:1fr; margin-top:40px; }
+@media(min-width:640px){ .rfw-niv{ grid-template-columns:repeat(2,1fr); } }
+@media(min-width:1024px){ .rfw-niv{ grid-template-columns:repeat(3,1fr); } }
+.rfw-niv__i{ display:flex; gap:14px; align-items:flex-start; background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 20px; }
+.rfw-niv__i b{ font-family:'Archivo',sans-serif; font-weight:800; }
+.rfw-niv__i span{ font-size:.85rem; color:var(--mut); }
+.rfw-niv__arr{ font-family:'Archivo',sans-serif; font-weight:900; color:var(--nar); font-size:1.1rem; }
+/* áreas */
+.rfw-areas__head{ display:grid; gap:40px; align-items:end; }
+@media(min-width:1024px){ .rfw-areas__head{ grid-template-columns:1.4fr 1fr; } }
+.rfw-logofig{ background:#fff; border:1px solid var(--line); border-radius:24px; padding:36px; text-align:center; }
+.rfw-logofig img{ margin:0 auto; max-width:300px; }
+.rfw-logofig figcaption{ margin-top:22px; font-family:'Archivo',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--mut); }
+.rfw-areas{ display:grid; gap:16px; margin-top:48px; }
+@media(min-width:768px){ .rfw-areas{ grid-template-columns:repeat(2,1fr); } }
+@media(min-width:1100px){ .rfw-areas{ grid-template-columns:repeat(3,1fr); } }
+.rfw-area{ display:flex; flex-direction:column; height:100%; padding:26px; }
+.rfw-area__num{ font-family:'Archivo',sans-serif; font-weight:900; font-size:2.4rem; -webkit-text-stroke:1.5px rgba(23,19,16,.22); color:transparent; transition:all .3s; }
+.rfw-area:hover .rfw-area__num{ color:var(--nar); -webkit-text-stroke:0; }
+.rfw-area h3{ font-size:1.15rem; margin-top:18px; line-height:1.25; }
+.rfw-area p{ margin-top:10px; font-size:.86rem; color:var(--mut); flex:1; }
+.rfw-area__more{ margin-top:14px; font-family:'Archivo',sans-serif; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--nar); }
+/* break naranja */
+.rfw-break{ background:var(--nar); color:#fff; }
+.rfw-break .rfw-serif{ color:#fff; }
+.rfw-break__k{ font-family:'Archivo',sans-serif; font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.28em; color:rgba(255,255,255,.7); }
+.rfw-break blockquote{ font-family:'Archivo',sans-serif; font-weight:900; font-size:clamp(1.9rem,5vw,4rem); line-height:1; letter-spacing:-.03em; margin-top:22px; max-width:1000px; }
+.rfw-break p{ margin-top:26px; max-width:640px; color:rgba(255,255,255,.85); }
+/* proyectos */
+.rfw-projs{ display:grid; gap:16px; margin-top:44px; }
+@media(min-width:900px){ .rfw-projs{ grid-template-columns:repeat(3,1fr); } }
+.rfw-proj{ display:flex; flex-direction:column; height:100%; padding:26px; border-radius:18px; }
+.rfw-proj--dark{ background:var(--ink); color:#fff; border:1px solid var(--ink); }
+.rfw-proj__yr{ font-size:.75rem; font-weight:600; color:var(--mut); } .rfw-proj--dark .rfw-proj__yr{ color:rgba(255,255,255,.5); }
+.rfw-proj__pill{ float:right; background:#FBE3CE; color:var(--nard); font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; border-radius:999px; padding:4px 10px; }
+.rfw-proj--dark .rfw-proj__pill{ background:var(--nar); color:#fff; }
+.rfw-proj h3{ font-size:1.4rem; margin-top:16px; }
+.rfw-proj__role{ font-family:'Archivo',sans-serif; font-size:.66rem; font-weight:700; text-transform:uppercase; letter-spacing:.16em; color:var(--nar); margin-top:4px; }
+.rfw-proj p{ margin-top:12px; font-size:.86rem; color:var(--mut); flex:1; } .rfw-proj--dark p{ color:rgba(255,255,255,.7); }
+/* trayectoria teaser */
+.rfw-dark{ background:var(--ink); color:#fff; }
+.rfw-dark__grid{ display:grid; gap:44px; align-items:center; }
+@media(min-width:1024px){ .rfw-dark__grid{ grid-template-columns:1fr 1.2fr; } }
+.rfw-dark p.sub{ color:rgba(255,255,255,.65); margin-top:20px; max-width:440px; }
+.rfw-creds{ display:grid; gap:14px; grid-template-columns:1fr; }
+@media(min-width:640px){ .rfw-creds{ grid-template-columns:repeat(2,1fr); } }
+.rfw-cred{ border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.05); border-radius:16px; padding:22px; }
+.rfw-cred b{ font-family:'Archivo',sans-serif; font-size:1.4rem; font-weight:900; color:var(--nar); }
+.rfw-cred span{ display:block; margin-top:6px; font-size:.82rem; color:rgba(255,255,255,.65); line-height:1.4; }
+.rfw-btn--light{ background:#fff; color:var(--ink); } .rfw-btn--light:hover{ background:var(--nar); color:#fff; transform:translateY(-2px); }
+.rfw-btn--out{ border:1px solid rgba(255,255,255,.3); color:#fff; } .rfw-btn--out:hover{ border-color:var(--nar); color:var(--nar); }
+/* CTA */
+.rfw-cta{ position:relative; overflow:hidden; border-radius:26px; background:var(--ink); color:#fff; padding:clamp(2rem,5vw,3.5rem);
+  background-image:repeating-linear-gradient(-45deg,rgba(242,122,22,.12) 0 2px,transparent 2px 14px); }
+.rfw-cta__grid{ display:grid; gap:36px; align-items:center; }
+@media(min-width:900px){ .rfw-cta__grid{ grid-template-columns:1.4fr 1fr; } }
+.rfw-cta p{ color:rgba(255,255,255,.65); margin-top:18px; max-width:520px; }
+.rfw-cta__firma{ width:250px; max-width:100%; filter:invert(1); opacity:.9; margin:0 auto; }
+/* footer */
+.rfw-foot{ border-top:1px solid var(--line); padding:32px 0; display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between; font-size:.8rem; color:var(--mut); }
+.rfw-foot img{ height:34px; width:auto; }
+/* reveal */
+.rfw-rv{ opacity:0; transform:translateY(26px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+.rfw-rv.on{ opacity:1; transform:none; }
+@media(prefers-reduced-motion:reduce){ .rfw-rv{ opacity:1; transform:none; } .rfw-marq__row{ animation:none; } }
+</style>
+
+<div class="rfw">
+  <!-- NAV -->
+  <nav class="rfw-nav"><div class="rfw-wrap rfw-nav__in">
+    <a class="rfw-nav__brand" href="/"><img src="__LOGO__" alt="Logotipo RF"><span>Dr. Raúl Ferrer<small>Fisioterapia · Visión 360º</small></span></a>
+    <div class="rfw-nav__links">
+      <a href="/vision-360/">Visión 360º</a><a href="/sobre-mi/">Sobre mí</a><a href="/areas/">Áreas</a>
+      <a href="/trayectoria/">Trayectoria</a><a href="/proyectos/">Proyectos</a><a href="/publicaciones/">Publicaciones</a><a href="/colaboraciones/">Colaboraciones</a>
+    </div>
+    <a class="rfw-btn rfw-btn--nar rfw-nav__cta" href="/contacto/">Contacto →</a>
+  </div></nav>
+
+  <!-- HERO -->
+  <section class="rfw-hero"><div class="rfw-wrap">
+    <img class="rfw-hero__wm" src="__LOGO__" alt="" aria-hidden="true">
+    <div class="rfw-hero__grid">
+      <div>
+        <p class="rfw-kick rfw-rv">Fisioterapeuta · Docente · Investigador · Gestor</p>
+        <h1 class="rfw-disp rfw-rv">Dr. Raúl<br>Ferrer <span class="rfw-serif">Peña</span></h1>
+        <p class="rfw-lead rfw-rv" style="margin-top:26px;max-width:560px">Una fisioterapia que <strong style="color:var(--ink)">conecta clínica, conocimiento y gestión</strong>. Una visión 360º con profundidad real en cada campo y la tecnología como hilo conductor.</p>
+        <div class="rfw-hero__cta rfw-rv">
+          <a class="rfw-btn rfw-btn--ink" href="/vision-360/">Descubre mi enfoque →</a>
+          <a class="rfw-btn rfw-btn--gh" href="/colaboraciones/">Proponer una colaboración</a>
+        </div>
+      </div>
+      <div class="rfw-hero__ph rfw-rv">
+        <img src="__FOTO_HERO__" alt="Dr. Raúl Ferrer Peña">
+        <div class="rfw-hero__badge"><b>+20 años</b><span>conectando áreas de la fisioterapia</span></div>
+      </div>
+    </div>
+    <div class="rfw-stats">
+      <div class="rfw-card rfw-stat rfw-rv"><b>+20 años</b><p>de trayectoria; +15 en Atención Primaria</p></div>
+      <div class="rfw-card rfw-stat rfw-rv"><b>+10.000</b><p>pacientes atendidos en consulta</p></div>
+      <div class="rfw-card rfw-stat rfw-rv"><b>Cum laude</b><p>Doctor en Investigación del Dolor (URJC)</p></div>
+      <div class="rfw-card rfw-stat rfw-rv"><b>MBA</b><p>dirección y gestión de proyectos</p></div>
+    </div>
+  </div></section>
+
+  <!-- MARQUEE -->
+  <div class="rfw-marq"><div class="rfw-marq__row" id="rfwMarq"></div></div>
+
+  <!-- VISIÓN 360 -->
+  <section class="rfw-sec"><div class="rfw-wrap" style="max-width:1100px">
+    <p class="rfw-kick rfw-rv">Un núcleo, múltiples direcciones</p>
+    <h2 class="rfw-disp rfw-h2 rfw-rv">Fisioterapia con <span class="rfw-serif">visión 360º</span></h2>
+    <p class="rfw-lead rfw-rv" style="margin-top:22px;max-width:680px">La fisioterapia es el centro. Desde ella conecto el razonamiento clínico, el dolor, la prevención, la salud pública y comunitaria, la docencia y la innovación educativa. No es hacer de todo: es comprender la fisioterapia en varios niveles relacionados.</p>
+    <div class="rfw-niv">
+      <div class="rfw-niv__i rfw-rv"><span class="rfw-niv__arr">→</span><div><b>Persona</b><br><span>Experiencia clínica y relación con el paciente.</span></div></div>
+      <div class="rfw-niv__i rfw-rv"><span class="rfw-niv__arr">→</span><div><b>Razonamiento</b><br><span>Toma de decisiones basada en la evidencia.</span></div></div>
+      <div class="rfw-niv__i rfw-rv"><span class="rfw-niv__arr">→</span><div><b>Prevención</b><br><span>Salud pública y comunidad.</span></div></div>
+      <div class="rfw-niv__i rfw-rv"><span class="rfw-niv__arr">→</span><div><b>Docencia</b><br><span>Formación de profesionales.</span></div></div>
+      <div class="rfw-niv__i rfw-rv"><span class="rfw-niv__arr">→</span><div><b>Innovación</b><br><span>Tecnología en salud y educación.</span></div></div>
+      <div class="rfw-niv__i rfw-rv"><span class="rfw-niv__arr">→</span><div><b>Sistema</b><br><span>Organizaciones y sistema sanitario.</span></div></div>
+    </div>
+  </div></section>
+
+  <!-- ÁREAS -->
+  <section class="rfw-sec rfw-sec--cream"><div class="rfw-wrap">
+    <div class="rfw-areas__head">
+      <div>
+        <p class="rfw-kick rfw-rv">¿A qué me dedico?</p>
+        <h2 class="rfw-disp rfw-h2 rfw-rv">Seis direcciones,<br>una misma mirada</h2>
+        <p class="rfw-lead rfw-rv" style="margin-top:20px;max-width:520px;font-size:1rem">El logotipo ya lo cuenta: un núcleo —las letras RF— del que parten flechas en todas las direcciones. Cada área es una de esas flechas.</p>
+        <div class="rfw-rv" style="margin-top:26px"><a class="rfw-btn rfw-btn--gh" href="/areas/">Todas las áreas →</a></div>
+      </div>
+      <figure class="rfw-logofig rfw-rv">
+        <img src="__LOGO__" alt="Logotipo RF: monograma con flechas irradiando en todas las direcciones">
+        <figcaption>→ Un núcleo, múltiples direcciones ←</figcaption>
+      </figure>
+    </div>
+    <div class="rfw-areas">
+      <a class="rfw-card rfw-area rfw-rv" href="/areas/"><span class="rfw-area__num">01</span><h3 class="rfw-h3">Razonamiento clínico, dolor y educación bioconductual</h3><p>Cómo pensamos, decidimos y abordamos el dolor, integrando la educación terapéutica y bioconductual.</p><span class="rfw-area__more">Ver área →</span></a>
+      <a class="rfw-card rfw-area rfw-rv" href="/areas/"><span class="rfw-area__num">02</span><h3 class="rfw-h3">Salud pública, prevención y salud comunitaria</h3><p>El papel de la fisioterapia en la salud de las poblaciones: promoción, prevención y comunidad.</p><span class="rfw-area__more">Ver área →</span></a>
+      <a class="rfw-card rfw-area rfw-rv" href="/areas/"><span class="rfw-area__num">03</span><h3 class="rfw-h3">Atención Primaria</h3><p>Más de 15 años de práctica asistencial y más de 10.000 pacientes atendidos.</p><span class="rfw-area__more">Ver área →</span></a>
+      <a class="rfw-card rfw-area rfw-rv" href="/areas/"><span class="rfw-area__num">04</span><h3 class="rfw-h3">Docencia e innovación educativa</h3><p>Formar el razonamiento profesional: metodologías, diseño de aprendizaje y tecnología educativa.</p><span class="rfw-area__more">Ver área →</span></a>
+      <a class="rfw-card rfw-area rfw-rv" href="/areas/"><span class="rfw-area__num">05</span><h3 class="rfw-h3">Salud digital</h3><p>Tecnología aplicada a la práctica y a la educación; gestión de proyectos de salud digital.</p><span class="rfw-area__more">Ver área →</span></a>
+      <a class="rfw-card rfw-area rfw-rv" href="/areas/"><span class="rfw-area__num">06</span><h3 class="rfw-h3">Gestión y dirección</h3><p>Dirección de proyectos con visión estratégica, respaldada por un MBA y experiencia institucional.</p><span class="rfw-area__more">Ver área →</span></a>
+    </div>
+  </div></section>
+
+  <!-- BREAK -->
+  <section class="rfw-break"><div class="rfw-wrap rfw-sec">
+    <p class="rfw-break__k rfw-rv">La idea de marca</p>
+    <blockquote class="rfw-rv">«Una fisioterapia que <span class="rfw-serif">conecta</span> clínica, conocimiento y gestión.»</blockquote>
+    <p class="rfw-rv">Como las flechas del logotipo: movimiento en todas las direcciones. Diverso en alcance, profundo en cada campo.</p>
+  </div></section>
+
+  <!-- PROYECTOS -->
+  <section class="rfw-sec"><div class="rfw-wrap">
+    <p class="rfw-kick rfw-rv">Salud digital e innovación</p>
+    <h2 class="rfw-disp rfw-h2 rfw-rv">Proyectos que<br>abren caminos</h2>
+    <div class="rfw-projs">
+      <article class="rfw-proj rfw-proj--dark rfw-rv"><div><span class="rfw-proj__pill">Vigente</span><span class="rfw-proj__yr">2020 — hoy</span></div><h3 class="rfw-h3">Smart Dyspnea</h3><p class="rfw-proj__role">Fundador &amp; CEO</p><p>Startup de IA en salud que estima la desaturación de oxígeno a partir de la voz, desde el propio móvil. Premios «The Good Algorithms» y Hackathon «Vence al Virus».</p></article>
+      <article class="rfw-card rfw-proj rfw-rv"><div><span class="rfw-proj__pill">Vigente</span><span class="rfw-proj__yr">2023 — hoy</span></div><h3 class="rfw-h3">INDOCLIN</h3><p class="rfw-proj__role">Director del grupo</p><p>Grupo clínico-docente en ciencias de la rehabilitación: IA en el razonamiento clínico, analítica del aprendizaje (CuSAERS) y simulación.</p></article>
+      <article class="rfw-card rfw-proj rfw-rv"><div><span class="rfw-proj__pill">Vigente</span><span class="rfw-proj__yr">2014 — hoy</span></div><h3 class="rfw-h3">#Sherpas20</h3><p class="rfw-proj__role">Sherpa de Fisioterapia</p><p>Grupo multidisciplinar de referentes en salud digital. Lidero el grupo de fisioterapia, mentorizando para reducir la brecha digital.</p></article>
+    </div>
+    <div class="rfw-rv" style="margin-top:30px"><a class="rfw-btn rfw-btn--gh" href="/proyectos/">Todos los proyectos →</a></div>
+  </div></section>
+
+  <!-- TRAYECTORIA TEASER -->
+  <section class="rfw-dark"><div class="rfw-wrap rfw-sec rfw-dark__grid">
+    <div>
+      <p class="rfw-kick rfw-rv">Trayectoria</p>
+      <h2 class="rfw-disp rfw-h2 rfw-rv">Dos décadas<br>en movimiento</h2>
+      <p class="sub rfw-rv">De la consulta de Atención Primaria al aula, la investigación, la innovación y la gestión: una autoridad construida etapa a etapa.</p>
+      <div class="rfw-rv" style="display:flex;flex-wrap:wrap;gap:.8rem;margin-top:30px">
+        <a class="rfw-btn rfw-btn--light" href="/trayectoria/">Ver trayectoria →</a>
+        <a class="rfw-btn rfw-btn--out" href="/credenciales/">Credenciales</a>
+      </div>
+    </div>
+    <div class="rfw-creds">
+      <div class="rfw-cred rfw-rv"><b>Cum laude</b><span>Doctor en Investigación del Dolor (URJC)</span></div>
+      <div class="rfw-cred rfw-rv"><b>Titular</b><span>Profesor de grado en La Salle (UAM)</span></div>
+      <div class="rfw-cred rfw-rv"><b>2019</b><span>Cruz de Honor de Plata de la Sanidad Madrileña</span></div>
+      <div class="rfw-cred rfw-rv"><b>Delegado</b><span>Ministerio de Sanidad · Salud Comunitaria</span></div>
+    </div>
+  </div></section>
+
+  <!-- CTA -->
+  <section class="rfw-sec"><div class="rfw-wrap">
+    <div class="rfw-cta rfw-rv"><div class="rfw-cta__grid">
+      <div>
+        <p class="rfw-kick">Contacto</p>
+        <h2 class="rfw-disp" style="font-size:clamp(2rem,4.5vw,3.2rem);margin-top:16px">¿Colaboramos?</h2>
+        <p>Docencia e innovación educativa, investigación, consultoría, mentoría o proyectos de salud digital. Te respondo personalmente.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.8rem;margin-top:28px">
+          <a class="rfw-btn rfw-btn--nar" href="/contacto/">Proponer una colaboración →</a>
+          <a class="rfw-btn rfw-btn--out" href="mailto:drraulferrer@gmail.com">drraulferrer@gmail.com</a>
+        </div>
+      </div>
+      <div><img class="rfw-cta__firma" src="__FIRMA__" alt="Firma de Raúl Ferrer"></div>
+    </div></div>
+  </div></section>
+
+  <!-- FOOTER -->
+  <footer><div class="rfw-wrap rfw-foot">
+    <span>© 2026 Dr. Raúl Ferrer Peña · raulferrer.org</span>
+    <img src="__FIRMA__" alt="Firma de Raúl Ferrer">
+  </div></footer>
+</div>
+
+<script>
+(function(){
+  var items=['Fisioterapia','Razonamiento clínico','Dolor','Educación bioconductual','Salud pública','Prevención','Salud comunitaria','Atención Primaria','Docencia','Innovación educativa','Salud digital','Gestión'];
+  var row=items.concat(items), mq=document.getElementById('rfwMarq');
+  if(mq){ mq.innerHTML=row.map(function(t){return '<span>'+t+' <span style="color:var(--nar)">→</span></span>';}).join(''); }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:.12});
+    document.querySelectorAll('.rfw-rv').forEach(function(el){io.observe(el);});
+  }else{
+    document.querySelectorAll('.rfw-rv').forEach(function(el){el.classList.add('on');});
+  }
+})();
+</script>

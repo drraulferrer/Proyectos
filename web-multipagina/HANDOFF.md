@@ -33,10 +33,23 @@ npm run build    # producción → dist/
 
 - ✅ Diseño y contenido completos, compila sin errores (`npm run build` OK).
 - ✅ **Fondo blanco** (cambio pedido por el usuario el 26-07-2026; antes crema `#FAF6EE`).
-- ✅ Incorporados los **assets reales**: logo RF (`logo-rf.png`), foto (`foto-raul.jpg`),
-  firma (`firma.png`), optimizados en `public/assets/`.
+- ✅ Incorporados los **assets reales**: logo RF (`logo-rf.png`), foto hero nueva
+  (`foto-hero.jpg`, de `Fotoyotraje26.png`), foto Sobre mí (`foto-raul.jpg`) y firma
+  (`firma.png`), optimizados en `public/assets/`.
 - ✅ Subido a GitHub en la rama indicada.
-- ⛔ **NO publicado aún en WordPress** — esta sesión no tiene el MCP.
+- ✅ **PORTADA SUBIDA A WORDPRESS (26-07-2026, desde Kimi Work vía MCP `raulferrer-wp`)**:
+  - Página **«Inicio · Propuesta editorial 2026» — ID 1178 — en BORRADOR**.
+    Vista previa (logueado): `https://www.raulferrer.org/?page_id=1178&preview=true`
+  - Medios subidos a la biblioteca: `foto-hero.jpg` (ID 1175), `logo-rf.png` (ID 1176),
+    `firma.png` (ID 1177), en `/wp-content/uploads/2026/07/`.
+  - El bloque HTML de la portada está en `web-multipagina/wordpress/inicio.html`
+    (los marcadores `__FOTO_HERO__`/`__LOGO__`/`__FIRMA__` ya van sustituidos en WP).
+  - **Pendiente en esa página**: asignar plantilla Divi **en blanco / ancho completo**
+    (o convertir el contenido en un módulo «Código» de Divi) para que no se dupliquen
+    cabecera/pie del tema; después vista previa → aprobación de Raúl → publicar y
+    poner como portada (Ajustes → Lectura; la portada actual es la página ID 1152).
+  - La portada antigua (ID 1152) **no se ha tocado**. El blog sigue intacto.
+- ⛔ Resto de páginas (Visión 360º, Sobre mí, Áreas, etc.) aún sin crear en WP.
 
 ## 3. Estructura de páginas (11 rutas → 16 páginas WP)
 
