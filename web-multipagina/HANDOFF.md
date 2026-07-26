@@ -81,6 +81,16 @@ npm run build    # producción → dist/
   5. El título del tema (`<h1 class="main_title">`) se oculta por CSS en las 16 páginas.
   6. Reglas de color de enlaces de Divi pueden ganar a las del diseño → botones con
      `color ... !important` (`.rfw-btn--ink/--nar/--gh`).
+  - **Cambios de contenido (26-07-2026 noche, petición de Raúl)**: título de Sobre mí
+    → «Fisioterapeuta, Doctor, Experto en Dolor Crónico y Salud Digital». Proyectos:
+    Smart Dyspnea cerró en 2023 y #Sherpas20 terminó en 2021 (ambos a «Trayectoria de
+    proyectos»); nueva tarjeta vigente destacada **Fundación Paincorp (2025 — hoy,
+    Secretario y Patrono Fundador)**, también en portada y en la línea temporal 2025;
+    La Salle corregido a «2013 — hoy»; nueva vigente «Docencia de posgrado · Salud
+    Digital y Fisioterapia Bioconductual (2014 — hoy)»; nuevas secciones **Proyectos de
+    investigación** y **Proyectos de innovación docente** (4 tarjetas c/u, enlazadas a
+    DOI). Publicaciones: cada artículo enlaza a su DOI y cada libro a su descarga
+    (Bubok ×2, sedolor.es, PDF de dolor.com).
 - ⛔ Pendiente: enlaces reales de LinkedIn/ResearchGate (van con `#`), conexión real
   del formulario de contacto y menú clásico del tema (las páginas nuevas llevan su
   propia navegación integrada; el blog usa la cabecera del tema).

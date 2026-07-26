@@ -82,7 +82,10 @@ CSS = """
 .rfw-q{ flex:0 0 auto; border-radius:8px; padding:5px 9px; font-family:'Archivo',sans-serif; font-size:.7rem; font-weight:900; color:#fff; }
 .rfw-q--1{ background:var(--nar); } .rfw-q--2{ background:var(--ink); }
 .rfw-pub small{ font-size:.75rem; color:var(--mut); font-weight:600; }
-.rfw-pub h4{ font-size:.92rem; font-weight:700; line-height:1.4; margin-top:4px; }
+.rfw-pub h4, .rfw-pub .rfw-h4t{ display:block; font-size:.92rem; font-weight:700; line-height:1.4; margin-top:4px; }
+.rfw a.rfw-pub, .rfw a.rfw-book{ text-decoration:none; color:inherit; }
+.rfw a.rfw-book{ display:block; }
+.rfw a.rfw-pub:hover, .rfw a.rfw-book:hover{ border-color:var(--nar); }
 .rfw-book{ background:var(--cream); border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin-bottom:12px; }
 .rfw-book span{ font-family:'Archivo',sans-serif; font-size:.68rem; font-weight:900; text-transform:uppercase; letter-spacing:.16em; color:var(--nar); }
 .rfw-book b{ display:block; margin-top:6px; font-size:.98rem; }
@@ -290,7 +293,7 @@ BODY_VISION = pagehero('Visión 360º', 'La idea',
 ''' + cta()
 
 BODY_SOBRE = pagehero('Sobre mí', 'La persona detrás del perfil',
-    'Diverso por fuera,<br><span class="rfw-serif">profundo</span> por dentro') + f'''
+    'Fisioterapeuta, Doctor,<br>Experto en <span class="rfw-serif">Dolor Crónico</span> y Salud Digital') + f'''
 <section class="rfw-sec"><div class="rfw-wrap"><div class="rfw-sobre" style="display:grid;gap:44px">
   <div class="rfw-rv">
     <div class="rfw-photo"><img src="{FOTO_RAUL}" alt="Dr. Raúl Ferrer Peña"></div>
@@ -357,7 +360,7 @@ AREAS_DATA = [
      ['Docencia en salud digital', 'Gestión de proyectos de salud digital', 'Innovación', 'Mentoría (#Sherpas20)', 'Emprendimiento (Smart Dyspnea)', 'Transformación digital'],
      ['Coordinación de la asignatura de Gestión de Proyectos de Salud Digital.',
       'Fundador de Smart Dyspnea, startup de IA en salud premiada en hackatones COVID.',
-      'Sherpa de Fisioterapia en #Sherpas20 desde 2014: mentoría para reducir la brecha digital.',
+      'Sherpa de Fisioterapia en #Sherpas20 (2014–2021): mentoría para reducir la brecha digital.',
       'Coautor de «Salud digital. Guía para profesionales» (Editorial SED, grupo SEDTECH).']),
     ('gestion-direccion', '06', 'Gestión y dirección',
      'Dirección y gestión de proyectos con visión estratégica, respaldada por un MBA y años de representación y responsabilidad institucional.',
@@ -448,6 +451,7 @@ BODY_TRAYECTORIA = pagehero('Trayectoria', 'Recorrido',
     <li class="rfw-rv"><span class="rfw-tl__dot"></span><span class="rfw-tl__yr">2019</span><h3 class="rfw-h3">Cruz de Honor de Plata de la Comunidad de Madrid</h3><p>Reconocimiento por el compromiso con la atención sanitaria, la formación y la investigación. Delegado en el Ministerio de Sanidad.</p></li>
     <li class="rfw-rv"><span class="rfw-tl__dot"></span><span class="rfw-tl__yr">2020</span><h3 class="rfw-h3">Doctor en Investigación del Dolor · cum laude</h3><p>Máxima graduación académica por la URJC. Funda Smart Dyspnea (IA en salud), premiada en hackatones COVID.</p></li>
     <li class="rfw-rv"><span class="rfw-tl__dot"></span><span class="rfw-tl__yr">2023</span><h3 class="rfw-h3">Dirección y calidad</h3><p>Director del grupo INDOCLIN y miembro de la Comisión de Garantía de Calidad de la URJC.</p></li>
+    <li class="rfw-rv"><span class="rfw-tl__dot"></span><span class="rfw-tl__yr">2025</span><h3 class="rfw-h3">Fundación Paincorp</h3><p>Secretario y Patrono Fundador de la fundación, nueva etapa institucional dedicada al dolor.</p></li>
     <li class="rfw-rv"><span class="rfw-tl__dot rfw-tl__dot--full"></span><span class="rfw-tl__yr">Hoy</span><h3 class="rfw-h3">Nueva etapa: docencia, razonamiento y gestión</h3><p>Foco en la docencia, el razonamiento clínico, la prevención y la salud comunitaria, con el MBA y la gestión de proyectos de salud digital.</p></li>
   </ol>
   <div class="rfw-rv" style="margin-top:40px"><a class="rfw-btn rfw-btn--ink" href="/credenciales/">Reconocimientos y credenciales →</a></div>
@@ -506,10 +510,10 @@ BODY_PROYECTOS = pagehero('Proyectos', 'Proyectos e impacto',
   <h2 class="rfw-disp rfw-h2 rfw-rv">Proyectos vigentes</h2>
   <div class="rfw-grid rfw-grid--2" style="margin-top:40px">
     <article class="rfw-pad rfw-rv" style="background:var(--ink);color:#fff;border-radius:18px;border:1px solid var(--ink)">
-      <div><span style="float:right;background:var(--nar);color:#fff;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-radius:999px;padding:4px 10px">Vigente</span><span style="font-size:.75rem;color:rgba(255,255,255,.5);font-weight:600">2020 — hoy</span></div>
-      <h3 class="rfw-h3" style="font-size:1.5rem;margin-top:18px">Smart Dyspnea</h3>
-      <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:4px">Fundador &amp; CEO</p>
-      <p style="margin-top:12px;font-size:.88rem;color:rgba(255,255,255,.7);flex:1">Startup de IA en salud que estima la desaturación de oxígeno a partir de la voz, desde el propio móvil. Premios «The Good Algorithms» y Hackathon «Vence al Virus».</p>
+      <div><span style="float:right;background:var(--nar);color:#fff;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-radius:999px;padding:4px 10px">Vigente</span><span style="font-size:.75rem;color:rgba(255,255,255,.5);font-weight:600">2025 — hoy</span></div>
+      <h3 class="rfw-h3" style="font-size:1.5rem;margin-top:18px">Fundación Paincorp</h3>
+      <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:4px">Secretario y Patrono Fundador</p>
+      <p style="margin-top:12px;font-size:.88rem;color:rgba(255,255,255,.7);flex:1">Nueva etapa institucional dedicada al dolor: impulso de proyectos de investigación, formación y divulgación desde la fundación.</p>
     </article>
     <article class="rfw-card rfw-pad rfw-rv">
       <div><span style="float:right;background:#FBE3CE;color:var(--nard);font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-radius:999px;padding:4px 10px">Vigente</span><span style="font-size:.75rem;color:var(--mut);font-weight:600">2023 — hoy</span></div>
@@ -518,16 +522,68 @@ BODY_PROYECTOS = pagehero('Proyectos', 'Proyectos e impacto',
       <p style="margin-top:12px;font-size:.88rem;color:var(--mut);flex:1">Grupo clínico-docente en ciencias de la rehabilitación: IA en el razonamiento clínico, analítica del aprendizaje (CuSAERS) y simulación.</p>
     </article>
     <article class="rfw-card rfw-pad rfw-rv">
-      <div><span style="float:right;background:#FBE3CE;color:var(--nard);font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-radius:999px;padding:4px 10px">Vigente</span><span style="font-size:.75rem;color:var(--mut);font-weight:600">2014 — hoy</span></div>
-      <h3 class="rfw-h3" style="font-size:1.5rem;margin-top:18px">#Sherpas20</h3>
-      <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:4px">Sherpa de Fisioterapia</p>
-      <p style="margin-top:12px;font-size:.88rem;color:var(--mut);flex:1">Grupo multidisciplinar de referentes en salud digital. Lidero el grupo de fisioterapia, mentorizando a profesionales y pacientes para reducir la brecha digital.</p>
-    </article>
-    <article class="rfw-card rfw-pad rfw-rv">
-      <div><span style="float:right;background:#FBE3CE;color:var(--nard);font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-radius:999px;padding:4px 10px">Vigente</span><span style="font-size:.75rem;color:var(--mut);font-weight:600">2010 — hoy</span></div>
+      <div><span style="float:right;background:#FBE3CE;color:var(--nard);font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-radius:999px;padding:4px 10px">Vigente</span><span style="font-size:.75rem;color:var(--mut);font-weight:600">2013 — hoy</span></div>
       <h3 class="rfw-h3" style="font-size:1.5rem;margin-top:18px">Docencia de grado · La Salle (UAM)</h3>
       <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:4px">Profesor Titular</p>
       <p style="margin-top:12px;font-size:.88rem;color:var(--mut);flex:1">Salud pública, fisioterapia preventiva y métodos específicos en el sistema neuromusculoesquelético.</p>
+    </article>
+    <article class="rfw-card rfw-pad rfw-rv">
+      <div><span style="float:right;background:#FBE3CE;color:var(--nard);font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-radius:999px;padding:4px 10px">Vigente</span><span style="font-size:.75rem;color:var(--mut);font-weight:600">2014 — hoy</span></div>
+      <h3 class="rfw-h3" style="font-size:1.5rem;margin-top:18px">Docencia de posgrado</h3>
+      <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:4px">Salud Digital y Fisioterapia Bioconductual</p>
+      <p style="margin-top:12px;font-size:.88rem;color:var(--mut);flex:1">Docencia de posgrado en salud digital y en el abordaje bioconductual del dolor, formando a profesionales en nuevas competencias.</p>
+    </article>
+  </div>
+</div></section>
+<section class="rfw-sec rfw-sec--cream"><div class="rfw-wrap">
+  <p class="rfw-kick rfw-rv">Líneas abiertas</p>
+  <h2 class="rfw-disp rfw-h2 rfw-rv">Proyectos de investigación</h2>
+  <div class="rfw-grid rfw-grid--2" style="margin-top:40px">
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Dolor · educación terapéutica</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">Consenso Delphi internacional</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Marco común internacional para la educación terapéutica del dolor, publicado en <i>Physical Therapy</i> (Q1).</p>
+      <a class="rfw-more" href="https://doi.org/10.1093/ptj/pzag029" target="_blank" rel="noopener">Ver publicación ↗</a>
+    </article>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Neurofisioterapia</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">Marco BRAIN</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Marco de razonamiento clínico para la neurofisioterapia, publicado en <i>Brain Sciences</i>.</p>
+      <a class="rfw-more" href="https://doi.org/10.3390/brainsci16020235" target="_blank" rel="noopener">Ver publicación ↗</a>
+    </article>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Dolor crónico</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">Función ejecutiva y dolor crónico</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Efectividad de las intervenciones de fisioterapia sobre la función ejecutiva en personas con dolor crónico (<i>Neurology International</i>).</p>
+      <a class="rfw-more" href="https://doi.org/10.3390/neurolint18030055" target="_blank" rel="noopener">Ver publicación ↗</a>
+    </article>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Neurociencia del dolor</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">BDNF y educación en neurociencia del dolor</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Línea sobre los efectos de la educación en neurociencia del dolor y los cambios en BDNF (<i>Healthcare</i>, <i>Life</i>).</p>
+      <a class="rfw-more" href="https://doi.org/10.3390/healthcare13030269" target="_blank" rel="noopener">Ver publicación ↗</a>
+    </article>
+  </div>
+</div></section>
+<section class="rfw-sec"><div class="rfw-wrap">
+  <p class="rfw-kick rfw-rv">Aula y tecnología</p>
+  <h2 class="rfw-disp rfw-h2 rfw-rv">Proyectos de innovación docente</h2>
+  <div class="rfw-grid rfw-grid--2" style="margin-top:40px">
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">IA en educación</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">LLMs para entrenar el razonamiento clínico</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Ensayo aleatorizado de viabilidad con grandes modelos lingüísticos de IA para el entrenamiento del razonamiento clínico (<i>JMIR Formative Research</i>).</p>
+      <a class="rfw-more" href="https://doi.org/10.2196/66126" target="_blank" rel="noopener">Ver publicación ↗</a>
+    </article>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Analítica del aprendizaje</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">CuSAERS</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Cuestionario de satisfacción del estudiante en entornos de aprendizaje basados en redes sociales (<i>JMIR Medical Education</i>).</p>
+      <a class="rfw-more" href="https://doi.org/10.2196/73805" target="_blank" rel="noopener">Ver publicación ↗</a>
+    </article>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Metodologías activas</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">Metodología activa vs tradicional</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Estudio crossover con doble resultado en la enseñanza de la fisioterapia (EDULEARN 2026).</p>
+      <a class="rfw-more" href="https://doi.org/10.21125/edulearn.2026.2168" target="_blank" rel="noopener">Ver publicación ↗</a>
+    </article>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Juegos educativos</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">e-EDUCAGUIA</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Estrategia con juegos educativos para implementar guías de práctica clínica (<i>Implementation Science</i>, <i>BMC Medical Education</i>).</p>
+      <a class="rfw-more" href="https://doi.org/10.1186/s13012-016-0425-3" target="_blank" rel="noopener">Ver publicación ↗</a>
     </article>
   </div>
 </div></section>
@@ -535,6 +591,16 @@ BODY_PROYECTOS = pagehero('Proyectos', 'Proyectos e impacto',
   <p class="rfw-kick rfw-rv">Casos destacados</p>
   <h2 class="rfw-disp rfw-h2 rfw-rv">Trayectoria de proyectos</h2>
   <div class="rfw-grid rfw-grid--2" style="margin-top:40px">
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">2020 — 2023</span>
+      <h3 class="rfw-h3" style="font-size:1.5rem;margin-top:14px">Smart Dyspnea</h3>
+      <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:4px">Fundador &amp; CEO</p>
+      <p style="margin-top:12px;font-size:.88rem;color:var(--mut);flex:1">Startup de IA en salud que estimaba la desaturación de oxígeno a partir de la voz, desde el propio móvil. Premios «The Good Algorithms» y Hackathon «Vence al Virus». Cerrada en 2023.</p>
+    </article>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">2014 — 2021</span>
+      <h3 class="rfw-h3" style="font-size:1.5rem;margin-top:14px">#Sherpas20</h3>
+      <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:4px">Sherpa de Fisioterapia</p>
+      <p style="margin-top:12px;font-size:.88rem;color:var(--mut);flex:1">Grupo multidisciplinar de referentes en salud digital. Lideré el grupo de fisioterapia, mentorizando a profesionales y pacientes para reducir la brecha digital.</p>
+    </article>
     <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">2012 — 2018</span>
       <h3 class="rfw-h3" style="font-size:1.5rem;margin-top:14px">Fisioterapia Sin Red</h3>
       <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:4px">Socio fundador y presidente</p>
@@ -556,22 +622,22 @@ BODY_PUBLICACIONES = pagehero('Publicaciones', 'Actividad investigadora',
   <div>
     <h2 class="rfw-h3 rfw-rv" style="font-size:1.4rem">Artículos recientes</h2>
     <div style="margin-top:22px">
-      <article class="rfw-card rfw-pub rfw-rv"><span class="rfw-q rfw-q--1">Q1</span><div><small>Physical Therapy · 2026</small><h4>Toward a shared framework for therapeutic pain education: a Delphi-based international consensus</h4></div></article>
-      <article class="rfw-card rfw-pub rfw-rv"><span class="rfw-q rfw-q--1">Q1</span><div><small>JMIR Formative Research · 2025</small><h4>Feasibility of a Randomized Controlled Trial of Large AI-Based Linguistic Models for Clinical Reasoning Training of Physical Therapy Students</h4></div></article>
-      <article class="rfw-card rfw-pub rfw-rv"><span class="rfw-q rfw-q--1">Q1</span><div><small>JMIR Medical Education · 2025</small><h4>Student satisfaction in social media-based learning environments: the CuSAERS questionnaire</h4></div></article>
-      <article class="rfw-card rfw-pub rfw-rv"><span class="rfw-q rfw-q--2">Q2</span><div><small>Brain Sciences · 2026</small><h4>Advancing neurological rehabilitation: the BRAIN framework for clinical reasoning in neurophysiotherapy</h4></div></article>
-      <article class="rfw-card rfw-pub rfw-rv"><span class="rfw-q rfw-q--2">Q2</span><div><small>Neurology International · 2026</small><h4>Effectiveness of physiotherapy interventions on executive function in patients with chronic pain</h4></div></article>
-      <article class="rfw-card rfw-pub rfw-rv"><span class="rfw-q rfw-q--2">Q2</span><div><small>Healthcare (Basel) · 2025</small><h4>Pain Neuroscience Education Reduces Pain and Improves Psychological Variables but Does Not Induce Plastic Changes Measured by BDNF</h4></div></article>
+      <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.1093/ptj/pzag029" target="_blank" rel="noopener"><span class="rfw-q rfw-q--1">Q1</span><span style="display:block"><small>Physical Therapy · 2026</small><span class="rfw-h4t">Toward a shared framework for therapeutic pain education: a Delphi-based international consensus</span></span></a>
+      <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.2196/66126" target="_blank" rel="noopener"><span class="rfw-q rfw-q--1">Q1</span><span style="display:block"><small>JMIR Formative Research · 2025</small><span class="rfw-h4t">Feasibility of a Randomized Controlled Trial of Large AI-Based Linguistic Models for Clinical Reasoning Training of Physical Therapy Students</span></span></a>
+      <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.2196/73805" target="_blank" rel="noopener"><span class="rfw-q rfw-q--1">Q1</span><span style="display:block"><small>JMIR Medical Education · 2025</small><span class="rfw-h4t">Student satisfaction in social media-based learning environments: the CuSAERS questionnaire</span></span></a>
+      <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.3390/brainsci16020235" target="_blank" rel="noopener"><span class="rfw-q rfw-q--2">Q2</span><span style="display:block"><small>Brain Sciences · 2026</small><span class="rfw-h4t">Advancing neurological rehabilitation: the BRAIN framework for clinical reasoning in neurophysiotherapy</span></span></a>
+      <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.3390/neurolint18030055" target="_blank" rel="noopener"><span class="rfw-q rfw-q--2">Q2</span><span style="display:block"><small>Neurology International · 2026</small><span class="rfw-h4t">Effectiveness of physiotherapy interventions on executive function in patients with chronic pain</span></span></a>
+      <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.3390/healthcare13030269" target="_blank" rel="noopener"><span class="rfw-q rfw-q--2">Q2</span><span style="display:block"><small>Healthcare (Basel) · 2025</small><span class="rfw-h4t">Pain Neuroscience Education Reduces Pain and Improves Psychological Variables but Does Not Induce Plastic Changes Measured by BDNF</span></span></a>
     </div>
     <a class="rfw-more rfw-rv" href="https://pubmed.ncbi.nlm.nih.gov/?term=Ferrer-Pe%C3%B1a+R%5BAuthor%5D&sort=date" target="_blank" rel="noopener">Ver todas en PubMed ↗</a>
   </div>
   <div>
     <h2 class="rfw-h3 rfw-rv" style="font-size:1.4rem">Libros y monografías</h2>
     <div style="margin-top:22px">
-      <div class="rfw-book rfw-rv"><span>2026</span><b>Cerrar la brecha (Modelo GAP)</b><small>Estrategias para reorganizar la Atención Primaria alrededor de la persona.</small></div>
-      <div class="rfw-book rfw-rv"><span>2026</span><b>Marco de competencias en gestión para fisioterapeutas</b><small>Coautor · referente en gestión profesional.</small></div>
-      <div class="rfw-book rfw-rv"><span>2026</span><b>Salud digital. Guía para profesionales</b><small>Editorial SED (grupo SEDTECH) · Coautor.</small></div>
-      <div class="rfw-book rfw-rv"><span>2023–2025</span><b>Manuales de dolor crónico y autocuidado</b><small>Coordinador y coautor · en español e inglés.</small></div>
+      <a class="rfw-book rfw-rv" href="https://www.bubok.es/libros/284358/cerrar-la-brecha-modelo-gap" target="_blank" rel="noopener"><span>2026</span><b>Cerrar la brecha (Modelo GAP)</b><small>Estrategias para reorganizar la Atención Primaria alrededor de la persona. Descarga en Bubok ↗</small></a>
+      <a class="rfw-book rfw-rv" href="https://www.bubok.es/libros/285153/marco-de-competencias-en-gestion-para-fisioterapeutas" target="_blank" rel="noopener"><span>2026</span><b>Marco de competencias en gestión para fisioterapeutas</b><small>Coautor · referente en gestión profesional. Descarga en Bubok ↗</small></a>
+      <a class="rfw-book rfw-rv" href="https://sedolor.es/salud-digital-y-dolor-2026-una-nueva-guia-para-profesionales-sanitarios/" target="_blank" rel="noopener"><span>2026</span><b>Salud digital y dolor 2026</b><small>Guía para profesionales sanitarios · Editorial SED (grupo SEDTECH) · Coautor. Web de la guía ↗</small></a>
+      <a class="rfw-book rfw-rv" href="https://www.dolor.com/api/media/project/iberia/dolor/formacion/biblioteca/libros-y-manuales/autocuidado-analgesico-manual-profesional-para-cuidado-de-personas/m-na-es-09-23-0003-autocuidado-analgesico-manual-profesional-digital.pdf" target="_blank" rel="noopener"><span>2023</span><b>Autocuidado analgésico</b><small>Manual profesional para el cuidado de personas · Coordinador y coautor. PDF ↗</small></a>
     </div>
     <a class="rfw-more rfw-rv" href="https://orcid.org/0000-0001-5495-8458" target="_blank" rel="noopener">Perfil ORCID ↗</a>
   </div>
