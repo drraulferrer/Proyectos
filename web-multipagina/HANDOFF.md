@@ -37,19 +37,29 @@ npm run build    # producción → dist/
   (`foto-hero.jpg`, de `Fotoyotraje26.png`), foto Sobre mí (`foto-raul.jpg`) y firma
   (`firma.png`), optimizados en `public/assets/`.
 - ✅ Subido a GitHub en la rama indicada.
-- ✅ **PORTADA SUBIDA A WORDPRESS (26-07-2026, desde Kimi Work vía MCP `raulferrer-wp`)**:
-  - Página **«Inicio · Propuesta editorial 2026» — ID 1178 — en BORRADOR**.
-    Vista previa (logueado): `https://www.raulferrer.org/?page_id=1178&preview=true`
-  - Medios subidos a la biblioteca: `foto-hero.jpg` (ID 1175), `logo-rf.png` (ID 1176),
-    `firma.png` (ID 1177), en `/wp-content/uploads/2026/07/`.
-  - El bloque HTML de la portada está en `web-multipagina/wordpress/inicio.html`
-    (los marcadores `__FOTO_HERO__`/`__LOGO__`/`__FIRMA__` ya van sustituidos en WP).
-  - **Pendiente en esa página**: asignar plantilla Divi **en blanco / ancho completo**
-    (o convertir el contenido en un módulo «Código» de Divi) para que no se dupliquen
-    cabecera/pie del tema; después vista previa → aprobación de Raúl → publicar y
-    poner como portada (Ajustes → Lectura; la portada actual es la página ID 1152).
-  - La portada antigua (ID 1152) **no se ha tocado**. El blog sigue intacto.
-- ⛔ Resto de páginas (Visión 360º, Sobre mí, Áreas, etc.) aún sin crear en WP.
+- ✅ **WEB COMPLETA PUBLICADA EN RAULFERRER.ORG (26-07-2026, desde Kimi Work vía el
+  endpoint MCP `raulferrer-wp` + REST API con las mismas credenciales)**:
+  - **16 páginas publicadas** con plantilla Divi en blanco (`page-template-blank.php`):
+    - Portada: `/` (página ID 1178, slug `inicio`, fijada en Ajustes → Lectura).
+    - `/vision-360/` 1179 · `/sobre-mi/` 1180 · `/areas/` 1181 · `/trayectoria/` 1182 ·
+      `/credenciales/` 1183 · `/proyectos/` 1184 · `/publicaciones/` 1185 ·
+      `/colaboraciones/` 1186 · `/contacto/` 1187.
+    - Áreas (hijas de `/areas/`): `/areas/razonamiento-clinico-dolor/` 1188 ·
+      `/areas/salud-publica-prevencion/` 1189 · `/areas/atencion-primaria/` 1190 ·
+      `/areas/docencia-innovacion/` 1191 · `/areas/salud-digital/` 1192 ·
+      `/areas/gestion-direccion/` 1193.
+  - Medios en biblioteca: `foto-hero.jpg` 1175 · `logo-rf.png` 1176 · `firma.png` 1177 ·
+    `foto-raul.jpg` (subida posterior, ver biblioteca 2026/07).
+  - Contenido antiguo **preservado en borrador** (nada borrado): portada anterior
+    «Inicio» (ID 1152) y «TRAYECTORIA Y PROYECTOS» (ID 38, renombrada a
+    `trayectoria-antigua` para liberar el slug). Resto de páginas antiguas (consulta
+    online, about, innercircle, blog…) siguen publicadas como estaban.
+  - El blog/entradas no se ha tocado.
+  - Generador reproducible: `web-multipagina/wordpress/generate-pages.py`
+    (contiene CSS compartido + contenido de las 16 páginas; `inicio.html` es la portada).
+- ⛔ Pendiente: enlaces reales de LinkedIn/ResearchGate (van con `#`), conexión real
+  del formulario de contacto y menú clásico del tema (las páginas nuevas llevan su
+  propia navegación integrada; el blog usa la cabecera del tema).
 
 ## 3. Estructura de páginas (11 rutas → 16 páginas WP)
 
