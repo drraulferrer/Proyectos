@@ -95,7 +95,8 @@ Mismo patrón que `web-personal/wordpress-kimi.html`, que ya funcionó:
 5. Crear cada página en **BORRADOR**, plantilla **en blanco / ancho completo**,
    pegando su bloque en un **módulo «Código» de Divi**. Las 6 páginas de área como
    **páginas hijas** de `areas` para conservar las URLs `/areas/slug`.
-6. **Subir a la biblioteca de medios**: `foto-raul.jpg`, `logo-rf.png`, `firma.png`
+6. **Subir a la biblioteca de medios**: `foto-hero.jpg` (hero de portada),
+   `foto-raul.jpg` (página Sobre mí), `logo-rf.png` y `firma.png`
    (en `web-multipagina/public/assets/`) y sustituir las rutas `/assets/...` por las
    URLs reales de WordPress.
 7. Crear el **menú de navegación** en Apariencia → Menús: Inicio, Visión 360º,

@@ -51,7 +51,7 @@ export default function Home() {
           <Reveal delay={200} className="relative">
             <div className="absolute -left-4 -top-4 h-full w-full rounded-3xl bg-naranja" aria-hidden="true" />
             <img
-              src="/assets/foto-raul.jpg"
+              src="/assets/foto-hero.jpg"
               alt="Dr. Raúl Ferrer Peña"
               className="relative aspect-[4/5] w-full rounded-3xl object-cover object-top"
             />
