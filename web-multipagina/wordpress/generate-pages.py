@@ -38,6 +38,8 @@ CSS = """
 .rfw-btn--light{ background:#fff; color:var(--ink); } .rfw-btn--light:hover{ background:var(--nar); color:#fff; transform:translateY(-2px); }
 .rfw-btn--out{ border:1px solid rgba(255,255,255,.3); color:#fff; } .rfw-btn--out:hover{ border-color:var(--nar); color:var(--nar); }
 .rfw-card{ background:#fff; border:1px solid var(--line); border-radius:18px; transition:all .3s; }
+.rfw-card.rfw-card--ink{ background:var(--ink); border-color:var(--ink); color:#fff; }
+.rfw-card--ink h3, .rfw-card--ink h4, .rfw-card--ink .rfw-h3{ color:#fff !important; }
 .rfw-card:hover{ border-color:rgba(242,122,22,.5); box-shadow:0 18px 40px -20px rgba(23,19,16,.25); transform:translateY(-4px); }
 .rfw-nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
 .rfw-nav__in{ display:flex; align-items:center; justify-content:space-between; height:72px; }
@@ -169,7 +171,7 @@ JS = """
   });
   var f=document.getElementById('rfwForm');
   if(f){ f.addEventListener('submit',function(e){ e.preventDefault();
-    f.innerHTML='<div style="text-align:center;padding:2rem 0"><p class="rfw-disp" style="font-size:2.4rem;color:var(--nar)">¡Gracias!</p><p style="color:var(--mut);margin-top:1rem">Tu propuesta está lista. Mientras se conecta el envío automático, escríbeme a <a href="mailto:drraulferrer@gmail.com" style="color:var(--nar);font-weight:600">drraulferrer@gmail.com</a>.</p><img src="__FIRMA__" alt="Firma de Raúl Ferrer" style="width:220px;margin:2rem auto 0"></div>';
+    f.innerHTML='<div style="text-align:center;padding:2rem 0"><p class="rfw-disp" style="font-size:2.4rem;color:var(--nar)">¡Gracias!</p><p style="color:var(--mut);margin-top:1rem">Tu propuesta está lista. La vía más directa de contacto es <a href="https://www.linkedin.com/in/raulferrer/" style="color:var(--nar);font-weight:600">LinkedIn</a>.</p><img src="__FIRMA__" alt="Firma de Raúl Ferrer" style="width:220px;margin:2rem auto 0"></div>';
   }); }
 })();
 """
@@ -213,7 +215,7 @@ def cta(title='¿Colaboramos?', text='Docencia e innovación educativa, investig
         <p>{text}</p>
         <div style="display:flex;flex-wrap:wrap;gap:.8rem;margin-top:28px">
           <a class="rfw-btn rfw-btn--nar" href="/contacto/">Proponer una colaboración →</a>
-          <a class="rfw-btn rfw-btn--out" href="mailto:drraulferrer@gmail.com">drraulferrer@gmail.com</a>
+          <a class="rfw-btn rfw-btn--out" href="https://www.linkedin.com/in/raulferrer/" target="_blank" rel="noopener">LinkedIn ↗</a>
         </div>
       </div>
       <div><img class="rfw-cta__firma" src="{FIRMA}" alt="Firma de Raúl Ferrer"></div>
@@ -509,7 +511,7 @@ BODY_PROYECTOS = pagehero('Proyectos', 'Proyectos e impacto',
   <p class="rfw-kick rfw-rv">Ahora mismo</p>
   <h2 class="rfw-disp rfw-h2 rfw-rv">Proyectos vigentes</h2>
   <div class="rfw-grid rfw-grid--2" style="margin-top:40px">
-    <article class="rfw-pad rfw-rv" style="background:var(--ink);color:#fff;border-radius:18px;border:1px solid var(--ink)">
+    <article class="rfw-card rfw-pad rfw-card--ink rfw-rv">
       <div><span style="float:right;background:var(--nar);color:#fff;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-radius:999px;padding:4px 10px">Vigente</span><span style="font-size:.75rem;color:rgba(255,255,255,.5);font-weight:600">2025 — hoy</span></div>
       <h3 class="rfw-h3" style="font-size:1.5rem;margin-top:18px">Fundación Paincorp</h3>
       <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:4px">Secretario y Patrono Fundador</p>
@@ -536,28 +538,28 @@ BODY_PROYECTOS = pagehero('Proyectos', 'Proyectos e impacto',
   </div>
 </div></section>
 <section class="rfw-sec rfw-sec--cream"><div class="rfw-wrap">
-  <p class="rfw-kick rfw-rv">Líneas abiertas</p>
-  <h2 class="rfw-disp rfw-h2 rfw-rv">Proyectos de investigación</h2>
+  <p class="rfw-kick rfw-rv">Convocatorias competitivas y contratos</p>
+  <h2 class="rfw-disp rfw-h2 rfw-rv">Proyectos de investigación financiados</h2>
   <div class="rfw-grid rfw-grid--2" style="margin-top:40px">
-    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Dolor · educación terapéutica</span>
-      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">Consenso Delphi internacional</h3>
-      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Marco común internacional para la educación terapéutica del dolor, publicado en <i>Physical Therapy</i> (Q1).</p>
-      <a class="rfw-more" href="https://doi.org/10.1093/ptj/pzag029" target="_blank" rel="noopener">Ver publicación ↗</a>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Ministerio de Educación y Ciencia · 2021–2025 · 78.250 €</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">Educación terapéutica y BDNF en dolor crónico</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Efecto de la educación terapéutica sobre la intensidad de dolor y los niveles de BDNF en pacientes con dolor crónico. IP: Silvia Di Bonaventura (URJC).</p>
+      <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:12px">Equipo investigador · Codirector de la tesis asociada</p>
     </article>
-    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Neurofisioterapia</span>
-      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">Marco BRAIN</h3>
-      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Marco de razonamiento clínico para la neurofisioterapia, publicado en <i>Brain Sciences</i>.</p>
-      <a class="rfw-more" href="https://doi.org/10.3390/brainsci16020235" target="_blank" rel="noopener">Ver publicación ↗</a>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">CSEU La Salle · desde 2019 · 7.460 €</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">Proyecto OPTIMIST</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Efectividad de un programa de autotratamiento domiciliario mediante imaginería motora y visualización de imágenes en pacientes con hombro doloroso.</p>
+      <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:12px">Investigador Principal</p>
     </article>
-    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Dolor crónico</span>
-      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">Función ejecutiva y dolor crónico</h3>
-      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Efectividad de las intervenciones de fisioterapia sobre la función ejecutiva en personas con dolor crónico (<i>Neurology International</i>).</p>
-      <a class="rfw-more" href="https://doi.org/10.3390/neurolint18030055" target="_blank" rel="noopener">Ver publicación ↗</a>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Instituto de Salud Carlos III · desde 2015</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">e-EDUCAGUIA</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Estrategia con juegos educativos para implementar Guías de Práctica Clínica (Plan Nacional Guía-Salud) en residentes de Medicina Familiar y Comunitaria. IP: Isabel del Cura (FIIBAP).</p>
+      <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:12px">Equipo investigador</p>
     </article>
-    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Neurociencia del dolor</span>
-      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">BDNF y educación en neurociencia del dolor</h3>
-      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Línea sobre los efectos de la educación en neurociencia del dolor y los cambios en BDNF (<i>Healthcare</i>, <i>Life</i>).</p>
-      <a class="rfw-more" href="https://doi.org/10.3390/healthcare13030269" target="_blank" rel="noopener">Ver publicación ↗</a>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Fundación madri+d · 2020–2021 · 10.000 €</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">Smart Dyspnea · Vence al Virus</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Contrato de investigación del Hackatón «Vence al Virus» de la Comunidad de Madrid para el desarrollo de la estimación de desaturación por voz.</p>
+      <p style="font-family:'Archivo';font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--nar);margin-top:12px">Investigador Principal</p>
     </article>
   </div>
 </div></section>
@@ -580,10 +582,10 @@ BODY_PROYECTOS = pagehero('Proyectos', 'Proyectos e impacto',
       <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Estudio crossover con doble resultado en la enseñanza de la fisioterapia (EDULEARN 2026).</p>
       <a class="rfw-more" href="https://doi.org/10.21125/edulearn.2026.2168" target="_blank" rel="noopener">Ver publicación ↗</a>
     </article>
-    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Juegos educativos</span>
-      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">e-EDUCAGUIA</h3>
-      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Estrategia con juegos educativos para implementar guías de práctica clínica (<i>Implementation Science</i>, <i>BMC Medical Education</i>).</p>
-      <a class="rfw-more" href="https://doi.org/10.1186/s13012-016-0425-3" target="_blank" rel="noopener">Ver publicación ↗</a>
+    <article class="rfw-card rfw-pad rfw-rv"><span style="font-size:.75rem;color:var(--mut);font-weight:600">Aprendizaje coordinado</span>
+      <h3 class="rfw-h3" style="font-size:1.4rem;margin-top:14px">EPS LAB</h3>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--mut);flex:1">Comparación cuasi-experimental de la coordinación inter-sujeto frente a modelos de sujeto único en el aprendizaje (EDULEARN 2026).</p>
+      <a class="rfw-more" href="https://doi.org/10.21125/edulearn.2026.0799" target="_blank" rel="noopener">Ver publicación ↗</a>
     </article>
   </div>
 </div></section>
@@ -623,11 +625,11 @@ BODY_PUBLICACIONES = pagehero('Publicaciones', 'Actividad investigadora',
     <h2 class="rfw-h3 rfw-rv" style="font-size:1.4rem">Artículos recientes</h2>
     <div style="margin-top:22px">
       <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.1093/ptj/pzag029" target="_blank" rel="noopener"><span class="rfw-q rfw-q--1">Q1</span><span style="display:block"><small>Physical Therapy · 2026</small><span class="rfw-h4t">Toward a shared framework for therapeutic pain education: a Delphi-based international consensus</span></span></a>
-      <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.2196/66126" target="_blank" rel="noopener"><span class="rfw-q rfw-q--1">Q1</span><span style="display:block"><small>JMIR Formative Research · 2025</small><span class="rfw-h4t">Feasibility of a Randomized Controlled Trial of Large AI-Based Linguistic Models for Clinical Reasoning Training of Physical Therapy Students</span></span></a>
-      <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.2196/73805" target="_blank" rel="noopener"><span class="rfw-q rfw-q--1">Q1</span><span style="display:block"><small>JMIR Medical Education · 2025</small><span class="rfw-h4t">Student satisfaction in social media-based learning environments: the CuSAERS questionnaire</span></span></a>
       <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.3390/brainsci16020235" target="_blank" rel="noopener"><span class="rfw-q rfw-q--2">Q2</span><span style="display:block"><small>Brain Sciences · 2026</small><span class="rfw-h4t">Advancing neurological rehabilitation: the BRAIN framework for clinical reasoning in neurophysiotherapy</span></span></a>
       <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.3390/neurolint18030055" target="_blank" rel="noopener"><span class="rfw-q rfw-q--2">Q2</span><span style="display:block"><small>Neurology International · 2026</small><span class="rfw-h4t">Effectiveness of physiotherapy interventions on executive function in patients with chronic pain</span></span></a>
+      <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.1177/10998004251313741" target="_blank" rel="noopener"><span class="rfw-q rfw-q--2">Q2</span><span style="display:block"><small>Biological Research for Nursing · 2025</small><span class="rfw-h4t">Differences in Plasma BDNF Levels Between Chronic Primary Musculoskeletal Pain, Fibromyalgia Syndrome and Healthy Controls</span></span></a>
       <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.3390/healthcare13030269" target="_blank" rel="noopener"><span class="rfw-q rfw-q--2">Q2</span><span style="display:block"><small>Healthcare (Basel) · 2025</small><span class="rfw-h4t">Pain Neuroscience Education Reduces Pain and Improves Psychological Variables but Does Not Induce Plastic Changes Measured by BDNF</span></span></a>
+      <a class="rfw-card rfw-pub rfw-rv" href="https://doi.org/10.2196/73805" target="_blank" rel="noopener"><span class="rfw-q rfw-q--1">Q1</span><span style="display:block"><small>JMIR Medical Education · 2025</small><span class="rfw-h4t">Student satisfaction in social media-based learning environments: the CuSAERS questionnaire</span></span></a>
     </div>
     <a class="rfw-more rfw-rv" href="https://pubmed.ncbi.nlm.nih.gov/?term=Ferrer-Pe%C3%B1a+R%5BAuthor%5D&sort=date" target="_blank" rel="noopener">Ver todas en PubMed ↗</a>
   </div>
@@ -665,38 +667,17 @@ BODY_COLABORACIONES = pagehero('Colaboraciones', 'Colaboraciones',
 
 BODY_CONTACTO = pagehero('Contacto', 'Contacto',
     'Hablemos de una<br><span class="rfw-serif">colaboración</span>',
-    'Cuéntame qué necesitas. Este formulario está orientado a colaboraciones profesionales, no a consultas clínicas.') + f'''
-<section class="rfw-sec"><div class="rfw-wrap"><div id="rfwContacto" style="display:grid;gap:44px">
-  <form class="rfw-form rfw-rv" id="rfwForm">
-    <div class="row2">
-      <label>Nombre<input type="text" required placeholder="Tu nombre"></label>
-      <label>Organización<input type="text" placeholder="Empresa, universidad, colegio…"></label>
-    </div>
-    <label>Correo electrónico<input type="email" required placeholder="nombre@organizacion.com"></label>
-    <label>Tipo de colaboración</label>
-    <div class="rfw-tipos">
-      <button type="button" class="rfw-tipo sel">Consultoría</button>
-      <button type="button" class="rfw-tipo">Mentoría</button>
-      <button type="button" class="rfw-tipo">Formación o conferencia</button>
-      <button type="button" class="rfw-tipo">Proyecto o alianza</button>
-      <button type="button" class="rfw-tipo">Medios de comunicación</button>
-      <button type="button" class="rfw-tipo">Otra consulta</button>
-    </div>
-    <label>Descripción<textarea rows="4" required placeholder="Cuéntame el reto, el contexto y qué esperas conseguir…"></textarea></label>
-    <label>Plazo aproximado<input type="text" placeholder="Ej.: próximo trimestre, sin prisa…"></label>
-    <label class="rfw-check"><input type="checkbox" required style="margin-top:3px"> He leído y acepto la política de privacidad y el tratamiento de mis datos para responder a esta solicitud.</label>
-    <div style="margin-top:26px"><button type="submit" class="rfw-btn rfw-btn--nar" style="border:0;cursor:pointer">Enviar propuesta →</button></div>
-    <p class="rfw-note" style="margin-top:22px">El envío se conectará al correo profesional en la implementación final. Mientras tanto, puedes escribir directamente a <a href="mailto:drraulferrer@gmail.com" style="color:var(--nar);font-weight:600">drraulferrer@gmail.com</a>.</p>
-  </form>
-  <div class="rfw-rv">
-    <a class="rfw-card rfw-copt" href="mailto:drraulferrer@gmail.com"><div><p class="rfw-kick">Email</p><b>drraulferrer@gmail.com</b></div><span style="color:var(--nar);font-family:'Archivo';font-weight:900">↗</span></a>
-    <a class="rfw-card rfw-copt" href="#"><div><p class="rfw-kick">LinkedIn</p><b>Perfil profesional</b></div><span style="color:var(--nar);font-family:'Archivo';font-weight:900">↗</span></a>
-    <a class="rfw-card rfw-copt" href="https://orcid.org/0000-0001-5495-8458" target="_blank" rel="noopener"><div><p class="rfw-kick">ORCID · ResearchGate</p><b>Perfiles académicos</b></div><span style="color:var(--nar);font-family:'Archivo';font-weight:900">↗</span></a>
-    <div class="rfw-note"><p class="rfw-kick">Respuesta</p><p style="margin-top:8px">Habitualmente en pocos días laborables. Te respondo personalmente.</p></div>
-    <img src="{FIRMA}" alt="Firma de Raúl Ferrer" style="width:220px;margin-top:28px">
+    'La vía más directa son mis redes profesionales: escríbeme por LinkedIn o Instagram, o conecta con mi actividad académica en ResearchGate y ORCID. Orientado a colaboraciones profesionales, no a consultas clínicas.') + f'''
+<section class="rfw-sec"><div class="rfw-wrap">
+  <div class="rfw-grid rfw-grid--2" style="max-width:960px">
+    <a class="rfw-card rfw-copt" href="https://www.linkedin.com/in/raulferrer/" target="_blank" rel="noopener"><div><p class="rfw-kick">LinkedIn</p><b>Raúl Ferrer Peña</b><small style="display:block;margin-top:4px;color:var(--mut);font-size:.83rem">linkedin.com/in/raulferrer · la vía más directa</small></div><span style="color:var(--nar);font-family:'Archivo';font-weight:900">↗</span></a>
+    <a class="rfw-card rfw-copt" href="https://www.instagram.com/_raulferrer" target="_blank" rel="noopener"><div><p class="rfw-kick">Instagram</p><b>@_raulferrer</b><small style="display:block;margin-top:4px;color:var(--mut);font-size:.83rem">Divulgación y día a día profesional</small></div><span style="color:var(--nar);font-family:'Archivo';font-weight:900">↗</span></a>
+    <a class="rfw-card rfw-copt" href="https://www.researchgate.net/profile/Raul-Ferrer-Pena" target="_blank" rel="noopener"><div><p class="rfw-kick">ResearchGate</p><b>Raul Ferrer-Pena</b><small style="display:block;margin-top:4px;color:var(--mut);font-size:.83rem">Artículos y proyectos de investigación</small></div><span style="color:var(--nar);font-family:'Archivo';font-weight:900">↗</span></a>
+    <a class="rfw-card rfw-copt" href="https://orcid.org/0000-0001-5495-8458" target="_blank" rel="noopener"><div><p class="rfw-kick">ORCID</p><b>0000-0001-5495-8458</b><small style="display:block;margin-top:4px;color:var(--mut);font-size:.83rem">Registro académico completo</small></div><span style="color:var(--nar);font-family:'Archivo';font-weight:900">↗</span></a>
   </div>
-</div></div></section>
-<style>@media(min-width:1024px){{ #rfwContacto{{ grid-template-columns:1.4fr 1fr }} }}</style>
+  <div class="rfw-note" style="max-width:960px;margin-top:26px"><p class="rfw-kick">Respuesta</p><p style="margin-top:8px">Habitualmente en pocos días laborables. Te respondo personalmente. Para consultas clínicas, por favor utiliza los cauces asistenciales habituales.</p></div>
+  <img src="{FIRMA}" alt="Firma de Raúl Ferrer" style="width:220px;margin-top:34px">
+</div></section>
 '''
 
 # ══ CREACIÓN ═══════════════════════════════════════════════════════════════

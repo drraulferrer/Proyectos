@@ -91,8 +91,17 @@ npm run build    # producción → dist/
     investigación** y **Proyectos de innovación docente** (4 tarjetas c/u, enlazadas a
     DOI). Publicaciones: cada artículo enlaza a su DOI y cada libro a su descarga
     (Bubok ×2, sedolor.es, PDF de dolor.com).
-- ⛔ Pendiente: enlaces reales de LinkedIn/ResearchGate (van con `#`), conexión real
-  del formulario de contacto y menú clásico del tema (las páginas nuevas llevan su
+  - **Cambios de contenido (26-07-2026 noche 2, petición de Raúl)**: email eliminado de
+    toda la web (antispam). Contacto rediseñada SIN formulario: 4 tarjetas de redes
+    (LinkedIn /in/raulferrer, Instagram @_raulferrer, ResearchGate, ORCID). Proyectos de
+    investigación = **proyectos financiados del CVA** (BDNF Ministerio 78.250 €, OPTIMIST
+    IP La Salle, e-EDUCAGUIA ISCIII, Smart Dyspnea madri+d 10.000 €); e-EDUCAGUIA sale de
+    innovación docente (entra EPS LAB). Publicaciones: fuera «Feasibility…» (no es Q1),
+    lista ordenada por fecha, entra BDNF plasma (Biol Res Nurs 2025).
+  - **CSS defensivo adicional**: titulares blancos en bandas oscuras (Divi fuerza color
+    en h1-h3), `.rfw-card.rfw-card--ink` (doble clase: el `.rfw-card` de inicio.html iba
+    después y ganaba), blockquote con barra blanca, botones --light/--out con `!important`.
+- ⛔ Pendiente: menú clásico del tema (las páginas nuevas llevan su
   propia navegación integrada; el blog usa la cabecera del tema).
 
 ## 3. Estructura de páginas (11 rutas → 16 páginas WP)
