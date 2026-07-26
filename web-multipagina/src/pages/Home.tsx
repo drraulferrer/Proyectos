@@ -115,15 +115,33 @@ export default function Home() {
       {/* ——— ÁREAS ——— */}
       <section className="border-y border-line bg-cream/50 py-16 md:py-24">
         <div className="wrap-wide">
-          <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr]">
             <div>
               <Reveal><p className="kick">¿A qué me dedico?</p></Reveal>
               <Reveal delay={80}>
                 <h2 className="display mt-4 text-[clamp(2.2rem,5vw,3.8rem)]">Seis direcciones,<br />una misma mirada</h2>
               </Reveal>
+              <Reveal delay={140}>
+                <p className="mt-5 max-w-xl text-mut leading-relaxed">
+                  El logotipo ya lo cuenta: un núcleo —las letras RF— del que parten
+                  flechas en todas las direcciones. Cada área es una de esas flechas.
+                </p>
+              </Reveal>
+              <Reveal delay={200}>
+                <Link to="/areas" className="btn-ghost mt-7">Todas las áreas <ArrowIcon /></Link>
+              </Reveal>
             </div>
             <Reveal delay={160}>
-              <Link to="/areas" className="btn-ghost">Todas las áreas <ArrowIcon /></Link>
+              <figure className="rounded-3xl border border-line bg-white p-8 md:p-10">
+                <img
+                  src="/assets/logo-rf.png"
+                  alt="Logotipo RF: monograma con flechas irradiando en todas las direcciones"
+                  className="mx-auto w-full max-w-xs"
+                />
+                <figcaption className="mt-6 flex items-center justify-center gap-2 text-center font-display text-[0.7rem] font-bold uppercase tracking-[0.22em] text-mut">
+                  <span className="text-naranja">→</span> Un núcleo, múltiples direcciones <span className="text-naranja">←</span>
+                </figcaption>
+              </figure>
             </Reveal>
           </div>
           <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">

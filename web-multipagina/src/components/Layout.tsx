@@ -44,7 +44,7 @@ function Header() {
     >
       <div className="wrap-wide flex h-[72px] items-center justify-between">
         <Link to="/" className="flex items-center gap-3" aria-label="Inicio — Dr. Raúl Ferrer">
-          <img src="/assets/logo-rf.png" alt="Logotipo RF" className="h-9 w-auto" />
+          <img src="/assets/logo-rf.png" alt="Logotipo RF" className="h-9 w-auto shrink-0" />
           <span className="hidden sm:block font-display text-sm font-extrabold tracking-tight leading-none">
             Dr. Raúl Ferrer
             <span className="block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-mut mt-1">
@@ -140,7 +140,7 @@ function Footer() {
         </div>
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/40 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Dr. Raúl Ferrer Peña · raulferrer.org</p>
-          <img src="/assets/firma.png" alt="Firma de Raúl Ferrer" className="h-10 w-auto invert opacity-70" />
+          <img src="/assets/firma.png" alt="Firma de Raúl Ferrer" className="h-10 w-auto shrink-0 object-contain invert opacity-70" />
         </div>
       </div>
     </footer>

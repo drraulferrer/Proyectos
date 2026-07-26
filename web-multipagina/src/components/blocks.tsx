@@ -80,7 +80,7 @@ export function CTASection({
               </div>
             </div>
             <div className="flex md:justify-end">
-              <img src="/assets/firma.png" alt="Firma de Raúl Ferrer" className="w-64 max-w-full invert opacity-90" />
+              <img src="/assets/firma.png" alt="Firma de Raúl Ferrer" className="w-64 max-w-full shrink-0 invert opacity-90" />
             </div>
           </div>
         </div>
