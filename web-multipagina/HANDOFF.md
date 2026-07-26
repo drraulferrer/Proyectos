@@ -50,6 +50,11 @@ npm run build    # producción → dist/
       `/areas/gestion-direccion/` 1193.
   - Medios en biblioteca: `foto-hero.jpg` 1175 · `logo-rf.png` 1176 · `firma.png` 1177 ·
     `foto-raul.jpg` (subida posterior, ver biblioteca 2026/07).
+  - **Fotos nuevas integradas (26-07-2026 noche)**: `ecografia-clinica.jpg` 1254 (área 01) ·
+    `taller-comunitario.jpg` 1255 (área 02) · `consulta-paciente.jpg` 1256 (área 03) ·
+    `formacion-profesionales.jpg` 1257 (área 04) · `salud-digital-datos.jpg` 1258 (área 05) ·
+    `raul-traje.jpg` 1259 (área 06 y foto principal de Sobre mí, sustituye a `foto-raul.jpg`).
+    Originales optimizados en `raulferrer-web/wordpress/fotos/` (1600px, JPG q82, `urls.json`).
   - Contenido antiguo **preservado en borrador** (nada borrado): portada anterior
     «Inicio» (ID 1152) y «TRAYECTORIA Y PROYECTOS» (ID 38, renombrada a
     `trayectoria-antigua` para liberar el slug). Resto de páginas antiguas (consulta
@@ -57,6 +62,25 @@ npm run build    # producción → dist/
   - El blog/entradas no se ha tocado.
   - Generador reproducible: `web-multipagina/wordpress/generate-pages.py`
     (contiene CSS compartido + contenido de las 16 páginas; `inicio.html` es la portada).
+    Despliegue: `wordpress/update-pages.py` (sube los 16 contenidos + todo el CSS al
+    «CSS adicional» del tema vía ability `raulferrer-content/update-custom-css`).
+- ⚠️ **Lecciones de WordPress/Divi aprendidas (26-07-2026), ya aplicadas en el generador**:
+  1. WP elimina `<style>`/`<script>` al guardar → el CSS vive en el «CSS adicional»
+     (Divi lo empaqueta en `et-cache/global/et-divi-customizer.min.css`) y las páginas
+     funcionan sin JS (marquee estático, reveals visibles).
+  2. `@import` de Google Fonts NO sobrevive a la minificación de Divi → se usan 40
+     reglas `@font-face` explícitas (Archivo/Inter/Instrument Serif, en `/tmp/rf-fontface.css`).
+  3. `wpautop` rompe cualquier bloque (`h3`, `p`, `div`) dentro de un `<a>` (el parser
+     HTML5 parte el enlace en varias cajas) → `generate-pages.py: neutralize_anchors()`
+     convierte los bloques internos de las tarjetas-enlace en `<span class="rfw-b">` y el
+     CSS añade `.rfw-b{display:block}`, `.rfw p:empty{display:none}` y
+     `.rfw-areas>p,.rfw-grid>p{display:contents}`.
+  4. Divi limita el ancho: `.container` (1080px) y `#left-area` (73.6% por la clase
+     `et_right_sidebar`) → CSS a ancho completo para
+     `.page-template-page-template-blank-php`.
+  5. El título del tema (`<h1 class="main_title">`) se oculta por CSS en las 16 páginas.
+  6. Reglas de color de enlaces de Divi pueden ganar a las del diseño → botones con
+     `color ... !important` (`.rfw-btn--ink/--nar/--gh`).
 - ⛔ Pendiente: enlaces reales de LinkedIn/ResearchGate (van con `#`), conexión real
   del formulario de contacto y menú clásico del tema (las páginas nuevas llevan su
   propia navegación integrada; el blog usa la cabecera del tema).

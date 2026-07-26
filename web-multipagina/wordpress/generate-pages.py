@@ -5,7 +5,7 @@ Genera y crea en WordPress (raulferrer.org) todas las páginas de la propuesta
 editorial multipágina como BORRADORES, con slug, jerarquía y plantilla en blanco.
 Las imágenes usan las URLs de la biblioteca de medios ya subidas.
 """
-import json, urllib.request, sys
+import json, urllib.request, sys, re
 
 # ── Config ────────────────────────────────────────────────────────────────
 cfg = json.load(open('/Users/raulferrer/.claude.json'))['mcpServers']['raulferrer-wp']
@@ -13,7 +13,7 @@ AUTH = cfg['headers']['Authorization']
 API = 'https://www.raulferrer.org/wp-json/wp/v2/pages'
 
 FOTO_HERO = 'https://www.raulferrer.org/wp-content/uploads/2026/07/foto-hero.jpg'
-FOTO_RAUL = 'https://www.raulferrer.org/wp-content/uploads/2026/07/foto-raul.jpg'
+FOTO_RAUL = 'https://www.raulferrer.org/wp-content/uploads/2026/07/raul-traje.jpg'
 LOGO = 'https://www.raulferrer.org/wp-content/uploads/2026/07/logo-rf.png'
 FIRMA = 'https://www.raulferrer.org/wp-content/uploads/2026/07/firma.png'
 
@@ -148,9 +148,8 @@ CSS = """
 /* footer */
 .rfw-foot{ border-top:1px solid var(--line); padding:32px 0; display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between; font-size:.8rem; color:var(--mut); }
 .rfw-foot img{ height:34px; width:auto; }
-.rfw-rv{ opacity:0; transform:translateY(26px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
-.rfw-rv.on{ opacity:1; transform:none; }
-@media(prefers-reduced-motion:reduce){ .rfw-rv{ opacity:1; transform:none; } }
+/* NOTA WP: .rfw-rv existe solo como marcador; sin JS todo es visible por defecto */
+.rfw-rv{ opacity:1; }
 """
 
 JS = """
@@ -224,9 +223,31 @@ def foot():
     <img src="{FIRMA}" alt="Firma de Raúl Ferrer">
   </div></footer>'''
 
+def neutralize_anchors(html):
+    """WordPress wpautop inyecta <p>/</p> alrededor de etiquetas de bloque
+    incluso en HTML de una sola línea. Si el bloque está dentro de un <a>, el
+    parser HTML5 (adoption agency) parte el enlace en varias cajas. Solución:
+    dentro de cada <a> se convierten los bloques en <span class="rfw-b">."""
+    def inner_to_spans(m):
+        open_tag, inner, close_tag = m.group(1), m.group(2), m.group(3)
+        def repl(tm):
+            slash, attrs = tm.group(1), tm.group(3)
+            if slash:
+                return '</span>'
+            if 'class="' in attrs:
+                attrs = attrs.replace('class="', 'class="rfw-b ', 1)
+            else:
+                attrs = ' class="rfw-b"' + attrs
+            return '<span' + attrs + '>'
+        inner = re.sub(r'<(/?)(h[1-6]|p|div|figure|figcaption|blockquote|ul|ol|li)((?:\s[^>]*)?)>', repl, inner)
+        return open_tag + inner + close_tag
+    return re.sub(r'(<a\s[^>]*>)(.*?)(</a>)', inner_to_spans, html, flags=re.S)
+
+
 def doc(active, body):
-    js = JS.replace('__FIRMA__', FIRMA)
-    return f'<style>{CSS}</style>\n<div class="rfw">\n{nav(active)}\n{body}\n{foot()}\n</div>\n<script>{js}</script>'
+    # WP: sin <style> ni <script> (se eliminan al guardar). El CSS va en el
+    # CSS adicional del tema (update-custom-css); todo funciona sin JS.
+    return f'<div class="rfw">\n{nav(active)}\n{neutralize_anchors(body)}\n{foot()}\n</div>'
 
 
 # ══ CUERPOS DE PÁGINA ════════════════════════════════════════════════════
@@ -347,6 +368,22 @@ AREAS_DATA = [
       'Coautor del Marco de Competencias en Gestión para fisioterapeutas.']),
 ]
 
+# Fotos de cada área (biblioteca de medios, jul 2026) + retrato corporativo
+AREAS_FOTOS = {
+    0: ('https://www.raulferrer.org/wp-content/uploads/2026/07/ecografia-clinica.jpg',
+        'Ecografía musculoesquelética en la práctica clínica'),
+    1: ('https://www.raulferrer.org/wp-content/uploads/2026/07/taller-comunitario.jpg',
+        'Taller de educación para la salud con la comunidad'),
+    2: ('https://www.raulferrer.org/wp-content/uploads/2026/07/consulta-paciente.jpg',
+        'Consulta de fisioterapia en Atención Primaria'),
+    3: ('https://www.raulferrer.org/wp-content/uploads/2026/07/formacion-profesionales.jpg',
+        'Formación a profesionales sanitarios: proceso asistencial'),
+    4: ('https://www.raulferrer.org/wp-content/uploads/2026/07/salud-digital-datos.jpg',
+        'Gestión de proyectos y datos de salud digital'),
+    5: ('https://www.raulferrer.org/wp-content/uploads/2026/07/raul-traje.jpg',
+        'Dirección y gestión de proyectos sanitarios'),
+}
+
 def areas_hub():
     cards = ''
     for slug, num, title, lead, chips, puntos in AREAS_DATA:
@@ -383,6 +420,7 @@ def area_detalle(idx):
     </div>
   </div>
   <div class="rfw-rv">
+    <div class="rfw-photo" style="margin-bottom:34px"><img src="{AREAS_FOTOS[idx][0]}" alt="{AREAS_FOTOS[idx][1]}" style="aspect-ratio:4/3;object-position:center"></div>
     <div style="background:rgba(246,241,231,.6);border:1px solid var(--line);border-radius:18px;padding:28px">
       <p class="rfw-kick">Temas relacionados</p>
       <div class="rfw-chips" style="margin-top:18px">{chips_html}</div>
