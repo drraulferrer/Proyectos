@@ -1,6 +1,6 @@
 # PROMPT 5 — EL CARRY (TRANSPORTE)
 
-> Patrón 05 / 05. Fondo **blanco cálido**. Con referencias al pie.
+> Patrón 05 / 05. Sistema **Kinetic High-Contrast**. Con referencias al pie.
 >
 > **Aviso sobre las referencias.** La lista original de este prompt no era verificable:
 > incluía una entrada de blog comercial, dos referencias sin año ni volumen que no
@@ -20,9 +20,15 @@ Añadir como subtítulo:
 
 “Caminar cargando peso: uno de los patrones funcionales más completos, adaptables y transferibles de toda la rehabilitación.”
 
-Estética editorial científica premium, inspirada en las infografías de revistas biomédicas de alto impacto como Nature Reviews: aspecto limpio y minimalista, mucho espacio en blanco, líneas finas, flechas discretas, iconografía médica limpia y excelente jerarquía visual. Todo debe parecer una figura de revisión científica. Fondo blanco cálido #FAF7F2. Paleta estricta de tres colores: negro tinta #0B0B0B, blanco cálido #FAF7F2 y naranja señal #F26B0F. Se permiten únicamente derivados neutros del negro para grises tipográficos y de línea (#2B2B2B, #6F6F6F, #D8D4CE) y dos tintes del naranja para el sombreado anatómico (#F9A85F, #FCDCBC). No utilizar azul, turquesa, verde, amarillo, coral ni ningún otro color. Tipografía sans serif moderna. Ilustraciones anatómicas vectoriales semirrealistas con contorno negro fino de 1,5 px y relleno blanco. Sin estética fitness, sin gimnasio, sin fondos oscuros, sin efectos 3D.
+## Sistema visual
 
-Colocar en la parte superior una banda negra a sangre que contenga el título en blanco, la palabra “CARRY” en naranja, una etiqueta de serie pequeña en naranja con tracking amplio que diga “BIG FIVE · SI SOLO PUDIERA ELEGIR UNO”, y en la esquina superior derecha el numerador “PATRÓN 05 / 05” en naranja. Bajo la banda, trazar una regla naranja de 4 px de alto y 120 px de ancho.
+Sistema visual “Kinetic High-Contrast”: estética editorial de alto contraste y minimalismo, con la energía tipográfica del periodismo deportivo y el rigor de una figura de revisión científica. Aspecto limpio, mucho aire, líneas finas, flechas discretas e iconografía médica limpia. Fondo negro puro #000000 a sangre. Los bloques se apoyan sobre tarjetas de negro cálido #171310, planas, sin sombra, con borde de 1 px en #786D5E al 20 % de opacidad y esquinas redondeadas de 12 px. Naranja cinético #FD6242 como único acento de alta energía, y terracota #BA4830 para variaciones tonales. Texto de máximo contraste en crema #F6F1E7, cuerpo en #EAE1DB, secundario en #E2BFB7 y notas en #A98A83. Tipografía Montserrat en exclusiva: titulares en peso 900 u 800 con tracking cerrado de −0,02 em, etiquetas en mayúsculas de peso 700 con tracking abierto de +0,05 em. Retícula de 12 columnas, márgenes laterales de 64 px, margen superior de 72 px e inferior de 56 px, medianiles de 32 px y todo el espaciado en múltiplos de 8 px, con padding asimétrico dentro de las tarjetas —32 px arriba y 24 px abajo—. Sin sombras proyectadas, sin degradados, sin efectos 3D. No utilizar azul, turquesa, verde ni amarillo. Ilustraciones anatómicas vectoriales semirrealistas con contorno crema fino de 1,5 px sobre el fondo negro. Sin estética fitness, sin gimnasio.
+
+Escala tipográfica sobre el lienzo: título principal 88 px peso 900; título de bloque 44 px peso 800; titulares de módulo 32 px peso 700; subtítulo 26 px peso 400 con interlineado 1,6; cuerpo 22 px peso 400 con interlineado 1,5; etiquetas 19 px peso 700 en mayúsculas; referencias 16 px peso 500. Ningún texto por debajo de 16 px.
+
+## Cabecera
+
+Colocar en la parte superior una banda a sangre de negro cálido #171310 que contenga el título en crema #F6F1E7, la palabra “CARRY” en naranja #FD6242, una etiqueta de serie a 19 px en naranja con tracking amplio que diga “BIG FIVE · SI SOLO PUDIERA ELEGIR UNO”, y en la esquina superior derecha el numerador “PATRÓN 05 / 05” dentro de una píldora de borde naranja de 1 px. Bajo la banda, trazar una barra naranja de 6 px de alto y 120 px de ancho.
 
 ## Progresión
 
@@ -43,7 +49,7 @@ Añadir debajo:
 
 “¿POR QUÉ ES TAN VERSÁTIL?”
 
-Dividir en cuatro columnas, separadas por líneas finas de 1 px en gris #D8D4CE, cada una con un icono de trazo lineal negro de 2 px y un único detalle naranja.
+Dividir en cuatro columnas sobre tarjetas de nivel 1, separadas por el medianil de 32 px, cada una con un icono de trazo lineal crema de 2 px y un único detalle naranja.
 
 “Carga funcional”
 Entrena exactamente una tarea cotidiana: transportar objetos.
@@ -59,11 +65,11 @@ Aplicable en geriatría, dolor musculoesquelético, readaptación deportiva, ent
 
 ## Figura anatómica
 
-Situarla en la parte inferior izquierda. Mostrar mediante los tintes naranja #F9A85F y #FCDCBC los principales grupos musculares implicados: flexores del antebrazo, deltoides, manguito rotador, trapecio, dorsal ancho, erectores espinales, oblicuos, transverso abdominal, glúteos, cuádriceps, isquiotibiales y gemelos. Graduar la intensidad del tinte para sugerir mayor o menor participación. No representar activación aislada: mostrar participación global.
+Situarla en la parte inferior izquierda. Mostrar mediante los tintes naranja #FD6242, #FFB4A4 y #FFDAD3 los principales grupos musculares implicados: flexores del antebrazo, deltoides, manguito rotador, trapecio, dorsal ancho, erectores espinales, oblicuos, transverso abdominal, glúteos, cuádriceps, isquiotibiales y gemelos. Graduar la intensidad del tinte para sugerir mayor o menor participación. No representar activación aislada: mostrar participación global.
 
 ## Recuadro
 
-Recuadro de fondo blanco y borde naranja de 1,5 px, titulado:
+Recuadro, tarjeta de nivel 1, titulado:
 
 “VARIABLES MODIFICABLES”
 
@@ -75,7 +81,7 @@ Separar los ítems con barras verticales de color naranja.
 
 ## Banda destacada
 
-Con fondo negro #0B0B0B, texto en blanco y comilla tipográfica naranja:
+Banda de relleno sólido naranja #FD6242 con texto en negro #000000 y comilla tipográfica en negro:
 
 “Su fortaleza no está en caminar con peso, sino en que permite entrenar simultáneamente estabilidad, fuerza, locomoción y capacidad funcional.”
 
@@ -91,7 +97,7 @@ Debajo, en tamaño menor:
 
 ## Referencias
 
-Incluir al pie una sección claramente legible llamada “Referencias”, sobre una franja de fondo #F1EDE7, con la numeración en naranja y el texto en gris #6F6F6F a 15 px, sin alterar nombres, años ni DOI. Escribir exactamente:
+Incluir al pie una sección claramente legible llamada “Referencias”, sobre una tarjeta de nivel 1 a ancho completo, con la numeración en naranja y el texto en #E2BFB7 a 16 px, sin alterar nombres, años ni DOI. Escribir exactamente:
 
 1. McGill SM, McDermott A, Fenwick CM. Comparison of different strongman events: trunk muscle activation and lumbar spine motion, load, and stiffness. J Strength Cond Res. 2009;23(4):1148-1161. doi:10.1519/JSC.0b013e318198f8f7.
 2. Winwood PW, Cronin JB, Posthumus LR, Finlayson SJ, Gill ND, Keogh JWL. Strongman vs. traditional resistance training effects on muscular function and performance. J Strength Cond Res. 2015;29(2):429-439. doi:10.1519/JSC.0000000000000629.
@@ -99,7 +105,7 @@ Incluir al pie una sección claramente legible llamada “Referencias”, sobre 
 
 ## Importante
 
-No utilizar estética de CrossFit. No representar esfuerzo extremo. No mostrar levantadores de élite. El protagonista debe parecer una persona sana realizando entrenamiento terapéutico. No inventar referencias adicionales ni modificar los DOI. No añadir porcentajes ni cifras de eficacia. Todo el texto debe estar perfectamente escrito en español, con tildes y signos de apertura, y todas las referencias deben ser legibles en una pantalla de teléfono móvil. La infografía debe transmitir rigor científico, claridad y elegancia editorial, como si fuera una figura publicada en una revisión narrativa de una revista médica.
+No utilizar estética de CrossFit. No representar esfuerzo extremo. No mostrar levantadores de élite. El protagonista debe parecer una persona sana realizando entrenamiento terapéutico. No inventar referencias adicionales ni modificar los DOI. No añadir porcentajes ni cifras de eficacia. El naranja es acento editorial, nunca señal de peligro o de error. Todo el texto debe estar perfectamente escrito en español, con tildes y signos de apertura, y todas las referencias deben ser legibles en una pantalla de teléfono móvil. La infografía debe transmitir rigor científico, claridad y elegancia editorial, como si fuera una figura publicada en una revisión narrativa de una revista médica.
 
 ---
 

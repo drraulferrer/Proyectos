@@ -181,7 +181,8 @@ Añadir por publicación:
 
 Rellenar el campo «Texto alternativo» de Instagram en cada imagen. Plantilla:
 
-> Infografía en negro, blanco y naranja titulada «[TÍTULO]». Muestra seis ilustraciones de
+> Infografía sobre fondo negro, con texto en crema y acentos en naranja, titulada
+> «[TÍTULO]». Muestra seis ilustraciones de
 > una persona adulta realizando variantes de [PATRÓN], un bloque con cuatro razones de su
 > versatilidad, un recuadro de variables modificables y una lista de referencias
 > científicas al pie.

@@ -8,7 +8,7 @@ imagen, la guía de estilo visual y los textos de publicación.
 
 | Archivo | Qué es |
 |---|---|
-| [`00-guia-estilo.md`](00-guia-estilo.md) | Sistema visual negro–naranja–blanco: paleta, tipografía, retícula y elementos recurrentes |
+| [`00-guia-estilo.md`](00-guia-estilo.md) | Sistema Kinetic High-Contrast: paleta, tipografía, retícula, profundidad y elementos recurrentes |
 | [`prompts/00-portada.md`](prompts/00-portada.md) | Portada de la serie (fondo negro) |
 | [`prompts/01-sentadilla.md`](prompts/01-sentadilla.md) | Miembro inferior |
 | [`prompts/02-push-up.md`](prompts/02-push-up.md) | Miembro superior |
@@ -30,20 +30,30 @@ imagen, la guía de estilo visual y los textos de publicación.
 
 ## Decisiones de diseño
 
-- **Paleta.** Los prompts originales pedían una paleta biomédica multicolor (azul petróleo,
-  turquesa, verde, mostaza, coral). Se ha sustituido por el esquema **negro, naranja y
-  blanco** de las publicaciones anteriores, que es lo solicitado. Toda referencia a otros
-  colores se ha eliminado y se ha añadido una prohibición explícita en cada prompt, porque
-  los generadores tienden a reintroducir color si no se les cierra la puerta.
-- **Fondos.** Portada y cierre van en negro; las cinco infografías de patrón, en blanco
-  cálido. El texto denso se lee mucho mejor en claro, y la inversión de las piezas de
-  apertura y cierre es un recurso editorial habitual que refuerza la serie en lugar de
-  romperla. Si prefieres las siete en negro, basta con invertir la sección de fondo de cada
-  prompt y cambiar el color del cuerpo de texto.
-- **Identidad de serie.** Banda superior negra, etiqueta `BIG FIVE · SI SOLO PUDIERA ELEGIR
-  UNO`, numerador `PATRÓN 0X / 05` y regla naranja bajo el título. Son los elementos que
-  hacen que las siete piezas se lean como una sola cosa. La portada convierte «Los Big
-  Five» en título principal y deja «Si solo pudiera elegir uno…» como antetítulo.
+- **Sistema visual.** Las siete piezas usan **Kinetic High-Contrast**, importado del
+  proyecto de Google Stitch *big five physio Layouts*: negro puro `#000000`, tarjetas de
+  negro cálido `#171310`, naranja cinético `#FD6242`, crema `#F6F1E7` y Montserrat en
+  exclusiva. Los prompts originales pedían una paleta biomédica multicolor (azul petróleo,
+  turquesa, verde, mostaza, coral); se ha eliminado por completo y cada prompt lleva una
+  prohibición explícita, porque los generadores reintroducen color en cuanto se les deja
+  hueco. El turquesa `#5BD8E1` del sistema tampoco se usa: rompería el acuerdo de negro,
+  naranja y blanco.
+- **Fondos, todos oscuros.** Una versión anterior ponía las infografías densas sobre fondo
+  claro por legibilidad. Se ha revertido: el sistema está construido para negro puro —de
+  ahí que resuelva la profundidad con capas tonales y contornos en lugar de sombras— y
+  mezclarlo con fondos claros lo desmontaba. La legibilidad se compensa con crema sobre
+  negro (contraste muy alto), interlineado de 1,5 en el cuerpo y un mínimo de 16 px, con
+  las referencias subidas desde los 12 px del sistema web.
+- **Escala tipográfica.** Los tokens de Stitch están pensados para un contenedor web de
+  1280 px. Se han multiplicado por ~1,37 para el lienzo de 1080 × 1350 px, que en un móvil
+  se ve reducido a un tercio de su tamaño. El detalle está en la guía de estilo.
+- **Identidad de serie.** Banda superior `#171310`, etiqueta `BIG FIVE · SI SOLO PUDIERA
+  ELEGIR UNO`, numerador `PATRÓN 0X / 05` en píldora de borde naranja y barra naranja bajo
+  el título. La portada convierte «Los Big Five» en título principal y deja «Si solo
+  pudiera elegir uno…» como antetítulo.
+- **Registro visual.** La referencia deja de ser «figura de *Nature Reviews* sobre blanco»
+  y pasa a ser editorial de ciencia del deporte sobre negro. Cambia el registro; no cambian
+  las reglas de rigor, que siguen intactas en cada prompt.
 - **El carry en la retícula.** Es el único patrón que no corresponde a una región, así que
   en la portada ocupa una quinta fila a ancho completo bajo los otros cuatro, etiquetado
   como «cuerpo completo · función global».
