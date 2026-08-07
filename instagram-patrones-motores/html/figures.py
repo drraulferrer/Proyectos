@@ -59,7 +59,19 @@ def _head_from_trunk(hip, neck, dist=8.2, deg=-24):
     return (round(neck[0] + hx * dist, 2), round(neck[1] + hy * dist, 2))
 
 
-def figure(pose, highlight=(), props="", width=4.2, trunk_curve=0.0):
+def _foot(ank, toe, color, w):
+    """Pie en forma de L: del tobillo baja al talón y avanza hasta la punta.
+    Un simple segmento tobillo-punta prolonga la tibia y deja la orientación
+    de la figura ambigua; esto la hace inequívoca."""
+    fx = 1.0 if toe[0] >= ank[0] else -1.0
+    heel = (round(ank[0] - fx * 2.8, 2), toe[1])
+    return (f'<path d="M {ank[0]} {ank[1]} L {heel[0]} {heel[1]} '
+            f'L {toe[0]} {toe[1]}" fill="none" stroke="{color}" '
+            f'stroke-width="{w}" stroke-linecap="round" stroke-linejoin="round"/>')
+
+
+def figure(pose, highlight=(), props="", width=4.2, trunk_curve=0.0,
+           foot=False):
     """Devuelve el contenido SVG de una figura.
 
     pose:        dict de articulaciones -> (x, y)
@@ -67,6 +79,7 @@ def figure(pose, highlight=(), props="", width=4.2, trunk_curve=0.0):
     props:       SVG extra (silla, mancuernas, pared…) dibujado bajo la figura
     trunk_curve: curva el tronco. Positivo = convexidad posterior, es decir
                  raquis en flexión suave. 0 = segmento recto.
+    foot:        dibuja el pie en L, para figuras de pie sobre el suelo.
     """
     p = {k: (v[0], v[1]) for k, v in pose.items()}
     hl = set(highlight)
@@ -88,7 +101,10 @@ def figure(pose, highlight=(), props="", width=4.2, trunk_curve=0.0):
 
     # Extremidades lejanas, atenuadas
     for a, b in FAR:
-        out.append(_line(p, a, b, DIM, width * 0.85))
+        if (a, b) == ("ank2", "toe2") and foot and "ank2" in p and "toe2" in p:
+            out.append(_foot(p["ank2"], p["toe2"], DIM, width * 0.85))
+        else:
+            out.append(_line(p, a, b, DIM, width * 0.85))
 
     # Extremidades cercanas y tronco
     for a, b in NEAR:
@@ -97,6 +113,8 @@ def figure(pose, highlight=(), props="", width=4.2, trunk_curve=0.0):
         if (a, b) == ("neck", "hip") and trunk:
             out.append(f'<path d="{trunk}" fill="none" stroke="{col}" '
                        f'stroke-width="{w}" stroke-linecap="round"/>')
+        elif (a, b) == ("ank", "toe") and foot and "ank" in p and "toe" in p:
+            out.append(_foot(p["ank"], p["toe"], col, w))
         else:
             out.append(_line(p, a, b, col, w))
 
@@ -113,6 +131,7 @@ def figure(pose, highlight=(), props="", width=4.2, trunk_curve=0.0):
 
 
 TRUNK_CURVE = {"hinge": 4.6}
+FOOT = {"squat": True, "hinge": True, "carry": True}
 
 VIEWBOX = {
     "squat": "18 14 66 84",
@@ -413,7 +432,7 @@ def render_set(name):
     curve = TRUNK_CURVE.get(name, 0.0)
     for i, (label, pose, hl, extra) in enumerate(poses):
         inner = DEFS + figure(pose, hl, extra + props.get(i, ""),
-                              trunk_curve=curve)
+                              trunk_curve=curve, foot=FOOT.get(name, False))
         out.append((label, svg(inner, VIEWBOX[name])))
     return out
 
