@@ -1,7 +1,7 @@
-# Textos de Instagram — Serie «Si solo pudiera elegir uno»
+# Textos de Instagram — Serie «Los Big Five»
 
 Pies de foto listos para publicar. Cada uno funciona tanto si publicas el carrusel
-completo como si publicas los seis posts por separado.
+completo como si publicas los siete posts por separado.
 
 ---
 
@@ -16,12 +16,13 @@ No por ser «el mejor». Ningún ejercicio ha demostrado superioridad general so
 Los elegiría por otra cosa: por la facilidad con la que se adaptan, se gradúan y se
 parecen a algo que la persona necesita hacer fuera de la consulta.
 
-Esta serie recorre cuatro:
+Estos son mis Big Five:
 
 → Miembro inferior: la sentadilla
 → Miembro superior: el push-up
 → Cadera y raquis: la bisagra de cadera
 → Región cervical: la flexión craneocervical
+→ Cuerpo completo: el carry
 
 Cada publicación incluye sus variantes, las variables que cambian la demanda y las
 referencias.
@@ -112,12 +113,36 @@ Referencias en la imagen.
 
 ---
 
+## Post 5 — El carry
+
+**El carry: el ejercicio estrella de la función global.**
+
+Caminar cargando peso. Difícil encontrar algo que se parezca más a la vida real, y difícil
+encontrar otro ejercicio que integre en una sola tarea agarre, hombro, escápula, tronco,
+pelvis, marcha y equilibrio.
+
+Farmer, suitcase, front, waiter, overhead. Cambias el peso, la distancia, el tiempo, la
+velocidad, la posición de la carga, la superficie, los cambios de dirección o añades una
+doble tarea cognitiva… y sigue siendo el mismo patrón.
+
+Un dato que me parece elegante: cuando McGill analizó distintos eventos de strongman,
+observó que los de transporte exigían capacidades distintas a los de levantamiento, y
+sugirió que el trabajo de carries complementa los programas de fuerza clásicos.
+
+Su fortaleza no está en caminar con peso, sino en entrenar a la vez estabilidad, fuerza,
+locomoción y capacidad funcional.
+
+Referencias en la imagen.
+
+---
+
 ## Cierre de la serie
 
 **No es el ejercicio. Es lo que puedes hacer con él.**
 
-Cerramos la serie con lo que en realidad la sostenía: los cuatro patrones no están aquí
-por ser los mejores, sino por cuatro criterios que se pueden aplicar a cualquier elección.
+Cerramos los Big Five con lo que en realidad los sostenía: los cinco patrones no están
+aquí por ser los mejores, sino por cuatro criterios que se pueden aplicar a cualquier
+elección.
 
 01 · Transferencia — se parece a algo que la persona necesita hacer.
 02 · Graduabilidad — se hace más fácil o más difícil sin dejar de ser el mismo patrón.
@@ -129,7 +154,7 @@ Elegir un patrón versátil simplifica el programa; no lo sustituye.
 El mejor ejercicio suele ser el que la persona puede hacer, tolera y repite con la dosis
 suficiente.
 
-¿Añadirías un quinto patrón a la lista?
+¿Añadirías un sexto patrón a la lista?
 
 ---
 
@@ -148,6 +173,7 @@ Añadir por publicación:
 - Push-up: `#pushup #flexiones #hombro #escapula`
 - Bisagra de cadera: `#pesomuerto #deadlift #dolorlumbar #cadenaposterior`
 - Flexión craneocervical: `#cervicalgia #controlmotor #cuello`
+- Carry: `#carry #farmerwalk #transportedecarga #agarre #marcha`
 
 ---
 

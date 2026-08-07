@@ -1,6 +1,6 @@
 # PROMPT 1 — LA SENTADILLA
 
-> Patrón 01 / 04. Fondo **blanco cálido**. Con referencias al pie.
+> Patrón 01 / 05. Fondo **blanco cálido**. Con referencias al pie.
 
 ---
 
@@ -11,7 +11,7 @@ Crea una infografía científica vertical para una publicación de Instagram, fo
 
 Estética editorial científica premium, inspirada en las infografías de revistas biomédicas de alto impacto como Nature Reviews: diseño limpio, elegante, académico y contemporáneo, excelente jerarquía visual, líneas finas, flechas limpias, iconografía anatómica minimalista y mucho espacio en blanco. Fondo blanco cálido #FAF7F2. Paleta estricta de tres colores: negro tinta #0B0B0B, blanco cálido #FAF7F2 y naranja señal #F26B0F. Se permiten únicamente derivados neutros del negro para grises tipográficos y de línea (#2B2B2B, #6F6F6F, #D8D4CE) y dos tintes del naranja para el sombreado anatómico (#F9A85F, #FCDCBC). No utilizar azul, turquesa, verde, amarillo, coral ni ningún otro color. Tipografía sans serif moderna. No utilizar estilo de gimnasio comercial, fotografía deportiva agresiva, efectos 3D exagerados, fondos oscuros ni estética fitness.
 
-Colocar en la parte superior una banda negra a sangre que contenga el título en blanco, la palabra “SENTADILLA” en naranja, una etiqueta de serie pequeña en naranja con tracking amplio que diga “SI SOLO PUDIERA ELEGIR UNO”, y en la esquina superior derecha el numerador “PATRÓN 01 / 04” en naranja. Bajo la banda, trazar una regla naranja de 4 px de alto y 120 px de ancho.
+Colocar en la parte superior una banda negra a sangre que contenga el título en blanco, la palabra “SENTADILLA” en naranja, una etiqueta de serie pequeña en naranja con tracking amplio que diga “BIG FIVE · SI SOLO PUDIERA ELEGIR UNO”, y en la esquina superior derecha el numerador “PATRÓN 01 / 05” en naranja. Bajo la banda, trazar una regla naranja de 4 px de alto y 120 px de ancho.
 
 Representar a una misma persona adulta mediante ilustraciones médicas vectoriales semirrealistas, anatómicamente correctas, con contorno negro fino de 1,5 px y relleno blanco, realizando seis variantes progresivas de la sentadilla. Mostrar la progresión de izquierda a derecha o mediante una trayectoria ascendente clara, marcada con una flecha fina naranja:
 

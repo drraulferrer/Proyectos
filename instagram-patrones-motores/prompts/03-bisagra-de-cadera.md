@@ -1,6 +1,6 @@
 # PROMPT 3 — LA BISAGRA DE CADERA
 
-> Patrón 03 / 04. Fondo **blanco cálido**. Con referencias al pie.
+> Patrón 03 / 05. Fondo **blanco cálido**. Con referencias al pie.
 
 ---
 
@@ -15,7 +15,7 @@ Añadir como subtítulo:
 
 Diseño editorial científico premium inspirado en revistas biomédicas de alto impacto: estructura modular, tipografía sans serif moderna, líneas finas, flechas limpias y sensación de precisión científica. Fondo blanco cálido #FAF7F2. Paleta estricta de tres colores: negro tinta #0B0B0B, blanco cálido #FAF7F2 y naranja señal #F26B0F. Se permiten únicamente derivados neutros del negro para grises tipográficos y de línea (#2B2B2B, #6F6F6F, #D8D4CE) y dos tintes del naranja para el sombreado anatómico (#F9A85F, #FCDCBC). No utilizar azul, turquesa, verde, amarillo, coral ni ningún otro color. Figuras anatómicas vectoriales semirrealistas con contorno negro fino de 1,5 px y relleno blanco. Evitar mensajes alarmistas sobre postura, dibujos de columnas dañadas, cruces rojas, lenguaje de protección excesiva, estética fitness o levantamiento competitivo extremo. El naranja se usa como acento editorial y de resaltado anatómico, nunca como señal de peligro o de error.
 
-Colocar en la parte superior una banda negra a sangre que contenga el título en blanco, la palabra “CADERA” en naranja, una etiqueta de serie pequeña en naranja con tracking amplio que diga “SI SOLO PUDIERA ELEGIR UNO”, y en la esquina superior derecha el numerador “PATRÓN 03 / 04” en naranja. Bajo la banda, trazar una regla naranja de 4 px de alto y 120 px de ancho.
+Colocar en la parte superior una banda negra a sangre que contenga el título en blanco, la palabra “CADERA” en naranja, una etiqueta de serie pequeña en naranja con tracking amplio que diga “BIG FIVE · SI SOLO PUDIERA ELEGIR UNO”, y en la esquina superior derecha el numerador “PATRÓN 03 / 05” en naranja. Bajo la banda, trazar una regla naranja de 4 px de alto y 120 px de ancho.
 
 Representar a una misma persona adulta realizando seis variantes relacionadas con la bisagra de cadera:
 

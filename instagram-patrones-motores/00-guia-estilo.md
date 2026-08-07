@@ -1,4 +1,4 @@
-# Guía de estilo visual — Serie «Si solo pudiera elegir uno»
+# Guía de estilo visual — Serie «Los Big Five»
 
 Sistema visual **negro, naranja y blanco** para infografías científicas de Instagram.
 Este archivo es la fuente única de verdad: si cambia un valor aquí, hay que propagarlo a
@@ -42,7 +42,7 @@ sombras de color, efectos 3D, brillos, texturas fotográficas.
 ## 3. Reparto de fondo dentro de la serie
 
 - **Portada y cierre**: fondo negro `#0B0B0B`, texto blanco, acentos naranja.
-- **Las cuatro infografías de patrón**: fondo blanco cálido `#FAF7F2`, texto negro,
+- **Las cinco infografías de patrón**: fondo blanco cálido `#FAF7F2`, texto negro,
   acentos naranja. El texto denso se lee mejor en claro.
 - El vínculo visual entre unas y otras lo dan la banda de título, el naranja y la retícula.
 
@@ -59,9 +59,12 @@ sombras de color, efectos 3D, brillos, texturas fotográficas.
 
 1. **Banda superior**: franja negra a sangre con el título en blanco y la palabra clave
    en naranja. En portada y cierre la franja ocupa el tercio superior.
-2. **Etiqueta de serie**: `SI SOLO PUDIERA ELEGIR UNO` en 14 px, mayúsculas, tracking
-   amplio, color naranja, sobre la banda superior.
-3. **Numerador**: `PATRÓN 01 / 04` arriba a la derecha, naranja, tamaño pequeño.
+2. **Etiqueta de serie**: `BIG FIVE · SI SOLO PUDIERA ELEGIR UNO` en 14 px, mayúsculas,
+   tracking amplio, color naranja, sobre la banda superior. En portada y cierre, donde no
+   hay banda de título, la marca aparece como antetítulo (`SI SOLO PUDIERA ELEGIR UNO…` /
+   `LOS BIG FIVE · CIERRE DE LA SERIE`).
+3. **Numerador**: `PATRÓN 01 / 05` arriba a la derecha, naranja, tamaño pequeño. Solo en
+   las cinco piezas de patrón; portada y cierre no lo llevan.
 4. **Regla de acento**: línea naranja de 4 px de alto y 120 px de ancho bajo el título.
 5. **Retícula modular**: bloques separados por líneas de 1 px `#D8D4CE`, nunca por cajas
    con sombra.

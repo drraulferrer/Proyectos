@@ -1,6 +1,6 @@
 # PROMPT 2 — EL PUSH-UP
 
-> Patrón 02 / 04. Fondo **blanco cálido**. Con referencias al pie.
+> Patrón 02 / 05. Fondo **blanco cálido**. Con referencias al pie.
 
 ---
 
@@ -15,7 +15,7 @@ Añadir como subtítulo:
 
 Utilizar una estética editorial científica premium inspirada en revistas biomédicas de alto impacto: composición limpia, elegante y rigurosa, líneas finas, flechas discretas, iconografía anatómica clara y abundante espacio negativo. Fondo blanco cálido #FAF7F2. Paleta estricta de tres colores: negro tinta #0B0B0B, blanco cálido #FAF7F2 y naranja señal #F26B0F. Se permiten únicamente derivados neutros del negro para grises tipográficos y de línea (#2B2B2B, #6F6F6F, #D8D4CE) y dos tintes del naranja para el sombreado anatómico (#F9A85F, #FCDCBC). No utilizar azul, turquesa, verde, amarillo, coral ni ningún otro color. Tipografía sans serif moderna. Ilustraciones vectoriales semirrealistas con contorno negro fino de 1,5 px y relleno blanco. Evitar estética de gimnasio, culturismo, publicidad deportiva o ilustración infantil.
 
-Colocar en la parte superior una banda negra a sangre que contenga el título en blanco, la palabra “PUSH-UP” en naranja, una etiqueta de serie pequeña en naranja con tracking amplio que diga “SI SOLO PUDIERA ELEGIR UNO”, y en la esquina superior derecha el numerador “PATRÓN 02 / 04” en naranja. Bajo la banda, trazar una regla naranja de 4 px de alto y 120 px de ancho.
+Colocar en la parte superior una banda negra a sangre que contenga el título en blanco, la palabra “PUSH-UP” en naranja, una etiqueta de serie pequeña en naranja con tracking amplio que diga “BIG FIVE · SI SOLO PUDIERA ELEGIR UNO”, y en la esquina superior derecha el numerador “PATRÓN 02 / 05” en naranja. Bajo la banda, trazar una regla naranja de 4 px de alto y 120 px de ancho.
 
 Representar a una misma persona adulta realizando seis variantes progresivas del patrón de empuje horizontal:
 

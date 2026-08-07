@@ -8,10 +8,14 @@
 Crea una portada científica vertical para una publicación de Instagram, formato 4:5,
 resolución 1080 × 1350 px, titulada:
 
-“SI SOLO PUDIERA ELEGIR UNO”
-“Cuatro patrones motores con la mejor relación beneficio–versatilidad”
+“LOS BIG FIVE”
+“Cinco patrones motores con la mejor relación beneficio–versatilidad”
 
-Añadir como subtítulo:
+Añadir como antetítulo, en tamaño menor y color naranja, justo encima del título:
+
+“SI SOLO PUDIERA ELEGIR UNO…”
+
+Añadir como subtítulo, bajo el título:
 
 “No son los mejores ejercicios ni los únicos: son patrones fáciles de adaptar, graduar y trasladar a tareas cotidianas.”
 
@@ -19,11 +23,11 @@ Estética editorial científica premium, inspirada en las infografías de revist
 
 En la parte superior, incluir una etiqueta de serie pequeña en mayúsculas, color naranja, con tracking amplio:
 
-“SERIE · PATRONES MOTORES · 4 PUBLICACIONES”
+“SERIE · PATRONES MOTORES · 5 PUBLICACIONES”
 
 Bajo el título, trazar una regla naranja de 4 px de alto y 120 px de ancho.
 
-Componer el cuerpo central como una retícula de cuatro módulos iguales, separados por líneas finas de 1 px en gris #2B2B2B. Cada módulo contiene, de arriba abajo: un número de orden en naranja, la región corporal en tipografía pequeña de color #D8D4CE, el nombre del patrón en blanco y peso alto, y una ilustración vectorial semirrealista, minimalista y anatómicamente correcta, de una misma persona adulta ejecutando ese patrón, dibujada con contorno blanco fino sobre el fondo negro y un único resaltado naranja en la región implicada.
+Componer el cuerpo central como una retícula de cinco módulos, separados por líneas finas de 1 px en gris #2B2B2B: dos filas de dos módulos y una quinta fila a ancho completo para el módulo 05, que es el único que no corresponde a una región concreta sino al cuerpo entero. Cada módulo contiene, de arriba abajo: un número de orden en naranja, la región corporal en tipografía pequeña de color #D8D4CE, el nombre del patrón en blanco y peso alto, y una ilustración vectorial semirrealista, minimalista y anatómicamente correcta, de una misma persona adulta ejecutando ese patrón, dibujada con contorno blanco fino sobre el fondo negro y un único resaltado naranja en la región implicada.
 
 Módulo 01
 “MIEMBRO INFERIOR”
@@ -44,6 +48,11 @@ Módulo 04
 “REGIÓN CERVICAL”
 “FLEXIÓN CRANEOCERVICAL”
 Silueta de cabeza y cuello de perfil realizando una flexión craneocervical suave, tipo pequeño gesto de asentimiento, con resaltado naranja en la región cervical anterior profunda. No representar una retracción exagerada de toda la cabeza.
+
+Módulo 05, a ancho completo
+“CUERPO COMPLETO · FUNCIÓN GLOBAL”
+“EL CARRY (TRANSPORTE)”
+Silueta caminando con una mancuerna en cada mano, en vista lateral o frontal, con resaltado naranja recorriendo agarre, hombro, tronco, pelvis y pierna de apoyo para sugerir la integración de todo el cuerpo en una sola tarea.
 
 Bajo la retícula, incluir una banda destacada con fondo naranja #F26B0F y texto en negro:
 
