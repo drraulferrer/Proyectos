@@ -1,0 +1,473 @@
+/* ==========================================================================
+   Kinetic High-Contrast — serie «Los Big Five»
+   Tokens del proyecto de Google Stitch «big five physio Layouts», escalados
+   del contenedor de 480 px de la plantilla al lienzo de 1080 × 1350 px (×2,25).
+   ========================================================================== */
+
+:root {
+  /* Color */
+  --pure: #000000;
+  --surface: #171310;
+  --surface-low: #1f1b18;
+  --surface-container: #231f1c;
+  --orange: #fd6242;
+  --orange-deep: #ba4830;
+  --orange-soft: #ffb4a4;
+  --cream: #f6f1e7;
+  --on-surface: #eae1db;
+  --on-surface-variant: #e2bfb7;
+  --outline: #a98a83;
+  --dim: #786d5e;
+
+  /* Tipografía (escala ×2,25 sobre la plantilla) */
+  --fs-display: 92px;
+  --fs-title: 48px;
+  --fs-h2: 30px;
+  --fs-h3: 25px;
+  --fs-body: 22px;
+  --fs-label: 21px;
+  --fs-ref: 18px;
+
+  /* Espaciado (8 px base) */
+  --edge: 48px;
+  --stack-xs: 8px;
+  --stack-sm: 12px;
+  --stack-md: 16px;
+  --stack-lg: 40px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #111;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ------------------------------------------------------------- el lienzo */
+
+.post {
+  position: relative;
+  width: 1080px;
+  height: 1350px;
+  background: var(--pure);
+  color: var(--on-surface);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 0 auto 40px;
+}
+
+/* Trama diagonal del sistema */
+.post::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    45deg, transparent, transparent 22px,
+    rgba(253, 98, 66, .05) 22px, rgba(253, 98, 66, .05) 27px);
+}
+
+.post > * { position: relative; z-index: 1; }
+
+/* ------------------------------------------------------------- cabecera */
+
+.hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px var(--edge);
+  border-bottom: 4px solid var(--orange);
+  flex-shrink: 0;
+}
+
+.hd-num {
+  font-size: var(--fs-h3);
+  font-weight: 900;
+  letter-spacing: -.01em;
+  color: var(--orange);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hd-num .plus {
+  width: 22px; height: 22px; position: relative; display: inline-block;
+}
+.hd-num .plus::before, .hd-num .plus::after {
+  content: ''; position: absolute; background: var(--orange);
+}
+.hd-num .plus::before { width: 22px; height: 4px; top: 9px; left: 0; }
+.hd-num .plus::after { width: 4px; height: 22px; left: 9px; top: 0; }
+
+.hd-tag {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+/* ---------------------------------------------------------------- cuerpo */
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--stack-md) var(--edge) 0;
+  min-height: 0;
+}
+
+/* ---------------------------------------------------------------- título */
+
+.title {
+  font-size: var(--fs-title);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.title .hi {
+  background: var(--orange);
+  color: var(--pure);
+  padding: 0 12px;
+  display: inline-block;
+  margin-top: 8px;
+}
+.title.display { font-size: var(--fs-display); }
+
+.kicker {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: var(--stack-sm);
+}
+
+.sub {
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--on-surface-variant);
+  margin-top: 10px;
+  max-width: 94%;
+}
+
+/* ------------------------------------------------------------- tira de figuras */
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border: 4px solid var(--orange);
+  margin-top: 14px;
+  background: var(--pure);
+  flex-shrink: 0;
+}
+
+.cell {
+  border-right: 2px solid rgba(120, 109, 94, .55);
+  padding: 10px 6px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.cell:last-child { border-right: 0; }
+
+.cell .n {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--orange);
+  align-self: flex-start;
+  margin-left: 4px;
+}
+
+.cell svg { width: 100%; height: 128px; display: block; }
+
+.cell .cap {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: .01em;
+  text-align: center;
+  color: var(--on-surface-variant);
+  text-transform: uppercase;
+  margin-top: 4px;
+  hyphens: auto;
+}
+
+.strip-note {
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--outline);
+  border-left: 6px solid var(--orange);
+  padding-left: 14px;
+  margin-top: 10px;
+}
+
+/* Etiqueta anatómica superpuesta */
+.anat-tag {
+  position: absolute;
+  right: var(--edge);
+  transform: translateY(-50%);
+  background: var(--orange);
+  color: var(--pure);
+  border: 3px solid var(--pure);
+  padding: 6px 14px;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  z-index: 3;
+}
+
+/* ---------------------------------------------------------------- tarjetas */
+
+.h2 {
+  font-size: var(--fs-h2);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-top: 16px;
+  margin-bottom: 2px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.card {
+  background: var(--surface-low);
+  border-left: 10px solid var(--orange);
+  padding: 8px 14px 10px;
+}
+
+.card h3 {
+  font-size: var(--fs-h3);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+
+.card p {
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.24;
+  color: var(--on-surface-variant);
+}
+
+/* Lista numerada (pieza de cierre) */
+.rows { margin-top: var(--stack-sm); }
+.row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 2px solid rgba(120, 109, 94, .35);
+}
+.row:last-child { border-bottom: 0; }
+.row .num {
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: .9;
+  min-width: 76px;
+}
+.row h3 { font-size: var(--fs-h2); font-weight: 800; color: var(--cream); }
+.row p {
+  font-size: var(--fs-body);
+  line-height: 1.35;
+  color: var(--on-surface-variant);
+  margin-top: 4px;
+}
+
+/* ---------------------------------------------------------------- recuadro */
+
+.vars {
+  background: var(--surface-low);
+  border-left: 10px solid var(--orange);
+  padding: 9px 16px 11px;
+  margin-top: 10px;
+}
+.vars .lbl {
+  font-size: var(--fs-label);
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+.vars .items {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--on-surface-variant);
+}
+.vars .items b { color: var(--orange); font-weight: 700; padding: 0 6px; }
+
+/* ---------------------------------------------------------------- banda */
+
+.band {
+  background: var(--orange);
+  color: var(--pure);
+  padding: 10px 16px;
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.22;
+}
+.band .q { font-size: 46px; font-weight: 900; line-height: .6; }
+
+.note {
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--outline);
+  border-left: 6px solid var(--orange);
+  padding-left: 14px;
+  margin-top: 10px;
+}
+
+.concl {
+  font-size: 23px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--cream);
+  margin-top: 10px;
+}
+
+/* ---------------------------------------------------------------- referencias */
+
+.refs {
+  background: var(--surface);
+  border-top: 4px solid var(--orange);
+  padding: 10px var(--edge) 12px;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+.refs .lbl {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+.refs ol { list-style: none; }
+.refs li {
+  font-size: var(--fs-ref);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--on-surface-variant);
+  padding-left: 26px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.refs li::before {
+  content: counter(r) '.';
+  counter-increment: r;
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 900;
+}
+.refs ol { counter-reset: r; }
+
+/* ---------------------------------------------------------------- pie */
+
+.ft {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px var(--edge);
+  border-top: 4px solid var(--orange);
+  flex-shrink: 0;
+}
+.ft span {
+  font-size: var(--fs-label);
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.ft .brand { color: var(--orange); }
+.ft .save { color: var(--on-surface); }
+
+/* ---------------------------------------------------------------- portada */
+
+.grid5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--stack-sm);
+  margin-top: var(--stack-md);
+}
+.tile {
+  background: var(--surface-low);
+  border-left: 10px solid var(--orange);
+  padding: 20px 20px 14px;
+  display: flex;
+  flex-direction: column;
+}
+.tile.wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 28px; }
+.tile .n {
+  font-size: 26px; font-weight: 900; color: var(--orange); line-height: 1;
+}
+.tile .region {
+  font-size: 20px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--outline); margin-top: 8px;
+}
+.tile h3 {
+  font-size: 34px; font-weight: 900; line-height: 1.02;
+  text-transform: uppercase; color: var(--cream); margin-top: 2px;
+  letter-spacing: -.01em;
+}
+.tile svg { width: 100%; height: 126px; margin-top: 4px; }
+.tile.wide svg { width: 190px; height: 130px; margin-top: 0; flex-shrink: 0; }
+.tile.wide .txt { flex: 1; }
+
+.picto-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: var(--stack-md);
+  border-top: 2px solid rgba(120, 109, 94, .4);
+  padding-top: var(--stack-sm);
+}
+.picto { display: flex; flex-direction: column; align-items: center; }
+.picto svg { width: 100%; height: 92px; }
+.picto span {
+  font-size: 18px; font-weight: 700; text-transform: uppercase;
+  color: var(--on-surface-variant); text-align: center; line-height: 1.1;
+  margin-top: 4px;
+}
+
+/* Piezas con nota de prudencia: un punto más de densidad, sin bajar de 16 px */
+.post.dense .card p { font-size: 21px; line-height: 1.22; }
+.post.dense .card h3 { font-size: 24px; }
+.post.dense .cell svg { height: 100px; }
+.post.dense .refs li { line-height: 1.16; margin-bottom: 3px; }
+.post.dense .concl { margin-top: 6px; font-size: 22px; }
+.post.dense .strip { margin-top: 10px; }
+.post.dense .band { padding: 9px 16px; }
+
+/* La flexión craneocervical tiene el subtítulo y las citas más largos */
+.post.ccf .cell svg { height: 84px; }
+.post.ccf .refs li { line-height: 1.14; }
+
+/* Cierre: conclusión destacada y línea final */
+.concl.big { font-size: 34px; line-height: 1.2; margin-top: auto; }
+.endnote {
+  font-size: 19px; font-weight: 500; color: var(--outline);
+  margin-top: 14px; padding-bottom: 4px;
+}
+.picto-row { margin-top: 20px; }

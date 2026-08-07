@@ -17,16 +17,24 @@ imagen, la guía de estilo visual y los textos de publicación.
 | [`prompts/05-carry.md`](prompts/05-carry.md) | Cuerpo completo / función global |
 | [`prompts/06-mensaje-final.md`](prompts/06-mensaje-final.md) | Mensaje final de cierre (fondo negro) |
 | [`textos-instagram.md`](textos-instagram.md) | Pies de foto, hashtags y textos alternativos |
+| [`html/`](html/) | Maquetación en HTML y exportación a PNG de las siete piezas |
+| [`png/`](png/) | Los siete PNG finales a 1080 × 1350 px, listos para publicar |
 
 ## Cómo usarlo
 
-1. Copia el contenido de un archivo de `prompts/` (el texto bajo la línea horizontal) y
-   pégalo en el generador de imagen que uses.
-2. Genera en 1080 × 1350 px. Revisa siempre el texto de la imagen resultante: los
-   generadores deforman tildes, `¿` y DOI con frecuencia.
-3. Publica como carrusel de siete diapositivas en el orden 00 → 06, o como siete
-   publicaciones independientes.
-4. Copia el pie de foto correspondiente desde `textos-instagram.md`.
+Hay dos caminos, y no se excluyen.
+
+**Vía rápida: los PNG ya maquetados.** En [`png/`](png/) están las siete piezas a
+1080 × 1350 px, generadas desde HTML con el sistema visual aplicado. Se publican tal
+cual, en carrusel del 00 al 06 o como siete posts sueltos, con los pies de foto de
+`textos-instagram.md`. Para cambiar un texto o un color, se edita `html/` y se vuelve
+a exportar; el proceso está en [`html/README.md`](html/README.md).
+
+**Vía generativa: los prompts.** Si prefieres ilustración médica semirrealista en lugar
+de las figuras esquemáticas, copia el contenido de un archivo de `prompts/` (el texto
+bajo la línea horizontal) y pégalo en tu generador de imagen. Genera en 1080 × 1350 px
+y revisa siempre el resultado: los generadores deforman tildes, `¿` y DOI con
+frecuencia.
 
 ## Decisiones de diseño
 
