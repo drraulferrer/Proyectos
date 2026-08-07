@@ -211,11 +211,11 @@ SQUAT_PROPS = {4: dumbbell(52, 52, 0.9)}
 
 def _pu(head, neck, sho, elb, wri, hip, kne, ank):
     return dict(head=head, neck=neck, sho=sho, elb=elb, wri=wri, hip=hip,
-                kne=kne, ank=ank, toe=(ank[0] - 5, ank[1] + 3),
+                kne=kne, ank=ank, toe=(ank[0] - 3, ank[1] + 5),
                 sho2=(sho[0], sho[1] + 2.4), elb2=(elb[0] - 1, elb[1] + 2.6),
                 wri2=(wri[0] - 1, wri[1] + 2.6),
                 kne2=(kne[0], kne[1] + 2.4), ank2=(ank[0], ank[1] + 2.4),
-                toe2=(ank[0] - 5, ank[1] + 5))
+                toe2=(ank[0] - 3, ank[1] + 7))
 
 
 PUSHUP = [
@@ -251,43 +251,45 @@ PUSHUP_PROPS = {}
 # ---------------------------------------------------------- BISAGRA DE CADERA
 
 def _hh(neck, sho, elb, wri, hip, kne, ank):
+    """Bisagra en vista lateral. La figura mira a la izquierda: cabeza y punta
+    del pie apuntan en esa dirección, y los brazos cuelgan verticales."""
     return dict(head=_head_from_trunk(hip, neck), neck=neck, sho=sho,
                 elb=elb, wri=wri, hip=hip, kne=kne, ank=ank,
-                toe=(ank[0] + 7, ank[1] + 2),
+                toe=(ank[0] - 7, ank[1] + 2),
                 sho2=(sho[0] + 2.4, sho[1] + 1.6), elb2=(elb[0] + 2.6, elb[1] + 1.6),
                 wri2=(wri[0] + 2.6, wri[1] + 1.6),
                 kne2=(kne[0] - 3.4, kne[1] + 1), ank2=(ank[0] - 3.6, ank[1]),
-                toe2=(ank[0] + 3.4, ank[1] + 2))
+                toe2=(ank[0] - 10.4, ank[1] + 2))
 
 
 HINGE = [
     ("Frente a la pared",
-     _hh((34, 44), (35, 46), (42, 52), (48, 56), (54, 56), (54, 74), (50, 90)),
+     _hh((34, 44), (36, 47), (37, 59), (38, 70), (54, 56), (53, 74), (50, 90)),
      ("neck-hip", "hip-kne"), wall(74, 40, 92) + floor()),
     ("Con pica",
-     _hh((32, 44), (33, 46), (40, 52), (46, 58), (52, 56), (53, 74), (50, 90)),
+     _hh((34, 44), (36, 47), (37, 59), (38, 70), (54, 56), (53, 74), (50, 90)),
      ("neck-hip",),
-     '<line x1="28" y1="38" x2="56" y2="66" stroke="#786D5E" '
-     'stroke-width="1.8" stroke-linecap="round"/>' + floor()),
+     '<line x1="25" y1="36" x2="59" y2="63" stroke="#786D5E" '
+     'stroke-width="2.4" stroke-linecap="round"/>' + floor()),
     ("Kettlebell elevada",
-     _hh((34, 46), (35, 48), (42, 56), (46, 64), (54, 58), (54, 74), (50, 90)),
-     ("neck-hip", "hip-kne"), box(38, 70, 20, 22) + floor()),
+     _hh((34, 46), (36, 49), (37, 61), (38, 71), (54, 58), (53, 75), (50, 90)),
+     ("neck-hip", "hip-kne"), box(30, 76, 17, 16) + floor()),
     ("Kettlebell suelo",
-     _hh((32, 50), (33, 52), (40, 62), (44, 74), (52, 62), (53, 76), (50, 90)),
+     _hh((32, 50), (34, 53), (35, 65), (36, 78), (52, 62), (52, 77), (50, 90)),
      ("neck-hip", "hip-kne"), floor()),
     ("Peso muerto rumano",
-     _hh((34, 44), (35, 46), (41, 56), (44, 66), (54, 54), (55, 74), (52, 90)),
+     _hh((34, 44), (36, 47), (37, 58), (38, 68), (54, 54), (54, 72), (52, 90)),
      ("hip-kne", "neck-hip"), floor()),
     ("Unilateral",
      dict(head=_head_from_trunk((54, 54), (34, 46)), neck=(34, 46),
-          sho=(35, 48), elb=(41, 58), wri=(44, 68),
-          hip=(54, 54), kne=(54, 72), ank=(51, 90), toe=(58, 92),
-          sho2=(37, 49), elb2=(43, 59), wri2=(46, 69),
-          kne2=(66, 48), ank2=(78, 44), toe2=(84, 46)),
+          sho=(36, 49), elb=(37, 61), wri=(38, 71),
+          hip=(54, 54), kne=(54, 72), ank=(51, 90), toe=(44, 92),
+          sho2=(38, 50), elb2=(39, 62), wri2=(40, 72),
+          kne2=(66, 48), ank2=(78, 44), toe2=(85, 42)),
      ("hip-kne", "neck-hip"), floor()),
 ]
-HINGE_PROPS = {2: kettlebell(46, 64, 0.9), 3: kettlebell(44, 76, 0.9),
-               4: dumbbell(44, 66, 0.85), 5: dumbbell(44, 68, 0.8)}
+HINGE_PROPS = {2: kettlebell(38, 73, 0.9), 3: kettlebell(36, 80, 0.9),
+               4: dumbbell(38, 70, 0.85), 5: dumbbell(38, 73, 0.8)}
 
 # ------------------------------------------------------- FLEXIÓN CRANEOCERVICAL
 

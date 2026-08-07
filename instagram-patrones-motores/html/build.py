@@ -13,7 +13,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "dist")
 
 SERIE = "BIG FIVE · SI SOLO PUDIERA ELEGIR UNO"
-BRAND = "@DRRAULFERRER"
+BRAND = "@_RAULFERRER"
 SAVE = "GUARDA ESTE POST"
 
 
