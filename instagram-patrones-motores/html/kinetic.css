@@ -471,3 +471,98 @@ body {
   margin-top: 14px; padding-bottom: 4px;
 }
 .picto-row { margin-top: 20px; }
+
+/* ==========================================================================
+   Pieza «¿Push o pull?» — componentes propios
+   ========================================================================== */
+
+/* Tira doble: empuje arriba, tracción abajo */
+.duo { margin-top: 12px; border: 4px solid var(--orange); }
+.duo-row {
+  display: grid;
+  grid-template-columns: 88px repeat(4, 1fr);
+  border-bottom: 3px solid var(--orange);
+}
+.duo-row:last-child { border-bottom: 0; }
+.duo-lbl {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface-low);
+  font-size: 22px; font-weight: 900; letter-spacing: .08em;
+  color: var(--orange); text-transform: uppercase;
+  writing-mode: vertical-rl; transform: rotate(180deg);
+}
+.duo-cell {
+  border-right: 2px solid rgba(120, 109, 94, .4);
+  padding: 6px 4px 8px; text-align: center;
+}
+.duo-cell:last-child { border-right: 0; }
+.duo-cell svg { width: 100%; height: 236px; display: block; }
+.duo-cell .cap {
+  font-size: 16px; font-weight: 700; text-transform: uppercase;
+  color: var(--on-surface-variant); line-height: 1.1; margin-top: 2px;
+}
+.duo-cell .load {
+  font-size: 17px; font-weight: 900; color: var(--orange);
+  letter-spacing: .04em; margin-top: 3px;
+}
+
+/* Matriz cadena × dirección */
+.matrix {
+  display: grid; grid-template-columns: 150px 1fr 1fr;
+  margin-top: 12px; border: 4px solid var(--orange);
+}
+.matrix > div {
+  padding: 12px 14px;
+  border-right: 2px solid rgba(120, 109, 94, .4);
+  border-bottom: 2px solid rgba(120, 109, 94, .4);
+}
+.matrix > div:nth-child(3n) { border-right: 0; }
+.matrix > div:nth-last-child(-n+3) { border-bottom: 0; }
+.matrix .mh {
+  font-size: 20px; font-weight: 900; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--orange); background: var(--surface-low);
+  display: flex; align-items: center;
+}
+.matrix .mt { font-size: 26px; font-weight: 800; color: var(--cream); line-height: 1.1; }
+.matrix .ms {
+  font-size: 19px; color: var(--on-surface-variant);
+  margin-top: 3px; line-height: 1.2;
+}
+
+/* Aviso de máximo contraste */
+.warn {
+  background: var(--orange); color: var(--pure);
+  padding: 14px 18px; margin-top: 12px;
+}
+.warn .t {
+  font-size: 27px; font-weight: 900; text-transform: uppercase;
+  letter-spacing: .02em; line-height: 1.1;
+}
+.warn .d { font-size: 21px; font-weight: 600; line-height: 1.28; margin-top: 5px; }
+
+/* Lista compacta de hallazgos */
+.finds { margin-top: 10px; }
+.find {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 10px 0; border-bottom: 2px solid rgba(120, 109, 94, .3);
+}
+.find:last-child { border-bottom: 0; }
+.find .n {
+  font-size: 30px; font-weight: 900; color: var(--orange);
+  line-height: 1; min-width: 44px;
+}
+.find h3 { font-size: 24px; font-weight: 800; color: var(--cream); line-height: 1.15; }
+.find p {
+  font-size: 21px; line-height: 1.26; color: var(--on-surface-variant);
+  margin-top: 2px;
+}
+
+/* Empuja el último bloque al pie del lienzo */
+.to-bottom { margin-top: auto; }
+.swipe {
+  font-size: 24px; font-weight: 900; color: var(--orange);
+  text-align: right; letter-spacing: .04em; padding-bottom: 6px;
+}
+.post.pp .find { padding: 20px 0; }
+.post.pp .matrix > div { padding: 22px 16px; }
+.post.pp .duo-cell { padding: 8px 4px 10px; }

@@ -181,6 +181,21 @@ def box(x, y, w, h, color=DIM, sw=2.4):
             f'stroke="{color}" stroke-width="{sw}"/>')
 
 
+def bar(y=12, x1=26, x2=74, color=DIM, w=3.0):
+    """Barra fija horizontal."""
+    return (f'<line x1="{x1}" y1="{y}" x2="{x2}" y2="{y}" stroke="{color}" '
+            f'stroke-width="{w}" stroke-linecap="round"/>')
+
+
+def band_line(x1, y1, x2, y2, color=ORANGE):
+    """Goma elástica, con una pequeña anclaje al final."""
+    return (f'<path d="M {x1} {y1} Q {(x1+x2)/2} {(y1+y2)/2 - 4} {x2} {y2}" '
+            f'fill="none" stroke="{color}" stroke-width="2.2" '
+            f'stroke-linecap="round"/>'
+            f'<line x1="{x2}" y1="{y2-6}" x2="{x2}" y2="{y2+6}" stroke="{DIM}" '
+            f'stroke-width="2.6" stroke-linecap="round"/>')
+
+
 def chair(x=52, y=92, color=DIM):
     return (f'<path d="M {x} {y} L {x} {y-22} L {x+22} {y-22} M {x+22} {y-22} '
             f'L {x+22} {y-44} M {x+22} {y-22} L {x+22} {y}" fill="none" '
@@ -412,6 +427,40 @@ CARRY = [
 CARRY_PROPS = {}
 
 
+# --------------------------------------------------------------------- PULL
+
+PULL = [
+    ("Remo con goma",
+     dict(head=(46, 26), neck=(46, 34), sho=(46, 36), elb=(40, 48), wri=(52, 48),
+          hip=(47, 58), kne=(48, 74), ank=(46, 90), toe=(39, 92),
+          sho2=(48, 37), elb2=(42, 49), wri2=(54, 49),
+          kne2=(44, 75), ank2=(42, 89), toe2=(35, 91)),
+     ("sho-elb", "elb-wri", "neck-hip"),
+     band_line(52, 48, 90, 45) + floor(), "20 14 80 84"),
+    ("Remo invertido",
+     dict(head=(24, 54), neck=(30, 56), sho=(32, 57), elb=(38, 50), wri=(44, 44),
+          hip=(56, 64), kne=(72, 72), ank=(88, 80), toe=(94, 84),
+          sho2=(32, 59), elb2=(38, 52), wri2=(44, 46),
+          kne2=(72, 74), ank2=(88, 82), toe2=(94, 86)),
+     ("sho-elb", "elb-wri", "neck-hip"),
+     bar(43, 30, 58) + floor(90), "12 34 90 62"),
+    ("Dominada asistida",
+     dict(head=(50, 30), neck=(50, 36), sho=(50, 38), elb=(45, 26), wri=(43, 14),
+          hip=(50, 58), kne=(52, 72), ank=(50, 84), toe=(57, 86),
+          sho2=(52, 39), elb2=(56, 27), wri2=(57, 14),
+          kne2=(47, 73), ank2=(45, 85), toe2=(52, 87)),
+     ("sho-elb", "elb-wri", "neck-hip"),
+     bar(13) + box(37, 87, 26, 6), "24 6 52 90"),
+    ("Dominada",
+     dict(head=(50, 30), neck=(50, 36), sho=(50, 38), elb=(45, 25), wri=(43, 14),
+          hip=(50, 60), kne=(55, 76), ank=(50, 88), toe=(57, 90),
+          sho2=(52, 39), elb2=(56, 26), wri2=(57, 14),
+          kne2=(46, 77), ank2=(42, 88), toe2=(49, 90)),
+     ("sho-elb", "elb-wri", "neck-hip"),
+     bar(13), "24 6 52 90"),
+]
+
+
 DEFS = ('<defs><marker id="ar" viewBox="0 0 10 10" refX="6" refY="5" '
         'markerWidth="5" markerHeight="5" orient="auto-start-reverse">'
         '<path d="M 0 0 L 10 5 L 0 10 z" fill="#FD6242"/></marker></defs>')
@@ -424,6 +473,10 @@ def render_set(name):
         for label, tilt, extras, surf, lift in CCF:
             out.append((label, svg(DEFS + head_neck(tilt, True, extras, surf, lift),
                                    VIEWBOX["ccf"])))
+        return out
+    if name == "pull":
+        for label, pose, hl, extra, vb in PULL:
+            out.append((label, svg(DEFS + figure(pose, hl, extra, foot=True), vb)))
         return out
     table = {"squat": (SQUAT, SQUAT_PROPS), "pushup": (PUSHUP, PUSHUP_PROPS),
              "hinge": (HINGE, HINGE_PROPS), "carry": (CARRY, CARRY_PROPS)}

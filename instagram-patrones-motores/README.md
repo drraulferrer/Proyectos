@@ -1,4 +1,4 @@
-# Serie de Instagram — «Los Big Five»
+# Instagram — «Los Big Five» y sus secuelas
 
 Serie de siete piezas sobre los patrones motores con mejor relación beneficio–versatilidad:
 cuatro por región corporal y uno de cuerpo completo. Contiene los prompts de generación de
@@ -18,7 +18,7 @@ imagen, la guía de estilo visual y los textos de publicación.
 | [`prompts/06-mensaje-final.md`](prompts/06-mensaje-final.md) | Mensaje final de cierre (fondo negro) |
 | [`textos-instagram.md`](textos-instagram.md) | Pies de foto, hashtags y textos alternativos |
 | [`html/`](html/) | Maquetación en HTML y exportación a PNG de las siete piezas |
-| [`png/`](png/) | Los siete PNG finales a 1080 × 1350 px, listos para publicar |
+| [`png/`](png/) | Los PNG finales a 1080 × 1350 px, listos para publicar |
 
 ## Cómo usarlo
 
@@ -94,3 +94,29 @@ prefieres evitar la contradicción dentro del mismo carrusel, una alternativa qu
 la fuerza del titular sería:
 
 > «Pocos patrones reúnen tanta transferencia a la vida diaria en una sola tarea.»
+
+---
+
+## Post 2 — «¿Push o pull?»
+
+Secuela publicada a raíz de los comentarios del carrusel de los Big Five, donde varios
+lectores echaron en falta los patrones de tracción frente al push-up.
+
+| Pieza | Contenido |
+|---|---|
+| `png/07-pushpull-portada.png` | La polémica y la tira doble empuje / tracción |
+| `png/08-pushpull-literatura.png` | Cuatro hallazgos y el aviso de que la literatura no es clínica |
+| `png/09-pushpull-versatilidad.png` | Matriz cadena × dirección y tres preguntas para elegir |
+
+Tesis: la dirección del vector no es el eje que decide. Empuje y tracción son igual de
+versátiles y cubren el mismo rango de exigencia; lo que cambia es el material necesario
+para recorrerlo. El equivalente real del push-up de pared no es la dominada, es el remo
+con goma.
+
+Las cuatro referencias se verificaron en PubMed antes de maquetar. Blume 2015 no tiene
+DOI: se cita con su PMCID, sin inventarlo.
+
+El aviso de que la literatura **no es clínica** ocupa el bloque de máximo contraste de la
+pieza 08, no una nota al pie: los dos trabajos sobre dominadas miden 11 y 19 hombres
+jóvenes sanos y entrenados, con EMG y modelos musculoesqueléticos, y ninguno midió dolor
+ni lesiones.

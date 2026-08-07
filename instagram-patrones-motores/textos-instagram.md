@@ -230,3 +230,52 @@ Rellenar el campo «Texto alternativo» de Instagram en cada imagen. Plantilla:
 > una persona adulta realizando variantes de [PATRÓN], un bloque con cuatro razones de su
 > versatilidad, un recuadro de variables modificables y una lista de referencias
 > científicas al pie.
+
+---
+
+# Post 2 — «¿Push o pull?»
+
+Carrusel de tres diapositivas (`png/07`, `08`, `09`), respuesta a los comentarios del
+post de los Big Five. 2.110 caracteres de 2.200 y 12 etiquetas de 30.
+
+```
+💬 En el post de los Big Five metí el push-up como patrón de miembro superior y varios me disteis caña: «¿y las dominadas?», «¿y el remo?». Tenéis parte de razón, pero no por el motivo que parece.
+
+Fui a mirar qué dice la literatura 👇
+
+1️⃣ Ningún modo de ejercicio gana. 34 pacientes con dolor subacromial, excéntrico frente a concéntrico, 8 semanas: sin diferencias entre grupos. Los dos mejoraron.
+
+2️⃣ Ni siquiera la cirugía gana al ejercicio. La revisión Cochrane de reparación de manguito concluye que probablemente aporta poca o ninguna mejora frente al tratamiento no quirúrgico con ejercicio.
+
+3️⃣ Dentro de una misma familia hay más variación que entre familias. Tres agarres de la misma dominada cargan estructuras distintas: el supinado es el que más carga proporcionalmente el manguito.
+
+4️⃣ Y un detalle cambia el mapa: agarre pronado frente a neutro, 60 % frente a 37 % de activación máxima en trapecio medio. Mismo ejercicio, otro reparto.
+
+⚠️ Aviso importante: los dos trabajos sobre dominadas miden 11 y 19 hombres jóvenes, sanos y entrenados, con electromiografía y modelos musculoesqueléticos. Describen mecánica, NO pronóstico. Ninguno midió dolor ni lesiones. Que algo cargue más una estructura no significa que sea peor.
+
+🔑 La clave: empuje y tracción no compiten. Los dos son igual de versátiles y cubren el rango entero de exigencia. Lo que cambia es CON QUÉ lo recorres.
+
+El push-up se regresa hasta la pared sin material ninguno. La dominada empieza en el 100 % del peso corporal y no se regresa sin barra baja o goma.
+
+Por eso el equivalente real del push-up de pared no es la dominada: es el remo con goma.
+
+🎯 No hay ejercicio bueno porque sí. Hay ejercicios que puedes ajustar a la persona que tienes delante y ejercicios que no. La versatilidad no es un adorno: es lo que hace utilizable un ejercicio.
+
+📚 Referencias en la última diapositiva.
+
+¿Qué patrón de tracción usáis cuando no hay material? Te leo 👇
+
+#fisioterapia #ejercicioterapeutico #rehabilitacion #hombro #manguitorotador #dominadas #pushup #remo #fisioterapiabasadaenlaevidencia #fuerza #readaptacion #patronesmotores
+```
+
+## Texto alternativo
+
+- **07 · Portada**: Infografía sobre fondo negro titulada «¿Push o pull?». Muestra dos
+  filas de ilustraciones: cuatro variantes de empuje (pared, inclinado, rodillas, suelo)
+  y cuatro de tracción (goma, remo invertido, dominada asistida, dominada), cada una con
+  su nivel de exigencia.
+- **08 · La literatura**: Cuatro hallazgos numerados sobre estudios de ejercicio de
+  hombro, un aviso destacado de que la literatura no es clínica, y cuatro referencias
+  científicas al pie.
+- **09 · La versatilidad**: Matriz de cadena cinética abierta y cerrada cruzada con
+  empuje y tracción, y tres preguntas para elegir un ejercicio.
