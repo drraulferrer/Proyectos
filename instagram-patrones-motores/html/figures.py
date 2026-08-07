@@ -4,6 +4,7 @@ Cada pose se define por coordenadas articulares en un espacio 0-100 y se
 renderiza como SVG de trazo limpio: contorno crema sobre fondo negro, con los
 segmentos en foco resaltados en naranja cinético.
 """
+import math
 
 CREAM = "#EAE1DB"
 DIM = "#786D5E"
@@ -30,21 +31,60 @@ def _line(p, a, b, color, w, opacity=1.0):
             f'stroke-width="{w}" stroke-linecap="round" opacity="{opacity}"/>')
 
 
-def figure(pose, highlight=(), props="", width=4.2, scale=1.0):
+def _unit(a, b):
+    """Vector unitario de a hacia b."""
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    L = math.hypot(dx, dy) or 1.0
+    return dx / L, dy / L
+
+
+def _trunk_path(hip, neck, curve):
+    """Tronco como curva suave. La convexidad apunta al lado posterior, de modo
+    que el raquis se lee en flexión ligera y no en extensión."""
+    ux, uy = _unit(hip, neck)
+    px, py = -uy, ux                      # perpendicular posterior
+    mx, my = (hip[0] + neck[0]) / 2, (hip[1] + neck[1]) / 2
+    cx, cy = mx + px * curve, my + py * curve
+    return (f"M {hip[0]} {hip[1]} Q {round(cx, 2)} {round(cy, 2)} "
+            f"{neck[0]} {neck[1]}")
+
+
+def _head_from_trunk(hip, neck, dist=8.2, deg=-24):
+    """Cabeza alineada con el eje del tronco y girada hacia la flexión
+    craneocervical, para que no quede la barbilla levantada."""
+    ux, uy = _unit(hip, neck)
+    a = math.radians(deg)
+    hx = ux * math.cos(a) - uy * math.sin(a)
+    hy = ux * math.sin(a) + uy * math.cos(a)
+    return (round(neck[0] + hx * dist, 2), round(neck[1] + hy * dist, 2))
+
+
+def figure(pose, highlight=(), props="", width=4.2, trunk_curve=0.0):
     """Devuelve el contenido SVG de una figura.
 
-    pose:      dict de articulaciones -> (x, y)
-    highlight: iterable de nombres de segmento ("hip-kne") a resaltar
-    props:     SVG extra (silla, mancuernas, pared…) dibujado bajo la figura
+    pose:        dict de articulaciones -> (x, y)
+    highlight:   iterable de nombres de segmento ("hip-kne") a resaltar
+    props:       SVG extra (silla, mancuernas, pared…) dibujado bajo la figura
+    trunk_curve: curva el tronco. Positivo = convexidad posterior, es decir
+                 raquis en flexión suave. 0 = segmento recto.
     """
     p = {k: (v[0], v[1]) for k, v in pose.items()}
     hl = set(highlight)
     out = [props]
 
+    trunk = ""
+    if trunk_curve and "neck" in p and "hip" in p:
+        trunk = _trunk_path(p["hip"], p["neck"], trunk_curve)
+
     # Halo naranja bajo los segmentos en foco
     for a, b in NEAR + FAR:
         if f"{a}-{b}" in hl:
-            out.append(_line(p, a, b, ORANGE, width * 2.6, 0.28))
+            if (a, b) == ("neck", "hip") and trunk:
+                out.append(f'<path d="{trunk}" fill="none" stroke="{ORANGE}" '
+                           f'stroke-width="{width * 3.0}" stroke-linecap="round" '
+                           f'opacity="0.28"/>')
+            else:
+                out.append(_line(p, a, b, ORANGE, width * 2.6, 0.28))
 
     # Extremidades lejanas, atenuadas
     for a, b in FAR:
@@ -54,7 +94,11 @@ def figure(pose, highlight=(), props="", width=4.2, scale=1.0):
     for a, b in NEAR:
         col = ORANGE if f"{a}-{b}" in hl else CREAM
         w = width * 1.15 if a == "neck" and b == "hip" else width
-        out.append(_line(p, a, b, col, w))
+        if (a, b) == ("neck", "hip") and trunk:
+            out.append(f'<path d="{trunk}" fill="none" stroke="{col}" '
+                       f'stroke-width="{w}" stroke-linecap="round"/>')
+        else:
+            out.append(_line(p, a, b, col, w))
 
     # Cabeza
     if "head" in p:
@@ -67,6 +111,8 @@ def figure(pose, highlight=(), props="", width=4.2, scale=1.0):
             out.append(_line(p, "head", "neck", head_col, width * 0.9))
     return "\n".join(x for x in out if x)
 
+
+TRUNK_CURVE = {"hinge": 4.6}
 
 VIEWBOX = {
     "squat": "18 14 66 84",
@@ -205,7 +251,7 @@ PUSHUP_PROPS = {}
 # ---------------------------------------------------------- BISAGRA DE CADERA
 
 def _hh(neck, sho, elb, wri, hip, kne, ank):
-    return dict(head=(neck[0] - 5.6, neck[1] - 4.8), neck=neck, sho=sho,
+    return dict(head=_head_from_trunk(hip, neck), neck=neck, sho=sho,
                 elb=elb, wri=wri, hip=hip, kne=kne, ank=ank,
                 toe=(ank[0] + 7, ank[1] + 2),
                 sho2=(sho[0] + 2.4, sho[1] + 1.6), elb2=(elb[0] + 2.6, elb[1] + 1.6),
@@ -233,7 +279,8 @@ HINGE = [
      _hh((34, 44), (35, 46), (41, 56), (44, 66), (54, 54), (55, 74), (52, 90)),
      ("hip-kne", "neck-hip"), floor()),
     ("Unilateral",
-     dict(head=(28, 42), neck=(34, 46), sho=(35, 48), elb=(41, 58), wri=(44, 68),
+     dict(head=_head_from_trunk((54, 54), (34, 46)), neck=(34, 46),
+          sho=(35, 48), elb=(41, 58), wri=(44, 68),
           hip=(54, 54), kne=(54, 72), ank=(51, 90), toe=(58, 92),
           sho2=(37, 49), elb2=(43, 59), wri2=(46, 69),
           kne2=(66, 48), ank2=(78, 44), toe2=(84, 46)),
@@ -360,8 +407,11 @@ def render_set(name):
     table = {"squat": (SQUAT, SQUAT_PROPS), "pushup": (PUSHUP, PUSHUP_PROPS),
              "hinge": (HINGE, HINGE_PROPS), "carry": (CARRY, CARRY_PROPS)}
     poses, props = table[name]
+    # En la bisagra el raquis se dibuja en flexión ligera, no recto ni extendido
+    curve = TRUNK_CURVE.get(name, 0.0)
     for i, (label, pose, hl, extra) in enumerate(poses):
-        inner = DEFS + figure(pose, hl, extra + props.get(i, ""))
+        inner = DEFS + figure(pose, hl, extra + props.get(i, ""),
+                              trunk_curve=curve)
         out.append((label, svg(inner, VIEWBOX[name])))
     return out
 

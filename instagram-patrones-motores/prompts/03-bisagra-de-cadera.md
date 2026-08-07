@@ -62,6 +62,8 @@ Puede utilizarse para recuperar confianza y tolerancia a tareas de flexión, ext
 
 ## Diagrama biomecánico
 
+Dibujar el raquis con una flexión ligera y continua a lo largo de toda la bisagra, no como un segmento rígidamente recto ni en extensión. La cabeza sigue el eje del tronco, sin la barbilla levantada. Es coherente con el mensaje de la pieza: el objetivo no es evitar la flexión, sino desarrollar capacidad de carga.
+
 Añadir un diagrama biomecánico simple que muestre cadera, rodilla y tronco como segmentos coordinados, dibujados con líneas crema finas y ángulos señalados en naranja. Evitar representar una única postura lumbar como universalmente correcta. No utilizar expresiones como “espalda perfectamente recta”, “columna neutra obligatoria” o “protege la espalda”.
 
 ## Recuadro
