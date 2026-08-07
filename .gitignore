@@ -30,3 +30,6 @@ venv/
 
 # Registros
 *.log
+
+# Paquete de imágenes regenerable (ver instagram-patrones-motores/html)
+big-five-instagram.zip

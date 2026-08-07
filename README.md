@@ -29,3 +29,4 @@ Proyectos/
 | Proyecto | Descripción | Estado |
 |----------|-------------|--------|
 | [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |
+| [instagram-patrones-motores](instagram-patrones-motores/) | Serie de Instagram «Los Big Five»: prompts de infografía, guía de estilo negro–naranja–blanco y textos de publicación sobre patrones motores. | En uso |
