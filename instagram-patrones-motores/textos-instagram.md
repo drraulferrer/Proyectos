@@ -236,34 +236,40 @@ Rellenar el campo «Texto alternativo» de Instagram en cada imagen. Plantilla:
 # Post 2 — «¿Push o pull?»
 
 Carrusel de seis diapositivas (`png/07` a `png/12`), respuesta a los comentarios del
-post de los Big Five. 2.110 caracteres de 2.200 y 12 etiquetas de 30.
+post de los Big Five. Mismo esquema que el pie de foto de la serie: gancho con la
+mención en la primera línea, bloques con emoji y categoría en versales, hallazgos
+numerados, aviso, remate y pregunta final.
+
+2.086 caracteres de los 2.200 permitidos y 12 etiquetas de 30.
 
 ```
-💬 En el post de los Big Five metí el push-up como patrón de miembro superior y varios me disteis caña: «¿y las dominadas?», «¿y el remo?». Tenéis parte de razón, pero no por el motivo que parece.
+💬 En el post de los Big Five metí el push-up como patrón de miembro superior y varios me disteis caña en comentarios: «¿y las dominadas?», «¿y el remo?». Tenéis parte de razón, pero no por el motivo que parece 👇
 
-Fui a mirar qué dice la literatura 👇
+💪 EMPUJE · Todo el rango
+De un empuje contra la pared al push-up en el suelo. Del mínimo al máximo sin cambiar de ejercicio y sin material ninguno.
+
+🧗 TRACCIÓN · El mismo rango
+De la goma a la dominada, pasando por el remo invertido y la asistida. Cubre exactamente lo mismo… pero necesita algo con lo que hacerlo.
+
+⚠️ Y ahí está el matiz que se coló: la dominada NO es el equivalente del push-up de pared. Empieza en el 100 % del peso corporal. El equivalente real es el remo con goma.
+
+Fui a mirar qué dice la literatura:
 
 1️⃣ Ningún modo de ejercicio gana. 34 pacientes con dolor subacromial, excéntrico frente a concéntrico, 8 semanas: sin diferencias entre grupos. Los dos mejoraron.
 
-2️⃣ Ni siquiera la cirugía gana al ejercicio. La revisión Cochrane de reparación de manguito concluye que probablemente aporta poca o ninguna mejora frente al tratamiento no quirúrgico con ejercicio.
+2️⃣ Ni la cirugía gana al ejercicio. La revisión Cochrane de manguito: probablemente poca o ninguna mejora frente a tratamiento no quirúrgico.
 
-3️⃣ Dentro de una misma familia hay más variación que entre familias. Tres agarres de la misma dominada cargan estructuras distintas: el supinado es el que más carga proporcionalmente el manguito.
+3️⃣ Dentro de una familia hay más variación que entre familias. Tres agarres de la misma dominada cargan estructuras distintas.
 
-4️⃣ Y un detalle cambia el mapa: agarre pronado frente a neutro, 60 % frente a 37 % de activación máxima en trapecio medio. Mismo ejercicio, otro reparto.
+4️⃣ Un detalle cambia el mapa entero: agarre pronado frente a neutro, 60 % frente a 37 % de activación en trapecio medio.
 
-⚠️ Aviso importante: los dos trabajos sobre dominadas miden 11 y 19 hombres jóvenes, sanos y entrenados, con electromiografía y modelos musculoesqueléticos. Describen mecánica, NO pronóstico. Ninguno midió dolor ni lesiones. Que algo cargue más una estructura no significa que sea peor.
-
-🔑 La clave: empuje y tracción no compiten. Los dos son igual de versátiles y cubren el rango entero de exigencia. Lo que cambia es CON QUÉ lo recorres.
-
-El push-up se regresa hasta la pared sin material ninguno. La dominada empieza en el 100 % del peso corporal y no se regresa sin barra baja o goma.
-
-Por eso el equivalente real del push-up de pared no es la dominada: es el remo con goma.
+🚨 Aviso importante: esos dos trabajos miden 11 y 19 hombres jóvenes, sanos y entrenados, con electromiografía y modelos. Ni un solo paciente con dolor de hombro. Describen mecánica, NO pronóstico. Nadie midió dolor ni lesiones. Que algo cargue más una estructura no significa que sea peor.
 
 🎯 No hay ejercicio bueno porque sí. Hay ejercicios que puedes ajustar a la persona que tienes delante y ejercicios que no. La versatilidad no es un adorno: es lo que hace utilizable un ejercicio.
 
-📚 Referencias en la diapositiva 4.
+📚 Referencias en la diapositiva 4. Desliza ➡️
 
-¿Qué patrón de tracción usáis cuando no hay material? Te leo 👇
+¿Qué patrón de tracción usáis cuando no hay material? Te leo en comentarios 👇
 
 #fisioterapia #ejercicioterapeutico #rehabilitacion #hombro #manguitorotador #dominadas #pushup #remo #fisioterapiabasadaenlaevidencia #fuerza #readaptacion #patronesmotores
 ```
