@@ -566,3 +566,106 @@ body {
 .post.pp .find { padding: 20px 0; }
 .post.pp .matrix > div { padding: 22px 16px; }
 .post.pp .duo-cell { padding: 8px 4px 10px; }
+
+/* Confrontación de portada */
+.versus {
+  display: grid; grid-template-columns: 1fr 110px 1fr; align-items: stretch;
+  border: 4px solid var(--orange); margin-top: 14px;
+}
+.versus .vs-cell { padding: 14px 10px 16px; text-align: center; }
+.versus .vs-cell svg { width: 100%; height: 300px; display: block; }
+.versus .vs-cell .t {
+  font-size: 32px; font-weight: 900; color: var(--cream);
+  text-transform: uppercase; letter-spacing: -.01em; margin-top: 4px;
+}
+.versus .vs-cell .s {
+  font-size: 19px; font-weight: 700; color: var(--orange);
+  text-transform: uppercase; letter-spacing: .05em; margin-top: 2px;
+}
+.versus .vs-mid {
+  background: var(--surface-low); display: flex; align-items: center;
+  justify-content: center;
+  border-left: 3px solid var(--orange); border-right: 3px solid var(--orange);
+}
+.versus .vs-mid span {
+  font-size: 46px; font-weight: 900; color: var(--orange);
+  text-decoration: line-through; text-decoration-thickness: 5px;
+}
+
+/* Tira de cuatro celdas grandes */
+.strip.four { grid-template-columns: repeat(4, 1fr); }
+.strip.four .cell svg { height: 268px; }
+.strip.four .cell .cap { font-size: 20px; }
+.strip.four .cell .load {
+  font-size: 19px; font-weight: 900; color: var(--orange);
+  letter-spacing: .04em; margin-top: 3px;
+}
+
+/* Lo que sí dice / lo que no dice */
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.twocol .col {
+  background: var(--surface-low); border-left: 10px solid var(--orange);
+  padding: 16px 18px 18px;
+}
+.twocol .col.no { border-left-color: var(--dim); }
+.twocol .col h3 {
+  font-size: 26px; font-weight: 900; text-transform: uppercase;
+  color: var(--cream); margin-bottom: 10px; letter-spacing: .02em;
+}
+.twocol .col ul { list-style: none; }
+.twocol .col li {
+  font-size: 21px; line-height: 1.28; color: var(--on-surface-variant);
+  margin-bottom: 10px; padding-left: 24px; position: relative;
+}
+.twocol .col li:last-child { margin-bottom: 0; }
+.twocol .col li::before {
+  content: '▸'; position: absolute; left: 0; color: var(--orange); font-weight: 900;
+}
+.twocol .col.no li::before { content: '✕'; color: var(--dim); }
+
+/* --------------------------------------------------------------------------
+   «¿Push o pull?» lleva menos elementos por diapositiva que los Big Five,
+   así que se compone a mayor tamaño. El suelo de 16 px sigue vigente.
+   -------------------------------------------------------------------------- */
+.post.pp .sub { font-size: 26px; line-height: 1.35; }
+.post.pp .strip-note { font-size: 23px; line-height: 1.3; padding-left: 18px; }
+.post.pp .band { font-size: 27px; padding: 18px 22px; }
+.post.pp .concl { font-size: 28px; line-height: 1.25; }
+.post.pp .note { font-size: 22px; line-height: 1.3; }
+.post.pp .h2 { font-size: 34px; margin-top: 22px; }
+
+.post.pp .versus .vs-cell svg { height: 540px; }
+.post.pp .versus .vs-cell .t { font-size: 38px; }
+.post.pp .versus .vs-cell .s { font-size: 22px; }
+.post.pp .versus .vs-mid span { font-size: 56px; }
+
+.post.pp .strip.four .cell svg { height: 396px; }
+.post.pp .strip.four .cell .cap { font-size: 23px; }
+.post.pp .strip.four .cell .load { font-size: 22px; }
+
+.post.pp .card { padding: 16px 20px 18px; }
+.post.pp .card h3 { font-size: 30px; margin-bottom: 8px; }
+.post.pp .card p { font-size: 26px; line-height: 1.28; }
+
+.post.pp .warn { padding: 24px 26px; }
+.post.pp .warn .t { font-size: 34px; }
+.post.pp .warn .d { font-size: 26px; line-height: 1.3; margin-top: 8px; }
+
+.post.pp .twocol .col { padding: 24px 26px 26px; }
+.post.pp .twocol .col h3 { font-size: 32px; margin-bottom: 16px; }
+.post.pp .twocol .col li {
+  font-size: 26px; line-height: 1.3; margin-bottom: 18px; padding-left: 30px;
+}
+
+.post.pp .find { padding: 26px 0; }
+.post.pp .find .n { font-size: 36px; min-width: 56px; }
+.post.pp .find h3 { font-size: 29px; }
+.post.pp .find p { font-size: 25px; line-height: 1.3; }
+
+.post.pp .matrix > div { padding: 26px 20px; }
+.post.pp .matrix .mh { font-size: 23px; }
+.post.pp .matrix .mt { font-size: 32px; }
+.post.pp .matrix .ms { font-size: 23px; }
+
+.post.pp .refs li { font-size: 20px; line-height: 1.28; }
+.post.pp .refs .lbl { font-size: 24px; }

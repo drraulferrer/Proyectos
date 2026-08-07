@@ -358,48 +358,46 @@ def build_closing():
 SERIE_PP = "PUSH O PULL · RESPUESTA A VUESTROS COMENTARIOS"
 
 
-def header_pp(num, total=3):
+def header_pp(num, total=6):
     return f"""<div class="hd">
   <div class="hd-num"><i class="plus"></i>{num:02d} / {total:02d}</div>
   <div class="hd-tag">{SERIE_PP}</div>
 </div>"""
 
 
-def duo():
-    """Tira doble: la misma escala de exigencia en empuje y en tracción."""
-    push = F.render_set("pushup")
-    pull = F.render_set("pull")
-    filas = [
-        ("Empuje", [(push[0][1], "Pared", "Mínima"),
-                    (push[1][1], "Inclinado", "Baja"),
-                    (push[2][1], "Rodillas", "Media"),
-                    (push[3][1], "Suelo", "Alta")]),
-        ("Tracción", [(pull[0][1], "Goma", "Ajustable"),
-                      (pull[1][1], "Remo invertido", "Baja–media"),
-                      (pull[2][1], "Dominada asistida", "Alta"),
-                      (pull[3][1], "Dominada", "Máxima")]),
-    ]
-    out = []
-    for lbl, celdas in filas:
-        cs = "".join(
-            f'<div class="duo-cell">{svg}<div class="cap">{e(cap)}</div>'
-            f'<div class="load">{e(load)}</div></div>'
-            for svg, cap, load in celdas)
-        out.append(f'<div class="duo-row"><div class="duo-lbl">{e(lbl)}</div>{cs}</div>')
-    return f'<div class="duo">{"".join(out)}</div>'
+def pp(num, titulo, cuerpo, pie=""):
+    return page(f"¿Push o pull? — {titulo}",
+                f'<div class="post pp">{header_pp(num)}<div class="body">'
+                f'{cuerpo}</div>{pie}{footer()}</div>')
+
+
+def strip4(celdas):
+    cs = "".join(
+        f'<div class="cell"><div class="n">{i}</div>{svg}'
+        f'<div class="cap">{e(cap)}</div><div class="load">{e(load)}</div></div>'
+        for i, (svg, cap, load) in enumerate(celdas, start=1))
+    return f'<div class="strip four">{cs}</div>'
 
 
 def finds(items):
     out = []
-    for n, h, p in items:
+    for n, h, txt in items:
         out.append(f'<div class="find"><div class="n">{n}</div><div>'
-                   f'<h3>{e(h)}</h3><p>{e(p)}</p></div></div>')
+                   f'<h3>{e(h)}</h3><p>{e(txt)}</p></div></div>')
     return f'<div class="finds">{"".join(out)}</div>'
 
 
 def warn(titulo, detalle):
     return (f'<div class="warn"><div class="t">{e(titulo)}</div>'
             f'<div class="d">{e(detalle)}</div></div>')
+
+
+def twocol(si, no):
+    def col(clase, tit, items):
+        lis = "".join(f"<li>{e(i)}</li>" for i in items)
+        return f'<div class="col {clase}"><h3>{e(tit)}</h3><ul>{lis}</ul></div>'
+    return (f'<div class="twocol">{col("", "Lo que sí dice", si)}'
+            f'{col("no", "Lo que no dice", no)}</div>')
 
 
 def matrix(filas):
@@ -413,114 +411,6 @@ def matrix(filas):
     return f'<div class="matrix">{"".join(celdas)}</div>'
 
 
-def build_pp_portada():
-    body = f"""<div class="post">
-{header_pp(1)}
-<div class="body">
-  <div class="kicker">Lo pedisteis en comentarios</div>
-  <h1 class="title">¿PUSH O<br><span class="hi">PULL?</span></h1>
-  <p class="sub">En los Big Five metí el push-up como patrón de miembro superior y
-  varios me disteis caña: «¿y las dominadas?», «¿y el remo?». Tenéis parte de razón,
-  pero no por el motivo que parece. Vamos con la literatura delante.</p>
-  {duo()}
-  <div class="strip-note">La exigencia es relativa al peso corporal y a la tensión de
-  la goma, no comparable ejercicio a ejercicio. Lo que importa aquí es el recorrido
-  completo de cada fila.</div>
-  {band("La pregunta no es push o pull. Es cuál de los dos puedes ajustar a la "
-        "persona que tienes delante.")}
-  <div class="concl to-bottom">Los dos patrones cubren el rango entero de exigencia.
-  La diferencia está en lo que necesitas para recorrerlo.</div>
-  <div class="swipe">Desliza →</div>
-</div>
-{footer()}
-</div>"""
-    return page("¿Push o pull? — Portada", body)
-
-
-def build_pp_evidencia():
-    items = [
-        ("01", "Ningún modo de ejercicio gana",
-         "34 pacientes con dolor subacromial, excéntrico frente a concéntrico, 8 semanas: "
-         "sin diferencias entre grupos. Los dos mejoraron."),
-        ("02", "Ni siquiera la cirugía gana al ejercicio",
-         "La revisión Cochrane de reparación de manguito: probablemente poca o ninguna "
-         "mejora frente a tratamiento no quirúrgico con ejercicio."),
-        ("03", "Dentro de una familia hay más variación que entre familias",
-         "Tres agarres de la misma dominada cargan estructuras distintas. El supinado "
-         "es el que más carga proporcionalmente el manguito."),
-        ("04", "Y un detalle cambia el mapa entero",
-         "Agarre pronado frente a neutro: 60 % frente a 37 % de activación máxima en "
-         "trapecio medio. Mismo ejercicio, otro reparto."),
-    ]
-    body = f"""<div class="post dense">
-{header_pp(2)}
-<div class="body">
-  <h1 class="title">LO QUE DICE<br><span class="hi">LA LITERATURA</span></h1>
-  {finds(items)}
-  {warn("Ojo: esto no es literatura clínica",
-        "Los dos trabajos de dominadas miden 11 y 19 hombres jóvenes, sanos y "
-        "entrenados, con electromiografía y modelos musculoesqueléticos. Describen "
-        "mecánica, no pronóstico. Ninguno midió dolor ni lesiones.")}
-  <div class="concl to-bottom">Ninguno de estos trabajos te dice qué ejercicio poner.
-  Lo que te dicen es que la elección no se juega en la dirección del movimiento.</div>
-</div>
-{refs([
-  "Urbanczyk CA, Prinold JAI, Reilly P, Bull AMJ. Avoiding high-risk rotator cuff loading: muscle force during three pull-up techniques. Scand J Med Sci Sports. 2020;30(11):2205-2214. doi:10.1111/sms.13780.",
-  "Dickie JA, Faulkner JA, Barnes MJ, Lark SD. Electromyographic analysis of muscle activation during pull-up variations. J Electromyogr Kinesiol. 2016;32:30-36. doi:10.1016/j.jelekin.2016.11.004.",
-  "Blume C, Wang-Price S, Trudelle-Jackson E, Ortiz A. Comparison of eccentric and concentric exercise interventions in adults with subacromial impingement syndrome. Int J Sports Phys Ther. 2015;10(4):441-455. PMCID: PMC4527192.",
-  "Karjalainen TV, Jain NB, Heikkinen J, Johnston RV, Page CM, Buchbinder R. Surgery for rotator cuff tears. Cochrane Database Syst Rev. 2019;12(12):CD013502. doi:10.1002/14651858.CD013502.",
-])}
-{footer()}
-</div>"""
-    return page("¿Push o pull? — La literatura", body)
-
-
-def build_pp_versatilidad():
-    m = matrix([
-        ("Cadena cerrada",
-         ("Push-up", "De la pared al suelo. Sin material."),
-         ("Dominada", "Empieza en el 100 % del peso corporal.")),
-        ("Cadena abierta",
-         ("Press", "Carga externa, graduable al gramo."),
-         ("Remo con goma", "Graduable desde casi cero.")),
-    ])
-    body = f"""<div class="post">
-{header_pp(3)}
-<div class="body">
-  <h1 class="title">LA CLAVE NO ES<br><span class="hi">LA DIRECCIÓN</span></h1>
-  <p class="sub">Empuje y tracción no compiten: cruzan otros dos ejes que sí deciden
-  si un ejercicio te sirve con un paciente concreto.</p>
-  {m}
-  {cards([
-    ("Los dos son versátiles",
-     "Cada familia cubre el rango entero, de la carga mínima a la máxima."),
-    ("Pero no con lo mismo",
-     "El empuje se regresa sin material. La tracción necesita goma o barra baja."),
-  ])}
-  {band("No hay ejercicio bueno porque sí. Hay ejercicios que puedes ajustar y "
-        "ejercicios que no.")}
-  <div class="concl">Si echabais en falta el pull, teníais razón a medias: el remo con
-  goma es tan graduable como el push-up de pared. La dominada, no.</div>
-  <h2 class="h2">Tres preguntas antes de elegir</h2>
-  <div>
-  {finds([
-    ("01", "¿Puedes bajarlo hasta donde tolera hoy?",
-     "Si la versión más fácil ya duele, ese patrón no entra todavía."),
-    ("02", "¿Puedes subirlo hasta donde necesita llegar?",
-     "Un ejercicio sin techo se queda corto en cuanto la persona mejora."),
-    ("03", "¿Lo va a repetir?",
-     "El que no se hace en casa no dosifica nada."),
-  ])}
-  </div>
-  <div class="note to-bottom">Ningún ejercicio ha demostrado superioridad general sobre
-  otro. La elección depende de los objetivos, la tolerancia y el contexto de cada
-  persona.</div>
-</div>
-{footer()}
-</div>"""
-    return page("¿Push o pull? — La versatilidad", body)
-
-
 def main():
     os.makedirs(OUT, exist_ok=True)
     written = []
@@ -528,9 +418,7 @@ def main():
     for d in POSTS:
         files.append((d["file"], build_pattern(d)))
     files.append(("06-mensaje-final.html", build_closing()))
-    files.append(("07-pushpull-portada.html", build_pp_portada()))
-    files.append(("08-pushpull-literatura.html", build_pp_evidencia()))
-    files.append(("09-pushpull-versatilidad.html", build_pp_versatilidad()))
+    files.extend(build_pp())
     for name, content in files:
         path = os.path.join(OUT, name)
         with open(path, "w", encoding="utf-8") as fh:
@@ -544,6 +432,132 @@ def main():
                       f'<h1 style="margin-bottom:20px">Los Big Five</h1>'
                       f'<ul style="line-height:2">{links}</ul></div>'))
     print("\n".join(written))
+
+
+def build_pp():
+    """Las seis diapositivas de «¿Push o pull?»."""
+    push = F.render_set("pushup")
+    pull = F.render_set("pull")
+    out = []
+
+    # --- 01 · la polémica
+    out.append(("07-pushpull-1-portada.html", pp(1, "Portada", f"""
+  <div class="kicker">Lo pedisteis en comentarios</div>
+  <h1 class="title">¿PUSH O<br><span class="hi">PULL?</span></h1>
+  <p class="sub">En los Big Five metí el push-up como patrón de miembro superior y varios
+  me disteis caña: «¿y las dominadas?», «¿y el remo?». Tenéis parte de razón, pero no por
+  el motivo que parece.</p>
+  <div class="versus">
+    <div class="vs-cell">{push[3][1]}<div class="t">Push-up</div>
+      <div class="s">Empuje</div></div>
+    <div class="vs-mid"><span>VS</span></div>
+    <div class="vs-cell">{pull[3][1]}<div class="t">Dominada</div>
+      <div class="s">Tracción</div></div>
+  </div>
+  {band("La pregunta está mal planteada. En las cinco siguientes os cuento por qué.")}
+  <div class="swipe to-bottom">Desliza →</div>""")))
+
+    # --- 02 · el empuje
+    out.append(("08-pushpull-2-empuje.html", pp(2, "El empuje", f"""
+  <h1 class="title">EL EMPUJE:<br><span class="hi">TODO EL RANGO</span></h1>
+  {strip4([(push[0][1], "Pared", "Mínima"), (push[1][1], "Inclinado", "Baja"),
+           (push[2][1], "Rodillas", "Media"), (push[3][1], "Suelo", "Alta")])}
+  <div class="strip-note">La exigencia es relativa al peso corporal. Lo que importa no es
+  cada casilla, sino que existan todas.</div>
+  {cards([
+    ("Se regresa hasta abajo", "Contra una pared, sin material ninguno."),
+    ("Y llega hasta arriba", "Hasta variantes unilaterales o con carga externa."),
+  ])}
+  {band("Un mismo patrón que va del mínimo al máximo sin cambiar de ejercicio ni "
+        "necesitar nada.")}
+  <div class="concl to-bottom">Por eso entró en los Big Five: no por ser mejor, sino por
+  cubrir el rango entero con lo que hay en cualquier casa.</div>""")))
+
+    # --- 03 · la tracción
+    out.append(("09-pushpull-3-traccion.html", pp(3, "La tracción", f"""
+  <h1 class="title">LA TRACCIÓN:<br><span class="hi">EL MISMO RANGO</span></h1>
+  {strip4([(pull[0][1], "Goma", "Ajustable"), (pull[1][1], "Remo invertido", "Baja–media"),
+           (pull[2][1], "Dominada asistida", "Alta"), (pull[3][1], "Dominada", "Máxima")])}
+  <div class="strip-note">También cubre el rango completo, de casi cero al máximo. La
+  diferencia está en el punto de partida.</div>
+  {cards([
+    ("Igual de versátil", "La goma se gradúa de forma continua, como la inclinación."),
+    ("Pero con material", "Sin goma ni barra baja, la tracción empieza muy arriba."),
+  ])}
+  {band("El equivalente real del push-up de pared no es la dominada: es el remo con goma.")}
+  <div class="concl to-bottom">Teníais razón en pedir tracción. Lo que no encaja es
+  emparejar la dominada con el push-up: no están en el mismo escalón.</div>""")))
+
+    # --- 04 · la literatura
+    out.append(("10-pushpull-4-literatura.html", pp(4, "La literatura", f"""
+  <h1 class="title">LO QUE DICE<br><span class="hi">LA LITERATURA</span></h1>
+  {finds([
+    ("01", "Ningún modo de ejercicio gana",
+     "34 pacientes con dolor subacromial, excéntrico frente a concéntrico, 8 semanas: "
+     "sin diferencias entre grupos. Los dos mejoraron."),
+    ("02", "Ni siquiera la cirugía gana al ejercicio",
+     "La revisión Cochrane de reparación de manguito: probablemente poca o ninguna mejora "
+     "frente a tratamiento no quirúrgico con ejercicio."),
+    ("03", "Dentro de una familia hay más variación que entre familias",
+     "Tres agarres de la misma dominada cargan estructuras distintas. El supinado es el "
+     "que más carga proporcionalmente el manguito."),
+    ("04", "Y un detalle cambia el mapa entero",
+     "Agarre pronado frente a neutro: 60 % frente a 37 % de activación máxima en trapecio "
+     "medio. Mismo ejercicio, otro reparto."),
+  ])}
+  <div class="concl to-bottom">Ninguno de estos trabajos te dice qué ejercicio poner. Te
+  dicen que la elección no se juega en la dirección del movimiento.</div>""",
+  pie=refs([
+    "Urbanczyk CA, Prinold JAI, Reilly P, Bull AMJ. Avoiding high-risk rotator cuff loading: muscle force during three pull-up techniques. Scand J Med Sci Sports. 2020;30(11):2205-2214. doi:10.1111/sms.13780.",
+    "Dickie JA, Faulkner JA, Barnes MJ, Lark SD. Electromyographic analysis of muscle activation during pull-up variations. J Electromyogr Kinesiol. 2016;32:30-36. doi:10.1016/j.jelekin.2016.11.004.",
+    "Blume C, Wang-Price S, Trudelle-Jackson E, Ortiz A. Comparison of eccentric and concentric exercise interventions in adults with subacromial impingement syndrome. Int J Sports Phys Ther. 2015;10(4):441-455. PMCID: PMC4527192.",
+    "Karjalainen TV, Jain NB, Heikkinen J, Johnston RV, Page CM, Buchbinder R. Surgery for rotator cuff tears. Cochrane Database Syst Rev. 2019;12(12):CD013502. doi:10.1002/14651858.CD013502.",
+  ]))))
+
+    # --- 05 · el aviso
+    out.append(("11-pushpull-5-aviso.html", pp(5, "El aviso", f"""
+  <h1 class="title">OJO: ESTO NO ES<br><span class="hi">LITERATURA CLÍNICA</span></h1>
+  {warn("Once y diecinueve sujetos",
+        "Los dos trabajos sobre dominadas miden hombres jóvenes, sanos y entrenados, con "
+        "electromiografía y modelos musculoesqueléticos. Ni un solo paciente con dolor "
+        "de hombro.")}
+  {twocol(
+    ["Qué músculos se reparten el trabajo en cada agarre.",
+     "Que un mismo ejercicio cambia mucho con detalles pequeños.",
+     "Que la mecánica del empuje y la de la tracción son distintas."],
+    ["Qué ejercicio le va mejor a tu paciente.",
+     "Qué variante duele menos o mejora más rápido.",
+     "Qué carga es peligrosa: nadie midió dolor ni lesiones."])}
+  {band("Más carga sobre una estructura no significa más riesgo. Es una inferencia, no "
+        "un hallazgo.")}
+  <div class="concl to-bottom">El laboratorio describe mecánica. El pronóstico se mide en
+  pacientes, y ahí las comparaciones entre modos de ejercicio salen empatadas.</div>""")))
+
+    # --- 06 · la clave
+    out.append(("12-pushpull-6-versatilidad.html", pp(6, "La versatilidad", f"""
+  <h1 class="title">LA CLAVE NO ES<br><span class="hi">LA DIRECCIÓN</span></h1>
+  <p class="sub">Empuje y tracción no compiten: cruzan otros dos ejes que sí deciden si un
+  ejercicio te sirve con la persona que tienes delante.</p>
+  {matrix([
+    ("Cadena cerrada", ("Push-up", "De la pared al suelo. Sin material."),
+     ("Dominada", "Empieza en el 100 % del peso corporal.")),
+    ("Cadena abierta", ("Press", "Carga externa, graduable al gramo."),
+     ("Remo con goma", "Graduable desde casi cero.")),
+  ])}
+  <h2 class="h2">Tres preguntas antes de elegir</h2>
+  {finds([
+    ("01", "¿Puedes bajarlo hasta donde tolera hoy?",
+     "Si la versión más fácil ya duele, ese patrón no entra todavía."),
+    ("02", "¿Puedes subirlo hasta donde necesita llegar?",
+     "Un ejercicio sin techo se queda corto en cuanto la persona mejora."),
+    ("03", "¿Lo va a repetir?", "El que no se hace en casa no dosifica nada."),
+  ])}
+  {band("No hay ejercicio bueno porque sí. Hay ejercicios que puedes ajustar y ejercicios "
+        "que no.")}
+  <div class="note to-bottom">Ningún ejercicio ha demostrado superioridad general sobre
+  otro. La elección depende de los objetivos, la tolerancia y el contexto de cada
+  persona.</div>""")))
+    return out
 
 
 if __name__ == "__main__":

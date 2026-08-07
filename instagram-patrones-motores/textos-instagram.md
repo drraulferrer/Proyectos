@@ -235,7 +235,7 @@ Rellenar el campo «Texto alternativo» de Instagram en cada imagen. Plantilla:
 
 # Post 2 — «¿Push o pull?»
 
-Carrusel de tres diapositivas (`png/07`, `08`, `09`), respuesta a los comentarios del
+Carrusel de seis diapositivas (`png/07` a `png/12`), respuesta a los comentarios del
 post de los Big Five. 2.110 caracteres de 2.200 y 12 etiquetas de 30.
 
 ```
@@ -261,7 +261,7 @@ Por eso el equivalente real del push-up de pared no es la dominada: es el remo c
 
 🎯 No hay ejercicio bueno porque sí. Hay ejercicios que puedes ajustar a la persona que tienes delante y ejercicios que no. La versatilidad no es un adorno: es lo que hace utilizable un ejercicio.
 
-📚 Referencias en la última diapositiva.
+📚 Referencias en la diapositiva 4.
 
 ¿Qué patrón de tracción usáis cuando no hay material? Te leo 👇
 
@@ -270,12 +270,15 @@ Por eso el equivalente real del push-up de pared no es la dominada: es el remo c
 
 ## Texto alternativo
 
-- **07 · Portada**: Infografía sobre fondo negro titulada «¿Push o pull?». Muestra dos
-  filas de ilustraciones: cuatro variantes de empuje (pared, inclinado, rodillas, suelo)
-  y cuatro de tracción (goma, remo invertido, dominada asistida, dominada), cada una con
-  su nivel de exigencia.
-- **08 · La literatura**: Cuatro hallazgos numerados sobre estudios de ejercicio de
-  hombro, un aviso destacado de que la literatura no es clínica, y cuatro referencias
-  científicas al pie.
-- **09 · La versatilidad**: Matriz de cadena cinética abierta y cerrada cruzada con
+- **07 · Portada**: Infografía sobre fondo negro titulada «¿Push o pull?». Enfrenta dos
+  ilustraciones grandes, un push-up y una dominada, separadas por un «VS» tachado.
+- **08 · El empuje**: Cuatro variantes de push-up (pared, inclinado, rodillas, suelo)
+  con su nivel de exigencia, de mínima a alta.
+- **09 · La tracción**: Cuatro variantes de tracción (goma, remo invertido, dominada
+  asistida, dominada) con su nivel de exigencia, de ajustable a máxima.
+- **10 · La literatura**: Cuatro hallazgos numerados de estudios sobre ejercicio de
+  hombro, con cuatro referencias científicas al pie.
+- **11 · El aviso**: Bloque destacado sobre las limitaciones de la literatura y dos
+  columnas enfrentadas, «lo que sí dice» y «lo que no dice».
+- **12 · La versatilidad**: Matriz de cadena cinética abierta y cerrada cruzada con
   empuje y tracción, y tres preguntas para elegir un ejercicio.

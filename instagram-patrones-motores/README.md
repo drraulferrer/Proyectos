@@ -102,11 +102,20 @@ la fuerza del titular sería:
 Secuela publicada a raíz de los comentarios del carrusel de los Big Five, donde varios
 lectores echaron en falta los patrones de tracción frente al push-up.
 
-| Pieza | Contenido |
-|---|---|
-| `png/07-pushpull-portada.png` | La polémica y la tira doble empuje / tracción |
-| `png/08-pushpull-literatura.png` | Cuatro hallazgos y el aviso de que la literatura no es clínica |
-| `png/09-pushpull-versatilidad.png` | Matriz cadena × dirección y tres preguntas para elegir |
+Carrusel de seis diapositivas:
+
+| # | Pieza | Contenido |
+|---|---|---|
+| 1 | `07-pushpull-1-portada.png` | La polémica, con push-up y dominada enfrentados |
+| 2 | `08-pushpull-2-empuje.png` | El rango completo del empuje, de la pared al suelo |
+| 3 | `09-pushpull-3-traccion.png` | El mismo rango en tracción, y su punto de partida |
+| 4 | `10-pushpull-4-literatura.png` | Cuatro hallazgos y las cuatro referencias |
+| 5 | `11-pushpull-5-aviso.png` | Lo que la literatura sí dice y lo que no dice |
+| 6 | `12-pushpull-6-versatilidad.png` | Matriz cadena × dirección y tres preguntas |
+
+Estas seis piezas se componen a mayor tamaño tipográfico que las de los Big Five
+(clase `.post.pp` en el CSS): llevan menos elementos por diapositiva, así que admiten
+más cuerpo sin apretar.
 
 Tesis: la dirección del vector no es el eje que decide. Empuje y tracción son igual de
 versátiles y cubren el mismo rango de exigencia; lo que cambia es el material necesario
@@ -117,6 +126,6 @@ Las cuatro referencias se verificaron en PubMed antes de maquetar. Blume 2015 no
 DOI: se cita con su PMCID, sin inventarlo.
 
 El aviso de que la literatura **no es clínica** ocupa el bloque de máximo contraste de la
-pieza 08, no una nota al pie: los dos trabajos sobre dominadas miden 11 y 19 hombres
+pieza 11, que ahora es una diapositiva entera dedicada a ello, no una nota al pie: los dos trabajos sobre dominadas miden 11 y 19 hombres
 jóvenes sanos y entrenados, con EMG y modelos musculoesqueléticos, y ninguno midió dolor
 ni lesiones.
