@@ -5,6 +5,50 @@ completo como si publicas los siete posts por separado.
 
 ---
 
+## Pie de foto del carrusel completo
+
+1.833 caracteres de los 2.200 que permite Instagram, con 15 etiquetas de las 30
+posibles. Las dos primeras líneas son lo único que se ve antes del «más», así que la
+mención y el gancho van al principio.
+
+```
+🗣️ Comentando con @rgtfisio sobre la sentadilla, y después de ver su reel, me he animado a montar esto: si solo pudiera elegir un patrón por región, ¿con cuál me quedaría?
+
+Estos son mis Big Five «de barrio» 👇
+
+🦵 MIEMBRO INFERIOR · La sentadilla
+De levantarse de una silla al goblet squat. Sentarse, levantarse, agacharse: difícil encontrar algo que se parezca más a lo que hacemos veinte veces al día.
+
+💪 MIEMBRO SUPERIOR · El push-up
+La inclinación del cuerpo cambia el peso que soportas. Mismo patrón, de la pared al alto rendimiento.
+
+🏋️ CADERA Y RAQUIS · La bisagra de cadera
+Levantar una carga del suelo es una tarea cotidiana. Entrenarla también debería serlo.
+
+🧠 REGIÓN CERVICAL · La flexión craneocervical
+Un gesto pequeño, casi un asentimiento. Baja carga y dosificación muy fina.
+
+🚶 CUERPO COMPLETO · El carry
+Caminar cargando peso: agarre, hombro, tronco, pelvis, marcha y equilibrio en una sola tarea.
+
+⚠️ Y la trampa de siempre: no son «los mejores ejercicios». Ninguno ha demostrado superioridad general sobre otro. Están aquí por cuatro razones bastante más aburridas y bastante más útiles:
+
+1️⃣ Transferencia: se parecen a algo que la persona necesita hacer fuera de la consulta.
+2️⃣ Graduabilidad: más fácil o más difícil sin dejar de ser el mismo patrón.
+3️⃣ Rango de dosis: de la baja carga al entrenamiento de fuerza.
+4️⃣ Aceptabilidad: se entienden, se toleran y se repiten.
+
+🎯 El mejor ejercicio suele ser el que la persona puede hacer, tolera y repite con la dosis suficiente.
+
+📚 Referencias en cada diapositiva. Desliza ➡️
+
+¿Cuáles serían tus Big Five? Te leo en comentarios 👇
+
+#fisioterapia #ejercicioterapeutico #rehabilitacion #patronesmotores #fisioterapiabasadaenlaevidencia #ejerciciofisico #readaptacion #fuerza #saludmusculoesqueletica #sentadilla #pushup #pesomuerto #cervicalgia #carry #dolorlumbar
+```
+
+---
+
 ## Portada / apertura del carrusel
 
 **Si solo pudiera elegir uno.**
