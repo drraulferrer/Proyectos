@@ -14,23 +14,25 @@ Separar las dos piezas es intencionado: el motor de medición vive en la cabecer
 (y así cubre también entradas del blog y páginas futuras), y la página solo aporta
 las **etiquetas** de lo que hay que medir.
 
-## Instalación en 3 pasos
+## Instalación
 
-1. Crea el proyecto en **PostHog** eligiendo región **EU** (RGPD) y copia la
-   *Project API Key* (empieza por `phc_`).
-2. Pega el contenido de `rf-analytics.html` en Divi → Opciones del tema →
-   Integración → «Código añadido al `<head>` del blog» y sustituye
-   `phc_PEGA_AQUI_TU_PROJECT_API_KEY` por tu clave real.
+**Ya está configurado** con el proyecto de PostHog de raulferrer.org (región **EU**).
+Solo queda pegarlo:
+
+1. Copia el contenido de `rf-analytics.html`.
+2. Pégalo en WordPress → Divi → Opciones del tema → Integración →
+   «Código añadido al `<head>` del blog». Guarda.
 3. Abre la web y compruébalo en PostHog → **Activity** (eventos en vivo).
 
-> Sin clave válida el script no carga nada y avisa por consola. Es deliberado:
-> evita enviar datos a un proyecto equivocado.
+> La `API_KEY` está en el repositorio a propósito: es una clave **pública** de
+> cliente, viaja en el HTML de la página y solo sirve para *enviar* eventos,
+> nunca para leer datos. No es un secreto filtrado.
 
 ## Configuración (`CFG`, arriba del archivo)
 
 | Opción | Valores | Por defecto |
 |---|---|---|
-| `API_KEY` | tu clave `phc_…` | — (obligatoria) |
+| `API_KEY` | tu clave `phc_…` | ya puesta |
 | `REGION` | `'eu'` · `'us'` | `'eu'` |
 | `MODO` | `'consentimiento'` · `'sin-cookies'` · `'siempre'` | `'consentimiento'` |
 | `GRABAR_SESIONES` | `true` · `false` | `false` |
