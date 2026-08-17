@@ -1,0 +1,308 @@
+<!-- ═══════════════════════════════════════════════════════════════════════
+     RF ANALYTICS · PostHog para raulferrer.org
+     ─────────────────────────────────────────────────────────────────────
+     DÓNDE VA:  WordPress → Divi → Opciones del tema → Integración →
+                «Código añadido al <head> del blog»
+                (así mide TODAS las páginas del sitio, no solo la portada)
+
+     QUÉ HACE:  carga PostHog + registra automáticamente:
+                  · $pageview / $pageleave       (visitas)
+                  · cta_click                    (botones clave)
+                  · nav_click                    (navegación interna)
+                  · seccion_vista                (qué secciones se leen)
+                  · scroll_profundidad           (25/50/75/90 %)
+                  · contacto_click               (email, LinkedIn, ORCID)
+                  · enlace_externo               (PubMed, ORCID, etc.)
+                  · proyecto_click / ambito_click
+                  · salida_pagina                (tiempo + scroll máximo)
+
+     ANTES DE USAR: pega tu Project API Key en CFG.API_KEY (abajo).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script>
+(function (w, d) {
+  'use strict';
+
+  /* ═══════════════════════════════════════════════════════════════
+     1. CONFIGURACIÓN — lo único que necesitas tocar
+     ═══════════════════════════════════════════════════════════════ */
+  var CFG = {
+    // PostHog → Settings → Project → Project API Key (empieza por "phc_")
+    API_KEY: 'phc_PEGA_AQUI_TU_PROJECT_API_KEY',
+
+    // 'eu' = servidores en la UE (recomendado por RGPD) · 'us' = Estados Unidos
+    REGION: 'eu',
+
+    // 'consentimiento' → sin cookies hasta que el usuario acepte analítica  ← recomendado
+    // 'sin-cookies'    → nunca usa cookies (cada visita cuenta como usuario nuevo)
+    // 'siempre'        → cookies desde el primer momento (declara PostHog en tu política)
+    MODO: 'consentimiento',
+
+    // Grabación de sesiones (vídeo de la navegación). Ojo: dato personal, requiere consentimiento.
+    GRABAR_SESIONES: false,
+
+    // true = imprime en la consola del navegador todo lo que envía (para depurar)
+    DEBUG: false
+  };
+
+  /* ═══════════════════════════════════════════════════════════════
+     2. ARRANQUE  (a partir de aquí no hace falta tocar nada)
+     ═══════════════════════════════════════════════════════════════ */
+  var HOSTS = {
+    eu: { api: 'https://eu.i.posthog.com', assets: 'https://eu-assets.i.posthog.com' },
+    us: { api: 'https://us.i.posthog.com', assets: 'https://us-assets.i.posthog.com' }
+  };
+  var H = HOSTS[CFG.REGION] || HOSTS.eu;
+
+  function log() {
+    if (CFG.DEBUG && w.console && w.console.log) {
+      w.console.log.apply(w.console, ['%c[RF Analytics]', 'color:#ff6b4a;font-weight:bold'].concat([].slice.call(arguments)));
+    }
+  }
+
+  // Guarda de seguridad: sin clave real no se carga nada.
+  if (typeof CFG.API_KEY !== 'string' || CFG.API_KEY.indexOf('phc_') !== 0 || CFG.API_KEY.indexOf('PEGA_AQUI') > -1) {
+    if (w.console && w.console.warn) {
+      w.console.warn('[RF Analytics] Falta la Project API Key de PostHog. Edita CFG.API_KEY en el código del <head>.');
+    }
+    return;
+  }
+
+  /* ── 2.1 Consentimiento ───────────────────────────────────────── */
+  function hayConsentimiento() {
+    if (CFG.MODO === 'siempre') return true;
+    if (CFG.MODO === 'sin-cookies') return false;
+    // Interruptor manual: pon window.rfAnalyticsConsent = true desde tu banner
+    if (w.rfAnalyticsConsent === true) return true;
+    // Complianz (plugin muy común en WordPress España)
+    try { if (typeof w.cmplz_has_consent === 'function' && w.cmplz_has_consent('statistics')) return true; } catch (e) {}
+    // Cookiebot
+    try { if (w.Cookiebot && w.Cookiebot.consent && w.Cookiebot.consent.statistics) return true; } catch (e) {}
+    // CookieYes
+    try {
+      var cy = d.cookie.match(/(?:^|;\s*)cookieyes-consent=([^;]*)/);
+      if (cy && decodeURIComponent(cy[1]).indexOf('analytics:yes') > -1) return true;
+    } catch (e) {}
+    return false;
+  }
+
+  function opciones(consent) {
+    return {
+      api_host: H.api,
+      // Sin consentimiento → memoria (no escribe nada en el dispositivo)
+      persistence: consent ? 'localStorage+cookie' : 'memory',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_pageleave: true,
+      autocapture: true,
+      disable_session_recording: !CFG.GRABAR_SESIONES,
+      loaded: function (ph) { if (CFG.DEBUG) { try { ph.debug(); } catch (e) {} } }
+    };
+  }
+
+  // Si el usuario acepta más tarde, subimos de "memoria" a cookies sin recargar.
+  function escucharConsentimiento() {
+    if (CFG.MODO !== 'consentimiento') return;
+    var yaSubido = hayConsentimiento();
+    function revisar() {
+      if (yaSubido || !hayConsentimiento()) return;
+      yaSubido = true;
+      try {
+        w.posthog.set_config({ persistence: 'localStorage+cookie' });
+        log('consentimiento concedido → persistencia con cookies');
+      } catch (e) {}
+    }
+    d.addEventListener('cmplz_status_change', revisar);
+    d.addEventListener('cookieyes_consent_update', revisar);
+    w.addEventListener('CookiebotOnAccept', revisar);
+    w.addEventListener('rf-analytics-consent', revisar);
+  }
+
+  /* ── 2.2 Cargador de PostHog (doble vía: stub + init en onload) ── */
+  var METODOS = ('init capture identify alias set_config register register_once unregister ' +
+                 'opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing ' +
+                 'reset group setPersonProperties startSessionRecording stopSessionRecording debug ' +
+                 'onFeatureFlags isFeatureEnabled getFeatureFlag reloadFeatureFlags get_distinct_id').split(' ');
+
+  // Si otro plugin ya cargó PostHog, lo reutilizamos: ni stub ni segunda carga.
+  var yaCargado = !!(w.posthog && (w.posthog.__SV || w.posthog.__loaded));
+
+  if (!yaCargado) {
+    var stub = w.posthog = [];
+    stub._i = [];
+    stub.people = stub.people || [];
+    stub.toString = function (min) { return 'posthog' + (min ? '' : ' (stub)'); };
+    METODOS.forEach(function (m) {
+      if (m === 'init') return;
+      stub[m] = function () { stub.push([m].concat([].slice.call(arguments, 0))); };
+    });
+    stub.init = function (k, c, n) { stub._i.push([k, c, n]); };
+    stub.__SV = 1;
+    stub.init(CFG.API_KEY, opciones(hayConsentimiento()), 'posthog');
+  }
+
+  var cola = [];
+  // API pública: puedes llamar a rfTrack('lo_que_sea', {…}) desde cualquier sitio.
+  w.rfTrack = function (evento, props) {
+    props = props || {};
+    log('→', evento, props);
+    if (w.posthog && w.posthog.__loaded) { try { w.posthog.capture(evento, props); } catch (e) {} }
+    else { cola.push([evento, props]); }
+  };
+
+  function arrancar() {
+    var ph = w.posthog;
+    if (!ph) { log('posthog no disponible'); return; }
+    // Si el stub no llegó a inicializar (modo módulo), lo hacemos aquí.
+    if (!ph.__loaded && typeof ph.init === 'function') {
+      try { ph.init(CFG.API_KEY, opciones(hayConsentimiento())); } catch (e) {}
+    }
+    if (ph.__loaded) {
+      for (var i = 0; i < cola.length; i++) { try { ph.capture(cola[i][0], cola[i][1]); } catch (e) {} }
+      cola.length = 0;
+      log('PostHog listo · región ' + CFG.REGION + ' · cookies=' + hayConsentimiento());
+    }
+    escucharConsentimiento();
+  }
+
+  if (yaCargado) {
+    log('PostHog ya estaba cargado por otro plugin: lo reutilizo');
+    arrancar();
+  } else {
+    var script = d.createElement('script');
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    script.src = H.assets + '/static/array.js';
+    script.onload = arrancar;
+    script.onerror = function () {
+      if (w.console && w.console.warn) w.console.warn('[RF Analytics] No se pudo cargar PostHog (¿bloqueador de anuncios?).');
+    };
+    (d.head || d.getElementsByTagName('head')[0] || d.documentElement).appendChild(script);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     3. CAPA DE EVENTOS PROPIOS
+     ═══════════════════════════════════════════════════════════════ */
+  function texto(el) {
+    // En tarjetas grandes usamos su título; en botones y enlaces, su propio texto.
+    var titulo = el.querySelector && el.querySelector('h1,h2,h3,h4');
+    var origen = titulo || el;
+    return ((origen.innerText || origen.textContent || '').trim().replace(/\s+/g, ' ')).slice(0, 80);
+  }
+
+  /* ── 3.1 Clicks ──────────────────────────────────────────────────
+     Regla: si el elemento tiene data-ph, manda ese evento y sus
+     data-ph-*. Si no, se aplican reglas genéricas.                  */
+  d.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t || typeof t.closest !== 'function') return;
+
+    var marcado = t.closest('[data-ph]');
+    if (marcado) {
+      var props = { texto: texto(marcado) };
+      for (var i = 0; i < marcado.attributes.length; i++) {
+        var attr = marcado.attributes[i];
+        if (attr.name.indexOf('data-ph-') === 0) {
+          props[attr.name.slice(8).replace(/-/g, '_')] = attr.value;
+        }
+      }
+      w.rfTrack(marcado.getAttribute('data-ph'), props);
+      return;
+    }
+
+    var a = t.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+
+    if (href.indexOf('mailto:') === 0) {
+      w.rfTrack('contacto_click', { canal: 'email', destino: href.slice(7), texto: texto(a) });
+      return;
+    }
+    if (href.indexOf('tel:') === 0) {
+      w.rfTrack('contacto_click', { canal: 'telefono', destino: href.slice(4), texto: texto(a) });
+      return;
+    }
+    if (href.charAt(0) === '#' && href.length > 1) {
+      w.rfTrack('nav_click', { destino: href.slice(1), texto: texto(a) });
+      return;
+    }
+    if (/^https?:/i.test(href)) {
+      var host = '';
+      try { host = new URL(href, w.location.href).hostname; } catch (err) { return; }
+      if (host && host !== w.location.hostname) {
+        w.rfTrack('enlace_externo', { destino: href, dominio: host.replace(/^www\./, ''), texto: texto(a) });
+      }
+    }
+  }, true);
+
+  /* ── 3.2 Secciones vistas ─────────────────────────────────────── */
+  function observarSecciones() {
+    if (!('IntersectionObserver' in w)) return;
+    var nodos = d.querySelectorAll('[data-ph-seccion], .rf-web section[id]');
+    if (!nodos.length) return;
+    var vistas = {};
+    var io = new IntersectionObserver(function (entradas) {
+      for (var i = 0; i < entradas.length; i++) {
+        var en = entradas[i];
+        if (!en.isIntersecting) continue;
+        var el = en.target;
+        var nombre = el.getAttribute('data-ph-seccion') || el.id || 'sin-nombre';
+        if (vistas[nombre]) { io.unobserve(el); continue; }
+        vistas[nombre] = true;
+        w.rfTrack('seccion_vista', { seccion: nombre });
+        io.unobserve(el);
+      }
+    }, { threshold: 0, rootMargin: '0px 0px -35% 0px' });
+    Array.prototype.forEach.call(nodos, function (n) { io.observe(n); });
+  }
+
+  /* ── 3.3 Profundidad de scroll ────────────────────────────────── */
+  var scrollMax = 0;
+  function medirScroll() {
+    var hitos = [25, 50, 75, 90], hechos = {}, pendiente = false;
+    function calcular() {
+      pendiente = false;
+      var doc = d.documentElement;
+      var alto = Math.max(doc.scrollHeight, d.body ? d.body.scrollHeight : 0);
+      var visible = w.innerHeight || doc.clientHeight;
+      if (!alto || alto <= visible) { scrollMax = 100; return; }
+      var y = w.pageYOffset || doc.scrollTop || 0;
+      var pct = Math.round(((y + visible) / alto) * 100);
+      if (pct > scrollMax) scrollMax = Math.min(pct, 100);
+      for (var i = 0; i < hitos.length; i++) {
+        var h = hitos[i];
+        if (scrollMax >= h && !hechos[h]) { hechos[h] = true; w.rfTrack('scroll_profundidad', { porcentaje: h }); }
+      }
+    }
+    w.addEventListener('scroll', function () {
+      if (pendiente) return;
+      pendiente = true;
+      (w.requestAnimationFrame || function (f) { setTimeout(f, 100); })(calcular);
+    }, { passive: true });
+    calcular();
+  }
+
+  /* ── 3.4 Salida de página (tiempo + scroll máximo) ────────────── */
+  var t0 = Date.now(), salidaHecha = false;
+  function salida() {
+    if (salidaHecha) return;
+    salidaHecha = true;
+    var props = { segundos: Math.round((Date.now() - t0) / 1000), scroll_max: scrollMax };
+    log('→ salida_pagina', props);
+    if (w.posthog && w.posthog.__loaded) {
+      try { w.posthog.capture('salida_pagina', props, { transport: 'sendBeacon' }); } catch (e) {}
+    }
+  }
+
+  function iniciar() {
+    observarSecciones();
+    medirScroll();
+    w.addEventListener('pagehide', salida);
+    d.addEventListener('visibilitychange', function () { if (d.visibilityState === 'hidden') salida(); });
+    log('capa de eventos activa');
+  }
+
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', iniciar);
+  else iniciar();
+
+})(window, document);
+</script>
