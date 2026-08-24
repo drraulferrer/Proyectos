@@ -6,8 +6,8 @@
 // Serif 4, ambas con licencia SIL OFL) se descargan de Google Fonts a
 // .fuentes/ la primera vez y se incrustan en el HTML antes de capturar.
 //
-// El texto de cada diapositiva sale literalmente de post-final.md. Si se
-// edita alli, hay que editarlo aqui y volver a ejecutar el script.
+// Paleta: naranja, negro y blanco. Cada diapositiva lleva poco texto y, cuando
+// hace falta, un esquema vectorial. El texto sale de post-final.md.
 
 const fs = require('fs');
 const path = require('path');
@@ -49,146 +49,167 @@ const SERIF = b64(files.serif);
 
 const HANDLE = '@drraulferrer';
 
+// --- Esquemas ---------------------------------------------------------------
+
+// Flechas opuestas: sube lo entregado, baja la competencia.
+const ESQUEMA_PARADOJA = `
+<div class="scheme arrows">
+  <div class="arrow-col">
+    <svg viewBox="0 0 120 240" class="arrow up" aria-hidden="true">
+      <path d="M60 236 V28" stroke="currentColor" stroke-width="18" fill="none"/>
+      <path d="M60 6 L112 62 H8 Z" fill="currentColor"/>
+    </svg>
+    <div class="arrow-label">Lo que<br>se entrega</div>
+  </div>
+  <div class="arrow-col down-col">
+    <svg viewBox="0 0 120 240" class="arrow down" aria-hidden="true">
+      <path d="M60 4 V212" stroke="currentColor" stroke-width="18" fill="none"/>
+      <path d="M60 234 L112 178 H8 Z" fill="currentColor"/>
+    </svg>
+    <div class="arrow-label">Lo que<br>se aprende</div>
+  </div>
+</div>`;
+
+// Caida en la evaluacion sin IA, frente al grupo de control.
+const ESQUEMA_DATO = `
+<div class="chart">
+  <div class="chart-title">Caída en la evaluación sin IA, frente al grupo que nunca la usó</div>
+  <div class="bar-row">
+    <div class="bar-label">IA libre</div>
+    <div class="bar-track"><div class="bar fill" style="width:85%"></div></div>
+    <div class="bar-value orange">&minus;17&thinsp;%</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Tutor con pistas</div>
+    <div class="bar-track"><div class="bar stub"></div></div>
+    <div class="bar-value muted">sin deterioro</div>
+  </div>
+</div>`;
+
+// Que hace la herramienta con la dificultad.
+const ESQUEMA_DIFICULTAD = `
+<div class="scheme boxes">
+  <div class="box bad">
+    <div class="box-head">La elimina</div>
+    <div class="box-arrow">&darr;</div>
+    <div class="box-foot">Rinde más hoy.<br>Aprende menos.</div>
+  </div>
+  <div class="box good">
+    <div class="box-head">La sostiene</div>
+    <div class="box-arrow">&darr;</div>
+    <div class="box-foot">Rinde igual hoy.<br>Aprende.</div>
+  </div>
+</div>`;
+
+// Del archivo final al proceso.
+const ESQUEMA_SALIDA = `
+<div class="scheme flow">
+  <div class="flow-box struck">Archivo final</div>
+  <div class="flow-arrow">&rarr;</div>
+  <div class="flow-box live">
+    <div class="flow-title">El proceso</div>
+    <div class="flow-tags"><span>fuentes</span><span>qué verificó</span><span>qué descartó</span><span>defensa</span></div>
+  </div>
+</div>`;
+
 // --- Diapositivas -----------------------------------------------------------
-// name: nombre del PNG · dark: fondo oscuro · body: contenido
 
 const SLIDES = [
   {
     name: '01-portada',
-    dark: true,
-    cover: true,
+    bg: 's-black',
     body: `
-      <div class="eyebrow accent">IA y universidad</div>
-      <div class="cover-main">
-        <h1 class="mega">Academic<br>slop</h1>
+      <div class="eyebrow">IA y universidad</div>
+      <div class="fill-mid">
+        <h1 class="mega">Academic<br><span class="o">slop</span></h1>
         <div class="rule"></div>
-        <p class="lede">Cuando el trabajo entregado mejora<br>y el aprendizaje empeora.</p>
+        <p class="lede">El trabajo mejora.<br>El aprendizaje empeora.</p>
       </div>
-      <div class="swipe">Desliza <span class="arrow">&rarr;</span></div>`,
+      <div class="swipe">Desliza <span>&rarr;</span></div>`,
   },
   {
     name: '02-la-escena',
+    bg: 's-white',
     body: `
-      <div class="eyebrow accent">La escena</div>
-      <p class="p lead">Un estudiante entrega un análisis impecable.</p>
-      <p class="p">La estructura es limpia, la bibliografía parece correcta y el tono académico se mantiene de principio a fin.</p>
-      <div class="pull">Le pones un notable alto.</div>`,
+      <div class="eyebrow">La escena</div>
+      <h2 class="stack">Análisis impecable.<br>Bibliografía correcta.<br><span class="o">Notable alto.</span></h2>
+      <div class="hr"></div>
+      <p class="say">Dos semanas después, en clase:<br><span class="quote">«¿Por qué elegiste ese marco y no otro?»</span></p>`,
   },
   {
-    name: '03-la-pregunta',
+    name: '03-no-hay-respuesta',
+    bg: 's-orange',
     body: `
-      <div class="eyebrow accent">Dos semanas después</div>
-      <p class="p">En clase le preguntas por qué eligió ese marco teórico y no otro.</p>
-      <p class="p">También le preguntas qué habría cambiado en sus conclusiones si hubiese tomado una decisión diferente.</p>
-      <div class="mega-pull">No hay<br>respuesta.</div>`,
-  },
-  {
-    name: '04-no-es-honestidad',
-    dark: true,
-    body: `
-      <div class="eyebrow accent">Lo que falla</div>
-      <p class="p on-dark">No es que se haya puesto nervioso ni que haya olvidado lo que escribió. Es que esa decisión nunca fue realmente suya.</p>
-      <p class="p on-dark">No hay plagio. Ningún detector señalará necesariamente nada extraño. Y sin embargo, algo ha fallado justo donde más importa.</p>
-      <div class="pull on-dark">No es solo un problema de honestidad académica.<br>Es un problema de aprendizaje.</div>`,
-  },
-  {
-    name: '05-el-nombre',
-    body: `
-      <div class="eyebrow accent">El nombre</div>
-      <p class="p">En el mundo empresarial ya se utiliza el término <strong>AI slop</strong>: contenido generado con IA que parece pulido, pero aporta poco y obliga a otras personas a comprobarlo, corregirlo o rehacerlo.</p>
-      <p class="p">Holweg y Davenport advierten de que, cuando entra sin control en los procesos, deteriora la precisión y la calidad del conocimiento sobre el que después se toman decisiones.</p>
-      <p class="note">Es un análisis organizativo, no un estudio experimental sobre universidades. Me aporta el concepto, no la prueba.</p>`,
-  },
-  {
-    name: '06-slop-academico',
-    body: `
-      <div class="eyebrow accent">En la universidad</div>
-      <h2>Slop<br>académico</h2>
-      <blockquote>Trabajos generados o reconstruidos con IA que cumplen formalmente con una tarea, pero sustituyen el proceso intelectual que esa tarea pretendía provocar.</blockquote>`,
-  },
-  {
-    name: '07-no-solo-citas',
-    body: `
-      <div class="eyebrow accent">No solo citas inventadas</div>
-      <p class="p">Esa es la versión más evidente y, probablemente, la menos preocupante.</p>
-      <p class="p big">Hablamos del análisis que no se sabe defender. Del código que no se entiende. De la síntesis que no se puede contrastar. De una voz académica que no pertenece a quien firma el trabajo.</p>`,
-  },
-  {
-    name: '08-la-paradoja',
-    body: `
-      <div class="eyebrow accent">La paradoja</div>
-      <p class="p">Casi todos los indicadores aparentes pueden mejorar. Los textos están mejor redactados. Las entregas parecen más completas. Las calificaciones pueden subir.</p>
-      <div class="pull">Si solo observamos el resultado final, podríamos concluir que una cohorte aprende más que la anterior cuando quizá estamos viendo exactamente lo contrario.</div>`,
-  },
-  {
-    name: '09-la-dificultad',
-    dark: true,
-    body: `
-      <div class="eyebrow accent">Por qué ocurre</div>
-      <p class="p on-dark">Porque el trabajo intelectual que pretendíamos provocar —leer con criterio, elegir, descartar, equivocarse, revisar y volver a intentarlo— es precisamente lo que se ha delegado.</p>
-      <div class="mega-pull small on-dark">La dificultad no siempre es un obstáculo para el aprendizaje. Muchas veces es el lugar donde el aprendizaje ocurre.</div>`,
-  },
-  {
-    name: '10-el-desplazamiento',
-    body: `
-      <div class="eyebrow accent">Y el trabajo no desaparece: se desplaza</div>
-      <p class="p">El docente deja de discutir ideas para dedicarse a comprobar de dónde proceden. Deja de acompañar el aprendizaje para verificar productos aparentemente terminados.</p>
-      <div class="pull">En la empresa, ese desplazamiento deteriora los procesos. En la universidad puede comprometer la formación de una persona.</div>`,
-  },
-  {
-    name: '11-la-evidencia',
-    dark: true,
-    body: `
-      <div class="eyebrow accent">Ensayo aleatorizado &middot; ~1.000 estudiantes de secundaria &middot; Matemáticas</div>
-      <div class="stat">
-        <div class="figure">&minus;17&thinsp;%</div>
-        <p class="figure-cap">en la evaluación <strong>sin IA</strong>, frente al grupo que nunca había tenido acceso a ella.</p>
-      </div>
-      <p class="p on-dark">Durante las sesiones de práctica, quienes podían utilizar libremente GPT&#8209;4 obtuvieron mejores resultados mientras tenían la herramienta delante.</p>`,
-  },
-  {
-    name: '12-el-tercer-grupo',
-    body: `
-      <div class="eyebrow accent">El dato más importante</div>
-      <p class="p">Está en el tercer grupo. Los estudiantes que utilizaron un tutor basado en GPT&#8209;4, diseñado para ofrecer pistas y acompañar el razonamiento sin proporcionar directamente las respuestas, no mostraron ese deterioro.</p>
-      <div class="pull">La cuestión no es utilizar o no utilizar IA. La variable decisiva es qué hace la herramienta con la dificultad.</div>`,
-  },
-  {
-    name: '13-los-limites',
-    body: `
-      <div class="eyebrow accent">Honestidad con los límites</div>
-      <p class="p">Ese estudio se realizó en secundaria y en matemáticas. Trasladarlo a la universidad es una hipótesis razonable, todavía no una conclusión demostrada.</p>
-      <p class="p">En el estudio de METR, 16 desarrolladores experimentados necesitaron un 19&thinsp;% más de tiempo con IA. No eran estudiantes, y la propia organización ha explicado después que sus datos recientes están afectados por sesgos de selección.</p>
-      <div class="pull">La coherencia no es un adorno del argumento. Es parte del argumento.</div>`,
-  },
-  {
-    name: '14-cambiar-que-evaluamos',
-    body: `
-      <div class="eyebrow accent">La salida</div>
-      <p class="p">No está en buscar un detector infalible ni en prohibir una tecnología que ya forma parte de la realidad académica y profesional. La oportunidad no consiste en vigilar mejor el mismo tipo de tareas.</p>
-      <div class="pull inline">Consiste en cambiar qué evaluamos.</div>
-      <p class="p">Si evaluamos el archivo final, evaluamos un producto que la IA genera con una calidad formal muy elevada. Si evaluamos el proceso, observamos el recorrido intelectual del estudiante.</p>`,
-  },
-  {
-    name: '15-decisiones-docentes',
-    body: `
-      <div class="eyebrow accent">Qué significa en la práctica</div>
-      <p class="p">Pedir que explique qué fuentes utilizó, qué verificó, qué descartó y por qué decidió así. Plantear tareas vinculadas a contextos reales. Reservar unos minutos para que defienda su trabajo y lo transfiera a una situación distinta.</p>
-      <p class="p">Y enseñar un uso que preserve el aprendizaje: pedir pistas, preguntas y contraejemplos en vez de respuestas; contrastar con fuentes primarias; documentar el proceso en lugar de esconderlo.</p>
-      <div class="pull">No son medidas de control.<br>Son decisiones docentes.</div>`,
-  },
-  {
-    name: '16-cierre',
-    dark: true,
-    body: `
-      <div class="eyebrow accent">El cierre</div>
-      <p class="p on-dark">La pregunta importante ya no es si la IA escribe mejor que el año pasado. Es evidente que lo hace y seguirá haciéndolo.</p>
-      <div class="mega-pull small on-dark">¿Qué competencia conserva el estudiante cuando retiramos la herramienta?</div>
-      <div class="rule"></div>
-      <p class="closing-line">La IA puede acelerar el aprendizaje.<br>Lo que no puede sustituir es la evidencia<br>de que alguien ha aprendido.</p>
-      <div class="cta">
-        <p class="cta-note">Fuentes en el primer comentario &middot; Guarda y comparte</p>
+      <div class="fill-mid center-block">
+        <h1 class="mega black">No hay<br>respuesta.</h1>
       </div>`,
+  },
+  {
+    name: '04-que-es',
+    bg: 's-black',
+    body: `
+      <div class="eyebrow">Qué es</div>
+      <h2 class="tight"><span class="o">Slop</span> académico</h2>
+      <blockquote>Cumple la tarea.<br>Sustituye el proceso intelectual que la tarea pretendía provocar.</blockquote>
+      <p class="foot">No hay plagio. Ningún detector lo señala.<br>No es honestidad académica: es aprendizaje.</p>`,
+  },
+  {
+    name: '05-la-paradoja',
+    bg: 's-white',
+    body: `
+      <div class="eyebrow">La paradoja</div>
+      <h2 class="tight">Suben las notas.<br>Baja la competencia.</h2>
+      ${ESQUEMA_PARADOJA}`,
+  },
+  {
+    name: '06-el-dato',
+    bg: 's-black',
+    body: `
+      <div class="eyebrow">Ensayo aleatorizado &middot; ~1.000 estudiantes de secundaria</div>
+      <div class="figure">&minus;17&thinsp;%</div>
+      <p class="figure-cap">rindió el grupo que había usado GPT&#8209;4 libremente, en cuanto le retiraron la herramienta.</p>
+      ${ESQUEMA_DATO}`,
+  },
+  {
+    name: '07-la-clave',
+    bg: 's-white',
+    body: `
+      <div class="eyebrow">La clave</div>
+      <h2 class="tight">No es usar IA o no usarla.<br><span class="o">Es qué hace con la dificultad.</span></h2>
+      ${ESQUEMA_DIFICULTAD}`,
+  },
+  {
+    name: '08-los-limites',
+    bg: 's-black',
+    body: `
+      <div class="eyebrow">Honestidad con los límites</div>
+      <ul class="chips">
+        <li>El ensayo es de <strong>secundaria y matemáticas</strong>. No de universidad.</li>
+        <li>El artículo de <strong>HBR</strong> es análisis organizativo. Da el concepto, no la prueba.</li>
+        <li>El <strong>19&thinsp;%</strong> de METR son 16 expertos, no estudiantes.</li>
+      </ul>
+      <div class="pull">La coherencia no es un adorno del argumento.<br>Es parte del argumento.</div>`,
+  },
+  {
+    name: '09-la-salida',
+    bg: 's-white',
+    body: `
+      <div class="eyebrow">La salida</div>
+      <h2 class="tight">Cambiar<br>qué evaluamos.</h2>
+      ${ESQUEMA_SALIDA}
+      <p class="foot dark">No son medidas de control. Son decisiones docentes.</p>`,
+  },
+  {
+    name: '10-cierre',
+    bg: 's-orange',
+    body: `
+      <div class="eyebrow black">El cierre</div>
+      <div class="fill-mid">
+        <h2 class="black big-q">¿Qué conserva el estudiante cuando retiramos la herramienta?</h2>
+      </div>
+      <div class="rule black-rule"></div>
+      <p class="closing">La IA puede acelerar el aprendizaje.<br>Lo que no puede sustituir es la evidencia<br>de que alguien ha aprendido.</p>
+      <p class="cta">Fuentes en el primer comentario</p>`,
   },
 ];
 
@@ -198,96 +219,141 @@ const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><style>
 @font-face{font-family:'Inter';src:url(data:font/woff2;base64,${INTER}) format('woff2');font-weight:100 900;font-style:normal;}
 @font-face{font-family:'SourceSerif';src:url(data:font/woff2;base64,${SERIF}) format('woff2');font-weight:500;font-style:italic;}
 :root{
-  --ink:#101922; --paper:#F6F2EA;
-  --accent:#E4622F; --teal:#1B7A70;
-  --muted:#3F4F5B; --muted-dark:#A7B6C1;
+  --black:#0B0B0B;
+  --white:#FFFFFF;
+  --orange:#FF5A00;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#555;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+body{background:#444;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+
 .slide{
-  width:1080px;height:1350px;padding:92px 88px 152px;position:relative;
+  width:1080px;height:1350px;padding:96px 88px 150px;position:relative;
   display:flex;flex-direction:column;overflow:hidden;
 }
-.slide.light{background:var(--paper);color:var(--ink);}
-.slide.dark{background:var(--ink);color:var(--paper);}
-.slide.dark::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(900px 620px at 84% 6%, rgba(228,98,47,.15), transparent 62%);
-}
-.slide > *{position:relative;z-index:1;}
+.slide.s-black{background:var(--black);color:var(--white);--ink:var(--white);--soft:rgba(255,255,255,.60);--line:rgba(255,255,255,.18);}
+.slide.s-white{background:var(--white);color:var(--black);--ink:var(--black);--soft:rgba(11,11,11,.62);--line:rgba(11,11,11,.14);}
+.slide.s-orange{background:var(--orange);color:var(--black);--ink:var(--black);--soft:rgba(11,11,11,.72);--line:rgba(11,11,11,.22);}
+
+.o{color:var(--orange);}
+.slide.s-orange .o{color:var(--white);}
+.black{color:var(--black) !important;}
 
 .eyebrow{
-  font-size:24px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
-  line-height:1.4;margin-bottom:44px;
+  font-size:25px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  line-height:1.4;color:var(--orange);margin-bottom:52px;
 }
-.eyebrow.accent{color:var(--accent);}
+.slide.s-orange .eyebrow{color:rgba(11,11,11,.62);}
 
-/* Prosa: es el elemento principal de casi todas las diapositivas. */
-.p{font-size:39px;line-height:1.44;font-weight:500;color:var(--muted);margin-bottom:34px;}
-.p.on-dark{color:var(--muted-dark);}
-.p strong{font-weight:800;color:var(--ink);}
-.p.on-dark strong{color:var(--paper);}
-.p.lead{font-size:47px;line-height:1.3;font-weight:700;color:var(--ink);}
-.p.big{font-size:43px;line-height:1.38;color:var(--ink);font-weight:600;}
-.p:last-of-type{margin-bottom:0;}
+.fill-mid{margin-top:auto;margin-bottom:auto;}
+.center-block{display:flex;align-items:center;}
 
-.pull{
-  margin-top:auto;font-size:41px;font-weight:800;line-height:1.26;letter-spacing:-.02em;
-  color:var(--ink);border-left:10px solid var(--accent);padding-left:36px;
-}
-.pull.on-dark{color:var(--paper);}
-.pull.inline{margin-top:6px;margin-bottom:38px;}
+h1.mega{font-size:138px;font-weight:900;line-height:.9;letter-spacing:-.045em;}
+h2{font-size:76px;font-weight:900;line-height:1.04;letter-spacing:-.035em;}
+h2.tight{margin-bottom:56px;}
+h2.stack{font-size:72px;line-height:1.14;}
+h2.big-q{font-size:82px;line-height:1.06;}
 
-.mega-pull{
-  margin-top:auto;font-size:104px;font-weight:900;line-height:.98;letter-spacing:-.04em;
-  color:var(--ink);
-}
-.mega-pull.small{font-size:56px;line-height:1.14;letter-spacing:-.03em;}
-.mega-pull.on-dark{color:var(--paper);}
+.rule{width:150px;height:10px;background:var(--orange);border-radius:10px;margin:44px 0 40px;}
+.rule.black-rule{background:var(--black);margin:36px 0 34px;}
+.hr{height:3px;background:var(--line);margin:auto 0 44px;}
 
-h1.mega{font-size:126px;font-weight:900;line-height:.92;letter-spacing:-.04em;}
-h2{font-size:88px;font-weight:800;line-height:1.0;letter-spacing:-.035em;margin-bottom:48px;}
+.lede{font-size:44px;line-height:1.26;font-weight:600;color:var(--soft);}
+.swipe{margin-top:auto;font-size:28px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);}
 
-.rule{width:132px;height:9px;background:var(--accent);border-radius:9px;margin:36px 0;}
-
-.cover-main{margin-top:auto;margin-bottom:auto;}
-.lede{font-size:40px;line-height:1.34;font-weight:500;color:var(--muted-dark);}
-.swipe{
-  margin-top:auto;font-size:27px;font-weight:700;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--accent);
-}
-.swipe .arrow{display:inline-block;margin-left:8px;}
+.say{font-size:36px;line-height:1.4;font-weight:500;color:var(--soft);}
+.quote{display:inline-block;margin-top:14px;font-size:46px;font-weight:700;color:var(--ink);line-height:1.26;}
 
 blockquote{
-  font-family:'SourceSerif',Georgia,serif;font-style:italic;font-weight:500;
-  font-size:50px;line-height:1.32;color:var(--ink);
-  border-left:10px solid var(--accent);padding-left:38px;
+  font-size:52px;line-height:1.24;font-weight:700;letter-spacing:-.02em;color:var(--ink);
+  border-left:12px solid var(--orange);padding-left:40px;margin-bottom:auto;
+}
+.foot{
+  margin-top:auto;font-size:29px;line-height:1.48;color:var(--soft);
+  border-top:3px solid var(--line);padding-top:28px;
 }
 
-.note{
-  margin-top:auto;font-size:28px;line-height:1.46;color:var(--muted);
-  border-top:2px solid rgba(16,25,34,.14);padding-top:26px;
+/* Esquema: flechas opuestas */
+.scheme{margin:auto 0;}
+.arrows{display:flex;gap:40px;align-items:flex-end;justify-content:space-around;}
+.arrow-col{display:flex;flex-direction:column;align-items:center;gap:30px;width:340px;}
+.arrow{width:172px;height:344px;}
+.arrow.up{color:var(--orange);}
+.arrow.down{color:var(--ink);}
+.arrow-label{font-size:34px;font-weight:800;line-height:1.2;text-align:center;letter-spacing:-.01em;}
+.down-col .arrow-label{color:var(--soft);}
+
+/* Grafico de caida */
+.chart{margin-top:auto;border-top:3px solid var(--line);padding-top:34px;}
+.chart-title{font-size:25px;font-weight:700;color:var(--soft);margin-bottom:30px;line-height:1.35;}
+.bar-row{display:flex;align-items:center;gap:22px;margin-bottom:22px;}
+.bar-row:last-child{margin-bottom:0;}
+.bar-label{width:290px;font-size:29px;font-weight:800;color:var(--ink);}
+.bar-track{flex:1;height:34px;display:flex;align-items:center;}
+.bar{height:34px;border-radius:0 6px 6px 0;}
+.bar.fill{background:var(--orange);}
+.bar.stub{width:8px;background:var(--soft);border-radius:0 3px 3px 0;}
+.bar-value{width:230px;font-size:31px;font-weight:900;text-align:right;}
+.bar-value.orange{color:var(--orange);}
+.bar-value.muted{font-size:26px;font-weight:700;color:var(--soft);}
+
+/* Esquema: dos cajas */
+.boxes{display:flex;gap:34px;}
+.box{flex:1;border:4px solid var(--line);border-radius:26px;padding:38px 30px;text-align:center;}
+.box.bad{border-color:var(--orange);}
+.box.good{border-color:var(--ink);}
+.box-head{font-size:38px;font-weight:900;letter-spacing:-.02em;margin-bottom:16px;}
+.box.bad .box-head{color:var(--orange);}
+.box-arrow{font-size:46px;line-height:1;color:var(--soft);margin-bottom:14px;}
+.box-foot{font-size:30px;font-weight:600;line-height:1.32;color:var(--soft);}
+
+/* Esquema: flujo */
+.flow{display:flex;align-items:center;gap:28px;}
+.flow-box{border:4px solid var(--line);border-radius:26px;padding:32px 26px;text-align:center;}
+.flow-box.struck{
+  width:330px;font-size:35px;font-weight:900;line-height:1.14;color:var(--soft);
+  position:relative;white-space:nowrap;
+}
+.flow-box.struck::after{
+  content:"";position:absolute;left:22px;right:22px;top:calc(50% - 3px);height:7px;
+  background:var(--orange);border-radius:7px;
+}
+.flow-arrow{font-size:52px;color:var(--soft);}
+.flow-box.live{flex:1;border-color:var(--orange);text-align:left;padding:32px 30px;}
+.flow-title{font-size:40px;font-weight:900;color:var(--ink);margin-bottom:18px;letter-spacing:-.02em;}
+.flow-tags{display:flex;flex-wrap:wrap;gap:12px;}
+.flow-tags span{
+  font-size:25px;font-weight:700;color:var(--orange);
+  border:3px solid var(--orange);border-radius:999px;padding:8px 18px;
 }
 
-.stat{margin:auto 0 40px;}
-.figure{font-size:196px;font-weight:900;line-height:.9;letter-spacing:-.05em;color:var(--accent);}
-.figure-cap{font-size:39px;line-height:1.3;font-weight:500;color:var(--paper);margin-top:26px;}
-.figure-cap strong{font-weight:800;}
+/* Chips de limites */
+.chips{list-style:none;margin-bottom:auto;}
+.chips li{
+  font-size:34px;line-height:1.36;font-weight:500;color:var(--soft);
+  border-left:8px solid var(--orange);padding-left:30px;margin-bottom:40px;
+}
+.chips strong{color:var(--ink);font-weight:800;}
 
-.closing-line{font-size:42px;font-weight:800;line-height:1.26;letter-spacing:-.02em;color:var(--paper);}
-.cta{margin-top:auto;border-top:2px solid rgba(246,242,234,.16);padding-top:30px;}
-.cta-note{font-size:25px;font-weight:700;letter-spacing:.03em;color:var(--accent);}
+.pull{
+  font-size:40px;font-weight:900;line-height:1.24;letter-spacing:-.02em;color:var(--ink);
+  border-top:3px solid var(--line);padding-top:32px;
+}
+
+.figure{font-size:250px;font-weight:900;line-height:.86;letter-spacing:-.06em;color:var(--orange);}
+.figure-cap{font-size:38px;line-height:1.3;font-weight:600;color:var(--ink);margin-top:26px;}
+
+.closing{font-size:39px;font-weight:800;line-height:1.28;letter-spacing:-.02em;color:var(--black);}
+.cta{margin-top:auto;font-size:25px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:rgba(11,11,11,.62);}
 
 .chrome{
   position:absolute;left:88px;right:88px;bottom:56px;
   display:flex;justify-content:space-between;align-items:center;
-  font-size:23px;font-weight:700;letter-spacing:.05em;color:rgba(16,25,34,.40);
+  font-size:23px;font-weight:800;letter-spacing:.05em;color:var(--soft);opacity:.75;
 }
-.chrome.on-dark{color:rgba(246,242,234,.44);}
 .chrome .count{font-variant-numeric:tabular-nums;}
 </style></head><body>
-${SLIDES.map((s, i) => `<section class="slide ${s.dark ? 'dark' : 'light'}">${s.body}
-  <div class="chrome ${s.dark ? 'on-dark' : ''}"><span>${HANDLE}</span><span class="count">${i + 1} / ${N}</span></div>
+${SLIDES.map((s, i) => `<section class="slide ${s.bg}">${s.body}
+  <div class="chrome"><span>${HANDLE}</span><span class="count">${i + 1} / ${N}</span></div>
 </section>`).join('\n')}
 </body></html>`;
 
@@ -299,7 +365,7 @@ fs.writeFileSync(path.join(DIR, '.carrusel.html'), html);
   await page.goto('file://' + path.join(DIR, '.carrusel.html'));
   await page.evaluate(() => document.fonts.ready);
 
-  // Aviso si algun texto se sale de su diapositiva.
+  // Aviso si algun contenido se sale de su diapositiva.
   const overflow = await page.$$eval('.slide', (nodes) =>
     nodes.map((n, i) => ({ i: i + 1, over: n.scrollHeight - n.clientHeight })).filter((r) => r.over > 1)
   );

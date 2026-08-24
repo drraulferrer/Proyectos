@@ -1,19 +1,13 @@
 Textos alternativos
 (Instagram: al publicar > Configuración avanzada > Escribir texto alternativo)
 
-01. Portada del carrusel sobre fondo oscuro con el título «Academic slop» y el subtítulo «Cuando el trabajo entregado mejora y el aprendizaje empeora».
-02. La escena: un estudiante entrega un análisis impecable, con estructura limpia y tono académico, y recibe un notable alto.
-03. Dos semanas después se le pregunta por qué eligió ese marco teórico y qué habría cambiado con otra decisión. En grande: «No hay respuesta».
-04. Esa decisión nunca fue suya. No hay plagio ni detector que lo señale, pero no es solo un problema de honestidad académica: es un problema de aprendizaje.
-05. El término AI slop en la empresa y la advertencia de Holweg y Davenport, con la nota de que es un análisis organizativo y no un estudio sobre universidades.
-06. Definición de slop académico: trabajos generados o reconstruidos con IA que cumplen formalmente una tarea pero sustituyen el proceso intelectual que pretendía provocar.
-07. No hablamos solo de citas inventadas, sino del análisis que no se sabe defender, el código que no se entiende, la síntesis que no se puede contrastar y una voz académica que no es de quien firma.
-08. La paradoja: los indicadores aparentes mejoran y podríamos concluir que una cohorte aprende más cuando quizá ocurre lo contrario.
-09. El trabajo intelectual que se pretendía provocar es el que se ha delegado. En grande: la dificultad es muchas veces el lugar donde el aprendizaje ocurre.
-10. El trabajo se desplaza: el docente pasa de discutir ideas a verificar productos terminados. En la universidad eso puede comprometer la formación de una persona.
-11. Dato del ensayo aleatorizado: 17 % peor resultado en la evaluación sin IA frente al grupo que nunca tuvo acceso, pese a rendir mejor durante la práctica.
-12. El tercer grupo del ensayo, con un tutor que daba pistas en lugar de respuestas, no mostró ese deterioro. La variable decisiva es qué hace la herramienta con la dificultad.
-13. Límites de la evidencia: el ensayo es de secundaria y matemáticas, y el 19 % de METR corresponde a 16 desarrolladores experimentados, no a estudiantes.
-14. La salida no es un detector ni una prohibición: consiste en cambiar qué evaluamos, del archivo final al recorrido intelectual del estudiante.
-15. Qué significa en la práctica: pedir fuentes, verificaciones y decisiones, tareas en contextos reales, defensa breve, y enseñar un uso de la IA que preserve el aprendizaje. No son medidas de control, son decisiones docentes.
-16. Cierre sobre fondo oscuro: ¿qué competencia conserva el estudiante cuando retiramos la herramienta? La IA puede acelerar el aprendizaje, pero no sustituir la evidencia de que alguien ha aprendido.
+01. Portada negra con el título «Academic slop» en naranja y la bajada «El trabajo mejora. El aprendizaje empeora».
+02. Sobre fondo blanco: «Análisis impecable. Bibliografía correcta. Notable alto». Debajo, la pregunta de clase: «¿Por qué elegiste ese marco y no otro?».
+03. Diapositiva naranja con la frase «No hay respuesta» en negro y a toda página.
+04. Definición de slop académico sobre fondo negro: cumple la tarea, pero sustituye el proceso intelectual que la tarea pretendía provocar. No hay plagio ni detector que lo señale.
+05. Esquema de dos flechas sobre fondo blanco: una naranja hacia arriba, «lo que se entrega», y otra negra hacia abajo, «lo que se aprende».
+06. Sobre fondo negro, la cifra −17 % en naranja y un gráfico de barras: el grupo con IA libre cae un 17 % en la evaluación sin IA, mientras el grupo con tutor de pistas no muestra deterioro.
+07. Dos recuadros comparados: si la IA elimina la dificultad, rinde más hoy y aprende menos; si la sostiene, rinde igual hoy y aprende.
+08. Sobre fondo negro, los tres límites de la evidencia: el ensayo es de secundaria y matemáticas, el artículo de HBR es análisis y no prueba, y el 19 % de METR son 16 expertos y no estudiantes.
+09. Esquema de flujo: el «archivo final» tachado da paso a «el proceso», con las etiquetas fuentes, qué verificó, qué descartó y defensa.
+10. Cierre naranja con la pregunta «¿Qué conserva el estudiante cuando retiramos la herramienta?» y el remate: la IA puede acelerar el aprendizaje, pero no sustituir la evidencia de que alguien ha aprendido.
