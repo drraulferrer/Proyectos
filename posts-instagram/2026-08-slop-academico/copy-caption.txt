@@ -1,0 +1,29 @@
+El riesgo no es que el estudiante use IA. Es que deje de aprender.
+
+En empresa se habla de AI slop: contenido que parece pulido, aporta poco y obliga a otros a comprobarlo, corregirlo o rehacerlo. Holweg y Davenport advierten de que, cuando ese material entra sin control en los procesos, degrada la precisión, la trazabilidad del conocimiento y la confianza en el sistema.
+
+En la universidad ocurre algo equivalente. Lo llamo slop académico: producción generada o rehecha con IA que parece cumplir una tarea académica, pero sustituye el trabajo intelectual del estudiante, oculta su procedencia y deja al docente la carga de verificarla.
+
+No es solo una cita inventada o un texto genérico.
+Es un análisis que no se sabe defender.
+Un código que no se entiende.
+Una síntesis que no se puede contrastar.
+Una voz académica que no es suya.
+
+El problema de fondo: podemos mejorar el producto entregado y empeorar el aprendizaje real.
+
+Y aquí conviene ser preciso con la evidencia. La más sólida que he localizado no es universitaria: es un ensayo aleatorizado con cerca de 1.000 estudiantes de secundaria en matemáticas. El acceso libre a GPT-4 mejoró el rendimiento durante la práctica, pero al retirar la IA para la prueba posterior ese grupo rindió un 17 % peor que quienes no la habían usado. Un tutor con salvaguardas —pistas diseñadas por docentes en lugar de respuestas— evitó en gran parte ese daño.
+
+La lección no es «prohibir la IA». Es no confundir rendimiento asistido con aprendizaje adquirido.
+
+Con los modelos de frontera actuales, la pregunta relevante ya no es si escriben mejor que los de hace un año. Es otra: ¿qué competencia conserva el estudiante cuando retiramos la IA?
+
+La respuesta no es un detector mágico ni una prohibición total. Es rediseñar la evaluación: evidencia de proceso, trazabilidad de fuentes y decisiones, tareas aplicadas al contexto y defensas breves donde el alumno explique, critique y transfiera lo que entrega.
+
+La IA puede acelerar el aprendizaje. No puede sustituir la evidencia de que has aprendido.
+
+¿Qué evalúas en tu asignatura: el archivo entregado o lo que el estudiante sabe hacer sin IA? Te leo en comentarios 👇
+
+Fuentes en el primer comentario.
+
+#EducaciónSuperior #Universidad #InteligenciaArtificial #Evaluación #Aprendizaje #Docencia #InnovaciónDocente #IAyEducación

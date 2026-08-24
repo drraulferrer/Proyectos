@@ -1,0 +1,17 @@
+Fuentes, por orden de aparición:
+
+1) Holweg M, Davenport TH. «Don't Let AI Slop Muck Up Your Company's Processes». Harvard Business Review, 16 de junio de 2026.
+hbr.org/2026/06/dont-let-ai-slop-muck-up-your-companys-processes
+Artículo de análisis sobre procesos organizativos. Marco conceptual, no evidencia experimental universitaria.
+
+2) Bastani H y cols. PNAS, 2025. Ensayo aleatorizado en matemáticas con estudiantes de secundaria.
+pnas.org/doi/10.1073/pnas.2422633122
+Evidencia causal sobre aprendizaje, en secundaria.
+
+3) METR. «Measuring the impact of early-2025 AI on experienced open-source developer productivity», 2025.
+metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/
+16 desarrolladores expertos en sus propios repositorios. No son estudiantes.
+
+4) METR. Actualización metodológica, 2026.
+metr.org/blog/2026-02-24-uplift-update/
+La propia METR advierte de los límites del resultado anterior y del sesgo de selección en los datos posteriores.

@@ -30,3 +30,7 @@ venv/
 
 # Registros
 *.log
+
+# Ficheros de trabajo del generador de carruseles
+posts-instagram/**/.fuentes/
+posts-instagram/**/.carrusel.html
