@@ -15,10 +15,11 @@ que replica la plantilla usada hasta ahora:
 
 | Archivo | Para qué sirve |
 |---------|----------------|
-| `guion.md` | Documento de trabajo: checklist, caption, guion diapositiva a diapositiva, fuentes y notas internas de precisión. |
+| `post-final.md` | Texto largo definitivo del que se cortan las diapositivas y el caption. Sirve también para blog o LinkedIn. |
 | `copy-caption.txt` | Pie del post en texto plano, listo para copiar y pegar. |
 | `copy-primer-comentario.txt` | Fuentes, para publicar como primer comentario. |
 | `textos-alt.txt` | Texto alternativo de cada imagen. |
+| `guion-carrusel.md` | Checklist de publicación, arco narrativo y qué lleva cada diapositiva. |
 | `imagenes/` | Los PNG del carrusel, numerados en orden de publicación. |
 | `generar-imagenes.js` | Regenera los PNG desde el propio script (Node + Playwright). |
 
@@ -36,4 +37,4 @@ primera vez y las incrusta en el HTML antes de capturar cada diapositiva.
 
 | Fecha | Post | Estado |
 |-------|------|--------|
-| 2026-08 | [Slop académico](2026-08-slop-academico/) | Borrador |
+| 2026-08 | [Academic slop](2026-08-slop-academico/) | Listo para publicar |

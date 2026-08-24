@@ -1,17 +1,9 @@
-Fuentes, por orden de aparición:
+FUENTES
 
-1) Holweg M, Davenport TH. «Don't Let AI Slop Muck Up Your Company's Processes». Harvard Business Review, 16 de junio de 2026.
-hbr.org/2026/06/dont-let-ai-slop-muck-up-your-companys-processes
-Artículo de análisis sobre procesos organizativos. Marco conceptual, no evidencia experimental universitaria.
+[1] Holweg, M. y Davenport, T. H. (2026). Don't Let AI Slop Muck Up Your Company's Processes. Harvard Business Review.
 
-2) Bastani H y cols. PNAS, 2025. Ensayo aleatorizado en matemáticas con estudiantes de secundaria.
-pnas.org/doi/10.1073/pnas.2422633122
-Evidencia causal sobre aprendizaje, en secundaria.
+[2] Bastani, H. et al. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. Proceedings of the National Academy of Sciences, 122(26), e2422633122.
 
-3) METR. «Measuring the impact of early-2025 AI on experienced open-source developer productivity», 2025.
-metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/
-16 desarrolladores expertos en sus propios repositorios. No son estudiantes.
+[3] Becker, J. et al. (2025). Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. METR.
 
-4) METR. Actualización metodológica, 2026.
-metr.org/blog/2026-02-24-uplift-update/
-La propia METR advierte de los límites del resultado anterior y del sesgo de selección en los datos posteriores.
+[4] Becker, J. et al. (2026). We Are Changing Our Developer Productivity Experiment Design. METR.
