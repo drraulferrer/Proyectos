@@ -29,6 +29,7 @@ Proyectos/
 | Proyecto | Descripción | Estado |
 |----------|-------------|--------|
 | [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |
+| [posts-instagram](posts-instagram/) | Textos y guiones de carruseles para Instagram, con la estructura de la plantilla de publicación (caption + diapositivas + fuentes). | En uso |
 
 ## Notas
 

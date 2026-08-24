@@ -1,0 +1,27 @@
+Un estudiante entrega un análisis impecable. Estructura limpia, bibliografía aparentemente correcta, tono académico de principio a fin. Notable alto.
+
+Dos semanas después le preguntas por qué eligió ese marco teórico y no otro.
+
+No hay respuesta.
+
+No hay plagio. Ningún detector señalará necesariamente nada extraño. Y sin embargo, algo ha fallado justo donde más importa. No es solo un problema de honestidad académica: es un problema de aprendizaje.
+
+En la empresa ya se habla de AI slop: contenido generado con IA que parece pulido, pero aporta poco y obliga a otras personas a comprobarlo, corregirlo o rehacerlo [1]. En la universidad podríamos hablar de slop académico: trabajos que cumplen formalmente con una tarea, pero sustituyen el proceso intelectual que esa tarea pretendía provocar.
+
+La paradoja es que casi todos los indicadores aparentes pueden mejorar. Mejor redacción, entregas más completas, calificaciones que suben. Y quizá estemos viendo exactamente lo contrario de lo que parece.
+
+¿Qué dice la evidencia? Un ensayo aleatorizado con cerca de mil estudiantes de matemáticas de secundaria: quienes usaron libremente GPT-4 rindieron mejor durante la práctica, pero un 17 % peor en la evaluación sin IA [2]. El dato más importante está en el tercer grupo: con un tutor diseñado para dar pistas en lugar de respuestas, ese deterioro no apareció.
+
+La variable decisiva no es usar o no usar IA. Es qué hace la herramienta con la dificultad.
+
+Con honestidad: ese estudio es de secundaria y de matemáticas, y trasladarlo a la universidad es una hipótesis razonable, no una conclusión demostrada. El 19 % de METR son 16 desarrolladores experimentados, no estudiantes [3][4].
+
+La salida no es un detector infalible ni prohibir. Es cambiar qué evaluamos: el proceso, no solo el archivo final.
+
+La IA puede acelerar el aprendizaje. Lo que no puede sustituir es la evidencia de que alguien ha aprendido.
+
+¿Qué evalúas tú: el archivo o lo que el estudiante sabe hacer sin la herramienta?
+
+Fuentes en el primer comentario.
+
+#InteligenciaArtificial #Universidad #Educación #Aprendizaje #InnovaciónDocente

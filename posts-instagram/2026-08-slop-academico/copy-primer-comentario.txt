@@ -1,0 +1,9 @@
+FUENTES
+
+[1] Holweg, M. y Davenport, T. H. (2026). Don't Let AI Slop Muck Up Your Company's Processes. Harvard Business Review.
+
+[2] Bastani, H. et al. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. Proceedings of the National Academy of Sciences, 122(26), e2422633122.
+
+[3] Becker, J. et al. (2025). Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. METR.
+
+[4] Becker, J. et al. (2026). We Are Changing Our Developer Productivity Experiment Design. METR.
