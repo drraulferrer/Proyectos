@@ -112,6 +112,34 @@ const ESQUEMA_SALIDA = `
   </div>
 </div>`;
 
+// Textura: lineas de texto que se van fragmentando hacia abajo. Es la metafora
+// del propio post: arriba parece un trabajo limpio, abajo son restos. Todo el
+// dibujo es determinista, asi que dos ejecuciones dan el mismo PNG.
+function texturaSlop({ rows = 30, width = 460, height = 1350, seed = 7 } = {}) {
+  let s = seed;
+  const rnd = () => (s = (s * 1103515245 + 12345) % 2147483648) / 2147483648;
+  const rowH = height / rows;
+  let out = '';
+  for (let r = 0; r < rows; r++) {
+    const t = r / (rows - 1); // 0 = linea limpia arriba · 1 = fragmentos abajo
+    const pieces = 1 + Math.round(t * 4);
+    const lineW = width * (0.6 + rnd() * 0.4);
+    const h = rowH * 0.34;
+    let x = 0;
+    for (let p = 0; p < pieces; p++) {
+      const seg = Math.max(8, (lineW / pieces) * (0.55 + rnd() * 0.5));
+      const dx = t * (rnd() - 0.5) * 110;
+      const dy = t * (rnd() - 0.5) * 16;
+      const y = r * rowH + rowH * 0.3 + dy;
+      out += `<rect x="${(x + dx).toFixed(1)}" y="${y.toFixed(1)}" width="${seg.toFixed(1)}"`
+        + ` height="${h.toFixed(1)}" rx="${(h / 2).toFixed(1)}"`
+        + ` opacity="${(0.14 + t * 0.6).toFixed(2)}"/>`;
+      x += seg + 16;
+    }
+  }
+  return `<svg class="texture" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" aria-hidden="true"><g fill="currentColor">${out}</g></svg>`;
+}
+
 // --- Diapositivas -----------------------------------------------------------
 
 const SLIDES = [
@@ -119,6 +147,7 @@ const SLIDES = [
     name: '01-portada',
     bg: 's-black',
     body: `
+      ${texturaSlop({ seed: 7 })}
       <div class="eyebrow">IA y universidad</div>
       <div class="fill-mid">
         <h1 class="mega">Academic<br><span class="o">slop</span></h1>
@@ -140,6 +169,7 @@ const SLIDES = [
     name: '03-no-hay-respuesta',
     bg: 's-orange',
     body: `
+      ${texturaSlop({ seed: 23 })}
       <div class="fill-mid center-block">
         <h1 class="mega black">No hay<br>respuesta.</h1>
       </div>`,
@@ -233,6 +263,15 @@ body{background:#444;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoot
 .slide.s-black{background:var(--black);color:var(--white);--ink:var(--white);--soft:rgba(255,255,255,.60);--line:rgba(255,255,255,.18);}
 .slide.s-white{background:var(--white);color:var(--black);--ink:var(--black);--soft:rgba(11,11,11,.62);--line:rgba(11,11,11,.14);}
 .slide.s-orange{background:var(--orange);color:var(--black);--ink:var(--black);--soft:rgba(11,11,11,.72);--line:rgba(11,11,11,.22);}
+
+.texture{
+  position:absolute;top:0;right:-30px;width:470px;height:100%;
+  color:var(--orange);opacity:.42;z-index:0;
+  -webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 58%, transparent 94%);
+  mask-image:linear-gradient(to bottom, #000 0%, #000 58%, transparent 94%);
+}
+.slide.s-orange .texture{color:var(--black);opacity:.16;}
+.slide > *:not(.texture):not(.chrome){position:relative;z-index:1;}
 
 .o{color:var(--orange);}
 .slide.s-orange .o{color:var(--white);}
@@ -348,7 +387,7 @@ blockquote{
 .chrome{
   position:absolute;left:88px;right:88px;bottom:56px;
   display:flex;justify-content:space-between;align-items:center;
-  font-size:23px;font-weight:800;letter-spacing:.05em;color:var(--soft);opacity:.75;
+  font-size:23px;font-weight:800;letter-spacing:.05em;color:var(--soft);opacity:.75;z-index:2;
 }
 .chrome .count{font-variant-numeric:tabular-nums;}
 </style></head><body>

@@ -12,6 +12,7 @@ vistazo en el móvil, con esquemas donde el texto sobraba.
 | Tipografía | Inter (900 para titulares, 500–800 para el resto). |
 | Ritmo de fondos | negro · blanco · **naranja** · negro · blanco · negro · blanco · negro · blanco · **naranja** |
 | Esquemas | Flechas opuestas (5), gráfico de barras (6), dos recuadros (7), flujo tachado (9). Todo vectorial, sin imágenes. |
+| Textura | Líneas de texto que se fragmentan hacia abajo, en la portada y en la 3. Es la metáfora del post: arriba parece un trabajo limpio, abajo son restos. Se dibuja con un generador determinista, así que dos ejecuciones dan el mismo PNG. |
 
 Las dos diapositivas naranjas son los golpes del carrusel: la 3 remata la
 escena y la 10 cierra. El resto alterna negro y blanco.
