@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150" role="img" aria-label="Logo RF — Raúl Ferrer">
+  <defs>
+    <marker id="ah" markerWidth="7" markerHeight="7" refX="4" refY="3.2" orient="auto">
+      <path d="M0,0 L7,3.2 L0,6.4 Z" fill="currentColor"/>
+    </marker>
+    <marker id="ahc" markerWidth="7" markerHeight="7" refX="4" refY="3.2" orient="auto">
+      <path d="M0,0 L7,3.2 L0,6.4 Z" fill="#f27a16"/>
+    </marker>
+  </defs>
+  <!-- Flechas negras (ejes) -->
+  <g stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round">
+    <line x1="128" y1="46" x2="128" y2="10" marker-end="url(#ah)"/>
+    <line x1="128" y1="104" x2="128" y2="140" marker-end="url(#ah)"/>
+    <line x1="78" y1="40" x2="20" y2="40" marker-end="url(#ah)"/>
+    <line x1="80" y1="112" x2="26" y2="118" marker-end="url(#ah)"/>
+    <line x1="182" y1="42" x2="240" y2="42" marker-end="url(#ah)"/>
+  </g>
+  <!-- Flechas coral (dinamismo) -->
+  <g stroke="#f27a16" stroke-width="4" fill="none" stroke-linecap="round">
+    <line x1="170" y1="22" x2="212" y2="22" marker-end="url(#ahc)"/>
+    <line x1="184" y1="74" x2="236" y2="74" marker-end="url(#ahc)"/>
+    <line x1="182" y1="98" x2="228" y2="103" marker-end="url(#ahc)"/>
+    <line x1="46" y1="70" x2="74" y2="78" marker-end="url(#ahc)"/>
+    <line x1="150" y1="110" x2="170" y2="136" marker-end="url(#ahc)"/>
+    <path d="M150 20 q34 4 40 34" marker-end="url(#ahc)"/>
+  </g>
+  <!-- Monograma RF -->
+  <text x="128" y="112" text-anchor="middle" font-family="'Arial Black','Futura',system-ui,sans-serif"
+        font-weight="900" font-size="104" fill="currentColor" letter-spacing="-4"
+        transform="skewX(-5)" transform-origin="128 80">RF</text>
+</svg>
