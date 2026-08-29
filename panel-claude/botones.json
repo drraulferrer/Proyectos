@@ -19,5 +19,12 @@
     "descripcion": "Ejecuta las comprobaciones del proyecto (tests, linter o build), arregla lo que sea trivial y cuenta el resultado. Necesita el modo automático.",
     "prompt": "Ejecuta las comprobaciones habituales de este proyecto (tests, linter o build, lo que exista). Si algo falla por un motivo trivial, arréglalo y vuelve a comprobar. Al final, resume en español qué se comprobó, qué se arregló y qué queda pendiente.",
     "automatico": true
+  },
+  {
+    "nombre": "Revisar una Skill",
+    "emoji": "🛡️",
+    "descripcion": "Pasa el escáner de seguridad SkillSpector (NVIDIA) a una habilidad antes de instalarla y te explica el resultado en español. Escribe en «Instrucciones extra» qué revisar: una carpeta o una dirección de GitHub. No toca la Skill.",
+    "prompt": "Revisa la seguridad de una Skill con SkillSpector y explícame el resultado en español.\n\nQUÉ REVISAR: viene en «Instrucciones adicionales del usuario» al final de este mensaje (una carpeta local, una dirección de GitHub o un archivo .zip). Si no se indica nada, revisa todas las Skills que encuentres instaladas en ~/.claude/skills/ y en .claude/skills/ de este proyecto, y dame un resumen ordenado de la más preocupante a la menos.\n\nCÓMO:\n1. Comprueba si el comando `skillspector` está disponible (mira también en ~/.local/bin). Si no lo está, instálalo con `uv tool install --python 3.12 git+https://github.com/NVIDIA/skillspector.git`; si falta `uv`, instálalo antes con `curl -LsSf https://astral.sh/uv/install.sh | sh`.\n2. Escanea con `skillspector scan <objetivo> --no-llm --format markdown --output <informe>`, guardando el informe en la carpeta `skillspector/informes/` del repositorio Proyectos si existe, con nombre `<AAAAMMDD-HHMMSS>-<nombre>.md`.\n3. Explícame sin tecnicismos: la puntuación de riesgo, la recomendación (PASS / CAUTION / FAIL) y cada problema encontrado — qué significa, si es preocupante de verdad o un falso positivo típico (por ejemplo, una Skill que toca ~/.claude/ a propósito), y qué harías tú.\n4. Termina con una recomendación clara: instalarla, revisarla a mano antes, o descartarla.\n\nNo modifiques la Skill revisada ni ningún otro archivo del proyecto: solo escribe el informe.",
+    "automatico": true
   }
 ]
