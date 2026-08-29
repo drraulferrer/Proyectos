@@ -18,12 +18,27 @@ en texto plano… Son **71 patrones en 17 categorías**.
 
 ## 🚀 La forma fácil: el botón del panel
 
-En [panel-claude](../panel-claude/) hay un botón **🛡️ Revisar una Skill**. Le das
-al botón, le dices qué Skill quieres revisar (una carpeta de tu equipo o una
-dirección de GitHub) y Claude se encarga de instalar la herramienta si hace falta,
-pasar el escáner y explicarte el resultado en español.
+En [panel-claude](../panel-claude/) hay un botón **🛡️ Revisar una Skill**:
+
+1. Abre el panel y ve a la pestaña **⚡ Botones**.
+2. Elige arriba la carpeta del proyecto **Proyectos** (ahí se guardarán los informes).
+3. Pulsa **🛡️ Revisar una Skill**.
+4. En **«Instrucciones extra»** escribe qué quieres revisar — una carpeta
+   (`~/.claude/skills/mi-skill`) o una dirección de GitHub
+   (`https://github.com/usuario/su-skill`). Si lo dejas vacío, revisa todas las
+   Skills que ya tengas instaladas.
+5. Deja marcada la casilla de **modo automático** y dale a ejecutar.
+
+Claude instala la herramienta si hace falta (la primera vez tarda un par de
+minutos), pasa el escáner y te explica el resultado en español. El informe queda
+en `skillspector/informes/`.
 
 No necesitas terminal ni saber nada de lo de abajo.
+
+> **Por qué el modo automático**: el panel lanza Claude en modo de una sola
+> pasada, sin poder pedirte permiso por pantalla. Sin esa casilla, los comandos
+> de instalación y escaneo se quedarían bloqueados. El botón solo *lee* archivos
+> y escribe el informe: no ejecuta la Skill que estás revisando.
 
 ---
 
