@@ -19,5 +19,12 @@
     "descripcion": "Ejecuta las comprobaciones del proyecto (tests, linter o build), arregla lo que sea trivial y cuenta el resultado. Necesita el modo automático.",
     "prompt": "Ejecuta las comprobaciones habituales de este proyecto (tests, linter o build, lo que exista). Si algo falla por un motivo trivial, arréglalo y vuelve a comprobar. Al final, resume en español qué se comprobó, qué se arregló y qué queda pendiente.",
     "automatico": true
+  },
+  {
+    "nombre": "Revisar una Skill",
+    "emoji": "🛡️",
+    "descripcion": "Pasa el escáner de seguridad SkillSpector (NVIDIA) a una habilidad antes de instalarla y te explica el resultado en español. No cambia nada.",
+    "prompt": "Quiero revisar la seguridad de una Skill con SkillSpector antes de instalarla. Pregúntame primero qué Skill quiero revisar (una carpeta local, por ejemplo dentro de ~/.claude/skills/, o una dirección de GitHub). Después:\n1. Comprueba si el comando `skillspector` está disponible. Si no lo está, instálalo con `uv tool install --python 3.12 git+https://github.com/NVIDIA/skillspector.git` (y si falta `uv`, instálalo antes siguiendo skillspector/README.md de este repositorio).\n2. Ejecuta `skillspector scan <lo-que-yo-diga> --no-llm --format markdown --output skillspector/informes/<fecha>-<nombre>.md`.\n3. Explícame en español y sin tecnicismos: la puntuación de riesgo, la recomendación (PASS / CAUTION / FAIL) y cada problema encontrado — qué significa, si es preocupante de verdad o un falso positivo típico, y qué harías tú.\n4. Termina con una recomendación clara de si instalarla o no.\nNo modifiques la Skill ni ningún otro archivo del proyecto.",
+    "automatico": false
   }
 ]
