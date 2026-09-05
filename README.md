@@ -28,6 +28,7 @@ Proyectos/
 
 | Proyecto | Descripción | Estado |
 |----------|-------------|--------|
+| [calendario-congresos-entrevias](calendario-congresos-entrevias/) | Calendario de comunicaciones a congresos del CS Entrevías: plazos de envío, estado de cada comunicación y hoja imprimible. App local sin dependencias (se abre con doble clic). | En uso |
 | [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |
 | [skillspector](skillspector/) | Escáner de seguridad de NVIDIA para revisar habilidades (*Skills*) de Claude Code antes de instalarlas: detecta instrucciones ocultas, fugas de datos y código malicioso. | En uso |
 
