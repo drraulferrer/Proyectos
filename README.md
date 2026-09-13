@@ -33,4 +33,7 @@ Proyectos/
 
 ## Notas
 
+- [Comando `/minto`](.claude/commands/minto.md) — estructura ponencias, informes y propuestas con la
+  pirámide de Barbara Minto: la tesis arriba, y una puerta que impide redactar hasta que el
+  esqueleto del argumento pasa las pruebas. Instalación y uso en [`.claude/README.md`](.claude/README.md).
 - [Bitácora de herramientas](lecciones-integracion-herramientas.md) — qué patrones de diseño/UI, persistencia de datos e integración de herramientas se repiten en el portfolio, para arrancar la siguiente idea con menos dudas.
