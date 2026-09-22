@@ -28,6 +28,7 @@ Proyectos/
 
 | Proyecto | Descripción | Estado |
 |----------|-------------|--------|
+| [fisioterapia-ap-ministerio](fisioterapia-ap-ministerio/) | Especificación, trazabilidad de comentarios y banco de referencias verificadas para el documento técnico de fisioterapia en atención primaria dirigido al Ministerio de Sanidad. | En elaboración |
 | [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |
 | [skillspector](skillspector/) | Escáner de seguridad de NVIDIA para revisar habilidades (*Skills*) de Claude Code antes de instalarlas: detecta instrucciones ocultas, fugas de datos y código malicioso. | En uso |
 
