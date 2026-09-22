@@ -3,7 +3,7 @@
 
 | Campo | Valor |
 |---|---|
-| Versión de la especificación | 0.1 (borrador para validación de autoría) |
+| Versión de la especificación | 0.2 (decisiones de autoría D-1 a D-6 resueltas el 22 de septiembre de 2026) |
 | Fecha | 22 de septiembre de 2026 |
 | Documento de partida | `Propuesta de Fisioterapia en Atención Primaria para el Ministerio de Sanidad` (borrador con 52 comentarios de revisión) |
 | Destinatario del documento final | Ministerio de Sanidad, Dirección General de Ordenación Profesional y Dirección General de Salud Pública y Equidad en Salud; Comisión de Atención Primaria del Consejo Interterritorial del SNS |
@@ -103,10 +103,14 @@ en recursos y cómo se evaluará.
 
 **Contenido obligatorio.**
 1. Tesis central (1.3) literal.
-2. Cinco peticiones concretas al Ministerio, numeradas: (a) modelo organizativo homogéneo,
-   (b) vías de acceso incluida la autorreferencia regulada, (c) estándar de dotación con
-   horizonte temporal, (d) indicadores comunes en el SIAP, (e) grupo de trabajo del
-   Consejo Interterritorial para el despliegue.
+2. Seis peticiones concretas al Ministerio, numeradas: (a) modelo organizativo homogéneo,
+   (b) vías de acceso incluida la autorreferencia regulada, con actualización del apartado
+   6 del anexo II del RD 1030/2006 para recogerla en la cartera común, (c) habilitación
+   expresa del fisioterapeuta de AP como prescriptor de radiología simple en procesos
+   protocolizados y reconocimiento de la ecografía como apoyo a la valoración, (d)
+   estándar de dotación derivado de un modelo de demanda con horizonte temporal, (e)
+   indicadores comunes en el SIAP, (f) grupo de trabajo del Consejo Interterritorial
+   para el despliegue.
 3. Lo que no se propone (1.4).
 4. Una tabla de tres filas con los escenarios de dotación y su horizonte (sección 9).
 5. Nota de método: todas las cifras están trazadas en el anexo E y todas las referencias
@@ -224,8 +228,13 @@ autónoma con documento, año y contenido regulado (comentarios 5, 6, 7, 9, 41, 
    cada equipo de AP desde 2022-2023, pero no consta acceso directo en ningún documento
    oficial, por lo que no puede figurar en la lista de comunidades con acceso directo
    (esto corrige la petición del comentario 6, que solo puede atenderse para Madrid);
-   (b) la solicitud de radiografía simple por fisioterapeutas de AP de Madrid no tiene
-   norma ni noticia localizada y no se incluye salvo que la autoría aporte el documento;
+   (b) la solicitud de radiografía simple por fisioterapeutas de AP de Madrid no existe
+   como práctica autorizada: el documento de posición del Colegio Profesional de
+   Fisioterapeutas de la Comunidad de Madrid (junio de 2026) reconoce que "la
+   fisioterapia no figura de forma expresa entre los profesionales habilitados a escala
+   estatal" y pide un acto de autorización; por tanto Madrid se cita como precedente de
+   acceso directo, no de solicitud de pruebas, y la solicitud de radiología pasa a ser
+   una petición al Ministerio (sección 7.3);
    (c) la interconsulta no presencial de Madrid se cita como servicio general de los
    hospitales del SERMAS, no como servicio específico de fisioterapia.
 4. **3.4 Heterogeneidad e inequidad.** Conclusión: la misma cartera común se traduce en
@@ -315,8 +324,9 @@ hacer estimable la carga de trabajo (comentario 4).
 3. **5.3 Funciones clínicas.** Tabla función / contenido. Primer contacto: valoración de
    procesos musculoesqueléticos con estratificación de complejidad, sin el adjetivo
    "simples" (comentario 34). Cribado de signos de alarma. Diagnóstico fisioterapéutico.
-   Plan de intervención. Prescripción de ejercicio. Derivación. Alta con informe
-   funcional. La solicitud de pruebas se remite a la sección 7.
+   Plan de intervención. Prescripción de ejercicio. Uso de ecografía como apoyo a la
+   valoración y la reevaluación, sin informe radiológico. Derivación. Alta con informe
+   funcional. La solicitud de radiología simple se remite a la sección 7.
 4. **5.4 Programas grupales y programas comunitarios.** Dos tablas separadas. Cada
    programa grupal remite a una ficha del anexo A con: población diana, criterios de
    inclusión, liderazgo (fisioterapia sola o compartida con enfermería familiar y
@@ -355,13 +365,13 @@ con horas de fisioterapeuta por edición; esas horas se usan en la sección 9.
    medicina de familia, urgencias o atención hospitalaria si hay criterios de alarma o
    complejidad. Se puede prever un cuestionario de autorreferencia cumplimentado por el
    ciudadano, tomado de modelos con evaluación publicada, y se especifica que quien lo
-   lee e interpreta es el fisioterapeuta. **Matiz derivado de la verificación:** los dos
-   precedentes españoles de acceso directo funcionan mediante un protocolo de gestión de
-   la demanda aplicado por personal administrativo con motivos de consulta
-   parametrizados por clínicos (XIDE en Galicia; citación por la Unidad de Atención al
-   Usuario en Madrid). El documento describe ese mecanismo con ese nombre, "gestión de la
-   demanda con motivos parametrizados", deja claro que no es triaje ni valoración
-   clínica, y cita los dos precedentes (decisión D-6).
+   lee e interpreta es el fisioterapeuta. **Mecanismo de entrada (decisión D-6,
+   resuelta):** gestión de la demanda con motivos de consulta parametrizados por
+   clínicos y aplicada por personal administrativo, que cita con fisioterapia; el
+   cribado clínico lo realiza el fisioterapeuta en la primera consulta. Es el mecanismo
+   de los dos precedentes españoles (XIDE en Galicia desde 2022; citación desde la
+   Unidad de Atención al Usuario en Madrid desde 2025) y así se nombra y se cita. El
+   texto deja claro que no es triaje ni valoración clínica.
 3. **6.3 Circuito 2, medicina de familia.** Como en el borrador, con retorno explícito por
    ausencia de mejoría, signos de alarma, contraindicación o proceso no abordable.
 4. **6.4 Circuito 3, enfermería familiar y comunitaria.** Cribado de fragilidad realizado
@@ -397,26 +407,71 @@ pide para España, sin dejar que el lector lo infiera del modelo inglés.
 1. **7.1 Competencias ya amparadas por la LOPS.** Valoración, diagnóstico fisioterapéutico,
    plan de intervención, alta fisioterapéutica, derivación a otro profesional del equipo.
 2. **7.2 Competencias que requieren desarrollo autonómico o protocolo.** Acceso directo
-   del ciudadano (ya regulado en al menos tres comunidades), interconsulta no presencial
-   con atención hospitalaria, uso de ecografía como apoyo a la valoración.
-3. **7.3 Solicitud de pruebas de imagen (decisión D-2).** Marco del Real Decreto
-   601/2019: el prescriptor es "médico, odontólogo u otro profesional sanitario
-   autorizado… con arreglo a los requisitos establecidos", y el fisioterapeuta no figura
-   en ninguna norma habilitante localizada. No se ha verificado ningún precedente
-   autonómico. Se declara la posición del documento (ver sección 11).
-4. **7.4 Compatibilidad con la cartera común (decisión D-5).** El apartado 6 del anexo
-   II del RD 1030/2006 exige "previa indicación médica". El documento expone las dos
-   vías posibles: (a) lectura de la indicación médica como indicación por protocolo
-   aprobado por el servicio de salud, que es la que de hecho sostienen Galicia y Madrid;
-   (b) propuesta de actualización del apartado 6 por el procedimiento de los artículos
-   20 y 21 de la Ley 16/2003, para que la autorreferencia protocolizada quede recogida
-   en la cartera común. Se recomienda pedir (b) y apoyarse en (a) para la fase de
-   implantación.
-5. **7.5 Lo que no se pide.** Prescripción farmacológica; especialidades de fisioterapia;
-   sustitución de la valoración médica en procesos con diagnóstico médico pendiente.
+   del ciudadano (regulado en Galicia y Madrid), interconsulta no presencial con
+   atención hospitalaria.
+3. **7.3 Ecografía como apoyo a la valoración (decisión D-4, resuelta: competencia
+   solicitada).** El documento pide el reconocimiento del uso de la ecografía por el
+   fisioterapeuta de AP como herramienta de apoyo a la valoración, la reevaluación y la
+   decisión de derivación, sin informe radiológico, que sigue siendo del médico
+   especialista. Base: la ecografía no emplea radiaciones ionizantes y no está sujeta al
+   RD 601/2019; la Resolución 1/2023 del Consejo General de Colegios de Fisioterapeutas
+   la considera herramienta inherente al proceso de atención en fisioterapia; la
+   Gerencia Asistencial de AP de Madrid dispone de ecógrafos en centros de salud y forma
+   a fisioterapeutas en su manejo. Requisitos que el documento fija: formación
+   acreditada, protocolo de uso y registro en historia clínica.
+4. **7.4 Solicitud de radiología simple (decisión D-2, resuelta: se pide, como
+   desarrollo normativo).** El documento pide al Ministerio la habilitación expresa del
+   fisioterapeuta de AP como prescriptor de radiología simple musculoesquelética en los
+   procesos protocolizados de acceso directo. Se redacta como petición de desarrollo
+   normativo, no como práctica existente, porque ninguna comunidad autónoma la ha
+   autorizado y el propio Colegio Profesional de Fisioterapeutas de la Comunidad de
+   Madrid, en su documento de posición de junio de 2026, reconoce que hace falta un
+   acto de autorización expreso. Contenido obligatorio del apartado:
+   - distinción del RD 601/2019 entre **prescriptor** (médico, odontólogo u otro
+     profesional sanitario autorizado para remitir) y **profesional sanitario
+     habilitado** (quien asume la responsabilidad clínica de la exposición; en
+     radiodiagnóstico, el radiólogo): lo que se pide es la condición de prescriptor, no
+     la de profesional habilitado;
+   - precedente de la podología, que el RD 601/2019 integra mediante habilitación
+     específica, como vía análoga;
+   - la Directiva 2013/59/Euratom, que no reserva en exclusiva a los médicos la
+     remisión a procedimientos radiológicos;
+   - acción A.4.4 del Marco Estratégico para la AP y Comunitaria (2019), que insta a los
+     cambios normativos para vincular cartera y competencias e incrementar la capacidad
+     resolutiva de la fisioterapia;
+   - el argumento del circuito redundante: el acceso directo sin capacidad de solicitud
+     genera la derivación intermedia que pretendía evitar (ejemplo: esguince de tobillo
+     con reglas de Ottawa positivas);
+   - alcance limitado a radiología simple musculoesquelética de los procesos
+     protocolizados, con reglas de decisión validadas (Ottawa) y sin interpretación
+     radiológica formal;
+   - salvaguardas: justificación clínica, optimización de dosis, formación acreditada en
+     protección radiológica, protocolo consensuado con radiodiagnóstico y medicina de
+     familia, trazabilidad y auditoría;
+   - comparación internacional solo con marcos verificados (IR(ME)R 2017 en Reino
+     Unido, Roadmap to Practice de Health Education England); Nueva Zelanda y Estados
+     Unidos no se citan mientras no haya fuente oficial verificada.
+   Mientras la petición no se apruebe, el documento prevé el protocolo compartido con
+   medicina de familia para la radiografía simple, de modo que el circuito funcione
+   desde el primer día.
+5. **7.5 Compatibilidad con la cartera común (decisión D-5, resuelta: ambas vías).**
+   El apartado 6 del anexo II del RD 1030/2006 exige "previa indicación médica". El
+   documento sostiene, para la fase de implantación, que la indicación por protocolo
+   aprobado por el servicio de salud cumple el requisito, que es la lectura que de hecho
+   sostienen Galicia y Madrid, y pide al Ministerio la actualización del apartado 6 por
+   el procedimiento de los artículos 20 y 21 de la Ley 16/2003, para que la
+   autorreferencia protocolizada quede recogida en la cartera común.
+6. **7.6 Lo que no se pide.** Prescripción farmacológica; especialidades de
+   fisioterapia; sustitución de la valoración médica en procesos con diagnóstico médico
+   pendiente; interpretación radiológica formal; solicitud de pruebas de imagen
+   avanzada o de mayor dosis; derivación a atención hospitalaria sin paso por medicina
+   de familia fuera del circuito de urgencia.
 
 **Criterio de aceptación.** Un lector puede responder en una frase "¿pide este documento
-que el fisioterapeuta de AP solicite radiografías?" y la respuesta está en el texto.
+que el fisioterapeuta de AP solicite radiografías?" y la respuesta está en el texto:
+sí, como habilitación normativa que hoy no existe, limitada a radiología simple
+musculoesquelética en procesos protocolizados. El apartado 7.4 no contiene ninguna frase
+que presente esa capacidad como práctica vigente en alguna comunidad autónoma.
 
 ### Sección 8. Criterios clínicos de acceso directo
 
@@ -550,7 +605,7 @@ variabilidad autonómica, falta de espacio físico, resistencia profesional).
 
 ### Sección 12. Propuesta de texto para el documento ministerial
 
-Texto de dos páginas, redactado en forma de acuerdo, con las cinco peticiones del resumen
+Texto de dos páginas, redactado en forma de acuerdo, con las seis peticiones del resumen
 ejecutivo desarrolladas en párrafos normativos. Las cifras de dotación se toman de la
 sección 9 y no del borrador.
 
@@ -671,7 +726,10 @@ contenido del documento final son:
 
 ## 10. Proceso de producción
 
-1. Validar esta especificación con la autoría (resolver decisiones D-1 a D-6).
+1. Decisiones D-1 a D-6 resueltas por la autoría el 22 de septiembre de 2026 (sección
+   11). Queda pendiente que la autoría aporte, si existe, cualquier norma autonómica
+   sobre solicitud de radiología por fisioterapeutas; el documento de posición del
+   Colegio de Madrid ya está incorporado en `referencias.md`.
 2. Completar `referencias.md` con las verificaciones pendientes y obtener los documentos
    oficiales que hoy solo constan por prensa.
 3. Construir el anexo C (matriz de coherencia) antes de redactar ninguna sección.
@@ -682,13 +740,17 @@ contenido del documento final son:
 7. Revisión externa por las dos revisoras del borrador con la trazabilidad a la vista.
 8. Maquetación y entrega en formato Word y PDF con enlaces activos.
 
-## 11. Decisiones pendientes de autoría (D)
+## 11. Decisiones de autoría (D)
 
-| Id | Decisión | Opciones | Recomendación |
-|---|---|---|---|
-| D-1 | Cifras de dotación | (a) mantener 1/15.000, 1/7.500 y 1/3.000 del borrador como cifras fijas; (b) derivarlas del modelo de demanda y presentar el resultado con su intervalo; (c) modelo de demanda como base y las cifras del borrador solo como contraste histórico | (b). Es la única opción que responde al comentario 15 con argumento y no con negociación. Si el modelo devuelve cifras cercanas a las del borrador, se ganan sin discusión; si devuelve cifras distintas, se evita presentar al Ministerio un número indefendible |
-| D-2 | Solicitud de pruebas de imagen | (a) no pedir ninguna capacidad de solicitud y prever un protocolo compartido con medicina de familia para la radiografía simple; (b) pedir solicitud protocolizada de radiografía simple en el marco del RD 601/2019 con un precedente autonómico verificado; (c) pedir el nivel inglés completo (pruebas y derivación a hospital sin paso por medicina) | (a). La verificación no ha encontrado ninguna norma ni noticia que habilite a los fisioterapeutas de AP de Madrid para solicitar radiografía simple, y el RD 601/2019 no incluye al fisioterapeuta entre los prescriptores. Sin precedente, (b) es una petición sin base y (c) es el punto más sensible del documento sin base normativa estatal. Si la autoría aporta la norma madrileña, se pasa a (b) |
-| D-5 | Compatibilidad con la cartera común ("previa indicación médica", RD 1030/2006, anexo II, apartado 6) | (a) sostener que la indicación por protocolo del servicio de salud cumple el requisito, como hacen de hecho Galicia y Madrid, sin pedir cambio normativo; (b) pedir la actualización del apartado 6 por el procedimiento de la Ley 16/2003 para incorporar la autorreferencia protocolizada; (c) ambas: (a) para implantar y (b) como petición al Ministerio | (c). Omitir el inciso, como hace el borrador, es el riesgo mayor del documento: un revisor jurídico del Ministerio lo verá en la primera lectura |
-| D-6 | Mecanismo de acceso directo | (a) cita administrativa con registro libre del motivo y cribado clínico en la primera consulta; (b) gestión de la demanda con motivos parametrizados por clínicos y aplicada por personal administrativo, con cribado clínico en la primera consulta, citando XIDE (Galicia) y la citación por la Unidad de Atención al Usuario (Madrid) | (b). El comentario 30 tiene razón en que no existe una figura de cribado administrativo-clínico, pero sí existe, con norma autonómica, la gestión de la demanda parametrizada; nombrarla con su nombre y con sus precedentes es más defendible que un registro libre |
-| D-3 | Dolor persistente no complejo | (a) mantener en acceso directo con condición de diagnóstico previo; (b) sacarlo del acceso directo y dejarlo solo por medicina de familia | (a) con condición de diagnóstico previo; mantiene coherencia con "recidivas de procesos ya diagnosticados" |
-| D-4 | Programa de ecografía | (a) incluir el uso de ecografía como competencia solicitada al Ministerio; (b) citarlo solo como práctica autonómica de referencia sin pedir regulación estatal | (b). Es un apoyo a la valoración, no una vía de acceso ni una condición del modelo, y abrir ese frente en el documento ministerial resta foco a las cinco peticiones |
+Resueltas el 22 de septiembre de 2026. Se conserva la recomendación previa para que
+quede constancia de dónde la autoría decidió en contra de ella y por qué motivo asume el
+riesgo.
+
+| Id | Decisión | Opciones | Recomendación previa | Decisión adoptada |
+|---|---|---|---|---|
+| D-1 | Cifras de dotación | (a) mantener 1/15.000, 1/7.500 y 1/3.000 del borrador como cifras fijas; (b) derivarlas del modelo de demanda y presentar el resultado con su intervalo; (c) modelo de demanda como base y las cifras del borrador solo como contraste histórico | (b). Es la única opción que responde al comentario 15 con argumento y no con negociación. Si el modelo devuelve cifras cercanas a las del borrador, se ganan sin discusión; si devuelve cifras distintas, se evita presentar al Ministerio un número indefendible | **(c) Modelo de demanda.** Coincide con la recomendación |
+| D-2 | Solicitud de pruebas de imagen | (a) no pedir ninguna capacidad de solicitud y prever un protocolo compartido con medicina de familia para la radiografía simple; (b) pedir solicitud protocolizada de radiografía simple en el marco del RD 601/2019 con un precedente autonómico verificado; (c) pedir el nivel inglés completo (pruebas y derivación a hospital sin paso por medicina) | (a). La verificación no ha encontrado ninguna norma ni noticia que habilite a los fisioterapeutas de AP de Madrid para solicitar radiografía simple, y el RD 601/2019 no incluye al fisioterapeuta entre los prescriptores. Sin precedente, (b) es una petición sin base y (c) es el punto más sensible del documento sin base normativa estatal. Si la autoría aporta la norma madrileña, se pasa a (b) | **(b) Pedir la solicitud protocolizada de radiografía simple.** En contra de la recomendación. El documento aportado por la autoría es el documento de posición del Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid (junio de 2026), que no es una norma y reconoce que la habilitación no existe. Consecuencia: la petición se redacta como desarrollo normativo (sección 7.4), nunca como práctica vigente, y se prevé el protocolo compartido con medicina de familia mientras no se apruebe. Riesgo asumido: es el punto que más resistencia puede generar en el Ministerio y no tiene precedente autonómico |
+| D-5 | Compatibilidad con la cartera común ("previa indicación médica", RD 1030/2006, anexo II, apartado 6) | (a) sostener que la indicación por protocolo del servicio de salud cumple el requisito, como hacen de hecho Galicia y Madrid, sin pedir cambio normativo; (b) pedir la actualización del apartado 6 por el procedimiento de la Ley 16/2003 para incorporar la autorreferencia protocolizada; (c) ambas: (a) para implantar y (b) como petición al Ministerio | (c). Omitir el inciso, como hace el borrador, es el riesgo mayor del documento: un revisor jurídico del Ministerio lo verá en la primera lectura | **(c) Ambas vías.** Coincide con la recomendación |
+| D-6 | Mecanismo de acceso directo | (a) cita administrativa con registro libre del motivo y cribado clínico en la primera consulta; (b) gestión de la demanda con motivos parametrizados por clínicos y aplicada por personal administrativo, con cribado clínico en la primera consulta, citando XIDE (Galicia) y la citación por la Unidad de Atención al Usuario (Madrid) | (b). El comentario 30 tiene razón en que no existe una figura de cribado administrativo-clínico, pero sí existe, con norma autonómica, la gestión de la demanda parametrizada; nombrarla con su nombre y con sus precedentes es más defendible que un registro libre | **(b) Gestión de la demanda parametrizada.** Coincide con la recomendación |
+| D-3 | Dolor persistente no complejo | (a) mantener en acceso directo con condición de diagnóstico previo; (b) sacarlo del acceso directo y dejarlo solo por medicina de familia | (a) con condición de diagnóstico previo; mantiene coherencia con "recidivas de procesos ya diagnosticados" | **(a) Acceso directo con diagnóstico previo.** Coincide con la recomendación |
+| D-4 | Programa de ecografía | (a) incluir el uso de ecografía como competencia solicitada al Ministerio; (b) citarlo solo como práctica autonómica de referencia sin pedir regulación estatal | (b). Es un apoyo a la valoración, no una vía de acceso ni una condición del modelo, y abrir ese frente en el documento ministerial resta foco a las cinco peticiones | **(a) Competencia solicitada.** En contra de la recomendación. Consecuencia: la ecografía pasa a la sección 7.3 como competencia pedida, con base en la Resolución 1/2023 del Consejo General y en la práctica de Madrid, y las peticiones del resumen ejecutivo pasan de cinco a seis. Riesgo asumido: añade un frente al documento; se mitiga acotándola a apoyo a la valoración sin informe radiológico |
