@@ -1,0 +1,67 @@
+valor|seccion|descripcion|fuente|anio|definicion|estado
+51.813.798|1.2|Problemas del aparato locomotor registrados en la BDCAP|B4|2023|Registros de problemas de salud del capítulo L de la CIAP-2, no consultas ni personas|Pendiente de cotejo
+30 %|1.2|Consultas de medicina general por problemas musculoesqueléticos según el documento de política inglés|D2|2006|Cifra de política sanitaria, «hasta el 30 %», sin medición propia|Pendiente de cotejo
+17 %|1.2|Consultas de medicina general por problemas musculoesqueléticos|E5|2017|Estimación citada en el ensayo piloto STEMS|Verificada
+545|1.2|Consultas revisadas en un centro urbano|E8|2018|Consultas de medicina general de un centro|Verificada
+21,1 %|1.2|Proporción de consultas musculoesqueléticas en un centro urbano|E8|2018|Consultas con presentación musculoesquelética sobre el total revisado|Verificada
+60.000|1.3|Trabajadores valorados por el INSS por patología osteomuscular|B8|2019|Valoraciones de incapacidad laboral|Pendiente de cotejo
+31,6 %|1.3|Procesos de columna lumbar entre los valorados por patología osteomuscular|B8|2019|Porcentaje sobre los procesos osteomusculares valorados|Pendiente de cotejo
+13,5 %|1.3|Procesos de hombro entre los valorados por patología osteomuscular|B8|2019|Porcentaje sobre los procesos osteomusculares valorados|Pendiente de cotejo
+11,9 %|1.3|Procesos de rodilla entre los valorados por patología osteomuscular|B8|2019|Porcentaje sobre los procesos osteomusculares valorados|Pendiente de cotejo
+8.417|1.5|Contactos en la evaluación de un servicio escocés de fisioterapia como alternativa al médico general|E11|2015 a 2017|Contactos de pacientes en dos años de servicio|Verificada
+87,3 %|1.5|Contactos resueltos en atención primaria|E11|2015 a 2017|Porcentaje de contactos manejados sin salir de atención primaria|Verificada
+60,4 %|1.5|Contactos resueltos solo con automanejo|E11|2015 a 2017|Porcentaje de contactos que solo necesitaron automanejo|Verificada
+78,5 %|1.5 y 10.4|Personas sin reconsulta en doce semanas tras una cita de fisioterapia de primer contacto|E15|Publicado en 2025|Porcentaje de personas que no volvieron a consultar en atención primaria en doce semanas|Verificada
+159.000|1.5|Personas atendidas por las unidades de fisioterapia de AP de Madrid|C14n|2024|Personas atendidas, cifra aproximada de la nota oficial|Pendiente de cotejo
+77 %|1.5|Consecución de objetivos en las unidades de fisioterapia de AP de Madrid|G1|2024|Porcentaje aproximado de casos con objetivos alcanzados, según el documento de posición|Verificada como documento aportado
+93 %|1.5|Reducción del dolor en las unidades de fisioterapia de AP de Madrid|G1|2024|Porcentaje aproximado de casos con reducción del dolor, según el documento de posición|Verificada como documento aportado
+2.418|3.1 y 9.1|Fisioterapeutas de atención primaria en el SNS|B1|2024|Profesionales de fisioterapia de AP registrados en el informe monográfico|Pendiente de cotejo
+84,8 %|3.1|Fisioterapeutas del SNS que trabajan en hospitales|B1|2024|Porcentaje sobre el total de fisioterapeutas del SNS|Pendiente de cotejo
+10 %|3.1|Fisioterapeutas del SNS que trabajan en atención primaria|B1|2024|Porcentaje sobre el total de fisioterapeutas del SNS|Pendiente de cotejo
+13.694|3.1|Habitantes por fisioterapeuta de AP en Asturias|B7|Anterior a 2022|Población por fisioterapeuta de AP según el SIAP|Pendiente de cotejo
+10.091|3.1|Habitantes por fisioterapeuta de AP en Cantabria|B7|Anterior a 2022|Población por fisioterapeuta de AP según el SIAP|Pendiente de cotejo
+104.847|3.1|Habitantes por fisioterapeuta de AP en Cataluña|B7|Anterior a 2022|Población por fisioterapeuta de AP según el SIAP|Pendiente de cotejo
+12.101|3.1|Habitantes por fisioterapeuta de AP en Extremadura|B7|Anterior a 2022|Población por fisioterapeuta de AP según el SIAP|Pendiente de cotejo
+91.972|3.1|Habitantes por fisioterapeuta de AP en Navarra|B7|Anterior a 2022|Población por fisioterapeuta de AP según el SIAP|Pendiente de cotejo
+24|3.3|Zonas básicas de salud del despliegue inicial en Canarias|C5n|2022|Zonas básicas con servicio de fisioterapia en la primera fase|Pendiente de cotejo
+40|4.1|Centros de la evaluación nacional de la fisioterapia de primer contacto en Inglaterra|E12|Publicado en 2021|Centros participantes|Verificada
+240|4.1|Fisioterapeutas de primer contacto de la evaluación nacional|E12|Publicado en 2021|Profesionales participantes|Verificada
+426|4.1|Adultos incluidos en el estudio FRONTIER|E13|Publicado en 2024|Participantes|Verificada
+46|4.1|Consultas de medicina general del estudio FRONTIER|E13|Publicado en 2024|Centros participantes|Verificada
+44,7 %|4.1|Personas con medicación tras la primera consulta en el grupo de medicina general|E13|Publicado en 2024|Porcentaje del grupo|Verificada
+18,4 %|4.1|Personas con medicación tras la primera consulta en un grupo de fisioterapia|E13|Publicado en 2024|Porcentaje del grupo|Verificada
+24,7 %|4.1|Personas con medicación tras la primera consulta en el otro grupo de fisioterapia|E13|Publicado en 2024|Porcentaje del grupo|Verificada
+105,5|4.1|Coste mediano por paciente para el NHS en el grupo de medicina general|E13|Publicado en 2024|Libras esterlinas por paciente|Verificada
+41,0|4.1|Coste mediano por paciente en un grupo de fisioterapia|E13|Publicado en 2024|Libras esterlinas por paciente|Verificada
+44,0|4.1|Coste mediano por paciente en el otro grupo de fisioterapia|E13|Publicado en 2024|Libras esterlinas por paciente|Verificada
+28 %|4.2 y 11.5|Pacientes que llegaron a fisioterapia por acceso directo en los Países Bajos|E26|2006|Porcentaje de los pacientes atendidos en el primer año de acceso directo|Verificada
+74,3 %|4.2 y 11.5|Pacientes que acudieron a fisioterapia sin derivación en los Países Bajos|D20|2024|Porcentaje de pacientes sin derivación|Pendiente de cotejo
+28|4.4|Artículos de la revisión sistemática de Gallotti y colaboradores|E22|Publicado en 2023|Artículos incluidos|Verificada
+2.081|4.4|Pacientes del metaanálisis de Abuhl y colaboradores|E23|Publicado en 2025|Pacientes de diez ensayos aleatorizados|Verificada
+0,55|4.4|Riesgo relativo de solicitud de imagen con primer contacto por fisioterapia|E23|Publicado en 2025|Riesgo relativo combinado|Verificada
+0,29|4.4|Riesgo relativo de medicación con primer contacto por fisioterapia|E23|Publicado en 2025|Riesgo relativo combinado|Verificada
+10 %|4.4 y 11.5|Autorreferencia real en uno de los brazos del estudio STEMS-2|E6|2011 a 2017|Porcentaje de las entradas a fisioterapia|Verificada
+6 %|4.4 y 11.5|Autorreferencia real en el otro brazo del estudio STEMS-2|E6|2011 a 2017|Porcentaje de las entradas a fisioterapia|Verificada
+21|4.4|Estudios de la revisión de Fischer y colaboradores|E24|Publicado en 2026|Estudios incluidos|Verificada
+90.401|4.4|Pacientes de la revisión de Fischer y colaboradores|E24|Publicado en 2026|Pacientes incluidos|Verificada
+10 %|4.4|Límite inferior de la reducción estimada de consultas de medicina general|E24|Publicado en 2026|Reducción relativa estimada|Verificada
+30 %|4.4|Límite superior de la reducción estimada de consultas de medicina general|E24|Publicado en 2026|Reducción relativa estimada|Verificada
+0,57|4.4|Riesgo relativo de prescripción con acceso directo|E25|Publicado en 2026|Riesgo relativo combinado, certeza baja|Verificada
+611.000|4.5|Fisioterapeutas en la Unión Europea|D14n|2021|Fisioterapeutas en ejercicio, todos los ámbitos|Pendiente de cotejo
+136,7|4.5|Fisioterapeutas por 100.000 habitantes en la Unión Europea|D14n|2021|En ejercicio, todos los ámbitos|Pendiente de cotejo
+234,4|4.5|Fisioterapeutas por 100.000 habitantes en Alemania|D14n|2021|En ejercicio, todos los ámbitos|Pendiente de cotejo
+215,9|4.5|Fisioterapeutas por 100.000 habitantes en Bélgica|D14n|2021|En ejercicio, todos los ámbitos|Pendiente de cotejo
+12,7|4.5|Fisioterapeutas por 100.000 habitantes en Rumanía|D14n|2021|En ejercicio, todos los ámbitos|Pendiente de cotejo
+149|4.5|Fisioterapeutas por 100.000 habitantes en la Unión Europea|D14|2023|En ejercicio, todos los ámbitos|Pendiente de cotejo
+240|4.5|Fisioterapeutas por 100.000 habitantes en Alemania|D14|2023|En ejercicio, todos los ámbitos|Pendiente de cotejo
+228|4.5|Fisioterapeutas por 100.000 habitantes en Bélgica|D14|2023|En ejercicio, todos los ámbitos|Pendiente de cotejo
+188|4.5|Fisioterapeutas por 100.000 habitantes en los Países Bajos|D14|2023|En ejercicio, todos los ámbitos|Pendiente de cotejo
+3,6|4.5|Fisioterapeutas por 10.000 habitantes, media mundial|D13|2024|Censo de las organizaciones miembro de World Physiotherapy|Pendiente de cotejo
+39 %|4.5|Organizaciones que declaran acceso directo pleno|D13|2024|Porcentaje de organizaciones que respondieron al censo|Pendiente de cotejo
+58 %|4.5|Organizaciones que declararon acceso directo|E19|Publicado en 2013|Porcentaje de las organizaciones que respondieron a la encuesta|Verificada
+15.581|8.4|Pacientes de la revisión sobre las reglas de Ottawa|E1|Publicado en 2003|Pacientes de los estudios combinados|Verificada
+100 %|8.4|Sensibilidad de las reglas de Ottawa para excluir fracturas|E1|Publicado en 2003|Sensibilidad cercana al 100 %|Verificada
+7.500|9.3|Habitantes por fisioterapeuta en el estándar del borrador de trabajo|G0|2026|Ratio propuesta en el borrador|Verificada como documento aportado
+15.000|9.3|Habitantes por fisioterapeuta en el mínimo del borrador de trabajo|G0|2026|Ratio propuesta en el borrador|Verificada como documento aportado
+3.000|9.3|Habitantes por fisioterapeuta en zonas de alta necesidad según el borrador de trabajo|G0|2026|Ratio propuesta en el borrador|Verificada como documento aportado
+10.000|9.5|Habitantes por fisioterapeuta de primer contacto que pide la Chartered Society of Physiotherapy|D7|2022|Reivindicación profesional para Inglaterra|Pendiente de cotejo

@@ -1,0 +1,9 @@
+codigo;via;admitida;procesos;requisito_documental;circuito
+AR;Autorreferencia del ciudadano;Sí, para procesos protocolizados de personas adultas;P01 a P08;Solicitud de cita con registro del motivo de consulta parametrizado;1
+MF;Medicina de familia y comunitaria;Sí, vía principal para procesos con diagnóstico médico o comorbilidad;P01 a P06, P08 a P10, P15;Interconsulta en la historia clínica compartida;2
+EF;Enfermería familiar y comunitaria;Sí, en especial fragilidad, caídas, cronicidad e inmovilidad;P09, P10, P15;Interconsulta con resultado del cribado de fragilidad cuando proceda;3
+PED;Pediatría de atención primaria;Sí, si la cartera autonómica define la oferta pediátrica;P17;Interconsulta;2
+MAT;Matrona;Sí, si la cartera autonómica incorpora el proceso;P16;Interconsulta;2
+TS;Trabajo social sanitario;Sí, para dependencia, domicilio y barreras funcionales;P15;Informe social y valoración de necesidades;3
+MAH;Medicina de atención hospitalaria;Sí, en tres situaciones definidas;P11 a P13;Informe clínico mínimo con criterio de retorno;4
+RHB;Retorno desde rehabilitación hospitalaria;Sí, para continuidad funcional;P14;Informe de alta de rehabilitación;5

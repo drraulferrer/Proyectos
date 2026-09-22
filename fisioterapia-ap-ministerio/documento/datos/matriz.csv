@@ -1,0 +1,25 @@
+id;tipo;proceso;condicion_acceso;vias;nivel;programa;circuito_alternativo;fuentes;origen
+P01;inclusion;Artralgias vertebrales mecánicas;Sin déficit neurológico progresivo referido por la persona;AR,MF;1;PG-05;;E3;comentarios 20 y 21
+P02;inclusion;Hombro doloroso no traumático;Sin traumatismo desencadenante;AR,MF;1;;;;borrador
+P03;inclusion;Artrosis leve o moderada de rodilla, cadera o mano;Diagnóstico médico previo registrado en la historia clínica;AR,MF;1,2;PG-03;;E38;borrador
+P04;inclusion;Esguince de tobillo leve o moderado;La persona puede cargar su peso y caminar tres o cuatro pasos, aunque sea con dificultad;AR,MF;1;;;E1,E2;comentario 22
+P05;inclusion;Fascitis plantar;Sin signos sistémicos referidos;AR,MF;1;;;C14n;borrador
+P06;inclusion;Epicondilalgia;Sin traumatismo desencadenante;AR,MF;1;;;C14n;precedente de Madrid
+P07;inclusion;Recidiva de un proceso diagnosticado previamente por su médico de familia y comunitaria;Diagnóstico previo registrado en la historia clínica;AR;1;;;;comentario 23
+P08;inclusion;Dolor persistente no complejo;Diagnóstico médico previo, sin descompensación de la comorbilidad;AR,MF;1,2;PG-02;;E31;decisión D-3
+P09;derivacion;Riesgo de caídas y fragilidad;Cribado de fragilidad positivo realizado por enfermería familiar y comunitaria;EF,MF;2,3;PG-01;;E37;comentario 24
+P10;derivacion;EPOC en fase estable;Diagnóstico médico de EPOC en fase estable;MF,EF;2;PG-04;;E39;comentario 25
+P11;derivacion;Pérdida funcional leve o moderada tras el alta hospitalaria;Situación clínica estable, informe clínico mínimo y criterio de retorno definidos;MAH;3;;;;circuito 4
+P12;derivacion;Proceso musculoesquelético leve o moderado que no requiere rehabilitación hospitalaria;Situación clínica estable, informe clínico mínimo y criterio de retorno definidos;MAH;1;;;;circuito 4
+P13;derivacion;Seguimiento funcional comunitario de la fragilidad o del riesgo de caídas;Situación clínica estable, informe clínico mínimo y criterio de retorno definidos;MAH;2;PG-01;;;circuito 4
+P14;derivacion;Continuidad tras la fase de rehabilitación hospitalaria;Informe de alta de rehabilitación con objetivos de continuidad;RHB;1,2;;;;circuito 5
+P15;derivacion;Dependencia, inmovilidad o barreras funcionales en el domicilio;Valoración previa de necesidades en el domicilio;TS,EF,MF;3;;;;circuito 3
+P16;derivacion;Embarazo, posparto o disfunción de suelo pélvico de baja complejidad;Proceso incluido en la cartera autonómica;MAT;1,2;;;;borrador
+P17;derivacion;Proceso pediátrico incluido en la cartera autonómica;Oferta pediátrica definida en la cartera autonómica;PED;1;;;;borrador y comentario 29
+X01;exclusion;Traumatismo grave;;;;;Medicina de familia o urgencias;;borrador
+X02;exclusion;Déficit neurológico progresivo;;;;;Medicina de familia o urgencias;;borrador
+X03;exclusion;Dolor no mecánico o con signos sistémicos;;;;;Medicina de familia;;borrador
+X04;exclusion;Postquirúrgico de cualquier complejidad;;;;;Rehabilitación hospitalaria y retorno a AP por el circuito 5;;comentario 27
+X05;exclusion;Menor de edad;;;;;Pediatría de atención primaria;;comentario 28
+X06;exclusion;Patología laboral o por accidente de tráfico;;;;;Circuito que establezca la normativa aplicable;;borrador
+X07;exclusion;Dependencia severa;;;;;Valoración multidisciplinar del equipo de AP por el circuito 3;;borrador

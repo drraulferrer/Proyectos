@@ -1,0 +1,97 @@
+# 5. Modelo organizativo propuesto
+
+Esta sección define cómo se organiza la fisioterapia dentro del equipo de AP. Describe tres niveles de atención comunitaria, las funciones clínicas, los programas grupales y comunitarios y las modalidades asistenciales. Cada programa grupal tiene una ficha en el anexo A con las horas de fisioterapia que consume. Esas horas alimentan el modelo de dotación de la sección 9.
+
+## 5.1. Principios
+
+El modelo se apoya en seis principios:
+
+- **Integración en el equipo.** El fisioterapeuta forma parte del equipo de AP de cada zona básica de salud como miembro de pleno derecho y no como personal de apoyo.
+- **Consulta propia.** Cada zona básica dispone de consulta de fisioterapia con espacio físico propio o compartido de forma estable.
+- **Agenda propia.** La agenda de fisioterapia admite citas por todas las vías de entrada de la sección 6.
+- **Historia clínica compartida.** El fisioterapeuta registra su actividad en la misma historia clínica que el resto del equipo.
+- **Tiempo protegido.** La jornada reserva tiempo para la actividad comunitaria no clínica, la docencia, la investigación y la coordinación. El modelo de dotación de la sección 9 lo incluye de forma explícita.
+- **Medición común.** Todos los servicios de salud registran los indicadores de la sección 10.
+
+## 5.2. Niveles de atención comunitaria
+
+El modelo organiza la actividad en tres niveles de atención comunitaria. Cada nivel tiene una población diana, una puerta de entrada, una intensidad y unas salidas propias.
+
+Tabla 5.1. Niveles de atención comunitaria de la fisioterapia de atención primaria
+
+| Nivel | Población diana | Puerta de entrada | Intensidad | Salidas |
+|---|---|---|---|---|
+| Nivel 1. Consulta de fisioterapia de primer contacto | Personas adultas con procesos musculoesqueléticos y otros procesos de la matriz del anexo C | Autorreferencia, derivación desde medicina de familia y demás vías de la sección 6 | Primera consulta de valoración y, si procede, consultas individuales de seguimiento | Alta con plan de autocuidado, tratamiento individual, programa grupal o derivación a otro profesional |
+| Nivel 2. Intervención grupal e intervención comunitaria | Personas con un proceso definido que se beneficia del trabajo en grupo y población general en la intervención comunitaria | Nivel 1, enfermería familiar y comunitaria y medicina de familia | Ediciones periódicas según las fichas del anexo A | Alta con plan de automanejo o retorno al nivel 1 |
+| Nivel 3. Fisioterapia domiciliaria y de continuidad | Personas con dependencia, fragilidad, alta hospitalaria reciente o cronicidad compleja | Enfermería, medicina de familia, trabajo social sanitario y atención hospitalaria | Visitas domiciliarias y coordinación sociosanitaria | Alta, paso al nivel 2 o valoración multidisciplinar |
+
+Fuente: elaboración propia a partir de la especificación del modelo.
+
+La consulta de primer contacto tiene cuatro salidas posibles. La persona puede recibir el alta con un plan de autocuidado, iniciar un tratamiento individual, incorporarse a un programa grupal o ser derivada a otro profesional. Esta regla atiende el comentario de la revisión que pedía explicitar la derivación a tratamiento individual o a grupos.
+
+## 5.3. Funciones clínicas
+
+El fisioterapeuta de AP valora procesos musculoesqueléticos de distinta complejidad y los estratifica. La función de cribado existe precisamente porque llegan procesos simples y complejos, y el primer contacto debe distinguirlos.
+
+Tabla 5.2. Funciones clínicas del fisioterapeuta de atención primaria
+
+| Función | Contenido |
+|---|---|
+| Primer contacto | Valoración de procesos musculoesqueléticos con estratificación de su complejidad |
+| Cribado clínico | Detección de signos de alarma, riesgo neurológico, sospecha de fractura y enfermedad sistémica |
+| Diagnóstico fisioterapéutico | Dolor, función, movilidad, fuerza, equilibrio y marcha |
+| Plan de intervención | Ejercicio terapéutico, educación, autocuidado y, si procede, terapia manual o medios físicos |
+| Prescripción de ejercicio | Individualizada y progresiva |
+| Apoyo a la valoración con ecografía | Uso de la ecografía para valorar y reevaluar, sin informe radiológico (sección 7.3) |
+| Derivación | A medicina de familia, enfermería, urgencias o recursos comunitarios |
+| Alta | Informe funcional y plan de autocuidado |
+
+Fuente: elaboración propia a partir del borrador de trabajo y de la especificación del modelo [@G0].
+
+La derivación a atención hospitalaria se hace a través de medicina de familia, salvo la derivación urgente. La solicitud de radiografía simple se trata en la sección 7.4 como petición de desarrollo normativo.
+
+## 5.4. Programas grupales y programas comunitarios
+
+El documento distingue dos tipos de intervención colectiva. La **intervención grupal** es una intervención clínica sobre un grupo de personas con un proceso definido. La **intervención comunitaria** actúa sobre la población o sobre los activos comunitarios, sin un proceso clínico individual. La distinción responde a un comentario de la revisión y se recoge en el glosario del anexo D.
+
+Cada programa grupal tiene una ficha en el anexo A. La ficha indica quién lo lidera, el tamaño del grupo, el número de sesiones, las horas de fisioterapia por edición y la frecuencia de oferta. Con esos datos, el Ministerio de Sanidad puede estimar la carga de trabajo real que implica cada programa.
+
+Tabla 5.3. Programas grupales
+
+{{TABLA_PROGRAMAS_GRUPALES}}
+
+Fuente: anexo A. Las horas por edición incluyen la preparación y la evaluación. Las ediciones por 10.000 habitantes son parámetros de diseño que alimentan el modelo de la sección 9.
+
+Los programas grupales se apoyan en evidencia de ensayos y revisiones. El ejercicio que combina equilibrio y trabajo funcional reduce la tasa de caídas en personas mayores que viven en la comunidad, con certeza alta [@E37]. El ejercicio terapéutico reduce el dolor en la artrosis de rodilla, con certeza alta a corto plazo [@E38]. La rehabilitación respiratoria mejora la disnea, la fatiga y la capacidad de ejercicio en la EPOC [@E39]. El ejercicio reduce el dolor lumbar persistente frente a la ausencia de tratamiento o la atención habitual, con certeza moderada [@E40]. En España, un ensayo en doce centros de AP de Castilla y León combinó educación en neurociencia del dolor y ejercicio grupal [@E31]. Las mejoras se mantuvieron a los seis meses [@E31].
+
+Tabla 5.4. Intervenciones comunitarias
+
+{{TABLA_PROGRAMAS_COMUNITARIOS}}
+
+Fuente: anexo A. Estas intervenciones desarrollan la Estrategia de Promoción de la Salud y Prevención del SNS, que vincula el consejo en AP con los recursos comunitarios [@A11].
+
+## 5.5. Modalidades asistenciales
+
+Tabla 5.5. Modalidades asistenciales de la fisioterapia de atención primaria
+
+| Modalidad | Se incluye | Contenido |
+|---|---|---|
+| Consulta individual presencial | Sí | Valoración inicial, seguimiento y alta |
+| Consulta breve resolutiva | Sí | Educación, consejo y automanejo |
+| Intervención grupal | Sí | Programas de la tabla 5.3 |
+| Fisioterapia domiciliaria | Sí | Dependencia, fragilidad y altas hospitalarias |
+| Teleconsulta | Sí | Seguimiento, educación y adherencia |
+| Consulta telefónica | Sí | Revisión, dudas y seguimiento |
+| Interconsulta no presencial | Sí | Coordinación con medicina de familia, enfermería y atención hospitalaria |
+| Intervención comunitaria | Sí | Activos en salud y ejercicio comunitario |
+| Sesión clínica compartida | Sí | Revisión conjunta de casos crónicos complejos entre medicina, enfermería y fisioterapia |
+| Escuela de pacientes | Sí | Dolor persistente, artrosis, EPOC y espalda |
+| Fisioterapia en residencias | Sí, coordinada con el centro | Prevención del deterioro funcional |
+
+Fuente: elaboración propia a partir del borrador de trabajo [@G0].
+
+La interconsulta no presencial ya existe como servicio de los hospitales de la Comunidad de Madrid, que la denominan e-consulta [@C14w]. La sesión clínica compartida es una revisión conjunta de casos entre profesionales, y no una sesión de tratamiento.
+
+## 5.6. Herramientas de salud digital
+
+La Estrategia de Salud Digital del SNS ofrece el marco para tres herramientas [@A10]. La teleconsulta permite el seguimiento de personas con dificultades de desplazamiento. El seguimiento remoto de la adherencia refuerza los planes de ejercicio. La prescripción digital de ejercicio facilita la continuidad entre sesiones. Estas herramientas son también una de las tres palancas del ajuste por ruralidad de la sección 9.4.

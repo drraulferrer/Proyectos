@@ -11,11 +11,30 @@ acceso, dotación y evaluación», que amplía y corrige el borrador
 |---|---|
 | [SPEC.md](SPEC.md) | Especificación del documento final: propósito, estructura, contenido obligatorio por sección, reglas de estilo y terminología, política de referencias, criterios de aceptación y decisiones pendientes de autoría. |
 | [trazabilidad-comentarios.md](trazabilidad-comentarios.md) | Los 52 comentarios de revisión del borrador y la decisión adoptada para cada uno. |
-| [referencias.md](referencias.md) | Banco de fuentes primarias con estado de verificación. Solo pueden citarse en el documento final las que constan como verificadas. |
+| [referencias.md](referencias.md) | Banco de fuentes primarias con estado de verificación, en formato de lectura. |
+| [documento/salida/](documento/salida/) | **Documento final v1.0** en Word y PDF: `fisioterapia-ap-sns.docx` y `fisioterapia-ap-sns.pdf`. |
+| [documento/fuente/](documento/fuente/) | Texto fuente de cada sección, en Markdown. |
+| [documento/datos/](documento/datos/) | Fuente única de datos: matriz de coherencia, vías, programas, indicadores, parámetros del modelo, cifras, referencias y comprobaciones de los 52 comentarios. |
+| [documento/build/](documento/build/) | Scripts de modelo, ensamblado, validación y maquetación. |
 
-## Cómo usarlo
+## Cómo reconstruir el documento
 
-1. Resolver las decisiones D-1 a D-4 de `SPEC.md`.
-2. Completar las verificaciones pendientes de `referencias.md`.
-3. Construir los anexos A (programas) y C (matriz de coherencia) antes de redactar.
-4. Redactar siguiendo el orden de producción de `SPEC.md` y pasar los criterios de aceptación.
+```bash
+cd documento/build
+npm install            # paquete docx para la maquetación
+./construir.sh         # genera, valida y maqueta en Word y PDF
+python3 validar.py     # solo la validación contra SPEC.md y la Voice DNA
+```
+
+Requisitos: Python 3, Node.js, LibreOffice Writer, poppler-utils y la fuente Carlito.
+Para cambiar un proceso, un programa, un indicador o un parámetro del modelo, se edita el
+archivo de `documento/datos/` y se reconstruye: las tablas de las secciones 5, 6, 8, 9 y
+10 y los anexos se regeneran solos.
+
+## Estado de la versión 1.0
+
+Todos los criterios de aceptación de `SPEC.md` se cumplen salvo el 9.2. Ese criterio exige
+que todas las referencias estén verificadas abriendo la fuente, y el entorno de trabajo
+solo permitió abrir PubMed. Los 44 artículos científicos citados están verificados; las 64
+normas, documentos autonómicos y estadísticas citados quedan pendientes de cotejo. El
+anexo F del documento enumera esas referencias y los datos que faltan por incorporar.

@@ -41,7 +41,7 @@ Convención de estado: **Adoptado** (la especificación lo incorpora tal cual),
 | 28 | Exclusiones, menores | Quitar menores porque en general requieren descartar patología | PMC | Menores de edad excluidos del acceso directo; circuito: pediatría de AP | Adoptado |
 | 29 | Ídem, "fisioterapia pediátrica" | No habiendo especialidades, sobra | RFP | Se elimina la mención a fisioterapia pediátrica | Adoptado |
 | 30 | Fórmula práctica, "cribado administrativo-clínico" | Esa figura no existe; el triaje es competencia sanitaria y no puede hacerla administración | RFP | Se elimina "cribado administrativo-clínico" y todo triaje por personal no sanitario. En su lugar: **gestión de la demanda con motivos parametrizados por clínicos**, aplicada por personal administrativo, y **cribado clínico por el fisioterapeuta** en la primera consulta. Los dos precedentes españoles de acceso directo (XIDE en Galicia, citación por la Unidad de Atención al Usuario en Madrid) funcionan exactamente así y se citan. Decisión D-6 | Adoptado con matiz |
-| 31 | Derivación desde atención hospitalaria, introducción | Reformular: "Se proponen tres situaciones en las que se valora como una opción viable y eficiente para el paciente y el sistema que se pueda derivar desde medicina de atención hospitalaria a fisioterapia de AP" | PMC | Texto adoptado literalmente (sección 6.5) | Adoptado |
+| 31 | Derivación desde atención hospitalaria, introducción | Reformular: "Se proponen tres situaciones en las que se valora como una opción viable y eficiente para el paciente y el sistema que se pueda derivar desde medicina de atención hospitalaria a fisioterapia de AP" | PMC | Contenido adoptado en la sección 6.5. En la versión final se parte en dos oraciones para cumplir la Voice DNA, sin cambiar el contenido | Adoptado con matiz |
 | 32 | Circuito hospitalario, "No requiere tecnología hospitalaria" | Sustituir por: el proceso en su estado actual es abordable con los recursos de fisioterapia de AP y compatible con los objetivos del primer nivel: educación, automanejo, inclusión en la comunidad y retorno a las actividades diarias | PMC | Texto adoptado como definición operativa de "abordable en AP" (glosario y sección 6.5) | Adoptado |
 | 33 | Ídem, "objetivos funcionales abordables en AP" | ¿Qué entendemos por "abordable en AP"? | PMC | Ídem fila 32; el término se define una vez en el glosario y se usa siempre igual | Adoptado |
 | 34 | Funciones clínicas, "procesos musculoesqueléticos simples" | Si hay función de cribado es porque valoramos procesos simples y complejos para estratificarlos | PMC | Se elimina "simples". Primer contacto: valoración de procesos musculoesqueléticos con **estratificación** de complejidad | Adoptado |
@@ -66,3 +66,11 @@ Convención de estado: **Adoptado** (la especificación lo incorpora tal cual),
 
 Abreviaturas: PMC, Patricia Moreno Carrero; RFP, Raúl Ferrer Peña; AP, atención primaria;
 ZBS, zona básica de salud; IT, incapacidad temporal.
+
+## Comprobación automática en el documento final
+
+Cada decisión de esta tabla tiene una comprobación en `documento/datos/aplicacion_comentarios.tsv`.
+El script `documento/build/validar.py` verifica, comentario por comentario, que el texto
+exigido aparece en el documento final y que el texto retirado ya no aparece (criterio 9.8
+de `SPEC.md`). En la versión 1.0 del documento, los 52 comentarios pasan la comprobación.
+

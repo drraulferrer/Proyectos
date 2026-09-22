@@ -3,7 +3,7 @@
 
 | Campo | Valor |
 |---|---|
-| Versión de la especificación | 0.2 (decisiones de autoría D-1 a D-6 resueltas el 22 de septiembre de 2026) |
+| Versión de la especificación | 0.3 (documento final v1.0 construido y validado el 22 de septiembre de 2026; decisiones D-1 a D-6 resueltas) |
 | Fecha | 22 de septiembre de 2026 |
 | Documento de partida | `Propuesta de Fisioterapia en Atención Primaria para el Ministerio de Sanidad` (borrador con 52 comentarios de revisión) |
 | Destinatario del documento final | Ministerio de Sanidad, Dirección General de Ordenación Profesional y Dirección General de Salud Pública y Equidad en Salud; Comisión de Atención Primaria del Consejo Interterritorial del SNS |
@@ -42,15 +42,20 @@ específica en fisioterapia. El documento debe poder ser leído por partes: un r
 abra la tabla de ratios o la tabla de acceso directo sin leer lo anterior debe encontrar en
 la misma página la advertencia metodológica y las condiciones que la acompañan.
 
-### 1.3 Tesis central (un párrafo que debe aparecer literalmente en el resumen ejecutivo)
+### 1.3 Tesis central (debe aparecer literalmente en el resumen ejecutivo)
 
-La fisioterapia de AP es un recurso del primer nivel asistencial, ya previsto en la cartera
-común de servicios del SNS, cuyo despliegue es desigual entre comunidades autónomas. Un
-modelo homogéneo con consulta propia, acceso por varias vías, criterios clínicos de
+Redacción adaptada a la Voice DNA en la versión 0.3: una idea por oración y el absoluto
+«la mayor parte» atenuado a «una parte importante», que es lo que sostienen los datos de
+la sección 1.5.
+
+La fisioterapia de atención primaria es un recurso del primer nivel asistencial, ya
+previsto en la cartera común de servicios del Sistema Nacional de Salud. Su despliegue es
+desigual entre comunidades autónomas. Un modelo homogéneo puede resolver en atención
+primaria una parte importante de los procesos musculoesqueléticos de alta prevalencia.
+Ese modelo combina consulta propia, acceso por varias vías, criterios clínicos de
 seguridad aplicados por el propio fisioterapeuta, dotación planificada por demanda e
-indicadores comunes permite resolver en AP la mayor parte de los procesos
-musculoesqueléticos de alta prevalencia, reducir derivaciones duplicadas y mejorar la
-equidad territorial.
+indicadores comunes. Además, reduce las derivaciones duplicadas y mejora la equidad
+territorial.
 
 ### 1.4 Lo que el documento NO propone (debe declararse en el resumen ejecutivo)
 
@@ -81,7 +86,7 @@ es obligatoria. El orden es fijo.
 | 6 | Vías de acceso y circuitos asistenciales | 6 |
 | 7 | Competencias solicitadas y marco legal | 3 |
 | 8 | Criterios clínicos de acceso directo | 4 |
-| 9 | Dotación: modelo de demanda, escenarios y ajustes territoriales | 6 |
+| 9 | Dotación calculada por demanda, por fases y con ajuste territorial | 6 |
 | 10 | Sistema de evaluación (formato EFQM) | 5 |
 | 11 | Plan de implantación y gestión de riesgos | 3 |
 | 12 | Propuesta de texto para el documento ministerial | 2 |
@@ -267,7 +272,7 @@ primarias del propio sistema o artículos revisados por pares (comentarios 43 y 
    integración en el equipo de AP, el primer contacto y el objetivo de descargar consultas
    médicas; **no se pide automáticamente** la capacidad de solicitar pruebas del modelo
    inglés, que se trata en la sección 7.
-3. **4.2 Países Bajos, Noruega y Suecia.** Autorreferencia normalizada: evaluación
+3. **4.2 Noruega, Países Bajos y Suecia.** Autorreferencia normalizada: evaluación
    holandesa (Leemrijse 2008; Swinkels 2014; Damen 2025; cifras de Nivel 2024), reforma
    noruega de 1 de enero de 2018 (Prop. 71 L 2016-2017), evidencia sueca de triaje
    directo a fisioterapia en centros de salud (Bornhöft 2019), que es triaje en el
@@ -362,7 +367,7 @@ con horas de fisioterapeuta por edición; esas horas se usan en la sección 9.
    telefónico o digital con registro del motivo de consulta (sin valoración clínica por
    personal administrativo); primera consulta de fisioterapia con cribado clínico de
    signos de alarma y estratificación; salidas del nivel 1; derivación inmediata a
-   medicina de familia, urgencias o atención hospitalaria si hay criterios de alarma o
+   medicina de familia en el mismo día o a urgencias si hay criterios de alarma o
    complejidad. Se puede prever un cuestionario de autorreferencia cumplimentado por el
    ciudadano, tomado de modelos con evaluación publicada, y se especifica que quien lo
    lee e interpreta es el fisioterapeuta. **Mecanismo de entrada (decisión D-6,
@@ -513,7 +518,7 @@ y con las condiciones reescritas por la revisión (comentarios 19 a 29).
 (comentario 26). Cada condición es comprobable antes o en la primera consulta. Las tablas
 8.2 y 8.3 son un subconjunto exacto de la matriz del anexo C.
 
-### Sección 9. Dotación: modelo de demanda, escenarios y ajustes territoriales
+### Sección 9. Dotación calculada por demanda, por fases y con ajuste territorial
 
 **Objetivo.** Responder al comentario 15 ("demasiado pedir") con un cálculo trazable y un
 calendario, y a los comentarios 11 y 13 con advertencia metodológica y fuentes.
@@ -627,6 +632,28 @@ sección 9 y no del borrador.
 
 ---
 
+## 4 bis. Voz del documento (Voice DNA)
+
+Desde la versión 0.3, todo el texto del documento sigue el perfil de voz del autor
+definido en `drraulferrer/educacion-en-dolor`, archivo `docs/voice-dna.md`, extraído de sus
+revisiones editoriales reales. Resumen: una oración, una idea, con el agente delante.
+
+| Regla | Contenido | Se comprueba con validar.py |
+|---|---|---|
+| V-1 | Sin apertura valorativa «Es el/la + superlativo»: sujeto concreto o demostrativo | Sí |
+| V-2 | Una oración, una idea: ninguna frase de más de 30 palabras fuera de citas literales y tablas | Sí |
+| V-3 | Agente delante y voz activa | No, revisión de lectura |
+| V-4 | Sin incisos entre rayas: oración propia o enumeración tras dos puntos | Sí |
+| V-5 | Conector explícito (mientras que, de modo que, además, pero, por eso) en lugar de yuxtaposición | No, revisión de lectura |
+| V-6 | Absolutos atenuados a relativos (uno de los más, suele) | Sí, superlativos |
+| V-7 | Precisión léxica en lugar de expresiones coloquiales | Sí, lista de expresiones |
+| V-8 | Determinantes restituidos, sin estilo telegráfico | No, revisión de lectura |
+| V-9 | Títulos sin dos puntos retóricos, sin «cómo explicar» ni «no solo X: Y» | Sí |
+
+Conflictos resueltos a favor de la voz: la tesis de la sección 1.3 y la redacción del
+comentario 31 se partieron en oraciones más cortas sin cambiar su contenido. Las citas
+literales de normas se mantienen íntegras entre comillas angulares.
+
 ## 5. Reglas de estilo (E)
 
 | Regla | Contenido |
@@ -723,6 +750,28 @@ contenido del documento final son:
 | La resolución del CGCFE de 2007 no se localiza | Sección 9.5 |
 | Cuatro citas del borrador con revista o año erróneos y dos referencias inexistentes | Corregidas en `referencias.md` (E9, E10, E16, E21, E35, E36) |
 | Ningún dominio externo salvo PubMed era accesible en la sesión de verificación | Todas las fuentes no científicas están en estado "Localizada"; el paso 2 del proceso de producción las abre y coteja |
+
+## 9 ter. Construcción y validación del documento final
+
+El documento final se construye y se valida con scripts reproducibles en `documento/build/`:
+
+| Script | Función |
+|---|---|
+| `modelo.py` | Modelo de demanda de la sección 9: escenarios, sensibilidad y ajustes territoriales |
+| `generar.py` | Ensambla `documento.md` desde `fuente/` y `datos/`, genera las tablas desde la matriz, las fichas y el modelo, y numera las citas en estilo Vancouver |
+| `validar.py` | Comprueba los criterios 9.1 a 9.12, las reglas E y T, el resumen ejecutivo y la Voice DNA |
+| `construir_docx.js` y `paginas.py` | Maquetan el Word con índice paginado en dos pasadas |
+| `construir.sh` | Ejecuta todo y genera `salida/fisioterapia-ap-sns.docx` y `.pdf` |
+
+Resultado de la versión 1.0: todos los criterios en verde salvo el 9.2, bloqueado por una
+causa externa. El entorno de trabajo solo permitió abrir PubMed, de modo que las normas,
+los documentos autonómicos y las estadísticas quedan pendientes de cotejo (anexo F del
+documento).
+
+Incoherencia de la especificación corregida durante la construcción: la versión 0.2
+admitía en el circuito 1 la derivación desde fisioterapia a atención hospitalaria,
+mientras que la sección 7.6 excluye esa derivación sin pasar por medicina de familia. La
+versión 0.3 alinea el circuito 1 con la sección 7.6.
 
 ## 10. Proceso de producción
 

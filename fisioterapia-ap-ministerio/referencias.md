@@ -196,3 +196,32 @@ Verificados en PubMed el 22 de septiembre de 2026.
 8. **La resolución del CGCFE de 2007 no se ha localizado** (A12). Las ratios del borrador no pueden atribuirse a ella.
 9. **Las cifras de Eurostat del borrador son correctas y de 2021** (D14); existen datos de 2023 más recientes y la de España está pendiente.
 10. **Cuatro citas del borrador tienen la revista o el año equivocados** (E9, E10, E21, E16) y dos referencias citadas no existen (E35, E36).
+
+## H. Referencias añadidas durante la redacción del documento final
+
+El archivo `documento/datos/referencias.csv` es desde la versión 1.0 la fuente canónica del
+banco: contiene la cita Vancouver, el enlace y el estado de cada referencia, y el documento
+solo puede citar identificadores que figuren en él. Esta sección resume lo añadido.
+
+| Id | Referencia | Uso en el documento | Estado |
+|---|---|---|---|
+| E37 | Sherrington C, et al. Exercise for preventing falls in older people living in the community. Cochrane Database Syst Rev. 2019. PMID 30703272 | Programa de caídas y fragilidad | Verificada |
+| E38 | Fransen M, et al. Exercise for osteoarthritis of the knee. Cochrane Database Syst Rev. 2015. PMID 25569281 | Programa de artrosis | Verificada |
+| E39 | McCarthy B, et al. Pulmonary rehabilitation for chronic obstructive pulmonary disease. Cochrane Database Syst Rev. 2015. PMID 25705944 | Programa de EPOC | Verificada |
+| E40 | Hayden JA, et al. Exercise therapy for chronic low back pain. Cochrane Database Syst Rev. 2021. PMID 34580864 | Escuela de espalda | Verificada |
+| E41 | Hill JC, et al. Stratified primary care management for low back pain (STarT Back). Lancet. 2011. PMID 21963002 | Herramientas de cribado | Verificada |
+| E42 | Gusi N, et al. The Spanish version of the STarT Back Screening Tool. Aten Primaria. 2011. PMID 21296465 | Herramientas de cribado | Verificada |
+| E43 | O'Caoimh R, et al. Prevalence of frailty at population level in European ADVANTAGE Joint Action Member States. Ann Ist Super Sanita. 2018. PMID 30284550 | Parámetro D del modelo | Verificada |
+| E44 | Wood L, et al. Patient satisfaction with the first contact physiotherapy service. Musculoskeletal Care. 2022. PMID 34709711 | Evaluación inglesa | Verificada |
+| E45 | Goodwin R, et al. Evaluation of the FCP model of primary care: a qualitative insight. Physiotherapy. 2021. PMID 34583834 | Evaluación inglesa | Verificada |
+| E13b | Walsh NE, et al. FRONTIER, informe completo. Health Soc Care Deliv Res. 2024. PMID 39707910 | Coste del modelo inglés | Verificada |
+| E29b | Bornhöft L, et al. More cost-effective management after direct triaging to physiotherapists. BMC Musculoskelet Disord. 2019. PMID 31043169 | Suecia | Verificada |
+| E32b | Hernández-Lázaro H, et al. Content validity of the ICF core set for post-acute musculoskeletal conditions in primary care physiotherapy. J Rehabil Med. 2023. PMID 37974517 | Indicador IR-2 | Verificada |
+| B7 | Aiguadé Aiguadé R. La hora de la Atención Primaria. Fisioterapia. 2022;44(4):199-200 | Dotación por comunidad autónoma | Pendiente de cotejo |
+| B8 | Regal-Ramos R. Epidemiología de la incapacidad laboral por patología osteomuscular en España. Med Segur Trab. 2022;68(269):209-220 | Incapacidad temporal | Pendiente de cotejo |
+| B9 | Instituto Nacional de Estadística. Estadística del Padrón Continuo | Parámetro S65 del modelo | Pendiente de cotejo |
+| G0 | Borrador de trabajo con los comentarios de revisión, septiembre de 2026 | Ratios del borrador y funciones | Documento aportado |
+
+Correcciones de año de edición impresa aplicadas desde PubMed: E6 es de 2021 (Physiotherapy
+111:48-56), E16 de 2014, E18 de 2021, E19 de 2013 y E44 de 2022.
+
