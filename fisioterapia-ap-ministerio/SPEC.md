@@ -85,12 +85,12 @@ es obligatoria. El orden es fijo.
 | 10 | Sistema de evaluación (formato EFQM) | 5 |
 | 11 | Plan de implantación y gestión de riesgos | 3 |
 | 12 | Propuesta de texto para el documento ministerial | 2 |
-| A | Anexo A. Fichas de programas grupales y comunitarios | — |
-| B | Anexo B. Fichas de indicadores | — |
-| C | Anexo C. Matriz de coherencia procesos × vías × condiciones | — |
-| D | Anexo D. Glosario y terminología normalizada | — |
-| E | Anexo E. Tabla de fuentes por cifra | — |
-| F | Anexo F. Metodología de verificación de referencias | — |
+| A | Anexo A. Fichas de programas grupales y comunitarios | sin páginas fijas |
+| B | Anexo B. Fichas de indicadores | sin páginas fijas |
+| C | Anexo C. Matriz de coherencia procesos × vías × condiciones | sin páginas fijas |
+| D | Anexo D. Glosario y terminología normalizada | sin páginas fijas |
+| E | Anexo E. Tabla de fuentes por cifra | sin páginas fijas |
+| F | Anexo F. Metodología de verificación de referencias | sin páginas fijas |
 
 ---
 
@@ -133,7 +133,10 @@ servicios y capacidad resolutiva con datos.
    año. Dato inglés del Musculoskeletal Services Framework (Department of Health, 2006)
    con su definición. Los dos datos no se comparan entre sí; se presentan en párrafos
    distintos y se explica por qué no son equiparables (definición de "problema atendido"
-   frente a "consulta"). Responde al comentario 18.
+   frente a "consulta"). Responde al comentario 18. La cifra inglesa del 30 % se
+   presenta como cifra de política sanitaria (Department of Health, 2006) y se acompaña
+   del rango empírico verificado, entre el 14 % y el 21 % de las consultas (Jordan 2010;
+   Bishop 2017; Keavy 2023), para que el lector no tome la cifra alta como medida.
 3. **1.3 Incapacidad temporal.** Peso de las enfermedades del aparato locomotor en los
    procesos y días de incapacidad temporal por contingencias comunes, con fuente oficial y
    año.
@@ -143,8 +146,12 @@ servicios y capacidad resolutiva con datos.
    prescripción (sección 4).
 5. **1.5 Capacidad resolutiva de la fisioterapia de AP.** Solo datos publicados: tasas de
    alta por consecución de objetivos, reconsulta y derivación posterior de los estudios
-   de First Contact Physiotherapy y de los documentos autonómicos que publiquen
-   resultados. Si no hay dato español publicado, se dice explícitamente.
+   de First Contact Physiotherapy (Downie 2019: el 87,3 % de los contactos resueltos en
+   AP; Bradford 2025: el 78,5 % sin reconsulta en doce semanas) y de los documentos
+   autonómicos que publiquen resultados (Canarias y Madrid publican actividad, no
+   resultados). La verificación no ha encontrado ningún estudio español que evalúe un
+   modelo de acceso directo o de primer contacto en el SNS; el documento lo dice
+   explícitamente y lo convierte en una de las razones para pedir indicadores comunes.
 
 **Fuentes admitidas.** BOE; Ministerio de Sanidad (BDCAP, SIAP); Seguridad Social (INSS);
 OMS; World Physiotherapy; artículos revisados por pares. Ninguna cifra sin fuente y año.
@@ -161,11 +168,17 @@ nuevo (comentario 35).
 1. **2.1 Ley 44/2003 (LOPS).** Artículo 7.2.b literal. Artículo 9 (relaciones
    interprofesionales y trabajo en equipo). Qué permite y qué no en cuanto a autonomía
    de actuación.
-2. **2.2 Real Decreto 1030/2006.** Anexo II (cartera de AP), apartado de rehabilitación
+2. **2.2 Real Decreto 1030/2006.** Anexo II (cartera de AP), apartado 6, rehabilitación
    básica: texto literal y lectura: la fisioterapia forma parte de la cartera común de AP
-   desde 2006. Anexo III (atención especializada), apartado de rehabilitación, para
-   delimitar los dos niveles. Cualquier modificación posterior del anexo II que afecte a
-   la rehabilitación básica.
+   desde 2006, con seis contenidos (prevención de trastornos musculoesqueléticos,
+   procesos crónicos musculoesqueléticos, procesos agudos musculoesqueléticos leves,
+   trastornos neurológicos, fisioterapia respiratoria y orientación al paciente o
+   cuidador). El apartado condiciona esas actividades a la **"previa indicación
+   médica"**. Este inciso es el obstáculo normativo central para un modelo estatal de
+   autorreferencia y el documento lo trata de frente en la sección 7 (decisión D-5), en
+   lugar de omitirlo. Anexo III, apartado 8, rehabilitación en pacientes con déficit
+   funcional recuperable, para delimitar los dos niveles. Modificaciones posteriores de
+   los anexos (Orden SND/454/2025) comprobadas en el texto consolidado.
 3. **2.3 Ley 16/2003 de cohesión y calidad.** Artículos sobre la cartera común y el
    Consejo Interterritorial como vía formal para acordar el modelo.
 4. **2.4 Marco Estratégico para la Atención Primaria y Comunitaria (2019) y Plan de
@@ -197,11 +210,24 @@ autónoma con documento, año y contenido regulado (comentarios 5, 6, 7, 9, 41, 
    enfermería, acceso directo del ciudadano, procesos incluidos, ratio o dotación,
    indicadores, capacidad de solicitar pruebas, uso de ecografía. Donde no exista
    documento oficial se escribe "no localizado" y no se rellena con prensa.
-3. **3.3 Tres modelos de referencia en España.** Canarias (derivación protocolizada desde
-   medicina de familia con documento operativo completo), Galicia (acceso directo en la
-   carteira del SERGAS) y Madrid (acceso directo para procesos protocolizados,
-   interconsulta no presencial con atención hospitalaria, solicitud de radiografía simple
-   y programa de ecografía). Cada afirmación con documento y fecha.
+3. **3.3 Modelos de referencia en España.** Canarias (guía de actuación de la consulta de
+   fisioterapia en AP, 2022, con derivación protocolizada desde medicina de familia),
+   Galicia (carteira de servizos de fisioterapia de AP e comunitaria del SERGAS y acceso
+   directo mediante el protocolo de gestión de la demanda del equipo, XIDE, desde 2022)
+   y Madrid (cartera de servicios estandarizados de AP, actualización de septiembre de
+   2025, servicio 506, y citación directa desde la Unidad de Atención al Usuario para
+   esguince de tobillo, epicondilalgia y fascitis plantar). Se añaden, como modelos de
+   derivación directa desde medicina de familia con documento propio, Andalucía (circuito
+   en toda la comunidad, 2026), Baleares (protocolo de Mallorca, 2023) y Castilla-La
+   Mancha (guía de unidades, 2022, revisada en 2026). Cada afirmación con documento y
+   fecha. **Reglas derivadas de la verificación:** (a) Cataluña tiene fisioterapeuta en
+   cada equipo de AP desde 2022-2023, pero no consta acceso directo en ningún documento
+   oficial, por lo que no puede figurar en la lista de comunidades con acceso directo
+   (esto corrige la petición del comentario 6, que solo puede atenderse para Madrid);
+   (b) la solicitud de radiografía simple por fisioterapeutas de AP de Madrid no tiene
+   norma ni noticia localizada y no se incluye salvo que la autoría aporte el documento;
+   (c) la interconsulta no presencial de Madrid se cita como servicio general de los
+   hospitales del SERMAS, no como servicio específico de fisioterapia.
 4. **3.4 Heterogeneidad e inequidad.** Conclusión: la misma cartera común se traduce en
    modelos distintos según territorio; argumento para el modelo homogéneo.
 
@@ -224,20 +250,35 @@ primarias del propio sistema o artículos revisados por pares (comentarios 43 y 
    de AP. Ninguna cifra de esta sección sirve para fijar una ratio de AP.
 2. **4.1 Inglaterra.** First Contact Physiotherapy: NHS Long Term Plan (2019), Roadmap to
    Practice de Health Education England, Additional Roles Reimbursement Scheme, guías de
-   la Chartered Society of Physiotherapy, evaluaciones publicadas (Goodwin y Hendrick;
-   Downie; Babatunde; ensayo STEMS). Tabla "qué se toma / qué no se pide": se toma la
+   la Chartered Society of Physiotherapy, evaluaciones publicadas (Goodwin y Hendrick
+   2016; Downie 2019; Babatunde 2020; ensayo piloto STEMS 2017; experimento natural
+   STEMS-2 2020; evaluación nacional Stynes 2021; estudio FRONTIER, Walsh 2024). No
+   existe un ensayo clúster STEMS-2 de 2023-2024 ni una revisión Babatunde 2024; el
+   borrador no puede citarlos. Tabla "qué se toma / qué no se pide": se toma la
    integración en el equipo de AP, el primer contacto y el objetivo de descargar consultas
    médicas; **no se pide automáticamente** la capacidad de solicitar pruebas del modelo
    inglés, que se trata en la sección 7.
 3. **4.2 Países Bajos, Noruega y Suecia.** Autorreferencia normalizada: evaluación
-   holandesa (Leemrijse 2008; Swinkels 2014), reforma noruega de 2018, evidencia sueca
-   de triaje por fisioterapia en AP. Fuente oficial del cambio normativo en cada país.
+   holandesa (Leemrijse 2008; Swinkels 2014; Damen 2025; cifras de Nivel 2024), reforma
+   noruega de 1 de enero de 2018 (Prop. 71 L 2016-2017), evidencia sueca de triaje
+   directo a fisioterapia en centros de salud (Bornhöft 2019), que es triaje en el
+   centro y no acceso directo nacional, y fuente regional sueca sobre ausencia de
+   derivación. Cada país se sostiene con su propia fuente; la afirmación del borrador de
+   que la región europea de World Physiotherapy "identifica estos países" no tiene
+   soporte y se elimina. Nueva Zelanda no se cita por falta de fuente oficial.
 4. **4.3 Australia, Canadá y Nueva Zelanda.** Solo para equipos interprofesionales y
    práctica avanzada; se advierte que la cobertura pública de fisioterapia difiere.
 5. **4.4 Síntesis de evidencia sobre acceso directo.** Revisiones sistemáticas (Ojha
-   2014; Piscitelli 2018; Demont 2021; y las posteriores verificadas) con resultados
-   sobre seguridad, número de visitas, pruebas de imagen, prescripción y coste. Se
-   distingue evidencia de eficacia, de seguridad y de coste.
+   2014; Piscitelli 2018; Demont 2021; Vedanayagam 2021; Gallotti 2023; Abuhl 2025;
+   Fischer 2026) con resultados sobre seguridad, número de visitas, pruebas de imagen,
+   prescripción y coste. Se distingue evidencia de eficacia, de seguridad y de coste.
+   **Regla de honestidad sobre la carga médica:** el efecto del acceso directo sobre las
+   consultas de medicina de familia es heterogéneo (STEMS-2 no encontró efecto
+   consistente y una captación real del 6 % al 10 %; Fischer 2026 estima entre un 10 % y
+   un 30 % menos de consultas; FRONTIER no encontró diferencias en función física y sí
+   menos medicación y menor coste). El documento presenta la descarga de consultas como
+   resultado posible y evaluable, nunca como resultado garantizado, y lo convierte en
+   indicador de resultados.
 6. **4.5 Tabla comparada de densidad de fisioterapeutas.** Eurostat y censo de World
    Physiotherapy con año y definición por país. Va después del recuadro de advertencia y
    con nota al pie que repite la advertencia.
@@ -314,7 +355,13 @@ con horas de fisioterapeuta por edición; esas horas se usan en la sección 9.
    medicina de familia, urgencias o atención hospitalaria si hay criterios de alarma o
    complejidad. Se puede prever un cuestionario de autorreferencia cumplimentado por el
    ciudadano, tomado de modelos con evaluación publicada, y se especifica que quien lo
-   lee e interpreta es el fisioterapeuta.
+   lee e interpreta es el fisioterapeuta. **Matiz derivado de la verificación:** los dos
+   precedentes españoles de acceso directo funcionan mediante un protocolo de gestión de
+   la demanda aplicado por personal administrativo con motivos de consulta
+   parametrizados por clínicos (XIDE en Galicia; citación por la Unidad de Atención al
+   Usuario en Madrid). El documento describe ese mecanismo con ese nombre, "gestión de la
+   demanda con motivos parametrizados", deja claro que no es triaje ni valoración
+   clínica, y cita los dos precedentes (decisión D-6).
 3. **6.3 Circuito 2, medicina de familia.** Como en el borrador, con retorno explícito por
    ausencia de mejoría, signos de alarma, contraindicación o proceso no abordable.
 4. **6.4 Circuito 3, enfermería familiar y comunitaria.** Cribado de fragilidad realizado
@@ -353,9 +400,19 @@ pide para España, sin dejar que el lector lo infiera del modelo inglés.
    del ciudadano (ya regulado en al menos tres comunidades), interconsulta no presencial
    con atención hospitalaria, uso de ecografía como apoyo a la valoración.
 3. **7.3 Solicitud de pruebas de imagen (decisión D-2).** Marco del Real Decreto
-   601/2019. Se presenta el precedente autonómico que exista con su norma. Se declara la
-   posición del documento (ver sección 11).
-4. **7.4 Lo que no se pide.** Prescripción farmacológica; especialidades de fisioterapia;
+   601/2019: el prescriptor es "médico, odontólogo u otro profesional sanitario
+   autorizado… con arreglo a los requisitos establecidos", y el fisioterapeuta no figura
+   en ninguna norma habilitante localizada. No se ha verificado ningún precedente
+   autonómico. Se declara la posición del documento (ver sección 11).
+4. **7.4 Compatibilidad con la cartera común (decisión D-5).** El apartado 6 del anexo
+   II del RD 1030/2006 exige "previa indicación médica". El documento expone las dos
+   vías posibles: (a) lectura de la indicación médica como indicación por protocolo
+   aprobado por el servicio de salud, que es la que de hecho sostienen Galicia y Madrid;
+   (b) propuesta de actualización del apartado 6 por el procedimiento de los artículos
+   20 y 21 de la Ley 16/2003, para que la autorreferencia protocolizada quede recogida
+   en la cartera común. Se recomienda pedir (b) y apoyarse en (a) para la fase de
+   implantación.
+5. **7.5 Lo que no se pide.** Prescripción farmacológica; especialidades de fisioterapia;
    sustitución de la valoración médica en procesos con diagnóstico médico pendiente.
 
 **Criterio de aceptación.** Un lector puede responder en una frase "¿pide este documento
@@ -414,6 +471,9 @@ calendario, y a los comentarios 11 y 13 con advertencia metodológica y fuentes.
    - frecuentación anual de problemas del aparato locomotor en AP (BDCAP);
    - fracción de esos problemas abordable por fisioterapia de AP según la matriz del
      anexo C (parámetro asumido, con rango y justificación);
+   - captación esperada de la autorreferencia, con rango tomado de la evidencia (del 6 %
+     al 10 % en STEMS-2; del 28 % el primer año al 74 % dieciocho años después en Países
+     Bajos), porque condiciona la carga de la vía de acceso directo;
    - visitas medias por episodio (dato de evaluaciones publicadas, con rango);
    - horas de fisioterapeuta por edición de cada programa grupal (anexo A) y número de
      ediciones anuales por zona básica;
@@ -434,10 +494,12 @@ calendario, y a los comentarios 11 y 13 con advertencia metodológica y fuentes.
    envejecimiento y dependencia, carga de incapacidad temporal, centros docentes o con
    programas comunitarios. El factor "demora en rehabilitación" queda **excluido**
    (comentario 17).
-6. **9.5 Referencias externas de dotación.** Solo como contraste, tras el modelo: ratio
-   operativa inglesa de First Contact Physiotherapy con su fuente y definición;
-   recomendaciones del Consejo General de Colegios de Fisioterapeutas si se verifican
-   con documento y año.
+6. **9.5 Referencias externas de dotación.** Solo como contraste, tras el modelo: la
+   ratio de un fisioterapeuta de primer contacto por 10.000 habitantes es una
+   reivindicación de la Chartered Society of Physiotherapy (2022), no una norma del NHS,
+   y así se presenta; la ratio actual de AP del SNS según SIAP 2024. La resolución del
+   Consejo General de Colegios de Fisioterapeutas de 2007 citada en el borrador no se ha
+   localizado y no puede citarse salvo que la autoría aporte el documento.
 
 **Criterio de aceptación.** Cada parámetro del modelo tiene fuente o se declara como
 supuesto con rango. La tabla de sensibilidad existe. Ningún escenario se presenta sin
@@ -588,9 +650,28 @@ sección 9 y no del borrador.
 | 9.11 | Fichas | Todos los programas grupales (anexo A) y todos los indicadores (anexo B) tienen ficha completa |
 | 9.12 | Legibilidad por partes | Cada sección se entiende sin la anterior; los recuadros de advertencia y las condiciones acompañan a las tablas en la misma página |
 
+## 9 bis. Hallazgos de la verificación que modifican el borrador
+
+La lectura transversal completa está en `referencias.md`, sección F. Los que cambian el
+contenido del documento final son:
+
+| Hallazgo | Consecuencia en el documento |
+|---|---|
+| La cartera común de AP condiciona la rehabilitación básica a "previa indicación médica" | Sección 7.4 y decisión D-5 |
+| Acceso directo documentado solo en Galicia (2022) y Madrid (2025); Cataluña no | Sección 3.3; el comentario 6 solo se atiende para Madrid |
+| Sin norma que habilite a fisioterapeutas de AP de Madrid para solicitar radiografía | Sección 7.3 y decisión D-2 |
+| El 30 % inglés es cifra de política; la evidencia da del 14 % al 21 % | Sección 1.2 |
+| La afirmación aritmética de la CSP no existe en ninguna fuente | Eliminada (ED-4) |
+| STEMS-2 no encontró efecto consistente sobre la carga médica; Fischer 2026 estima del 10 % al 30 % menos | Sección 4.4, regla de honestidad; indicador de resultados |
+| Captación real de la autorreferencia baja al inicio (del 6 % al 10 %) | Parámetro del modelo de demanda, sección 9.2 |
+| Ningún estudio español evalúa el acceso directo en el SNS | Sección 1.5 y plan de evaluación |
+| La resolución del CGCFE de 2007 no se localiza | Sección 9.5 |
+| Cuatro citas del borrador con revista o año erróneos y dos referencias inexistentes | Corregidas en `referencias.md` (E9, E10, E16, E21, E35, E36) |
+| Ningún dominio externo salvo PubMed era accesible en la sesión de verificación | Todas las fuentes no científicas están en estado "Localizada"; el paso 2 del proceso de producción las abre y coteja |
+
 ## 10. Proceso de producción
 
-1. Validar esta especificación con la autoría (resolver decisiones D-1 a D-4).
+1. Validar esta especificación con la autoría (resolver decisiones D-1 a D-6).
 2. Completar `referencias.md` con las verificaciones pendientes y obtener los documentos
    oficiales que hoy solo constan por prensa.
 3. Construir el anexo C (matriz de coherencia) antes de redactar ninguna sección.
@@ -606,6 +687,8 @@ sección 9 y no del borrador.
 | Id | Decisión | Opciones | Recomendación |
 |---|---|---|---|
 | D-1 | Cifras de dotación | (a) mantener 1/15.000, 1/7.500 y 1/3.000 del borrador como cifras fijas; (b) derivarlas del modelo de demanda y presentar el resultado con su intervalo; (c) modelo de demanda como base y las cifras del borrador solo como contraste histórico | (b). Es la única opción que responde al comentario 15 con argumento y no con negociación. Si el modelo devuelve cifras cercanas a las del borrador, se ganan sin discusión; si devuelve cifras distintas, se evita presentar al Ministerio un número indefendible |
-| D-2 | Solicitud de pruebas de imagen | (a) no pedir ninguna capacidad de solicitud; (b) pedir solicitud protocolizada de radiografía simple en el marco que permita el RD 601/2019 y con el precedente autonómico verificado; (c) pedir el nivel inglés completo (pruebas y derivación a hospital sin paso por medicina) | (b), y solo si el precedente autonómico se verifica con norma publicada. Si no se verifica, (a) con mención a la vía de protocolo compartido con medicina de familia. La opción (c) es el punto más sensible del documento y no tiene base normativa estatal |
+| D-2 | Solicitud de pruebas de imagen | (a) no pedir ninguna capacidad de solicitud y prever un protocolo compartido con medicina de familia para la radiografía simple; (b) pedir solicitud protocolizada de radiografía simple en el marco del RD 601/2019 con un precedente autonómico verificado; (c) pedir el nivel inglés completo (pruebas y derivación a hospital sin paso por medicina) | (a). La verificación no ha encontrado ninguna norma ni noticia que habilite a los fisioterapeutas de AP de Madrid para solicitar radiografía simple, y el RD 601/2019 no incluye al fisioterapeuta entre los prescriptores. Sin precedente, (b) es una petición sin base y (c) es el punto más sensible del documento sin base normativa estatal. Si la autoría aporta la norma madrileña, se pasa a (b) |
+| D-5 | Compatibilidad con la cartera común ("previa indicación médica", RD 1030/2006, anexo II, apartado 6) | (a) sostener que la indicación por protocolo del servicio de salud cumple el requisito, como hacen de hecho Galicia y Madrid, sin pedir cambio normativo; (b) pedir la actualización del apartado 6 por el procedimiento de la Ley 16/2003 para incorporar la autorreferencia protocolizada; (c) ambas: (a) para implantar y (b) como petición al Ministerio | (c). Omitir el inciso, como hace el borrador, es el riesgo mayor del documento: un revisor jurídico del Ministerio lo verá en la primera lectura |
+| D-6 | Mecanismo de acceso directo | (a) cita administrativa con registro libre del motivo y cribado clínico en la primera consulta; (b) gestión de la demanda con motivos parametrizados por clínicos y aplicada por personal administrativo, con cribado clínico en la primera consulta, citando XIDE (Galicia) y la citación por la Unidad de Atención al Usuario (Madrid) | (b). El comentario 30 tiene razón en que no existe una figura de cribado administrativo-clínico, pero sí existe, con norma autonómica, la gestión de la demanda parametrizada; nombrarla con su nombre y con sus precedentes es más defendible que un registro libre |
 | D-3 | Dolor persistente no complejo | (a) mantener en acceso directo con condición de diagnóstico previo; (b) sacarlo del acceso directo y dejarlo solo por medicina de familia | (a) con condición de diagnóstico previo; mantiene coherencia con "recidivas de procesos ya diagnosticados" |
 | D-4 | Programa de ecografía | (a) incluir el uso de ecografía como competencia solicitada al Ministerio; (b) citarlo solo como práctica autonómica de referencia sin pedir regulación estatal | (b). Es un apoyo a la valoración, no una vía de acceso ni una condición del modelo, y abrir ese frente en el documento ministerial resta foco a las cinco peticiones |
