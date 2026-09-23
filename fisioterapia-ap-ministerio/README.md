@@ -36,7 +36,7 @@ archivo de `documento/datos/` y se reconstruye: las tablas de las secciones 5, 6
 La versión 1.1 amplía cada sección con tres documentos aportados: la instrucción de la
 Gerencia Asistencial de AP de Madrid sobre procesos de demanda, el análisis de la
 Sociedade Galega de Fisioterapeutas de 2019 y un documento de trabajo sobre la situación
-madrileña. El documento tiene 87 páginas y cita 166 referencias.
+madrileña. El documento tiene 96 páginas y cita 166 referencias.
 
 Todos los criterios de aceptación de `SPEC.md` se cumplen salvo el 9.2. Ese criterio exige
 que todas las referencias estén verificadas abriendo la fuente, y el entorno de trabajo
@@ -46,5 +46,6 @@ pendientes de cotejo. El anexo F del documento enumera esas referencias, las
 discrepancias encontradas en los documentos aportados y los datos que faltan por
 incorporar.
 
-Pendiente: aplicar la plantilla del colegio profesional con los logos de la portada. La
-plantilla no estaba entre los archivos recibidos.
+La maquetación usa la plantilla de informes del Colegio Profesional de Fisioterapeutas de
+la Comunidad de Madrid: portada con logotipo, cabecera, pie, títulos y tablas con los
+colores del colegio. La carpeta `documento/plantilla/` explica su origen.

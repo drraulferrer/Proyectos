@@ -788,7 +788,8 @@ Cambios de estructura:
 - Nuevas subsecciones 2.5 (instrumentos autonómicos), 3.4 (diagnóstico profesional de los modelos vigentes), 4.4 (triaje musculoesquelético), 6.7 (coordinación con otras unidades de atención específica), 8.5 (evidencia por proceso) y 9.6 (retorno económico esperado). Las subsecciones siguientes se renumeran.
 - Nuevos indicadores IE-10 (inicio precoz en la incapacidad temporal) e IR-13 (adecuación de las derivaciones de medicina de familia a traumatología).
 - Nuevo apartado F.4 del anexo F con las discrepancias entre los documentos aportados y sus fuentes.
-- La extensión orientativa de 45 a 60 páginas se supera por decisión de la autoría: la versión 1.1 tiene unas 40.600 palabras y 87 páginas.
+- La extensión orientativa de 45 a 60 páginas se supera por decisión de la autoría: la versión 1.1 tiene unas 40.600 palabras y 96 páginas.
+- La maquetación adopta la plantilla de informes del CPFCM: portada con logotipo, cabecera con filetes turquesa y naranja, pie con «Página N», títulos en petróleo y tablas con cabecera turquesa.
 
 Resultado de la validación de la versión 1.1: todos los criterios en verde salvo el 9.2. De las 166 referencias citadas, 101 están verificadas y 65 quedan pendientes de cotejo por la misma causa externa.
 
