@@ -158,9 +158,9 @@ El artículo 20 establece que la cartera de servicios se acuerda en el seno del 
 
 El Marco Estratégico para la Atención Primaria y Comunitaria se aprobó en el Consejo Interterritorial en 2019 [46]. Su acción A.4.4 incluye el objetivo de «incrementar la capacidad resolutiva de fisioterapia, asumiendo patología aguda de baja complejidad y crónica estable, mediante circuitos y protocolos de actuación basados en la evidencia» [46]. El mismo marco pide «potenciar la participación de fisioterapia en actividades preventivas» [46].
 
-El Plan de Acción de Atención Primaria y Comunitaria 2022-2023 dio continuidad a ese marco [47]. El Plan de Acción 2025-2027, aprobado en diciembre de 2024, define un nuevo mapa de competencias que incluye a los fisioterapeutas de AP [48, 49]. Sus objetivos incluyen la continuidad asistencial, la ampliación de la cartera y la mejora de la capacidad resolutiva [49]. Este documento se presenta como desarrollo operativo de esos objetivos para la fisioterapia. Un documento de trabajo madrileño propone usar ese mapa de competencias para ampliar el papel clínico del fisioterapeuta [50]. El mismo documento propone abrir el acceso directo en procesos de alta prevalencia y baja discapacidad [50].
+El Plan de Acción de Atención Primaria y Comunitaria 2022-2023 dio continuidad a ese marco [47]. El Plan de Acción 2025-2027, aprobado en diciembre de 2024, define un nuevo mapa de competencias que incluye a los fisioterapeutas de AP [48, 49]. Sus objetivos incluyen la continuidad asistencial, la ampliación de la cartera y la mejora de la capacidad resolutiva [49]. Este documento se presenta como desarrollo operativo de esos objetivos para la fisioterapia. Este documento propone usar ese mapa de competencias para ampliar el papel clínico del fisioterapeuta de AP.
 
-Otras tres estrategias del Ministerio de Sanidad enmarcan la propuesta. La Estrategia para el Abordaje de la Cronicidad orienta la atención de los procesos crónicos [51]. La Estrategia de Promoción de la Salud y Prevención vincula el consejo sobre estilos de vida en AP con los recursos comunitarios [52]. Por último, la Estrategia de Salud Digital del SNS ofrece el marco para la teleconsulta y el seguimiento remoto [53].
+Otras tres estrategias del Ministerio de Sanidad enmarcan la propuesta. La Estrategia para el Abordaje de la Cronicidad orienta la atención de los procesos crónicos [50]. La Estrategia de Promoción de la Salud y Prevención vincula el consejo sobre estilos de vida en AP con los recursos comunitarios [51]. Por último, la Estrategia de Salud Digital del SNS ofrece el marco para la teleconsulta y el seguimiento remoto [52].
 
 ## 2.5. Instrumentos autonómicos que desarrollan la cartera común
 
@@ -174,13 +174,13 @@ La Sociedade Galega de Fisioterapeutas planteó en 2019 la misma cuestión para 
 
 ## 2.6. Real Decreto 601/2019, sobre exposiciones médicas
 
-El Real Decreto 601/2019 regula la justificación y la optimización de las exposiciones médicas a radiaciones ionizantes [54]. La norma distingue dos figuras. El prescriptor es el «médico, odontólogo u otro profesional sanitario autorizado para remitir a personas para ser sometidas a procedimientos médico-radiológicos» [54]. El profesional sanitario habilitado es quien asume la responsabilidad clínica de la exposición [54].
+El Real Decreto 601/2019 regula la justificación y la optimización de las exposiciones médicas a radiaciones ionizantes [53]. La norma distingue dos figuras. El prescriptor es el «médico, odontólogo u otro profesional sanitario autorizado para remitir a personas para ser sometidas a procedimientos médico-radiológicos» [53]. El profesional sanitario habilitado es quien asume la responsabilidad clínica de la exposición [53].
 
-La norma no menciona al fisioterapeuta en ninguna de las dos figuras [54]. La Directiva 2013/59/Euratom, que el real decreto transpone, tampoco reserva en exclusiva a los médicos la remisión a estos procedimientos [55]. Este marco es la base de la petición de la sección 7.4.
+La norma no menciona al fisioterapeuta en ninguna de las dos figuras [53]. La Directiva 2013/59/Euratom, que el real decreto transpone, tampoco reserva en exclusiva a los médicos la remisión a estos procedimientos [54]. Este marco es la base de la petición de la sección 7.4.
 
 ## 2.7. Marco internacional
 
-La resolución WHA76.6 insta a los Estados a fortalecer la rehabilitación en sus sistemas de salud [6]. La OMS recomienda integrar la rehabilitación en la atención primaria y ha publicado para ese nivel un paquete de intervenciones priorizadas [4, 7]. World Physiotherapy mantiene una declaración de política sobre el acceso directo y la autorreferencia, revisada en 2023 [2]. La región europea de esa organización publicó también una declaración sobre la fisioterapia en atención primaria [56].
+La resolución WHA76.6 insta a los Estados a fortalecer la rehabilitación en sus sistemas de salud [6]. La OMS recomienda integrar la rehabilitación en la atención primaria y ha publicado para ese nivel un paquete de intervenciones priorizadas [4, 7]. World Physiotherapy mantiene una declaración de política sobre el acceso directo y la autorreferencia, revisada en 2023 [2]. La región europea de esa organización publicó también una declaración sobre la fisioterapia en atención primaria [55].
 
 # 3. Situación de la fisioterapia de atención primaria en España
 
@@ -188,9 +188,9 @@ Esta sección describe la dotación actual y los modelos que aplica cada comunid
 
 ## 3.1. Dotación actual
 
-El informe monográfico de recursos humanos del SNS de 2024 contabiliza 2.418 fisioterapeutas en AP [57]. Según el mismo informe, el 84,8 % de los fisioterapeutas del SNS trabaja en hospitales y el 10 % en AP [57]. El reparto muestra que la fisioterapia pública se concentra en el nivel hospitalario.
+El informe monográfico de recursos humanos del SNS de 2024 contabiliza 2.418 fisioterapeutas en AP [56]. Según el mismo informe, el 84,8 % de los fisioterapeutas del SNS trabaja en hospitales y el 10 % en AP [56]. El reparto muestra que la fisioterapia pública se concentra en el nivel hospitalario.
 
-La dotación de AP varía mucho entre comunidades autónomas. Un editorial de la revista Fisioterapia recogió en 2022 los habitantes por fisioterapeuta de AP según el Sistema de Información de Atención Primaria (SIAP) [58]. La tabla 3.1 resume los valores extremos que publicó [58].
+La dotación de AP varía mucho entre comunidades autónomas. Un editorial de la revista Fisioterapia recogió en 2022 los habitantes por fisioterapeuta de AP según el Sistema de Información de Atención Primaria (SIAP) [57]. La tabla 3.1 resume los valores extremos que publicó [57].
 
 Tabla 3.1. Habitantes por fisioterapeuta de atención primaria en las comunidades autónomas con los valores extremos
 
@@ -202,9 +202,9 @@ Tabla 3.1. Habitantes por fisioterapeuta de atención primaria en las comunidade
 | Extremadura | 12.101 | Entre las de mayor dotación |
 | Navarra | 91.972 | Entre las de menor dotación |
 
-Fuente: Aiguadé Aiguadé, 2022, con datos del SIAP [58]. El editorial no precisa el año del dato. Los valores son anteriores a la incorporación de fisioterapeutas a los equipos de AP de Cataluña en 2022 y 2023 [59].
+Fuente: Aiguadé Aiguadé, 2022, con datos del SIAP [57]. El editorial no precisa el año del dato. Los valores son anteriores a la incorporación de fisioterapeutas a los equipos de AP de Cataluña en 2022 y 2023 [58].
 
-La diferencia entre los extremos supera la relación de diez a uno [58]. La cifra de Cataluña es anterior a su programa de incorporación de fisioterapeutas, que situó un profesional en cada equipo de AP entre 2022 y 2023 [59, 60]. El SIAP publica la serie completa por comunidad autónoma y es la fuente que usará el indicador IE-3 [61].
+La diferencia entre los extremos supera la relación de diez a uno [57]. La cifra de Cataluña es anterior a su programa de incorporación de fisioterapeutas, que situó un profesional en cada equipo de AP entre 2022 y 2023 [58, 59]. El SIAP publica la serie completa por comunidad autónoma y es la fuente que usará el indicador IE-3 [60].
 
 ## 3.2. Modelos autonómicos
 
@@ -214,23 +214,23 @@ Tabla 3.2. Modelos de fisioterapia de atención primaria por comunidad autónoma
 
 | Comunidad autónoma | Documento de referencia | Año | Consulta propia | Derivación directa desde medicina de familia | Acceso directo del ciudadano |
 |---|---|---|---|---|---|
-| Andalucía | Cartera de servicios de AP y circuito de derivación directa del Servicio Andaluz de Salud [62, 63] | 2026 | Sí | Sí, para seis procesos | No |
-| Aragón | Cartera de Servicios de Atención Primaria del Gobierno de Aragón [64] | 2024 | Sí | Sin protocolo localizado | No |
+| Andalucía | Cartera de servicios de AP y circuito de derivación directa del Servicio Andaluz de Salud [61, 62] | 2026 | Sí | Sí, para seis procesos | No |
+| Aragón | Cartera de Servicios de Atención Primaria del Gobierno de Aragón [63] | 2024 | Sí | Sin protocolo localizado | No |
 | Asturias | No localizado | No consta | No consta | No consta | No |
-| Baleares | Protocolo de derivación directa de la Gerencia de Atención Primaria de Mallorca [65] | 2023 | Sí | Sí, para doce patologías | No |
-| Canarias | Guía de actuación de la consulta de fisioterapia en AP del Servicio Canario de la Salud [66, 67] | 2022 | Sí | Sí | No |
+| Baleares | Protocolo de derivación directa de la Gerencia de Atención Primaria de Mallorca [64] | 2023 | Sí | Sí, para doce patologías | No |
+| Canarias | Guía de actuación de la consulta de fisioterapia en AP del Servicio Canario de la Salud [65, 66] | 2022 | Sí | Sí | No |
 | Cantabria | No localizado | No consta | No consta | No consta | No |
-| Castilla-La Mancha | Guía de Unidades de Fisioterapia de AP del SESCAM [68] | 2022 | Sí | Sí, también desde pediatría | No |
-| Castilla y León | Protocolos de fisioterapia en AP de la Junta de Castilla y León [69] | 2017 | Sí | Sí | No |
-| Cataluña | Programa de incorporación de fisioterapeutas y plan funcional del Departament de Salut [59, 60] | 2023 | Sí, en cada equipo de AP | Sí, dentro del equipo | No consta |
-| Comunidad Valenciana | Cartera de servicios de Atención Primaria Comunitaria de la Conselleria de Sanitat [70] | 2022 | Sí | No consta | No |
-| Extremadura | Protocolo de derivación del Área de Salud de Plasencia [71] | 2019 | Sí | Sí, en esa área | No |
-| Galicia | Carteira de servizos de fisioterapia de AP del SERGAS [72] | 2022 | Sí | Sí | Sí, con motivos parametrizados |
+| Castilla-La Mancha | Guía de Unidades de Fisioterapia de AP del SESCAM [67] | 2022 | Sí | Sí, también desde pediatría | No |
+| Castilla y León | Protocolos de fisioterapia en AP de la Junta de Castilla y León [68] | 2017 | Sí | Sí | No |
+| Cataluña | Programa de incorporación de fisioterapeutas y plan funcional del Departament de Salut [58, 59] | 2023 | Sí, en cada equipo de AP | Sí, dentro del equipo | No consta |
+| Comunidad Valenciana | Cartera de servicios de Atención Primaria Comunitaria de la Conselleria de Sanitat [69] | 2022 | Sí | No consta | No |
+| Extremadura | Protocolo de derivación del Área de Salud de Plasencia [70] | 2019 | Sí | Sí, en esa área | No |
+| Galicia | Carteira de servizos de fisioterapia de AP del SERGAS [71] | 2022 | Sí | Sí | Sí, con motivos parametrizados |
 | La Rioja | No localizado | No consta | No consta | No consta | No |
-| Madrid | Cartera de Servicios Estandarizados de AP del Servicio Madrileño de Salud e instrucción de la Gerencia Asistencial de AP sobre procesos de demanda [9, 39, 73] | 2025 | Sí | Sí | Sí, para tres procesos |
-| Murcia | Cartera de Servicios de Fisioterapia en AP del Servicio Murciano de Salud [74] | 2026 | Sí | No consta | No |
-| Navarra | Formación oficial del Servicio Navarro de Salud sobre derivación directa [75] | No consta | Sí | Sí, para procesos determinados | No |
-| País Vasco | Información institucional de Osakidetza [76] | 2024 | Sí | No consta | No |
+| Madrid | Cartera de Servicios Estandarizados de AP del Servicio Madrileño de Salud e instrucción de la Gerencia Asistencial de AP sobre procesos de demanda [9, 39, 72] | 2025 | Sí | Sí | Sí, para tres procesos |
+| Murcia | Cartera de Servicios de Fisioterapia en AP del Servicio Murciano de Salud [73] | 2026 | Sí | No consta | No |
+| Navarra | Formación oficial del Servicio Navarro de Salud sobre derivación directa [74] | No consta | Sí | Sí, para procesos determinados | No |
+| País Vasco | Información institucional de Osakidetza [75] | 2024 | Sí | No consta | No |
 
 Fuente: elaboración propia a partir de los documentos citados en cada fila. «No localizado» indica que no se ha encontrado un documento oficial publicado.
 
@@ -238,15 +238,15 @@ Fuente: elaboración propia a partir de los documentos citados en cada fila. «N
 
 ### Canarias protocoliza la derivación desde medicina de familia
 
-El Servicio Canario de la Salud dispone desde 2022 de una guía de actuación de la consulta de fisioterapia en AP [66]. El despliegue comenzó en 24 zonas básicas de Gran Canaria, Fuerteventura, Lanzarote y Tenerife, según la nota oficial del Gobierno de Canarias [67]. El modelo se basa en la valoración individual, el plan personalizado, la educación sanitaria y el ejercicio terapéutico [67]. Incluye procesos como la gonartrosis, la coxartrosis, el dolor lumbar y cervical persistente, la epicondilitis y la EPOC leve estable [67].
+El Servicio Canario de la Salud dispone desde 2022 de una guía de actuación de la consulta de fisioterapia en AP [65]. El despliegue comenzó en 24 zonas básicas de Gran Canaria, Fuerteventura, Lanzarote y Tenerife, según la nota oficial del Gobierno de Canarias [66]. El modelo se basa en la valoración individual, el plan personalizado, la educación sanitaria y el ejercicio terapéutico [66]. Incluye procesos como la gonartrosis, la coxartrosis, el dolor lumbar y cervical persistente, la epicondilitis y la EPOC leve estable [66].
 
 ### Galicia abre el acceso directo mediante la gestión de la demanda
 
-El Servizo Galego de Saúde (SERGAS) publica una cartera de servicios de fisioterapia de AP y comunitaria [72]. Su citación de AP se organiza con XIDE, un sistema de gestión integral de la demanda en equipo [77]. XIDE reparte las citas por motivo de consulta entre medicina, enfermería, matrona, farmacia, fisioterapia, trabajo social y personal administrativo [77]. A finales de 2022, el sistema funcionaba en 246 centros de salud y cubría al 73 % de la población gallega [77]. El mismo informe atribuye a XIDE una reducción media del 40 % de las citas forzadas en las agendas de medicina de familia [77]. Con este sistema, la persona accede a la consulta de fisioterapia sin la intermediación de otro profesional para motivos clínicos parametrizados [77]. La fisioterapia se incorporó en 2022 con un pilotaje en Culleredo e Illas Canarias, según una noticia de prensa que este documento usa como fuente secundaria [78].
+El Servizo Galego de Saúde (SERGAS) publica una cartera de servicios de fisioterapia de AP y comunitaria [71]. Su citación de AP se organiza con XIDE, un sistema de gestión integral de la demanda en equipo [76]. XIDE reparte las citas por motivo de consulta entre medicina, enfermería, matrona, farmacia, fisioterapia, trabajo social y personal administrativo [76]. A finales de 2022, el sistema funcionaba en 246 centros de salud y cubría al 73 % de la población gallega [76]. El mismo informe atribuye a XIDE una reducción media del 40 % de las citas forzadas en las agendas de medicina de familia [76]. Con este sistema, la persona accede a la consulta de fisioterapia sin la intermediación de otro profesional para motivos clínicos parametrizados [76]. La fisioterapia se incorporó en 2022 con un pilotaje en Culleredo e Illas Canarias, según una noticia de prensa que este documento usa como fuente secundaria [77].
 
 ### Madrid admite el acceso directo para tres procesos
 
-La Cartera de Servicios Estandarizados de AP del Servicio Madrileño de Salud, actualizada en septiembre de 2025, incluye la atención fisioterapéutica a personas con procesos musculoesqueléticos agudos y subagudos [73]. En los procesos que no admiten acceso directo, la página institucional de la Comunidad de Madrid indica que es necesaria la derivación del médico de familia [79]. La nota oficial de septiembre de 2025 describe la citación directa desde la Unidad de Atención al Usuario [39].
+La Cartera de Servicios Estandarizados de AP del Servicio Madrileño de Salud, actualizada en septiembre de 2025, incluye la atención fisioterapéutica a personas con procesos musculoesqueléticos agudos y subagudos [72]. En los procesos que no admiten acceso directo, la página institucional de la Comunidad de Madrid indica que es necesaria la derivación del médico de familia [78]. La nota oficial de septiembre de 2025 describe la citación directa desde la Unidad de Atención al Usuario [39].
 
 La Gerencia Asistencial de AP regula esa citación en una instrucción interna titulada «Atención a procesos de demanda en las consultas de las Unidades de Atención Específica de Atención Primaria» [9]. La instrucción procede del Plan Estratégico 2020-2024 de la gerencia y de su proyecto de reorganización asistencial de los centros de salud [9]. Dentro de ese proyecto, el subproyecto de gestión de la demanda busca identificar «qué profesional es el que mejor respuesta puede dar a una demanda concreta» [9]. La instrucción se aplica a cuatro tipos de unidades: matronas, trabajo social sanitario, salud bucodental y fisioterapia [9].
 
@@ -270,37 +270,40 @@ Este documento cita la versión 8 de la instrucción, de julio de 2024 [9]. Su f
 
 ### Andalucía, Baleares y Castilla-La Mancha documentan la derivación directa
 
-El Servicio Andaluz de Salud implantó en mayo de 2026 la derivación desde medicina de familia a fisioterapia de AP en toda la comunidad [63]. El circuito cubre la lumbalgia, la cervicalgia, la gonalgia, el hombro doloroso, la fascitis plantar y la epicondilitis [63]. La Gerencia de Atención Primaria de Mallorca aprobó en 2023 un protocolo de derivación directa para doce patologías de baja complejidad y alta resolución [65]. El Servicio de Salud de Castilla-La Mancha publicó en 2022 una guía que permite al médico de familia y al pediatra derivar directamente a fisioterapia [68].
+El Servicio Andaluz de Salud implantó en mayo de 2026 la derivación desde medicina de familia a fisioterapia de AP en toda la comunidad [62]. El circuito cubre la lumbalgia, la cervicalgia, la gonalgia, el hombro doloroso, la fascitis plantar y la epicondilitis [62]. La Gerencia de Atención Primaria de Mallorca aprobó en 2023 un protocolo de derivación directa para doce patologías de baja complejidad y alta resolución [64]. El Servicio de Salud de Castilla-La Mancha publicó en 2022 una guía que permite al médico de familia y al pediatra derivar directamente a fisioterapia [67].
 
 ## 3.4. Diagnóstico de los modelos vigentes en los documentos profesionales
 
-Dos documentos profesionales recientes analizan los modelos de Galicia y de Madrid. Ambos coinciden en el diagnóstico, aunque difieren en la calidad de sus fuentes.
+Varios documentos profesionales recientes analizan los modelos de Galicia y de Madrid, y coinciden en el diagnóstico.
 
 ### La Sociedade Galega de Fisioterapeutas pidió en 2019 la derivación directa
 
 La Sociedade Galega de Fisioterapeutas presentó en febrero de 2019 un análisis de la efectividad clínica y del impacto económico de la fisioterapia en AP [8]. Uno de sus autores representaba a la sociedad en el grupo de trabajo del nuevo modelo de AP del SERGAS [8]. El análisis revisó cinco grupos de procesos: el dolor lumbar no específico, el dolor cervical, el síndrome subacromial, el dolor persistente y la patología traumatológica y ortopédica de baja complejidad [8]. También revisó la evidencia internacional sobre la derivación directa desde medicina de familia y sobre el fisioterapeuta de triaje [8].
 
-Su conclusión pedía implantar la derivación directa desde medicina de familia en el nuevo modelo de AP gallego [8]. Tres años después, el SERGAS incorporó la fisioterapia a su sistema de gestión de la demanda XIDE [77, 78]. Este documento no establece una relación causal entre ambos hechos, porque ninguna fuente la documenta.
+Su conclusión pedía implantar la derivación directa desde medicina de familia en el nuevo modelo de AP gallego [8]. Tres años después, el SERGAS incorporó la fisioterapia a su sistema de gestión de la demanda XIDE [76, 77]. Este documento no establece una relación causal entre ambos hechos, porque ninguna fuente la documenta.
 
 Las secciones siguientes citan directamente los estudios originales que ese análisis revisó, contrastados con sus registros de PubMed.
 
-### Un documento de trabajo madrileño describe tres limitaciones del modelo
+### El colegio madrileño propone replantear el papel de la fisioterapia en AP
 
-Un documento de trabajo sobre la situación de la fisioterapia de AP en la Comunidad de Madrid describe tres limitaciones del modelo madrileño [50]. La primera es que el acceso depende sobre todo de la derivación desde medicina de familia, con la excepción de la gestión compartida de la demanda [50]. La segunda es que la gestión compartida se ha implantado de forma desigual, y el personal de las unidades de atención al usuario tiene poca experiencia con ella [50]. La tercera es que la persona recibe el alta al terminar el tratamiento, sin un seguimiento longitudinal [50].
+El colegio profesional madrileño ha elaborado una propuesta de proyecto piloto para replantear el papel de la fisioterapia en la Gerencia Asistencial de AP [79]. La propuesta describe dos limitaciones del modelo madrileño [79]. La primera es que el acceso depende sobre todo de la derivación desde medicina de familia, salvo los tres procesos de la gestión compartida de la demanda [79]. La segunda es que la persona recibe el alta al terminar el proceso y pierde el contacto con el fisioterapeuta hasta una nueva derivación [79].
 
-El mismo documento propone tres líneas de mejora [50]:
+Un trabajo de gestión sobre la Dirección Asistencial Sureste de Madrid añade una tercera limitación [80]. La difusión de la gestión compartida entre la ciudadanía ha sido escasa, y la tarea de preguntar el motivo de consulta recae en las unidades de atención al usuario [80]. Como consecuencia, muchos huecos reservados para la cita directa con fisioterapia quedan sin usar [80].
 
-- **Competencias.** Incorporar al fisioterapeuta en el mapa de competencias del Plan de Acción de AP y Comunitaria 2025-2027, con acceso directo en procesos de alta prevalencia y baja discapacidad [48, 50].
-- **Cartera de servicios.** Renombrar el servicio de procesos musculoesqueléticos como «Atención de Procesos Musculoesqueléticos», compartir la gestión de las listas de espera y crear una consulta a demanda para el seguimiento de procesos ya diagnosticados [50].
-- **Equipo.** Integrar al fisioterapeuta en el equipo multidisciplinar, con coordinación con medicina de familia, programas de educación para la salud grupales y comunitarios, y seguimiento con herramientas digitales [50].
+La propuesta del colegio plantea una consulta de fisioterapia orientada a la persona, a los grupos y a la comunidad [79]. Sus líneas principales son cuatro [79]:
 
-Este documento recoge las tres líneas. La consulta a demanda para procesos ya diagnosticados corresponde a la recidiva de la matriz del anexo C. La coordinación con medicina de familia y los programas de educación para la salud se desarrollan en las secciones 5 y 6.
+- **Acceso.** Empezar por la derivación desde otros profesionales de AP y avanzar hacia el acceso directo y la consulta a demanda.
+- **Seguimiento longitudinal.** Sustituir el alta por episodio por una atención centrada en la persona.
+- **Trabajo grupal y comunitario.** Programas de educación para la salud según los procesos prevalentes de cada zona, programas de paciente experto y mapeo de activos comunitarios.
+- **Evaluación.** Un pilotaje por fases, con indicadores de resultados y de experiencia comunicados por los pacientes.
+
+Este documento recoge esas líneas. La consulta a demanda para procesos ya diagnosticados corresponde a la recidiva de la matriz del anexo C. Los programas grupales y comunitarios se desarrollan en la sección 5, y la evaluación en la sección 10.
 
 ## 3.5. Heterogeneidad e inequidad
 
-La misma cartera común se traduce en modelos muy distintos según el territorio. En la mayoría de las comunidades autónomas, la derivación directa desde medicina de familia ya está documentada (tabla 3.2). Sin embargo, solo Galicia y Madrid documentan el acceso directo del ciudadano, y Madrid lo limita a tres procesos [39, 78].
+La misma cartera común se traduce en modelos muy distintos según el territorio. En la mayoría de las comunidades autónomas, la derivación directa desde medicina de familia ya está documentada (tabla 3.2). Sin embargo, solo Galicia y Madrid documentan el acceso directo del ciudadano, y Madrid lo limita a tres procesos [39, 77].
 
-La dotación también difiere en más de diez veces entre comunidades autónomas [58]. Una persona con el mismo proceso puede recibir, por tanto, una atención muy distinta según su lugar de residencia. Esta desigualdad es el argumento principal para un modelo homogéneo en todo el SNS.
+La dotación también difiere en más de diez veces entre comunidades autónomas [57]. Una persona con el mismo proceso puede recibir, por tanto, una atención muy distinta según su lugar de residencia. Esta desigualdad es el argumento principal para un modelo homogéneo en todo el SNS.
 
 # 4. Modelos internacionales de referencia
 
@@ -310,18 +313,18 @@ Esta sección describe los sistemas sanitarios que sirven de referencia a la pro
 
 ## 4.1. Inglaterra y la fisioterapia de primer contacto
 
-El NHS Long Term Plan de 2019 impulsó equipos multidisciplinares comunitarios ligados a las redes de atención primaria [80]. Desde 2020, las consultas de medicina general pueden financiar la contratación de fisioterapeutas de primer contacto a través del Additional Roles Reimbursement Scheme [13, 81]. NHS England describe el objetivo de que las personas adultas puedan ver a un fisioterapeuta de primer contacto en su centro sin derivación del médico general [13].
+El NHS Long Term Plan de 2019 impulsó equipos multidisciplinares comunitarios ligados a las redes de atención primaria [81]. Desde 2020, las consultas de medicina general pueden financiar la contratación de fisioterapeutas de primer contacto a través del Additional Roles Reimbursement Scheme [13, 82]. NHS England describe el objetivo de que las personas adultas puedan ver a un fisioterapeuta de primer contacto en su centro sin derivación del médico general [13].
 
-Health Education England publicó en 2020 una hoja de ruta de competencias para este perfil [82]. El documento sitúa la práctica en nivel de máster y organiza catorce capacidades en cuatro dominios [82]. Según esa documentación, el profesional de primer contacto puede solicitar pruebas y derivar a atención hospitalaria por las mismas vías que el médico general [82]. La Chartered Society of Physiotherapy publicó con la British Medical Association y el Royal College of General Practitioners una guía de implantación [83].
+Health Education England publicó en 2020 una hoja de ruta de competencias para este perfil [83]. El documento sitúa la práctica en nivel de máster y organiza catorce capacidades en cuatro dominios [83]. Según esa documentación, el profesional de primer contacto puede solicitar pruebas y derivar a atención hospitalaria por las mismas vías que el médico general [83]. La Chartered Society of Physiotherapy publicó con la British Medical Association y el Royal College of General Practitioners una guía de implantación [84].
 
-El Reino Unido debatía ya en los años noventa el acceso de los médicos generales a la fisioterapia sin pasar por el especialista hospitalario. Una revisión de 1997 reunió ocho estudios que comparaban distintos modelos de acceso [84]. Sus principales ventajas eran una espera menor, un coste menor por paciente tratado y un coste menor para el propio paciente [84]. Otra revisión del mismo año encontró un coste medio menor cuando el médico general derivaba directamente a fisioterapia que cuando lo hacía el especialista hospitalario [85]. La misma revisión advirtió que la fisioterapia en AP parecía generar más demanda que los demás modelos [85]. El modelo de primer contacto actual se apoya en esa experiencia previa de derivación directa.
+El Reino Unido debatía ya en los años noventa el acceso de los médicos generales a la fisioterapia sin pasar por el especialista hospitalario. Una revisión de 1997 reunió ocho estudios que comparaban distintos modelos de acceso [85]. Sus principales ventajas eran una espera menor, un coste menor por paciente tratado y un coste menor para el propio paciente [85]. Otra revisión del mismo año encontró un coste medio menor cuando el médico general derivaba directamente a fisioterapia que cuando lo hacía el especialista hospitalario [86]. La misma revisión advirtió que la fisioterapia en AP parecía generar más demanda que los demás modelos [86]. El modelo de primer contacto actual se apoya en esa experiencia previa de derivación directa.
 
 Las evaluaciones publicadas describen el funcionamiento del modelo:
 
-- Goodwin y Hendrick evaluaron más de quinientos pacientes atendidos por fisioterapia como primer contacto en dos consultas de medicina general [86].
-- La evaluación nacional de Stynes y colaboradores incluyó 40 centros y 240 fisioterapeutas de primer contacto en Inglaterra [87]. La misma evaluación estudió la satisfacción de los pacientes y la experiencia de los profesionales [88, 89].
-- El estudio FRONTIER comparó la atención de primer contacto por fisioterapia con la atención iniciada por el médico general en 426 adultos de 46 consultas [90]. No encontró diferencias en la función física a los seis meses y no identificó problemas de seguridad [90].
-- En FRONTIER, el 44,7 % de las personas del grupo de medicina general recibió medicación tras la primera consulta [90]. En los dos grupos de fisioterapia, la proporción fue del 18,4 % y del 24,7 % [90]. El coste mediano para el NHS fue de 105,5 libras por paciente en el grupo médico, frente a 41,0 y 44,0 libras en los grupos de fisioterapia [90, 91].
+- Goodwin y Hendrick evaluaron más de quinientos pacientes atendidos por fisioterapia como primer contacto en dos consultas de medicina general [87].
+- La evaluación nacional de Stynes y colaboradores incluyó 40 centros y 240 fisioterapeutas de primer contacto en Inglaterra [88]. La misma evaluación estudió la satisfacción de los pacientes y la experiencia de los profesionales [89, 90].
+- El estudio FRONTIER comparó la atención de primer contacto por fisioterapia con la atención iniciada por el médico general en 426 adultos de 46 consultas [91]. No encontró diferencias en la función física a los seis meses y no identificó problemas de seguridad [91].
+- En FRONTIER, el 44,7 % de las personas del grupo de medicina general recibió medicación tras la primera consulta [91]. En los dos grupos de fisioterapia, la proporción fue del 18,4 % y del 24,7 % [91]. El coste mediano para el NHS fue de 105,5 libras por paciente en el grupo médico, frente a 41,0 y 44,0 libras en los grupos de fisioterapia [91, 92].
 
 Tabla 4.1. Elementos del modelo inglés que se toman y que no se piden
 
@@ -335,15 +338,15 @@ Tabla 4.1. Elementos del modelo inglés que se toman y que no se piden
 | Derivación directa a atención hospitalaria sin medicina de familia | No | No, salvo el circuito de urgencias |
 | Objetivo de liberar consultas médicas | Sí, como resultado a evaluar | No se presenta como resultado garantizado |
 
-Fuente: elaboración propia a partir de los documentos de NHS England, Health Education England y la Chartered Society of Physiotherapy [13, 82, 83].
+Fuente: elaboración propia a partir de los documentos de NHS England, Health Education England y la Chartered Society of Physiotherapy [13, 83, 84].
 
 ## 4.2. Noruega, Países Bajos y Suecia y la autorreferencia normalizada
 
-Los Países Bajos introdujeron el acceso directo a fisioterapia en 2006 [92]. En el primer año, el 28 % de los pacientes llegó a fisioterapia por acceso directo [92]. Ese mismo estudio observó que el número total de pacientes atendidos no aumentó respecto al año anterior [92]. Los pacientes con acceso directo recibieron además menos sesiones de tratamiento [92]. Una evaluación posterior describió la evolución de la autorreferencia durante cinco años [93]. Según el instituto Nivel, en 2024 el 74,3 % de los pacientes acudió a fisioterapia sin derivación [94]. El coste total del dolor lumbar en los Países Bajos bajó de 4.300 a 3.500 millones de euros entre 2002 y 2007 [25]. Este documento no atribuye ese descenso al acceso directo, porque el estudio no analiza esa relación y el acceso directo empezó en 2006 [25, 92].
+Los Países Bajos introdujeron el acceso directo a fisioterapia en 2006 [93]. En el primer año, el 28 % de los pacientes llegó a fisioterapia por acceso directo [93]. Ese mismo estudio observó que el número total de pacientes atendidos no aumentó respecto al año anterior [93]. Los pacientes con acceso directo recibieron además menos sesiones de tratamiento [93]. Una evaluación posterior describió la evolución de la autorreferencia durante cinco años [94]. Según el instituto Nivel, en 2024 el 74,3 % de los pacientes acudió a fisioterapia sin derivación [95]. El coste total del dolor lumbar en los Países Bajos bajó de 4.300 a 3.500 millones de euros entre 2002 y 2007 [25]. Este documento no atribuye ese descenso al acceso directo, porque el estudio no analiza esa relación y el acceso directo empezó en 2006 [25, 93].
 
-Noruega eliminó el requisito de derivación médica para la fisioterapia financiada el 1 de enero de 2018 [95]. La condición para la financiación pública es que el fisioterapeuta tenga acuerdo con el municipio [95].
+Noruega eliminó el requisito de derivación médica para la fisioterapia financiada el 1 de enero de 2018 [96]. La condición para la financiación pública es que el fisioterapeuta tenga acuerdo con el municipio [96].
 
-En Suecia, la organización depende de cada región. La región de Estocolmo informa de que no se necesita derivación para contactar con fisioterapia de AP, aunque advierte que otras regiones pueden exigirla [96]. Un ensayo pragmático sueco comparó la valoración inicial por fisioterapia en el centro de salud con la valoración inicial por el médico general [97]. Su evaluación económica encontró un manejo más coste-efectivo cuando la primera valoración la hacía fisioterapia [98]. Ese diseño es un triaje dentro del centro y no un acceso directo nacional, de modo que no debe presentarse como tal. Otro ensayo sueco en AP comparó el acceso a fisioterapia en dos días con una espera de cuatro semanas en el dolor lumbar subagudo [33]. El acceso precoz redujo más el dolor a los seis meses, y sus autores lo consideran viable mediante una reorganización sin recursos adicionales [33].
+En Suecia, la organización depende de cada región. La región de Estocolmo informa de que no se necesita derivación para contactar con fisioterapia de AP, aunque advierte que otras regiones pueden exigirla [97]. Un ensayo pragmático sueco comparó la valoración inicial por fisioterapia en el centro de salud con la valoración inicial por el médico general [98]. Su evaluación económica encontró un manejo más coste-efectivo cuando la primera valoración la hacía fisioterapia [99]. Ese diseño es un triaje dentro del centro y no un acceso directo nacional, de modo que no debe presentarse como tal. Otro ensayo sueco en AP comparó el acceso a fisioterapia en dos días con una espera de cuatro semanas en el dolor lumbar subagudo [33]. El acceso precoz redujo más el dolor a los seis meses, y sus autores lo consideran viable mediante una reorganización sin recursos adicionales [33].
 
 Tabla 4.2. Elementos de Noruega, Países Bajos y Suecia que se toman
 
@@ -354,15 +357,15 @@ Tabla 4.2. Elementos de Noruega, Países Bajos y Suecia que se toman
 | Financiación pública ligada a un acuerdo con la administración | Refuerza la integración del fisioterapeuta en la estructura pública |
 | Triaje por fisioterapia dentro del centro de salud | Apoya la consulta de primer contacto del nivel 1 |
 
-Fuente: elaboración propia a partir de los documentos citados en la sección 4.2 [92, 94-96].
+Fuente: elaboración propia a partir de los documentos citados en la sección 4.2 [93, 95-97].
 
 ## 4.3. Australia y Canadá
 
-La Australian Physiotherapy Association describe la práctica avanzada y el primer contacto, incluida la solicitud de imagen en algunos servicios de urgencias [99]. La Canadian Physiotherapy Association reconoce el acceso directo, pero advierte que la práctica cambia entre provincias [100]. Ambos sistemas se citan solo como referencia de equipos interprofesionales, porque la cobertura pública de la fisioterapia es distinta de la española.
+La Australian Physiotherapy Association describe la práctica avanzada y el primer contacto, incluida la solicitud de imagen en algunos servicios de urgencias [100]. La Canadian Physiotherapy Association reconoce el acceso directo, pero advierte que la práctica cambia entre provincias [101]. Ambos sistemas se citan solo como referencia de equipos interprofesionales, porque la cobertura pública de la fisioterapia es distinta de la española.
 
-Canadá ha evaluado con detalle el triaje por fisioterapia en la interfaz con cirugía ortopédica. En Columbia Británica, Napier y colaboradores compararon las decisiones de manejo quirúrgico del fisioterapeuta y del cirujano [101]. La concordancia entre ambos fue sustancial, con un índice kappa ponderado de 0,77 [101]. En Saskatchewan, un programa de triaje de columna clasificó el 92,5 % de los casos como columna mecánica y solo el 2 % como columna quirúrgica [102]. Entre las personas que el programa derivó al cirujano, el 80 % resultó candidata a cirugía [102].
+Canadá ha evaluado con detalle el triaje por fisioterapia en la interfaz con cirugía ortopédica. En Columbia Británica, Napier y colaboradores compararon las decisiones de manejo quirúrgico del fisioterapeuta y del cirujano [102]. La concordancia entre ambos fue sustancial, con un índice kappa ponderado de 0,77 [102]. En Saskatchewan, un programa de triaje de columna clasificó el 92,5 % de los casos como columna mecánica y solo el 2 % como columna quirúrgica [103]. Entre las personas que el programa derivó al cirujano, el 80 % resultó candidata a cirugía [103].
 
-En Ontario, un grupo de investigación diseñó un ensayo por conglomerados para evaluar un modelo de AP liderado por fisioterapia para el dolor lumbar [103]. PubMed no recoge todavía los resultados del estudio piloto. Este documento cita el protocolo solo como muestra de que otros sistemas públicos están evaluando el mismo modelo.
+En Ontario, un grupo de investigación diseñó un ensayo por conglomerados para evaluar un modelo de AP liderado por fisioterapia para el dolor lumbar [104]. PubMed no recoge todavía los resultados del estudio piloto. Este documento cita el protocolo solo como muestra de que otros sistemas públicos están evaluando el mismo modelo.
 
 ## 4.4. Triaje musculoesquelético por fisioterapia y tasa de conversión quirúrgica
 
@@ -374,52 +377,52 @@ Tabla 4.3. Estudios y revisiones sobre triaje musculoesquelético por fisioterap
 
 | Estudio | Ámbito | Diseño | Resultado principal |
 |---|---|---|---|
-| Napier y colaboradores, 2013 [101] | Columbia Británica, Canadá | Estudio prospectivo en dos centros | Conversión quirúrgica del 91 % en las derivaciones del fisioterapeuta, frente al 22 % en las del médico general o de urgencias |
-| Bath y colaboradores, 2012 [102] | Saskatchewan, Canadá | Revisión retrospectiva de historias | El 2 % de los casos se clasificó como columna quirúrgica, y el 80 % de las derivaciones al cirujano resultó candidata a cirugía |
+| Napier y colaboradores, 2013 [102] | Columbia Británica, Canadá | Estudio prospectivo en dos centros | Conversión quirúrgica del 91 % en las derivaciones del fisioterapeuta, frente al 22 % en las del médico general o de urgencias |
+| Bath y colaboradores, 2012 [103] | Saskatchewan, Canadá | Revisión retrospectiva de historias | El 2 % de los casos se clasificó como columna quirúrgica, y el 80 % de las derivaciones al cirujano resultó candidata a cirugía |
 | Wood y colaboradores, 2016 [40] | Unidad de columna, Reino Unido | Evaluación retrospectiva de 2.651 personas | El 92 % se resolvió sin el cirujano, y el 81 % de las derivaciones al cirujano fue adecuado |
 | Candy y colaboradores, 2016 [41] | Gales, Reino Unido | Evaluación de servicio con 2.362 altas | El 2 % volvió a atención hospitalaria por el mismo problema entre doce y dieciocho meses después |
-| Oakley y Shacklady, 2015 [104] | Revisión sistemática | 14 estudios | Resultados favorables en todos los estudios, con buena capacidad diagnóstica frente a un patrón de referencia como la cirugía |
-| Samsson y colaboradores, 2020 [105] | Revisión sistemática | 2 ensayos y 11 cohortes | Conversión quirúrgica del 55 % al 91 % con triaje por fisioterapia, frente al 22 % al 38 % sin él, con certeza baja a moderada |
-| Trøstrup y colaboradores, 2020 [106] | Revisión sistemática | 1 ensayo y 31 estudios observacionales | Concordancia diagnóstica con el cirujano del 65 % al 100 % y ahorro del 27 % al 49 % en la valoración diagnóstica |
-| Lafrance y colaboradores, 2023 [107] | Revisión sistemática con metaanálisis | 19 estudios de concordancia y 6 ensayos | Kappa de 0,76 para la concordancia diagnóstica con el médico y de 0,71 para la decisión quirúrgica |
+| Oakley y Shacklady, 2015 [105] | Revisión sistemática | 14 estudios | Resultados favorables en todos los estudios, con buena capacidad diagnóstica frente a un patrón de referencia como la cirugía |
+| Samsson y colaboradores, 2020 [106] | Revisión sistemática | 2 ensayos y 11 cohortes | Conversión quirúrgica del 55 % al 91 % con triaje por fisioterapia, frente al 22 % al 38 % sin él, con certeza baja a moderada |
+| Trøstrup y colaboradores, 2020 [107] | Revisión sistemática | 1 ensayo y 31 estudios observacionales | Concordancia diagnóstica con el cirujano del 65 % al 100 % y ahorro del 27 % al 49 % en la valoración diagnóstica |
+| Lafrance y colaboradores, 2023 [108] | Revisión sistemática con metaanálisis | 19 estudios de concordancia y 6 ensayos | Kappa de 0,76 para la concordancia diagnóstica con el médico y de 0,71 para la decisión quirúrgica |
 
-Fuente: elaboración propia a partir de los resúmenes de PubMed de cada estudio [40, 41, 101, 102, 104-107].
+Fuente: elaboración propia a partir de los resúmenes de PubMed de cada estudio [40, 41, 102, 103, 105-108].
 
-Las revisiones más recientes tienen mayor peso que los estudios aislados. Lafrance y colaboradores encontraron, con certeza moderada, una concordancia diagnóstica alta entre el fisioterapeuta de práctica avanzada y el médico [107]. La concordancia en la decisión quirúrgica también fue alta, con certeza alta [107]. Samsson y colaboradores hallaron además tiempos de espera más cortos en un ensayo y en una cohorte, y un coste menor en un ensayo [105].
+Las revisiones más recientes tienen mayor peso que los estudios aislados. Lafrance y colaboradores encontraron, con certeza moderada, una concordancia diagnóstica alta entre el fisioterapeuta de práctica avanzada y el médico [108]. La concordancia en la decisión quirúrgica también fue alta, con certeza alta [108]. Samsson y colaboradores hallaron además tiempos de espera más cortos en un ensayo y en una cohorte, y un coste menor en un ensayo [106].
 
 Dos cautelas limitan la lectura de estos datos. La primera es que los estudios aislados son evaluaciones de servicio sin grupo control. La segunda es que el 81 % de Wood y colaboradores mide la adecuación de la derivación y no la cirugía realizada [40].
 
 ## 4.5. Síntesis de la evidencia sobre acceso directo
 
-Las revisiones sistemáticas disponibles comparan el acceso directo con la atención iniciada por el médico. Ojha y colaboradores incluyeron ocho estudios observacionales y no encontraron evidencia de daño [29]. Piscitelli y colaboradores revisaron trece estudios sobre viabilidad, efectividad, costes, seguridad y satisfacción [108]. Demont y colaboradores incluyeron dieciocho estudios de calidad débil a moderada [109]. Babatunde y colaboradores concluyeron que el dolor y la discapacidad no difieren mucho entre ambos modelos [110]. La misma revisión encontró un uso menor de servicios y menos ausencia laboral con el acceso directo, con una evidencia consistente pero limitada [110].
+Las revisiones sistemáticas disponibles comparan el acceso directo con la atención iniciada por el médico. Ojha y colaboradores incluyeron ocho estudios observacionales y no encontraron evidencia de daño [29]. Piscitelli y colaboradores revisaron trece estudios sobre viabilidad, efectividad, costes, seguridad y satisfacción [109]. Demont y colaboradores incluyeron dieciocho estudios de calidad débil a moderada [110]. Babatunde y colaboradores concluyeron que el dolor y la discapacidad no difieren mucho entre ambos modelos [111]. La misma revisión encontró un uso menor de servicios y menos ausencia laboral con el acceso directo, con una evidencia consistente pero limitada [111].
 
-Las revisiones más recientes aportan estimaciones cuantitativas. Gallotti y colaboradores revisaron 28 artículos y no encontraron eventos adversos en ninguno de ellos [111]. Abuhl y colaboradores combinaron diez ensayos aleatorizados con 2.081 pacientes [31]. El primer contacto por fisioterapia redujo la solicitud de imagen, con un riesgo relativo de 0,55, y la medicación, con un riesgo relativo de 0,29 [31]. Una revisión de práctica avanzada llegó a conclusiones favorables sobre la efectividad de este perfil [112].
+Las revisiones más recientes aportan estimaciones cuantitativas. Gallotti y colaboradores revisaron 28 artículos y no encontraron eventos adversos en ninguno de ellos [112]. Abuhl y colaboradores combinaron diez ensayos aleatorizados con 2.081 pacientes [31]. El primer contacto por fisioterapia redujo la solicitud de imagen, con un riesgo relativo de 0,55, y la medicación, con un riesgo relativo de 0,29 [31]. Una revisión de práctica avanzada llegó a conclusiones favorables sobre la efectividad de este perfil [113].
 
-El efecto sobre la carga de medicina de familia es heterogéneo, y este documento lo presenta como un resultado posible y no garantizado. El estudio STEMS-2 analizó seis años de datos de cuatro consultas inglesas antes y después de abrir la autorreferencia [113]. No encontró un efecto consistente sobre las consultas musculoesqueléticas de medicina general [113]. La autorreferencia real supuso solo el 10 % y el 6 % de las entradas a fisioterapia en los dos brazos del estudio [113]. En cambio, una revisión de 2026 reunió 21 estudios con 90.401 pacientes [114]. Esa revisión estimó entre un 10 % y un 30 % menos de consultas de medicina general con acceso directo [114]. Un metaanálisis del mismo grupo encontró menos prescripción, con un riesgo relativo de 0,57 y una certeza baja [115].
+El efecto sobre la carga de medicina de familia es heterogéneo, y este documento lo presenta como un resultado posible y no garantizado. El estudio STEMS-2 analizó seis años de datos de cuatro consultas inglesas antes y después de abrir la autorreferencia [114]. No encontró un efecto consistente sobre las consultas musculoesqueléticas de medicina general [114]. La autorreferencia real supuso solo el 10 % y el 6 % de las entradas a fisioterapia en los dos brazos del estudio [114]. En cambio, una revisión de 2026 reunió 21 estudios con 90.401 pacientes [115]. Esa revisión estimó entre un 10 % y un 30 % menos de consultas de medicina general con acceso directo [115]. Un metaanálisis del mismo grupo encontró menos prescripción, con un riesgo relativo de 0,57 y una certeza baja [116].
 
-La intensidad del tratamiento también se ha estudiado. Una revisión de ocho ensayos con 1.153 personas con dolor lumbar comparó dos o menos visitas de fisioterapia con tres o más [116]. Al año no encontró diferencias en dolor, discapacidad ni calidad de vida [116]. Sin embargo, dos de los tres estudios con análisis económico encontraron más coste-efectivo el uso mayor [116]. Este resultado apoya un modelo que ajuste el número de sesiones a la necesidad y no a una pauta fija.
+La intensidad del tratamiento también se ha estudiado. Una revisión de ocho ensayos con 1.153 personas con dolor lumbar comparó dos o menos visitas de fisioterapia con tres o más [117]. Al año no encontró diferencias en dolor, discapacidad ni calidad de vida [117]. Sin embargo, dos de los tres estudios con análisis económico encontraron más coste-efectivo el uso mayor [117]. Este resultado apoya un modelo que ajuste el número de sesiones a la necesidad y no a una pauta fija.
 
-La percepción ciudadana del acceso directo es otro factor. En una encuesta telefónica en Florida, el 67,3 % de las personas no conocía la posibilidad de acceso directo, pero el 73,4 % declaró que acudiría directamente al fisioterapeuta [117]. El dato procede de otro sistema sanitario, pero anticipa la necesidad de informar a la ciudadanía que recoge la tabla 11.2.
+La percepción ciudadana del acceso directo es otro factor. En una encuesta telefónica en Florida, el 67,3 % de las personas no conocía la posibilidad de acceso directo, pero el 73,4 % declaró que acudiría directamente al fisioterapeuta [118]. El dato procede de otro sistema sanitario, pero anticipa la necesidad de informar a la ciudadanía que recoge la tabla 11.2.
 
 Tabla 4.4. Síntesis de la evidencia por tipo de resultado
 
 | Resultado | Dirección del efecto del acceso directo | Certeza y comentario |
 |---|---|---|
-| Seguridad | Sin eventos adversos atribuibles en las revisiones | Consistente entre revisiones [29, 111, 114] |
-| Dolor y función | Sin diferencias relevantes frente a la atención médica | Ensayos y revisiones [90, 110] |
+| Seguridad | Sin eventos adversos atribuibles en las revisiones | Consistente entre revisiones [29, 112, 115] |
+| Dolor y función | Sin diferencias relevantes frente a la atención médica | Ensayos y revisiones [91, 111] |
 | Pruebas de imagen | Menos solicitudes | Metaanálisis de ensayos [31] |
-| Medicación | Menos prescripción | Metaanálisis con certeza baja a moderada [31, 115] |
-| Coste | Menor en la mayoría de los estudios | Entornos distintos del español [30, 90, 98] |
-| Consultas de medicina general | Heterogéneo | Sin efecto consistente en STEMS-2 y reducción estimada en una revisión [113, 114] |
-| Captación de la autorreferencia | Baja al inicio y creciente con los años | Datos del Reino Unido y de los Países Bajos [92, 94, 113] |
+| Medicación | Menos prescripción | Metaanálisis con certeza baja a moderada [31, 116] |
+| Coste | Menor en la mayoría de los estudios | Entornos distintos del español [30, 91, 99] |
+| Consultas de medicina general | Heterogéneo | Sin efecto consistente en STEMS-2 y reducción estimada en una revisión [114, 115] |
+| Captación de la autorreferencia | Baja al inicio y creciente con los años | Datos del Reino Unido y de los Países Bajos [93, 95, 114] |
 | Momento del acceso | Menos uso posterior de servicios y menor coste con la fisioterapia precoz | Un estudio observacional y dos ensayos con efectos modestos [32-34] |
-| Tasa de conversión quirúrgica | Mayor cuando deriva el fisioterapeuta de triaje | Revisión con certeza baja a moderada, fuera del acceso directo [105] |
+| Tasa de conversión quirúrgica | Mayor cuando deriva el fisioterapeuta de triaje | Revisión con certeza baja a moderada, fuera del acceso directo [106] |
 
 Fuente: elaboración propia a partir de las revisiones y estudios citados en cada fila.
 
 ## 4.6. Densidad de fisioterapeutas en Europa
 
-Según Eurostat, en 2021 trabajaban en la Unión Europea 611.000 fisioterapeutas, con una media de 136,7 por 100.000 habitantes [118]. Alemania alcanzaba 234,4 y Bélgica 215,9, mientras que Rumanía se situaba en 12,7 [118]. En 2023, la media de la Unión llegó a 149 por 100.000 habitantes [119]. Estas cifras cuentan todos los ámbitos asistenciales, como indica la advertencia inicial de esta sección.
+Según Eurostat, en 2021 trabajaban en la Unión Europea 611.000 fisioterapeutas, con una media de 136,7 por 100.000 habitantes [119]. Alemania alcanzaba 234,4 y Bélgica 215,9, mientras que Rumanía se situaba en 12,7 [119]. En 2023, la media de la Unión llegó a 149 por 100.000 habitantes [120]. Estas cifras cuentan todos los ámbitos asistenciales, como indica la advertencia inicial de esta sección.
 
 Tabla 4.5. Fisioterapeutas por 100.000 habitantes en la Unión Europea y en países seleccionados
 
@@ -431,9 +434,9 @@ Tabla 4.5. Fisioterapeutas por 100.000 habitantes en la Unión Europea y en paí
 | Rumanía | 12,7 | Sin dato en la fuente citada | En ejercicio, todos los ámbitos |
 | Unión Europea | 136,7 | 149 | Media de los Estados miembros |
 
-Fuente: Eurostat [118, 119]. Algunos países notifican fisioterapeutas profesionalmente activos o con licencia, según las notas metodológicas de Eurostat.
+Fuente: Eurostat [119, 120]. Algunos países notifican fisioterapeutas profesionalmente activos o con licencia, según las notas metodológicas de Eurostat.
 
-El censo anual de World Physiotherapy de 2024 estimó una media mundial de 3,6 fisioterapeutas por 10.000 habitantes [120]. En ese censo, el 39 % de las organizaciones nacionales declaró acceso directo pleno en su país [120]. Una encuesta anterior de Bury y Stokes encontró acceso directo en el 58 % de los países que respondieron, con más frecuencia en el ámbito privado [121].
+El censo anual de World Physiotherapy de 2024 estimó una media mundial de 3,6 fisioterapeutas por 10.000 habitantes [121]. En ese censo, el 39 % de las organizaciones nacionales declaró acceso directo pleno en su país [121]. Una encuesta anterior de Bury y Stokes encontró acceso directo en el 58 % de los países que respondieron, con más frecuencia en el ámbito privado [122].
 
 # 5. Modelo organizativo propuesto
 
@@ -451,7 +454,7 @@ El modelo se apoya en seis principios:
 - **Medición común.** Todos los servicios de salud registran los indicadores de la sección 10.
 - **Seguimiento longitudinal.** El alta de un episodio no cierra la relación con la persona. Quien recibe el alta puede volver por autorreferencia si recae un proceso ya diagnosticado.
 
-El último principio responde a una limitación descrita en Madrid, donde la persona recibe el alta al terminar el tratamiento, sin un seguimiento posterior [50]. La recidiva de un proceso diagnosticado figura por esa razón entre los motivos de autorreferencia del anexo C.
+El último principio responde a una limitación descrita en Madrid [79]. Allí, la persona recibe el alta al terminar el proceso y pierde el contacto con el fisioterapeuta hasta una nueva derivación [79]. La recidiva de un proceso diagnosticado figura por esa razón entre los motivos de autorreferencia del anexo C.
 
 ## 5.2. Niveles de atención comunitaria
 
@@ -488,7 +491,7 @@ Tabla 5.2. Funciones clínicas del fisioterapeuta de atención primaria
 
 Fuente: elaboración propia.
 
-La función de cribado tiene respaldo en la evidencia sobre práctica avanzada. Una revisión con metaanálisis encontró una concordancia diagnóstica alta entre el fisioterapeuta de práctica avanzada y el médico, con un kappa de 0,76 [107]. Esa revisión incluyó también ensayos en los que la atención por fisioterapia redujo el dolor de forma comparable o mayor que la atención habitual [107]. El fisioterapeuta de AP de esta propuesta no ejerce como fisioterapeuta de práctica avanzada, pero su primera consulta usa el mismo razonamiento clínico.
+La función de cribado tiene respaldo en la evidencia sobre práctica avanzada. Una revisión con metaanálisis encontró una concordancia diagnóstica alta entre el fisioterapeuta de práctica avanzada y el médico, con un kappa de 0,76 [108]. Esa revisión incluyó también ensayos en los que la atención por fisioterapia redujo el dolor de forma comparable o mayor que la atención habitual [108]. El fisioterapeuta de AP de esta propuesta no ejerce como fisioterapeuta de práctica avanzada, pero su primera consulta usa el mismo razonamiento clínico.
 
 La derivación a atención hospitalaria se hace a través de medicina de familia, salvo la derivación urgente. La solicitud de radiografía simple se trata en la sección 7.4 como petición de desarrollo normativo.
 
@@ -502,23 +505,23 @@ Tabla 5.3. Programas grupales
 
 | Id | Programa | Liderazgo | Grupo | Sesiones | Horas de fisioterapia por edición | Ediciones por 10.000 habitantes y año, escenario central |
 |---|---|---|---|---|---|---|
-| PG-01 | Prevención de caídas y fragilidad [122] | Fisioterapia, con enfermería familiar y comunitaria en la captación y el seguimiento | 10 a 12 | 24 | 28 | 4 |
-| PG-02 | Dolor persistente: educación en neurociencia del dolor y ejercicio [123] | Fisioterapia, con medicina de familia en la selección de participantes | 10 a 15 | 24 | 32 | 3 |
-| PG-03 | Artrosis de rodilla y cadera [124] | Fisioterapia | 10 a 12 | 12 | 15 | 3 |
-| PG-04 | EPOC en fase estable [125] | Compartido: fisioterapia en el ejercicio y enfermería familiar y comunitaria en la educación sobre autocuidado e inhaladores | 8 a 10 | 16 | 15 | 2 |
-| PG-05 | Escuela de espalda [126] | Fisioterapia | 10 a 12 | 8 | 10 | 4 |
+| PG-01 | Prevención de caídas y fragilidad [123] | Fisioterapia, con enfermería familiar y comunitaria en la captación y el seguimiento | 10 a 12 | 24 | 28 | 4 |
+| PG-02 | Dolor persistente: educación en neurociencia del dolor y ejercicio [124] | Fisioterapia, con medicina de familia en la selección de participantes | 10 a 15 | 24 | 32 | 3 |
+| PG-03 | Artrosis de rodilla y cadera [125] | Fisioterapia | 10 a 12 | 12 | 15 | 3 |
+| PG-04 | EPOC en fase estable [126] | Compartido: fisioterapia en el ejercicio y enfermería familiar y comunitaria en la educación sobre autocuidado e inhaladores | 8 a 10 | 16 | 15 | 2 |
+| PG-05 | Escuela de espalda [127] | Fisioterapia | 10 a 12 | 8 | 10 | 4 |
 
 Fuente: anexo A. Las horas por edición incluyen la preparación y la evaluación. Las ediciones por 10.000 habitantes son parámetros de diseño que alimentan el modelo de la sección 9.
 
-Los programas grupales se apoyan en evidencia de ensayos y revisiones. El ejercicio que combina equilibrio y trabajo funcional reduce la tasa de caídas en personas mayores que viven en la comunidad, con certeza alta [122]. El ejercicio terapéutico reduce el dolor en la artrosis de rodilla, con certeza alta a corto plazo [124]. La rehabilitación respiratoria mejora la disnea, la fatiga y la capacidad de ejercicio en la EPOC [125]. El ejercicio reduce el dolor lumbar persistente frente a la ausencia de tratamiento o la atención habitual, con certeza moderada [126]. En España, un ensayo pragmático en doce centros de AP de Castilla y León comparó un programa grupal con la fisioterapia habitual en el dolor vertebral persistente [123]. El programa combinó seis sesiones de educación en neurociencia del dolor y dieciocho sesiones de ejercicio grupal en seis semanas [123]. Las diferencias favorecieron al programa grupal y se mantuvieron a los seis meses [123].
+Los programas grupales se apoyan en evidencia de ensayos y revisiones. El ejercicio que combina equilibrio y trabajo funcional reduce la tasa de caídas en personas mayores que viven en la comunidad, con certeza alta [123]. El ejercicio terapéutico reduce el dolor en la artrosis de rodilla, con certeza alta a corto plazo [125]. La rehabilitación respiratoria mejora la disnea, la fatiga y la capacidad de ejercicio en la EPOC [126]. El ejercicio reduce el dolor lumbar persistente frente a la ausencia de tratamiento o la atención habitual, con certeza moderada [127]. En España, un ensayo pragmático en doce centros de AP de Castilla y León comparó un programa grupal con la fisioterapia habitual en el dolor vertebral persistente [124]. El programa combinó seis sesiones de educación en neurociencia del dolor y dieciocho sesiones de ejercicio grupal en seis semanas [124]. Las diferencias favorecieron al programa grupal y se mantuvieron a los seis meses [124].
 
-La educación en neurociencia del dolor tiene una evidencia favorable, aunque con matices. Una revisión de 13 ensayos respaldó su uso en los trastornos musculoesqueléticos persistentes para reducir el dolor, la discapacidad y el uso de servicios [127]. En cambio, un metaanálisis de nueve ensayos no encontró mejoras en dolor ni discapacidad cuando la educación se comparaba con la atención habitual [128]. Sus autores no recomiendan esa educación como intervención aislada [128]. Por eso el programa PG-02 combina educación y ejercicio, como el ensayo de Castilla y León [123].
+La educación en neurociencia del dolor tiene una evidencia favorable, aunque con matices. Una revisión de 13 ensayos respaldó su uso en los trastornos musculoesqueléticos persistentes para reducir el dolor, la discapacidad y el uso de servicios [128]. En cambio, un metaanálisis de nueve ensayos no encontró mejoras en dolor ni discapacidad cuando la educación se comparaba con la atención habitual [129]. Sus autores no recomiendan esa educación como intervención aislada [129]. Por eso el programa PG-02 combina educación y ejercicio, como el ensayo de Castilla y León [124].
 
-Otras experiencias españolas en AP apoyan el formato grupal. En la Costa del Sol, un ensayo no aleatorizado en las escuelas de espalda de fisioterapia de AP añadió educación de base cognitivo-conductual [129]. El grupo de intervención redujo más el miedo, el catastrofismo y la discapacidad, aunque no el dolor [129]. Una cohorte retrospectiva española de 149 personas con dolor vertebral persistente siguió un protocolo de ejercicio terapéutico grupal en AP [130]. El dolor y la discapacidad mejoraron con un tamaño del efecto moderado a grande, aunque el estudio no tuvo grupo control [130].
+Otras experiencias españolas en AP apoyan el formato grupal. En la Costa del Sol, un ensayo no aleatorizado en las escuelas de espalda de fisioterapia de AP añadió educación de base cognitivo-conductual [130]. El grupo de intervención redujo más el miedo, el catastrofismo y la discapacidad, aunque no el dolor [130]. Una cohorte retrospectiva española de 149 personas con dolor vertebral persistente siguió un protocolo de ejercicio terapéutico grupal en AP [131]. El dolor y la discapacidad mejoraron con un tamaño del efecto moderado a grande, aunque el estudio no tuvo grupo control [131].
 
-La evidencia sobre el formato grupal en los procesos agudos es escasa. Un ensayo andaluz en dolor cervical mecánico agudo y subagudo, realizado en un centro de especialidades, encontró mejores resultados con el tratamiento individual que con el grupal [131]. Por esa razón, los programas del anexo A se dirigen a procesos persistentes o estables, y los procesos agudos se atienden en la consulta individual del nivel 1.
+La evidencia sobre el formato grupal en los procesos agudos es escasa. Un ensayo andaluz en dolor cervical mecánico agudo y subagudo, realizado en un centro de especialidades, encontró mejores resultados con el tratamiento individual que con el grupal [132]. Por esa razón, los programas del anexo A se dirigen a procesos persistentes o estables, y los procesos agudos se atienden en la consulta individual del nivel 1.
 
-La prevención de la fragilidad cuenta con ensayos en AP española. Un ensayo en AP con personas prefrágiles de 70 años o más combinó una valoración nutricional con un programa de actividad física [132]. La intervención redujo la progresión a fragilidad a los doce meses [132]. Pasó a fragilidad el 4,9 % del grupo de intervención y el 15,3 % del grupo control [132]. El ensayo no encontró diferencias en fuerza muscular ni en velocidad de la marcha [132]. En Barcelona, una intervención multifactorial en AP mejoró la función física de personas mayores frágiles a los tres y a los dieciocho meses [133]. El ensayo MEFAP evalúa un programa de ejercicio multicomponente en AP para personas prefrágiles mayores de 70 años [134]. PubMed recoge su protocolo, pero no sus resultados.
+La prevención de la fragilidad cuenta con ensayos en AP española. Un ensayo en AP con personas prefrágiles de 70 años o más combinó una valoración nutricional con un programa de actividad física [133]. La intervención redujo la progresión a fragilidad a los doce meses [133]. Pasó a fragilidad el 4,9 % del grupo de intervención y el 15,3 % del grupo control [133]. El ensayo no encontró diferencias en fuerza muscular ni en velocidad de la marcha [133]. En Barcelona, una intervención multifactorial en AP mejoró la función física de personas mayores frágiles a los tres y a los dieciocho meses [134]. El ensayo MEFAP evalúa un programa de ejercicio multicomponente en AP para personas prefrágiles mayores de 70 años [135]. PubMed recoge su protocolo, pero no sus resultados.
 
 Tabla 5.4. Intervenciones comunitarias
 
@@ -528,7 +531,7 @@ Tabla 5.4. Intervenciones comunitarias
 | PC-02 | Salud escolar: ergonomía y actividad física | Alumnado y profesorado de los centros educativos de la zona básica de salud | Fisioterapia y enfermería familiar y comunitaria, con los centros educativos | 6 | 2 |
 | PC-03 | Salud laboral comunitaria | Colectivos locales con alta carga física en el trabajo | Fisioterapia, en coordinación con los servicios de prevención cuando existan | 6 | 1 |
 
-Fuente: anexo A. Estas intervenciones desarrollan la Estrategia de Promoción de la Salud y Prevención del SNS, que vincula el consejo en AP con los recursos comunitarios [52].
+Fuente: anexo A. Estas intervenciones desarrollan la Estrategia de Promoción de la Salud y Prevención del SNS, que vincula el consejo en AP con los recursos comunitarios [51].
 
 ## 5.5. Modalidades asistenciales
 
@@ -551,13 +554,13 @@ Tabla 5.5. Modalidades asistenciales de la fisioterapia de atención primaria
 
 Fuente: elaboración propia.
 
-La interconsulta no presencial ya existe como servicio de los hospitales de la Comunidad de Madrid, que la denominan e-consulta [79].
+La interconsulta no presencial ya existe como servicio de los hospitales de la Comunidad de Madrid, que la denominan e-consulta [78].
 
-La tabla incluye dos modalidades que proceden de la experiencia madrileña. La primera es la consulta a demanda para el seguimiento de procesos ya diagnosticados, que propone el documento de trabajo madrileño [50]. Esta modalidad corresponde a la recidiva de un proceso diagnosticado del anexo C. La segunda es la consulta telefónica previa para valorar la idoneidad y la prioridad [9]. La instrucción de la Gerencia Asistencial la usa en los procesos de demanda de las matronas [9]. Ese formato permite al fisioterapeuta confirmar el motivo antes de ocupar una cita presencial. La sesión clínica compartida es una revisión conjunta de casos entre profesionales, y no una sesión de tratamiento.
+La tabla incluye dos modalidades que proceden de la experiencia madrileña. La primera es la consulta a demanda, que la propuesta del colegio madrileño plantea como evolución progresiva del acceso [79]. En este documento, esa modalidad se limita a la recidiva de un proceso ya diagnosticado del anexo C. La segunda es la consulta telefónica previa para valorar la idoneidad y la prioridad [9]. La instrucción de la Gerencia Asistencial la usa en los procesos de demanda de las matronas [9]. Ese formato permite al fisioterapeuta confirmar el motivo antes de ocupar una cita presencial.
 
 ## 5.6. Herramientas de salud digital
 
-La Estrategia de Salud Digital del SNS ofrece el marco para tres herramientas [53]. La teleconsulta permite el seguimiento de personas con dificultades de desplazamiento. El seguimiento remoto de la adherencia refuerza los planes de ejercicio. La prescripción digital de ejercicio facilita la continuidad entre sesiones. Estas herramientas son también una de las tres palancas del ajuste por ruralidad de la sección 9.4. El documento de trabajo madrileño propone también el seguimiento y la monitorización a distancia como parte de la integración del fisioterapeuta en el equipo [50].
+La Estrategia de Salud Digital del SNS ofrece el marco para tres herramientas [52]. La teleconsulta permite el seguimiento de personas con dificultades de desplazamiento. El seguimiento remoto de la adherencia refuerza los planes de ejercicio. La prescripción digital de ejercicio facilita la continuidad entre sesiones. Estas herramientas son también una de las tres palancas del ajuste por ruralidad de la sección 9.4. La propuesta del colegio madrileño incluye también plataformas para la gestión de los datos clínicos y el seguimiento longitudinal de los pacientes [79].
 
 # 6. Vías de acceso y circuitos asistenciales
 
@@ -590,11 +593,11 @@ La autorreferencia permite a una persona adulta pedir cita con fisioterapia sin 
 4. Si el proceso es abordable en AP, el fisioterapeuta elige una de las salidas del nivel 1: alta con plan de autocuidado, tratamiento individual o programa grupal.
 5. Si aparecen signos de alarma o complejidad, el fisioterapeuta deriva a medicina de familia en el mismo día o, si la situación lo exige, a urgencias.
 
-Los dos precedentes españoles de acceso directo funcionan con este mecanismo. Galicia incorporó la fisioterapia a su sistema de gestión de la demanda en equipo, XIDE, en 2022 [77, 78]. Madrid cita desde la Unidad de Atención al Usuario a las personas que refieren tres procesos concretos desde 2025 [39]. El circuito puede usar además un cuestionario de autorreferencia que la persona rellena antes de la cita. Quien lo lee e interpreta es siempre el fisioterapeuta.
+Los dos precedentes españoles de acceso directo funcionan con este mecanismo. Galicia incorporó la fisioterapia a su sistema de gestión de la demanda en equipo, XIDE, en 2022 [76, 77]. Madrid cita desde la Unidad de Atención al Usuario a las personas que refieren tres procesos concretos desde 2025 [39]. El circuito puede usar además un cuestionario de autorreferencia que la persona rellena antes de la cita. Quien lo lee e interpreta es siempre el fisioterapeuta.
 
 La instrucción madrileña concreta cómo funciona el paso 2 [9]. La Unidad de Atención al Usuario cita a la persona con su fisioterapeuta asignado, en un hueco de agenda reservado para esta demanda [9]. Si la persona refiere un traumatismo importante u otros criterios de la instrucción, la cita se da con su médico de familia [9]. Cada proceso lleva asociados sus códigos de la Clasificación Internacional de Atención Primaria, lo que permite registrar y medir la actividad [9].
 
-El documento de trabajo madrileño identifica el punto débil de este paso: el personal de las unidades de atención al usuario tiene poca experiencia con la derivación directa, y su aplicación ha sido desigual [50]. Por eso el circuito exige tres apoyos. El primero es un guion de citación con la lista cerrada de motivos y de criterios de exclusión. El segundo es la formación del personal administrativo que recoge la sección 11.3. El tercero es la auditoría periódica de los motivos registrados, con el indicador IE-6.
+Un trabajo de gestión sobre la Dirección Asistencial Sureste de Madrid identifica el punto débil de este paso [80]. La tarea de preguntar el motivo de consulta recae en las unidades de atención al usuario, en un mostrador público [80]. Además, muchos huecos reservados para la cita directa quedan sin usar [80]. Por eso el circuito exige cuatro apoyos. El primero es un guion de citación con la lista cerrada de motivos y de criterios de exclusión. El segundo es la formación del personal administrativo que recoge la sección 11.3. El tercero es la información a la ciudadanía sobre los motivos que admiten la cita directa. El cuarto es la auditoría periódica de los motivos registrados, con el indicador IE-6.
 
 ## 6.3. Circuito 2. Derivación desde medicina de familia
 
@@ -605,9 +608,9 @@ El documento de trabajo madrileño identifica el punto débil de este paso: el p
 
 El retorno a medicina de familia se produce en cuatro situaciones: ausencia de mejoría, aparición de signos de alarma, situación clínica que contraindica la fisioterapia en ese momento o problema no abordable en AP.
 
-La derivación desde medicina de familia a fisioterapia de AP evita un paso intermedio por atención hospitalaria. Ese paso es frecuente hoy. En un área de salud de Castilla y León, solo el 11,2 % de las derivaciones de AP a traumatología mencionaba una fisioterapia previa [36]. Además, los procesos degenerativos justificaron el 65,7 % de esas derivaciones [36]. En el dolor lumbar, añadir ejercicio y educación a la atención del médico general es más coste-efectivo que la atención médica sola [135].
+La derivación desde medicina de familia a fisioterapia de AP evita un paso intermedio por atención hospitalaria. Ese paso es frecuente hoy. En un área de salud de Castilla y León, solo el 11,2 % de las derivaciones de AP a traumatología mencionaba una fisioterapia previa [36]. Además, los procesos degenerativos justificaron el 65,7 % de esas derivaciones [36]. En el dolor lumbar, añadir ejercicio y educación a la atención del médico general es más coste-efectivo que la atención médica sola [136].
 
-El documento de trabajo madrileño propone además que medicina de familia y fisioterapia compartan la gestión de las listas de espera [50]. Esta propuesta encaja en el circuito 2 si ambos profesionales usan criterios comunes de prioridad. El grupo de trabajo de la sección 11.4 debe definir esos criterios dentro de la matriz común.
+Este documento propone además que medicina de familia y fisioterapia compartan la gestión de las listas de espera con criterios comunes de prioridad. En Madrid no existen hoy criterios unificados para decidir quién accede a las citas preferentes de fisioterapia [80]. El grupo de trabajo de la sección 11.4 debe definir esos criterios dentro de la matriz común.
 
 ## 6.4. Circuito 3. Derivación desde enfermería familiar y comunitaria
 
@@ -616,7 +619,9 @@ El documento de trabajo madrileño propone además que medicina de familia y fis
 3. Fisioterapia incorpora a la persona a un programa individual, grupal o domiciliario.
 4. Enfermería y fisioterapia comparten el seguimiento.
 
-Los ensayos españoles en AP respaldan este circuito. Una intervención con valoración nutricional y actividad física redujo la progresión a fragilidad en personas prefrágiles [132]. Otra intervención multifactorial mejoró la función física de personas mayores frágiles [133]. En ambos casos, la captación se hizo desde la consulta de AP, que es el papel que este circuito asigna a enfermería [132, 133].
+La necesidad es visible en Madrid. El 11,8 % de las personas de 65 a 79 años tiene algún grado de dependencia para las actividades básicas de la vida diaria [137]. El 10,2 % de las personas mayores de 65 años sufrió en el último año una caída que requirió asistencia sanitaria [137]. Además, el 32,2 % de las personas de 65 a 79 años vive con miedo a caerse [137].
+
+Los ensayos españoles en AP respaldan este circuito. Una intervención con valoración nutricional y actividad física redujo la progresión a fragilidad en personas prefrágiles [133]. Otra intervención multifactorial mejoró la función física de personas mayores frágiles [134]. En ambos casos, la captación se hizo desde la consulta de AP, que es el papel que este circuito asigna a enfermería [133, 134].
 
 ## 6.5. Circuito 4. Derivación desde medicina de atención hospitalaria
 
@@ -645,8 +650,8 @@ Tabla 6.2. Procesos y situaciones que entran solo por derivación
 
 | Id | Proceso o situación | Condición de entrada | Vías de entrada |
 |---|---|---|---|
-| P09 | Riesgo de caídas y fragilidad [122, 132] | Cribado de fragilidad positivo realizado por enfermería familiar y comunitaria | Enfermería familiar y comunitaria, Medicina de familia y comunitaria |
-| P10 | EPOC en fase estable [125] | Diagnóstico médico de EPOC en fase estable | Medicina de familia y comunitaria, Enfermería familiar y comunitaria |
+| P09 | Riesgo de caídas y fragilidad [123, 133] | Cribado de fragilidad positivo realizado por enfermería familiar y comunitaria | Enfermería familiar y comunitaria, Medicina de familia y comunitaria |
+| P10 | EPOC en fase estable [126] | Diagnóstico médico de EPOC en fase estable | Medicina de familia y comunitaria, Enfermería familiar y comunitaria |
 | P11 | Pérdida funcional leve o moderada tras el alta hospitalaria | Situación clínica estable, informe clínico mínimo y criterio de retorno definidos | Medicina de atención hospitalaria |
 | P12 | Proceso musculoesquelético leve o moderado que no requiere rehabilitación hospitalaria | Situación clínica estable, informe clínico mínimo y criterio de retorno definidos | Medicina de atención hospitalaria |
 | P13 | Seguimiento funcional comunitario de la fragilidad o del riesgo de caídas | Situación clínica estable, informe clínico mínimo y criterio de retorno definidos | Medicina de atención hospitalaria |
@@ -679,17 +684,17 @@ Esta sección declara qué nivel de autonomía pide este documento para el fisio
 
 La Ley 44/2003 ampara hoy la valoración, el diagnóstico fisioterapéutico, el plan de intervención, el alta fisioterapéutica y la derivación a otro profesional del equipo [1]. Estas competencias no requieren ningún cambio normativo.
 
-La evidencia internacional respalda la capacidad diagnóstica que estas competencias presuponen. Una revisión con metaanálisis encontró un kappa de 0,76 para la concordancia diagnóstica entre el fisioterapeuta de práctica avanzada y el médico, con certeza moderada [107]. Otra revisión situó la concordancia diagnóstica con el cirujano ortopédico entre el 65 % y el 100 % [106]. En España, la instrucción madrileña ya encarga al fisioterapeuta la valoración clínica de tres procesos, con pruebas de exploración y cuestionarios definidos [9].
+La evidencia internacional respalda la capacidad diagnóstica que estas competencias presuponen. Una revisión con metaanálisis encontró un kappa de 0,76 para la concordancia diagnóstica entre el fisioterapeuta de práctica avanzada y el médico, con certeza moderada [108]. Otra revisión situó la concordancia diagnóstica con el cirujano ortopédico entre el 65 % y el 100 % [107]. En España, la instrucción madrileña ya encarga al fisioterapeuta la valoración clínica de tres procesos, con pruebas de exploración y cuestionarios definidos [9].
 
 ## 7.2. Competencias que requieren desarrollo autonómico o protocolo
 
-El acceso directo del ciudadano requiere un protocolo del servicio de salud. Galicia y Madrid ya lo han regulado [9, 77]. En Madrid, el instrumento es una instrucción de la Gerencia Asistencial de AP, con criterios de citación y de exclusión escritos para cada proceso [9]. La sección 2.5 analiza el rango de ese instrumento. La interconsulta no presencial con atención hospitalaria requiere también un protocolo de cada área sanitaria.
+El acceso directo del ciudadano requiere un protocolo del servicio de salud. Galicia y Madrid ya lo han regulado [9, 76]. En Madrid, el instrumento es una instrucción de la Gerencia Asistencial de AP, con criterios de citación y de exclusión escritos para cada proceso [9]. La sección 2.5 analiza el rango de ese instrumento. La interconsulta no presencial con atención hospitalaria requiere también un protocolo de cada área sanitaria.
 
 ## 7.3. Ecografía como apoyo a la valoración
 
-Este documento pide el reconocimiento del uso de la ecografía por el fisioterapeuta de AP como herramienta de apoyo a la valoración, la reevaluación y la decisión de derivación. El informe radiológico sigue siendo competencia del médico especialista. La ecografía no emplea radiaciones ionizantes, de modo que no está sujeta al Real Decreto 601/2019 [54].
+Este documento pide el reconocimiento del uso de la ecografía por el fisioterapeuta de AP como herramienta de apoyo a la valoración, la reevaluación y la decisión de derivación. El informe radiológico sigue siendo competencia del médico especialista. La ecografía no emplea radiaciones ionizantes, de modo que no está sujeta al Real Decreto 601/2019 [53].
 
-La Resolución 1/2023 del Consejo General de Colegios de Fisioterapeutas de España considera la ecografía una herramienta inherente al proceso de atención en fisioterapia [10, 136]. Según esa resolución, la imagen no sustituye a la exploración física, sino que mejora la valoración y ayuda a decidir la derivación ante un signo de alarma [10, 136]. La Comunidad de Madrid completó en 2022 la implantación de la ecografía en sus centros de salud, con 450 equipos fijos y portátiles [137]. Según la misma nota oficial, esos equipos los utilizan médicos de familia, pediatras y, desde fechas recientes, fisioterapeutas [137]. La Gerencia Asistencial de AP incluyó además el manejo del ecógrafo en su formación de fisioterapeutas de 2025 [138].
+La Resolución 1/2023 del Consejo General de Colegios de Fisioterapeutas de España considera la ecografía una herramienta inherente al proceso de atención en fisioterapia [10, 138]. Según esa resolución, la imagen no sustituye a la exploración física, sino que mejora la valoración y ayuda a decidir la derivación ante un signo de alarma [10, 138]. La Comunidad de Madrid completó en 2022 la implantación de la ecografía en sus centros de salud, con 450 equipos fijos y portátiles [139]. Según la misma nota oficial, esos equipos los utilizan médicos de familia, pediatras y, desde fechas recientes, fisioterapeutas [139]. La Gerencia Asistencial de AP incluyó además el manejo del ecógrafo en su formación de fisioterapeutas de 2025 [140].
 
 El documento fija tres requisitos para esta competencia: formación acreditada, un protocolo de uso y el registro de cada exploración en la historia clínica. El indicador de adecuación de la radiografía simple no se aplica a la ecografía, porque esta no se solicita a otro servicio. Su seguimiento se hace con la auditoría de registros que prevé la sección 11.3.
 
@@ -699,14 +704,14 @@ Este documento pide al Ministerio de Sanidad la habilitación expresa del fisiot
 
 La petición se apoya en seis argumentos:
 
-- **Prescriptor y profesional habilitado.** El Real Decreto 601/2019 abre la figura del prescriptor a otro profesional sanitario autorizado [54]. La responsabilidad clínica de la exposición corresponde al profesional sanitario habilitado, que en radiodiagnóstico es el radiólogo [54]. Este documento pide la condición de prescriptor y no la de profesional habilitado.
-- **Precedente de la podología.** El mismo real decreto incluye a la podología, en su ámbito, entre los profesionales sanitarios habilitados [54]. El colegio profesional madrileño considera que la vía para la fisioterapia sería análoga [10].
-- **Marco europeo.** La Directiva 2013/59/Euratom no reserva en exclusiva a los médicos la remisión a procedimientos radiológicos [55].
+- **Prescriptor y profesional habilitado.** El Real Decreto 601/2019 abre la figura del prescriptor a otro profesional sanitario autorizado [53]. La responsabilidad clínica de la exposición corresponde al profesional sanitario habilitado, que en radiodiagnóstico es el radiólogo [53]. Este documento pide la condición de prescriptor y no la de profesional habilitado.
+- **Precedente de la podología.** El mismo real decreto incluye a la podología, en su ámbito, entre los profesionales sanitarios habilitados [53]. El colegio profesional madrileño considera que la vía para la fisioterapia sería análoga [10].
+- **Marco europeo.** La Directiva 2013/59/Euratom no reserva en exclusiva a los médicos la remisión a procedimientos radiológicos [54].
 - **Planificación estatal.** La acción A.4.4 del Marco Estratégico pide incrementar la capacidad resolutiva de la fisioterapia mediante circuitos y protocolos [46].
-- **Circuito redundante.** El acceso directo sin capacidad de solicitud genera la derivación intermedia que pretendía evitar. En un esguince de tobillo con reglas de Ottawa positivas, la persona tiene que volver a otra consulta solo para que otro profesional firme la petición [10, 139]. La instrucción madrileña reconoce en el esguince de tobillo la utilidad de la radiología para descartar lesiones óseas, pero no habilita al fisioterapeuta para pedirla [9]. La doble consulta es, por tanto, una consecuencia prevista del circuito vigente.
-- **Experiencia comparada.** En el Reino Unido, la normativa sobre exposiciones médicas reconoce al remitente no médico habilitado por su empleador [140]. La hoja de ruta de Health Education England incluye la solicitud de pruebas entre las capacidades del fisioterapeuta de primer contacto [82].
+- **Circuito redundante.** El acceso directo sin capacidad de solicitud genera la derivación intermedia que pretendía evitar. En un esguince de tobillo con reglas de Ottawa positivas, la persona tiene que volver a otra consulta solo para que otro profesional firme la petición [10, 141]. La instrucción madrileña reconoce en el esguince de tobillo la utilidad de la radiología para descartar lesiones óseas, pero no habilita al fisioterapeuta para pedirla [9]. La doble consulta es, por tanto, una consecuencia prevista del circuito vigente.
+- **Experiencia comparada.** En el Reino Unido, la normativa sobre exposiciones médicas reconoce al remitente no médico habilitado por su empleador [142]. La hoja de ruta de Health Education England incluye la solicitud de pruebas entre las capacidades del fisioterapeuta de primer contacto [83].
 
-El alcance que se pide es limitado. Incluye solo la radiología simple musculoesquelética de los procesos protocolizados, con reglas de decisión validadas como las de Ottawa [139, 141]. No incluye la interpretación radiológica formal. La implantación exige formación acreditada en protección radiológica, un protocolo consensuado con radiodiagnóstico y medicina de familia, la trazabilidad de cada solicitud y una auditoría periódica. El indicador IR-12 del anexo B mide la adecuación de las solicitudes.
+El alcance que se pide es limitado. Incluye solo la radiología simple musculoesquelética de los procesos protocolizados, con reglas de decisión validadas como las de Ottawa [141, 143]. No incluye la interpretación radiológica formal. La implantación exige formación acreditada en protección radiológica, un protocolo consensuado con radiodiagnóstico y medicina de familia, la trazabilidad de cada solicitud y una auditoría periódica. El indicador IR-12 del anexo B mide la adecuación de las solicitudes.
 
 Mientras la habilitación no se apruebe, el circuito usa un protocolo compartido con medicina de familia para la radiografía simple. Así, el acceso directo funciona desde el primer día sin depender de la reforma.
 
@@ -714,7 +719,7 @@ Mientras la habilitación no se apruebe, el circuito usa un protocolo compartido
 
 El apartado 6 del anexo II del Real Decreto 1030/2006 exige «previa indicación médica» para la rehabilitación básica [43]. Este documento aborda el inciso por dos vías complementarias:
 
-- **Para la fase de implantación.** La indicación mediante un protocolo aprobado por el servicio de salud cumple el requisito. Esta es la lectura que de hecho sostienen Galicia y Madrid con sus protocolos de acceso directo [9, 77].
+- **Para la fase de implantación.** La indicación mediante un protocolo aprobado por el servicio de salud cumple el requisito. Esta es la lectura que de hecho sostienen Galicia y Madrid con sus protocolos de acceso directo [9, 76].
 - **Como petición al Ministerio de Sanidad.** El apartado 6 se actualiza por el procedimiento de los artículos 20 y 21 de la Ley 16/2003, para que la autorreferencia protocolizada quede recogida en la cartera común [45].
 
 ## 7.6. Lo que no se pide
@@ -742,20 +747,20 @@ Tabla 8.1. Procesos que admiten autorreferencia
 
 | Id | Proceso | Condición de acceso | Vías de entrada |
 |---|---|---|---|
-| P01 | Artralgias vertebrales mecánicas [142-144] | Sin déficit neurológico progresivo referido por la persona | Autorreferencia, Medicina de familia y comunitaria |
-| P02 | Hombro doloroso no traumático [145, 146] | Sin traumatismo desencadenante | Autorreferencia, Medicina de familia y comunitaria |
-| P03 | Artrosis leve o moderada de rodilla, cadera o mano [124] | Diagnóstico médico previo registrado en la historia clínica | Autorreferencia, Medicina de familia y comunitaria |
-| P04 | Esguince de tobillo leve o moderado [9, 139, 141] | La persona puede cargar su peso y caminar tres o cuatro pasos, aunque sea con dificultad | Autorreferencia, Medicina de familia y comunitaria |
+| P01 | Artralgias vertebrales mecánicas [144-146] | Sin déficit neurológico progresivo referido por la persona | Autorreferencia, Medicina de familia y comunitaria |
+| P02 | Hombro doloroso no traumático [147, 148] | Sin traumatismo desencadenante | Autorreferencia, Medicina de familia y comunitaria |
+| P03 | Artrosis leve o moderada de rodilla, cadera o mano [125] | Diagnóstico médico previo registrado en la historia clínica | Autorreferencia, Medicina de familia y comunitaria |
+| P04 | Esguince de tobillo leve o moderado [9, 141, 143] | La persona puede cargar su peso y caminar tres o cuatro pasos, aunque sea con dificultad | Autorreferencia, Medicina de familia y comunitaria |
 | P05 | Fascitis plantar [9, 39] | Sin traumatismo previo ni signos sistémicos referidos | Autorreferencia, Medicina de familia y comunitaria |
-| P06 | Epicondilalgia [9, 39, 147] | Sin traumatismo desencadenante | Autorreferencia, Medicina de familia y comunitaria |
+| P06 | Epicondilalgia [9, 39, 149] | Sin traumatismo desencadenante | Autorreferencia, Medicina de familia y comunitaria |
 | P07 | Recidiva de un proceso diagnosticado previamente por su médico de familia y comunitaria [19] | Diagnóstico previo registrado en la historia clínica | Autorreferencia |
-| P08 | Dolor persistente no complejo [123] | Diagnóstico médico previo, sin descompensación de la comorbilidad | Autorreferencia, Medicina de familia y comunitaria |
+| P08 | Dolor persistente no complejo [124] | Diagnóstico médico previo, sin descompensación de la comorbilidad | Autorreferencia, Medicina de familia y comunitaria |
 
-Fuente: anexo C. La condición del esguince de tobillo se basa en las reglas de Ottawa [139, 141].
+Fuente: anexo C. La condición del esguince de tobillo se basa en las reglas de Ottawa [141, 143].
 
 La tabla agrupa la lumbalgia y la cervicalgia en un único proceso, las artralgias vertebrales mecánicas, porque comparten condición de acceso. La prevención de caídas y la EPOC en fase estable no figuran en la tabla. Ambas entran por derivación desde enfermería o desde medicina de familia, como indica la tabla 6.2. La epicondilalgia se incorpora por el precedente de Madrid, que la incluye entre sus procesos de citación directa [9, 39].
 
-Las condiciones de la tabla coinciden en lo esencial con la instrucción madrileña, aunque la formulan de otro modo [9]. En la epicondilalgia y la fascitis plantar, ambas excluyen el antecedente traumático [9]. En el esguince de tobillo, la instrucción admite los grados I y II y remite a medicina de familia a quien no puede apoyar el pie [9]. La tabla 8.1 usa en su lugar la capacidad de cargar el peso y dar unos pasos, que procede de las reglas de Ottawa [139]. Esa condición puede comprobarse antes de la cita. La instrucción remite además a medicina de familia la fascitis plantar con indicación de tratamiento ortopédico, un criterio que la primera consulta de fisioterapia puede detectar [9].
+Las condiciones de la tabla coinciden en lo esencial con la instrucción madrileña, aunque la formulan de otro modo [9]. En la epicondilalgia y la fascitis plantar, ambas excluyen el antecedente traumático [9]. En el esguince de tobillo, la instrucción admite los grados I y II y remite a medicina de familia a quien no puede apoyar el pie [9]. La tabla 8.1 usa en su lugar la capacidad de cargar el peso y dar unos pasos, que procede de las reglas de Ottawa [141]. Esa condición puede comprobarse antes de la cita. La instrucción remite además a medicina de familia la fascitis plantar con indicación de tratamiento ortopédico, un criterio que la primera consulta de fisioterapia puede detectar [9].
 
 ## 8.3. Situaciones excluidas del acceso directo
 
@@ -779,11 +784,11 @@ La exclusión del acceso directo no impide la atención en fisioterapia de AP. P
 
 El fisioterapeuta usa herramientas con evidencia publicada:
 
-- **Reglas de Ottawa de tobillo y pie.** Una revisión sistemática con 15.581 pacientes mostró una sensibilidad cercana al 100 % para excluir fracturas [139]. Su implantación redujo las radiografías de tobillo sin fracturas no detectadas [141].
-- **Signos de alarma en el dolor lumbar.** Una revisión sistemática mostró que solo un subconjunto de los signos de alarma que recogen las guías tiene precisión diagnóstica demostrada [142]. El protocolo debe priorizar ese subconjunto, como la historia de cáncer para la sospecha de malignidad [142].
-- **Estratificación del riesgo en el dolor lumbar.** La herramienta STarT Back permite ajustar la intensidad de la atención al pronóstico, con mejores resultados y menos costes que la práctica habitual [148]. Existe una versión española adaptada en atención primaria [149].
-- **Función en la epicondilalgia.** La instrucción madrileña pide el cuestionario PRTEE para medir el dolor y la función del codo [9]. Su versión española se validó con 150 pacientes [150]. Mostró una consistencia interna con un alfa de Cronbach de 0,96 y una fiabilidad con un coeficiente de correlación intraclase de 0,9 [150].
-- **Momento de la exploración en el esguince de tobillo.** La guía neerlandesa actualizada recomienda una exploración física diferida, entre cuatro y cinco días después del traumatismo [151]. El protocolo puede usar esa pauta para programar la primera consulta.
+- **Reglas de Ottawa de tobillo y pie.** Una revisión sistemática con 15.581 pacientes mostró una sensibilidad cercana al 100 % para excluir fracturas [141]. Su implantación redujo las radiografías de tobillo sin fracturas no detectadas [143].
+- **Signos de alarma en el dolor lumbar.** Una revisión sistemática mostró que solo un subconjunto de los signos de alarma que recogen las guías tiene precisión diagnóstica demostrada [144]. El protocolo debe priorizar ese subconjunto, como la historia de cáncer para la sospecha de malignidad [144].
+- **Estratificación del riesgo en el dolor lumbar.** La herramienta STarT Back permite ajustar la intensidad de la atención al pronóstico, con mejores resultados y menos costes que la práctica habitual [150]. Existe una versión española adaptada en atención primaria [151].
+- **Función en la epicondilalgia.** La instrucción madrileña pide el cuestionario PRTEE para medir el dolor y la función del codo [9]. Su versión española se validó con 150 pacientes [152]. Mostró una consistencia interna con un alfa de Cronbach de 0,96 y una fiabilidad con un coeficiente de correlación intraclase de 0,9 [152].
+- **Momento de la exploración en el esguince de tobillo.** La guía neerlandesa actualizada recomienda una exploración física diferida, entre cuatro y cinco días después del traumatismo [153]. El protocolo puede usar esa pauta para programar la primera consulta.
 - **Pruebas de provocación en la epicondilalgia.** La instrucción madrileña describe las pruebas de Cozen, de Thomson y de la silla [9]. Este documento no ha localizado estudios de precisión diagnóstica de esas pruebas, de modo que las presenta como parte de la exploración y no como reglas de decisión.
 
 La escala visual analógica o la escala numérica del dolor completan la valoración en todos los procesos, como pide la instrucción madrileña [9]. El indicador IR-1 del anexo B usa la escala numérica de 0 a 10.
@@ -796,18 +801,18 @@ Tabla 8.3. Evidencia de efectividad de la fisioterapia en los procesos que admit
 
 | Id | Proceso | Evidencia principal | Lectura para el modelo |
 |---|---|---|---|
-| P01 | Dolor lumbar y cervical mecánico | Las guías recomiendan como primera línea la educación para el automanejo, la vuelta a la actividad y el ejercicio [143]. El ejercicio reduce el dolor lumbar persistente con certeza moderada [126]. En el dolor cervical, las guías proponen educación estructurada con ejercicio o atención multimodal [144, 152] | La consulta de primer contacto aplica la primera línea sin esperar a una derivación |
-| P02 | Hombro doloroso sin traumatismo | El ejercicio supera a los controles sin ejercicio en el síndrome subacromial [145]. La descompresión quirúrgica no supera al ejercicio en ensayos con seguimientos de uno a diez años [153-156]. En las roturas no traumáticas del supraespinoso, la cirugía no mejora el resultado de la fisioterapia al año [157] | El ejercicio terapéutico es la primera opción, y la derivación quirúrgica se reserva para el fracaso del tratamiento |
-| P03 | Artrosis de rodilla, cadera o mano | El ejercicio terapéutico reduce el dolor en la artrosis de rodilla con certeza alta a corto plazo [124] | El programa grupal PG-03 aplica esta evidencia |
-| P04 | Esguince de tobillo | La guía neerlandesa recomienda programas de ejercicio supervisado frente a las modalidades pasivas, y reserva la cirugía para el fracaso del tratamiento con ejercicio [151] | La primera consulta combina las reglas de Ottawa con el plan de ejercicio |
-| P05 | Fascitis plantar | Una guía basada en una revisión de 51 ensayos propone como tratamiento nuclear el vendaje, los estiramientos y la educación individualizada, con ondas de choque y ortesis a medida como pasos posteriores [158]. La guía de la asociación estadounidense de fisioterapia actualizó sus recomendaciones en 2023 [159] | La primera consulta aplica el tratamiento nuclear y reserva los pasos posteriores para quien no mejora |
-| P06 | Epicondilalgia | La fisioterapia con movilización y ejercicio supera a la infiltración de corticoide después de la sexta semana, y a la espera en las primeras seis semanas [147] | La infiltración ofrece alivio precoz con alta tasa de recaída, de modo que la fisioterapia es la opción de medio plazo |
+| P01 | Dolor lumbar y cervical mecánico | Las guías recomiendan como primera línea la educación para el automanejo, la vuelta a la actividad y el ejercicio [145]. El ejercicio reduce el dolor lumbar persistente con certeza moderada [127]. En el dolor cervical, las guías proponen educación estructurada con ejercicio o atención multimodal [146, 154] | La consulta de primer contacto aplica la primera línea sin esperar a una derivación |
+| P02 | Hombro doloroso sin traumatismo | El ejercicio supera a los controles sin ejercicio en el síndrome subacromial [147]. La descompresión quirúrgica no supera al ejercicio en ensayos con seguimientos de uno a diez años [155-158]. En las roturas no traumáticas del supraespinoso, la cirugía no mejora el resultado de la fisioterapia al año [159] | El ejercicio terapéutico es la primera opción, y la derivación quirúrgica se reserva para el fracaso del tratamiento |
+| P03 | Artrosis de rodilla, cadera o mano | El ejercicio terapéutico reduce el dolor en la artrosis de rodilla con certeza alta a corto plazo [125] | El programa grupal PG-03 aplica esta evidencia |
+| P04 | Esguince de tobillo | La guía neerlandesa recomienda programas de ejercicio supervisado frente a las modalidades pasivas, y reserva la cirugía para el fracaso del tratamiento con ejercicio [153] | La primera consulta combina las reglas de Ottawa con el plan de ejercicio |
+| P05 | Fascitis plantar | Una guía basada en una revisión de 51 ensayos propone como tratamiento nuclear el vendaje, los estiramientos y la educación individualizada, con ondas de choque y ortesis a medida como pasos posteriores [160]. La guía de la asociación estadounidense de fisioterapia actualizó sus recomendaciones en 2023 [161] | La primera consulta aplica el tratamiento nuclear y reserva los pasos posteriores para quien no mejora |
+| P06 | Epicondilalgia | La fisioterapia con movilización y ejercicio supera a la infiltración de corticoide después de la sexta semana, y a la espera en las primeras seis semanas [149] | La infiltración ofrece alivio precoz con alta tasa de recaída, de modo que la fisioterapia es la opción de medio plazo |
 | P07 | Recidiva de un proceso ya diagnosticado | El dolor lumbar recurre con frecuencia en los seguimientos de largo plazo [17, 19] | La autorreferencia evita una nueva consulta médica para un diagnóstico ya registrado |
-| P08 | Dolor persistente no complejo | La educación en neurociencia del dolor combinada con ejercicio grupal mejora el dolor y la función en AP española [123]. La educación aislada no mejora el dolor frente a la atención habitual [128] | El programa grupal PG-02 combina educación y ejercicio |
+| P08 | Dolor persistente no complejo | La educación en neurociencia del dolor combinada con ejercicio grupal mejora el dolor y la función en AP española [124]. La educación aislada no mejora el dolor frente a la atención habitual [129] | El programa grupal PG-02 combina educación y ejercicio |
 
 Fuente: elaboración propia a partir de los estudios citados en cada fila, verificados en PubMed. Los nombres de los procesos se abrevian; el anexo C recoge el nombre completo.
 
-En el hombro, este documento se apoya en los ensayos que comparan directamente ejercicio y cirugía, y en una revisión Cochrane que no respalda la descompresión subacromial [146]. La evidencia económica es menos favorable en las roturas masivas del manguito. En ellas, un análisis de coste-efectividad situó como opción preferente la prótesis invertida, y la fisioterapia solo lo fue en un análisis de sensibilidad [160].
+En el hombro, este documento se apoya en los ensayos que comparan directamente ejercicio y cirugía, y en una revisión Cochrane que no respalda la descompresión subacromial [148]. La evidencia económica es menos favorable en las roturas masivas del manguito. En ellas, un análisis de coste-efectividad situó como opción preferente la prótesis invertida, y la fisioterapia solo lo fue en un análisis de sensibilidad [162].
 
 # 9. Dotación calculada por demanda, por fases y con ajuste territorial
 
@@ -817,9 +822,9 @@ Esta sección calcula cuántos fisioterapeutas de AP necesita el SNS a partir de
 
 ## 9.1. Punto de partida
 
-El SNS contaba en 2024 con 2.418 fisioterapeutas de AP, según el informe monográfico de recursos humanos [57]. La dotación por comunidad autónoma variaba más de diez veces entre los extremos que recogió el editorial de 2022 (tabla 3.1). El punto de partida no es, por tanto, un valor único, sino una distribución muy desigual.
+El SNS contaba en 2024 con 2.418 fisioterapeutas de AP, según el informe monográfico de recursos humanos [56]. La dotación por comunidad autónoma variaba más de diez veces entre los extremos que recogió el editorial de 2022 (tabla 3.1). El punto de partida no es, por tanto, un valor único, sino una distribución muy desigual.
 
-Los datos autonómicos de actividad pueden afinar ese punto de partida. La Comunidad de Madrid informó de que sus unidades de fisioterapia de AP atendieron a cerca de 159.000 personas en 2024 [39]. El informe de PwC para el colegio profesional madrileño estimó unos 218 fisioterapeutas en la AP de Madrid en 2021, a partir de una encuesta a las personas colegiadas [161]. En 2025, más de 50 fisioterapeutas de AP completaron una formación de la Gerencia Asistencial en dolor musculoesquelético [138]. Según la Gerencia, suponían alrededor del 20 % de los que están en activo en AP [138]. El SIAP permite sustituir estas estimaciones por la plantilla oficial de cada comunidad autónoma [61].
+Los datos autonómicos de actividad pueden afinar ese punto de partida. La Comunidad de Madrid informó de que sus unidades de fisioterapia de AP atendieron a cerca de 159.000 personas en 2024 [39]. A 30 de abril de 2024, las plantillas orgánicas del Servicio Madrileño de Salud tenían 947 plazas de fisioterapeuta [163]. De ellas, 691 estaban en atención hospitalaria y 256 en AP [163]. El informe de PwC para el colegio profesional madrileño estimó unos 218 fisioterapeutas en la AP de Madrid en 2021, a partir de una encuesta a las personas colegiadas [164]. En 2025, más de 50 fisioterapeutas de AP completaron una formación de la Gerencia Asistencial en dolor musculoesquelético [140]. Según la Gerencia, suponían alrededor del 20 % de los que están en activo en AP [140]. El SIAP permite sustituir estas estimaciones por la plantilla oficial de cada comunidad autónoma [60].
 
 ## 9.2. Modelo de demanda
 
@@ -839,9 +844,9 @@ Tabla 9.1. Parámetros del modelo de demanda
 | F1 | Fracción de esas personas que accede a fisioterapia de atención primaria por cualquier vía | proporción | 0,25 | 0,35 | 0,50 | Supuesto | No existe dato español publicado. El rango refleja un despliegue progresivo del acceso directo y de la derivación protocolizada |
 | F2 | Fracción de las personas valoradas que necesita tratamiento individual tras la primera consulta | proporción | 0,30 | 0,40 | 0,50 | Supuesto | En la evaluación de Downie y colaboradores, el 60,4 % de los contactos se resolvió solo con automanejo tras la primera consulta [37] |
 | V | Consultas individuales de seguimiento por episodio tratado | consultas | 3 | 4 | 6 | Supuesto | No existe dato español publicado sobre consultas por episodio en fisioterapia de atención primaria |
-| t | Duración media de cada consulta individual | horas | 0,33 | 0,50 | 0,75 | Supuesto | Las consultas de primer contacto del Reino Unido duran veinte minutos en la encuesta de Halls y colaboradores. El valor central incorpora el tiempo de registro y de coordinación [162] |
-| S65 | Proporción de población de 65 años o más | proporción | 0,18 | 0,20 | 0,22 | Supuesto | Valor redondeado del padrón continuo. El rango refleja la variación entre zonas básicas y se sustituye por el dato local en los ajustes territoriales [163] |
-| D | Proporción de personas de 65 años o más que necesita fisioterapia domiciliaria al año | proporción | 0,02 | 0,03 | 0,05 | Supuesto | La prevalencia de fragilidad en población comunitaria europea es del 12 %. Solo una parte de esa población necesita atención en el domicilio [164] |
+| t | Duración media de cada consulta individual | horas | 0,33 | 0,50 | 0,75 | Supuesto | Las consultas de primer contacto del Reino Unido duran veinte minutos en la encuesta de Halls y colaboradores. El valor central incorpora el tiempo de registro y de coordinación [165] |
+| S65 | Proporción de población de 65 años o más | proporción | 0,18 | 0,20 | 0,22 | Supuesto | Valor redondeado del padrón continuo. El rango refleja la variación entre zonas básicas y se sustituye por el dato local en los ajustes territoriales [166] |
+| D | Proporción de personas de 65 años o más que necesita fisioterapia domiciliaria al año | proporción | 0,02 | 0,03 | 0,05 | Supuesto | La prevalencia de fragilidad en población comunitaria europea es del 12 %. Solo una parte de esa población necesita atención en el domicilio [167] |
 | Vd | Visitas domiciliarias por persona y año | visitas | 4 | 6 | 8 | Supuesto | Sin dato publicado. Se ajusta localmente |
 | td | Duración media de cada visita domiciliaria, con desplazamiento | horas | 1 | 1,25 | 1,50 | Supuesto | Sin dato publicado. El desplazamiento aumenta en zonas rurales y dispersas |
 | J | Jornada anual de un fisioterapeuta a tiempo completo | horas | 1.642 | 1.600 | 1.519 | Supuesto | Rango de la jornada ordinaria entre 35 y 37,5 horas semanales según el servicio de salud. El orden de bajo a alto sigue la necesidad: una jornada menor exige más dotación |
@@ -886,7 +891,7 @@ Fuente: modelo de demanda de esta sección. Cada fila cambia un parámetro a su 
 
 Los tres parámetros con más influencia son la duración de cada consulta, la fracción que accede a fisioterapia y las personas que consultan por un problema musculoesquelético (tabla 9.3). Ninguno de los tres tiene hoy un dato español publicado. Por eso la primera tarea del grupo de trabajo debe ser medirlos con los registros de actividad de las comunidades que ya tienen consulta de fisioterapia en AP. La instrucción madrileña facilita esa medición, porque asocia cada proceso de citación directa a sus códigos de la Clasificación Internacional de Atención Primaria [9]. Con esos códigos, un servicio de salud puede contar las personas que consultan por cada proceso y la fracción que llega a fisioterapia.
 
-El número de consultas por persona tampoco tiene un valor fijo. Una revisión de ocho ensayos no encontró diferencias al año entre dos o menos visitas y tres o más en el dolor lumbar [116]. El modelo refleja esa incertidumbre con el rango del parámetro de consultas de seguimiento.
+El número de consultas por persona tampoco tiene un valor fijo. Una revisión de ocho ensayos no encontró diferencias al año entre dos o menos visitas y tres o más en el dolor lumbar [117]. El modelo refleja esa incertidumbre con el rango del parámetro de consultas de seguimiento.
 
 ## 9.3. Escenarios como fases
 
@@ -933,32 +938,32 @@ La demora en rehabilitación hospitalaria no es un factor de ajuste de la dotaci
 
 ## 9.5. Referencias externas de dotación
 
-La Chartered Society of Physiotherapy pidió en 2022 aumentar la dotación de fisioterapeutas de primer contacto en Inglaterra hasta 1 por cada 10.000 habitantes [165]. Esa cifra es una reivindicación profesional y no una norma del NHS [165]. Se refiere además solo al perfil de primer contacto, de modo que no incluye la atención domiciliaria ni los programas grupales.
+La Chartered Society of Physiotherapy pidió en 2022 aumentar la dotación de fisioterapeutas de primer contacto en Inglaterra hasta 1 por cada 10.000 habitantes [168]. Esa cifra es una reivindicación profesional y no una norma del NHS [168]. Se refiere además solo al perfil de primer contacto, de modo que no incluye la atención domiciliaria ni los programas grupales.
 
 ## 9.6. Retorno económico esperado
 
 Este documento no calcula un ahorro para el SNS, porque no existe ninguna evaluación económica española del modelo que propone. Sin embargo, la literatura internacional permite anticipar en qué partidas puede aparecer el retorno y cómo debe medirse.
 
-En España, el cálculo más próximo es un informe de PwC encargado por el Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid, con datos de 2021 [161]. Su capítulo económico cuantifica el ahorro de cuatro actuaciones: la fisioterapia respiratoria tras la cirugía del cáncer de pulmón, la rehabilitación cardiaca tras un bypass coronario, el síndrome del túnel carpiano y la EPOC grave [161]. La presentación del informe cifra en cerca de 568 millones de euros anuales lo que esas actuaciones podrían liberar al sistema de salud madrileño [161]. Esa cifra es un ahorro potencial y no un ahorro medido. Se obtuvo aplicando a los pacientes estimados en Madrid los efectos de estudios publicados, y tres de las cuatro actuaciones corresponden a la atención hospitalaria [161]. Por eso este documento la cita como orden de magnitud y no como resultado esperable del modelo de AP.
+En España, el cálculo más próximo es un informe de PwC encargado por el Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid, con datos de 2021 [164]. Su capítulo económico cuantifica el ahorro de cuatro actuaciones: la fisioterapia respiratoria tras la cirugía del cáncer de pulmón, la rehabilitación cardiaca tras un bypass coronario, el síndrome del túnel carpiano y la EPOC grave [164]. La presentación del informe cifra en cerca de 568 millones de euros anuales lo que esas actuaciones podrían liberar al sistema de salud madrileño [164]. Esa cifra es un ahorro potencial y no un ahorro medido. Se obtuvo aplicando a los pacientes estimados en Madrid los efectos de estudios publicados, y tres de las cuatro actuaciones corresponden a la atención hospitalaria [164]. Por eso este documento la cita como orden de magnitud y no como resultado esperable del modelo de AP.
 
-La primera partida son los costes indirectos. En el dolor lumbar, los costes indirectos supusieron el 88 % del coste total en los Países Bajos [25]. Una revisión de evaluaciones económicas concluyó que la atención del médico general por sí sola no parece la opción más coste-efectiva en el dolor lumbar [135]. Añadir consejo, educación y ejercicio a esa atención resultó más coste-efectivo que la atención médica habitual sola [135]. Otra revisión encontró que el ejercicio, la rehabilitación interdisciplinar, la manipulación vertebral y la terapia cognitivo-conductual suelen ser coste-efectivos en el dolor lumbar subagudo o persistente [166].
+La primera partida son los costes indirectos. En el dolor lumbar, los costes indirectos supusieron el 88 % del coste total en los Países Bajos [25]. Una revisión de evaluaciones económicas concluyó que la atención del médico general por sí sola no parece la opción más coste-efectiva en el dolor lumbar [136]. Añadir consejo, educación y ejercicio a esa atención resultó más coste-efectivo que la atención médica habitual sola [136]. Otra revisión encontró que el ejercicio, la rehabilitación interdisciplinar, la manipulación vertebral y la terapia cognitivo-conductual suelen ser coste-efectivos en el dolor lumbar subagudo o persistente [169].
 
-La segunda partida es el uso posterior de servicios. En el estudio de Fritz y colaboradores, la fisioterapia precoz se asoció a un coste médico 2.736 dólares menor por persona con dolor lumbar [32]. En el ensayo FRONTIER, el coste mediano para el NHS fue de 41,0 y 44,0 libras en los grupos de fisioterapia, frente a 105,5 libras en el grupo médico [90, 91]. En Suecia, la valoración inicial por fisioterapia resultó más coste-efectiva que la valoración inicial por el médico general [98].
+La segunda partida es el uso posterior de servicios. En el estudio de Fritz y colaboradores, la fisioterapia precoz se asoció a un coste médico 2.736 dólares menor por persona con dolor lumbar [32]. En el ensayo FRONTIER, el coste mediano para el NHS fue de 41,0 y 44,0 libras en los grupos de fisioterapia, frente a 105,5 libras en el grupo médico [91, 92]. En Suecia, la valoración inicial por fisioterapia resultó más coste-efectiva que la valoración inicial por el médico general [99].
 
-La tercera partida es la elección del tratamiento. En el dolor cervical, un ensayo neerlandés en AP comparó terapia manual, fisioterapia basada en ejercicio y atención por el médico general [167]. El coste total de la terapia manual, 447 euros por persona, fue alrededor de un tercio del coste de las otras dos opciones, de 1.297 y 1.379 euros [167]. En cambio, la fisioterapia basada en ejercicio no fue más barata que la atención médica en ese ensayo [167]. Una revisión posterior advierte que el número de evaluaciones económicas en dolor cervical no permite conclusiones firmes [168].
+La tercera partida es la elección del tratamiento. En el dolor cervical, un ensayo neerlandés en AP comparó terapia manual, fisioterapia basada en ejercicio y atención por el médico general [170]. El coste total de la terapia manual, 447 euros por persona, fue alrededor de un tercio del coste de las otras dos opciones, de 1.297 y 1.379 euros [170]. En cambio, la fisioterapia basada en ejercicio no fue más barata que la atención médica en ese ensayo [170]. Una revisión posterior advierte que el número de evaluaciones económicas en dolor cervical no permite conclusiones firmes [171].
 
 Tabla 9.6. Evidencia económica internacional aplicable al modelo
 
 | Partida | Estudio | Resultado | Límite para el SNS |
 |---|---|---|---|
 | Costes indirectos | Lambeek y colaboradores [25] | Los costes indirectos suponen el 88 % del coste del dolor lumbar | Estudio de coste de la enfermedad, sin evaluar la fisioterapia |
-| Atención médica frente a atención con ejercicio | Lin y colaboradores [135, 166] | Añadir educación y ejercicio es más coste-efectivo que la atención médica sola | Evaluaciones de sistemas con precios distintos |
+| Atención médica frente a atención con ejercicio | Lin y colaboradores [136, 169] | Añadir educación y ejercicio es más coste-efectivo que la atención médica sola | Evaluaciones de sistemas con precios distintos |
 | Momento del acceso | Fritz y colaboradores [32] | Coste médico menor con la fisioterapia en los primeros 14 días | Estudio observacional en aseguradoras de Estados Unidos |
-| Primer contacto en AP | FRONTIER [90, 91] | Coste mediano para el NHS menor en los grupos de fisioterapia | Sistema público con estructura distinta de la española |
-| Primera valoración en el centro de salud | Bornhöft y colaboradores [98] | Manejo más coste-efectivo con la valoración inicial por fisioterapia | Triaje dentro del centro, no acceso directo |
-| Tratamiento del dolor cervical | Korthals-de Bos y colaboradores [167] | La terapia manual costó un tercio que la fisioterapia basada en ejercicio o la atención médica | Un solo ensayo, con evidencia global insuficiente [168] |
-| Triaje en la interfaz hospitalaria | Trøstrup y colaboradores [106] | Ahorro del 27 % al 49 % en la valoración diagnóstica | Fuera del alcance de esta propuesta |
-| Cuatro actuaciones de fisioterapia en Madrid | Informe de PwC para el CPFCM [161] | Ahorro potencial cercano a 568 millones de euros anuales para el sistema de salud madrileño | Estimación por extrapolación, con tres actuaciones hospitalarias |
+| Primer contacto en AP | FRONTIER [91, 92] | Coste mediano para el NHS menor en los grupos de fisioterapia | Sistema público con estructura distinta de la española |
+| Primera valoración en el centro de salud | Bornhöft y colaboradores [99] | Manejo más coste-efectivo con la valoración inicial por fisioterapia | Triaje dentro del centro, no acceso directo |
+| Tratamiento del dolor cervical | Korthals-de Bos y colaboradores [170] | La terapia manual costó un tercio que la fisioterapia basada en ejercicio o la atención médica | Un solo ensayo, con evidencia global insuficiente [171] |
+| Triaje en la interfaz hospitalaria | Trøstrup y colaboradores [107] | Ahorro del 27 % al 49 % en la valoración diagnóstica | Fuera del alcance de esta propuesta |
+| Cuatro actuaciones de fisioterapia en Madrid | Informe de PwC para el CPFCM [164] | Ahorro potencial cercano a 568 millones de euros anuales para el sistema de salud madrileño | Estimación por extrapolación, con tres actuaciones hospitalarias |
 
 Fuente: elaboración propia a partir de los resúmenes de PubMed de los estudios citados y del informe de PwC para el CPFCM.
 
@@ -970,7 +975,7 @@ Esta sección define cómo se evalúa el modelo. Los indicadores se organizan se
 
 ## 10.1. Marco
 
-El modelo EFQM se estructura en tres bloques [169]. El bloque de Dirección agrupa el propósito, la visión, la estrategia, la cultura y el liderazgo [169]. El bloque de Ejecución agrupa la implicación de los grupos de interés, la creación de valor sostenible y la gestión del funcionamiento y la transformación [169]. El bloque de Resultados agrupa la percepción de los grupos de interés y el rendimiento estratégico y operativo [169].
+El modelo EFQM se estructura en tres bloques [172]. El bloque de Dirección agrupa el propósito, la visión, la estrategia, la cultura y el liderazgo [172]. El bloque de Ejecución agrupa la implicación de los grupos de interés, la creación de valor sostenible y la gestión del funcionamiento y la transformación [172]. El bloque de Resultados agrupa la percepción de los grupos de interés y el rendimiento estratégico y operativo [172].
 
 Cada indicador se sitúa en uno de esos criterios. El sistema incluye los indicadores que exigen las decisiones de este documento, como la adecuación de la radiografía simple solicitada. Incluye también el inicio precoz en la incapacidad temporal (IE-10) y la adecuación de las derivaciones de medicina de familia a traumatología (IR-13).
 
@@ -1010,7 +1015,7 @@ Los indicadores IE-1 e IE-2 miden cosas distintas y no deben leerse como una dup
 
 El indicador IE-7 no mide rechazos. Una persona derivada a otro profesional tras la primera consulta no ha sido rechazada, sino atendida y cribada.
 
-El indicador IE-6 permite además auditar la gestión de la demanda. En Madrid, la aplicación desigual de la gestión compartida y la poca experiencia del personal administrativo limitaron su efecto, según el documento de trabajo madrileño [50]. La distribución de las entradas por vía y la revisión de los motivos registrados muestran si la autorreferencia funciona como se diseñó.
+El indicador IE-6 permite además auditar la gestión de la demanda. En Madrid, la escasa difusión de la gestión compartida dejó sin usar muchos huecos reservados para la cita directa [80]. La distribución de las entradas por vía y la revisión de los motivos registrados muestran si la autorreferencia funciona como se diseñó.
 
 El indicador IE-10 mide cuánto tarda la fisioterapia de AP en llegar a las personas en incapacidad temporal. Su umbral de 60 días procede de la implicación práctica que proponen Busch y colaboradores tras evaluar la rehabilitación multimodal en Suecia [28]. Ese estudio no demostró por sí solo que el inicio precoz reduzca la baja, de modo que el indicador mide un proceso y no promete un resultado (sección 1.3).
 
@@ -1038,13 +1043,13 @@ Fuente: anexo B.
 
 La mayoría de los estándares de resultados se fijan tras un año de línea basal, porque no existe un dato español previo. Para la reconsulta existe una referencia externa: el 78,5 % de las personas atendidas por fisioterapia de primer contacto en el Reino Unido no volvió a consultar en doce semanas [38]. El indicador IR-10 no tiene estándar, porque la evidencia sobre la reducción de consultas médicas es heterogénea (sección 4.4). El indicador IR-11 mide la demora en rehabilitación hospitalaria solo como resultado del circuito de continuidad, no como criterio de dotación.
 
-El indicador IR-13 mide la adecuación de las derivaciones de medicina de familia a traumatología que siguen a una valoración de fisioterapia de AP. Su referencia externa procede del triaje musculoesquelético: una revisión encontró tasas de conversión quirúrgica del 55 % al 91 % con triaje por fisioterapia, frente al 22 % al 38 % sin él [105]. El modelo de este documento no incluye ese triaje, de modo que la referencia solo orienta el estándar. En España, un estudio de 6.225 solicitudes de consulta de AP con traumatología ofrece un punto de comparación sobre la calidad de las derivaciones actuales [36].
+El indicador IR-13 mide la adecuación de las derivaciones de medicina de familia a traumatología que siguen a una valoración de fisioterapia de AP. Su referencia externa procede del triaje musculoesquelético: una revisión encontró tasas de conversión quirúrgica del 55 % al 91 % con triaje por fisioterapia, frente al 22 % al 38 % sin él [106]. El modelo de este documento no incluye ese triaje, de modo que la referencia solo orienta el estándar. En España, un estudio de 6.225 solicitudes de consulta de AP con traumatología ofrece un punto de comparación sobre la calidad de las derivaciones actuales [36].
 
 Los indicadores de resultados miden también el retorno económico descrito en la sección 9.6. IR-5 recoge las pruebas y las derivaciones, IR-6 la incapacidad temporal e IR-7 la medicación. Ninguno de los tres tiene hoy un estándar español.
 
 ## 10.5. Ficha de indicador
 
-Cada ficha del anexo B contiene diez campos: nombre, bloque y criterio EFQM, definición, fórmula, numerador, denominador, fuente de datos, periodicidad, estándar propuesto y responsable del registro. El instrumento de función del indicador IR-2 debe elegirlo el grupo de trabajo entre los validados en castellano. Los trabajos españoles sobre conjuntos básicos de la clasificación internacional del funcionamiento en fisioterapia de AP son una base para esa elección [170, 171].
+Cada ficha del anexo B contiene diez campos: nombre, bloque y criterio EFQM, definición, fórmula, numerador, denominador, fuente de datos, periodicidad, estándar propuesto y responsable del registro. El instrumento de función del indicador IR-2 debe elegirlo el grupo de trabajo entre los validados en castellano. Los trabajos españoles sobre conjuntos básicos de la clasificación internacional del funcionamiento en fisioterapia de AP son una base para esa elección [173, 174].
 
 # 11. Plan de implantación y gestión de riesgos
 
@@ -1083,12 +1088,12 @@ La tabla muestra una dificultad práctica. Algunos códigos agrupan signos o sí
 
 La formación continuada cubre cuatro áreas: el cribado de signos de alarma, la ecografía como apoyo a la valoración, la gestión de grupos y, si se aprueba la habilitación de la sección 7.4, la protección radiológica.
 
-La formación debe alcanzar también a otros perfiles del equipo. El personal de las unidades de atención al usuario necesita formación en el guion de citación y en los criterios de exclusión. En Madrid, su falta de experiencia limitó la gestión compartida de la demanda [50]. Medicina de familia y enfermería necesitan conocer los criterios de derivación y de retorno de los circuitos 2 y 3.
+La formación debe alcanzar también a otros perfiles del equipo. El personal de las unidades de atención al usuario necesita formación en el guion de citación y en los criterios de exclusión. En Madrid, esa tarea recae sobre las unidades de atención al usuario, en un mostrador público y con poca información previa de la ciudadanía [80]. Medicina de familia y enfermería necesitan conocer los criterios de derivación y de retorno de los circuitos 2 y 3.
 
 Para los fisioterapeutas, la formación incluye cuatro contenidos adicionales:
 
 - Los protocolos de exploración de cada proceso, como los que describe la instrucción madrileña para la epicondilalgia y el esguince de tobillo [9].
-- Los instrumentos de medida validados en castellano, como el PRTEE [150] y la versión española de STarT Back [149].
+- Los instrumentos de medida validados en castellano, como el PRTEE [152] y la versión española de STarT Back [151].
 - La codificación de los procesos con la Clasificación Internacional de Atención Primaria.
 - El registro de cada exploración ecográfica en la historia clínica, que permite auditar su uso (sección 7.3).
 
@@ -1104,7 +1109,7 @@ Este documento propone un grupo de trabajo en la Comisión de Atención Primaria
 - Impulsar la actualización del apartado 6 del anexo II del Real Decreto 1030/2006.
 - Aprobar la lista común de códigos de la Clasificación Internacional de Atención Primaria de los procesos de la matriz.
 
-La evaluación debe tener un diseño que permita atribuir los resultados al modelo. No existe ningún estudio español sobre el acceso directo. Por eso, el despliegue escalonado por áreas de la fase 2 debe aprovecharse para comparar áreas con y sin acceso directo en el mismo periodo. Otros sistemas públicos usan ya este diseño. En Ontario, un grupo de investigación diseñó un ensayo por conglomerados para comparar un modelo de AP liderado por fisioterapia con la atención habitual en el dolor lumbar [103]. Un diseño análogo por zonas básicas o por áreas permitiría al SNS obtener la primera evaluación española del acceso directo.
+La evaluación debe tener un diseño que permita atribuir los resultados al modelo. No existe ningún estudio español sobre el acceso directo. Por eso, el despliegue escalonado por áreas de la fase 2 debe aprovecharse para comparar áreas con y sin acceso directo en el mismo periodo. Otros sistemas públicos usan ya este diseño. En Ontario, un grupo de investigación diseñó un ensayo por conglomerados para comparar un modelo de AP liderado por fisioterapia con la atención habitual en el dolor lumbar [104]. Un diseño análogo por zonas básicas o por áreas permitiría al SNS obtener la primera evaluación española del acceso directo.
 
 ## 11.5. Riesgos y mitigación
 
@@ -1126,9 +1131,9 @@ Tabla 11.2. Riesgos del despliegue y medidas de mitigación
 
 Fuente: elaboración propia a partir del diagnóstico de las secciones 3, 4 y 9.
 
-La baja captación inicial de la autorreferencia está documentada: en el estudio STEMS-2 supuso el 10 % y el 6 % de las entradas en los dos brazos [113]. En los Países Bajos, la proporción pasó del 28 % en el primer año al 74,3 % en 2024 [92, 94].
+La baja captación inicial de la autorreferencia está documentada: en el estudio STEMS-2 supuso el 10 % y el 6 % de las entradas en los dos brazos [114]. En los Países Bajos, la proporción pasó del 28 % en el primer año al 74,3 % en 2024 [93, 95].
 
-El aumento de la demanda es un riesgo conocido desde los primeros estudios británicos. Una revisión económica de 1997 advirtió que la fisioterapia en AP parecía generar más demanda que los demás modelos de acceso [85]. En cambio, el primer año de acceso directo en los Países Bajos no aumentó el número total de pacientes atendidos [92]. El modelo de dotación de la sección 9 y los indicadores IE-5 e IE-8 permiten detectar ese efecto y corregirlo.
+El aumento de la demanda es un riesgo conocido desde los primeros estudios británicos. Una revisión económica de 1997 advirtió que la fisioterapia en AP parecía generar más demanda que los demás modelos de acceso [86]. En cambio, el primer año de acceso directo en los Países Bajos no aumentó el número total de pacientes atendidos [93]. El modelo de dotación de la sección 9 y los indicadores IE-5 e IE-8 permiten detectar ese efecto y corregirlo.
 
 # 12. Propuesta de texto para el documento ministerial
 
@@ -1167,7 +1172,7 @@ Este anexo contiene la ficha de cada programa grupal y de cada intervención com
 | Horas de preparación y evaluación por edición | 4 |
 | Horas de fisioterapia por edición | 28,0 |
 | Ediciones por 10.000 habitantes y año: bajo, central y alto | 2, 4 y 6 |
-| Evidencia de referencia | [122] |
+| Evidencia de referencia | [123] |
 
 ### Ficha PG-02. Dolor persistente: educación en neurociencia del dolor y ejercicio
 
@@ -1186,7 +1191,7 @@ Este anexo contiene la ficha de cada programa grupal y de cada intervención com
 | Horas de preparación y evaluación por edición | 4 |
 | Horas de fisioterapia por edición | 32,1 |
 | Ediciones por 10.000 habitantes y año: bajo, central y alto | 2, 3 y 4 |
-| Evidencia de referencia | [123] |
+| Evidencia de referencia | [124] |
 
 ### Ficha PG-03. Artrosis de rodilla y cadera
 
@@ -1205,7 +1210,7 @@ Este anexo contiene la ficha de cada programa grupal y de cada intervención com
 | Horas de preparación y evaluación por edición | 3 |
 | Horas de fisioterapia por edición | 15,0 |
 | Ediciones por 10.000 habitantes y año: bajo, central y alto | 2, 3 y 4 |
-| Evidencia de referencia | [124] |
+| Evidencia de referencia | [125] |
 
 ### Ficha PG-04. EPOC en fase estable
 
@@ -1224,7 +1229,7 @@ Este anexo contiene la ficha de cada programa grupal y de cada intervención com
 | Horas de preparación y evaluación por edición | 3 |
 | Horas de fisioterapia por edición | 15,0 |
 | Ediciones por 10.000 habitantes y año: bajo, central y alto | 1, 2 y 3 |
-| Evidencia de referencia | [125] |
+| Evidencia de referencia | [126] |
 
 ### Ficha PG-05. Escuela de espalda
 
@@ -1243,7 +1248,7 @@ Este anexo contiene la ficha de cada programa grupal y de cada intervención com
 | Horas de preparación y evaluación por edición | 2 |
 | Horas de fisioterapia por edición | 10,0 |
 | Ediciones por 10.000 habitantes y año: bajo, central y alto | 3, 4 y 6 |
-| Evidencia de referencia | [126] |
+| Evidencia de referencia | [127] |
 
 ### Ficha PC-01. Promoción de la actividad física con activos comunitarios
 
@@ -1262,7 +1267,7 @@ Este anexo contiene la ficha de cada programa grupal y de cada intervención com
 | Horas de preparación y evaluación por edición | 0 |
 | Horas de fisioterapia por edición | 10,0 |
 | Ediciones por 10.000 habitantes y año: bajo, central y alto | 1, 1 y 2 |
-| Evidencia de referencia | [52] |
+| Evidencia de referencia | [51] |
 
 ### Ficha PC-02. Salud escolar: ergonomía y actividad física
 
@@ -1281,7 +1286,7 @@ Este anexo contiene la ficha de cada programa grupal y de cada intervención com
 | Horas de preparación y evaluación por edición | 0 |
 | Horas de fisioterapia por edición | 6,0 |
 | Ediciones por 10.000 habitantes y año: bajo, central y alto | 1, 2 y 3 |
-| Evidencia de referencia | [52] |
+| Evidencia de referencia | [51] |
 
 ### Ficha PC-03. Salud laboral comunitaria
 
@@ -1300,7 +1305,7 @@ Este anexo contiene la ficha de cada programa grupal y de cada intervención com
 | Horas de preparación y evaluación por edición | 0 |
 | Horas de fisioterapia por edición | 6,0 |
 | Ediciones por 10.000 habitantes y año: bajo, central y alto | 0, 1 y 2 |
-| Evidencia de referencia | [52] |
+| Evidencia de referencia | [51] |
 
 
 # Anexo B. Fichas de indicadores
@@ -1798,53 +1803,53 @@ Tabla E.1. Fuentes por cifra
 | 1.5 | 159.000 | Personas atendidas por las unidades de fisioterapia de AP de Madrid | [39] | 2024 | Personas atendidas, cifra aproximada de la nota oficial |
 | 1.5 | 77 % | Consecución de objetivos en las unidades de fisioterapia de AP de Madrid | [39] | 2024 | Porcentaje de casos con los objetivos fijados alcanzados, según la nota oficial |
 | 1.5 | 93 % | Reducción del dolor en las unidades de fisioterapia de AP de Madrid | [39] | 2024 | Porcentaje aproximado de casos con reducción del dolor, según la nota oficial |
-| 3.1 y 9.1 | 2.418 | Fisioterapeutas de atención primaria en el SNS | [57] | 2024 | Profesionales de fisioterapia de AP registrados en el informe monográfico |
-| 3.1 | 84,8 % | Fisioterapeutas del SNS que trabajan en hospitales | [57] | 2024 | Porcentaje sobre el total de fisioterapeutas del SNS |
-| 3.1 | 10 % | Fisioterapeutas del SNS que trabajan en atención primaria | [57] | 2024 | Porcentaje sobre el total de fisioterapeutas del SNS |
-| 3.1 | 13.694 | Habitantes por fisioterapeuta de AP en Asturias | [58] | Anterior a 2022 | Población por fisioterapeuta de AP según el SIAP |
-| 3.1 | 10.091 | Habitantes por fisioterapeuta de AP en Cantabria | [58] | Anterior a 2022 | Población por fisioterapeuta de AP según el SIAP |
-| 3.1 | 104.847 | Habitantes por fisioterapeuta de AP en Cataluña | [58] | Anterior a 2022 | Población por fisioterapeuta de AP según el SIAP |
-| 3.1 | 12.101 | Habitantes por fisioterapeuta de AP en Extremadura | [58] | Anterior a 2022 | Población por fisioterapeuta de AP según el SIAP |
-| 3.1 | 91.972 | Habitantes por fisioterapeuta de AP en Navarra | [58] | Anterior a 2022 | Población por fisioterapeuta de AP según el SIAP |
-| 3.3 | 24 | Zonas básicas de salud del despliegue inicial en Canarias | [67] | 2022 | Zonas básicas con servicio de fisioterapia en la primera fase |
-| 4.1 | 40 | Centros de la evaluación nacional de la fisioterapia de primer contacto en Inglaterra | [87] | Publicado en 2021 | Centros participantes |
-| 4.1 | 240 | Fisioterapeutas de primer contacto de la evaluación nacional | [87] | Publicado en 2021 | Profesionales participantes |
-| 4.1 | 426 | Adultos incluidos en el estudio FRONTIER | [90] | Publicado en 2024 | Participantes |
-| 4.1 | 46 | Consultas de medicina general del estudio FRONTIER | [90] | Publicado en 2024 | Centros participantes |
-| 4.1 | 44,7 % | Personas con medicación tras la primera consulta en el grupo de medicina general | [90] | Publicado en 2024 | Porcentaje del grupo |
-| 4.1 | 18,4 % | Personas con medicación tras la primera consulta en un grupo de fisioterapia | [90] | Publicado en 2024 | Porcentaje del grupo |
-| 4.1 | 24,7 % | Personas con medicación tras la primera consulta en el otro grupo de fisioterapia | [90] | Publicado en 2024 | Porcentaje del grupo |
-| 4.1 | 105,5 | Coste mediano por paciente para el NHS en el grupo de medicina general | [90] | Publicado en 2024 | Libras esterlinas por paciente |
-| 4.1 | 41,0 | Coste mediano por paciente en un grupo de fisioterapia | [90] | Publicado en 2024 | Libras esterlinas por paciente |
-| 4.1 | 44,0 | Coste mediano por paciente en el otro grupo de fisioterapia | [90] | Publicado en 2024 | Libras esterlinas por paciente |
-| 4.2 y 11.5 | 28 % | Pacientes que llegaron a fisioterapia por acceso directo en los Países Bajos | [92] | 2006 | Porcentaje de los pacientes atendidos en el primer año de acceso directo |
-| 4.2 y 11.5 | 74,3 % | Pacientes que acudieron a fisioterapia sin derivación en los Países Bajos | [94] | 2024 | Porcentaje de pacientes sin derivación |
-| 4.4 | 28 | Artículos de la revisión sistemática de Gallotti y colaboradores | [111] | Publicado en 2023 | Artículos incluidos |
+| 3.1 y 9.1 | 2.418 | Fisioterapeutas de atención primaria en el SNS | [56] | 2024 | Profesionales de fisioterapia de AP registrados en el informe monográfico |
+| 3.1 | 84,8 % | Fisioterapeutas del SNS que trabajan en hospitales | [56] | 2024 | Porcentaje sobre el total de fisioterapeutas del SNS |
+| 3.1 | 10 % | Fisioterapeutas del SNS que trabajan en atención primaria | [56] | 2024 | Porcentaje sobre el total de fisioterapeutas del SNS |
+| 3.1 | 13.694 | Habitantes por fisioterapeuta de AP en Asturias | [57] | Anterior a 2022 | Población por fisioterapeuta de AP según el SIAP |
+| 3.1 | 10.091 | Habitantes por fisioterapeuta de AP en Cantabria | [57] | Anterior a 2022 | Población por fisioterapeuta de AP según el SIAP |
+| 3.1 | 104.847 | Habitantes por fisioterapeuta de AP en Cataluña | [57] | Anterior a 2022 | Población por fisioterapeuta de AP según el SIAP |
+| 3.1 | 12.101 | Habitantes por fisioterapeuta de AP en Extremadura | [57] | Anterior a 2022 | Población por fisioterapeuta de AP según el SIAP |
+| 3.1 | 91.972 | Habitantes por fisioterapeuta de AP en Navarra | [57] | Anterior a 2022 | Población por fisioterapeuta de AP según el SIAP |
+| 3.3 | 24 | Zonas básicas de salud del despliegue inicial en Canarias | [66] | 2022 | Zonas básicas con servicio de fisioterapia en la primera fase |
+| 4.1 | 40 | Centros de la evaluación nacional de la fisioterapia de primer contacto en Inglaterra | [88] | Publicado en 2021 | Centros participantes |
+| 4.1 | 240 | Fisioterapeutas de primer contacto de la evaluación nacional | [88] | Publicado en 2021 | Profesionales participantes |
+| 4.1 | 426 | Adultos incluidos en el estudio FRONTIER | [91] | Publicado en 2024 | Participantes |
+| 4.1 | 46 | Consultas de medicina general del estudio FRONTIER | [91] | Publicado en 2024 | Centros participantes |
+| 4.1 | 44,7 % | Personas con medicación tras la primera consulta en el grupo de medicina general | [91] | Publicado en 2024 | Porcentaje del grupo |
+| 4.1 | 18,4 % | Personas con medicación tras la primera consulta en un grupo de fisioterapia | [91] | Publicado en 2024 | Porcentaje del grupo |
+| 4.1 | 24,7 % | Personas con medicación tras la primera consulta en el otro grupo de fisioterapia | [91] | Publicado en 2024 | Porcentaje del grupo |
+| 4.1 | 105,5 | Coste mediano por paciente para el NHS en el grupo de medicina general | [91] | Publicado en 2024 | Libras esterlinas por paciente |
+| 4.1 | 41,0 | Coste mediano por paciente en un grupo de fisioterapia | [91] | Publicado en 2024 | Libras esterlinas por paciente |
+| 4.1 | 44,0 | Coste mediano por paciente en el otro grupo de fisioterapia | [91] | Publicado en 2024 | Libras esterlinas por paciente |
+| 4.2 y 11.5 | 28 % | Pacientes que llegaron a fisioterapia por acceso directo en los Países Bajos | [93] | 2006 | Porcentaje de los pacientes atendidos en el primer año de acceso directo |
+| 4.2 y 11.5 | 74,3 % | Pacientes que acudieron a fisioterapia sin derivación en los Países Bajos | [95] | 2024 | Porcentaje de pacientes sin derivación |
+| 4.4 | 28 | Artículos de la revisión sistemática de Gallotti y colaboradores | [112] | Publicado en 2023 | Artículos incluidos |
 | 4.4 | 2.081 | Pacientes del metaanálisis de Abuhl y colaboradores | [31] | Publicado en 2025 | Pacientes de diez ensayos aleatorizados |
 | 4.4 | 0,55 | Riesgo relativo de solicitud de imagen con primer contacto por fisioterapia | [31] | Publicado en 2025 | Riesgo relativo combinado |
 | 4.4 | 0,29 | Riesgo relativo de medicación con primer contacto por fisioterapia | [31] | Publicado en 2025 | Riesgo relativo combinado |
-| 4.4 y 11.5 | 10 % | Autorreferencia real en uno de los brazos del estudio STEMS-2 | [113] | 2011 a 2017 | Porcentaje de las entradas a fisioterapia |
-| 4.4 y 11.5 | 6 % | Autorreferencia real en el otro brazo del estudio STEMS-2 | [113] | 2011 a 2017 | Porcentaje de las entradas a fisioterapia |
-| 4.4 | 21 | Estudios de la revisión de Fischer y colaboradores | [114] | Publicado en 2026 | Estudios incluidos |
-| 4.4 | 90.401 | Pacientes de la revisión de Fischer y colaboradores | [114] | Publicado en 2026 | Pacientes incluidos |
-| 4.4 | 10 % | Límite inferior de la reducción estimada de consultas de medicina general | [114] | Publicado en 2026 | Reducción relativa estimada |
-| 4.4 | 30 % | Límite superior de la reducción estimada de consultas de medicina general | [114] | Publicado en 2026 | Reducción relativa estimada |
-| 4.4 | 0,57 | Riesgo relativo de prescripción con acceso directo | [115] | Publicado en 2026 | Riesgo relativo combinado, certeza baja |
-| 4.5 | 611.000 | Fisioterapeutas en la Unión Europea | [118] | 2021 | Fisioterapeutas en ejercicio, todos los ámbitos |
-| 4.5 | 136,7 | Fisioterapeutas por 100.000 habitantes en la Unión Europea | [118] | 2021 | En ejercicio, todos los ámbitos |
-| 4.5 | 234,4 | Fisioterapeutas por 100.000 habitantes en Alemania | [118] | 2021 | En ejercicio, todos los ámbitos |
-| 4.5 | 215,9 | Fisioterapeutas por 100.000 habitantes en Bélgica | [118] | 2021 | En ejercicio, todos los ámbitos |
-| 4.5 | 12,7 | Fisioterapeutas por 100.000 habitantes en Rumanía | [118] | 2021 | En ejercicio, todos los ámbitos |
-| 4.5 | 149 | Fisioterapeutas por 100.000 habitantes en la Unión Europea | [119] | 2023 | En ejercicio, todos los ámbitos |
-| 4.5 | 240 | Fisioterapeutas por 100.000 habitantes en Alemania | [119] | 2023 | En ejercicio, todos los ámbitos |
-| 4.5 | 228 | Fisioterapeutas por 100.000 habitantes en Bélgica | [119] | 2023 | En ejercicio, todos los ámbitos |
-| 4.5 | 188 | Fisioterapeutas por 100.000 habitantes en los Países Bajos | [119] | 2023 | En ejercicio, todos los ámbitos |
-| 4.5 | 3,6 | Fisioterapeutas por 10.000 habitantes, media mundial | [120] | 2024 | Censo de las organizaciones miembro de World Physiotherapy |
-| 4.5 | 39 % | Organizaciones que declaran acceso directo pleno | [120] | 2024 | Porcentaje de organizaciones que respondieron al censo |
-| 4.5 | 58 % | Organizaciones que declararon acceso directo | [121] | Publicado en 2013 | Porcentaje de las organizaciones que respondieron a la encuesta |
-| 8.4 | 15.581 | Pacientes de la revisión sobre las reglas de Ottawa | [139] | Publicado en 2003 | Pacientes de los estudios combinados |
-| 8.4 | 100 % | Sensibilidad de las reglas de Ottawa para excluir fracturas | [139] | Publicado en 2003 | Sensibilidad cercana al 100 % |
-| 9.5 | 10.000 | Habitantes por fisioterapeuta de primer contacto que pide la Chartered Society of Physiotherapy | [165] | 2022 | Reivindicación profesional para Inglaterra |
+| 4.4 y 11.5 | 10 % | Autorreferencia real en uno de los brazos del estudio STEMS-2 | [114] | 2011 a 2017 | Porcentaje de las entradas a fisioterapia |
+| 4.4 y 11.5 | 6 % | Autorreferencia real en el otro brazo del estudio STEMS-2 | [114] | 2011 a 2017 | Porcentaje de las entradas a fisioterapia |
+| 4.4 | 21 | Estudios de la revisión de Fischer y colaboradores | [115] | Publicado en 2026 | Estudios incluidos |
+| 4.4 | 90.401 | Pacientes de la revisión de Fischer y colaboradores | [115] | Publicado en 2026 | Pacientes incluidos |
+| 4.4 | 10 % | Límite inferior de la reducción estimada de consultas de medicina general | [115] | Publicado en 2026 | Reducción relativa estimada |
+| 4.4 | 30 % | Límite superior de la reducción estimada de consultas de medicina general | [115] | Publicado en 2026 | Reducción relativa estimada |
+| 4.4 | 0,57 | Riesgo relativo de prescripción con acceso directo | [116] | Publicado en 2026 | Riesgo relativo combinado, certeza baja |
+| 4.5 | 611.000 | Fisioterapeutas en la Unión Europea | [119] | 2021 | Fisioterapeutas en ejercicio, todos los ámbitos |
+| 4.5 | 136,7 | Fisioterapeutas por 100.000 habitantes en la Unión Europea | [119] | 2021 | En ejercicio, todos los ámbitos |
+| 4.5 | 234,4 | Fisioterapeutas por 100.000 habitantes en Alemania | [119] | 2021 | En ejercicio, todos los ámbitos |
+| 4.5 | 215,9 | Fisioterapeutas por 100.000 habitantes en Bélgica | [119] | 2021 | En ejercicio, todos los ámbitos |
+| 4.5 | 12,7 | Fisioterapeutas por 100.000 habitantes en Rumanía | [119] | 2021 | En ejercicio, todos los ámbitos |
+| 4.5 | 149 | Fisioterapeutas por 100.000 habitantes en la Unión Europea | [120] | 2023 | En ejercicio, todos los ámbitos |
+| 4.5 | 240 | Fisioterapeutas por 100.000 habitantes en Alemania | [120] | 2023 | En ejercicio, todos los ámbitos |
+| 4.5 | 228 | Fisioterapeutas por 100.000 habitantes en Bélgica | [120] | 2023 | En ejercicio, todos los ámbitos |
+| 4.5 | 188 | Fisioterapeutas por 100.000 habitantes en los Países Bajos | [120] | 2023 | En ejercicio, todos los ámbitos |
+| 4.5 | 3,6 | Fisioterapeutas por 10.000 habitantes, media mundial | [121] | 2024 | Censo de las organizaciones miembro de World Physiotherapy |
+| 4.5 | 39 % | Organizaciones que declaran acceso directo pleno | [121] | 2024 | Porcentaje de organizaciones que respondieron al censo |
+| 4.5 | 58 % | Organizaciones que declararon acceso directo | [122] | Publicado en 2013 | Porcentaje de las organizaciones que respondieron a la encuesta |
+| 8.4 | 15.581 | Pacientes de la revisión sobre las reglas de Ottawa | [141] | Publicado en 2003 | Pacientes de los estudios combinados |
+| 8.4 | 100 % | Sensibilidad de las reglas de Ottawa para excluir fracturas | [141] | Publicado en 2003 | Sensibilidad cercana al 100 % |
+| 9.5 | 10.000 | Habitantes por fisioterapeuta de primer contacto que pide la Chartered Society of Physiotherapy | [168] | 2022 | Reivindicación profesional para Inglaterra |
 | 1.2 | 54 % | Aumento de los años vividos con discapacidad por dolor lumbar | [17] | 1990 a 2015 | Aumento mundial entre 1990 y 2015 |
 | 1.2 | 165 | Estudios poblacionales incluidos en la revisión de prevalencia del dolor lumbar | [18] | Publicado en 2012 | Estudios publicados entre 1980 y 2009 |
 | 1.2 | 54 | Países de los estudios incluidos en la revisión de prevalencia del dolor lumbar | [18] | Publicado en 2012 | Países |
@@ -1857,13 +1862,13 @@ Tabla E.1. Fuentes por cifra
 | 1.2 | 60 % | Resultados satisfactorios del tratamiento conservador del síndrome subacromial en dos años | [21] | Publicado en 2017 | Proporción de casos, según una revisión narrativa |
 | 1.2 | 19 % | Prevalencia del dolor persistente moderado o grave en la población adulta europea | [22] | Publicado en 2006 | Encuesta en quince países europeos e Israel |
 | 1.2 | 21 % | Personas con dolor persistente que han utilizado fisioterapia | [22] | Publicado en 2006 | Uso de fisioterapia entre las personas entrevistadas |
-| 1.2, 1.5, 4.3 y 4.4 | 2 % | Personas con dolor persistente atendidas por un especialista en dolor; reconsulta hospitalaria tras el alta del equipo galés; casos de columna quirúrgica en Saskatchewan | [22, 41, 102] | Publicado en 2006, 2016 y 2012 | Tres cifras con el mismo valor en estudios distintos |
+| 1.2, 1.5, 4.3 y 4.4 | 2 % | Personas con dolor persistente atendidas por un especialista en dolor; reconsulta hospitalaria tras el alta del equipo galés; casos de columna quirúrgica en Saskatchewan | [22, 41, 103] | Publicado en 2006, 2016 y 2012 | Tres cifras con el mismo valor en estudios distintos |
 | 1.2 | 40 % | Personas con dolor persistente que consideran inadecuado el manejo de su dolor | [22] | Publicado en 2006 | Proporción de personas entrevistadas |
 | 1.3 y 4.2 | 4.300 | Coste total del dolor lumbar en los Países Bajos en 2002 | [25] | 2002 | Millones de euros |
 | 1.3 y 4.2 | 3.500 | Coste total del dolor lumbar en los Países Bajos en 2007 | [25] | 2007 | Millones de euros |
 | 1.3 | 12 % | Peso de los costes directos en el coste del dolor lumbar en los Países Bajos | [25] | 2002 a 2007 | Proporción del coste total |
 | 1.3 | 2.825 | Personas de baja por dolor lumbar en la cohorte de seis países | [26] | Publicado en 2009 | Participantes |
-| 1.3 y 4.4 | 22 % | Retorno sostenido al trabajo en la cohorte alemana; conversión quirúrgica de las derivaciones del médico general en Columbia Británica | [26, 101] | Publicado en 2009 y en 2013 | Dos cifras con el mismo valor en estudios distintos |
+| 1.3 y 4.4 | 22 % | Retorno sostenido al trabajo en la cohorte alemana; conversión quirúrgica de las derivaciones del médico general en Columbia Británica | [26, 102] | Publicado en 2009 y en 2013 | Dos cifras con el mismo valor en estudios distintos |
 | 1.3 | 62 % | Retorno sostenido al trabajo en la cohorte neerlandesa | [26] | Publicado en 2009 | Proporción a los dos años |
 | 1.3 | 43 | Días de incapacidad temporal evitados al año con la rehabilitación multidisciplinar | [27] | Publicado en 2011 | Diferencia media frente al tratamiento habitual, redondeada |
 | 1.3 y 10.3 | 60 | Días de baja dentro de los cuales los autores proponen iniciar la rehabilitación multimodal | [28] | Publicado en 2018 | Implicación práctica de los autores, no resultado medido |
@@ -1880,41 +1885,49 @@ Tabla E.1. Fuentes por cifra
 | 1.5 y 4.4 | 92 % | Casos resueltos de forma independiente por el fisioterapeuta de práctica avanzada en columna | [40] | 2012 a 2014 | Proporción de las derivaciones atendidas |
 | 1.5 | 8 % | Casos que necesitaron comentario o revisión quirúrgica en la unidad de columna | [40] | 2012 a 2014 | Proporción de las derivaciones atendidas |
 | 1.5 y 4.4 | 2.362 | Altas revisadas del equipo galés liderado por fisioterapia | [41] | Diciembre de 2011 a noviembre de 2012 | Altas |
-| 4.3 | 0,77 | Concordancia entre fisioterapeuta y cirujano en las decisiones de manejo quirúrgico | [101] | Publicado en 2013 | Kappa ponderado |
-| 4.3 | 92,5 % | Casos clasificados como columna mecánica en el programa de triaje de Saskatchewan | [102] | 2003 a 2006 | Proporción de participantes |
-| 4.3 | 80 % | Derivaciones al cirujano que resultaron candidatas a cirugía en Saskatchewan | [102] | 2003 a 2006 | Rendimiento quirúrgico del programa |
+| 4.3 | 0,77 | Concordancia entre fisioterapeuta y cirujano en las decisiones de manejo quirúrgico | [102] | Publicado en 2013 | Kappa ponderado |
+| 4.3 | 92,5 % | Casos clasificados como columna mecánica en el programa de triaje de Saskatchewan | [103] | 2003 a 2006 | Proporción de participantes |
+| 4.3 | 80 % | Derivaciones al cirujano que resultaron candidatas a cirugía en Saskatchewan | [103] | 2003 a 2006 | Rendimiento quirúrgico del programa |
 | 4.4 | 81 % | Derivaciones al cirujano consideradas adecuadas en la unidad de columna | [40] | 2012 a 2014 | Adecuación de la derivación, no cirugía realizada |
 | 4.4 y 9.6 | 27,3 % | Ahorro atribuido al triaje ortopédico por el análisis gallego | [8] | 2019 | Cifra no trazable a un estudio indexado, que este documento no usa |
-| 4.5 | 1.153 | Personas incluidas en la revisión sobre intensidad de la fisioterapia en el dolor lumbar | [116] | Publicado en 2020 | Participantes de ocho ensayos |
-| 4.5 | 67,3 % | Personas que no conocían el acceso directo a fisioterapia en una encuesta de Florida | [117] | Publicado en 2001 | Proporción de la muestra |
-| 4.5 | 73,4 % | Personas que acudirían directamente al fisioterapeuta en una encuesta de Florida | [117] | Publicado en 2001 | Proporción de la muestra |
-| 5.3 y 7.1 | 0,76 | Concordancia diagnóstica entre el fisioterapeuta de práctica avanzada y el médico | [107] | Publicado en 2023 | Kappa combinado, certeza moderada |
-| 5.4 | 13 | Ensayos incluidos en la revisión sobre educación en neurociencia del dolor | [127] | Publicado en 2016 | Ensayos aleatorizados |
-| 5.4 | 70 | Edad mínima de las personas prefrágiles del ensayo de prevención de la fragilidad | [132] | Publicado en 2017 | Años |
-| 5.4 | 4,9 % | Progresión a fragilidad en el grupo de intervención | [132] | Publicado en 2017 | Proporción a los doce meses |
-| 5.4 | 15,3 % | Progresión a fragilidad en el grupo control | [132] | Publicado en 2017 | Proporción a los doce meses |
-| 5.4 | 149 | Personas con dolor vertebral persistente en la cohorte de ejercicio grupal en AP | [130] | Publicado en 2023 | Participantes |
-| 7.1 | 65 % | Concordancia diagnóstica mínima con el cirujano ortopédico en la revisión de Trøstrup | [106] | Publicado en 2020 | Límite inferior del intervalo entre estudios |
-| 7.1 | 100 % | Concordancia diagnóstica máxima con el cirujano ortopédico en la revisión de Trøstrup | [106] | Publicado en 2020 | Límite superior del intervalo entre estudios |
-| 8.4 | 150 | Pacientes de la validación española del PRTEE | [150] | Publicado en 2020 | Participantes |
-| 8.4 | 0,96 | Alfa de Cronbach de la versión española del PRTEE | [150] | Publicado en 2020 | Consistencia interna |
-| 8.4 | 0,9 | Coeficiente de correlación intraclase de la versión española del PRTEE | [150] | Publicado en 2020 | Fiabilidad |
-| 9.6 | 447 | Coste total por persona de la terapia manual en el dolor cervical | [167] | Publicado en 2003 | Euros |
-| 9.6 | 1.297 | Coste total por persona de la fisioterapia basada en ejercicio en el dolor cervical | [167] | Publicado en 2003 | Euros |
-| 9.6 | 1.379 | Coste total por persona de la atención por el médico general en el dolor cervical | [167] | Publicado en 2003 | Euros |
-| 9.6 | 568 | Ahorro potencial anual para el sistema de salud madrileño de cuatro actuaciones de fisioterapia | [161] | 2021 | Millones de euros; estimación por extrapolación citada en la presentación del informe |
-| 10.4 | 55 % | Conversión quirúrgica mínima con triaje por fisioterapia | [105] | Publicado en 2020 | Límite inferior del intervalo entre estudios |
-| 4.4 y 10.4 | 91 % | Conversión quirúrgica máxima con triaje por fisioterapia | [101, 105] | Publicado en 2013 y en 2020 | Límite superior del intervalo y valor del estudio de Napier |
-| 10.4 | 38 % | Conversión quirúrgica máxima sin triaje por fisioterapia | [105] | Publicado en 2020 | Límite superior del intervalo entre estudios |
+| 4.5 | 1.153 | Personas incluidas en la revisión sobre intensidad de la fisioterapia en el dolor lumbar | [117] | Publicado en 2020 | Participantes de ocho ensayos |
+| 4.5 | 67,3 % | Personas que no conocían el acceso directo a fisioterapia en una encuesta de Florida | [118] | Publicado en 2001 | Proporción de la muestra |
+| 4.5 | 73,4 % | Personas que acudirían directamente al fisioterapeuta en una encuesta de Florida | [118] | Publicado en 2001 | Proporción de la muestra |
+| 5.3 y 7.1 | 0,76 | Concordancia diagnóstica entre el fisioterapeuta de práctica avanzada y el médico | [108] | Publicado en 2023 | Kappa combinado, certeza moderada |
+| 5.4 | 13 | Ensayos incluidos en la revisión sobre educación en neurociencia del dolor | [128] | Publicado en 2016 | Ensayos aleatorizados |
+| 5.4 | 70 | Edad mínima de las personas prefrágiles del ensayo de prevención de la fragilidad | [133] | Publicado en 2017 | Años |
+| 5.4 | 4,9 % | Progresión a fragilidad en el grupo de intervención | [133] | Publicado en 2017 | Proporción a los doce meses |
+| 5.4 | 15,3 % | Progresión a fragilidad en el grupo control | [133] | Publicado en 2017 | Proporción a los doce meses |
+| 5.4 | 149 | Personas con dolor vertebral persistente en la cohorte de ejercicio grupal en AP | [131] | Publicado en 2023 | Participantes |
+| 7.1 | 65 % | Concordancia diagnóstica mínima con el cirujano ortopédico en la revisión de Trøstrup | [107] | Publicado en 2020 | Límite inferior del intervalo entre estudios |
+| 7.1 | 100 % | Concordancia diagnóstica máxima con el cirujano ortopédico en la revisión de Trøstrup | [107] | Publicado en 2020 | Límite superior del intervalo entre estudios |
+| 8.4 | 150 | Pacientes de la validación española del PRTEE | [152] | Publicado en 2020 | Participantes |
+| 8.4 | 0,96 | Alfa de Cronbach de la versión española del PRTEE | [152] | Publicado en 2020 | Consistencia interna |
+| 8.4 | 0,9 | Coeficiente de correlación intraclase de la versión española del PRTEE | [152] | Publicado en 2020 | Fiabilidad |
+| 9.6 | 447 | Coste total por persona de la terapia manual en el dolor cervical | [170] | Publicado en 2003 | Euros |
+| 9.6 | 1.297 | Coste total por persona de la fisioterapia basada en ejercicio en el dolor cervical | [170] | Publicado en 2003 | Euros |
+| 9.6 | 1.379 | Coste total por persona de la atención por el médico general en el dolor cervical | [170] | Publicado en 2003 | Euros |
+| 9.6 | 568 | Ahorro potencial anual para el sistema de salud madrileño de cuatro actuaciones de fisioterapia | [164] | 2021 | Millones de euros; estimación por extrapolación citada en la presentación del informe |
+| 10.4 | 55 % | Conversión quirúrgica mínima con triaje por fisioterapia | [106] | Publicado en 2020 | Límite inferior del intervalo entre estudios |
+| 4.4 y 10.4 | 91 % | Conversión quirúrgica máxima con triaje por fisioterapia | [102, 106] | Publicado en 2013 y en 2020 | Límite superior del intervalo y valor del estudio de Napier |
+| 10.4 | 38 % | Conversión quirúrgica máxima sin triaje por fisioterapia | [106] | Publicado en 2020 | Límite superior del intervalo entre estudios |
 | 1.5 | 335 | Talleres para la ciudadanía impartidos por las unidades de fisioterapia de AP de Madrid | [39] | 2024 | Talleres de educación para la salud |
 | 1.5 | 224 | Talleres dirigidos a prevenir la fragilidad y las caídas en personas mayores en Madrid | [39] | 2024 | Parte de los 335 talleres |
-| 7.3 | 450 | Ecógrafos en los centros de salud de la Comunidad de Madrid | [137] | 2022 | Equipos fijos de consola y ultraportátiles |
-| 3.3 | 246 | Centros de salud con el sistema XIDE a finales de 2022 | [77] | 2022 | Centros de salud del SERGAS |
-| 3.3 | 73 % | Población gallega cubierta por el sistema XIDE a finales de 2022 | [77] | 2022 | Proporción de la población |
-| 3.3 | 40 % | Reducción media de las citas forzadas en las agendas de medicina de familia con XIDE | [77] | 2022 | Reducción media atribuida por el informe |
-| 9.1 | 218 | Fisioterapeutas estimados en la AP de Madrid en 2021 | [161] | 2021 | Estimación a partir de una encuesta a colegiados |
-| 9.1 | 50 | Fisioterapeutas de AP de Madrid formados en dolor musculoesquelético en 2025 | [138] | 2025 | «Más de 50» alumnos en dos cursos |
-| 9.1 | 20 % | Proporción de los fisioterapeutas de AP de Madrid en activo que representan esos alumnos | [138] | 2025 | Proporción aproximada según la nota oficial |
+| 7.3 | 450 | Ecógrafos en los centros de salud de la Comunidad de Madrid | [139] | 2022 | Equipos fijos de consola y ultraportátiles |
+| 3.3 | 246 | Centros de salud con el sistema XIDE a finales de 2022 | [76] | 2022 | Centros de salud del SERGAS |
+| 3.3 | 73 % | Población gallega cubierta por el sistema XIDE a finales de 2022 | [76] | 2022 | Proporción de la población |
+| 3.3 | 40 % | Reducción media de las citas forzadas en las agendas de medicina de familia con XIDE | [76] | 2022 | Reducción media atribuida por el informe |
+| 9.1 | 218 | Fisioterapeutas estimados en la AP de Madrid en 2021 | [164] | 2021 | Estimación a partir de una encuesta a colegiados |
+| 9.1 | 50 | Fisioterapeutas de AP de Madrid formados en dolor musculoesquelético en 2025 | [140] | 2025 | «Más de 50» alumnos en dos cursos |
+| 9.1 | 20 % | Proporción de los fisioterapeutas de AP de Madrid en activo que representan esos alumnos | [140] | 2025 | Proporción aproximada según la nota oficial |
+| 9.1 | 947 | Plazas de fisioterapeuta en las plantillas orgánicas del Servicio Madrileño de Salud | [163] | 30 de abril de 2024 | Plazas de plantilla orgánica |
+| 9.1 | 691 | Plazas de fisioterapeuta del Servicio Madrileño de Salud en atención hospitalaria | [163] | 30 de abril de 2024 | Plazas de plantilla orgánica |
+| 9.1 | 256 | Plazas de fisioterapeuta del Servicio Madrileño de Salud en AP | [163] | 30 de abril de 2024 | Plazas de plantilla orgánica |
+| 6.4 | 11,8 % | Personas de 65 a 79 años con algún grado de dependencia para las actividades básicas de la vida diaria en Madrid | [137] | 2023 | Indicador de actividades básicas de la vida diaria |
+| 6.4 | 10,2 % | Personas mayores de 65 años con una caída que requirió asistencia sanitaria en el último año en Madrid | [137] | 2023 | Caídas con asistencia sanitaria en el último año |
+| 6.4 | 32,2 % | Personas de 65 a 79 años que viven con miedo a caerse en Madrid | [137] | 2023 | Miedo a caerse |
+| 6.4 | 65 | Edad inicial de los grupos de edad que usa el informe de salud de Madrid | [137] | 2023 | Años |
+| 6.4 | 79 | Edad final del grupo de 65 a 79 años del informe de salud de Madrid | [137] | 2023 | Años |
 | 9.2 | 23.871 | Habitantes por fisioterapeuta en el escenario bajo | Modelo de la sección 9 | No aplica | Resultado del modelo de demanda con los parámetros de la tabla 9.1 |
 | 9.2 | 7.480 | Habitantes por fisioterapeuta en el escenario central | Modelo de la sección 9 | No aplica | Resultado del modelo de demanda con los parámetros de la tabla 9.1 |
 | 9.2 | 2.035 | Habitantes por fisioterapeuta en el escenario alto | Modelo de la sección 9 | No aplica | Resultado del modelo de demanda con los parámetros de la tabla 9.1 |
@@ -2012,125 +2025,128 @@ Fuente: búsqueda documental realizada para este documento.
 47. Ministerio de Sanidad. Plan de Acción de Atención Primaria y Comunitaria 2022-2023. Madrid: Ministerio de Sanidad; 2021. Disponible en: https://www.sanidad.gob.es/areas/calidadAsistencial/estrategias/atencionPrimaria/docs/Plan_de_Accion_de_Atencion_Primaria.pdf.
 48. Ministerio de Sanidad. Plan de Acción de Atención Primaria y Comunitaria 2025-2027. Madrid: Ministerio de Sanidad; 2024. Disponible en: https://www.sanidad.gob.es/areas/calidadAsistencial/estrategias/atencionPrimaria/docs/Plan_de_Accion_de_Atencion_Primaria_y_Comunitaria_2025-2027.pdf.
 49. Ministerio de Sanidad. El Consejo Interterritorial aprueba el Plan de Acción de Atención Primaria y Comunitaria 2025-2027 [nota de prensa]. Madrid; 16 de diciembre de 2024. Disponible en: https://www.sanidad.gob.es/gabinete/notasPrensa.do?id=6591.
-50. Situación actual de la fisioterapia en Atención Primaria de la Comunidad de Madrid [documento de trabajo sin autoría ni fecha, posterior a diciembre de 2024]. Madrid. Documento de trabajo no publicado.
-51. Ministerio de Sanidad, Servicios Sociales e Igualdad. Estrategia para el Abordaje de la Cronicidad en el Sistema Nacional de Salud. Madrid: Ministerio de Sanidad, Servicios Sociales e Igualdad; 2012. Disponible en: https://www.sanidad.gob.es/areas/calidadAsistencial/estrategias/abordajeCronicidad/docs/ESTRATEGIA_ABORDAJE_CRONICIDAD.pdf.
-52. Ministerio de Sanidad, Servicios Sociales e Igualdad. Estrategia de Promoción de la Salud y Prevención en el Sistema Nacional de Salud. Madrid: Ministerio de Sanidad, Servicios Sociales e Igualdad; 2013. Disponible en: https://www.sanidad.gob.es/areas/promocionPrevencion/estrategiaSNS/docs/EstrategiaPromocionSaludyPrevencionSNS.pdf.
-53. Ministerio de Sanidad. Estrategia de Salud Digital del Sistema Nacional de Salud. Madrid: Ministerio de Sanidad; 2021. Disponible en: https://www.sanidad.gob.es/areas/saludDigital/doc/Estrategia_de_Salud_Digital_del_SNS.pdf.
-54. Real Decreto 601/2019, de 18 de octubre, sobre justificación y optimización del uso de las radiaciones ionizantes para la protección radiológica de las personas con ocasión de exposiciones médicas. Boletín Oficial del Estado, BOE-A-2019-15604. Disponible en: https://www.boe.es/buscar/act.php?id=BOE-A-2019-15604.
-55. Directiva 2013/59/Euratom del Consejo, de 5 de diciembre de 2013, por la que se establecen normas de seguridad básicas para la protección contra los peligros derivados de la exposición a radiaciones ionizantes. Diario Oficial de la Unión Europea, L 13, de 17 de enero de 2014. Disponible en: https://eur-lex.europa.eu/eli/dir/2013/59/oj.
-56. Long J. European region of the WCPT statement on physiotherapy in primary care. Prim Health Care Res Dev. 2019;20:e147. PMID: 31679552. doi:10.1017/S1463423619000811.
-57. Ministerio de Sanidad. Informe monográfico. Recursos humanos, ordenación profesional y formación continuada en el Sistema Nacional de Salud. Informe Anual del Sistema Nacional de Salud 2024. Madrid: Ministerio de Sanidad; 2025. Disponible en: https://www.sanidad.gob.es/estadEstudios/estadisticas/sisInfSanSNS/tablasEstadisticas/InfAnual2024/Monografico_RRHH_2024.pdf.
-58. Aiguadé Aiguadé R. La hora de la Atención Primaria [editorial]. Fisioterapia. 2022;44(4):199-200. doi:10.1016/j.ft.2022.03.002.
-59. Departament de Salut. Programa d'incorporació de fisioterapeutes per a la promoció del funcionament i la prevenció de la discapacitat a l'atenció primària i comunitària. Barcelona: Generalitat de Catalunya; 2022. Disponible en: https://salutweb.gencat.cat/ca/departament/ambits-estrategics/atencio-primaria-comunitaria/projectes/programa-incorporacio-fisioterapeutes/.
-60. Departament de Salut. Pla funcional del Programa d'incorporació de fisioterapeutes a l'atenció primària i comunitària. Barcelona: Generalitat de Catalunya; 2023. Disponible en: https://scientiasalut.gencat.cat/handle/11351/9106.
-61. Ministerio de Sanidad. Sistema de Información de Atención Primaria (SIAP). Profesionales [consulta interactiva]. Disponible en: https://pestadistico.inteligenciadegestion.sanidad.gob.es/publicoSNS/S/sistema-de-informacion-de-atencion-primaria-siap.
-62. Servicio Andaluz de Salud. Cartera de servicios de atención primaria. IV. Otros servicios. 2.3 Fisioterapia [página web]. Disponible en: https://www.sspa.juntadeandalucia.es/servicioandaluzdesalud/profesionales/cartera-de-servicios/atencion-primaria/iv-otros-servicios/2-otros-servicios-prestados-en-dispositivos-de-apoyo/23-fisioterapia.
-63. Servicio Andaluz de Salud. Sanidad implanta la derivación desde Atención Primaria a Fisioterapia en toda Andalucía [nota de prensa]. Sevilla; 26 de mayo de 2026. Disponible en: https://www.sspa.juntadeandalucia.es/servicioandaluzdesalud/todas-noticia/sanidad-implanta-la-derivacion-desde-atencion-primaria-fisioterapia-en-toda-andalucia.
-64. Gobierno de Aragón. Cartera de Servicios de Atención Primaria del Sistema de Salud de Aragón. Zaragoza: Gobierno de Aragón; 2024. Disponible en: https://atencioncomunitaria.aragon.es/wp-content/uploads/2024/07/CARTERAATENCIONPRIMARIA.pdf.
-65. Gerencia de Atención Primaria de Mallorca. Protocolo de actuación en las patologías de derivación directa en las Unidades de Fisioterapia de Atención Primaria de Mallorca. Palma: Servei de Salut de les Illes Balears; 2023. Disponible en: https://docusalut.com/rest/api/core/bitstreams/6baa0511-9642-47e3-aa79-1202fd49c1ce/content.
-66. Servicio Canario de la Salud. Consulta de fisioterapia en Atención Primaria. Guía de actuación. Santa Cruz de Tenerife: Servicio Canario de la Salud; 2022. Disponible en: https://www3.gobiernodecanarias.org/sanidad/scs/listaImagenes.jsp?idCarpeta=46a3e0a2-75c8-11e2-bc0c-6512fc1bab5e&idDocument=046b7b81-75d6-11e2-bc0c-6512fc1bab5e.
-67. Gobierno de Canarias. Sanidad despliega servicio de fisioterapia en 24 zonas básicas de Gran Canaria, Tenerife, Lanzarote y Fuerteventura [nota de prensa]. 19 de septiembre de 2022. Disponible en: https://www3.gobiernodecanarias.org/noticias/sanidad-despliega-servicio-de-fisioterapia-en-24-zonas-basicas-de-gran-canaria-tenerife-lanzarote-y-fuerteventura/.
-68. Servicio de Salud de Castilla-La Mancha. Guía de Unidades de Fisioterapia de Atención Primaria. Toledo: SESCAM; 2022. Disponible en: https://castillalamancha.es/actualidad/notasdeprensa.
-69. Junta de Castilla y León. Protocolos de fisioterapia en atención primaria. Valladolid: Consejería de Sanidad; 2017. Disponible en: https://www.saludcastillayleon.es/profesionales/es/programas-guias-clinicas/guias-practica-clinica/guias-clinicas.ficheros/1105660-Fisioterapia.PDF.
-70. Conselleria de Sanitat. Cartera de servicios de Atención Primaria Comunitaria. Plan de Acción de Atención Primaria y Comunitaria 2022-2023. València: Generalitat Valenciana; 2022. Disponible en: https://www.san.gva.es/documents/d/assistencia-sanitaria/2_cartera_servicios_atencion_primaria_comunitaria_resumida_es-pdf.
-71. Área de Salud de Plasencia. Protocolo de derivación a las unidades de fisioterapia y rehabilitación. Plasencia: Servicio Extremeño de Salud; 2019. Disponible en: https://www.areasaludplasencia.es/docs/pgc/ses_plasencia_derivacion_fisioterapia_rehabilitacion.pdf.
-72. Servizo Galego de Saúde. Carteira de servizos de fisioterapia de atención primaria e comunitaria. Santiago de Compostela: SERGAS. Disponible en: https://www.sergas.gal/Asistencia-sanitaria/Documents/1795/Carteira_Unidades_de_fisioterapia_de_atencion_primaria.pdf.
-73. Servicio Madrileño de Salud, Gerencia Asistencial de Atención Primaria. Cartera de Servicios Estandarizados de Atención Primaria de Madrid. Actualización 2510. Madrid: Comunidad de Madrid; 2025. Disponible en: https://www.comunidad.madrid/hospital/atencionprimaria/sites/atencionprimaria/files/2025-10/Cartera%20de%20Servicios%20Estandarizados%20AP.%20Actualizaci%C3%B3n%202510.pdf.
-74. Servicio Murciano de Salud. El SMS aprueba la cartera de servicios de fisioterapia en Atención Primaria [nota de prensa]. Murcia; 6 de abril de 2026. Disponible en: https://www.murciasalud.es/en/-/el-sms-aprueba-la-cartera-de-servicios-de-fisioterapia-en-atenci%C3%B3n-primaria-para-mejorar-la-atenci%C3%B3n-de-los-pacientes.
-75. Servicio Navarro de Salud. Formación a fisioterapeutas de nueva incorporación en atención primaria, tercera edición [actividad formativa]. Disponible en: https://www.formacionsalud.navarra.es/actividad/idactividad/7576.
-76. Gobierno Vasco, Irekia. La Fisioterapia de Atención Primaria de Osakidetza ha atendido ya a más de 8.600 pacientes en el primer semestre [nota de prensa]. 2024. Disponible en: https://www.irekia.euskadi.eus/es/news/95370.
-77. Agencia Gallega de Conocimiento en Salud (ACIS). Informe sobre el diseño del sistema de citación XIDE (Gestión Integral de la Demanda en Equipo) en el Servicio Gallego de Salud y los resultados de su implementación. Santiago de Compostela: Servizo Galego de Saúde; 2023. Disponible en: https://acis.sergas.gal/cartafol/InformeXide2023?idioma=es.
-78. Redacción Médica. Los fisioterapeutas del Sergas podrán atender a pacientes bajo demanda. 6 de abril de 2022. Disponible en: https://www.redaccionmedica.com/autonomias/galicia/los-fisioterapeutas-del-sergas-podran-atender-a-pacientes-bajo-demanda-7761. Fuente secundaria.
-79. Comunidad de Madrid. Unidades de atención específica: fisioterapia [página web]. Disponible en: https://www.comunidad.madrid/hospital/atencionprimaria/ciudadanos/unidades-atencion-especifica-fisioterapia.
-80. NHS. The NHS Long Term Plan. Londres: NHS; 2019. Disponible en: https://www.longtermplan.nhs.uk/online-version/chapter-1-a-new-service-model-for-the-21st-century/.
-81. NHS England. Network Contract Directed Enhanced Service. Additional Roles Reimbursement Scheme guidance. Londres: NHS England; 2019. Disponible en: https://www.england.nhs.uk/wp-content/uploads/2019/12/network-contract-des-additional-roles-reimbursement-scheme-guidance-december2019.pdf.
-82. Health Education England. First Contact Practitioners and Advanced Practitioners in Primary Care: (Musculoskeletal). A Roadmap to Practice. Londres: Health Education England; 2020. Disponible en: https://www.hee.nhs.uk/our-work/allied-health-professions/enable-workforce/roadmaps-practice/first-contact-practitioners-roadmaps-practice.
-83. Chartered Society of Physiotherapy, British Medical Association, Royal College of General Practitioners. First Contact Physiotherapy posts in General Practice. A guide for implementation in England. Londres: CSP; 2018. Disponible en: https://www.csp.org.uk/system/files/001404_fcp_guidance_england_2018.pdf.
-84. Robert G, Stevens A. Should general practitioners refer patients directly to physical therapists? Br J Gen Pract. 1997;47(418):314-8. PMID: 9219412. Disponible en: https://pubmed.ncbi.nlm.nih.gov/9219412/.
-85. Hensher M. Improving general practitioner access to physiotherapy: a review of the economic evidence. Health Serv Manage Res. 1997;10(4):225-30. PMID: 10174512. doi:10.1177/095148489701000403.
-86. Goodwin RW, Hendrick PA. Physiotherapy as a first point of contact in general practice: a solution to a growing problem? Prim Health Care Res Dev. 2016;17(5):489-502. PMID: 27263326. doi:10.1017/S1463423616000189.
-87. Stynes S, Jordan KP, Hill JC, Wynne-Jones G, Cottrell E, Foster NE, et al. Evaluation of the First Contact Physiotherapy (FCP) model of primary care: patient characteristics and outcomes. Physiotherapy. 2021;113:199-208. PMID: 34656297. doi:10.1016/j.physio.2021.08.002.
-88. Wood L, Bishop A, Goodwin R, Stynes S. Patient satisfaction with the first contact physiotherapy service: results from the national evaluation survey. Musculoskeletal Care. 2022;20(2):363-370. PMID: 34709711. doi:10.1002/msc.1599.
-89. Goodwin R, Moffatt F, Hendrick P, Stynes S, Bishop A, Logan P. Evaluation of the First Contact Physiotherapy (FCP) model of primary care: a qualitative insight. Physiotherapy. 2021;113:209-216. PMID: 34583834. doi:10.1016/j.physio.2021.08.003.
-90. Walsh NE, Halls S, Thomas R, Berry A, Liddiard C, Cupples ME, et al. First contact physiotherapy: an evaluation of clinical effectiveness and costs. Br J Gen Pract. 2024;74(747):e717-e726. PMID: 38429110. doi:10.3399/BJGP.2023.0560.
-91. Walsh NE, Berry A, Halls S, Thomas R, Stott H, Liddiard C, et al. Clinical and cost-effectiveness of first contact physiotherapy for musculoskeletal disorders in primary care: the FRONTIER, mixed method realist evaluation. Health Soc Care Deliv Res. 2024;12(49):1-187. PMID: 39707910. doi:10.3310/RTKY7521.
-92. Leemrijse CJ, Swinkels IC, Veenhof C. Direct access to physical therapy in the Netherlands: results from the first year in community-based physical therapy. Phys Ther. 2008;88(8):936-46. PMID: 18566108. doi:10.2522/ptj.20070308.
-93. Swinkels IC, Kooijman MK, Spreeuwenberg PM, Bossen D, Leemrijse CJ, van Dijk CE, et al. An overview of 5 years of patient self-referral for physical therapy in the Netherlands. Phys Ther. 2014;94(12):1785-95. PMID: 25082921. doi:10.2522/ptj.20130309.
-94. Nivel. Jaarcijfers fysiotherapie 2024: aandeel patiënten met een verwijzing daalt. Utrecht: Nivel; 2025. Disponible en: https://www.nivel.nl/nl/nieuws/jaarcijfers-fysiotherapie-2024-aandeel-patienten-met-een-verwijzing-daalt.
-95. Helse- og omsorgsdepartementet. Prop. 71 L (2016-2017). Oslo: Gobierno de Noruega; 2017. Disponible en: https://www.regjeringen.no/no/dokumenter/prop.-71-l-20162017/id2546178/?ch=9.
-96. 1177 Vårdguiden, Region Stockholm. Rehabilitering i öppenvård [página web]. Disponible en: https://www.1177.se/Stockholm/undersokning-behandling/smartbehandlingar-och-rehabilitering/rehabilitering-i-stockholms-lan2/rehabilitering-i-oppenvard/.
-97. Bornhöft L, Larsson ME, Nordeman L, Eggertsen R, Thorn J. Health effects of direct triaging to physiotherapists in primary care for patients with musculoskeletal disorders: a pragmatic randomized controlled trial. Ther Adv Musculoskelet Dis. 2019;11:1759720X19827504. PMID: 30800175. doi:10.1177/1759720X19827504.
-98. Bornhöft L, Thorn J, Svensson M, Nordeman L, Eggertsen R, Larsson MEH. More cost-effective management of patients with musculoskeletal disorders in primary care after direct triaging to physiotherapists for initial assessment compared to initial general practitioner assessment. BMC Musculoskelet Disord. 2019;20(1):186. PMID: 31043169. doi:10.1186/s12891-019-2553-9.
-99. Australian Physiotherapy Association. Position statement on scope of practice. Melbourne: APA; 2024. Disponible en: https://australian.physio/sites/default/files/APA%20Position-Statement%20on%20Scope%20of%20Practice%20May%202024_FA.pdf.
-100. Canadian Physiotherapy Association. Position statement: primary health care. Ottawa: CPA; 2022. Disponible en: https://physiotherapy.ca/app/uploads/2022/08/primary-health-care_en.pdf.
-101. Napier C, McCormack RG, Hunt MA, Brooks-Hill A. A physiotherapy triage service for orthopaedic surgery: an effective strategy for reducing wait times. Physiother Can. 2013;65(4):358-63. PMID: 24396164. doi:10.3138/ptc.2012-53.
-102. Bath B, Grona SL, Janzen B. A spinal triage programme delivered by physiotherapists in collaboration with orthopaedic surgeons. Physiother Can. 2012;64(4):356-66. PMID: 23997390. doi:10.3138/ptc.2011-29.
-103. Miller J, Barber D, Donnelly C, French S, Green M, Hill J, et al. Determining the impact of a new physiotherapist-led primary care model for back pain: protocol for a pilot cluster randomized controlled trial. Trials. 2017;18(1):526. PMID: 29121989. doi:10.1186/s13063-017-2279-7.
-104. Oakley C, Shacklady C. The clinical effectiveness of the extended-scope physiotherapist role in musculoskeletal triage: a systematic review. Musculoskeletal Care. 2015;13(4):204-21. PMID: 25758358. doi:10.1002/msc.1100.
-105. Samsson KS, Grimmer K, Larsson MEH, Morris J, Bernhardsson S. Effects on health and process outcomes of physiotherapist-led orthopaedic triage for patients with musculoskeletal disorders: a systematic review of comparative studies. BMC Musculoskelet Disord. 2020;21(1):673. PMID: 33038935. doi:10.1186/s12891-020-03673-9.
-106. Trøstrup J, Juhl CB, Mikkelsen LR. Effect of extended scope physiotherapists assessments in orthopaedic diagnostic setting: a systematic review. Physiotherapy. 2020;108:120-8. PMID: 32807362. doi:10.1016/j.physio.2017.08.004.
-107. Lafrance S, Vincent R, Demont A, Charron M, Desmeules F. Advanced practice physiotherapists can diagnose and triage patients with musculoskeletal disorders while providing effective care: a systematic review. J Physiother. 2023;69(4):220-31. PMID: 37714771. doi:10.1016/j.jphys.2023.08.005.
-108. Piscitelli D, Furmanek MP, Meroni R, De Caro W, Pellicciari L. Direct access in physical therapy: a systematic review. Clin Ter. 2018;169(5):e249-e260. PMID: 30393813. doi:10.7417/CT.2018.2087.
-109. Demont A, Bourmaud A, Kechichian A, Desmeules F. The impact of direct access physiotherapy compared to primary care physician led usual care for patients with musculoskeletal disorders: a systematic review of the literature. Disabil Rehabil. 2021;43(12):1637-1648. PMID: 31603709. doi:10.1080/09638288.2019.1674388.
-110. Babatunde OO, Bishop A, Cottrell E, Jordan JL, Corp N, Humphries K, et al. A systematic review and evidence synthesis of non-medical triage, self-referral and direct access services for patients with musculoskeletal pain. PLoS One. 2020;15(7):e0235364. PMID: 32628696. doi:10.1371/journal.pone.0235364.
-111. Gallotti M, Campagnola B, Cocchieri A, Mourad F, Heick JD, Maselli F. Effectiveness and consequences of direct access in physiotherapy: a systematic review. J Clin Med. 2023;12(18):5832. PMID: 37762773. doi:10.3390/jcm12185832.
-112. Vedanayagam M, Buzak M, Reid D, Saywell N. Advanced practice physiotherapists are effective in the management of musculoskeletal disorders: a systematic review of systematic reviews. Physiotherapy. 2021;113:116-130. PMID: 34607076. doi:10.1016/j.physio.2021.08.005.
-113. Bishop A, Chen Y, Protheroe J, Ogollah RO, Bailey J, Lewis M, et al. Providing patients with direct access to musculoskeletal physiotherapy: the impact on general practice musculoskeletal workload and resource use. The STEMS-2 study. Physiotherapy. 2021;111:48-56. PMID: 32711896. doi:10.1016/j.physio.2020.04.006.
-114. Fischer M, Bui E, Besombes L, François M. Systematic review of direct access physiotherapy for musculoskeletal conditions in primary care: consequences for general practitioner workload, resource use, and organisation of care. BMC Prim Care. 2026;27(1):75. PMID: 41612203. doi:10.1186/s12875-026-03186-9.
-115. Fischer M, Bui E, Besombes L, Pinsault N, François M. Effect of direct access to physiotherapy on prescribing and imaging in primary care for musculoskeletal disorders: a systematic review and meta-analysis. Fam Pract. 2026;43(4):cmag046. PMID: 42348720. doi:10.1093/fampra/cmag046.
-116. Ojha H, Masaracchio M, Johnston M, Howard RJ, Egan WE, Kirker K, et al. Minimal physical therapy utilization compared with higher physical therapy utilization for patients with low back pain: a systematic review. Physiother Theory Pract. 2020;36(11):1179-200. PMID: 30739564. doi:10.1080/09593985.2019.1571135.
-117. Snow BL, Shamus E, Hill C. Physical therapy as primary health care: public perceptions. J Allied Health. 2001;30(1):35-8. PMID: 11265271. Disponible en: https://pubmed.ncbi.nlm.nih.gov/11265271/.
-118. Eurostat. Physicians and physiotherapists in the EU: how many? Eurostat News. Luxemburgo; 18 de agosto de 2023. Disponible en: https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20230818-1.
-119. Eurostat. Healthcare personnel statistics: dentists, pharmacists and physiotherapists. Statistics Explained [actualización periódica]. Luxemburgo: Eurostat. Disponible en: https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Healthcare_personnel_statistics_-_dentists,_pharmacists_and_physiotherapists.
-120. World Physiotherapy. Annual Membership Census 2024. Global report. Londres: World Physiotherapy; 2025. Disponible en: https://world.physio/sites/default/files/2025-01/AMC2024-Global-report.pdf.
-121. Bury TJ, Stokes EK. A global view of direct access and patient self-referral to physical therapy: implications for the profession. Phys Ther. 2013;93(4):449-59. PMID: 23197847. doi:10.2522/ptj.20120060.
-122. Sherrington C, Fairhall NJ, Wallbank GK, Tiedemann A, Michaleff ZA, Howard K, et al. Exercise for preventing falls in older people living in the community. Cochrane Database Syst Rev. 2019;1(1):CD012424. PMID: 30703272. doi:10.1002/14651858.CD012424.pub2.
-123. Galan-Martin MA, Montero-Cuadrado F, Lluch-Girbes E, Coca-López MC, Mayo-Iscar A, Cuesta-Vargas A. Pain neuroscience education and physical therapeutic exercise for patients with chronic spinal pain in Spanish physiotherapy primary care: a pragmatic randomized controlled trial. J Clin Med. 2020;9(4):1201. PMID: 32331323. doi:10.3390/jcm9041201.
-124. Fransen M, McConnell S, Harmer AR, Van der Esch M, Simic M, Bennell KL. Exercise for osteoarthritis of the knee. Cochrane Database Syst Rev. 2015;1(1):CD004376. PMID: 25569281. doi:10.1002/14651858.CD004376.pub3.
-125. McCarthy B, Casey D, Devane D, Murphy K, Murphy E, Lacasse Y. Pulmonary rehabilitation for chronic obstructive pulmonary disease. Cochrane Database Syst Rev. 2015;2015(2):CD003793. PMID: 25705944. doi:10.1002/14651858.CD003793.pub3.
-126. Hayden JA, Ellis J, Ogilvie R, Malmivaara A, van Tulder MW. Exercise therapy for chronic low back pain. Cochrane Database Syst Rev. 2021;9(9):CD009790. PMID: 34580864. doi:10.1002/14651858.CD009790.pub2.
-127. Louw A, Zimney K, Puentedura EJ, Diener I. The efficacy of pain neuroscience education on musculoskeletal pain: a systematic review of the literature. Physiother Theory Pract. 2016;32(5):332-55. PMID: 27351541. doi:10.1080/09593985.2016.1194646.
-128. Geneen LJ, Martin DJ, Adams N, Clarke C, Dunbar M, Jones D, et al. Effects of education to facilitate knowledge about chronic pain for adults: a systematic review with meta-analysis. Syst Rev. 2015;4:132. PMID: 26428467. doi:10.1186/s13643-015-0120-5.
-129. Díaz-Cerrillo JL, Rondón-Ramos A, Pérez-González R, Clavero-Cano S. [Non-randomised trial of an educational intervention based on cognitive-behavioural principles for patients with chronic low back pain attended in Primary Care Physiotherapy]. Aten Primaria. 2016;48(7):440-8. Español. PMID: 26724987. doi:10.1016/j.aprim.2015.10.007.
-130. Cuenca-Zaldívar JN, Fernández-Carnero J, Sánchez-Romero EA, Álvarez-Gonzalo V, Conde-Rodríguez R, Rodríguez-Sanz D, et al. Effects of a therapeutic exercise protocol for patients with chronic non-specific back pain in primary health care: a single-group retrospective cohort study. J Clin Med. 2023;12(20):6478. PMID: 37892618. doi:10.3390/jcm12206478.
-131. Antúnez Sánchez LG, de la Casa Almeida M, Rebollo Roldán J, Ramírez Manzano A, Martín Valero R, Suárez Serrano C. [Effectiveness of an individualised physiotherapy program versus group therapy on neck pain and disability in patients with acute and subacute mechanical neck pain]. Aten Primaria. 2017;49(7):417-25. Español. PMID: 28089225. doi:10.1016/j.aprim.2016.09.010.
-132. Serra-Prat M, Sist X, Domenich R, Jurado L, Saiz A, Roces A, et al. Effectiveness of an intervention to prevent frailty in pre-frail community-dwelling older people consulting in primary care: a randomised controlled trial. Age Ageing. 2017;46(3):401-7. PMID: 28064172. doi:10.1093/ageing/afw242.
-133. Romera-Liebana L, Orfila F, Segura JM, Real J, Fabra ML, Möller M, et al. Effects of a primary care-based multifactorial intervention on physical and cognitive function in frail, elderly individuals: a randomized controlled trial. J Gerontol A Biol Sci Med Sci. 2018;73(12):1688-74 [paginación tal como figura en PubMed]. PMID: 29346524. doi:10.1093/gerona/glx259.
-134. Castell MV, Gutiérrez-Misis A, Sánchez-Martínez M, Prieto MA, Moreno B, Nuñez S, et al. Effectiveness of an intervention in multicomponent exercise in primary care to improve frailty parameters in patients over 70 years of age (MEFAP-project), a randomised clinical trial: rationale and study design. BMC Geriatr. 2019;19(1):25. PMID: 30691405. doi:10.1186/s12877-018-1024-8.
-135. Lin CW, Haas M, Maher CG, Machado LA, van Tulder MW. Cost-effectiveness of general practice care for low back pain: a systematic review. Eur Spine J. 2011;20(7):1012-23. PMID: 21203890. doi:10.1007/s00586-010-1675-4.
-136. Consejo General de Colegios de Fisioterapeutas de España. Resolución 1/2023 sobre el empleo de la ecografía en Fisioterapia. Madrid: CGCFE; 2023.
-137. Comunidad de Madrid. La Comunidad de Madrid culmina la implantación de la ecografía en los centros de salud, que disponen de 450 aparatos diagnósticos, fijos de consola y ultra portátiles [nota de prensa]. Madrid; 17 de mayo de 2022. Disponible en: https://www.comunidad.madrid/noticias/2022/05/17/comunidad-madrid-culmina-implantacion-ecografia-centros-salud-disponen-450-aparatos-diagnosticos-fijos-consola-ultra-portatiles.
-138. Comunidad de Madrid. Atención Primaria de la Comunidad de Madrid impulsa la formación en fisioterapia manual e invasiva para mejorar el abordaje del dolor musculoesquelético [nota de prensa]. Madrid; 22 de diciembre de 2025. Disponible en: https://www.comunidad.madrid/noticias/2025/12/22/atencion-primaria-comunidad-madrid-impulsa-formacion-fisioterapia-manual-e-invasiva-mejorar-abordaje-dolor-musculoesqueletico.
-139. Bachmann LM, Kolb E, Koller MT, Steurer J, ter Riet G. Accuracy of Ottawa ankle rules to exclude fractures of the ankle and mid-foot: systematic review. BMJ. 2003;326(7386):417. PMID: 12595378. doi:10.1136/bmj.326.7386.417.
-140. The Ionising Radiation (Medical Exposure) Regulations 2017. SI 2017/1322. Reino Unido. Disponible en: https://www.legislation.gov.uk/uksi/2017/1322.
-141. Stiell IG, McKnight RD, Greenberg GH, McDowell I, Nair RC, Wells GA, et al. Implementation of the Ottawa ankle rules. JAMA. 1994;271(11):827-32. PMID: 8114236. Disponible en: https://pubmed.ncbi.nlm.nih.gov/8114236/.
-142. Downie A, Williams CM, Henschke N, Hancock MJ, Ostelo RW, de Vet HC, et al. Red flags to screen for malignancy and fracture in patients with low back pain: systematic review. BMJ. 2013;347:f7095. PMID: 24335669. doi:10.1136/bmj.f7095.
-143. Foster NE, Anema JR, Cherkin D, Chou R, Cohen SP, Gross DP, et al. Prevention and treatment of low back pain: evidence, challenges, and promising directions. Lancet. 2018;391(10137):2368-83. PMID: 29573872. doi:10.1016/S0140-6736(18)30489-6.
-144. Côté P, Wong JJ, Sutton D, Shearer HM, Mior S, Randhawa K, et al. Management of neck pain and associated disorders: a clinical practice guideline from the Ontario Protocol for Traffic Injury Management (OPTIMa) Collaboration. Eur Spine J. 2016;25(7):2000-22. PMID: 26984876. doi:10.1007/s00586-016-4467-7.
-145. Steuri R, Sattelmayer M, Elsig S, Kolly C, Tal A, Taeymans J, et al. Effectiveness of conservative interventions including exercise, manual therapy and medical management in adults with shoulder impingement: a systematic review and meta-analysis of RCTs. Br J Sports Med. 2017;51(18):1340-7. PMID: 28630217. doi:10.1136/bjsports-2016-096515.
-146. Karjalainen TV, Jain NB, Page CM, Lähdeoja TA, Johnston RV, Salamh P, et al. Subacromial decompression surgery for rotator cuff disease. Cochrane Database Syst Rev. 2019;1(1):CD005619. PMID: 30707445. doi:10.1002/14651858.CD005619.pub3.
-147. Bisset L, Beller E, Jull G, Brooks P, Darnell R, Vicenzino B. Mobilisation with movement and exercise, corticosteroid injection, or wait and see for tennis elbow: randomised trial. BMJ. 2006;333(7575):939. PMID: 17012266. doi:10.1136/bmj.38961.584653.AE.
-148. Hill JC, Whitehurst DG, Lewis M, Bryan S, Dunn KM, Foster NE, et al. Comparison of stratified primary care management for low back pain with current best practice (STarT Back): a randomised controlled trial. Lancet. 2011;378(9802):1560-71. PMID: 21963002. doi:10.1016/S0140-6736(11)60937-9.
-149. Gusi N, del Pozo-Cruz B, Olivares PR, Hernández-Mocholi M, Hill JC. The Spanish version of the "STarT Back Screening Tool" (SBST) in different subgroups. Aten Primaria. 2011;43(7):356-61. PMID: 21296465. doi:10.1016/j.aprim.2010.05.019.
-150. Gallego-Izquierdo T, Ruiz-Vindel J, Ferragut-Garcías A, Martínez-Merinero P, Montañez-Aguilera FJ, Noriega-Matanza C, et al. Adaptation and transcultural translation into Spanish of the Patient-Rated Tennis Elbow Evaluation Questionnaire. J Orthop Res. 2020;38(12):2601-7. PMID: 32761913. doi:10.1002/jor.24820.
-151. Vuurberg G, Hoorntje A, Wink LM, van der Doelen BFW, van den Bekerom MP, Dekker R, et al. Diagnosis, treatment and prevention of ankle sprains: update of an evidence-based clinical guideline. Br J Sports Med. 2018;52(15):956. PMID: 29514819. doi:10.1136/bjsports-2017-098106.
-152. Blanpied PR, Gross AR, Elliott JM, Devaney LL, Clewley D, Walton DM, et al. Neck pain: revision 2017. J Orthop Sports Phys Ther. 2017;47(7):A1-A83. PMID: 28666405. doi:10.2519/jospt.2017.0302.
-153. Haahr JP, Østergaard S, Dalsgaard J, Norup K, Frost P, Lausen S, et al. Exercises versus arthroscopic decompression in patients with subacromial impingement: a randomised, controlled study in 90 cases with a one year follow up. Ann Rheum Dis. 2005;64(5):760-4. PMID: 15834056. doi:10.1136/ard.2004.021188.
-154. Ketola S, Lehtinen J, Rousi T, Nissinen M, Huhtala H, Konttinen YT, et al. No evidence of long-term benefits of arthroscopic acromioplasty in the treatment of shoulder impingement syndrome: five-year results of a randomised controlled trial. Bone Joint Res. 2013;2(7):132-9. PMID: 23836479. doi:10.1302/2046-3758.27.2000163.
-155. Ketola S, Lehtinen JT, Arnala I. Arthroscopic decompression not recommended in the treatment of rotator cuff tendinopathy: a final review of a randomised controlled trial at a minimum follow-up of ten years. Bone Joint J. 2017;99-B(6):799-805. PMID: 28566400. doi:10.1302/0301-620X.99B6.BJJ-2016-0569.R1.
-156. Kanto K, Bäck M, Ibounig T, Björkenheim R, Malmivaara A, Czuba T, et al. Arthroscopic subacromial decompression versus placebo surgery for subacromial pain syndrome: 10 year follow-up of the FIMPACT randomised, placebo surgery controlled trial. BMJ. 2025;391:e086201. PMID: 41330610. doi:10.1136/bmj-2025-086201.
-157. Kukkonen J, Joukainen A, Lehtinen J, Mattila KT, Tuominen EK, Kauko T, et al. Treatment of non-traumatic rotator cuff tears: a randomised controlled trial with one-year clinical results. Bone Joint J. 2014;96-B(1):75-81. PMID: 24395315. doi:10.1302/0301-620X.96B1.32168.
-158. Morrissey D, Cotchett M, Said J'Bari A, Prior T, Griffiths IB, Rathleff MS, et al. Management of plantar heel pain: a best practice guide informed by a systematic review, expert clinical reasoning and patient values. Br J Sports Med. 2021;55(19):1106-18. PMID: 33785535. doi:10.1136/bjsports-2019-101970.
-159. Koc TA, Bise CG, Neville C, Carreira D, Martin RL, McDonough CM. Heel pain - plantar fasciitis: revision 2023. J Orthop Sports Phys Ther. 2023;53(12):CPG1-CPG39. PMID: 38037331. doi:10.2519/jospt.2023.0303.
-160. Kang JR, Sin AT, Cheung EV. Treatment of massive irreparable rotator cuff tears: a cost-effectiveness analysis. Orthopedics. 2017;40(1):e65-e76. PMID: 27684078. doi:10.3928/01477447-20160926-06.
-161. PricewaterhouseCoopers Asesores de Negocios. Impacto económico, sanitario y social de la actividad de fisioterapia en la Comunidad de Madrid. [Madrid]: Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid; septiembre de 2022. Informe encargado por el Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid.
-162. Halls S, Thomas R, Stott H, Cupples ME, Kersten P, Cramp F, et al. Provision of first contact physiotherapy in primary care across the UK: a survey of the service. Physiotherapy. 2020;108:2-9. PMID: 32693238. doi:10.1016/j.physio.2020.04.005.
-163. Instituto Nacional de Estadística. Estadística del Padrón Continuo [base de datos]. Madrid: INE. Disponible en: https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177012&menu=ultiDatos&idp=1254734710990.
-164. O'Caoimh R, Galluzzo L, Rodríguez-Laso Á, Van der Heyden J, Ranhoff AH, Lamprini-Koula M, et al. Prevalence of frailty at population level in European ADVANTAGE Joint Action Member States: a systematic review and meta-analysis. Ann Ist Super Sanita. 2018;54(3):226-238. PMID: 30284550. doi:10.4415/ANN_18_03_10.
-165. Chartered Society of Physiotherapy. CSP urges government to boost FCP roll-out across England [nota]. Londres; 19 de enero de 2022. Disponible en: https://www.csp.org.uk/news/2022-01-19-csp-urges-government-boost-fcp-roll-out-across-england.
-166. Lin CW, Haas M, Maher CG, Machado LA, van Tulder MW. Cost-effectiveness of guideline-endorsed treatments for low back pain: a systematic review. Eur Spine J. 2011;20(7):1024-38. PMID: 21229367. doi:10.1007/s00586-010-1676-3.
-167. Korthals-de Bos IB, Hoving JL, van Tulder MW, Rutten-van Mölken MP, Adèr HJ, de Vet HC, et al. Cost effectiveness of physiotherapy, manual therapy, and general practitioner care for neck pain: economic evaluation alongside a randomised controlled trial. BMJ. 2003;326(7395):911. PMID: 12714472. doi:10.1136/bmj.326.7395.911.
-168. Driessen MT, Lin CW, van Tulder MW. Cost-effectiveness of conservative treatments for neck pain: a systematic review on economic evaluations. Eur Spine J. 2012;21(8):1441-50. PMID: 22447407. doi:10.1007/s00586-012-2272-5.
-169. EFQM. Modelo EFQM 2025. Edición en español. Madrid: Club Excelencia en Gestión; 2025. Disponible en: https://www.clubexcelencia.org/conocimiento/plataforma-de-conocimiento/modelo-efqm-2025.
-170. Hernández-Lázaro H, Mingo-Gómez MT, Jiménez-Del-Barrio S, Simarro-Martín A, Wiśniowska-Szurlej A, Ceballos-Laita L. Development of an ICF core set for the management of musculoskeletal conditions in primary care physiotherapy services in Spain: a Delphi study. Disabil Rehabil. 2025;47(18):4759-4768. PMID: 39931756. doi:10.1080/09638288.2025.2460723.
-171. Hernández-Lázaro H, Jiménez-Del Barrio S, Ceballos-Laita L, Lahuerta-Martin S, Medrano-de-la-Fuente R, Hernando-Garijo I, et al. Multicentre cross-sectional study assessing content validity of the International Classification of Functioning, Disability and Health core set for post-acute musculoskeletal conditions in primary care physiotherapy services. J Rehabil Med. 2023;55:jrm11950. PMID: 37974517. doi:10.2340/jrm.v55.11950.
+50. Ministerio de Sanidad, Servicios Sociales e Igualdad. Estrategia para el Abordaje de la Cronicidad en el Sistema Nacional de Salud. Madrid: Ministerio de Sanidad, Servicios Sociales e Igualdad; 2012. Disponible en: https://www.sanidad.gob.es/areas/calidadAsistencial/estrategias/abordajeCronicidad/docs/ESTRATEGIA_ABORDAJE_CRONICIDAD.pdf.
+51. Ministerio de Sanidad, Servicios Sociales e Igualdad. Estrategia de Promoción de la Salud y Prevención en el Sistema Nacional de Salud. Madrid: Ministerio de Sanidad, Servicios Sociales e Igualdad; 2013. Disponible en: https://www.sanidad.gob.es/areas/promocionPrevencion/estrategiaSNS/docs/EstrategiaPromocionSaludyPrevencionSNS.pdf.
+52. Ministerio de Sanidad. Estrategia de Salud Digital del Sistema Nacional de Salud. Madrid: Ministerio de Sanidad; 2021. Disponible en: https://www.sanidad.gob.es/areas/saludDigital/doc/Estrategia_de_Salud_Digital_del_SNS.pdf.
+53. Real Decreto 601/2019, de 18 de octubre, sobre justificación y optimización del uso de las radiaciones ionizantes para la protección radiológica de las personas con ocasión de exposiciones médicas. Boletín Oficial del Estado, BOE-A-2019-15604. Disponible en: https://www.boe.es/buscar/act.php?id=BOE-A-2019-15604.
+54. Directiva 2013/59/Euratom del Consejo, de 5 de diciembre de 2013, por la que se establecen normas de seguridad básicas para la protección contra los peligros derivados de la exposición a radiaciones ionizantes. Diario Oficial de la Unión Europea, L 13, de 17 de enero de 2014. Disponible en: https://eur-lex.europa.eu/eli/dir/2013/59/oj.
+55. Long J. European region of the WCPT statement on physiotherapy in primary care. Prim Health Care Res Dev. 2019;20:e147. PMID: 31679552. doi:10.1017/S1463423619000811.
+56. Ministerio de Sanidad. Informe monográfico. Recursos humanos, ordenación profesional y formación continuada en el Sistema Nacional de Salud. Informe Anual del Sistema Nacional de Salud 2024. Madrid: Ministerio de Sanidad; 2025. Disponible en: https://www.sanidad.gob.es/estadEstudios/estadisticas/sisInfSanSNS/tablasEstadisticas/InfAnual2024/Monografico_RRHH_2024.pdf.
+57. Aiguadé Aiguadé R. La hora de la Atención Primaria [editorial]. Fisioterapia. 2022;44(4):199-200. doi:10.1016/j.ft.2022.03.002.
+58. Departament de Salut. Programa d'incorporació de fisioterapeutes per a la promoció del funcionament i la prevenció de la discapacitat a l'atenció primària i comunitària. Barcelona: Generalitat de Catalunya; 2022. Disponible en: https://salutweb.gencat.cat/ca/departament/ambits-estrategics/atencio-primaria-comunitaria/projectes/programa-incorporacio-fisioterapeutes/.
+59. Departament de Salut. Pla funcional del Programa d'incorporació de fisioterapeutes a l'atenció primària i comunitària. Barcelona: Generalitat de Catalunya; 2023. Disponible en: https://scientiasalut.gencat.cat/handle/11351/9106.
+60. Ministerio de Sanidad. Sistema de Información de Atención Primaria (SIAP). Profesionales [consulta interactiva]. Disponible en: https://pestadistico.inteligenciadegestion.sanidad.gob.es/publicoSNS/S/sistema-de-informacion-de-atencion-primaria-siap.
+61. Servicio Andaluz de Salud. Cartera de servicios de atención primaria. IV. Otros servicios. 2.3 Fisioterapia [página web]. Disponible en: https://www.sspa.juntadeandalucia.es/servicioandaluzdesalud/profesionales/cartera-de-servicios/atencion-primaria/iv-otros-servicios/2-otros-servicios-prestados-en-dispositivos-de-apoyo/23-fisioterapia.
+62. Servicio Andaluz de Salud. Sanidad implanta la derivación desde Atención Primaria a Fisioterapia en toda Andalucía [nota de prensa]. Sevilla; 26 de mayo de 2026. Disponible en: https://www.sspa.juntadeandalucia.es/servicioandaluzdesalud/todas-noticia/sanidad-implanta-la-derivacion-desde-atencion-primaria-fisioterapia-en-toda-andalucia.
+63. Gobierno de Aragón. Cartera de Servicios de Atención Primaria del Sistema de Salud de Aragón. Zaragoza: Gobierno de Aragón; 2024. Disponible en: https://atencioncomunitaria.aragon.es/wp-content/uploads/2024/07/CARTERAATENCIONPRIMARIA.pdf.
+64. Gerencia de Atención Primaria de Mallorca. Protocolo de actuación en las patologías de derivación directa en las Unidades de Fisioterapia de Atención Primaria de Mallorca. Palma: Servei de Salut de les Illes Balears; 2023. Disponible en: https://docusalut.com/rest/api/core/bitstreams/6baa0511-9642-47e3-aa79-1202fd49c1ce/content.
+65. Servicio Canario de la Salud. Consulta de fisioterapia en Atención Primaria. Guía de actuación. Santa Cruz de Tenerife: Servicio Canario de la Salud; 2022. Disponible en: https://www3.gobiernodecanarias.org/sanidad/scs/listaImagenes.jsp?idCarpeta=46a3e0a2-75c8-11e2-bc0c-6512fc1bab5e&idDocument=046b7b81-75d6-11e2-bc0c-6512fc1bab5e.
+66. Gobierno de Canarias. Sanidad despliega servicio de fisioterapia en 24 zonas básicas de Gran Canaria, Tenerife, Lanzarote y Fuerteventura [nota de prensa]. 19 de septiembre de 2022. Disponible en: https://www3.gobiernodecanarias.org/noticias/sanidad-despliega-servicio-de-fisioterapia-en-24-zonas-basicas-de-gran-canaria-tenerife-lanzarote-y-fuerteventura/.
+67. Servicio de Salud de Castilla-La Mancha. Guía de Unidades de Fisioterapia de Atención Primaria. Toledo: SESCAM; 2022. Disponible en: https://castillalamancha.es/actualidad/notasdeprensa.
+68. Junta de Castilla y León. Protocolos de fisioterapia en atención primaria. Valladolid: Consejería de Sanidad; 2017. Disponible en: https://www.saludcastillayleon.es/profesionales/es/programas-guias-clinicas/guias-practica-clinica/guias-clinicas.ficheros/1105660-Fisioterapia.PDF.
+69. Conselleria de Sanitat. Cartera de servicios de Atención Primaria Comunitaria. Plan de Acción de Atención Primaria y Comunitaria 2022-2023. València: Generalitat Valenciana; 2022. Disponible en: https://www.san.gva.es/documents/d/assistencia-sanitaria/2_cartera_servicios_atencion_primaria_comunitaria_resumida_es-pdf.
+70. Área de Salud de Plasencia. Protocolo de derivación a las unidades de fisioterapia y rehabilitación. Plasencia: Servicio Extremeño de Salud; 2019. Disponible en: https://www.areasaludplasencia.es/docs/pgc/ses_plasencia_derivacion_fisioterapia_rehabilitacion.pdf.
+71. Servizo Galego de Saúde. Carteira de servizos de fisioterapia de atención primaria e comunitaria. Santiago de Compostela: SERGAS. Disponible en: https://www.sergas.gal/Asistencia-sanitaria/Documents/1795/Carteira_Unidades_de_fisioterapia_de_atencion_primaria.pdf.
+72. Servicio Madrileño de Salud, Gerencia Asistencial de Atención Primaria. Cartera de Servicios Estandarizados de Atención Primaria de Madrid. Actualización 2510. Madrid: Comunidad de Madrid; 2025. Disponible en: https://www.comunidad.madrid/hospital/atencionprimaria/sites/atencionprimaria/files/2025-10/Cartera%20de%20Servicios%20Estandarizados%20AP.%20Actualizaci%C3%B3n%202510.pdf.
+73. Servicio Murciano de Salud. El SMS aprueba la cartera de servicios de fisioterapia en Atención Primaria [nota de prensa]. Murcia; 6 de abril de 2026. Disponible en: https://www.murciasalud.es/en/-/el-sms-aprueba-la-cartera-de-servicios-de-fisioterapia-en-atenci%C3%B3n-primaria-para-mejorar-la-atenci%C3%B3n-de-los-pacientes.
+74. Servicio Navarro de Salud. Formación a fisioterapeutas de nueva incorporación en atención primaria, tercera edición [actividad formativa]. Disponible en: https://www.formacionsalud.navarra.es/actividad/idactividad/7576.
+75. Gobierno Vasco, Irekia. La Fisioterapia de Atención Primaria de Osakidetza ha atendido ya a más de 8.600 pacientes en el primer semestre [nota de prensa]. 2024. Disponible en: https://www.irekia.euskadi.eus/es/news/95370.
+76. Agencia Gallega de Conocimiento en Salud (ACIS). Informe sobre el diseño del sistema de citación XIDE (Gestión Integral de la Demanda en Equipo) en el Servicio Gallego de Salud y los resultados de su implementación. Santiago de Compostela: Servizo Galego de Saúde; 2023. Disponible en: https://acis.sergas.gal/cartafol/InformeXide2023?idioma=es.
+77. Redacción Médica. Los fisioterapeutas del Sergas podrán atender a pacientes bajo demanda. 6 de abril de 2022. Disponible en: https://www.redaccionmedica.com/autonomias/galicia/los-fisioterapeutas-del-sergas-podran-atender-a-pacientes-bajo-demanda-7761. Fuente secundaria.
+78. Comunidad de Madrid. Unidades de atención específica: fisioterapia [página web]. Disponible en: https://www.comunidad.madrid/hospital/atencionprimaria/ciudadanos/unidades-atencion-especifica-fisioterapia.
+79. Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid. Replanteamiento del papel de la fisioterapia en la Gerencia Asistencial de Atención Primaria de la Comunidad de Madrid [propuesta de proyecto piloto, versión 2]. Madrid: CPFCM; enero de 2026. Documento de trabajo no publicado.
+80. Moreno Carrero P. Memoria de gestión para referente de fisioterapia de la Dirección Asistencial Sureste de la Gerencia Asistencial de Atención Primaria del Servicio Madrileño de Salud [trabajo fin de máster]. Logroño: Universidad Internacional de La Rioja; 2024. Trabajo fin de máster no publicado.
+81. NHS. The NHS Long Term Plan. Londres: NHS; 2019. Disponible en: https://www.longtermplan.nhs.uk/online-version/chapter-1-a-new-service-model-for-the-21st-century/.
+82. NHS England. Network Contract Directed Enhanced Service. Additional Roles Reimbursement Scheme guidance. Londres: NHS England; 2019. Disponible en: https://www.england.nhs.uk/wp-content/uploads/2019/12/network-contract-des-additional-roles-reimbursement-scheme-guidance-december2019.pdf.
+83. Health Education England. First Contact Practitioners and Advanced Practitioners in Primary Care: (Musculoskeletal). A Roadmap to Practice. Londres: Health Education England; 2020. Disponible en: https://www.hee.nhs.uk/our-work/allied-health-professions/enable-workforce/roadmaps-practice/first-contact-practitioners-roadmaps-practice.
+84. Chartered Society of Physiotherapy, British Medical Association, Royal College of General Practitioners. First Contact Physiotherapy posts in General Practice. A guide for implementation in England. Londres: CSP; 2018. Disponible en: https://www.csp.org.uk/system/files/001404_fcp_guidance_england_2018.pdf.
+85. Robert G, Stevens A. Should general practitioners refer patients directly to physical therapists? Br J Gen Pract. 1997;47(418):314-8. PMID: 9219412. Disponible en: https://pubmed.ncbi.nlm.nih.gov/9219412/.
+86. Hensher M. Improving general practitioner access to physiotherapy: a review of the economic evidence. Health Serv Manage Res. 1997;10(4):225-30. PMID: 10174512. doi:10.1177/095148489701000403.
+87. Goodwin RW, Hendrick PA. Physiotherapy as a first point of contact in general practice: a solution to a growing problem? Prim Health Care Res Dev. 2016;17(5):489-502. PMID: 27263326. doi:10.1017/S1463423616000189.
+88. Stynes S, Jordan KP, Hill JC, Wynne-Jones G, Cottrell E, Foster NE, et al. Evaluation of the First Contact Physiotherapy (FCP) model of primary care: patient characteristics and outcomes. Physiotherapy. 2021;113:199-208. PMID: 34656297. doi:10.1016/j.physio.2021.08.002.
+89. Wood L, Bishop A, Goodwin R, Stynes S. Patient satisfaction with the first contact physiotherapy service: results from the national evaluation survey. Musculoskeletal Care. 2022;20(2):363-370. PMID: 34709711. doi:10.1002/msc.1599.
+90. Goodwin R, Moffatt F, Hendrick P, Stynes S, Bishop A, Logan P. Evaluation of the First Contact Physiotherapy (FCP) model of primary care: a qualitative insight. Physiotherapy. 2021;113:209-216. PMID: 34583834. doi:10.1016/j.physio.2021.08.003.
+91. Walsh NE, Halls S, Thomas R, Berry A, Liddiard C, Cupples ME, et al. First contact physiotherapy: an evaluation of clinical effectiveness and costs. Br J Gen Pract. 2024;74(747):e717-e726. PMID: 38429110. doi:10.3399/BJGP.2023.0560.
+92. Walsh NE, Berry A, Halls S, Thomas R, Stott H, Liddiard C, et al. Clinical and cost-effectiveness of first contact physiotherapy for musculoskeletal disorders in primary care: the FRONTIER, mixed method realist evaluation. Health Soc Care Deliv Res. 2024;12(49):1-187. PMID: 39707910. doi:10.3310/RTKY7521.
+93. Leemrijse CJ, Swinkels IC, Veenhof C. Direct access to physical therapy in the Netherlands: results from the first year in community-based physical therapy. Phys Ther. 2008;88(8):936-46. PMID: 18566108. doi:10.2522/ptj.20070308.
+94. Swinkels IC, Kooijman MK, Spreeuwenberg PM, Bossen D, Leemrijse CJ, van Dijk CE, et al. An overview of 5 years of patient self-referral for physical therapy in the Netherlands. Phys Ther. 2014;94(12):1785-95. PMID: 25082921. doi:10.2522/ptj.20130309.
+95. Nivel. Jaarcijfers fysiotherapie 2024: aandeel patiënten met een verwijzing daalt. Utrecht: Nivel; 2025. Disponible en: https://www.nivel.nl/nl/nieuws/jaarcijfers-fysiotherapie-2024-aandeel-patienten-met-een-verwijzing-daalt.
+96. Helse- og omsorgsdepartementet. Prop. 71 L (2016-2017). Oslo: Gobierno de Noruega; 2017. Disponible en: https://www.regjeringen.no/no/dokumenter/prop.-71-l-20162017/id2546178/?ch=9.
+97. 1177 Vårdguiden, Region Stockholm. Rehabilitering i öppenvård [página web]. Disponible en: https://www.1177.se/Stockholm/undersokning-behandling/smartbehandlingar-och-rehabilitering/rehabilitering-i-stockholms-lan2/rehabilitering-i-oppenvard/.
+98. Bornhöft L, Larsson ME, Nordeman L, Eggertsen R, Thorn J. Health effects of direct triaging to physiotherapists in primary care for patients with musculoskeletal disorders: a pragmatic randomized controlled trial. Ther Adv Musculoskelet Dis. 2019;11:1759720X19827504. PMID: 30800175. doi:10.1177/1759720X19827504.
+99. Bornhöft L, Thorn J, Svensson M, Nordeman L, Eggertsen R, Larsson MEH. More cost-effective management of patients with musculoskeletal disorders in primary care after direct triaging to physiotherapists for initial assessment compared to initial general practitioner assessment. BMC Musculoskelet Disord. 2019;20(1):186. PMID: 31043169. doi:10.1186/s12891-019-2553-9.
+100. Australian Physiotherapy Association. Position statement on scope of practice. Melbourne: APA; 2024. Disponible en: https://australian.physio/sites/default/files/APA%20Position-Statement%20on%20Scope%20of%20Practice%20May%202024_FA.pdf.
+101. Canadian Physiotherapy Association. Position statement: primary health care. Ottawa: CPA; 2022. Disponible en: https://physiotherapy.ca/app/uploads/2022/08/primary-health-care_en.pdf.
+102. Napier C, McCormack RG, Hunt MA, Brooks-Hill A. A physiotherapy triage service for orthopaedic surgery: an effective strategy for reducing wait times. Physiother Can. 2013;65(4):358-63. PMID: 24396164. doi:10.3138/ptc.2012-53.
+103. Bath B, Grona SL, Janzen B. A spinal triage programme delivered by physiotherapists in collaboration with orthopaedic surgeons. Physiother Can. 2012;64(4):356-66. PMID: 23997390. doi:10.3138/ptc.2011-29.
+104. Miller J, Barber D, Donnelly C, French S, Green M, Hill J, et al. Determining the impact of a new physiotherapist-led primary care model for back pain: protocol for a pilot cluster randomized controlled trial. Trials. 2017;18(1):526. PMID: 29121989. doi:10.1186/s13063-017-2279-7.
+105. Oakley C, Shacklady C. The clinical effectiveness of the extended-scope physiotherapist role in musculoskeletal triage: a systematic review. Musculoskeletal Care. 2015;13(4):204-21. PMID: 25758358. doi:10.1002/msc.1100.
+106. Samsson KS, Grimmer K, Larsson MEH, Morris J, Bernhardsson S. Effects on health and process outcomes of physiotherapist-led orthopaedic triage for patients with musculoskeletal disorders: a systematic review of comparative studies. BMC Musculoskelet Disord. 2020;21(1):673. PMID: 33038935. doi:10.1186/s12891-020-03673-9.
+107. Trøstrup J, Juhl CB, Mikkelsen LR. Effect of extended scope physiotherapists assessments in orthopaedic diagnostic setting: a systematic review. Physiotherapy. 2020;108:120-8. PMID: 32807362. doi:10.1016/j.physio.2017.08.004.
+108. Lafrance S, Vincent R, Demont A, Charron M, Desmeules F. Advanced practice physiotherapists can diagnose and triage patients with musculoskeletal disorders while providing effective care: a systematic review. J Physiother. 2023;69(4):220-31. PMID: 37714771. doi:10.1016/j.jphys.2023.08.005.
+109. Piscitelli D, Furmanek MP, Meroni R, De Caro W, Pellicciari L. Direct access in physical therapy: a systematic review. Clin Ter. 2018;169(5):e249-e260. PMID: 30393813. doi:10.7417/CT.2018.2087.
+110. Demont A, Bourmaud A, Kechichian A, Desmeules F. The impact of direct access physiotherapy compared to primary care physician led usual care for patients with musculoskeletal disorders: a systematic review of the literature. Disabil Rehabil. 2021;43(12):1637-1648. PMID: 31603709. doi:10.1080/09638288.2019.1674388.
+111. Babatunde OO, Bishop A, Cottrell E, Jordan JL, Corp N, Humphries K, et al. A systematic review and evidence synthesis of non-medical triage, self-referral and direct access services for patients with musculoskeletal pain. PLoS One. 2020;15(7):e0235364. PMID: 32628696. doi:10.1371/journal.pone.0235364.
+112. Gallotti M, Campagnola B, Cocchieri A, Mourad F, Heick JD, Maselli F. Effectiveness and consequences of direct access in physiotherapy: a systematic review. J Clin Med. 2023;12(18):5832. PMID: 37762773. doi:10.3390/jcm12185832.
+113. Vedanayagam M, Buzak M, Reid D, Saywell N. Advanced practice physiotherapists are effective in the management of musculoskeletal disorders: a systematic review of systematic reviews. Physiotherapy. 2021;113:116-130. PMID: 34607076. doi:10.1016/j.physio.2021.08.005.
+114. Bishop A, Chen Y, Protheroe J, Ogollah RO, Bailey J, Lewis M, et al. Providing patients with direct access to musculoskeletal physiotherapy: the impact on general practice musculoskeletal workload and resource use. The STEMS-2 study. Physiotherapy. 2021;111:48-56. PMID: 32711896. doi:10.1016/j.physio.2020.04.006.
+115. Fischer M, Bui E, Besombes L, François M. Systematic review of direct access physiotherapy for musculoskeletal conditions in primary care: consequences for general practitioner workload, resource use, and organisation of care. BMC Prim Care. 2026;27(1):75. PMID: 41612203. doi:10.1186/s12875-026-03186-9.
+116. Fischer M, Bui E, Besombes L, Pinsault N, François M. Effect of direct access to physiotherapy on prescribing and imaging in primary care for musculoskeletal disorders: a systematic review and meta-analysis. Fam Pract. 2026;43(4):cmag046. PMID: 42348720. doi:10.1093/fampra/cmag046.
+117. Ojha H, Masaracchio M, Johnston M, Howard RJ, Egan WE, Kirker K, et al. Minimal physical therapy utilization compared with higher physical therapy utilization for patients with low back pain: a systematic review. Physiother Theory Pract. 2020;36(11):1179-200. PMID: 30739564. doi:10.1080/09593985.2019.1571135.
+118. Snow BL, Shamus E, Hill C. Physical therapy as primary health care: public perceptions. J Allied Health. 2001;30(1):35-8. PMID: 11265271. Disponible en: https://pubmed.ncbi.nlm.nih.gov/11265271/.
+119. Eurostat. Physicians and physiotherapists in the EU: how many? Eurostat News. Luxemburgo; 18 de agosto de 2023. Disponible en: https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20230818-1.
+120. Eurostat. Healthcare personnel statistics: dentists, pharmacists and physiotherapists. Statistics Explained [actualización periódica]. Luxemburgo: Eurostat. Disponible en: https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Healthcare_personnel_statistics_-_dentists,_pharmacists_and_physiotherapists.
+121. World Physiotherapy. Annual Membership Census 2024. Global report. Londres: World Physiotherapy; 2025. Disponible en: https://world.physio/sites/default/files/2025-01/AMC2024-Global-report.pdf.
+122. Bury TJ, Stokes EK. A global view of direct access and patient self-referral to physical therapy: implications for the profession. Phys Ther. 2013;93(4):449-59. PMID: 23197847. doi:10.2522/ptj.20120060.
+123. Sherrington C, Fairhall NJ, Wallbank GK, Tiedemann A, Michaleff ZA, Howard K, et al. Exercise for preventing falls in older people living in the community. Cochrane Database Syst Rev. 2019;1(1):CD012424. PMID: 30703272. doi:10.1002/14651858.CD012424.pub2.
+124. Galan-Martin MA, Montero-Cuadrado F, Lluch-Girbes E, Coca-López MC, Mayo-Iscar A, Cuesta-Vargas A. Pain neuroscience education and physical therapeutic exercise for patients with chronic spinal pain in Spanish physiotherapy primary care: a pragmatic randomized controlled trial. J Clin Med. 2020;9(4):1201. PMID: 32331323. doi:10.3390/jcm9041201.
+125. Fransen M, McConnell S, Harmer AR, Van der Esch M, Simic M, Bennell KL. Exercise for osteoarthritis of the knee. Cochrane Database Syst Rev. 2015;1(1):CD004376. PMID: 25569281. doi:10.1002/14651858.CD004376.pub3.
+126. McCarthy B, Casey D, Devane D, Murphy K, Murphy E, Lacasse Y. Pulmonary rehabilitation for chronic obstructive pulmonary disease. Cochrane Database Syst Rev. 2015;2015(2):CD003793. PMID: 25705944. doi:10.1002/14651858.CD003793.pub3.
+127. Hayden JA, Ellis J, Ogilvie R, Malmivaara A, van Tulder MW. Exercise therapy for chronic low back pain. Cochrane Database Syst Rev. 2021;9(9):CD009790. PMID: 34580864. doi:10.1002/14651858.CD009790.pub2.
+128. Louw A, Zimney K, Puentedura EJ, Diener I. The efficacy of pain neuroscience education on musculoskeletal pain: a systematic review of the literature. Physiother Theory Pract. 2016;32(5):332-55. PMID: 27351541. doi:10.1080/09593985.2016.1194646.
+129. Geneen LJ, Martin DJ, Adams N, Clarke C, Dunbar M, Jones D, et al. Effects of education to facilitate knowledge about chronic pain for adults: a systematic review with meta-analysis. Syst Rev. 2015;4:132. PMID: 26428467. doi:10.1186/s13643-015-0120-5.
+130. Díaz-Cerrillo JL, Rondón-Ramos A, Pérez-González R, Clavero-Cano S. [Non-randomised trial of an educational intervention based on cognitive-behavioural principles for patients with chronic low back pain attended in Primary Care Physiotherapy]. Aten Primaria. 2016;48(7):440-8. Español. PMID: 26724987. doi:10.1016/j.aprim.2015.10.007.
+131. Cuenca-Zaldívar JN, Fernández-Carnero J, Sánchez-Romero EA, Álvarez-Gonzalo V, Conde-Rodríguez R, Rodríguez-Sanz D, et al. Effects of a therapeutic exercise protocol for patients with chronic non-specific back pain in primary health care: a single-group retrospective cohort study. J Clin Med. 2023;12(20):6478. PMID: 37892618. doi:10.3390/jcm12206478.
+132. Antúnez Sánchez LG, de la Casa Almeida M, Rebollo Roldán J, Ramírez Manzano A, Martín Valero R, Suárez Serrano C. [Effectiveness of an individualised physiotherapy program versus group therapy on neck pain and disability in patients with acute and subacute mechanical neck pain]. Aten Primaria. 2017;49(7):417-25. Español. PMID: 28089225. doi:10.1016/j.aprim.2016.09.010.
+133. Serra-Prat M, Sist X, Domenich R, Jurado L, Saiz A, Roces A, et al. Effectiveness of an intervention to prevent frailty in pre-frail community-dwelling older people consulting in primary care: a randomised controlled trial. Age Ageing. 2017;46(3):401-7. PMID: 28064172. doi:10.1093/ageing/afw242.
+134. Romera-Liebana L, Orfila F, Segura JM, Real J, Fabra ML, Möller M, et al. Effects of a primary care-based multifactorial intervention on physical and cognitive function in frail, elderly individuals: a randomized controlled trial. J Gerontol A Biol Sci Med Sci. 2018;73(12):1688-74 [paginación tal como figura en PubMed]. PMID: 29346524. doi:10.1093/gerona/glx259.
+135. Castell MV, Gutiérrez-Misis A, Sánchez-Martínez M, Prieto MA, Moreno B, Nuñez S, et al. Effectiveness of an intervention in multicomponent exercise in primary care to improve frailty parameters in patients over 70 years of age (MEFAP-project), a randomised clinical trial: rationale and study design. BMC Geriatr. 2019;19(1):25. PMID: 30691405. doi:10.1186/s12877-018-1024-8.
+136. Lin CW, Haas M, Maher CG, Machado LA, van Tulder MW. Cost-effectiveness of general practice care for low back pain: a systematic review. Eur Spine J. 2011;20(7):1012-23. PMID: 21203890. doi:10.1007/s00586-010-1675-4.
+137. Consejería de Sanidad de la Comunidad de Madrid. Informe del estado de salud de la población de la Comunidad de Madrid 2023. Resumen ejecutivo. Madrid: Comunidad de Madrid; 2023. Disponible en: https://www.comunidad.madrid/sites/default/files/doc/sanidad/epid/iesp2023_resumen_ejecutivo.pdf.
+138. Consejo General de Colegios de Fisioterapeutas de España. Resolución 1/2023 sobre el empleo de la ecografía en Fisioterapia. Madrid: CGCFE; 2023.
+139. Comunidad de Madrid. La Comunidad de Madrid culmina la implantación de la ecografía en los centros de salud, que disponen de 450 aparatos diagnósticos, fijos de consola y ultra portátiles [nota de prensa]. Madrid; 17 de mayo de 2022. Disponible en: https://www.comunidad.madrid/noticias/2022/05/17/comunidad-madrid-culmina-implantacion-ecografia-centros-salud-disponen-450-aparatos-diagnosticos-fijos-consola-ultra-portatiles.
+140. Comunidad de Madrid. Atención Primaria de la Comunidad de Madrid impulsa la formación en fisioterapia manual e invasiva para mejorar el abordaje del dolor musculoesquelético [nota de prensa]. Madrid; 22 de diciembre de 2025. Disponible en: https://www.comunidad.madrid/noticias/2025/12/22/atencion-primaria-comunidad-madrid-impulsa-formacion-fisioterapia-manual-e-invasiva-mejorar-abordaje-dolor-musculoesqueletico.
+141. Bachmann LM, Kolb E, Koller MT, Steurer J, ter Riet G. Accuracy of Ottawa ankle rules to exclude fractures of the ankle and mid-foot: systematic review. BMJ. 2003;326(7386):417. PMID: 12595378. doi:10.1136/bmj.326.7386.417.
+142. The Ionising Radiation (Medical Exposure) Regulations 2017. SI 2017/1322. Reino Unido. Disponible en: https://www.legislation.gov.uk/uksi/2017/1322.
+143. Stiell IG, McKnight RD, Greenberg GH, McDowell I, Nair RC, Wells GA, et al. Implementation of the Ottawa ankle rules. JAMA. 1994;271(11):827-32. PMID: 8114236. Disponible en: https://pubmed.ncbi.nlm.nih.gov/8114236/.
+144. Downie A, Williams CM, Henschke N, Hancock MJ, Ostelo RW, de Vet HC, et al. Red flags to screen for malignancy and fracture in patients with low back pain: systematic review. BMJ. 2013;347:f7095. PMID: 24335669. doi:10.1136/bmj.f7095.
+145. Foster NE, Anema JR, Cherkin D, Chou R, Cohen SP, Gross DP, et al. Prevention and treatment of low back pain: evidence, challenges, and promising directions. Lancet. 2018;391(10137):2368-83. PMID: 29573872. doi:10.1016/S0140-6736(18)30489-6.
+146. Côté P, Wong JJ, Sutton D, Shearer HM, Mior S, Randhawa K, et al. Management of neck pain and associated disorders: a clinical practice guideline from the Ontario Protocol for Traffic Injury Management (OPTIMa) Collaboration. Eur Spine J. 2016;25(7):2000-22. PMID: 26984876. doi:10.1007/s00586-016-4467-7.
+147. Steuri R, Sattelmayer M, Elsig S, Kolly C, Tal A, Taeymans J, et al. Effectiveness of conservative interventions including exercise, manual therapy and medical management in adults with shoulder impingement: a systematic review and meta-analysis of RCTs. Br J Sports Med. 2017;51(18):1340-7. PMID: 28630217. doi:10.1136/bjsports-2016-096515.
+148. Karjalainen TV, Jain NB, Page CM, Lähdeoja TA, Johnston RV, Salamh P, et al. Subacromial decompression surgery for rotator cuff disease. Cochrane Database Syst Rev. 2019;1(1):CD005619. PMID: 30707445. doi:10.1002/14651858.CD005619.pub3.
+149. Bisset L, Beller E, Jull G, Brooks P, Darnell R, Vicenzino B. Mobilisation with movement and exercise, corticosteroid injection, or wait and see for tennis elbow: randomised trial. BMJ. 2006;333(7575):939. PMID: 17012266. doi:10.1136/bmj.38961.584653.AE.
+150. Hill JC, Whitehurst DG, Lewis M, Bryan S, Dunn KM, Foster NE, et al. Comparison of stratified primary care management for low back pain with current best practice (STarT Back): a randomised controlled trial. Lancet. 2011;378(9802):1560-71. PMID: 21963002. doi:10.1016/S0140-6736(11)60937-9.
+151. Gusi N, del Pozo-Cruz B, Olivares PR, Hernández-Mocholi M, Hill JC. The Spanish version of the "STarT Back Screening Tool" (SBST) in different subgroups. Aten Primaria. 2011;43(7):356-61. PMID: 21296465. doi:10.1016/j.aprim.2010.05.019.
+152. Gallego-Izquierdo T, Ruiz-Vindel J, Ferragut-Garcías A, Martínez-Merinero P, Montañez-Aguilera FJ, Noriega-Matanza C, et al. Adaptation and transcultural translation into Spanish of the Patient-Rated Tennis Elbow Evaluation Questionnaire. J Orthop Res. 2020;38(12):2601-7. PMID: 32761913. doi:10.1002/jor.24820.
+153. Vuurberg G, Hoorntje A, Wink LM, van der Doelen BFW, van den Bekerom MP, Dekker R, et al. Diagnosis, treatment and prevention of ankle sprains: update of an evidence-based clinical guideline. Br J Sports Med. 2018;52(15):956. PMID: 29514819. doi:10.1136/bjsports-2017-098106.
+154. Blanpied PR, Gross AR, Elliott JM, Devaney LL, Clewley D, Walton DM, et al. Neck pain: revision 2017. J Orthop Sports Phys Ther. 2017;47(7):A1-A83. PMID: 28666405. doi:10.2519/jospt.2017.0302.
+155. Haahr JP, Østergaard S, Dalsgaard J, Norup K, Frost P, Lausen S, et al. Exercises versus arthroscopic decompression in patients with subacromial impingement: a randomised, controlled study in 90 cases with a one year follow up. Ann Rheum Dis. 2005;64(5):760-4. PMID: 15834056. doi:10.1136/ard.2004.021188.
+156. Ketola S, Lehtinen J, Rousi T, Nissinen M, Huhtala H, Konttinen YT, et al. No evidence of long-term benefits of arthroscopic acromioplasty in the treatment of shoulder impingement syndrome: five-year results of a randomised controlled trial. Bone Joint Res. 2013;2(7):132-9. PMID: 23836479. doi:10.1302/2046-3758.27.2000163.
+157. Ketola S, Lehtinen JT, Arnala I. Arthroscopic decompression not recommended in the treatment of rotator cuff tendinopathy: a final review of a randomised controlled trial at a minimum follow-up of ten years. Bone Joint J. 2017;99-B(6):799-805. PMID: 28566400. doi:10.1302/0301-620X.99B6.BJJ-2016-0569.R1.
+158. Kanto K, Bäck M, Ibounig T, Björkenheim R, Malmivaara A, Czuba T, et al. Arthroscopic subacromial decompression versus placebo surgery for subacromial pain syndrome: 10 year follow-up of the FIMPACT randomised, placebo surgery controlled trial. BMJ. 2025;391:e086201. PMID: 41330610. doi:10.1136/bmj-2025-086201.
+159. Kukkonen J, Joukainen A, Lehtinen J, Mattila KT, Tuominen EK, Kauko T, et al. Treatment of non-traumatic rotator cuff tears: a randomised controlled trial with one-year clinical results. Bone Joint J. 2014;96-B(1):75-81. PMID: 24395315. doi:10.1302/0301-620X.96B1.32168.
+160. Morrissey D, Cotchett M, Said J'Bari A, Prior T, Griffiths IB, Rathleff MS, et al. Management of plantar heel pain: a best practice guide informed by a systematic review, expert clinical reasoning and patient values. Br J Sports Med. 2021;55(19):1106-18. PMID: 33785535. doi:10.1136/bjsports-2019-101970.
+161. Koc TA, Bise CG, Neville C, Carreira D, Martin RL, McDonough CM. Heel pain - plantar fasciitis: revision 2023. J Orthop Sports Phys Ther. 2023;53(12):CPG1-CPG39. PMID: 38037331. doi:10.2519/jospt.2023.0303.
+162. Kang JR, Sin AT, Cheung EV. Treatment of massive irreparable rotator cuff tears: a cost-effectiveness analysis. Orthopedics. 2017;40(1):e65-e76. PMID: 27684078. doi:10.3928/01477447-20160926-06.
+163. Servicio Madrileño de Salud. Portal estadístico de personal del Servicio Madrileño de Salud [base de datos]. Plantillas orgánicas a 30 de abril de 2024. Madrid: Comunidad de Madrid; 2024. Disponible en: https://www.comunidad.madrid/servicios/salud/portal-estadistico-personal-servicio-madrileno-salud.
+164. PricewaterhouseCoopers Asesores de Negocios. Impacto económico, sanitario y social de la actividad de fisioterapia en la Comunidad de Madrid. [Madrid]: Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid; septiembre de 2022. Informe encargado por el Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid.
+165. Halls S, Thomas R, Stott H, Cupples ME, Kersten P, Cramp F, et al. Provision of first contact physiotherapy in primary care across the UK: a survey of the service. Physiotherapy. 2020;108:2-9. PMID: 32693238. doi:10.1016/j.physio.2020.04.005.
+166. Instituto Nacional de Estadística. Estadística del Padrón Continuo [base de datos]. Madrid: INE. Disponible en: https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177012&menu=ultiDatos&idp=1254734710990.
+167. O'Caoimh R, Galluzzo L, Rodríguez-Laso Á, Van der Heyden J, Ranhoff AH, Lamprini-Koula M, et al. Prevalence of frailty at population level in European ADVANTAGE Joint Action Member States: a systematic review and meta-analysis. Ann Ist Super Sanita. 2018;54(3):226-238. PMID: 30284550. doi:10.4415/ANN_18_03_10.
+168. Chartered Society of Physiotherapy. CSP urges government to boost FCP roll-out across England [nota]. Londres; 19 de enero de 2022. Disponible en: https://www.csp.org.uk/news/2022-01-19-csp-urges-government-boost-fcp-roll-out-across-england.
+169. Lin CW, Haas M, Maher CG, Machado LA, van Tulder MW. Cost-effectiveness of guideline-endorsed treatments for low back pain: a systematic review. Eur Spine J. 2011;20(7):1024-38. PMID: 21229367. doi:10.1007/s00586-010-1676-3.
+170. Korthals-de Bos IB, Hoving JL, van Tulder MW, Rutten-van Mölken MP, Adèr HJ, de Vet HC, et al. Cost effectiveness of physiotherapy, manual therapy, and general practitioner care for neck pain: economic evaluation alongside a randomised controlled trial. BMJ. 2003;326(7395):911. PMID: 12714472. doi:10.1136/bmj.326.7395.911.
+171. Driessen MT, Lin CW, van Tulder MW. Cost-effectiveness of conservative treatments for neck pain: a systematic review on economic evaluations. Eur Spine J. 2012;21(8):1441-50. PMID: 22447407. doi:10.1007/s00586-012-2272-5.
+172. EFQM. Modelo EFQM 2025. Edición en español. Madrid: Club Excelencia en Gestión; 2025. Disponible en: https://www.clubexcelencia.org/conocimiento/plataforma-de-conocimiento/modelo-efqm-2025.
+173. Hernández-Lázaro H, Mingo-Gómez MT, Jiménez-Del-Barrio S, Simarro-Martín A, Wiśniowska-Szurlej A, Ceballos-Laita L. Development of an ICF core set for the management of musculoskeletal conditions in primary care physiotherapy services in Spain: a Delphi study. Disabil Rehabil. 2025;47(18):4759-4768. PMID: 39931756. doi:10.1080/09638288.2025.2460723.
+174. Hernández-Lázaro H, Jiménez-Del Barrio S, Ceballos-Laita L, Lahuerta-Martin S, Medrano-de-la-Fuente R, Hernando-Garijo I, et al. Multicentre cross-sectional study assessing content validity of the International Classification of Functioning, Disability and Health core set for post-acute musculoskeletal conditions in primary care physiotherapy services. J Rehabil Med. 2023;55:jrm11950. PMID: 37974517. doi:10.2340/jrm.v55.11950.

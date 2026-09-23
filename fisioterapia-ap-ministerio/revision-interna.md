@@ -4,7 +4,7 @@ Este archivo no forma parte del documento que se entrega. Recoge lo que la versi
 
 ## 1. Referencias citadas pendientes de cotejo en la fuente original
 
-El entorno de trabajo solo permitió abrir PubMed. Estas 65 referencias están localizadas, con título y dirección oficial, pero nadie ha abierto todavía el documento para confirmar el dato citado. El número es el de la lista de referencias del documento. Al confirmar cada una, se cambia su estado a `Verificada` en `referencias.csv` y se reconstruye con `construir.sh`.
+El entorno de trabajo solo permitió abrir PubMed y, para los documentos del Drive, leerlos completos. Estas 70 referencias están localizadas, con título y dirección oficial, pero nadie ha abierto todavía el documento para confirmar el dato citado. Algunas notas oficiales de la Comunidad de Madrid y el informe XIDE se han contrastado con el extracto del buscador, que no sustituye al cotejo. El número es el de la lista de referencias del documento. Al confirmar cada una, se cambia su estado a `Verificada` en `referencias.csv` y se reconstruye con `construir.sh`.
 
 | N.º | Id | Tipo | Cita (inicio) |
 |---|---|---|---|
@@ -29,50 +29,55 @@ El entorno de trabajo solo permitió abrir PubMed. Estas 65 referencias están l
 | 47 | A7 | plan | Ministerio de Sanidad. Plan de Acción de Atención Primaria y Comunitaria 2022-2023. Madrid: Ministerio de Sanidad; 2021 |
 | 48 | A8 | plan | Ministerio de Sanidad. Plan de Acción de Atención Primaria y Comunitaria 2025-2027. Madrid: Ministerio de Sanidad; 2024 |
 | 49 | A8n | nota oficial | Ministerio de Sanidad. El Consejo Interterritorial aprueba el Plan de Acción de Atención Primaria y Comunitaria 2025-2027 [nota de prensa].  |
-| 51 | A9 | plan | Ministerio de Sanidad, Servicios Sociales e Igualdad. Estrategia para el Abordaje de la Cronicidad en el Sistema Nacional de Salud. Madrid:  |
-| 52 | A11 | plan | Ministerio de Sanidad, Servicios Sociales e Igualdad. Estrategia de Promoción de la Salud y Prevención en el Sistema Nacional de Salud. Madr |
-| 53 | A10 | plan | Ministerio de Sanidad. Estrategia de Salud Digital del Sistema Nacional de Salud. Madrid: Ministerio de Sanidad; 2021 |
-| 54 | A5 | norma | Real Decreto 601/2019, de 18 de octubre, sobre justificación y optimización del uso de las radiaciones ionizantes para la protección radioló |
-| 55 | G6 | norma | Directiva 2013/59/Euratom del Consejo, de 5 de diciembre de 2013, por la que se establecen normas de seguridad básicas para la protección co |
-| 57 | B1 | estadística | Ministerio de Sanidad. Informe monográfico. Recursos humanos, ordenación profesional y formación continuada en el Sistema Nacional de Salud. |
-| 58 | B7 | artículo | Aiguadé Aiguadé R. La hora de la Atención Primaria [editorial]. Fisioterapia. 2022;44(4):199-200. doi:10.1016/j.ft.2022.03.002 |
-| 59 | C9b | programa | Departament de Salut. Programa d'incorporació de fisioterapeutes per a la promoció del funcionament i la prevenció de la discapacitat a l'at |
-| 60 | C9 | plan | Departament de Salut. Pla funcional del Programa d'incorporació de fisioterapeutes a l'atenció primària i comunitària. Barcelona: Generalita |
-| 61 | B1b | estadística | Ministerio de Sanidad. Sistema de Información de Atención Primaria (SIAP). Profesionales [consulta interactiva] |
-| 62 | C1b | cartera | Servicio Andaluz de Salud. Cartera de servicios de atención primaria. IV. Otros servicios. 2.3 Fisioterapia [página web] |
-| 63 | C1 | nota oficial | Servicio Andaluz de Salud. Sanidad implanta la derivación desde Atención Primaria a Fisioterapia en toda Andalucía [nota de prensa]. Sevilla |
-| 64 | C2 | cartera | Gobierno de Aragón. Cartera de Servicios de Atención Primaria del Sistema de Salud de Aragón. Zaragoza: Gobierno de Aragón; 2024 |
-| 65 | C4 | protocolo | Gerencia de Atención Primaria de Mallorca. Protocolo de actuación en las patologías de derivación directa en las Unidades de Fisioterapia de |
-| 66 | C5 | guía | Servicio Canario de la Salud. Consulta de fisioterapia en Atención Primaria. Guía de actuación. Santa Cruz de Tenerife: Servicio Canario de  |
-| 67 | C5n | nota oficial | Gobierno de Canarias. Sanidad despliega servicio de fisioterapia en 24 zonas básicas de Gran Canaria, Tenerife, Lanzarote y Fuerteventura [n |
-| 68 | C7 | guía | Servicio de Salud de Castilla-La Mancha. Guía de Unidades de Fisioterapia de Atención Primaria. Toledo: SESCAM; 2022 |
-| 69 | C8 | protocolo | Junta de Castilla y León. Protocolos de fisioterapia en atención primaria. Valladolid: Consejería de Sanidad; 2017 |
-| 70 | C10 | cartera | Conselleria de Sanitat. Cartera de servicios de Atención Primaria Comunitaria. Plan de Acción de Atención Primaria y Comunitaria 2022-2023.  |
-| 71 | C11 | protocolo | Área de Salud de Plasencia. Protocolo de derivación a las unidades de fisioterapia y rehabilitación. Plasencia: Servicio Extremeño de Salud; |
-| 72 | C12 | cartera | Servizo Galego de Saúde. Carteira de servizos de fisioterapia de atención primaria e comunitaria. Santiago de Compostela: SERGAS |
-| 73 | C14 | cartera | Servicio Madrileño de Salud, Gerencia Asistencial de Atención Primaria. Cartera de Servicios Estandarizados de Atención Primaria de Madrid.  |
-| 74 | C15 | nota oficial | Servicio Murciano de Salud. El SMS aprueba la cartera de servicios de fisioterapia en Atención Primaria [nota de prensa]. Murcia; 6 de abril |
-| 75 | C16 | formación oficial | Servicio Navarro de Salud. Formación a fisioterapeutas de nueva incorporación en atención primaria, tercera edición [actividad formativa] |
-| 76 | C17 | nota oficial | Gobierno Vasco, Irekia. La Fisioterapia de Atención Primaria de Osakidetza ha atendido ya a más de 8.600 pacientes en el primer semestre [no |
+| 50 | A9 | plan | Ministerio de Sanidad, Servicios Sociales e Igualdad. Estrategia para el Abordaje de la Cronicidad en el Sistema Nacional de Salud. Madrid:  |
+| 51 | A11 | plan | Ministerio de Sanidad, Servicios Sociales e Igualdad. Estrategia de Promoción de la Salud y Prevención en el Sistema Nacional de Salud. Madr |
+| 52 | A10 | plan | Ministerio de Sanidad. Estrategia de Salud Digital del Sistema Nacional de Salud. Madrid: Ministerio de Sanidad; 2021 |
+| 53 | A5 | norma | Real Decreto 601/2019, de 18 de octubre, sobre justificación y optimización del uso de las radiaciones ionizantes para la protección radioló |
+| 54 | G6 | norma | Directiva 2013/59/Euratom del Consejo, de 5 de diciembre de 2013, por la que se establecen normas de seguridad básicas para la protección co |
+| 56 | B1 | estadística | Ministerio de Sanidad. Informe monográfico. Recursos humanos, ordenación profesional y formación continuada en el Sistema Nacional de Salud. |
+| 57 | B7 | artículo | Aiguadé Aiguadé R. La hora de la Atención Primaria [editorial]. Fisioterapia. 2022;44(4):199-200. doi:10.1016/j.ft.2022.03.002 |
+| 58 | C9b | programa | Departament de Salut. Programa d'incorporació de fisioterapeutes per a la promoció del funcionament i la prevenció de la discapacitat a l'at |
+| 59 | C9 | plan | Departament de Salut. Pla funcional del Programa d'incorporació de fisioterapeutes a l'atenció primària i comunitària. Barcelona: Generalita |
+| 60 | B1b | estadística | Ministerio de Sanidad. Sistema de Información de Atención Primaria (SIAP). Profesionales [consulta interactiva] |
+| 61 | C1b | cartera | Servicio Andaluz de Salud. Cartera de servicios de atención primaria. IV. Otros servicios. 2.3 Fisioterapia [página web] |
+| 62 | C1 | nota oficial | Servicio Andaluz de Salud. Sanidad implanta la derivación desde Atención Primaria a Fisioterapia en toda Andalucía [nota de prensa]. Sevilla |
+| 63 | C2 | cartera | Gobierno de Aragón. Cartera de Servicios de Atención Primaria del Sistema de Salud de Aragón. Zaragoza: Gobierno de Aragón; 2024 |
+| 64 | C4 | protocolo | Gerencia de Atención Primaria de Mallorca. Protocolo de actuación en las patologías de derivación directa en las Unidades de Fisioterapia de |
+| 65 | C5 | guía | Servicio Canario de la Salud. Consulta de fisioterapia en Atención Primaria. Guía de actuación. Santa Cruz de Tenerife: Servicio Canario de  |
+| 66 | C5n | nota oficial | Gobierno de Canarias. Sanidad despliega servicio de fisioterapia en 24 zonas básicas de Gran Canaria, Tenerife, Lanzarote y Fuerteventura [n |
+| 67 | C7 | guía | Servicio de Salud de Castilla-La Mancha. Guía de Unidades de Fisioterapia de Atención Primaria. Toledo: SESCAM; 2022 |
+| 68 | C8 | protocolo | Junta de Castilla y León. Protocolos de fisioterapia en atención primaria. Valladolid: Consejería de Sanidad; 2017 |
+| 69 | C10 | cartera | Conselleria de Sanitat. Cartera de servicios de Atención Primaria Comunitaria. Plan de Acción de Atención Primaria y Comunitaria 2022-2023.  |
+| 70 | C11 | protocolo | Área de Salud de Plasencia. Protocolo de derivación a las unidades de fisioterapia y rehabilitación. Plasencia: Servicio Extremeño de Salud; |
+| 71 | C12 | cartera | Servizo Galego de Saúde. Carteira de servizos de fisioterapia de atención primaria e comunitaria. Santiago de Compostela: SERGAS |
+| 72 | C14 | cartera | Servicio Madrileño de Salud, Gerencia Asistencial de Atención Primaria. Cartera de Servicios Estandarizados de Atención Primaria de Madrid.  |
+| 73 | C15 | nota oficial | Servicio Murciano de Salud. El SMS aprueba la cartera de servicios de fisioterapia en Atención Primaria [nota de prensa]. Murcia; 6 de abril |
+| 74 | C16 | formación oficial | Servicio Navarro de Salud. Formación a fisioterapeutas de nueva incorporación en atención primaria, tercera edición [actividad formativa] |
+| 75 | C17 | nota oficial | Gobierno Vasco, Irekia. La Fisioterapia de Atención Primaria de Osakidetza ha atendido ya a más de 8.600 pacientes en el primer semestre [no |
+| 76 | C12x | informe oficial | Agencia Gallega de Conocimiento en Salud (ACIS). Informe sobre el diseño del sistema de citación XIDE (Gestión Integral de la Demanda en Equ |
 | 77 | C12n | prensa | Redacción Médica. Los fisioterapeutas del Sergas podrán atender a pacientes bajo demanda. 6 de abril de 2022 |
 | 78 | C14w | web oficial | Comunidad de Madrid. Unidades de atención específica: fisioterapia [página web] |
-| 79 | D4 | plan | NHS. The NHS Long Term Plan. Londres: NHS; 2019 |
-| 80 | D5 | norma de financiación | NHS England. Network Contract Directed Enhanced Service. Additional Roles Reimbursement Scheme guidance. Londres: NHS England; 2019 |
-| 81 | D3 | marco competencial | Health Education England. First Contact Practitioners and Advanced Practitioners in Primary Care: (Musculoskeletal). A Roadmap to Practice.  |
-| 82 | D6 | guía profesional | Chartered Society of Physiotherapy, British Medical Association, Royal College of General Practitioners. First Contact Physiotherapy posts i |
-| 93 | D20 | estadística | Nivel. Jaarcijfers fysiotherapie 2024: aandeel patiënten met een verwijzing daalt. Utrecht: Nivel; 2025 |
-| 94 | D18 | norma | Helse- og omsorgsdepartementet. Prop. 71 L (2016-2017). Oslo: Gobierno de Noruega; 2017 |
-| 95 | D19 | web oficial | 1177 Vårdguiden, Region Stockholm. Rehabilitering i öppenvård [página web] |
-| 98 | D21 | declaración profesional | Australian Physiotherapy Association. Position statement on scope of practice. Melbourne: APA; 2024 |
-| 99 | D22 | declaración profesional | Canadian Physiotherapy Association. Position statement: primary health care. Ottawa: CPA; 2022 |
-| 117 | D14n | estadística | Eurostat. Physicians and physiotherapists in the EU: how many? Eurostat News. Luxemburgo; 18 de agosto de 2023 |
-| 118 | D14 | estadística | Eurostat. Healthcare personnel statistics: dentists, pharmacists and physiotherapists. Statistics Explained [actualización periódica]. Luxem |
-| 119 | D13 | censo | World Physiotherapy. Annual Membership Census 2024. Global report. Londres: World Physiotherapy; 2025 |
-| 135 | G3 | resolución profesional | Consejo General de Colegios de Fisioterapeutas de España. Resolución 1/2023 sobre el empleo de la ecografía en Fisioterapia. Madrid: CGCFE;  |
-| 137 | G7 | norma | The Ionising Radiation (Medical Exposure) Regulations 2017. SI 2017/1322. Reino Unido |
-| 159 | B9 | estadística | Instituto Nacional de Estadística. Estadística del Padrón Continuo [base de datos]. Madrid: INE |
-| 161 | D7 | nota profesional | Chartered Society of Physiotherapy. CSP urges government to boost FCP roll-out across England [nota]. Londres; 19 de enero de 2022 |
-| 165 | A15 | modelo de gestión | EFQM. Modelo EFQM 2025. Edición en español. Madrid: Club Excelencia en Gestión; 2025 |
+| 81 | D4 | plan | NHS. The NHS Long Term Plan. Londres: NHS; 2019 |
+| 82 | D5 | norma de financiación | NHS England. Network Contract Directed Enhanced Service. Additional Roles Reimbursement Scheme guidance. Londres: NHS England; 2019 |
+| 83 | D3 | marco competencial | Health Education England. First Contact Practitioners and Advanced Practitioners in Primary Care: (Musculoskeletal). A Roadmap to Practice.  |
+| 84 | D6 | guía profesional | Chartered Society of Physiotherapy, British Medical Association, Royal College of General Practitioners. First Contact Physiotherapy posts i |
+| 95 | D20 | estadística | Nivel. Jaarcijfers fysiotherapie 2024: aandeel patiënten met een verwijzing daalt. Utrecht: Nivel; 2025 |
+| 96 | D18 | norma | Helse- og omsorgsdepartementet. Prop. 71 L (2016-2017). Oslo: Gobierno de Noruega; 2017 |
+| 97 | D19 | web oficial | 1177 Vårdguiden, Region Stockholm. Rehabilitering i öppenvård [página web] |
+| 100 | D21 | declaración profesional | Australian Physiotherapy Association. Position statement on scope of practice. Melbourne: APA; 2024 |
+| 101 | D22 | declaración profesional | Canadian Physiotherapy Association. Position statement: primary health care. Ottawa: CPA; 2022 |
+| 119 | D14n | estadística | Eurostat. Physicians and physiotherapists in the EU: how many? Eurostat News. Luxemburgo; 18 de agosto de 2023 |
+| 120 | D14 | estadística | Eurostat. Healthcare personnel statistics: dentists, pharmacists and physiotherapists. Statistics Explained [actualización periódica]. Luxem |
+| 121 | D13 | censo | World Physiotherapy. Annual Membership Census 2024. Global report. Londres: World Physiotherapy; 2025 |
+| 137 | C14s | informe oficial | Consejería de Sanidad de la Comunidad de Madrid. Informe del estado de salud de la población de la Comunidad de Madrid 2023. Resumen ejecuti |
+| 138 | G3 | resolución profesional | Consejo General de Colegios de Fisioterapeutas de España. Resolución 1/2023 sobre el empleo de la ecografía en Fisioterapia. Madrid: CGCFE;  |
+| 139 | C14e | nota oficial | Comunidad de Madrid. La Comunidad de Madrid culmina la implantación de la ecografía en los centros de salud, que disponen de 450 aparatos di |
+| 140 | C14f | nota oficial | Comunidad de Madrid. Atención Primaria de la Comunidad de Madrid impulsa la formación en fisioterapia manual e invasiva para mejorar el abor |
+| 142 | G7 | norma | The Ionising Radiation (Medical Exposure) Regulations 2017. SI 2017/1322. Reino Unido |
+| 163 | C14p | estadística | Servicio Madrileño de Salud. Portal estadístico de personal del Servicio Madrileño de Salud [base de datos]. Plantillas orgánicas a 30 de ab |
+| 166 | B9 | estadística | Instituto Nacional de Estadística. Estadística del Padrón Continuo [base de datos]. Madrid: INE |
+| 168 | D7 | nota profesional | Chartered Society of Physiotherapy. CSP urges government to boost FCP roll-out across England [nota]. Londres; 19 de enero de 2022 |
+| 172 | A15 | modelo de gestión | EFQM. Modelo EFQM 2025. Edición en español. Madrid: Club Excelencia en Gestión; 2025 |
 
 Prioridad: las citas literales de normas (Ley 44/2003, arts. 4.7 y 7.2.b; RD 1030/2006, apartado 6 del anexo II; RD 601/2019, definición de prescriptor), la acción A.4.4 del Marco Estratégico y el efecto de la Orden SND/454/2025 sobre el apartado 6.
 
@@ -82,9 +87,6 @@ Tabla 1. Afirmaciones de los documentos aportados que no coinciden con su fuente
 
 | Documento | Afirmación | Resultado de la verificación | Tratamiento en este documento |
 |---|---|---|---|
-| Documento de trabajo madrileño (G10) | Ahorro de 568 millones de euros anuales atribuido a un estudio sobre el impacto de la fisioterapia | La llamada de cita remite a una referencia que no figura en su bibliografía | No se usa (sección 9.6) |
-| Documento de trabajo madrileño (G10) | Prevalencias de dolor persistente, de problemas musculoesqueléticos, de artrosis y de dolor neuropático en Madrid | Se atribuyen a la estrategia madrileña de salud comunitaria de 2022, que no se ha podido abrir | No se usan hasta cotejarlas con esa estrategia |
-| Documento de trabajo madrileño (G10) | Número de fisioterapeutas de AP y número de plazas de fisioterapia del servicio de salud | Las dos cifras no coinciden entre sí y no citan su fuente | No se usan; el dato debe tomarse del SIAP (sección 9.1) |
 | Análisis gallego (G9) | Los costes indirectos suponen el 86,5 % del coste del dolor lumbar y la fisioterapia el 6,6 % | El resumen del estudio citado da un 88 % de costes indirectos y no desglosa la fisioterapia; el texto completo no se ha podido abrir (E50) | Se usa la cifra del resumen (sección 1.3) |
 | Análisis gallego (G9) | La terapia manual limitada a seis sesiones costó un tercio que la atención general | El resumen compara terapia manual, fisioterapia basada en ejercicio y atención médica, sin citar el número de sesiones; el texto completo no se ha podido abrir (E55) | Se cita el resumen y se distinguen las dos formas de fisioterapia (sección 9.6) |
 | Análisis gallego (G9) | La fisioterapia es la opción más coste-efectiva en las roturas masivas del manguito | En el caso base, la opción más coste-efectiva es la prótesis invertida (E71) | No se usa para defender la fisioterapia (sección 8.5) |
@@ -98,10 +100,25 @@ Fuente: contraste de los documentos aportados con los registros de PubMed y con 
 Ninguna de estas discrepancias cambia las conclusiones del análisis gallego sobre la efectividad de la fisioterapia en AP. Sí cambian la fuerza con la que pueden formularse algunos argumentos económicos, y por eso este documento los presenta con más cautela.
 
 
+
+## 2 bis. Rastreo del documento de trabajo madrileño (G10)
+
+El documento de trabajo madrileño ya no se cita. Su texto procede de la propuesta «Replanteamiento del papel de la fisioterapia en la Gerencia Asistencial de Atención Primaria de la Comunidad de Madrid» (versión 2, enero de 2026, con membrete del CPFCM), que a su vez procede del TFM de Patricia Moreno Carrero (UNIR, 2024). El documento cita ahora esas dos fuentes (G12 y G13) y las fuentes oficiales que ellas mencionan.
+
+| Afirmación del documento de trabajo | Fuente localizada | Tratamiento |
+|---|---|---|
+| Ahorro de 568 millones de euros anuales | Informe de PwC para el CPFCM, septiembre de 2022, datos de 2021 (G11). La cifra aparece solo en la carta de la Decana y es un ahorro potencial de cuatro actuaciones | Se cita como ahorro potencial en la sección 9.6. Confirmar en la p. 64 del informe que los 240 millones del túnel carpiano son ahorro del SERMAS y los 340 millones, absentismo |
+| 943 plazas de fisioterapia en el SERMAS | El TFM da 947 plazas a 30 de abril de 2024 (691 en atención hospitalaria y 256 en AP), del Portal estadístico de personal del SERMAS | Se usa la cifra de 947 con el portal como fuente (C14p), pendiente de cotejo |
+| 262 fisioterapeutas en AP | Plan de gestión interno de febrero de 2026, con datos eSOAP a diciembre de 2025 (262 fisioterapeutas en 109 unidades) | No se usa, porque es un dato interno no publicado. La sección 9.1 usa la plantilla de 2024 y dos estimaciones publicadas |
+| 32,2 % con miedo a caerse y 11,8 % con dependencia | Informe del estado de salud de la población de la Comunidad de Madrid 2023 (C14s). El TFM sitúa el 32,2 % en el grupo de 65 a 79 años, no en los mayores de 65 | Se usan en la sección 6.4 con el grupo de edad del TFM, pendientes de cotejo |
+| Segunda causa de consulta en AP | Observatorio de Resultados del SERMAS, morbilidad atendida en 2021, en tasas por 1.000. Mide episodios y no consultas, y en hombres el aparato digestivo puede superar al locomotor | No se usa; la sección 1.2 usa la BDCAP nacional |
+| Servicios de cartera 506, 414 y 501 | La cartera de 2025 numera el dolor crónico no oncológico como servicio 421, según documentos internos de la DASE | No se usan números de servicio |
+| Prevalencias de 50 %, 12 %, 8 %, 18 % y 40 %; 6,8 millones de habitantes; 430 centros y 286 zonas; 65 % metropolitano; esperanza de vida | Ninguna fuente localizada en los documentos de origen | No se usan. La estrategia madrileña de atención al dolor está en el Drive (BVCM050712.pdf) por si se quieren buscar las prevalencias |
+| Implantación desigual de la gestión compartida y poca experiencia de las unidades de atención al usuario | El TFM describe escasa difusión a la ciudadanía, carga para las unidades de atención al usuario y huecos sin usar | Se cita el TFM (G13) con su formulación |
+
 ## 3. Documentos y datos que faltan por incorporar
 
 - La versión vigente de la instrucción madrileña de atención a procesos de demanda, porque la copia aportada combina dos ediciones.
-- La estrategia madrileña de salud comunitaria de 2022, si se quieren usar las prevalencias del documento de trabajo madrileño.
 - La instrucción del SERGAS que incorpora la fisioterapia al protocolo de gestión de la demanda.
 - El documento completo de la guía de actuación del Servicio Canario de la Salud.
 - La serie del SIAP de fisioterapeutas de AP por comunidad autónoma del último año disponible.
@@ -113,5 +130,5 @@ Ninguna de estas discrepancias cambia las conclusiones del análisis gallego sob
 - Órgano que firma el documento, para el panel lateral de la portada. Hoy dice «Documento técnico · Septiembre de 2026».
 - Aprobación institucional del CPFCM antes de enviar un documento con su logotipo, y en particular de la petición de habilitación para solicitar radiografía simple (sección 7.4).
 - Visibilidad del repositorio `drraulferrer/Proyectos`, que es público.
-- Uso del documento de trabajo madrileño (G10), sin autoría ni fecha, como fuente citada en las secciones 3.4, 5 y 6.
+- Forma de citar la propuesta «Replanteamiento…» (G12): hoy figura como documento del CPFCM por su membrete, pero los metadatos la atribuyen a Raúl Ferrer Peña y Patricia Moreno Carrero. Confirmar también que el TFM de Patricia Moreno Carrero (G13) puede citarse.
 - Revisión del índice en Microsoft Word, porque las páginas se calculan sobre el PDF de LibreOffice.

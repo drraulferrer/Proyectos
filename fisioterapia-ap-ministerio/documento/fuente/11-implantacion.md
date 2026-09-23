@@ -35,7 +35,7 @@ La tabla muestra una dificultad práctica. Algunos códigos agrupan signos o sí
 
 La formación continuada cubre cuatro áreas: el cribado de signos de alarma, la ecografía como apoyo a la valoración, la gestión de grupos y, si se aprueba la habilitación de la sección 7.4, la protección radiológica.
 
-La formación debe alcanzar también a otros perfiles del equipo. El personal de las unidades de atención al usuario necesita formación en el guion de citación y en los criterios de exclusión. En Madrid, su falta de experiencia limitó la gestión compartida de la demanda [@G10]. Medicina de familia y enfermería necesitan conocer los criterios de derivación y de retorno de los circuitos 2 y 3.
+La formación debe alcanzar también a otros perfiles del equipo. El personal de las unidades de atención al usuario necesita formación en el guion de citación y en los criterios de exclusión. En Madrid, esa tarea recae sobre las unidades de atención al usuario, en un mostrador público y con poca información previa de la ciudadanía [@G13]. Medicina de familia y enfermería necesitan conocer los criterios de derivación y de retorno de los circuitos 2 y 3.
 
 Para los fisioterapeutas, la formación incluye cuatro contenidos adicionales:
 

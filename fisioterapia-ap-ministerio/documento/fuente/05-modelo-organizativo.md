@@ -14,7 +14,7 @@ El modelo se apoya en seis principios:
 - **Medición común.** Todos los servicios de salud registran los indicadores de la sección 10.
 - **Seguimiento longitudinal.** El alta de un episodio no cierra la relación con la persona. Quien recibe el alta puede volver por autorreferencia si recae un proceso ya diagnosticado.
 
-El último principio responde a una limitación descrita en Madrid, donde la persona recibe el alta al terminar el tratamiento, sin un seguimiento posterior [@G10]. La recidiva de un proceso diagnosticado figura por esa razón entre los motivos de autorreferencia del anexo C.
+El último principio responde a una limitación descrita en Madrid [@G12]. Allí, la persona recibe el alta al terminar el proceso y pierde el contacto con el fisioterapeuta hasta una nueva derivación [@G12]. La recidiva de un proceso diagnosticado figura por esa razón entre los motivos de autorreferencia del anexo C.
 
 ## 5.2. Niveles de atención comunitaria
 
@@ -106,8 +106,8 @@ Fuente: elaboración propia.
 
 La interconsulta no presencial ya existe como servicio de los hospitales de la Comunidad de Madrid, que la denominan e-consulta [@C14w].
 
-La tabla incluye dos modalidades que proceden de la experiencia madrileña. La primera es la consulta a demanda para el seguimiento de procesos ya diagnosticados, que propone el documento de trabajo madrileño [@G10]. Esta modalidad corresponde a la recidiva de un proceso diagnosticado del anexo C. La segunda es la consulta telefónica previa para valorar la idoneidad y la prioridad [@G8]. La instrucción de la Gerencia Asistencial la usa en los procesos de demanda de las matronas [@G8]. Ese formato permite al fisioterapeuta confirmar el motivo antes de ocupar una cita presencial. La sesión clínica compartida es una revisión conjunta de casos entre profesionales, y no una sesión de tratamiento.
+La tabla incluye dos modalidades que proceden de la experiencia madrileña. La primera es la consulta a demanda, que la propuesta del colegio madrileño plantea como evolución progresiva del acceso [@G12]. En este documento, esa modalidad se limita a la recidiva de un proceso ya diagnosticado del anexo C. La segunda es la consulta telefónica previa para valorar la idoneidad y la prioridad [@G8]. La instrucción de la Gerencia Asistencial la usa en los procesos de demanda de las matronas [@G8]. Ese formato permite al fisioterapeuta confirmar el motivo antes de ocupar una cita presencial.
 
 ## 5.6. Herramientas de salud digital
 
-La Estrategia de Salud Digital del SNS ofrece el marco para tres herramientas [@A10]. La teleconsulta permite el seguimiento de personas con dificultades de desplazamiento. El seguimiento remoto de la adherencia refuerza los planes de ejercicio. La prescripción digital de ejercicio facilita la continuidad entre sesiones. Estas herramientas son también una de las tres palancas del ajuste por ruralidad de la sección 9.4. El documento de trabajo madrileño propone también el seguimiento y la monitorización a distancia como parte de la integración del fisioterapeuta en el equipo [@G10].
+La Estrategia de Salud Digital del SNS ofrece el marco para tres herramientas [@A10]. La teleconsulta permite el seguimiento de personas con dificultades de desplazamiento. El seguimiento remoto de la adherencia refuerza los planes de ejercicio. La prescripción digital de ejercicio facilita la continuidad entre sesiones. Estas herramientas son también una de las tres palancas del ajuste por ruralidad de la sección 9.4. La propuesta del colegio madrileño incluye también plataformas para la gestión de los datos clínicos y el seguimiento longitudinal de los pacientes [@G12].

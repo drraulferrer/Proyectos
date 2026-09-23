@@ -90,7 +90,7 @@ El Servicio Andaluz de Salud implantó en mayo de 2026 la derivación desde medi
 
 ## 3.4. Diagnóstico de los modelos vigentes en los documentos profesionales
 
-Dos documentos profesionales recientes analizan los modelos de Galicia y de Madrid. Ambos coinciden en el diagnóstico, aunque difieren en la calidad de sus fuentes.
+Varios documentos profesionales recientes analizan los modelos de Galicia y de Madrid, y coinciden en el diagnóstico.
 
 ### La Sociedade Galega de Fisioterapeutas pidió en 2019 la derivación directa
 
@@ -100,17 +100,20 @@ Su conclusión pedía implantar la derivación directa desde medicina de familia
 
 Las secciones siguientes citan directamente los estudios originales que ese análisis revisó, contrastados con sus registros de PubMed.
 
-### Un documento de trabajo madrileño describe tres limitaciones del modelo
+### El colegio madrileño propone replantear el papel de la fisioterapia en AP
 
-Un documento de trabajo sobre la situación de la fisioterapia de AP en la Comunidad de Madrid describe tres limitaciones del modelo madrileño [@G10]. La primera es que el acceso depende sobre todo de la derivación desde medicina de familia, con la excepción de la gestión compartida de la demanda [@G10]. La segunda es que la gestión compartida se ha implantado de forma desigual, y el personal de las unidades de atención al usuario tiene poca experiencia con ella [@G10]. La tercera es que la persona recibe el alta al terminar el tratamiento, sin un seguimiento longitudinal [@G10].
+El colegio profesional madrileño ha elaborado una propuesta de proyecto piloto para replantear el papel de la fisioterapia en la Gerencia Asistencial de AP [@G12]. La propuesta describe dos limitaciones del modelo madrileño [@G12]. La primera es que el acceso depende sobre todo de la derivación desde medicina de familia, salvo los tres procesos de la gestión compartida de la demanda [@G12]. La segunda es que la persona recibe el alta al terminar el proceso y pierde el contacto con el fisioterapeuta hasta una nueva derivación [@G12].
 
-El mismo documento propone tres líneas de mejora [@G10]:
+Un trabajo de gestión sobre la Dirección Asistencial Sureste de Madrid añade una tercera limitación [@G13]. La difusión de la gestión compartida entre la ciudadanía ha sido escasa, y la tarea de preguntar el motivo de consulta recae en las unidades de atención al usuario [@G13]. Como consecuencia, muchos huecos reservados para la cita directa con fisioterapia quedan sin usar [@G13].
 
-- **Competencias.** Incorporar al fisioterapeuta en el mapa de competencias del Plan de Acción de AP y Comunitaria 2025-2027, con acceso directo en procesos de alta prevalencia y baja discapacidad [@G10; @A8].
-- **Cartera de servicios.** Renombrar el servicio de procesos musculoesqueléticos como «Atención de Procesos Musculoesqueléticos», compartir la gestión de las listas de espera y crear una consulta a demanda para el seguimiento de procesos ya diagnosticados [@G10].
-- **Equipo.** Integrar al fisioterapeuta en el equipo multidisciplinar, con coordinación con medicina de familia, programas de educación para la salud grupales y comunitarios, y seguimiento con herramientas digitales [@G10].
+La propuesta del colegio plantea una consulta de fisioterapia orientada a la persona, a los grupos y a la comunidad [@G12]. Sus líneas principales son cuatro [@G12]:
 
-Este documento recoge las tres líneas. La consulta a demanda para procesos ya diagnosticados corresponde a la recidiva de la matriz del anexo C. La coordinación con medicina de familia y los programas de educación para la salud se desarrollan en las secciones 5 y 6.
+- **Acceso.** Empezar por la derivación desde otros profesionales de AP y avanzar hacia el acceso directo y la consulta a demanda.
+- **Seguimiento longitudinal.** Sustituir el alta por episodio por una atención centrada en la persona.
+- **Trabajo grupal y comunitario.** Programas de educación para la salud según los procesos prevalentes de cada zona, programas de paciente experto y mapeo de activos comunitarios.
+- **Evaluación.** Un pilotaje por fases, con indicadores de resultados y de experiencia comunicados por los pacientes.
+
+Este documento recoge esas líneas. La consulta a demanda para procesos ya diagnosticados corresponde a la recidiva de la matriz del anexo C. Los programas grupales y comunitarios se desarrollan en la sección 5, y la evaluación en la sección 10.
 
 ## 3.5. Heterogeneidad e inequidad
 

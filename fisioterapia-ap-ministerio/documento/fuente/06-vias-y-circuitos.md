@@ -24,7 +24,7 @@ Los dos precedentes españoles de acceso directo funcionan con este mecanismo. G
 
 La instrucción madrileña concreta cómo funciona el paso 2 [@G8]. La Unidad de Atención al Usuario cita a la persona con su fisioterapeuta asignado, en un hueco de agenda reservado para esta demanda [@G8]. Si la persona refiere un traumatismo importante u otros criterios de la instrucción, la cita se da con su médico de familia [@G8]. Cada proceso lleva asociados sus códigos de la Clasificación Internacional de Atención Primaria, lo que permite registrar y medir la actividad [@G8].
 
-El documento de trabajo madrileño identifica el punto débil de este paso: el personal de las unidades de atención al usuario tiene poca experiencia con la derivación directa, y su aplicación ha sido desigual [@G10]. Por eso el circuito exige tres apoyos. El primero es un guion de citación con la lista cerrada de motivos y de criterios de exclusión. El segundo es la formación del personal administrativo que recoge la sección 11.3. El tercero es la auditoría periódica de los motivos registrados, con el indicador IE-6.
+Un trabajo de gestión sobre la Dirección Asistencial Sureste de Madrid identifica el punto débil de este paso [@G13]. La tarea de preguntar el motivo de consulta recae en las unidades de atención al usuario, en un mostrador público [@G13]. Además, muchos huecos reservados para la cita directa quedan sin usar [@G13]. Por eso el circuito exige cuatro apoyos. El primero es un guion de citación con la lista cerrada de motivos y de criterios de exclusión. El segundo es la formación del personal administrativo que recoge la sección 11.3. El tercero es la información a la ciudadanía sobre los motivos que admiten la cita directa. El cuarto es la auditoría periódica de los motivos registrados, con el indicador IE-6.
 
 ## 6.3. Circuito 2. Derivación desde medicina de familia
 
@@ -37,7 +37,7 @@ El retorno a medicina de familia se produce en cuatro situaciones: ausencia de m
 
 La derivación desde medicina de familia a fisioterapia de AP evita un paso intermedio por atención hospitalaria. Ese paso es frecuente hoy. En un área de salud de Castilla y León, solo el 11,2 % de las derivaciones de AP a traumatología mencionaba una fisioterapia previa [@E103]. Además, los procesos degenerativos justificaron el 65,7 % de esas derivaciones [@E103]. En el dolor lumbar, añadir ejercicio y educación a la atención del médico general es más coste-efectivo que la atención médica sola [@E52].
 
-El documento de trabajo madrileño propone además que medicina de familia y fisioterapia compartan la gestión de las listas de espera [@G10]. Esta propuesta encaja en el circuito 2 si ambos profesionales usan criterios comunes de prioridad. El grupo de trabajo de la sección 11.4 debe definir esos criterios dentro de la matriz común.
+Este documento propone además que medicina de familia y fisioterapia compartan la gestión de las listas de espera con criterios comunes de prioridad. En Madrid no existen hoy criterios unificados para decidir quién accede a las citas preferentes de fisioterapia [@G13]. El grupo de trabajo de la sección 11.4 debe definir esos criterios dentro de la matriz común.
 
 ## 6.4. Circuito 3. Derivación desde enfermería familiar y comunitaria
 
@@ -45,6 +45,8 @@ El documento de trabajo madrileño propone además que medicina de familia y fis
 2. En el caso de la fragilidad y las caídas, la entrada exige un cribado de fragilidad positivo realizado por enfermería.
 3. Fisioterapia incorpora a la persona a un programa individual, grupal o domiciliario.
 4. Enfermería y fisioterapia comparten el seguimiento.
+
+La necesidad es visible en Madrid. El 11,8 % de las personas de 65 a 79 años tiene algún grado de dependencia para las actividades básicas de la vida diaria [@C14s]. El 10,2 % de las personas mayores de 65 años sufrió en el último año una caída que requirió asistencia sanitaria [@C14s]. Además, el 32,2 % de las personas de 65 a 79 años vive con miedo a caerse [@C14s].
 
 Los ensayos españoles en AP respaldan este circuito. Una intervención con valoración nutricional y actividad física redujo la progresión a fragilidad en personas prefrágiles [@E80]. Otra intervención multifactorial mejoró la función física de personas mayores frágiles [@E81]. En ambos casos, la captación se hizo desde la consulta de AP, que es el papel que este circuito asigna a enfermería [@E80; @E81].
 

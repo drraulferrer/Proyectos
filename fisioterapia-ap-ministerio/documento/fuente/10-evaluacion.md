@@ -28,7 +28,7 @@ Los indicadores IE-1 e IE-2 miden cosas distintas y no deben leerse como una dup
 
 El indicador IE-7 no mide rechazos. Una persona derivada a otro profesional tras la primera consulta no ha sido rechazada, sino atendida y cribada.
 
-El indicador IE-6 permite además auditar la gestión de la demanda. En Madrid, la aplicación desigual de la gestión compartida y la poca experiencia del personal administrativo limitaron su efecto, según el documento de trabajo madrileño [@G10]. La distribución de las entradas por vía y la revisión de los motivos registrados muestran si la autorreferencia funciona como se diseñó.
+El indicador IE-6 permite además auditar la gestión de la demanda. En Madrid, la escasa difusión de la gestión compartida dejó sin usar muchos huecos reservados para la cita directa [@G13]. La distribución de las entradas por vía y la revisión de los motivos registrados muestran si la autorreferencia funciona como se diseñó.
 
 El indicador IE-10 mide cuánto tarda la fisioterapia de AP en llegar a las personas en incapacidad temporal. Su umbral de 60 días procede de la implicación práctica que proponen Busch y colaboradores tras evaluar la rehabilitación multimodal en Suecia [@E63]. Ese estudio no demostró por sí solo que el inicio precoz reduzca la baja, de modo que el indicador mide un proceso y no promete un resultado (sección 1.3).
 
