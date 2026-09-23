@@ -25,7 +25,7 @@ Tabla D.1. Glosario
 | Unidades de atención específica | Unidades de apoyo | Unidades del centro de salud distintas de medicina y enfermería de familia, como fisioterapia, matronas, trabajo social sanitario y salud bucodental. Denominación de la instrucción madrileña |
 | Atención hospitalaria | Atención especializada | Nivel asistencial hospitalario. Se conserva «atención especializada» solo en citas literales de normas |
 
-Fuente: sección 6 de la especificación del documento y comentarios de la revisión del borrador.
+Fuente: elaboración propia.
 
 Tabla D.2. Siglas
 

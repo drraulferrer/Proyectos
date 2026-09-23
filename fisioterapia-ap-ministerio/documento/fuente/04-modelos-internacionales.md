@@ -58,7 +58,7 @@ La Australian Physiotherapy Association describe la práctica avanzada y el prim
 
 Canadá ha evaluado con detalle el triaje por fisioterapia en la interfaz con cirugía ortopédica. En Columbia Británica, Napier y colaboradores compararon las decisiones de manejo quirúrgico del fisioterapeuta y del cirujano [@E95]. La concordancia entre ambos fue sustancial, con un índice kappa ponderado de 0,77 [@E95]. En Saskatchewan, un programa de triaje de columna clasificó el 92,5 % de los casos como columna mecánica y solo el 2 % como columna quirúrgica [@E97]. Entre las personas que el programa derivó al cirujano, el 80 % resultó candidata a cirugía [@E97].
 
-En Ontario, un grupo de investigación diseñó un ensayo por conglomerados para evaluar un modelo de AP liderado por fisioterapia para el dolor lumbar [@E100]. PubMed no recoge todavía los resultados del estudio piloto. Este documento cita el protocolo solo como muestra de que otros sistemas públicos están evaluando el mismo modelo. Este documento no usa Nueva Zelanda como referencia, porque la búsqueda no localizó una fuente oficial sobre su modelo (anexo F).
+En Ontario, un grupo de investigación diseñó un ensayo por conglomerados para evaluar un modelo de AP liderado por fisioterapia para el dolor lumbar [@E100]. PubMed no recoge todavía los resultados del estudio piloto. Este documento cita el protocolo solo como muestra de que otros sistemas públicos están evaluando el mismo modelo.
 
 ## 4.4. Triaje musculoesquelético por fisioterapia y tasa de conversión quirúrgica
 
@@ -83,7 +83,7 @@ Fuente: elaboración propia a partir de los resúmenes de PubMed de cada estudio
 
 Las revisiones más recientes tienen mayor peso que los estudios aislados. Lafrance y colaboradores encontraron, con certeza moderada, una concordancia diagnóstica alta entre el fisioterapeuta de práctica avanzada y el médico [@E105]. La concordancia en la decisión quirúrgica también fue alta, con certeza alta [@E105]. Samsson y colaboradores hallaron además tiempos de espera más cortos en un ensayo y en una cohorte, y un coste menor en un ensayo [@E106].
 
-Dos cautelas limitan la lectura de estos datos. La primera es que los estudios aislados son evaluaciones de servicio sin grupo control. La segunda es que el 81 % de Wood y colaboradores mide la adecuación de la derivación y no la cirugía realizada [@E96]. El informe gallego de 2019 citaba además un estudio de Burn y Beeson con un ahorro del 27,3 % [@G9]. Ese estudio no figura en PubMed, de modo que este documento no lo usa (anexo F).
+Dos cautelas limitan la lectura de estos datos. La primera es que los estudios aislados son evaluaciones de servicio sin grupo control. La segunda es que el 81 % de Wood y colaboradores mide la adecuación de la derivación y no la cirugía realizada [@E96].
 
 ## 4.5. Síntesis de la evidencia sobre acceso directo
 
@@ -123,10 +123,10 @@ Tabla 4.5. Fisioterapeutas por 100.000 habitantes en la Unión Europea y en paí
 |---|---|---|---|
 | Alemania | 234,4 | 240 | En ejercicio, todos los ámbitos |
 | Bélgica | 215,9 | 228 | En ejercicio, todos los ámbitos |
-| Países Bajos | No consta en la fuente localizada | 188 | En ejercicio, todos los ámbitos |
-| Rumanía | 12,7 | No consta en la fuente localizada | En ejercicio, todos los ámbitos |
+| Países Bajos | Sin dato en la fuente citada | 188 | En ejercicio, todos los ámbitos |
+| Rumanía | 12,7 | Sin dato en la fuente citada | En ejercicio, todos los ámbitos |
 | Unión Europea | 136,7 | 149 | Media de los Estados miembros |
 
-Fuente: Eurostat [@D14n; @D14]. Algunos países notifican fisioterapeutas profesionalmente activos o con licencia, según las notas metodológicas de Eurostat. El valor de España debe extraerse de la misma tabla para completar la comparación.
+Fuente: Eurostat [@D14n; @D14]. Algunos países notifican fisioterapeutas profesionalmente activos o con licencia, según las notas metodológicas de Eurostat.
 
 El censo anual de World Physiotherapy de 2024 estimó una media mundial de 3,6 fisioterapeutas por 10.000 habitantes [@D13]. En ese censo, el 39 % de las organizaciones nacionales declaró acceso directo pleno en su país [@D13]. Una encuesta anterior de Bury y Stokes encontró acceso directo en el 58 % de los países que respondieron, con más frecuencia en el ámbito privado [@E19].

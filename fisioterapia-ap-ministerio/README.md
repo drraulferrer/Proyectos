@@ -36,13 +36,13 @@ archivo de `documento/datos/` y se reconstruye: las tablas de las secciones 5, 6
 La versión 1.1 amplía cada sección con tres documentos aportados: la instrucción de la
 Gerencia Asistencial de AP de Madrid sobre procesos de demanda, el análisis de la
 Sociedade Galega de Fisioterapeutas de 2019 y un documento de trabajo sobre la situación
-madrileña. El documento tiene 96 páginas y cita 166 referencias.
+madrileña. El documento está redactado como versión de entrega: tiene 92 páginas, cita 167 referencias y no contiene marcas de borrador. El estado interno de verificación, las discrepancias de los documentos aportados y los datos pendientes están en `revision-interna.md`, que no forma parte del documento.
 
 Todos los criterios de aceptación de `SPEC.md` se cumplen salvo el 9.2. Ese criterio exige
 que todas las referencias estén verificadas abriendo la fuente, y el entorno de trabajo
-solo permitió abrir PubMed. Los 101 artículos y documentos aportados citados están
+solo permitió abrir PubMed. Los 102 artículos y documentos aportados citados están
 verificados; las 65 normas, documentos autonómicos y estadísticas citados quedan
-pendientes de cotejo. El anexo F del documento enumera esas referencias, las
+pendientes de cotejo. `revision-interna.md` enumera esas referencias, las
 discrepancias encontradas en los documentos aportados y los datos que faltan por
 incorporar.
 

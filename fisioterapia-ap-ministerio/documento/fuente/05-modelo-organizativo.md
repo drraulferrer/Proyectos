@@ -28,9 +28,9 @@ Tabla 5.1. Niveles de atención comunitaria de la fisioterapia de atención prim
 | Nivel 2. Intervención grupal e intervención comunitaria | Personas con un proceso definido que se beneficia del trabajo en grupo y población general en la intervención comunitaria | Nivel 1, enfermería familiar y comunitaria y medicina de familia | Ediciones periódicas según las fichas del anexo A | Alta con plan de automanejo o retorno al nivel 1 |
 | Nivel 3. Fisioterapia domiciliaria y de continuidad | Personas con dependencia, fragilidad, alta hospitalaria reciente o cronicidad compleja | Enfermería, medicina de familia, trabajo social sanitario y atención hospitalaria | Visitas domiciliarias y coordinación sociosanitaria | Alta, paso al nivel 2 o valoración multidisciplinar |
 
-Fuente: elaboración propia a partir de la especificación del modelo.
+Fuente: elaboración propia.
 
-La consulta de primer contacto tiene cuatro salidas posibles. La persona puede recibir el alta con un plan de autocuidado, iniciar un tratamiento individual, incorporarse a un programa grupal o ser derivada a otro profesional. Esta regla atiende el comentario de la revisión que pedía explicitar la derivación a tratamiento individual o a grupos.
+La consulta de primer contacto tiene cuatro salidas posibles. La persona puede recibir el alta con un plan de autocuidado, iniciar un tratamiento individual, incorporarse a un programa grupal o ser derivada a otro profesional.
 
 ## 5.3. Funciones clínicas
 
@@ -49,7 +49,7 @@ Tabla 5.2. Funciones clínicas del fisioterapeuta de atención primaria
 | Derivación | A medicina de familia, enfermería, urgencias o recursos comunitarios |
 | Alta | Informe funcional y plan de autocuidado |
 
-Fuente: elaboración propia a partir del borrador de trabajo y de la especificación del modelo [@G0].
+Fuente: elaboración propia.
 
 La función de cribado tiene respaldo en la evidencia sobre práctica avanzada. Una revisión con metaanálisis encontró una concordancia diagnóstica alta entre el fisioterapeuta de práctica avanzada y el médico, con un kappa de 0,76 [@E105]. Esa revisión incluyó también ensayos en los que la atención por fisioterapia redujo el dolor de forma comparable o mayor que la atención habitual [@E105]. El fisioterapeuta de AP de esta propuesta no ejerce como fisioterapeuta de práctica avanzada, pero su primera consulta usa el mismo razonamiento clínico.
 
@@ -57,7 +57,7 @@ La derivación a atención hospitalaria se hace a través de medicina de familia
 
 ## 5.4. Programas grupales y programas comunitarios
 
-El documento distingue dos tipos de intervención colectiva. La **intervención grupal** es una intervención clínica sobre un grupo de personas con un proceso definido. La **intervención comunitaria** actúa sobre la población o sobre los activos comunitarios, sin un proceso clínico individual. La distinción responde a un comentario de la revisión y se recoge en el glosario del anexo D.
+El documento distingue dos tipos de intervención colectiva. La **intervención grupal** es una intervención clínica sobre un grupo de personas con un proceso definido. La **intervención comunitaria** actúa sobre la población o sobre los activos comunitarios, sin un proceso clínico individual. La distinción se recoge en el glosario del anexo D.
 
 Cada programa grupal tiene una ficha en el anexo A. La ficha indica quién lo lidera, el tamaño del grupo, el número de sesiones, las horas de fisioterapia por edición y la frecuencia de oferta. Con esos datos, el Ministerio de Sanidad puede estimar la carga de trabajo real que implica cada programa.
 
@@ -102,7 +102,7 @@ Tabla 5.5. Modalidades asistenciales de la fisioterapia de atención primaria
 | Escuela de pacientes | Sí | Dolor persistente, artrosis, EPOC y espalda |
 | Fisioterapia en residencias | Sí, coordinada con el centro | Prevención del deterioro funcional |
 
-Fuente: elaboración propia a partir del borrador de trabajo [@G0].
+Fuente: elaboración propia.
 
 La interconsulta no presencial ya existe como servicio de los hospitales de la Comunidad de Madrid, que la denominan e-consulta [@C14w].
 

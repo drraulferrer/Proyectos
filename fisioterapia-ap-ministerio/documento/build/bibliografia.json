@@ -61,7 +61,7 @@
   "estado": "Verificada",
   "tipo": "documento aportado",
   "cita": "Pérez Mariño P, Bilbao Ogando G, Fraiz Barbeito M, López Míguens V, Paseiro Ares G, Díez Meleiro Ó, et al. Análisis de la efectividad clínica e impacto económico de una gestión racional de los recursos de fisioterapia en patología de alta prevalencia en Atención Primaria. [s. l.]: Sociedade Galega de Fisioterapeutas; febrero de 2019",
-  "url": "documento aportado por la autoría"
+  "url": "informe profesional no publicado en revista"
  },
  {
   "n": 9,
@@ -69,7 +69,7 @@
   "estado": "Verificada",
   "tipo": "documento aportado",
   "cita": "Gerencia Asistencial de Atención Primaria, Servicio Madrileño de Salud. Atención a la demanda. Atención a procesos de demanda en las consultas de las Unidades de Atención Específica de Atención Primaria. Versión 8. Madrid: Servicio Madrileño de Salud; julio de 2024",
-  "url": "documento aportado por la autoría"
+  "url": "documento interno del Servicio Madrileño de Salud"
  },
  {
   "n": 10,
@@ -77,7 +77,7 @@
   "estado": "Verificada",
   "tipo": "documento aportado",
   "cita": "Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid, Grupo de Trabajo de Especialidades. Pertinencia de la solicitud de radiología simple por los fisioterapeutas de Atención Primaria en el marco de sus competencias. Documento de posición institucional. Madrid: CPFCM; junio de 2026",
-  "url": "documento aportado por la autoría"
+  "url": "documento institucional no publicado"
  },
  {
   "n": 11,
@@ -397,7 +397,7 @@
   "estado": "Verificada",
   "tipo": "documento aportado",
   "cita": "Situación actual de la fisioterapia en Atención Primaria de la Comunidad de Madrid [documento de trabajo sin autoría ni fecha, posterior a diciembre de 2024]. Madrid",
-  "url": "documento aportado por la autoría"
+  "url": "documento de trabajo no publicado"
  },
  {
   "n": 51,
@@ -961,14 +961,6 @@
  },
  {
   "n": 121,
-  "id": "G0",
-  "estado": "Verificada",
-  "tipo": "documento aportado",
-  "cita": "Moreno Carrero P, Ferrer Peña R, revisores. Propuesta de Fisioterapia en Atención Primaria para el Ministerio de Sanidad [borrador de trabajo con comentarios de revisión]. Septiembre de 2026",
-  "url": "documento aportado por la autoría"
- },
- {
-  "n": 122,
   "id": "E37",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -976,7 +968,7 @@
   "url": "https://doi.org/10.1002/14651858.CD012424.pub2"
  },
  {
-  "n": 123,
+  "n": 122,
   "id": "E31",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -984,7 +976,7 @@
   "url": "https://doi.org/10.3390/jcm9041201"
  },
  {
-  "n": 124,
+  "n": 123,
   "id": "E38",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -992,7 +984,7 @@
   "url": "https://doi.org/10.1002/14651858.CD004376.pub3"
  },
  {
-  "n": 125,
+  "n": 124,
   "id": "E39",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1000,7 +992,7 @@
   "url": "https://doi.org/10.1002/14651858.CD003793.pub3"
  },
  {
-  "n": 126,
+  "n": 125,
   "id": "E40",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1008,7 +1000,7 @@
   "url": "https://doi.org/10.1002/14651858.CD009790.pub2"
  },
  {
-  "n": 127,
+  "n": 126,
   "id": "E77",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1016,7 +1008,7 @@
   "url": "https://doi.org/10.1080/09593985.2016.1194646"
  },
  {
-  "n": 128,
+  "n": 127,
   "id": "E78",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1024,7 +1016,7 @@
   "url": "https://doi.org/10.1186/s13643-015-0120-5"
  },
  {
-  "n": 129,
+  "n": 128,
   "id": "E102",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1032,7 +1024,7 @@
   "url": "https://doi.org/10.1016/j.aprim.2015.10.007"
  },
  {
-  "n": 130,
+  "n": 129,
   "id": "E104",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1040,7 +1032,7 @@
   "url": "https://doi.org/10.3390/jcm12206478"
  },
  {
-  "n": 131,
+  "n": 130,
   "id": "E101",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1048,7 +1040,7 @@
   "url": "https://doi.org/10.1016/j.aprim.2016.09.010"
  },
  {
-  "n": 132,
+  "n": 131,
   "id": "E80",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1056,7 +1048,7 @@
   "url": "https://doi.org/10.1093/ageing/afw242"
  },
  {
-  "n": 133,
+  "n": 132,
   "id": "E81",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1064,7 +1056,7 @@
   "url": "https://doi.org/10.1093/gerona/glx259"
  },
  {
-  "n": 134,
+  "n": 133,
   "id": "E79",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1072,7 +1064,7 @@
   "url": "https://doi.org/10.1186/s12877-018-1024-8"
  },
  {
-  "n": 135,
+  "n": 134,
   "id": "E52",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1080,15 +1072,15 @@
   "url": "https://doi.org/10.1007/s00586-010-1675-4"
  },
  {
-  "n": 136,
+  "n": 135,
   "id": "G3",
   "estado": "Localizada",
   "tipo": "resolución profesional",
   "cita": "Consejo General de Colegios de Fisioterapeutas de España. Resolución 1/2023 sobre el empleo de la ecografía en Fisioterapia. Madrid: CGCFE; 2023",
-  "url": "citada en G1"
+  "url": ""
  },
  {
-  "n": 137,
+  "n": 136,
   "id": "E1",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1096,7 +1088,7 @@
   "url": "https://doi.org/10.1136/bmj.326.7386.417"
  },
  {
-  "n": 138,
+  "n": 137,
   "id": "G7",
   "estado": "Localizada",
   "tipo": "norma",
@@ -1104,7 +1096,7 @@
   "url": "https://www.legislation.gov.uk/uksi/2017/1322"
  },
  {
-  "n": 139,
+  "n": 138,
   "id": "E2",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1112,7 +1104,7 @@
   "url": "https://pubmed.ncbi.nlm.nih.gov/8114236/"
  },
  {
-  "n": 140,
+  "n": 139,
   "id": "E3",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1120,7 +1112,7 @@
   "url": "https://doi.org/10.1136/bmj.f7095"
  },
  {
-  "n": 141,
+  "n": 140,
   "id": "E49",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1128,7 +1120,7 @@
   "url": "https://doi.org/10.1016/S0140-6736(18)30489-6"
  },
  {
-  "n": 142,
+  "n": 141,
   "id": "E59",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1136,7 +1128,7 @@
   "url": "https://doi.org/10.1007/s00586-016-4467-7"
  },
  {
-  "n": 143,
+  "n": 142,
   "id": "E64",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1144,7 +1136,7 @@
   "url": "https://doi.org/10.1136/bjsports-2016-096515"
  },
  {
-  "n": 144,
+  "n": 143,
   "id": "E83",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1152,7 +1144,7 @@
   "url": "https://doi.org/10.1002/14651858.CD005619.pub3"
  },
  {
-  "n": 145,
+  "n": 144,
   "id": "E74",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1160,7 +1152,7 @@
   "url": "https://doi.org/10.1136/bmj.38961.584653.AE"
  },
  {
-  "n": 146,
+  "n": 145,
   "id": "E41",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1168,7 +1160,7 @@
   "url": "https://doi.org/10.1016/S0140-6736(11)60937-9"
  },
  {
-  "n": 147,
+  "n": 146,
   "id": "E42",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1176,7 +1168,7 @@
   "url": "https://doi.org/10.1016/j.aprim.2010.05.019"
  },
  {
-  "n": 148,
+  "n": 147,
   "id": "E82",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1184,7 +1176,7 @@
   "url": "https://doi.org/10.1002/jor.24820"
  },
  {
-  "n": 149,
+  "n": 148,
   "id": "E73",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1192,7 +1184,7 @@
   "url": "https://doi.org/10.1136/bjsports-2017-098106"
  },
  {
-  "n": 150,
+  "n": 149,
   "id": "E58",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1200,7 +1192,7 @@
   "url": "https://doi.org/10.2519/jospt.2017.0302"
  },
  {
-  "n": 151,
+  "n": 150,
   "id": "E65",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1208,7 +1200,7 @@
   "url": "https://doi.org/10.1136/ard.2004.021188"
  },
  {
-  "n": 152,
+  "n": 151,
   "id": "E66",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1216,7 +1208,7 @@
   "url": "https://doi.org/10.1302/2046-3758.27.2000163"
  },
  {
-  "n": 153,
+  "n": 152,
   "id": "E67",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1224,7 +1216,7 @@
   "url": "https://doi.org/10.1302/0301-620X.99B6.BJJ-2016-0569.R1"
  },
  {
-  "n": 154,
+  "n": 153,
   "id": "E85",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1232,7 +1224,7 @@
   "url": "https://doi.org/10.1136/bmj-2025-086201"
  },
  {
-  "n": 155,
+  "n": 154,
   "id": "E69",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1240,7 +1232,23 @@
   "url": "https://doi.org/10.1302/0301-620X.96B1.32168"
  },
  {
+  "n": 155,
+  "id": "E108",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Morrissey D, Cotchett M, Said J'Bari A, Prior T, Griffiths IB, Rathleff MS, et al. Management of plantar heel pain: a best practice guide informed by a systematic review, expert clinical reasoning and patient values. Br J Sports Med. 2021;55(19):1106-18. PMID: 33785535. doi:10.1136/bjsports-2019-101970",
+  "url": "https://doi.org/10.1136/bjsports-2019-101970"
+ },
+ {
   "n": 156,
+  "id": "E109",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Koc TA, Bise CG, Neville C, Carreira D, Martin RL, McDonough CM. Heel pain - plantar fasciitis: revision 2023. J Orthop Sports Phys Ther. 2023;53(12):CPG1-CPG39. PMID: 38037331. doi:10.2519/jospt.2023.0303",
+  "url": "https://doi.org/10.2519/jospt.2023.0303"
+ },
+ {
+  "n": 157,
   "id": "E71",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1248,7 +1256,7 @@
   "url": "https://doi.org/10.3928/01477447-20160926-06"
  },
  {
-  "n": 157,
+  "n": 158,
   "id": "E14",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1256,7 +1264,7 @@
   "url": "https://doi.org/10.1016/j.physio.2020.04.005"
  },
  {
-  "n": 158,
+  "n": 159,
   "id": "B9",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -1264,7 +1272,7 @@
   "url": "https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177012&menu=ultiDatos&idp=1254734710990"
  },
  {
-  "n": 159,
+  "n": 160,
   "id": "E43",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1272,7 +1280,7 @@
   "url": "https://doi.org/10.4415/ANN_18_03_10"
  },
  {
-  "n": 160,
+  "n": 161,
   "id": "D7",
   "estado": "Localizada",
   "tipo": "nota profesional",
@@ -1280,7 +1288,7 @@
   "url": "https://www.csp.org.uk/news/2022-01-19-csp-urges-government-boost-fcp-roll-out-across-england"
  },
  {
-  "n": 161,
+  "n": 162,
   "id": "E53",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1288,7 +1296,7 @@
   "url": "https://doi.org/10.1007/s00586-010-1676-3"
  },
  {
-  "n": 162,
+  "n": 163,
   "id": "E55",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1296,7 +1304,7 @@
   "url": "https://doi.org/10.1136/bmj.326.7395.911"
  },
  {
-  "n": 163,
+  "n": 164,
   "id": "E57",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1304,7 +1312,7 @@
   "url": "https://doi.org/10.1007/s00586-012-2272-5"
  },
  {
-  "n": 164,
+  "n": 165,
   "id": "A15",
   "estado": "Localizada",
   "tipo": "modelo de gestión",
@@ -1312,7 +1320,7 @@
   "url": "https://www.clubexcelencia.org/conocimiento/plataforma-de-conocimiento/modelo-efqm-2025"
  },
  {
-  "n": 165,
+  "n": 166,
   "id": "E32",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1320,7 +1328,7 @@
   "url": "https://doi.org/10.1080/09638288.2025.2460723"
  },
  {
-  "n": 166,
+  "n": 167,
   "id": "E32b",
   "estado": "Verificada",
   "tipo": "artículo",

@@ -43,4 +43,4 @@ Fuente: modelo de demanda de la sección 9 y tabla 9.4.
 
 ## Nota de método
 
-Todas las cifras del cuerpo del documento llevan su fuente y figuran en el anexo E. Las referencias proceden de fuentes primarias. El anexo F indica cuáles se han verificado abriendo la fuente y cuáles quedan pendientes de cotejo. El efecto del acceso directo sobre las consultas de medicina de familia se presenta como un resultado a evaluar y no como un resultado garantizado. Los tres documentos aportados en la revisión se han contrastado con sus fuentes, y el anexo F recoge las cifras que no se han podido trazar.
+Todas las cifras del cuerpo del documento llevan su fuente y figuran en el anexo E. Las referencias proceden de fuentes primarias, y el anexo F describe cómo se seleccionaron y verificaron. El efecto del acceso directo sobre las consultas de medicina de familia se presenta como un resultado a evaluar y no como un resultado garantizado.

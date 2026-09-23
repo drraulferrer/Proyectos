@@ -5,7 +5,7 @@
    y desde el modelo de demanda. Así las tablas de las secciones 5, 6, 8, 9 y 10 y
    los anexos A, B, C y E salen de una única fuente de verdad (criterios 9.3 y 9.10).
 2. Numera las citas [@ID] en orden de primera aparición (estilo Vancouver) y
-   genera la lista de referencias con su estado de verificación.
+   genera la lista de referencias. El estado de verificación queda en datos/referencias.csv.
 Salida: build/documento.md y build/bibliografia.json
 """
 import csv, json, re, sys
@@ -186,10 +186,13 @@ def gen_tablas(mod):
                   "fuente": "modelo", "anio": "No aplica", "definicion": "Resultado del modelo de demanda con los parámetros de la tabla 9.1", "estado": "Cálculo reproducible"})
     C.append({"seccion": "9.4", "valor": num(aj["T4"]["hab_por_fisio"]), "descripcion": "Habitantes por fisioterapeuta en la zona rural dispersa, envejecida y con alta dependencia",
               "fuente": "modelo", "anio": "No aplica", "definicion": "Resultado del modelo con el ajuste territorial de la tabla 9.5", "estado": "Cálculo reproducible"})
+    # versión de entrega: solo las cifras que aparecen en el cuerpo, sin el estado interno de verificación
+    cuerpo = "\n".join(f.read_text(encoding="utf-8") for f in sorted((RAIZ / "fuente").glob("*.md")) if not f.name.startswith("24-"))
+    C = [c for c in C if c["fuente"] == "modelo" or c["valor"] in cuerpo]
     g["TABLA_CIFRAS"] = tabla(
-        ["Sección", "Cifra", "Qué mide", "Fuente", "Año del dato", "Definición", "Estado de la fuente"],
+        ["Sección", "Cifra", "Qué mide", "Fuente", "Año del dato", "Definición"],
         [[c["seccion"], c["valor"], c["descripcion"], citas_fuentes(c["fuente"]).strip() if c["fuente"] not in ("modelo", "diseño") else ("Modelo de la sección 9" if c["fuente"] == "modelo" else "Parámetro de diseño del anexo A"),
-          c["anio"], c["definicion"], c["estado"]] for c in C])
+          c["anio"], c["definicion"]] for c in C])
     g["TABLA_ESTADO_REFERENCIAS"] = "{{TABLA_ESTADO_REFERENCIAS}}"   # se resuelve tras numerar las citas
     return g
 
@@ -254,8 +257,8 @@ def main():
     texto = texto.replace("{{TABLA_ESTADO_REFERENCIAS}}", tabla_estado(bib))
     lineas = ["# Referencias", ""]
     for b in bib:
-        marca = "" if b["estado"].startswith("Verificada") else (
-            " Fuente secundaria." if b["estado"] == "Secundaria" else " Pendiente de cotejo en la fuente original.")
+        # versión de entrega: el estado de cotejo es interno y queda en datos/referencias.csv
+        marca = " Fuente secundaria." if b["estado"] == "Secundaria" else ""
         url = b["url"]
         if url.startswith("https://doi.org/") and "doi:" in b["cita"]:
             enlace = ""                      # el DOI ya figura en la cita

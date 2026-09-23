@@ -1,6 +1,6 @@
 # 6. Vías de acceso y circuitos asistenciales
 
-Esta sección describe por dónde entra una persona a fisioterapia de AP y qué documento acompaña cada entrada. Todos los circuitos terminan con un criterio de retorno explícito. Las tablas de esta sección se generan desde la matriz de coherencia del anexo C, que es la única fuente de los procesos, las vías y las condiciones.
+Esta sección describe por dónde entra una persona a fisioterapia de AP y qué documento acompaña cada entrada. Todos los circuitos terminan con un criterio de retorno explícito. Las tablas de esta sección proceden de la matriz de coherencia del anexo C, que es la única fuente de los procesos, las vías y las condiciones.
 
 ## 6.1. Vías de entrada
 
@@ -89,4 +89,4 @@ La instrucción señala también que el protocolo de valoración del compartimen
 
 ## 6.8. Matriz de coherencia
 
-El anexo C reúne en una sola tabla todos los procesos, las vías de entrada, las condiciones, las exclusiones y los circuitos alternativos. Las tablas de las secciones 5, 6 y 8 se generan desde esa matriz. De esta forma, ningún proceso puede aparecer a la vez como incluido y como excluido.
+El anexo C reúne en una sola tabla todos los procesos, las vías de entrada, las condiciones, las exclusiones y los circuitos alternativos. Las tablas de las secciones 5, 6 y 8 proceden de esa matriz. De esta forma, ningún proceso puede aparecer a la vez como incluido y como excluido.

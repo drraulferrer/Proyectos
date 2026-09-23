@@ -168,7 +168,6 @@ const panel = new TableCell({
     new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 200 }, children: [blanco("FISIOTERAPEUTAS", { size: 24, bold: true })] }),
     new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 900 }, children: [blanco("COMUNIDAD DE MADRID", { size: 22 })] }),
     new Paragraph({ alignment: AlignmentType.CENTER, border: { top: { style: BorderStyle.SINGLE, size: 4, color: "3A94A8", space: 10 } }, spacing: { after: 40 }, children: [blanco("Documento técnico", { size: 20, italics: true })] }),
-    new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 40 }, children: [blanco("Versión de trabajo 1.1", { size: 20, italics: true })] }),
     new Paragraph({ alignment: AlignmentType.CENTER, children: [blanco("Septiembre de 2026", { size: 20, italics: true })] }),
   ],
 });
@@ -181,9 +180,7 @@ const derecha = new TableCell({
     new Paragraph({ spacing: { after: 240, line: 276, lineRule: "auto" }, border: { bottom: { style: BorderStyle.SINGLE, size: 8, color: NARANJA, space: 12 } }, children: [new TextRun({ text: "Fisioterapia en Atención Primaria en el Sistema Nacional de Salud", font: FUENTE, size: 28, color: "666666" })] }),
     new Paragraph({ spacing: { before: 160, after: 60, line: 300, lineRule: "auto" }, children: [texto("Modelo organizativo, acceso, dotación y evaluación", { size: 24 })] }),
     new Paragraph({ spacing: { after: 360, line: 300, lineRule: "auto" }, children: [texto("Propuesta dirigida al Ministerio de Sanidad", { size: 24 })] }),
-    new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 600 }, children: [new TextRun({ text: " 2026 ", font: FUENTE, size: 22, color: PETROLEO, shading: { type: ShadingType.CLEAR, color: "auto", fill: "E8F4F8" } })] }),
-    new Paragraph({ spacing: { after: 100 }, children: [new TextRun({ text: "Elaborado a partir del borrador «Propuesta de Fisioterapia en Atención Primaria para el Ministerio de Sanidad» y de las revisiones de Patricia Moreno Carrero y Raúl Ferrer Peña.", font: FUENTE, size: 16, color: GRIS })] }),
-    new Paragraph({ children: [new TextRun({ text: "Estado de las fuentes: los artículos científicos y los documentos aportados están verificados. Las normas, los documentos autonómicos y las estadísticas oficiales están pendientes de cotejo en la fuente original, como detalla el anexo F.", font: FUENTE, size: 16, color: GRIS })] }),
+    new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: " 2026 ", font: FUENTE, size: 22, color: PETROLEO, shading: { type: ShadingType.CLEAR, color: "auto", fill: "E8F4F8" } })] }),
   ],
 });
 const portada = [new Table({
@@ -225,7 +222,7 @@ const doc = new Document({
       default: new Header({ children: [new Paragraph({
         alignment: AlignmentType.RIGHT, spacing: { after: 0 },
         border: { top: { style: BorderStyle.SINGLE, size: 24, color: TURQUESA, space: 4 }, bottom: { style: BorderStyle.SINGLE, size: 24, color: NARANJA, space: 4 } },
-        children: [new TextRun({ text: "Fisioterapia en Atención Primaria en el SNS  |  Documento técnico, versión 1.1", font: FUENTE, size: 16, italics: true, color: CABECERA })],
+        children: [new TextRun({ text: "Fisioterapia en Atención Primaria en el SNS  |  Documento técnico", font: FUENTE, size: 16, italics: true, color: CABECERA })],
       })] }),
     },
     footers: {

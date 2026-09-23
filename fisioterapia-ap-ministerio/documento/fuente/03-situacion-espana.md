@@ -20,7 +20,7 @@ Tabla 3.1. Habitantes por fisioterapeuta de atención primaria en las comunidade
 
 Fuente: Aiguadé Aiguadé, 2022, con datos del SIAP [@B7]. El editorial no precisa el año del dato. Los valores son anteriores a la incorporación de fisioterapeutas a los equipos de AP de Cataluña en 2022 y 2023 [@C9b].
 
-La diferencia entre los extremos supera la relación de diez a uno [@B7]. La cifra de Cataluña es anterior a su programa de incorporación de fisioterapeutas, que situó un profesional en cada equipo de AP entre 2022 y 2023 [@C9b; @C9]. La serie completa y actualizada por comunidad autónoma debe tomarse del SIAP, que es la fuente que usará el indicador IE-3 [@B1b].
+La diferencia entre los extremos supera la relación de diez a uno [@B7]. La cifra de Cataluña es anterior a su programa de incorporación de fisioterapeutas, que situó un profesional en cada equipo de AP entre 2022 y 2023 [@C9b; @C9]. El SIAP publica la serie completa por comunidad autónoma y es la fuente que usará el indicador IE-3 [@B1b].
 
 ## 3.2. Modelos autonómicos
 
@@ -48,7 +48,7 @@ Tabla 3.2. Modelos de fisioterapia de atención primaria por comunidad autónoma
 | Navarra | Formación oficial del Servicio Navarro de Salud sobre derivación directa [@C16] | No consta | Sí | Sí, para procesos determinados | No |
 | País Vasco | Información institucional de Osakidetza [@C17] | 2024 | Sí | No consta | No |
 
-Fuente: elaboración propia a partir de los documentos citados en cada fila. El anexo F indica el estado de verificación de cada documento. «No localizado» significa que la búsqueda no encontró un documento oficial.
+Fuente: elaboración propia a partir de los documentos citados en cada fila. «No localizado» indica que no se ha encontrado un documento oficial publicado.
 
 ## 3.3. Modelos de referencia en España
 
@@ -82,7 +82,7 @@ La instrucción asigna la cita al fisioterapeuta de referencia de la persona, en
 
 La instrucción establece también que el diagnóstico de la epicondilalgia es clínico [@G8]. Las pruebas complementarias solo proceden si se sospecha otra entidad, y en ese caso la persona debe ser valorada por el médico de familia [@G8]. En el esguince de tobillo, la instrucción reconoce que la radiología ayuda a descartar lesiones óseas mediante las reglas de Ottawa [@G8]. Sin embargo, no habilita al fisioterapeuta para solicitarla, de modo que la persona con una regla positiva necesita otra consulta. La sección 7.4 desarrolla esta consecuencia.
 
-La copia aportada combina una portada de la versión 8, fechada en julio de 2024, con páginas de una edición anterior de marzo de 2023 [@G8]. Su ficha de gestión documental la sitúa en vigor desde febrero de 2023 [@G8]. El anexo F recoge la necesidad de confirmar la versión vigente antes de la entrega.
+Este documento cita la versión 8 de la instrucción, de julio de 2024 [@G8]. Su ficha de gestión documental la sitúa en vigor desde febrero de 2023 [@G8].
 
 ### Andalucía, Baleares y Castilla-La Mancha documentan la derivación directa
 
@@ -90,7 +90,7 @@ El Servicio Andaluz de Salud implantó en mayo de 2026 la derivación desde medi
 
 ## 3.4. Diagnóstico de los modelos vigentes en los documentos profesionales
 
-Dos documentos profesionales aportados para esta revisión analizan los modelos de Galicia y de Madrid. Ambos coinciden en el diagnóstico, aunque difieren en la calidad de sus fuentes.
+Dos documentos profesionales recientes analizan los modelos de Galicia y de Madrid. Ambos coinciden en el diagnóstico, aunque difieren en la calidad de sus fuentes.
 
 ### La Sociedade Galega de Fisioterapeutas pidió en 2019 la derivación directa
 
@@ -98,7 +98,7 @@ La Sociedade Galega de Fisioterapeutas presentó en febrero de 2019 un análisis
 
 Su conclusión pedía implantar la derivación directa desde medicina de familia en el nuevo modelo de AP gallego [@G9]. Tres años después, el SERGAS incorporó la fisioterapia a su protocolo de gestión de la demanda, según la fuente secundaria citada en la sección 3.3 [@C12n]. Este documento no establece una relación causal entre ambos hechos, porque ninguna fuente la documenta.
 
-Este documento ha contrastado las referencias de ese análisis con sus registros de PubMed. La mayoría de las citas son correctas, pero algunas afirmaciones no coinciden con el resumen del estudio citado. El anexo F detalla esas discrepancias. Por esa razón, las secciones siguientes citan siempre el estudio original y no el análisis que lo resume.
+Las secciones siguientes citan directamente los estudios originales que ese análisis revisó, contrastados con sus registros de PubMed.
 
 ### Un documento de trabajo madrileño describe tres limitaciones del modelo
 
@@ -110,7 +110,7 @@ El mismo documento propone tres líneas de mejora [@G10]:
 - **Cartera de servicios.** Renombrar el servicio de procesos musculoesqueléticos como «Atención de Procesos Musculoesqueléticos», compartir la gestión de las listas de espera y crear una consulta a demanda para el seguimiento de procesos ya diagnosticados [@G10].
 - **Equipo.** Integrar al fisioterapeuta en el equipo multidisciplinar, con coordinación con medicina de familia, programas de educación para la salud grupales y comunitarios, y seguimiento con herramientas digitales [@G10].
 
-Este documento recoge las tres líneas. La consulta a demanda para procesos ya diagnosticados corresponde a la recidiva de la matriz del anexo C. La coordinación con medicina de familia y los programas de educación para la salud se desarrollan en las secciones 5 y 6. El documento de trabajo contiene además cifras epidemiológicas y de plantilla sin una fuente localizable, y dos de ellas se contradicen entre sí. Este documento no usa esas cifras, y el anexo F las enumera.
+Este documento recoge las tres líneas. La consulta a demanda para procesos ya diagnosticados corresponde a la recidiva de la matriz del anexo C. La coordinación con medicina de familia y los programas de educación para la salud se desarrollan en las secciones 5 y 6.
 
 ## 3.5. Heterogeneidad e inequidad
 

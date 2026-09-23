@@ -6,7 +6,7 @@ Esta sección define cómo se evalúa el modelo. Los indicadores se organizan se
 
 El modelo EFQM se estructura en tres bloques [@A15]. El bloque de Dirección agrupa el propósito, la visión, la estrategia, la cultura y el liderazgo [@A15]. El bloque de Ejecución agrupa la implicación de los grupos de interés, la creación de valor sostenible y la gestión del funcionamiento y la transformación [@A15]. El bloque de Resultados agrupa la percepción de los grupos de interés y el rendimiento estratégico y operativo [@A15].
 
-Cada indicador del borrador de trabajo se reubica en uno de esos criterios. El sistema añade además los indicadores que exigen las decisiones de este documento, como la adecuación de la radiografía simple solicitada. La revisión de los documentos aportados añade dos indicadores más: el inicio precoz en la incapacidad temporal (IE-10) y la adecuación de las derivaciones de medicina de familia a traumatología (IR-13).
+Cada indicador se sitúa en uno de esos criterios. El sistema incluye los indicadores que exigen las decisiones de este documento, como la adecuación de la radiografía simple solicitada. Incluye también el inicio precoz en la incapacidad temporal (IE-10) y la adecuación de las derivaciones de medicina de familia a traumatología (IR-13).
 
 ## 10.2. Indicadores de Dirección
 
@@ -26,7 +26,7 @@ Fuente: anexo B.
 
 Los indicadores IE-1 e IE-2 miden cosas distintas y no deben leerse como una duplicación. IE-1 mide la cobertura de personal: el porcentaje de zonas básicas con un fisioterapeuta asignado presencialmente. IE-2 mide la infraestructura: el porcentaje de centros de salud con un espacio físico propio para la consulta.
 
-El indicador IE-7 sustituye al porcentaje de «pacientes rechazados» del borrador de trabajo [@G0]. Una persona derivada a otro profesional tras la primera consulta no ha sido rechazada, sino atendida y cribada.
+El indicador IE-7 no mide rechazos. Una persona derivada a otro profesional tras la primera consulta no ha sido rechazada, sino atendida y cribada.
 
 El indicador IE-6 permite además auditar la gestión de la demanda. En Madrid, la aplicación desigual de la gestión compartida y la poca experiencia del personal administrativo limitaron su efecto, según el documento de trabajo madrileño [@G10]. La distribución de las entradas por vía y la revisión de los motivos registrados muestran si la autorreferencia funciona como se diseñó.
 

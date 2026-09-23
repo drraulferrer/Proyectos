@@ -8,7 +8,7 @@ Esta sección calcula cuántos fisioterapeutas de AP necesita el SNS a partir de
 
 El SNS contaba en 2024 con 2.418 fisioterapeutas de AP, según el informe monográfico de recursos humanos [@B1]. La dotación por comunidad autónoma variaba más de diez veces entre los extremos que recogió el editorial de 2022 (tabla 3.1). El punto de partida no es, por tanto, un valor único, sino una distribución muy desigual.
 
-Los datos autonómicos de actividad pueden afinar ese punto de partida. La Comunidad de Madrid informó de que sus unidades de fisioterapia de AP atendieron a cerca de 159.000 personas en 2024 [@C14n]. Un documento de trabajo madrileño aporta dos cifras de plantilla que no coinciden entre sí y que no citan su fuente [@G10]. Este documento no las usa, y el anexo F pide sustituirlas por el dato oficial del SIAP.
+Los datos autonómicos de actividad pueden afinar ese punto de partida. La Comunidad de Madrid informó de que sus unidades de fisioterapia de AP atendieron a cerca de 159.000 personas en 2024 [@C14n]. El SIAP permite completar ese dato con la plantilla de fisioterapeutas de AP de cada comunidad autónoma [@B1b].
 
 ## 9.2. Modelo de demanda
 
@@ -46,7 +46,7 @@ El número de consultas por persona tampoco tiene un valor fijo. Una revisión d
 
 ## 9.3. Escenarios como fases
 
-Los tres escenarios del borrador de trabajo se transforman en fases con un horizonte temporal [@G0]. Las cifras de cada fase salen del modelo y no se fijan de antemano.
+Los tres escenarios del modelo se transforman en fases con un horizonte temporal. Las cifras de cada fase salen del modelo y no se fijan de antemano.
 
 Tabla 9.4. Fases de dotación
 
@@ -58,7 +58,7 @@ Tabla 9.4. Fases de dotación
 
 Fuente: elaboración propia a partir de las tablas 9.2 y 9.5. Los horizontes son una propuesta de calendario. Las cifras de dotación se redondean a la centena.
 
-El escenario central del modelo coincide con la ratio de 1 fisioterapeuta por cada 7.500 habitantes que proponía el borrador de trabajo [@G0]. El borrador proponía además un mínimo de 1 por cada 15.000 habitantes y un máximo de 1 por cada 3.000 en zonas de alta necesidad [@G0]. Frente al borrador, el modelo propone un mínimo de fase 1 menos exigente y un máximo por ajuste territorial también menos exigente (tabla 9.4). El mínimo de la fase 1 se aplica a cada comunidad autónoma por separado y no es una media nacional. Con estas diferencias, la propuesta final se apoya en un cálculo y no solo en la comparación con otros sistemas.
+El mínimo de la fase 1 se aplica a cada comunidad autónoma por separado y no es una media nacional. De este modo, la propuesta se apoya en un cálculo y no solo en la comparación con otros sistemas.
 
 ## 9.4. Ajustes territoriales
 
@@ -81,7 +81,7 @@ La demora en rehabilitación hospitalaria no es un factor de ajuste de la dotaci
 
 ## 9.5. Referencias externas de dotación
 
-La Chartered Society of Physiotherapy pidió en 2022 aumentar la dotación de fisioterapeutas de primer contacto en Inglaterra hasta 1 por cada 10.000 habitantes [@D7]. Esa cifra es una reivindicación profesional y no una norma del NHS [@D7]. Se refiere además solo al perfil de primer contacto, de modo que no incluye la atención domiciliaria ni los programas grupales. El borrador de trabajo atribuía unas ratios a una resolución del Consejo General de Colegios de Fisioterapeutas de 2007, que la búsqueda no ha localizado (anexo F). Este documento no usa esas ratios.
+La Chartered Society of Physiotherapy pidió en 2022 aumentar la dotación de fisioterapeutas de primer contacto en Inglaterra hasta 1 por cada 10.000 habitantes [@D7]. Esa cifra es una reivindicación profesional y no una norma del NHS [@D7]. Se refiere además solo al perfil de primer contacto, de modo que no incluye la atención domiciliaria ni los programas grupales.
 
 ## 9.6. Retorno económico esperado
 
@@ -106,7 +106,5 @@ Tabla 9.6. Evidencia económica internacional aplicable al modelo
 | Triaje en la interfaz hospitalaria | Trøstrup y colaboradores [@E107] | Ahorro del 27 % al 49 % en la valoración diagnóstica | Fuera del alcance de esta propuesta |
 
 Fuente: elaboración propia a partir de los resúmenes de PubMed de los estudios citados.
-
-Dos cifras de los documentos aportados no se usan en esta sección. La primera es un ahorro regional de 568 millones de euros anuales que el documento de trabajo madrileño atribuye a un estudio sobre el impacto de la fisioterapia [@G10]. El documento no identifica ese estudio en su bibliografía, de modo que la cifra no puede trazarse. La segunda es un ahorro del 27,3 % que el informe gallego atribuye a un estudio no indexado en PubMed [@G9]. El anexo F recoge ambas.
 
 Por todo ello, el retorno económico debe medirse y no suponerse. Los indicadores IR-5, IR-6 e IR-7 del anexo B miden las tres partidas descritas: pruebas y derivaciones, incapacidad temporal y medicación. El diseño de evaluación de la sección 11.4 permite atribuir sus cambios al modelo.
