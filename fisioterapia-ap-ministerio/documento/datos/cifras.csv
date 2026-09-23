@@ -122,7 +122,7 @@ valor|seccion|descripcion|fuente|anio|definicion|estado
 447|9.6|Coste total por persona de la terapia manual en el dolor cervical|E55|Publicado en 2003|Euros|Verificada
 1.297|9.6|Coste total por persona de la fisioterapia basada en ejercicio en el dolor cervical|E55|Publicado en 2003|Euros|Verificada
 1.379|9.6|Coste total por persona de la atención por el médico general en el dolor cervical|E55|Publicado en 2003|Euros|Verificada
-568|9.6|Ahorro regional anual atribuido a la fisioterapia por el documento de trabajo madrileño|G10|No consta|Millones de euros; cifra no trazable que este documento no usa|Verificada como documento aportado; fuente original no identificada
+568|9.6|Ahorro potencial anual para el sistema de salud madrileño de cuatro actuaciones de fisioterapia|G11|2021|Millones de euros; estimación por extrapolación citada en la presentación del informe|Verificada como documento aportado
 55 %|10.4|Conversión quirúrgica mínima con triaje por fisioterapia|E106|Publicado en 2020|Límite inferior del intervalo entre estudios|Verificada
 91 %|4.4 y 10.4|Conversión quirúrgica máxima con triaje por fisioterapia|E95,E106|Publicado en 2013 y en 2020|Límite superior del intervalo y valor del estudio de Napier|Verificada
 38 %|10.4|Conversión quirúrgica máxima sin triaje por fisioterapia|E106|Publicado en 2020|Límite superior del intervalo entre estudios|Verificada
@@ -132,3 +132,6 @@ valor|seccion|descripcion|fuente|anio|definicion|estado
 246|3.3|Centros de salud con el sistema XIDE a finales de 2022|C12x|2022|Centros de salud del SERGAS|Pendiente de cotejo
 73 %|3.3|Población gallega cubierta por el sistema XIDE a finales de 2022|C12x|2022|Proporción de la población|Pendiente de cotejo
 40 %|3.3|Reducción media de las citas forzadas en las agendas de medicina de familia con XIDE|C12x|2022|Reducción media atribuida por el informe|Pendiente de cotejo
+218|9.1|Fisioterapeutas estimados en la AP de Madrid en 2021|G11|2021|Estimación a partir de una encuesta a colegiados|Verificada como documento aportado
+50|9.1|Fisioterapeutas de AP de Madrid formados en dolor musculoesquelético en 2025|C14f|2025|«Más de 50» alumnos en dos cursos|Pendiente de cotejo
+20 %|9.1|Proporción de los fisioterapeutas de AP de Madrid en activo que representan esos alumnos|C14f|2025|Proporción aproximada según la nota oficial|Pendiente de cotejo

@@ -819,7 +819,7 @@ Esta sección calcula cuántos fisioterapeutas de AP necesita el SNS a partir de
 
 El SNS contaba en 2024 con 2.418 fisioterapeutas de AP, según el informe monográfico de recursos humanos [57]. La dotación por comunidad autónoma variaba más de diez veces entre los extremos que recogió el editorial de 2022 (tabla 3.1). El punto de partida no es, por tanto, un valor único, sino una distribución muy desigual.
 
-Los datos autonómicos de actividad pueden afinar ese punto de partida. La Comunidad de Madrid informó de que sus unidades de fisioterapia de AP atendieron a cerca de 159.000 personas en 2024 [39]. El SIAP permite completar ese dato con la plantilla de fisioterapeutas de AP de cada comunidad autónoma [61].
+Los datos autonómicos de actividad pueden afinar ese punto de partida. La Comunidad de Madrid informó de que sus unidades de fisioterapia de AP atendieron a cerca de 159.000 personas en 2024 [39]. El informe de PwC para el colegio profesional madrileño estimó unos 218 fisioterapeutas en la AP de Madrid en 2021, a partir de una encuesta a las personas colegiadas [161]. En 2025, más de 50 fisioterapeutas de AP completaron una formación de la Gerencia Asistencial en dolor musculoesquelético [138]. Según la Gerencia, suponían alrededor del 20 % de los que están en activo en AP [138]. El SIAP permite sustituir estas estimaciones por la plantilla oficial de cada comunidad autónoma [61].
 
 ## 9.2. Modelo de demanda
 
@@ -839,9 +839,9 @@ Tabla 9.1. Parámetros del modelo de demanda
 | F1 | Fracción de esas personas que accede a fisioterapia de atención primaria por cualquier vía | proporción | 0,25 | 0,35 | 0,50 | Supuesto | No existe dato español publicado. El rango refleja un despliegue progresivo del acceso directo y de la derivación protocolizada |
 | F2 | Fracción de las personas valoradas que necesita tratamiento individual tras la primera consulta | proporción | 0,30 | 0,40 | 0,50 | Supuesto | En la evaluación de Downie y colaboradores, el 60,4 % de los contactos se resolvió solo con automanejo tras la primera consulta [37] |
 | V | Consultas individuales de seguimiento por episodio tratado | consultas | 3 | 4 | 6 | Supuesto | No existe dato español publicado sobre consultas por episodio en fisioterapia de atención primaria |
-| t | Duración media de cada consulta individual | horas | 0,33 | 0,50 | 0,75 | Supuesto | Las consultas de primer contacto del Reino Unido duran veinte minutos en la encuesta de Halls y colaboradores. El valor central incorpora el tiempo de registro y de coordinación [161] |
-| S65 | Proporción de población de 65 años o más | proporción | 0,18 | 0,20 | 0,22 | Supuesto | Valor redondeado del padrón continuo. El rango refleja la variación entre zonas básicas y se sustituye por el dato local en los ajustes territoriales [162] |
-| D | Proporción de personas de 65 años o más que necesita fisioterapia domiciliaria al año | proporción | 0,02 | 0,03 | 0,05 | Supuesto | La prevalencia de fragilidad en población comunitaria europea es del 12 %. Solo una parte de esa población necesita atención en el domicilio [163] |
+| t | Duración media de cada consulta individual | horas | 0,33 | 0,50 | 0,75 | Supuesto | Las consultas de primer contacto del Reino Unido duran veinte minutos en la encuesta de Halls y colaboradores. El valor central incorpora el tiempo de registro y de coordinación [162] |
+| S65 | Proporción de población de 65 años o más | proporción | 0,18 | 0,20 | 0,22 | Supuesto | Valor redondeado del padrón continuo. El rango refleja la variación entre zonas básicas y se sustituye por el dato local en los ajustes territoriales [163] |
+| D | Proporción de personas de 65 años o más que necesita fisioterapia domiciliaria al año | proporción | 0,02 | 0,03 | 0,05 | Supuesto | La prevalencia de fragilidad en población comunitaria europea es del 12 %. Solo una parte de esa población necesita atención en el domicilio [164] |
 | Vd | Visitas domiciliarias por persona y año | visitas | 4 | 6 | 8 | Supuesto | Sin dato publicado. Se ajusta localmente |
 | td | Duración media de cada visita domiciliaria, con desplazamiento | horas | 1 | 1,25 | 1,50 | Supuesto | Sin dato publicado. El desplazamiento aumenta en zonas rurales y dispersas |
 | J | Jornada anual de un fisioterapeuta a tiempo completo | horas | 1.642 | 1.600 | 1.519 | Supuesto | Rango de la jornada ordinaria entre 35 y 37,5 horas semanales según el servicio de salud. El orden de bajo a alto sigue la necesidad: una jornada menor exige más dotación |
@@ -933,31 +933,34 @@ La demora en rehabilitación hospitalaria no es un factor de ajuste de la dotaci
 
 ## 9.5. Referencias externas de dotación
 
-La Chartered Society of Physiotherapy pidió en 2022 aumentar la dotación de fisioterapeutas de primer contacto en Inglaterra hasta 1 por cada 10.000 habitantes [164]. Esa cifra es una reivindicación profesional y no una norma del NHS [164]. Se refiere además solo al perfil de primer contacto, de modo que no incluye la atención domiciliaria ni los programas grupales.
+La Chartered Society of Physiotherapy pidió en 2022 aumentar la dotación de fisioterapeutas de primer contacto en Inglaterra hasta 1 por cada 10.000 habitantes [165]. Esa cifra es una reivindicación profesional y no una norma del NHS [165]. Se refiere además solo al perfil de primer contacto, de modo que no incluye la atención domiciliaria ni los programas grupales.
 
 ## 9.6. Retorno económico esperado
 
 Este documento no calcula un ahorro para el SNS, porque no existe ninguna evaluación económica española del modelo que propone. Sin embargo, la literatura internacional permite anticipar en qué partidas puede aparecer el retorno y cómo debe medirse.
 
-La primera partida son los costes indirectos. En el dolor lumbar, los costes indirectos supusieron el 88 % del coste total en los Países Bajos [25]. Una revisión de evaluaciones económicas concluyó que la atención del médico general por sí sola no parece la opción más coste-efectiva en el dolor lumbar [135]. Añadir consejo, educación y ejercicio a esa atención resultó más coste-efectivo que la atención médica habitual sola [135]. Otra revisión encontró que el ejercicio, la rehabilitación interdisciplinar, la manipulación vertebral y la terapia cognitivo-conductual suelen ser coste-efectivos en el dolor lumbar subagudo o persistente [165].
+En España, el cálculo más próximo es un informe de PwC encargado por el Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid, con datos de 2021 [161]. Su capítulo económico cuantifica el ahorro de cuatro actuaciones: la fisioterapia respiratoria tras la cirugía del cáncer de pulmón, la rehabilitación cardiaca tras un bypass coronario, el síndrome del túnel carpiano y la EPOC grave [161]. La presentación del informe cifra en cerca de 568 millones de euros anuales lo que esas actuaciones podrían liberar al sistema de salud madrileño [161]. Esa cifra es un ahorro potencial y no un ahorro medido. Se obtuvo aplicando a los pacientes estimados en Madrid los efectos de estudios publicados, y tres de las cuatro actuaciones corresponden a la atención hospitalaria [161]. Por eso este documento la cita como orden de magnitud y no como resultado esperable del modelo de AP.
+
+La primera partida son los costes indirectos. En el dolor lumbar, los costes indirectos supusieron el 88 % del coste total en los Países Bajos [25]. Una revisión de evaluaciones económicas concluyó que la atención del médico general por sí sola no parece la opción más coste-efectiva en el dolor lumbar [135]. Añadir consejo, educación y ejercicio a esa atención resultó más coste-efectivo que la atención médica habitual sola [135]. Otra revisión encontró que el ejercicio, la rehabilitación interdisciplinar, la manipulación vertebral y la terapia cognitivo-conductual suelen ser coste-efectivos en el dolor lumbar subagudo o persistente [166].
 
 La segunda partida es el uso posterior de servicios. En el estudio de Fritz y colaboradores, la fisioterapia precoz se asoció a un coste médico 2.736 dólares menor por persona con dolor lumbar [32]. En el ensayo FRONTIER, el coste mediano para el NHS fue de 41,0 y 44,0 libras en los grupos de fisioterapia, frente a 105,5 libras en el grupo médico [90, 91]. En Suecia, la valoración inicial por fisioterapia resultó más coste-efectiva que la valoración inicial por el médico general [98].
 
-La tercera partida es la elección del tratamiento. En el dolor cervical, un ensayo neerlandés en AP comparó terapia manual, fisioterapia basada en ejercicio y atención por el médico general [166]. El coste total de la terapia manual, 447 euros por persona, fue alrededor de un tercio del coste de las otras dos opciones, de 1.297 y 1.379 euros [166]. En cambio, la fisioterapia basada en ejercicio no fue más barata que la atención médica en ese ensayo [166]. Una revisión posterior advierte que el número de evaluaciones económicas en dolor cervical no permite conclusiones firmes [167].
+La tercera partida es la elección del tratamiento. En el dolor cervical, un ensayo neerlandés en AP comparó terapia manual, fisioterapia basada en ejercicio y atención por el médico general [167]. El coste total de la terapia manual, 447 euros por persona, fue alrededor de un tercio del coste de las otras dos opciones, de 1.297 y 1.379 euros [167]. En cambio, la fisioterapia basada en ejercicio no fue más barata que la atención médica en ese ensayo [167]. Una revisión posterior advierte que el número de evaluaciones económicas en dolor cervical no permite conclusiones firmes [168].
 
 Tabla 9.6. Evidencia económica internacional aplicable al modelo
 
 | Partida | Estudio | Resultado | Límite para el SNS |
 |---|---|---|---|
 | Costes indirectos | Lambeek y colaboradores [25] | Los costes indirectos suponen el 88 % del coste del dolor lumbar | Estudio de coste de la enfermedad, sin evaluar la fisioterapia |
-| Atención médica frente a atención con ejercicio | Lin y colaboradores [135, 165] | Añadir educación y ejercicio es más coste-efectivo que la atención médica sola | Evaluaciones de sistemas con precios distintos |
+| Atención médica frente a atención con ejercicio | Lin y colaboradores [135, 166] | Añadir educación y ejercicio es más coste-efectivo que la atención médica sola | Evaluaciones de sistemas con precios distintos |
 | Momento del acceso | Fritz y colaboradores [32] | Coste médico menor con la fisioterapia en los primeros 14 días | Estudio observacional en aseguradoras de Estados Unidos |
 | Primer contacto en AP | FRONTIER [90, 91] | Coste mediano para el NHS menor en los grupos de fisioterapia | Sistema público con estructura distinta de la española |
 | Primera valoración en el centro de salud | Bornhöft y colaboradores [98] | Manejo más coste-efectivo con la valoración inicial por fisioterapia | Triaje dentro del centro, no acceso directo |
-| Tratamiento del dolor cervical | Korthals-de Bos y colaboradores [166] | La terapia manual costó un tercio que la fisioterapia basada en ejercicio o la atención médica | Un solo ensayo, con evidencia global insuficiente [167] |
+| Tratamiento del dolor cervical | Korthals-de Bos y colaboradores [167] | La terapia manual costó un tercio que la fisioterapia basada en ejercicio o la atención médica | Un solo ensayo, con evidencia global insuficiente [168] |
 | Triaje en la interfaz hospitalaria | Trøstrup y colaboradores [106] | Ahorro del 27 % al 49 % en la valoración diagnóstica | Fuera del alcance de esta propuesta |
+| Cuatro actuaciones de fisioterapia en Madrid | Informe de PwC para el CPFCM [161] | Ahorro potencial cercano a 568 millones de euros anuales para el sistema de salud madrileño | Estimación por extrapolación, con tres actuaciones hospitalarias |
 
-Fuente: elaboración propia a partir de los resúmenes de PubMed de los estudios citados.
+Fuente: elaboración propia a partir de los resúmenes de PubMed de los estudios citados y del informe de PwC para el CPFCM.
 
 Por todo ello, el retorno económico debe medirse y no suponerse. Los indicadores IR-5, IR-6 e IR-7 del anexo B miden las tres partidas descritas: pruebas y derivaciones, incapacidad temporal y medicación. El diseño de evaluación de la sección 11.4 permite atribuir sus cambios al modelo.
 
@@ -967,7 +970,7 @@ Esta sección define cómo se evalúa el modelo. Los indicadores se organizan se
 
 ## 10.1. Marco
 
-El modelo EFQM se estructura en tres bloques [168]. El bloque de Dirección agrupa el propósito, la visión, la estrategia, la cultura y el liderazgo [168]. El bloque de Ejecución agrupa la implicación de los grupos de interés, la creación de valor sostenible y la gestión del funcionamiento y la transformación [168]. El bloque de Resultados agrupa la percepción de los grupos de interés y el rendimiento estratégico y operativo [168].
+El modelo EFQM se estructura en tres bloques [169]. El bloque de Dirección agrupa el propósito, la visión, la estrategia, la cultura y el liderazgo [169]. El bloque de Ejecución agrupa la implicación de los grupos de interés, la creación de valor sostenible y la gestión del funcionamiento y la transformación [169]. El bloque de Resultados agrupa la percepción de los grupos de interés y el rendimiento estratégico y operativo [169].
 
 Cada indicador se sitúa en uno de esos criterios. El sistema incluye los indicadores que exigen las decisiones de este documento, como la adecuación de la radiografía simple solicitada. Incluye también el inicio precoz en la incapacidad temporal (IE-10) y la adecuación de las derivaciones de medicina de familia a traumatología (IR-13).
 
@@ -1041,7 +1044,7 @@ Los indicadores de resultados miden también el retorno económico descrito en l
 
 ## 10.5. Ficha de indicador
 
-Cada ficha del anexo B contiene diez campos: nombre, bloque y criterio EFQM, definición, fórmula, numerador, denominador, fuente de datos, periodicidad, estándar propuesto y responsable del registro. El instrumento de función del indicador IR-2 debe elegirlo el grupo de trabajo entre los validados en castellano. Los trabajos españoles sobre conjuntos básicos de la clasificación internacional del funcionamiento en fisioterapia de AP son una base para esa elección [169, 170].
+Cada ficha del anexo B contiene diez campos: nombre, bloque y criterio EFQM, definición, fórmula, numerador, denominador, fuente de datos, periodicidad, estándar propuesto y responsable del registro. El instrumento de función del indicador IR-2 debe elegirlo el grupo de trabajo entre los validados en castellano. Los trabajos españoles sobre conjuntos básicos de la clasificación internacional del funcionamiento en fisioterapia de AP son una base para esa elección [170, 171].
 
 # 11. Plan de implantación y gestión de riesgos
 
@@ -1841,7 +1844,7 @@ Tabla E.1. Fuentes por cifra
 | 4.5 | 58 % | Organizaciones que declararon acceso directo | [121] | Publicado en 2013 | Porcentaje de las organizaciones que respondieron a la encuesta |
 | 8.4 | 15.581 | Pacientes de la revisión sobre las reglas de Ottawa | [139] | Publicado en 2003 | Pacientes de los estudios combinados |
 | 8.4 | 100 % | Sensibilidad de las reglas de Ottawa para excluir fracturas | [139] | Publicado en 2003 | Sensibilidad cercana al 100 % |
-| 9.5 | 10.000 | Habitantes por fisioterapeuta de primer contacto que pide la Chartered Society of Physiotherapy | [164] | 2022 | Reivindicación profesional para Inglaterra |
+| 9.5 | 10.000 | Habitantes por fisioterapeuta de primer contacto que pide la Chartered Society of Physiotherapy | [165] | 2022 | Reivindicación profesional para Inglaterra |
 | 1.2 | 54 % | Aumento de los años vividos con discapacidad por dolor lumbar | [17] | 1990 a 2015 | Aumento mundial entre 1990 y 2015 |
 | 1.2 | 165 | Estudios poblacionales incluidos en la revisión de prevalencia del dolor lumbar | [18] | Publicado en 2012 | Estudios publicados entre 1980 y 2009 |
 | 1.2 | 54 | Países de los estudios incluidos en la revisión de prevalencia del dolor lumbar | [18] | Publicado en 2012 | Países |
@@ -1896,9 +1899,10 @@ Tabla E.1. Fuentes por cifra
 | 8.4 | 150 | Pacientes de la validación española del PRTEE | [150] | Publicado en 2020 | Participantes |
 | 8.4 | 0,96 | Alfa de Cronbach de la versión española del PRTEE | [150] | Publicado en 2020 | Consistencia interna |
 | 8.4 | 0,9 | Coeficiente de correlación intraclase de la versión española del PRTEE | [150] | Publicado en 2020 | Fiabilidad |
-| 9.6 | 447 | Coste total por persona de la terapia manual en el dolor cervical | [166] | Publicado en 2003 | Euros |
-| 9.6 | 1.297 | Coste total por persona de la fisioterapia basada en ejercicio en el dolor cervical | [166] | Publicado en 2003 | Euros |
-| 9.6 | 1.379 | Coste total por persona de la atención por el médico general en el dolor cervical | [166] | Publicado en 2003 | Euros |
+| 9.6 | 447 | Coste total por persona de la terapia manual en el dolor cervical | [167] | Publicado en 2003 | Euros |
+| 9.6 | 1.297 | Coste total por persona de la fisioterapia basada en ejercicio en el dolor cervical | [167] | Publicado en 2003 | Euros |
+| 9.6 | 1.379 | Coste total por persona de la atención por el médico general en el dolor cervical | [167] | Publicado en 2003 | Euros |
+| 9.6 | 568 | Ahorro potencial anual para el sistema de salud madrileño de cuatro actuaciones de fisioterapia | [161] | 2021 | Millones de euros; estimación por extrapolación citada en la presentación del informe |
 | 10.4 | 55 % | Conversión quirúrgica mínima con triaje por fisioterapia | [105] | Publicado en 2020 | Límite inferior del intervalo entre estudios |
 | 4.4 y 10.4 | 91 % | Conversión quirúrgica máxima con triaje por fisioterapia | [101, 105] | Publicado en 2013 y en 2020 | Límite superior del intervalo y valor del estudio de Napier |
 | 10.4 | 38 % | Conversión quirúrgica máxima sin triaje por fisioterapia | [105] | Publicado en 2020 | Límite superior del intervalo entre estudios |
@@ -1908,6 +1912,9 @@ Tabla E.1. Fuentes por cifra
 | 3.3 | 246 | Centros de salud con el sistema XIDE a finales de 2022 | [77] | 2022 | Centros de salud del SERGAS |
 | 3.3 | 73 % | Población gallega cubierta por el sistema XIDE a finales de 2022 | [77] | 2022 | Proporción de la población |
 | 3.3 | 40 % | Reducción media de las citas forzadas en las agendas de medicina de familia con XIDE | [77] | 2022 | Reducción media atribuida por el informe |
+| 9.1 | 218 | Fisioterapeutas estimados en la AP de Madrid en 2021 | [161] | 2021 | Estimación a partir de una encuesta a colegiados |
+| 9.1 | 50 | Fisioterapeutas de AP de Madrid formados en dolor musculoesquelético en 2025 | [138] | 2025 | «Más de 50» alumnos en dos cursos |
+| 9.1 | 20 % | Proporción de los fisioterapeutas de AP de Madrid en activo que representan esos alumnos | [138] | 2025 | Proporción aproximada según la nota oficial |
 | 9.2 | 23.871 | Habitantes por fisioterapeuta en el escenario bajo | Modelo de la sección 9 | No aplica | Resultado del modelo de demanda con los parámetros de la tabla 9.1 |
 | 9.2 | 7.480 | Habitantes por fisioterapeuta en el escenario central | Modelo de la sección 9 | No aplica | Resultado del modelo de demanda con los parámetros de la tabla 9.1 |
 | 9.2 | 2.035 | Habitantes por fisioterapeuta en el escenario alto | Modelo de la sección 9 | No aplica | Resultado del modelo de demanda con los parámetros de la tabla 9.1 |
@@ -2116,13 +2123,14 @@ Fuente: búsqueda documental realizada para este documento.
 158. Morrissey D, Cotchett M, Said J'Bari A, Prior T, Griffiths IB, Rathleff MS, et al. Management of plantar heel pain: a best practice guide informed by a systematic review, expert clinical reasoning and patient values. Br J Sports Med. 2021;55(19):1106-18. PMID: 33785535. doi:10.1136/bjsports-2019-101970.
 159. Koc TA, Bise CG, Neville C, Carreira D, Martin RL, McDonough CM. Heel pain - plantar fasciitis: revision 2023. J Orthop Sports Phys Ther. 2023;53(12):CPG1-CPG39. PMID: 38037331. doi:10.2519/jospt.2023.0303.
 160. Kang JR, Sin AT, Cheung EV. Treatment of massive irreparable rotator cuff tears: a cost-effectiveness analysis. Orthopedics. 2017;40(1):e65-e76. PMID: 27684078. doi:10.3928/01477447-20160926-06.
-161. Halls S, Thomas R, Stott H, Cupples ME, Kersten P, Cramp F, et al. Provision of first contact physiotherapy in primary care across the UK: a survey of the service. Physiotherapy. 2020;108:2-9. PMID: 32693238. doi:10.1016/j.physio.2020.04.005.
-162. Instituto Nacional de Estadística. Estadística del Padrón Continuo [base de datos]. Madrid: INE. Disponible en: https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177012&menu=ultiDatos&idp=1254734710990.
-163. O'Caoimh R, Galluzzo L, Rodríguez-Laso Á, Van der Heyden J, Ranhoff AH, Lamprini-Koula M, et al. Prevalence of frailty at population level in European ADVANTAGE Joint Action Member States: a systematic review and meta-analysis. Ann Ist Super Sanita. 2018;54(3):226-238. PMID: 30284550. doi:10.4415/ANN_18_03_10.
-164. Chartered Society of Physiotherapy. CSP urges government to boost FCP roll-out across England [nota]. Londres; 19 de enero de 2022. Disponible en: https://www.csp.org.uk/news/2022-01-19-csp-urges-government-boost-fcp-roll-out-across-england.
-165. Lin CW, Haas M, Maher CG, Machado LA, van Tulder MW. Cost-effectiveness of guideline-endorsed treatments for low back pain: a systematic review. Eur Spine J. 2011;20(7):1024-38. PMID: 21229367. doi:10.1007/s00586-010-1676-3.
-166. Korthals-de Bos IB, Hoving JL, van Tulder MW, Rutten-van Mölken MP, Adèr HJ, de Vet HC, et al. Cost effectiveness of physiotherapy, manual therapy, and general practitioner care for neck pain: economic evaluation alongside a randomised controlled trial. BMJ. 2003;326(7395):911. PMID: 12714472. doi:10.1136/bmj.326.7395.911.
-167. Driessen MT, Lin CW, van Tulder MW. Cost-effectiveness of conservative treatments for neck pain: a systematic review on economic evaluations. Eur Spine J. 2012;21(8):1441-50. PMID: 22447407. doi:10.1007/s00586-012-2272-5.
-168. EFQM. Modelo EFQM 2025. Edición en español. Madrid: Club Excelencia en Gestión; 2025. Disponible en: https://www.clubexcelencia.org/conocimiento/plataforma-de-conocimiento/modelo-efqm-2025.
-169. Hernández-Lázaro H, Mingo-Gómez MT, Jiménez-Del-Barrio S, Simarro-Martín A, Wiśniowska-Szurlej A, Ceballos-Laita L. Development of an ICF core set for the management of musculoskeletal conditions in primary care physiotherapy services in Spain: a Delphi study. Disabil Rehabil. 2025;47(18):4759-4768. PMID: 39931756. doi:10.1080/09638288.2025.2460723.
-170. Hernández-Lázaro H, Jiménez-Del Barrio S, Ceballos-Laita L, Lahuerta-Martin S, Medrano-de-la-Fuente R, Hernando-Garijo I, et al. Multicentre cross-sectional study assessing content validity of the International Classification of Functioning, Disability and Health core set for post-acute musculoskeletal conditions in primary care physiotherapy services. J Rehabil Med. 2023;55:jrm11950. PMID: 37974517. doi:10.2340/jrm.v55.11950.
+161. PricewaterhouseCoopers Asesores de Negocios. Impacto económico, sanitario y social de la actividad de fisioterapia en la Comunidad de Madrid. [Madrid]: Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid; septiembre de 2022. Informe encargado por el Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid.
+162. Halls S, Thomas R, Stott H, Cupples ME, Kersten P, Cramp F, et al. Provision of first contact physiotherapy in primary care across the UK: a survey of the service. Physiotherapy. 2020;108:2-9. PMID: 32693238. doi:10.1016/j.physio.2020.04.005.
+163. Instituto Nacional de Estadística. Estadística del Padrón Continuo [base de datos]. Madrid: INE. Disponible en: https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177012&menu=ultiDatos&idp=1254734710990.
+164. O'Caoimh R, Galluzzo L, Rodríguez-Laso Á, Van der Heyden J, Ranhoff AH, Lamprini-Koula M, et al. Prevalence of frailty at population level in European ADVANTAGE Joint Action Member States: a systematic review and meta-analysis. Ann Ist Super Sanita. 2018;54(3):226-238. PMID: 30284550. doi:10.4415/ANN_18_03_10.
+165. Chartered Society of Physiotherapy. CSP urges government to boost FCP roll-out across England [nota]. Londres; 19 de enero de 2022. Disponible en: https://www.csp.org.uk/news/2022-01-19-csp-urges-government-boost-fcp-roll-out-across-england.
+166. Lin CW, Haas M, Maher CG, Machado LA, van Tulder MW. Cost-effectiveness of guideline-endorsed treatments for low back pain: a systematic review. Eur Spine J. 2011;20(7):1024-38. PMID: 21229367. doi:10.1007/s00586-010-1676-3.
+167. Korthals-de Bos IB, Hoving JL, van Tulder MW, Rutten-van Mölken MP, Adèr HJ, de Vet HC, et al. Cost effectiveness of physiotherapy, manual therapy, and general practitioner care for neck pain: economic evaluation alongside a randomised controlled trial. BMJ. 2003;326(7395):911. PMID: 12714472. doi:10.1136/bmj.326.7395.911.
+168. Driessen MT, Lin CW, van Tulder MW. Cost-effectiveness of conservative treatments for neck pain: a systematic review on economic evaluations. Eur Spine J. 2012;21(8):1441-50. PMID: 22447407. doi:10.1007/s00586-012-2272-5.
+169. EFQM. Modelo EFQM 2025. Edición en español. Madrid: Club Excelencia en Gestión; 2025. Disponible en: https://www.clubexcelencia.org/conocimiento/plataforma-de-conocimiento/modelo-efqm-2025.
+170. Hernández-Lázaro H, Mingo-Gómez MT, Jiménez-Del-Barrio S, Simarro-Martín A, Wiśniowska-Szurlej A, Ceballos-Laita L. Development of an ICF core set for the management of musculoskeletal conditions in primary care physiotherapy services in Spain: a Delphi study. Disabil Rehabil. 2025;47(18):4759-4768. PMID: 39931756. doi:10.1080/09638288.2025.2460723.
+171. Hernández-Lázaro H, Jiménez-Del Barrio S, Ceballos-Laita L, Lahuerta-Martin S, Medrano-de-la-Fuente R, Hernando-Garijo I, et al. Multicentre cross-sectional study assessing content validity of the International Classification of Functioning, Disability and Health core set for post-acute musculoskeletal conditions in primary care physiotherapy services. J Rehabil Med. 2023;55:jrm11950. PMID: 37974517. doi:10.2340/jrm.v55.11950.

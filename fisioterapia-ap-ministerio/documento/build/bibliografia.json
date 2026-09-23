@@ -1281,6 +1281,14 @@
  },
  {
   "n": 161,
+  "id": "G11",
+  "estado": "Verificada",
+  "tipo": "informe profesional",
+  "cita": "PricewaterhouseCoopers Asesores de Negocios. Impacto económico, sanitario y social de la actividad de fisioterapia en la Comunidad de Madrid. [Madrid]: Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid; septiembre de 2022",
+  "url": "informe encargado por el Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid"
+ },
+ {
+  "n": 162,
   "id": "E14",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1288,7 +1296,7 @@
   "url": "https://doi.org/10.1016/j.physio.2020.04.005"
  },
  {
-  "n": 162,
+  "n": 163,
   "id": "B9",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -1296,7 +1304,7 @@
   "url": "https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177012&menu=ultiDatos&idp=1254734710990"
  },
  {
-  "n": 163,
+  "n": 164,
   "id": "E43",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1304,7 +1312,7 @@
   "url": "https://doi.org/10.4415/ANN_18_03_10"
  },
  {
-  "n": 164,
+  "n": 165,
   "id": "D7",
   "estado": "Localizada",
   "tipo": "nota profesional",
@@ -1312,7 +1320,7 @@
   "url": "https://www.csp.org.uk/news/2022-01-19-csp-urges-government-boost-fcp-roll-out-across-england"
  },
  {
-  "n": 165,
+  "n": 166,
   "id": "E53",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1320,7 +1328,7 @@
   "url": "https://doi.org/10.1007/s00586-010-1676-3"
  },
  {
-  "n": 166,
+  "n": 167,
   "id": "E55",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1328,7 +1336,7 @@
   "url": "https://doi.org/10.1136/bmj.326.7395.911"
  },
  {
-  "n": 167,
+  "n": 168,
   "id": "E57",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1336,7 +1344,7 @@
   "url": "https://doi.org/10.1007/s00586-012-2272-5"
  },
  {
-  "n": 168,
+  "n": 169,
   "id": "A15",
   "estado": "Localizada",
   "tipo": "modelo de gestión",
@@ -1344,7 +1352,7 @@
   "url": "https://www.clubexcelencia.org/conocimiento/plataforma-de-conocimiento/modelo-efqm-2025"
  },
  {
-  "n": 169,
+  "n": 170,
   "id": "E32",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1352,7 +1360,7 @@
   "url": "https://doi.org/10.1080/09638288.2025.2460723"
  },
  {
-  "n": 170,
+  "n": 171,
   "id": "E32b",
   "estado": "Verificada",
   "tipo": "artículo",

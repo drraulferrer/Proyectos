@@ -8,7 +8,7 @@ Esta sección calcula cuántos fisioterapeutas de AP necesita el SNS a partir de
 
 El SNS contaba en 2024 con 2.418 fisioterapeutas de AP, según el informe monográfico de recursos humanos [@B1]. La dotación por comunidad autónoma variaba más de diez veces entre los extremos que recogió el editorial de 2022 (tabla 3.1). El punto de partida no es, por tanto, un valor único, sino una distribución muy desigual.
 
-Los datos autonómicos de actividad pueden afinar ese punto de partida. La Comunidad de Madrid informó de que sus unidades de fisioterapia de AP atendieron a cerca de 159.000 personas en 2024 [@C14n]. El SIAP permite completar ese dato con la plantilla de fisioterapeutas de AP de cada comunidad autónoma [@B1b].
+Los datos autonómicos de actividad pueden afinar ese punto de partida. La Comunidad de Madrid informó de que sus unidades de fisioterapia de AP atendieron a cerca de 159.000 personas en 2024 [@C14n]. El informe de PwC para el colegio profesional madrileño estimó unos 218 fisioterapeutas en la AP de Madrid en 2021, a partir de una encuesta a las personas colegiadas [@G11]. En 2025, más de 50 fisioterapeutas de AP completaron una formación de la Gerencia Asistencial en dolor musculoesquelético [@C14f]. Según la Gerencia, suponían alrededor del 20 % de los que están en activo en AP [@C14f]. El SIAP permite sustituir estas estimaciones por la plantilla oficial de cada comunidad autónoma [@B1b].
 
 ## 9.2. Modelo de demanda
 
@@ -87,6 +87,8 @@ La Chartered Society of Physiotherapy pidió en 2022 aumentar la dotación de fi
 
 Este documento no calcula un ahorro para el SNS, porque no existe ninguna evaluación económica española del modelo que propone. Sin embargo, la literatura internacional permite anticipar en qué partidas puede aparecer el retorno y cómo debe medirse.
 
+En España, el cálculo más próximo es un informe de PwC encargado por el Colegio Profesional de Fisioterapeutas de la Comunidad de Madrid, con datos de 2021 [@G11]. Su capítulo económico cuantifica el ahorro de cuatro actuaciones: la fisioterapia respiratoria tras la cirugía del cáncer de pulmón, la rehabilitación cardiaca tras un bypass coronario, el síndrome del túnel carpiano y la EPOC grave [@G11]. La presentación del informe cifra en cerca de 568 millones de euros anuales lo que esas actuaciones podrían liberar al sistema de salud madrileño [@G11]. Esa cifra es un ahorro potencial y no un ahorro medido. Se obtuvo aplicando a los pacientes estimados en Madrid los efectos de estudios publicados, y tres de las cuatro actuaciones corresponden a la atención hospitalaria [@G11]. Por eso este documento la cita como orden de magnitud y no como resultado esperable del modelo de AP.
+
 La primera partida son los costes indirectos. En el dolor lumbar, los costes indirectos supusieron el 88 % del coste total en los Países Bajos [@E50]. Una revisión de evaluaciones económicas concluyó que la atención del médico general por sí sola no parece la opción más coste-efectiva en el dolor lumbar [@E52]. Añadir consejo, educación y ejercicio a esa atención resultó más coste-efectivo que la atención médica habitual sola [@E52]. Otra revisión encontró que el ejercicio, la rehabilitación interdisciplinar, la manipulación vertebral y la terapia cognitivo-conductual suelen ser coste-efectivos en el dolor lumbar subagudo o persistente [@E53].
 
 La segunda partida es el uso posterior de servicios. En el estudio de Fritz y colaboradores, la fisioterapia precoz se asoció a un coste médico 2.736 dólares menor por persona con dolor lumbar [@E90]. En el ensayo FRONTIER, el coste mediano para el NHS fue de 41,0 y 44,0 libras en los grupos de fisioterapia, frente a 105,5 libras en el grupo médico [@E13; @E13b]. En Suecia, la valoración inicial por fisioterapia resultó más coste-efectiva que la valoración inicial por el médico general [@E29b].
@@ -104,7 +106,8 @@ Tabla 9.6. Evidencia económica internacional aplicable al modelo
 | Primera valoración en el centro de salud | Bornhöft y colaboradores [@E29b] | Manejo más coste-efectivo con la valoración inicial por fisioterapia | Triaje dentro del centro, no acceso directo |
 | Tratamiento del dolor cervical | Korthals-de Bos y colaboradores [@E55] | La terapia manual costó un tercio que la fisioterapia basada en ejercicio o la atención médica | Un solo ensayo, con evidencia global insuficiente [@E57] |
 | Triaje en la interfaz hospitalaria | Trøstrup y colaboradores [@E107] | Ahorro del 27 % al 49 % en la valoración diagnóstica | Fuera del alcance de esta propuesta |
+| Cuatro actuaciones de fisioterapia en Madrid | Informe de PwC para el CPFCM [@G11] | Ahorro potencial cercano a 568 millones de euros anuales para el sistema de salud madrileño | Estimación por extrapolación, con tres actuaciones hospitalarias |
 
-Fuente: elaboración propia a partir de los resúmenes de PubMed de los estudios citados.
+Fuente: elaboración propia a partir de los resúmenes de PubMed de los estudios citados y del informe de PwC para el CPFCM.
 
 Por todo ello, el retorno económico debe medirse y no suponerse. Los indicadores IR-5, IR-6 e IR-7 del anexo B miden las tres partidas descritas: pruebas y derivaciones, incapacidad temporal y medicación. El diseño de evaluación de la sección 11.4 permite atribuir sus cambios al modelo.
