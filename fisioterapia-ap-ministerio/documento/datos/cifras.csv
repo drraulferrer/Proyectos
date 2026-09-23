@@ -13,8 +13,8 @@ valor|seccion|descripcion|fuente|anio|definicion|estado
 60,4 %|1.5|Contactos resueltos solo con automanejo|E11|2015 a 2017|Porcentaje de contactos que solo necesitaron automanejo|Verificada
 78,5 %|1.5 y 10.4|Personas sin reconsulta en doce semanas tras una cita de fisioterapia de primer contacto|E15|Publicado en 2025|Porcentaje de personas que no volvieron a consultar en atención primaria en doce semanas|Verificada
 159.000|1.5|Personas atendidas por las unidades de fisioterapia de AP de Madrid|C14n|2024|Personas atendidas, cifra aproximada de la nota oficial|Pendiente de cotejo
-77 %|1.5|Consecución de objetivos en las unidades de fisioterapia de AP de Madrid|G1|2024|Porcentaje aproximado de casos con objetivos alcanzados, según el documento de posición|Verificada como documento aportado
-93 %|1.5|Reducción del dolor en las unidades de fisioterapia de AP de Madrid|G1|2024|Porcentaje aproximado de casos con reducción del dolor, según el documento de posición|Verificada como documento aportado
+77 %|1.5|Consecución de objetivos en las unidades de fisioterapia de AP de Madrid|C14n|2024|Porcentaje de casos con los objetivos fijados alcanzados, según la nota oficial|Pendiente de cotejo
+93 %|1.5|Reducción del dolor en las unidades de fisioterapia de AP de Madrid|C14n|2024|Porcentaje aproximado de casos con reducción del dolor, según la nota oficial|Pendiente de cotejo
 2.418|3.1 y 9.1|Fisioterapeutas de atención primaria en el SNS|B1|2024|Profesionales de fisioterapia de AP registrados en el informe monográfico|Pendiente de cotejo
 84,8 %|3.1|Fisioterapeutas del SNS que trabajan en hospitales|B1|2024|Porcentaje sobre el total de fisioterapeutas del SNS|Pendiente de cotejo
 10 %|3.1|Fisioterapeutas del SNS que trabajan en atención primaria|B1|2024|Porcentaje sobre el total de fisioterapeutas del SNS|Pendiente de cotejo
@@ -126,3 +126,9 @@ valor|seccion|descripcion|fuente|anio|definicion|estado
 55 %|10.4|Conversión quirúrgica mínima con triaje por fisioterapia|E106|Publicado en 2020|Límite inferior del intervalo entre estudios|Verificada
 91 %|4.4 y 10.4|Conversión quirúrgica máxima con triaje por fisioterapia|E95,E106|Publicado en 2013 y en 2020|Límite superior del intervalo y valor del estudio de Napier|Verificada
 38 %|10.4|Conversión quirúrgica máxima sin triaje por fisioterapia|E106|Publicado en 2020|Límite superior del intervalo entre estudios|Verificada
+335|1.5|Talleres para la ciudadanía impartidos por las unidades de fisioterapia de AP de Madrid|C14n|2024|Talleres de educación para la salud|Pendiente de cotejo
+224|1.5|Talleres dirigidos a prevenir la fragilidad y las caídas en personas mayores en Madrid|C14n|2024|Parte de los 335 talleres|Pendiente de cotejo
+450|7.3|Ecógrafos en los centros de salud de la Comunidad de Madrid|C14e|2022|Equipos fijos de consola y ultraportátiles|Pendiente de cotejo
+246|3.3|Centros de salud con el sistema XIDE a finales de 2022|C12x|2022|Centros de salud del SERGAS|Pendiente de cotejo
+73 %|3.3|Población gallega cubierta por el sistema XIDE a finales de 2022|C12x|2022|Proporción de la población|Pendiente de cotejo
+40 %|3.3|Reducción media de las citas forzadas en las agendas de medicina de familia con XIDE|C12x|2022|Reducción media atribuida por el informe|Pendiente de cotejo

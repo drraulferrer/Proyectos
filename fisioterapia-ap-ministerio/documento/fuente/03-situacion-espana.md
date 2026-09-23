@@ -58,7 +58,7 @@ El Servicio Canario de la Salud dispone desde 2022 de una guía de actuación de
 
 ### Galicia abre el acceso directo mediante la gestión de la demanda
 
-El Servizo Galego de Saúde (SERGAS) publica una cartera de servicios de fisioterapia de AP y comunitaria [@C12]. En 2022 incorporó la categoría de fisioterapeuta a su protocolo de gestión de la demanda del equipo, conocido como XIDE [@C12n]. Con ese protocolo, la persona accede a la consulta de fisioterapia sin la intermediación de otro profesional para motivos clínicos parametrizados [@C12n]. El pilotaje comenzó en los servicios de Culleredo e Illas Canarias, según una noticia de prensa que este documento usa como fuente secundaria [@C12n].
+El Servizo Galego de Saúde (SERGAS) publica una cartera de servicios de fisioterapia de AP y comunitaria [@C12]. Su citación de AP se organiza con XIDE, un sistema de gestión integral de la demanda en equipo [@C12x]. XIDE reparte las citas por motivo de consulta entre medicina, enfermería, matrona, farmacia, fisioterapia, trabajo social y personal administrativo [@C12x]. A finales de 2022, el sistema funcionaba en 246 centros de salud y cubría al 73 % de la población gallega [@C12x]. El mismo informe atribuye a XIDE una reducción media del 40 % de las citas forzadas en las agendas de medicina de familia [@C12x]. Con este sistema, la persona accede a la consulta de fisioterapia sin la intermediación de otro profesional para motivos clínicos parametrizados [@C12x]. La fisioterapia se incorporó en 2022 con un pilotaje en Culleredo e Illas Canarias, según una noticia de prensa que este documento usa como fuente secundaria [@C12n].
 
 ### Madrid admite el acceso directo para tres procesos
 
@@ -96,7 +96,7 @@ Dos documentos profesionales recientes analizan los modelos de Galicia y de Madr
 
 La Sociedade Galega de Fisioterapeutas presentó en febrero de 2019 un análisis de la efectividad clínica y del impacto económico de la fisioterapia en AP [@G9]. Uno de sus autores representaba a la sociedad en el grupo de trabajo del nuevo modelo de AP del SERGAS [@G9]. El análisis revisó cinco grupos de procesos: el dolor lumbar no específico, el dolor cervical, el síndrome subacromial, el dolor persistente y la patología traumatológica y ortopédica de baja complejidad [@G9]. También revisó la evidencia internacional sobre la derivación directa desde medicina de familia y sobre el fisioterapeuta de triaje [@G9].
 
-Su conclusión pedía implantar la derivación directa desde medicina de familia en el nuevo modelo de AP gallego [@G9]. Tres años después, el SERGAS incorporó la fisioterapia a su protocolo de gestión de la demanda, según la fuente secundaria citada en la sección 3.3 [@C12n]. Este documento no establece una relación causal entre ambos hechos, porque ninguna fuente la documenta.
+Su conclusión pedía implantar la derivación directa desde medicina de familia en el nuevo modelo de AP gallego [@G9]. Tres años después, el SERGAS incorporó la fisioterapia a su sistema de gestión de la demanda XIDE [@C12x; @C12n]. Este documento no establece una relación causal entre ambos hechos, porque ninguna fuente la documenta.
 
 Las secciones siguientes citan directamente los estudios originales que ese análisis revisó, contrastados con sus registros de PubMed.
 

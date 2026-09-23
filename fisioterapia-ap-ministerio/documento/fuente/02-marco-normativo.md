@@ -37,7 +37,7 @@ El artículo 20 establece que la cartera de servicios se acuerda en el seno del 
 
 ## 2.4. Marco Estratégico y planes de acción de atención primaria
 
-El Marco Estratégico para la Atención Primaria y Comunitaria se aprobó en el Consejo Interterritorial en 2019 [@A6]. Su acción A.4.4 incluye el objetivo de «incrementar la capacidad resolutiva de fisioterapia, asumiendo patología aguda de baja complejidad y crónica estable, mediante circuitos y protocolos de actuación basados en la evidencia» [@A6; @G1]. El mismo marco pide «potenciar la participación de fisioterapia en actividades preventivas» [@A6].
+El Marco Estratégico para la Atención Primaria y Comunitaria se aprobó en el Consejo Interterritorial en 2019 [@A6]. Su acción A.4.4 incluye el objetivo de «incrementar la capacidad resolutiva de fisioterapia, asumiendo patología aguda de baja complejidad y crónica estable, mediante circuitos y protocolos de actuación basados en la evidencia» [@A6]. El mismo marco pide «potenciar la participación de fisioterapia en actividades preventivas» [@A6].
 
 El Plan de Acción de Atención Primaria y Comunitaria 2022-2023 dio continuidad a ese marco [@A7]. El Plan de Acción 2025-2027, aprobado en diciembre de 2024, define un nuevo mapa de competencias que incluye a los fisioterapeutas de AP [@A8; @A8n]. Sus objetivos incluyen la continuidad asistencial, la ampliación de la cartera y la mejora de la capacidad resolutiva [@A8n]. Este documento se presenta como desarrollo operativo de esos objetivos para la fisioterapia. Un documento de trabajo madrileño propone usar ese mapa de competencias para ampliar el papel clínico del fisioterapeuta [@G10]. El mismo documento propone abrir el acceso directo en procesos de alta prevalencia y baja discapacidad [@G10].
 

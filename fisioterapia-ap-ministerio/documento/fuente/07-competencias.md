@@ -10,13 +10,13 @@ La evidencia internacional respalda la capacidad diagnóstica que estas competen
 
 ## 7.2. Competencias que requieren desarrollo autonómico o protocolo
 
-El acceso directo del ciudadano requiere un protocolo del servicio de salud. Galicia y Madrid ya lo han regulado [@C12n; @G8]. En Madrid, el instrumento es una instrucción de la Gerencia Asistencial de AP, con criterios de citación y de exclusión escritos para cada proceso [@G8]. La sección 2.5 analiza el rango de ese instrumento. La interconsulta no presencial con atención hospitalaria requiere también un protocolo de cada área sanitaria.
+El acceso directo del ciudadano requiere un protocolo del servicio de salud. Galicia y Madrid ya lo han regulado [@C12x; @G8]. En Madrid, el instrumento es una instrucción de la Gerencia Asistencial de AP, con criterios de citación y de exclusión escritos para cada proceso [@G8]. La sección 2.5 analiza el rango de ese instrumento. La interconsulta no presencial con atención hospitalaria requiere también un protocolo de cada área sanitaria.
 
 ## 7.3. Ecografía como apoyo a la valoración
 
 Este documento pide el reconocimiento del uso de la ecografía por el fisioterapeuta de AP como herramienta de apoyo a la valoración, la reevaluación y la decisión de derivación. El informe radiológico sigue siendo competencia del médico especialista. La ecografía no emplea radiaciones ionizantes, de modo que no está sujeta al Real Decreto 601/2019 [@A5].
 
-La Resolución 1/2023 del Consejo General de Colegios de Fisioterapeutas de España considera la ecografía una herramienta inherente al proceso de atención en fisioterapia [@G3; @G1]. Según esa resolución, la imagen no sustituye a la exploración física, sino que mejora la valoración y ayuda a decidir la derivación ante un signo de alarma [@G1]. La Gerencia Asistencial de AP de Madrid dispone ya de ecógrafos en los centros de salud [@G1]. Además, forma a sus fisioterapeutas en su manejo, según el documento de posición del colegio profesional de esa comunidad [@G1].
+La Resolución 1/2023 del Consejo General de Colegios de Fisioterapeutas de España considera la ecografía una herramienta inherente al proceso de atención en fisioterapia [@G3; @G1]. Según esa resolución, la imagen no sustituye a la exploración física, sino que mejora la valoración y ayuda a decidir la derivación ante un signo de alarma [@G3; @G1]. La Comunidad de Madrid completó en 2022 la implantación de la ecografía en sus centros de salud, con 450 equipos fijos y portátiles [@C14e]. Según la misma nota oficial, esos equipos los utilizan médicos de familia, pediatras y, desde fechas recientes, fisioterapeutas [@C14e]. La Gerencia Asistencial de AP incluyó además el manejo del ecógrafo en su formación de fisioterapeutas de 2025 [@C14f].
 
 El documento fija tres requisitos para esta competencia: formación acreditada, un protocolo de uso y el registro de cada exploración en la historia clínica. El indicador de adecuación de la radiografía simple no se aplica a la ecografía, porque esta no se solicita a otro servicio. Su seguimiento se hace con la auditoría de registros que prevé la sección 11.3.
 
@@ -27,9 +27,9 @@ Este documento pide al Ministerio de Sanidad la habilitación expresa del fisiot
 La petición se apoya en seis argumentos:
 
 - **Prescriptor y profesional habilitado.** El Real Decreto 601/2019 abre la figura del prescriptor a otro profesional sanitario autorizado [@A5]. La responsabilidad clínica de la exposición corresponde al profesional sanitario habilitado, que en radiodiagnóstico es el radiólogo [@A5]. Este documento pide la condición de prescriptor y no la de profesional habilitado.
-- **Precedente de la podología.** El mismo real decreto integra a la podología mediante una habilitación específica, según el análisis del colegio profesional madrileño [@G1]. La vía para la fisioterapia sería análoga [@G1].
+- **Precedente de la podología.** El mismo real decreto incluye a la podología, en su ámbito, entre los profesionales sanitarios habilitados [@A5]. El colegio profesional madrileño considera que la vía para la fisioterapia sería análoga [@G1].
 - **Marco europeo.** La Directiva 2013/59/Euratom no reserva en exclusiva a los médicos la remisión a procedimientos radiológicos [@G6].
-- **Planificación estatal.** La acción A.4.4 del Marco Estratégico pide incrementar la capacidad resolutiva de la fisioterapia mediante circuitos y protocolos [@A6; @G1].
+- **Planificación estatal.** La acción A.4.4 del Marco Estratégico pide incrementar la capacidad resolutiva de la fisioterapia mediante circuitos y protocolos [@A6].
 - **Circuito redundante.** El acceso directo sin capacidad de solicitud genera la derivación intermedia que pretendía evitar. En un esguince de tobillo con reglas de Ottawa positivas, la persona tiene que volver a otra consulta solo para que otro profesional firme la petición [@G1; @E1]. La instrucción madrileña reconoce en el esguince de tobillo la utilidad de la radiología para descartar lesiones óseas, pero no habilita al fisioterapeuta para pedirla [@G8]. La doble consulta es, por tanto, una consecuencia prevista del circuito vigente.
 - **Experiencia comparada.** En el Reino Unido, la normativa sobre exposiciones médicas reconoce al remitente no médico habilitado por su empleador [@G7]. La hoja de ruta de Health Education England incluye la solicitud de pruebas entre las capacidades del fisioterapeuta de primer contacto [@D3].
 
@@ -41,7 +41,7 @@ Mientras la habilitación no se apruebe, el circuito usa un protocolo compartido
 
 El apartado 6 del anexo II del Real Decreto 1030/2006 exige «previa indicación médica» para la rehabilitación básica [@A2b]. Este documento aborda el inciso por dos vías complementarias:
 
-- **Para la fase de implantación.** La indicación mediante un protocolo aprobado por el servicio de salud cumple el requisito. Esta es la lectura que de hecho sostienen Galicia y Madrid con sus protocolos de acceso directo [@C12n; @G8].
+- **Para la fase de implantación.** La indicación mediante un protocolo aprobado por el servicio de salud cumple el requisito. Esta es la lectura que de hecho sostienen Galicia y Madrid con sus protocolos de acceso directo [@C12x; @G8].
 - **Como petición al Ministerio de Sanidad.** El apartado 6 se actualiza por el procedimiento de los artículos 20 y 21 de la Ley 16/2003, para que la autorreferencia protocolizada quede recogida en la cartera común [@A4].
 
 ## 7.6. Lo que no se pide

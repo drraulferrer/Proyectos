@@ -309,7 +309,7 @@
   "estado": "Localizada",
   "tipo": "nota oficial",
   "cita": "Comunidad de Madrid. Los fisioterapeutas de los centros de salud de la Comunidad de Madrid atendieron a cerca de 159.000 pacientes en 2024 [nota de prensa]. Madrid; 5 de septiembre de 2025",
-  "url": "https://www.comunidad.madrid/noticias"
+  "url": "https://www.comunidad.madrid/noticias/2025/09/05/fisioterapeutas-centros-salud-comunidad-madrid-atendieron-cerca-159000-pacientes-2024"
  },
  {
   "n": 40,
@@ -609,6 +609,14 @@
  },
  {
   "n": 77,
+  "id": "C12x",
+  "estado": "Localizada",
+  "tipo": "informe oficial",
+  "cita": "Agencia Gallega de Conocimiento en Salud (ACIS). Informe sobre el diseño del sistema de citación XIDE (Gestión Integral de la Demanda en Equipo) en el Servicio Gallego de Salud y los resultados de su implementación. Santiago de Compostela: Servizo Galego de Saúde; 2023",
+  "url": "https://acis.sergas.gal/cartafol/InformeXide2023?idioma=es"
+ },
+ {
+  "n": 78,
   "id": "C12n",
   "estado": "Secundaria",
   "tipo": "prensa",
@@ -616,7 +624,7 @@
   "url": "https://www.redaccionmedica.com/autonomias/galicia/los-fisioterapeutas-del-sergas-podran-atender-a-pacientes-bajo-demanda-7761"
  },
  {
-  "n": 78,
+  "n": 79,
   "id": "C14w",
   "estado": "Localizada",
   "tipo": "web oficial",
@@ -624,7 +632,7 @@
   "url": "https://www.comunidad.madrid/hospital/atencionprimaria/ciudadanos/unidades-atencion-especifica-fisioterapia"
  },
  {
-  "n": 79,
+  "n": 80,
   "id": "D4",
   "estado": "Localizada",
   "tipo": "plan",
@@ -632,7 +640,7 @@
   "url": "https://www.longtermplan.nhs.uk/online-version/chapter-1-a-new-service-model-for-the-21st-century/"
  },
  {
-  "n": 80,
+  "n": 81,
   "id": "D5",
   "estado": "Localizada",
   "tipo": "norma de financiación",
@@ -640,7 +648,7 @@
   "url": "https://www.england.nhs.uk/wp-content/uploads/2019/12/network-contract-des-additional-roles-reimbursement-scheme-guidance-december2019.pdf"
  },
  {
-  "n": 81,
+  "n": 82,
   "id": "D3",
   "estado": "Localizada",
   "tipo": "marco competencial",
@@ -648,7 +656,7 @@
   "url": "https://www.hee.nhs.uk/our-work/allied-health-professions/enable-workforce/roadmaps-practice/first-contact-practitioners-roadmaps-practice"
  },
  {
-  "n": 82,
+  "n": 83,
   "id": "D6",
   "estado": "Localizada",
   "tipo": "guía profesional",
@@ -656,7 +664,7 @@
   "url": "https://www.csp.org.uk/system/files/001404_fcp_guidance_england_2018.pdf"
  },
  {
-  "n": 83,
+  "n": 84,
   "id": "E87",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -664,7 +672,7 @@
   "url": "https://pubmed.ncbi.nlm.nih.gov/9219412/"
  },
  {
-  "n": 84,
+  "n": 85,
   "id": "E88",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -672,7 +680,7 @@
   "url": "https://doi.org/10.1177/095148489701000403"
  },
  {
-  "n": 85,
+  "n": 86,
   "id": "E10",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -680,7 +688,7 @@
   "url": "https://doi.org/10.1017/S1463423616000189"
  },
  {
-  "n": 86,
+  "n": 87,
   "id": "E12",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -688,7 +696,7 @@
   "url": "https://doi.org/10.1016/j.physio.2021.08.002"
  },
  {
-  "n": 87,
+  "n": 88,
   "id": "E44",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -696,7 +704,7 @@
   "url": "https://doi.org/10.1002/msc.1599"
  },
  {
-  "n": 88,
+  "n": 89,
   "id": "E45",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -704,7 +712,7 @@
   "url": "https://doi.org/10.1016/j.physio.2021.08.003"
  },
  {
-  "n": 89,
+  "n": 90,
   "id": "E13",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -712,7 +720,7 @@
   "url": "https://doi.org/10.3399/BJGP.2023.0560"
  },
  {
-  "n": 90,
+  "n": 91,
   "id": "E13b",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -720,7 +728,7 @@
   "url": "https://doi.org/10.3310/RTKY7521"
  },
  {
-  "n": 91,
+  "n": 92,
   "id": "E26",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -728,7 +736,7 @@
   "url": "https://doi.org/10.2522/ptj.20070308"
  },
  {
-  "n": 92,
+  "n": 93,
   "id": "E27",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -736,7 +744,7 @@
   "url": "https://doi.org/10.2522/ptj.20130309"
  },
  {
-  "n": 93,
+  "n": 94,
   "id": "D20",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -744,7 +752,7 @@
   "url": "https://www.nivel.nl/nl/nieuws/jaarcijfers-fysiotherapie-2024-aandeel-patienten-met-een-verwijzing-daalt"
  },
  {
-  "n": 94,
+  "n": 95,
   "id": "D18",
   "estado": "Localizada",
   "tipo": "norma",
@@ -752,7 +760,7 @@
   "url": "https://www.regjeringen.no/no/dokumenter/prop.-71-l-20162017/id2546178/?ch=9"
  },
  {
-  "n": 95,
+  "n": 96,
   "id": "D19",
   "estado": "Localizada",
   "tipo": "web oficial",
@@ -760,7 +768,7 @@
   "url": "https://www.1177.se/Stockholm/undersokning-behandling/smartbehandlingar-och-rehabilitering/rehabilitering-i-stockholms-lan2/rehabilitering-i-oppenvard/"
  },
  {
-  "n": 96,
+  "n": 97,
   "id": "E29",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -768,7 +776,7 @@
   "url": "https://doi.org/10.1177/1759720X19827504"
  },
  {
-  "n": 97,
+  "n": 98,
   "id": "E29b",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -776,7 +784,7 @@
   "url": "https://doi.org/10.1186/s12891-019-2553-9"
  },
  {
-  "n": 98,
+  "n": 99,
   "id": "D21",
   "estado": "Localizada",
   "tipo": "declaración profesional",
@@ -784,7 +792,7 @@
   "url": "https://australian.physio/sites/default/files/APA%20Position-Statement%20on%20Scope%20of%20Practice%20May%202024_FA.pdf"
  },
  {
-  "n": 99,
+  "n": 100,
   "id": "D22",
   "estado": "Localizada",
   "tipo": "declaración profesional",
@@ -792,7 +800,7 @@
   "url": "https://physiotherapy.ca/app/uploads/2022/08/primary-health-care_en.pdf"
  },
  {
-  "n": 100,
+  "n": 101,
   "id": "E95",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -800,7 +808,7 @@
   "url": "https://doi.org/10.3138/ptc.2012-53"
  },
  {
-  "n": 101,
+  "n": 102,
   "id": "E97",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -808,7 +816,7 @@
   "url": "https://doi.org/10.3138/ptc.2011-29"
  },
  {
-  "n": 102,
+  "n": 103,
   "id": "E100",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -816,7 +824,7 @@
   "url": "https://doi.org/10.1186/s13063-017-2279-7"
  },
  {
-  "n": 103,
+  "n": 104,
   "id": "E93",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -824,7 +832,7 @@
   "url": "https://doi.org/10.1002/msc.1100"
  },
  {
-  "n": 104,
+  "n": 105,
   "id": "E106",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -832,7 +840,7 @@
   "url": "https://doi.org/10.1186/s12891-020-03673-9"
  },
  {
-  "n": 105,
+  "n": 106,
   "id": "E107",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -840,7 +848,7 @@
   "url": "https://doi.org/10.1016/j.physio.2017.08.004"
  },
  {
-  "n": 106,
+  "n": 107,
   "id": "E105",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -848,7 +856,7 @@
   "url": "https://doi.org/10.1016/j.jphys.2023.08.005"
  },
  {
-  "n": 107,
+  "n": 108,
   "id": "E17",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -856,7 +864,7 @@
   "url": "https://doi.org/10.7417/CT.2018.2087"
  },
  {
-  "n": 108,
+  "n": 109,
   "id": "E18",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -864,7 +872,7 @@
   "url": "https://doi.org/10.1080/09638288.2019.1674388"
  },
  {
-  "n": 109,
+  "n": 110,
   "id": "E9",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -872,7 +880,7 @@
   "url": "https://doi.org/10.1371/journal.pone.0235364"
  },
  {
-  "n": 110,
+  "n": 111,
   "id": "E22",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -880,7 +888,7 @@
   "url": "https://doi.org/10.3390/jcm12185832"
  },
  {
-  "n": 111,
+  "n": 112,
   "id": "E21",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -888,7 +896,7 @@
   "url": "https://doi.org/10.1016/j.physio.2021.08.005"
  },
  {
-  "n": 112,
+  "n": 113,
   "id": "E6",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -896,7 +904,7 @@
   "url": "https://doi.org/10.1016/j.physio.2020.04.006"
  },
  {
-  "n": 113,
+  "n": 114,
   "id": "E24",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -904,7 +912,7 @@
   "url": "https://doi.org/10.1186/s12875-026-03186-9"
  },
  {
-  "n": 114,
+  "n": 115,
   "id": "E25",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -912,7 +920,7 @@
   "url": "https://doi.org/10.1093/fampra/cmag046"
  },
  {
-  "n": 115,
+  "n": 116,
   "id": "E99",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -920,7 +928,7 @@
   "url": "https://doi.org/10.1080/09593985.2019.1571135"
  },
  {
-  "n": 116,
+  "n": 117,
   "id": "E98",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -928,7 +936,7 @@
   "url": "https://pubmed.ncbi.nlm.nih.gov/11265271/"
  },
  {
-  "n": 117,
+  "n": 118,
   "id": "D14n",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -936,7 +944,7 @@
   "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20230818-1"
  },
  {
-  "n": 118,
+  "n": 119,
   "id": "D14",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -944,7 +952,7 @@
   "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Healthcare_personnel_statistics_-_dentists,_pharmacists_and_physiotherapists"
  },
  {
-  "n": 119,
+  "n": 120,
   "id": "D13",
   "estado": "Localizada",
   "tipo": "censo",
@@ -952,7 +960,7 @@
   "url": "https://world.physio/sites/default/files/2025-01/AMC2024-Global-report.pdf"
  },
  {
-  "n": 120,
+  "n": 121,
   "id": "E19",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -960,7 +968,7 @@
   "url": "https://doi.org/10.2522/ptj.20120060"
  },
  {
-  "n": 121,
+  "n": 122,
   "id": "E37",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -968,7 +976,7 @@
   "url": "https://doi.org/10.1002/14651858.CD012424.pub2"
  },
  {
-  "n": 122,
+  "n": 123,
   "id": "E31",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -976,7 +984,7 @@
   "url": "https://doi.org/10.3390/jcm9041201"
  },
  {
-  "n": 123,
+  "n": 124,
   "id": "E38",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -984,7 +992,7 @@
   "url": "https://doi.org/10.1002/14651858.CD004376.pub3"
  },
  {
-  "n": 124,
+  "n": 125,
   "id": "E39",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -992,7 +1000,7 @@
   "url": "https://doi.org/10.1002/14651858.CD003793.pub3"
  },
  {
-  "n": 125,
+  "n": 126,
   "id": "E40",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1000,7 +1008,7 @@
   "url": "https://doi.org/10.1002/14651858.CD009790.pub2"
  },
  {
-  "n": 126,
+  "n": 127,
   "id": "E77",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1008,7 +1016,7 @@
   "url": "https://doi.org/10.1080/09593985.2016.1194646"
  },
  {
-  "n": 127,
+  "n": 128,
   "id": "E78",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1016,7 +1024,7 @@
   "url": "https://doi.org/10.1186/s13643-015-0120-5"
  },
  {
-  "n": 128,
+  "n": 129,
   "id": "E102",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1024,7 +1032,7 @@
   "url": "https://doi.org/10.1016/j.aprim.2015.10.007"
  },
  {
-  "n": 129,
+  "n": 130,
   "id": "E104",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1032,7 +1040,7 @@
   "url": "https://doi.org/10.3390/jcm12206478"
  },
  {
-  "n": 130,
+  "n": 131,
   "id": "E101",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1040,7 +1048,7 @@
   "url": "https://doi.org/10.1016/j.aprim.2016.09.010"
  },
  {
-  "n": 131,
+  "n": 132,
   "id": "E80",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1048,7 +1056,7 @@
   "url": "https://doi.org/10.1093/ageing/afw242"
  },
  {
-  "n": 132,
+  "n": 133,
   "id": "E81",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1056,7 +1064,7 @@
   "url": "https://doi.org/10.1093/gerona/glx259"
  },
  {
-  "n": 133,
+  "n": 134,
   "id": "E79",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1064,7 +1072,7 @@
   "url": "https://doi.org/10.1186/s12877-018-1024-8"
  },
  {
-  "n": 134,
+  "n": 135,
   "id": "E52",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1072,7 +1080,7 @@
   "url": "https://doi.org/10.1007/s00586-010-1675-4"
  },
  {
-  "n": 135,
+  "n": 136,
   "id": "G3",
   "estado": "Localizada",
   "tipo": "resolución profesional",
@@ -1080,7 +1088,23 @@
   "url": ""
  },
  {
-  "n": 136,
+  "n": 137,
+  "id": "C14e",
+  "estado": "Localizada",
+  "tipo": "nota oficial",
+  "cita": "Comunidad de Madrid. La Comunidad de Madrid culmina la implantación de la ecografía en los centros de salud, que disponen de 450 aparatos diagnósticos, fijos de consola y ultra portátiles [nota de prensa]. Madrid; 17 de mayo de 2022",
+  "url": "https://www.comunidad.madrid/noticias/2022/05/17/comunidad-madrid-culmina-implantacion-ecografia-centros-salud-disponen-450-aparatos-diagnosticos-fijos-consola-ultra-portatiles"
+ },
+ {
+  "n": 138,
+  "id": "C14f",
+  "estado": "Localizada",
+  "tipo": "nota oficial",
+  "cita": "Comunidad de Madrid. Atención Primaria de la Comunidad de Madrid impulsa la formación en fisioterapia manual e invasiva para mejorar el abordaje del dolor musculoesquelético [nota de prensa]. Madrid; 22 de diciembre de 2025",
+  "url": "https://www.comunidad.madrid/noticias/2025/12/22/atencion-primaria-comunidad-madrid-impulsa-formacion-fisioterapia-manual-e-invasiva-mejorar-abordaje-dolor-musculoesqueletico"
+ },
+ {
+  "n": 139,
   "id": "E1",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1088,7 +1112,7 @@
   "url": "https://doi.org/10.1136/bmj.326.7386.417"
  },
  {
-  "n": 137,
+  "n": 140,
   "id": "G7",
   "estado": "Localizada",
   "tipo": "norma",
@@ -1096,7 +1120,7 @@
   "url": "https://www.legislation.gov.uk/uksi/2017/1322"
  },
  {
-  "n": 138,
+  "n": 141,
   "id": "E2",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1104,7 +1128,7 @@
   "url": "https://pubmed.ncbi.nlm.nih.gov/8114236/"
  },
  {
-  "n": 139,
+  "n": 142,
   "id": "E3",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1112,7 +1136,7 @@
   "url": "https://doi.org/10.1136/bmj.f7095"
  },
  {
-  "n": 140,
+  "n": 143,
   "id": "E49",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1120,7 +1144,7 @@
   "url": "https://doi.org/10.1016/S0140-6736(18)30489-6"
  },
  {
-  "n": 141,
+  "n": 144,
   "id": "E59",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1128,7 +1152,7 @@
   "url": "https://doi.org/10.1007/s00586-016-4467-7"
  },
  {
-  "n": 142,
+  "n": 145,
   "id": "E64",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1136,7 +1160,7 @@
   "url": "https://doi.org/10.1136/bjsports-2016-096515"
  },
  {
-  "n": 143,
+  "n": 146,
   "id": "E83",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1144,7 +1168,7 @@
   "url": "https://doi.org/10.1002/14651858.CD005619.pub3"
  },
  {
-  "n": 144,
+  "n": 147,
   "id": "E74",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1152,7 +1176,7 @@
   "url": "https://doi.org/10.1136/bmj.38961.584653.AE"
  },
  {
-  "n": 145,
+  "n": 148,
   "id": "E41",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1160,7 +1184,7 @@
   "url": "https://doi.org/10.1016/S0140-6736(11)60937-9"
  },
  {
-  "n": 146,
+  "n": 149,
   "id": "E42",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1168,7 +1192,7 @@
   "url": "https://doi.org/10.1016/j.aprim.2010.05.019"
  },
  {
-  "n": 147,
+  "n": 150,
   "id": "E82",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1176,7 +1200,7 @@
   "url": "https://doi.org/10.1002/jor.24820"
  },
  {
-  "n": 148,
+  "n": 151,
   "id": "E73",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1184,7 +1208,7 @@
   "url": "https://doi.org/10.1136/bjsports-2017-098106"
  },
  {
-  "n": 149,
+  "n": 152,
   "id": "E58",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1192,7 +1216,7 @@
   "url": "https://doi.org/10.2519/jospt.2017.0302"
  },
  {
-  "n": 150,
+  "n": 153,
   "id": "E65",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1200,7 +1224,7 @@
   "url": "https://doi.org/10.1136/ard.2004.021188"
  },
  {
-  "n": 151,
+  "n": 154,
   "id": "E66",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1208,7 +1232,7 @@
   "url": "https://doi.org/10.1302/2046-3758.27.2000163"
  },
  {
-  "n": 152,
+  "n": 155,
   "id": "E67",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1216,7 +1240,7 @@
   "url": "https://doi.org/10.1302/0301-620X.99B6.BJJ-2016-0569.R1"
  },
  {
-  "n": 153,
+  "n": 156,
   "id": "E85",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1224,7 +1248,7 @@
   "url": "https://doi.org/10.1136/bmj-2025-086201"
  },
  {
-  "n": 154,
+  "n": 157,
   "id": "E69",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1232,7 +1256,7 @@
   "url": "https://doi.org/10.1302/0301-620X.96B1.32168"
  },
  {
-  "n": 155,
+  "n": 158,
   "id": "E108",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1240,7 +1264,7 @@
   "url": "https://doi.org/10.1136/bjsports-2019-101970"
  },
  {
-  "n": 156,
+  "n": 159,
   "id": "E109",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1248,7 +1272,7 @@
   "url": "https://doi.org/10.2519/jospt.2023.0303"
  },
  {
-  "n": 157,
+  "n": 160,
   "id": "E71",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1256,7 +1280,7 @@
   "url": "https://doi.org/10.3928/01477447-20160926-06"
  },
  {
-  "n": 158,
+  "n": 161,
   "id": "E14",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1264,7 +1288,7 @@
   "url": "https://doi.org/10.1016/j.physio.2020.04.005"
  },
  {
-  "n": 159,
+  "n": 162,
   "id": "B9",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -1272,7 +1296,7 @@
   "url": "https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177012&menu=ultiDatos&idp=1254734710990"
  },
  {
-  "n": 160,
+  "n": 163,
   "id": "E43",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1280,7 +1304,7 @@
   "url": "https://doi.org/10.4415/ANN_18_03_10"
  },
  {
-  "n": 161,
+  "n": 164,
   "id": "D7",
   "estado": "Localizada",
   "tipo": "nota profesional",
@@ -1288,7 +1312,7 @@
   "url": "https://www.csp.org.uk/news/2022-01-19-csp-urges-government-boost-fcp-roll-out-across-england"
  },
  {
-  "n": 162,
+  "n": 165,
   "id": "E53",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1296,7 +1320,7 @@
   "url": "https://doi.org/10.1007/s00586-010-1676-3"
  },
  {
-  "n": 163,
+  "n": 166,
   "id": "E55",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1304,7 +1328,7 @@
   "url": "https://doi.org/10.1136/bmj.326.7395.911"
  },
  {
-  "n": 164,
+  "n": 167,
   "id": "E57",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1312,7 +1336,7 @@
   "url": "https://doi.org/10.1007/s00586-012-2272-5"
  },
  {
-  "n": 165,
+  "n": 168,
   "id": "A15",
   "estado": "Localizada",
   "tipo": "modelo de gestión",
@@ -1320,7 +1344,7 @@
   "url": "https://www.clubexcelencia.org/conocimiento/plataforma-de-conocimiento/modelo-efqm-2025"
  },
  {
-  "n": 166,
+  "n": 169,
   "id": "E32",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -1328,7 +1352,7 @@
   "url": "https://doi.org/10.1080/09638288.2025.2460723"
  },
  {
-  "n": 167,
+  "n": 170,
   "id": "E32b",
   "estado": "Verificada",
   "tipo": "artículo",
