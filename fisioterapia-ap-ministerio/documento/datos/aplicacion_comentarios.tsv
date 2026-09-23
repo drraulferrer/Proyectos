@@ -1,17 +1,17 @@
 n	autoria	decision	seccion	debe_aparecer	no_debe_aparecer
-1	RFP	Matriz única de coherencia de la que se generan las tablas	Anexo C y 6.7	Anexo C\. Matriz de coherencia	
+1	RFP	Matriz única de coherencia de la que se generan las tablas	Anexo C y 6.8	Anexo C\. Matriz de coherencia	
 2	RFP	Tres niveles de atención comunitaria redefinidos	5.2	Niveles de atención comunitaria	
 3	PMC	Salidas de la consulta de primer contacto hacia tratamiento individual o grupos	5.2	tratamiento individual.{0,60}programa grupal	
 4	RFP	Liderazgo, frecuencia y horas de cada programa grupal	5.4 y anexo A	Liderazgo.{0,400}Ediciones por 10\.000	
 5	PMC	Referencias a los documentos autonómicos	3.2	Tabla 3\.2\. Modelos de fisioterapia de atención primaria por comunidad autónoma	
-6	PMC	Comunidades con acceso directo citadas por orden alfabético y con soporte documental	3.4	solo Galicia y Madrid documentan el acceso directo	Galicia, Cataluña y
+6	PMC	Comunidades con acceso directo citadas por orden alfabético y con soporte documental	3.5	solo Galicia y Madrid documentan el acceso directo	Galicia, Cataluña y
 7	RFP	Documento y año de cada comunidad	3.2	Documento de referencia \| Año	
 8	RFP	Noticia de prensa usada solo como fuente secundaria	3.3	como fuente secundaria	
 9	PMC	Documentos primero y noticias solo si no hay documentos	Anexo F	Una noticia de prensa solo se admite como fuente secundaria	
 10	RFP	Carteira del SERGAS citada	3.2	Carteira de servizos de fisioterapia	
 11	RFP	Advertencia metodológica destacada al inicio	4 y 9	Advertencia metodológica\.\*\* Las estadísticas internacionales	
-12	PMC	Tabla de fuentes y sistemas con referencias	4.5	Fuente: Eurostat	
-13	RFP	Cifras europeas con fuente, año y definición	4.5	\| Territorio \| 2021 \| 2023 \| Definición \|	
+12	PMC	Tabla de fuentes y sistemas con referencias	4.6	Fuente: Eurostat	
+13	RFP	Cifras europeas con fuente, año y definición	4.6	\| Territorio \| 2021 \| 2023 \| Definición \|	
 14	RFP	Cálculo de la CSP retirado	4 y anexo F	Cálculo atribuido a la Chartered Society	equivalentes aproximadamente al 10 %
 15	PMC	Ratios derivadas de un modelo de demanda y escenarios como fases	9.2 y 9.3	Fases de dotación	
 16	RFP	Fisioterapeuta itinerante y salud digital en el ajuste por ruralidad	9.4	fisioterapeuta itinerante de área y las herramientas de salud digital	
@@ -48,6 +48,6 @@ n	autoria	decision	seccion	debe_aparecer	no_debe_aparecer
 47	PMC	Cobertura e infraestructura no redundantes	10.3	IE-1 e IE-2 miden cosas distintas	
 48	RFP	Indicador de cobertura de personal e indicador de infraestructura	Anexo B	Cobertura de personal.*Infraestructura de consulta	
 49	Borrador	Introducción sobre papel, derivación oportuna, eficiencia y capacidad resolutiva	1	# 1\. Introducción y justificación	
-50	PMC	Fuentes de la densidad internacional	4.5	World Physiotherapy de 2024 estimó una media mundial	
+50	PMC	Fuentes de la densidad internacional	4.6	World Physiotherapy de 2024 estimó una media mundial	
 51	Revisión de coherencia	Ajuste por incapacidad temporal fundamentado	9.4	Carga de incapacidad temporal musculoesquelética	
 52	RFP	Circuito 1 sin cribado administrativo	6.2	El personal administrativo aplica un protocolo de gestión de la demanda	

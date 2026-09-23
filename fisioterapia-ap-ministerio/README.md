@@ -12,7 +12,7 @@ acceso, dotación y evaluación», que amplía y corrige el borrador
 | [SPEC.md](SPEC.md) | Especificación del documento final: propósito, estructura, contenido obligatorio por sección, reglas de estilo y terminología, política de referencias, criterios de aceptación y decisiones pendientes de autoría. |
 | [trazabilidad-comentarios.md](trazabilidad-comentarios.md) | Los 52 comentarios de revisión del borrador y la decisión adoptada para cada uno. |
 | [referencias.md](referencias.md) | Banco de fuentes primarias con estado de verificación, en formato de lectura. |
-| [documento/salida/](documento/salida/) | **Documento final v1.0** en Word y PDF: `fisioterapia-ap-sns.docx` y `fisioterapia-ap-sns.pdf`. |
+| [documento/salida/](documento/salida/) | **Documento v1.1** en Word y PDF: `fisioterapia-ap-sns.docx` y `fisioterapia-ap-sns.pdf`. |
 | [documento/fuente/](documento/fuente/) | Texto fuente de cada sección, en Markdown. |
 | [documento/datos/](documento/datos/) | Fuente única de datos: matriz de coherencia, vías, programas, indicadores, parámetros del modelo, cifras, referencias y comprobaciones de los 52 comentarios. |
 | [documento/build/](documento/build/) | Scripts de modelo, ensamblado, validación y maquetación. |
@@ -31,10 +31,20 @@ Para cambiar un proceso, un programa, un indicador o un parámetro del modelo, s
 archivo de `documento/datos/` y se reconstruye: las tablas de las secciones 5, 6, 8, 9 y
 10 y los anexos se regeneran solos.
 
-## Estado de la versión 1.0
+## Estado de la versión 1.1
+
+La versión 1.1 amplía cada sección con tres documentos aportados: la instrucción de la
+Gerencia Asistencial de AP de Madrid sobre procesos de demanda, el análisis de la
+Sociedade Galega de Fisioterapeutas de 2019 y un documento de trabajo sobre la situación
+madrileña. El documento tiene 87 páginas y cita 166 referencias.
 
 Todos los criterios de aceptación de `SPEC.md` se cumplen salvo el 9.2. Ese criterio exige
 que todas las referencias estén verificadas abriendo la fuente, y el entorno de trabajo
-solo permitió abrir PubMed. Los 44 artículos científicos citados están verificados; las 64
-normas, documentos autonómicos y estadísticas citados quedan pendientes de cotejo. El
-anexo F del documento enumera esas referencias y los datos que faltan por incorporar.
+solo permitió abrir PubMed. Los 101 artículos y documentos aportados citados están
+verificados; las 65 normas, documentos autonómicos y estadísticas citados quedan
+pendientes de cotejo. El anexo F del documento enumera esas referencias, las
+discrepancias encontradas en los documentos aportados y los datos que faltan por
+incorporar.
+
+Pendiente: aplicar la plantilla del colegio profesional con los logos de la portada. La
+plantilla no estaba entre los archivos recibidos.

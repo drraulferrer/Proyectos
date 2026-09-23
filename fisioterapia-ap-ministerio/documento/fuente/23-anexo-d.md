@@ -19,6 +19,10 @@ Tabla D.1. Glosario
 | Recidiva de un proceso previamente diagnosticado | Dolor musculoesquelético recurrente | Reaparición de un proceso que el médico de familia ya diagnosticó y registró |
 | Sesión clínica compartida | Sesiones compartidas | Revisión conjunta de casos complejos entre medicina, enfermería y fisioterapia |
 | Signos de alarma | Banderas rojas | Síntomas o signos que sugieren una patología grave y exigen derivación médica |
+| Tasa de conversión quirúrgica | Rendimiento quirúrgico | Porcentaje de personas derivadas al cirujano que terminan con indicación de cirugía. Se admite «rendimiento quirúrgico» en las citas de estudios canadienses |
+| Triaje musculoesquelético | Cribado ortopédico | Valoración por un fisioterapeuta de práctica avanzada de personas ya derivadas a traumatología o a columna, para decidir si necesitan ver al cirujano. No forma parte de esta propuesta |
+| Unidad de Atención al Usuario | Admisión | Unidad administrativa del centro de salud que asigna las citas. En la autorreferencia aplica la lista de motivos parametrizados |
+| Unidades de atención específica | Unidades de apoyo | Unidades del centro de salud distintas de medicina y enfermería de familia, como fisioterapia, matronas, trabajo social sanitario y salud bucodental. Denominación de la instrucción madrileña |
 | Atención hospitalaria | Atención especializada | Nivel asistencial hospitalario. Se conserva «atención especializada» solo en citas literales de normas |
 
 Fuente: sección 6 de la especificación del documento y comentarios de la revisión del borrador.
@@ -33,6 +37,7 @@ Tabla D.2. Siglas
 | EFQM | European Foundation for Quality Management |
 | EPOC | Enfermedad pulmonar obstructiva crónica |
 | OMS | Organización Mundial de la Salud |
+| PRTEE | Patient-Rated Tennis Elbow Evaluation, cuestionario de dolor y función del codo |
 | SERGAS | Servizo Galego de Saúde |
 | SESCAM | Servicio de Salud de Castilla-La Mancha |
 | SIAP | Sistema de Información de Atención Primaria |

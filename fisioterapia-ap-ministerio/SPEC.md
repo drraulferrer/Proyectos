@@ -3,8 +3,8 @@
 
 | Campo | Valor |
 |---|---|
-| Versión de la especificación | 0.3 (documento final v1.0 construido y validado el 22 de septiembre de 2026; decisiones D-1 a D-6 resueltas) |
-| Fecha | 22 de septiembre de 2026 |
+| Versión de la especificación | 0.4 (documento v1.1 ampliado con tres documentos aportados y validado el 23 de septiembre de 2026; decisiones D-1 a D-6 resueltas) |
+| Fecha | 23 de septiembre de 2026 |
 | Documento de partida | `Propuesta de Fisioterapia en Atención Primaria para el Ministerio de Sanidad` (borrador con 52 comentarios de revisión) |
 | Destinatario del documento final | Ministerio de Sanidad, Dirección General de Ordenación Profesional y Dirección General de Salud Pública y Equidad en Salud; Comisión de Atención Primaria del Consejo Interterritorial del SNS |
 | Documentos asociados | `trazabilidad-comentarios.md` (decisión adoptada por cada comentario), `referencias.md` (banco de fuentes primarias verificadas) |
@@ -772,6 +772,25 @@ Incoherencia de la especificación corregida durante la construcción: la versi�
 admitía en el circuito 1 la derivación desde fisioterapia a atención hospitalaria,
 mientras que la sección 7.6 excluye esa derivación sin pasar por medicina de familia. La
 versión 0.3 alinea el circuito 1 con la sección 7.6.
+
+## 9 quater. Ampliación de la versión 1.1
+
+La versión 1.1 amplía cada sección con tres documentos aportados por la autoría:
+
+| Documento | Uso en la versión 1.1 |
+|---|---|
+| Instrucción de la Gerencia Asistencial de AP de Madrid sobre procesos de demanda de las unidades de atención específica (versión 8, 2024) | Fuente primaria del acceso directo madrileño: procesos, códigos CIAP, valoración, criterios de citación y de exclusión, y coordinación con matronas y trabajo social. Resuelve un documento pendiente del anexo F |
+| Análisis de la Sociedade Galega de Fisioterapeutas (2019) | Contexto gallego y banco de referencias. Cada referencia útil se verificó en PubMed y se cita el estudio original |
+| Documento de trabajo sobre la situación de la fisioterapia de AP en Madrid | Diagnóstico y propuestas de mejora. Sus cifras sin fuente trazable no se usan |
+
+Cambios de estructura:
+
+- Nuevas subsecciones 2.5 (instrumentos autonómicos), 3.4 (diagnóstico profesional de los modelos vigentes), 4.4 (triaje musculoesquelético), 6.7 (coordinación con otras unidades de atención específica), 8.5 (evidencia por proceso) y 9.6 (retorno económico esperado). Las subsecciones siguientes se renumeran.
+- Nuevos indicadores IE-10 (inicio precoz en la incapacidad temporal) e IR-13 (adecuación de las derivaciones de medicina de familia a traumatología).
+- Nuevo apartado F.4 del anexo F con las discrepancias entre los documentos aportados y sus fuentes.
+- La extensión orientativa de 45 a 60 páginas se supera por decisión de la autoría: la versión 1.1 tiene unas 40.600 palabras y 87 páginas.
+
+Resultado de la validación de la versión 1.1: todos los criterios en verde salvo el 9.2. De las 166 referencias citadas, 101 están verificadas y 65 quedan pendientes de cotejo por la misma causa externa.
 
 ## 10. Proceso de producción
 

@@ -6,6 +6,8 @@ Esta sección muestra que la propuesta desarrolla un servicio que ya forma parte
 
 La Ley 44/2003 reconoce a los profesionales sanitarios la prestación de los cuidados propios de su competencia en las distintas fases del proceso de atención [@A1]. El mismo artículo 7 añade que esa prestación se hace sin menoscabo de la competencia, la responsabilidad y la autonomía de los demás profesionales que intervienen [@A1]. El artículo 7.2.b, citado en la sección 1.1, delimita el contenido propio de la fisioterapia [@A1].
 
+El artículo 4.7 establece que las profesiones sanitarias se ejercen con plena autonomía técnica y científica, con los únicos límites que fija el ordenamiento jurídico y deontológico [@A1]. Esa autonomía ampara la valoración y el alta fisioterapéuticas que describe la sección 7.1.
+
 La ley también regula las relaciones interprofesionales y el trabajo en equipo en su artículo 9 [@A1]. Ese artículo ampara la integración del fisioterapeuta en el equipo de AP como miembro de pleno derecho. La ley no atribuye al fisioterapeuta la solicitud de pruebas de imagen, y la sección 7 trata esa cuestión por separado [@A1].
 
 ## 2.2. Real Decreto 1030/2006, de cartera de servicios comunes
@@ -37,16 +39,26 @@ El artículo 20 establece que la cartera de servicios se acuerda en el seno del 
 
 El Marco Estratégico para la Atención Primaria y Comunitaria se aprobó en el Consejo Interterritorial en 2019 [@A6]. Su acción A.4.4 incluye el objetivo de «incrementar la capacidad resolutiva de fisioterapia, asumiendo patología aguda de baja complejidad y crónica estable, mediante circuitos y protocolos de actuación basados en la evidencia» [@A6; @G1]. El mismo marco pide «potenciar la participación de fisioterapia en actividades preventivas» [@A6].
 
-El Plan de Acción de Atención Primaria y Comunitaria 2022-2023 dio continuidad a ese marco [@A7]. El Plan de Acción 2025-2027, aprobado en diciembre de 2024, define un nuevo mapa de competencias que incluye a los fisioterapeutas de AP [@A8; @A8n]. Sus objetivos incluyen la continuidad asistencial, la ampliación de la cartera y la mejora de la capacidad resolutiva [@A8n]. Este documento se presenta como desarrollo operativo de esos objetivos para la fisioterapia.
+El Plan de Acción de Atención Primaria y Comunitaria 2022-2023 dio continuidad a ese marco [@A7]. El Plan de Acción 2025-2027, aprobado en diciembre de 2024, define un nuevo mapa de competencias que incluye a los fisioterapeutas de AP [@A8; @A8n]. Sus objetivos incluyen la continuidad asistencial, la ampliación de la cartera y la mejora de la capacidad resolutiva [@A8n]. Este documento se presenta como desarrollo operativo de esos objetivos para la fisioterapia. Un documento de trabajo madrileño propone usar ese mapa de competencias para ampliar el papel clínico del fisioterapeuta [@G10]. El mismo documento propone abrir el acceso directo en procesos de alta prevalencia y baja discapacidad [@G10].
 
 Otras tres estrategias del Ministerio de Sanidad enmarcan la propuesta. La Estrategia para el Abordaje de la Cronicidad orienta la atención de los procesos crónicos [@A9]. La Estrategia de Promoción de la Salud y Prevención vincula el consejo sobre estilos de vida en AP con los recursos comunitarios [@A11]. Por último, la Estrategia de Salud Digital del SNS ofrece el marco para la teleconsulta y el seguimiento remoto [@A10].
 
-## 2.5. Real Decreto 601/2019, sobre exposiciones médicas
+## 2.5. Instrumentos autonómicos que desarrollan la cartera común
+
+Las comunidades autónomas desarrollan el apartado 6 del anexo II mediante instrumentos de rango muy distinto. La tabla 3.2 recoge carteras de servicios, guías de actuación, protocolos de área y formación oficial. Todos ellos son documentos técnicos o de gestión de los servicios de salud.
+
+La instrucción de la Gerencia Asistencial de AP de Madrid ilustra ese nivel normativo. Su ficha de gestión documental identifica la autoría, los revisores, el órgano que la aprueba, los destinatarios y la fecha de entrada en vigor [@G8]. La aprueba la propia gerencia, y sus destinatarios son las direcciones asistenciales y los profesionales de los centros de salud [@G8]. Se trata, por tanto, de una instrucción de gestión interna y no de una norma autonómica.
+
+Este rango tiene dos consecuencias para la propuesta. Por un lado, permite a cada servicio de salud abrir el acceso directo sin esperar una reforma estatal. Por otro, deja el acceso directo en una situación frágil frente al inciso «previa indicación médica» del apartado 6 [@A2b]. Por eso la sección 7.5 pide actualizar ese apartado, y la sección 11.4 propone que la matriz común se apruebe en el Consejo Interterritorial.
+
+La Sociedade Galega de Fisioterapeutas planteó en 2019 la misma cuestión para Galicia [@G9]. Su análisis situaba la derivación directa desde medicina de familia como una política pública de gestión sanitaria que debía incorporarse al nuevo modelo de AP [@G9]. Ambos documentos muestran que el despliegue depende hoy de decisiones de gestión y no de un marco estatal común.
+
+## 2.6. Real Decreto 601/2019, sobre exposiciones médicas
 
 El Real Decreto 601/2019 regula la justificación y la optimización de las exposiciones médicas a radiaciones ionizantes [@A5]. La norma distingue dos figuras. El prescriptor es el «médico, odontólogo u otro profesional sanitario autorizado para remitir a personas para ser sometidas a procedimientos médico-radiológicos» [@A5]. El profesional sanitario habilitado es quien asume la responsabilidad clínica de la exposición [@A5].
 
 La norma no menciona al fisioterapeuta en ninguna de las dos figuras [@A5]. La Directiva 2013/59/Euratom, que el real decreto transpone, tampoco reserva en exclusiva a los médicos la remisión a estos procedimientos [@G6]. Este marco es la base de la petición de la sección 7.4.
 
-## 2.6. Marco internacional
+## 2.7. Marco internacional
 
 La resolución WHA76.6 insta a los Estados a fortalecer la rehabilitación en sus sistemas de salud [@D16]. La OMS recomienda integrar la rehabilitación en la atención primaria y ha publicado para ese nivel un paquete de intervenciones priorizadas [@D15; @D15c]. World Physiotherapy mantiene una declaración de política sobre el acceso directo y la autorreferencia, revisada en 2023 [@D10]. La región europea de esa organización publicó también una declaración sobre la fisioterapia en atención primaria [@E30].

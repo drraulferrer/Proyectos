@@ -188,7 +188,7 @@ def gen_tablas(mod):
               "fuente": "modelo", "anio": "No aplica", "definicion": "Resultado del modelo con el ajuste territorial de la tabla 9.5", "estado": "Cálculo reproducible"})
     g["TABLA_CIFRAS"] = tabla(
         ["Sección", "Cifra", "Qué mide", "Fuente", "Año del dato", "Definición", "Estado de la fuente"],
-        [[c["seccion"], c["valor"], c["descripcion"], "[@" + c["fuente"] + "]" if c["fuente"] not in ("modelo", "diseño") else ("Modelo de la sección 9" if c["fuente"] == "modelo" else "Parámetro de diseño del anexo A"),
+        [[c["seccion"], c["valor"], c["descripcion"], citas_fuentes(c["fuente"]).strip() if c["fuente"] not in ("modelo", "diseño") else ("Modelo de la sección 9" if c["fuente"] == "modelo" else "Parámetro de diseño del anexo A"),
           c["anio"], c["definicion"], c["estado"]] for c in C])
     g["TABLA_ESTADO_REFERENCIAS"] = "{{TABLA_ESTADO_REFERENCIAS}}"   # se resuelve tras numerar las citas
     return g

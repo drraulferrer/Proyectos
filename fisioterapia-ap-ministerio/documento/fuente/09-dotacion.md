@@ -8,6 +8,8 @@ Esta sección calcula cuántos fisioterapeutas de AP necesita el SNS a partir de
 
 El SNS contaba en 2024 con 2.418 fisioterapeutas de AP, según el informe monográfico de recursos humanos [@B1]. La dotación por comunidad autónoma variaba más de diez veces entre los extremos que recogió el editorial de 2022 (tabla 3.1). El punto de partida no es, por tanto, un valor único, sino una distribución muy desigual.
 
+Los datos autonómicos de actividad pueden afinar ese punto de partida. La Comunidad de Madrid informó de que sus unidades de fisioterapia de AP atendieron a cerca de 159.000 personas en 2024 [@C14n]. Un documento de trabajo madrileño aporta dos cifras de plantilla que no coinciden entre sí y que no citan su fuente [@G10]. Este documento no las usa, y el anexo F pide sustituirlas por el dato oficial del SIAP.
+
 ## 9.2. Modelo de demanda
 
 El modelo estima la carga anual de trabajo de fisioterapia por cada 10.000 habitantes. La carga tiene tres componentes:
@@ -38,7 +40,9 @@ Tabla 9.3. Análisis de sensibilidad univariante
 
 Fuente: modelo de demanda de esta sección. Cada fila cambia un parámetro a su valor bajo o alto y mantiene el resto en el valor central. Las filas se ordenan de mayor a menor amplitud.
 
-Los tres parámetros con más influencia son {{M_SENS_TOP}} (tabla 9.3). Ninguno de los tres tiene hoy un dato español publicado. Por eso la primera tarea del grupo de trabajo debe ser medirlos con los registros de actividad de las comunidades que ya tienen consulta de fisioterapia en AP.
+Los tres parámetros con más influencia son {{M_SENS_TOP}} (tabla 9.3). Ninguno de los tres tiene hoy un dato español publicado. Por eso la primera tarea del grupo de trabajo debe ser medirlos con los registros de actividad de las comunidades que ya tienen consulta de fisioterapia en AP. La instrucción madrileña facilita esa medición, porque asocia cada proceso de citación directa a sus códigos de la Clasificación Internacional de Atención Primaria [@G8]. Con esos códigos, un servicio de salud puede contar las personas que consultan por cada proceso y la fracción que llega a fisioterapia.
+
+El número de consultas por persona tampoco tiene un valor fijo. Una revisión de ocho ensayos no encontró diferencias al año entre dos o menos visitas y tres o más en el dolor lumbar [@E99]. El modelo refleja esa incertidumbre con el rango del parámetro de consultas de seguimiento.
 
 ## 9.3. Escenarios como fases
 
@@ -78,3 +82,31 @@ La demora en rehabilitación hospitalaria no es un factor de ajuste de la dotaci
 ## 9.5. Referencias externas de dotación
 
 La Chartered Society of Physiotherapy pidió en 2022 aumentar la dotación de fisioterapeutas de primer contacto en Inglaterra hasta 1 por cada 10.000 habitantes [@D7]. Esa cifra es una reivindicación profesional y no una norma del NHS [@D7]. Se refiere además solo al perfil de primer contacto, de modo que no incluye la atención domiciliaria ni los programas grupales. El borrador de trabajo atribuía unas ratios a una resolución del Consejo General de Colegios de Fisioterapeutas de 2007, que la búsqueda no ha localizado (anexo F). Este documento no usa esas ratios.
+
+## 9.6. Retorno económico esperado
+
+Este documento no calcula un ahorro para el SNS, porque no existe ninguna evaluación económica española del modelo que propone. Sin embargo, la literatura internacional permite anticipar en qué partidas puede aparecer el retorno y cómo debe medirse.
+
+La primera partida son los costes indirectos. En el dolor lumbar, los costes indirectos supusieron el 88 % del coste total en los Países Bajos [@E50]. Una revisión de evaluaciones económicas concluyó que la atención del médico general por sí sola no parece la opción más coste-efectiva en el dolor lumbar [@E52]. Añadir consejo, educación y ejercicio a esa atención resultó más coste-efectivo que la atención médica habitual sola [@E52]. Otra revisión encontró que el ejercicio, la rehabilitación interdisciplinar, la manipulación vertebral y la terapia cognitivo-conductual suelen ser coste-efectivos en el dolor lumbar subagudo o persistente [@E53].
+
+La segunda partida es el uso posterior de servicios. En el estudio de Fritz y colaboradores, la fisioterapia precoz se asoció a un coste médico 2.736 dólares menor por persona con dolor lumbar [@E90]. En el ensayo FRONTIER, el coste mediano para el NHS fue de 41,0 y 44,0 libras en los grupos de fisioterapia, frente a 105,5 libras en el grupo médico [@E13; @E13b]. En Suecia, la valoración inicial por fisioterapia resultó más coste-efectiva que la valoración inicial por el médico general [@E29b].
+
+La tercera partida es la elección del tratamiento. En el dolor cervical, un ensayo neerlandés en AP comparó terapia manual, fisioterapia basada en ejercicio y atención por el médico general [@E55]. El coste total de la terapia manual, 447 euros por persona, fue alrededor de un tercio del coste de las otras dos opciones, de 1.297 y 1.379 euros [@E55]. En cambio, la fisioterapia basada en ejercicio no fue más barata que la atención médica en ese ensayo [@E55]. Una revisión posterior advierte que el número de evaluaciones económicas en dolor cervical no permite conclusiones firmes [@E57].
+
+Tabla 9.6. Evidencia económica internacional aplicable al modelo
+
+| Partida | Estudio | Resultado | Límite para el SNS |
+|---|---|---|---|
+| Costes indirectos | Lambeek y colaboradores [@E50] | Los costes indirectos suponen el 88 % del coste del dolor lumbar | Estudio de coste de la enfermedad, sin evaluar la fisioterapia |
+| Atención médica frente a atención con ejercicio | Lin y colaboradores [@E52; @E53] | Añadir educación y ejercicio es más coste-efectivo que la atención médica sola | Evaluaciones de sistemas con precios distintos |
+| Momento del acceso | Fritz y colaboradores [@E90] | Coste médico menor con la fisioterapia en los primeros 14 días | Estudio observacional en aseguradoras de Estados Unidos |
+| Primer contacto en AP | FRONTIER [@E13; @E13b] | Coste mediano para el NHS menor en los grupos de fisioterapia | Sistema público con estructura distinta de la española |
+| Primera valoración en el centro de salud | Bornhöft y colaboradores [@E29b] | Manejo más coste-efectivo con la valoración inicial por fisioterapia | Triaje dentro del centro, no acceso directo |
+| Tratamiento del dolor cervical | Korthals-de Bos y colaboradores [@E55] | La terapia manual costó un tercio que la fisioterapia basada en ejercicio o la atención médica | Un solo ensayo, con evidencia global insuficiente [@E57] |
+| Triaje en la interfaz hospitalaria | Trøstrup y colaboradores [@E107] | Ahorro del 27 % al 49 % en la valoración diagnóstica | Fuera del alcance de esta propuesta |
+
+Fuente: elaboración propia a partir de los resúmenes de PubMed de los estudios citados.
+
+Dos cifras de los documentos aportados no se usan en esta sección. La primera es un ahorro regional de 568 millones de euros anuales que el documento de trabajo madrileño atribuye a un estudio sobre el impacto de la fisioterapia [@G10]. El documento no identifica ese estudio en su bibliografía, de modo que la cifra no puede trazarse. La segunda es un ahorro del 27,3 % que el informe gallego atribuye a un estudio no indexado en PubMed [@G9]. El anexo F recoge ambas.
+
+Por todo ello, el retorno económico debe medirse y no suponerse. Los indicadores IR-5, IR-6 e IR-7 del anexo B miden las tres partidas descritas: pruebas y derivaciones, incapacidad temporal y medicación. El diseño de evaluación de la sección 11.4 permite atribuir sus cambios al modelo.

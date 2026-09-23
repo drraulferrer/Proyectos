@@ -57,118 +57,22 @@
  },
  {
   "n": 8,
-  "id": "B4",
-  "estado": "Localizada",
-  "tipo": "estadística",
-  "cita": "Ministerio de Sanidad. Base de Datos Clínicos de Atención Primaria (BDCAP). Problemas de salud, año 2023 [consulta interactiva]",
-  "url": "https://pestadistico.inteligenciadegestion.sanidad.gob.es/publicoSNS/C/base-de-datos-de-clinicos-de-atencion-primaria-bdcap/problemas-de-salud"
+  "id": "G9",
+  "estado": "Verificada",
+  "tipo": "documento aportado",
+  "cita": "Pérez Mariño P, Bilbao Ogando G, Fraiz Barbeito M, López Míguens V, Paseiro Ares G, Díez Meleiro Ó, et al. Análisis de la efectividad clínica e impacto económico de una gestión racional de los recursos de fisioterapia en patología de alta prevalencia en Atención Primaria. [s. l.]: Sociedade Galega de Fisioterapeutas; febrero de 2019",
+  "url": "documento aportado por la autoría"
  },
  {
   "n": 9,
-  "id": "D2",
-  "estado": "Localizada",
-  "tipo": "política",
-  "cita": "Department of Health. The Musculoskeletal Services Framework. A joint responsibility: doing it differently. Londres: Department of Health; 2006",
-  "url": "https://chiro.org/Graphics_Box_CONDITIONS/FULL/The_Musculoskeletal_Services_Framework.pdf"
+  "id": "G8",
+  "estado": "Verificada",
+  "tipo": "documento aportado",
+  "cita": "Gerencia Asistencial de Atención Primaria, Servicio Madrileño de Salud. Atención a la demanda. Atención a procesos de demanda en las consultas de las Unidades de Atención Específica de Atención Primaria. Versión 8. Madrid: Servicio Madrileño de Salud; julio de 2024",
+  "url": "documento aportado por la autoría"
  },
  {
   "n": 10,
-  "id": "D1",
-  "estado": "Localizada",
-  "tipo": "web oficial",
-  "cita": "NHS England. First contact physiotherapists [página web]",
-  "url": "https://www.england.nhs.uk/gp/expanding-our-workforce/first-contact-physiotherapists/"
- },
- {
-  "n": 11,
-  "id": "E7",
-  "estado": "Verificada",
-  "tipo": "artículo",
-  "cita": "Jordan KP, Kadam UT, Hayward R, Porcheret M, Young C, Croft P. Annual consultation prevalence of regional musculoskeletal problems in primary care: an observational study. BMC Musculoskelet Disord. 2010;11:144. PMID: 20598124. doi:10.1186/1471-2474-11-144",
-  "url": "https://doi.org/10.1186/1471-2474-11-144"
- },
- {
-  "n": 12,
-  "id": "E5",
-  "estado": "Verificada",
-  "tipo": "artículo",
-  "cita": "Bishop A, Ogollah RO, Jowett S, Kigozi J, Tooth S, Protheroe J, et al. STEMS pilot trial: a pilot cluster randomised controlled trial to investigate the addition of patient direct access to physiotherapy to usual GP-led primary care for adults with musculoskeletal pain. BMJ Open. 2017;7(3):e012987. PMID: 28286331. doi:10.1136/bmjopen-2016-012987",
-  "url": "https://doi.org/10.1136/bmjopen-2016-012987"
- },
- {
-  "n": 13,
-  "id": "E8",
-  "estado": "Verificada",
-  "tipo": "artículo",
-  "cita": "Keavy R, Horton R, Al-Dadah O. The prevalence of musculoskeletal presentations in general practice: an epidemiological study. Fam Pract. 2023;40(1):68-74. PMID: 35747902. doi:10.1093/fampra/cmac055",
-  "url": "https://doi.org/10.1093/fampra/cmac055"
- },
- {
-  "n": 14,
-  "id": "B5",
-  "estado": "Localizada",
-  "tipo": "estadística",
-  "cita": "Seguridad Social. Estadísticas de incapacidad temporal por contingencias comunes [página web]",
-  "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST45/EST46/EST189"
- },
- {
-  "n": 15,
-  "id": "B8",
-  "estado": "Localizada",
-  "tipo": "artículo",
-  "cita": "Regal-Ramos R. Epidemiología de la incapacidad laboral por patología osteomuscular en España: 60.000 trabajadores valorados por el Instituto Nacional de la Seguridad Social en 2019. Med Segur Trab (Internet). 2022;68(269):209-220. doi:10.4321/s0465-546x2022000400003",
-  "url": "https://doi.org/10.4321/s0465-546x2022000400003"
- },
- {
-  "n": 16,
-  "id": "E16",
-  "estado": "Verificada",
-  "tipo": "artículo",
-  "cita": "Ojha HA, Snyder RS, Davenport TE. Direct access compared with referred physical therapy episodes of care: a systematic review. Phys Ther. 2014;94(1):14-30. PMID: 24029295. doi:10.2522/ptj.20130096",
-  "url": "https://doi.org/10.2522/ptj.20130096"
- },
- {
-  "n": 17,
-  "id": "E20",
-  "estado": "Verificada",
-  "tipo": "artículo",
-  "cita": "Frogner BK, Harwood K, Andrilla CHA, Schwartz M, Pines JM. Physical therapy as the first point of care to treat low back pain: an instrumental variables approach to estimate impact on opioid prescription, health care utilization, and costs. Health Serv Res. 2018;53(6):4629-4646. PMID: 29790166. doi:10.1111/1475-6773.12984",
-  "url": "https://doi.org/10.1111/1475-6773.12984"
- },
- {
-  "n": 18,
-  "id": "E23",
-  "estado": "Verificada",
-  "tipo": "artículo",
-  "cita": "Abuhl B, Ehrmantraut D, Wolden M. First-contact physical therapy compared to usual primary care for musculoskeletal disorders: a systematic review and meta-analysis of randomized controlled trials. Phys Ther. 2025;105(8):pzaf080. PMID: 40511847. doi:10.1093/ptj/pzaf080",
-  "url": "https://doi.org/10.1093/ptj/pzaf080"
- },
- {
-  "n": 19,
-  "id": "E11",
-  "estado": "Verificada",
-  "tipo": "artículo",
-  "cita": "Downie F, McRitchie C, Monteith W, Turner H. Physiotherapist as an alternative to a GP for musculoskeletal conditions: a 2-year service evaluation of UK primary care data. Br J Gen Pract. 2019;69(682):e314-e320. PMID: 30962224. doi:10.3399/bjgp19X702245",
-  "url": "https://doi.org/10.3399/bjgp19X702245"
- },
- {
-  "n": 20,
-  "id": "E15",
-  "estado": "Verificada",
-  "tipo": "artículo",
-  "cita": "Bradford B, Collier TS, Freeman M, Goodwin R. Primary care reattendance following an FCPP appointment: a national retrospective service evaluation. Musculoskeletal Care. 2025;23(2):e70143. PMID: 40515757. doi:10.1002/msc.70143",
-  "url": "https://doi.org/10.1002/msc.70143"
- },
- {
-  "n": 21,
-  "id": "C14n",
-  "estado": "Localizada",
-  "tipo": "nota oficial",
-  "cita": "Comunidad de Madrid. Los fisioterapeutas de los centros de salud de la Comunidad de Madrid atendieron a cerca de 159.000 pacientes en 2024 [nota de prensa]. Madrid; 5 de septiembre de 2025",
-  "url": "https://www.comunidad.madrid/noticias"
- },
- {
-  "n": 22,
   "id": "G1",
   "estado": "Verificada",
   "tipo": "documento aportado",
@@ -176,7 +80,255 @@
   "url": "documento aportado por la autoría"
  },
  {
+  "n": 11,
+  "id": "B4",
+  "estado": "Localizada",
+  "tipo": "estadística",
+  "cita": "Ministerio de Sanidad. Base de Datos Clínicos de Atención Primaria (BDCAP). Problemas de salud, año 2023 [consulta interactiva]",
+  "url": "https://pestadistico.inteligenciadegestion.sanidad.gob.es/publicoSNS/C/base-de-datos-de-clinicos-de-atencion-primaria-bdcap/problemas-de-salud"
+ },
+ {
+  "n": 12,
+  "id": "D2",
+  "estado": "Localizada",
+  "tipo": "política",
+  "cita": "Department of Health. The Musculoskeletal Services Framework. A joint responsibility: doing it differently. Londres: Department of Health; 2006",
+  "url": "https://chiro.org/Graphics_Box_CONDITIONS/FULL/The_Musculoskeletal_Services_Framework.pdf"
+ },
+ {
+  "n": 13,
+  "id": "D1",
+  "estado": "Localizada",
+  "tipo": "web oficial",
+  "cita": "NHS England. First contact physiotherapists [página web]",
+  "url": "https://www.england.nhs.uk/gp/expanding-our-workforce/first-contact-physiotherapists/"
+ },
+ {
+  "n": 14,
+  "id": "E7",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Jordan KP, Kadam UT, Hayward R, Porcheret M, Young C, Croft P. Annual consultation prevalence of regional musculoskeletal problems in primary care: an observational study. BMC Musculoskelet Disord. 2010;11:144. PMID: 20598124. doi:10.1186/1471-2474-11-144",
+  "url": "https://doi.org/10.1186/1471-2474-11-144"
+ },
+ {
+  "n": 15,
+  "id": "E5",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Bishop A, Ogollah RO, Jowett S, Kigozi J, Tooth S, Protheroe J, et al. STEMS pilot trial: a pilot cluster randomised controlled trial to investigate the addition of patient direct access to physiotherapy to usual GP-led primary care for adults with musculoskeletal pain. BMJ Open. 2017;7(3):e012987. PMID: 28286331. doi:10.1136/bmjopen-2016-012987",
+  "url": "https://doi.org/10.1136/bmjopen-2016-012987"
+ },
+ {
+  "n": 16,
+  "id": "E8",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Keavy R, Horton R, Al-Dadah O. The prevalence of musculoskeletal presentations in general practice: an epidemiological study. Fam Pract. 2023;40(1):68-74. PMID: 35747902. doi:10.1093/fampra/cmac055",
+  "url": "https://doi.org/10.1093/fampra/cmac055"
+ },
+ {
+  "n": 17,
+  "id": "E48",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Hartvigsen J, Hancock MJ, Kongsted A, Louw Q, Ferreira ML, Genevay S, et al. What low back pain is and why we need to pay attention. Lancet. 2018;391(10137):2356-67. PMID: 29573870. doi:10.1016/S0140-6736(18)30480-X",
+  "url": "https://doi.org/10.1016/S0140-6736(18)30480-X"
+ },
+ {
+  "n": 18,
+  "id": "E47",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Hoy D, Bain C, Williams G, March L, Brooks P, Blyth F, et al. A systematic review of the global prevalence of low back pain. Arthritis Rheum. 2012;64(6):2028-37. PMID: 22231424. doi:10.1002/art.34347",
+  "url": "https://doi.org/10.1002/art.34347"
+ },
+ {
+  "n": 19,
+  "id": "E46",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Kääriä S, Luukkonen R, Riihimäki H, Kirjonen J, Leino-Arjas P. Persistence of low back pain reporting among a cohort of employees in a metal corporation: a study with 5-, 10-, and 28-year follow-ups. Pain. 2006;120(1-2):131-7. PMID: 16360271. doi:10.1016/j.pain.2005.10.020",
+  "url": "https://doi.org/10.1016/j.pain.2005.10.020"
+ },
+ {
+  "n": 20,
+  "id": "E54",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Cohen SP. Epidemiology, diagnosis, and treatment of neck pain. Mayo Clin Proc. 2015;90(2):284-99. PMID: 25659245. doi:10.1016/j.mayocp.2014.09.008",
+  "url": "https://doi.org/10.1016/j.mayocp.2014.09.008"
+ },
+ {
+  "n": 21,
+  "id": "E72",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Garving C, Jakob S, Bauer I, Nadjar R, Brunner UH. Impingement syndrome of the shoulder. Dtsch Arztebl Int. 2017;114(45):765-76. PMID: 29202926. doi:10.3238/arztebl.2017.0765",
+  "url": "https://doi.org/10.3238/arztebl.2017.0765"
+ },
+ {
+  "n": 22,
+  "id": "E60",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Breivik H, Collett B, Ventafridda V, Cohen R, Gallacher D. Survey of chronic pain in Europe: prevalence, impact on daily life, and treatment. Eur J Pain. 2006;10(4):287-333. PMID: 16095934. doi:10.1016/j.ejpain.2005.06.009",
+  "url": "https://doi.org/10.1016/j.ejpain.2005.06.009"
+ },
+ {
   "n": 23,
+  "id": "B5",
+  "estado": "Localizada",
+  "tipo": "estadística",
+  "cita": "Seguridad Social. Estadísticas de incapacidad temporal por contingencias comunes [página web]",
+  "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST45/EST46/EST189"
+ },
+ {
+  "n": 24,
+  "id": "B8",
+  "estado": "Localizada",
+  "tipo": "artículo",
+  "cita": "Regal-Ramos R. Epidemiología de la incapacidad laboral por patología osteomuscular en España: 60.000 trabajadores valorados por el Instituto Nacional de la Seguridad Social en 2019. Med Segur Trab (Internet). 2022;68(269):209-220. doi:10.4321/s0465-546x2022000400003",
+  "url": "https://doi.org/10.4321/s0465-546x2022000400003"
+ },
+ {
+  "n": 25,
+  "id": "E50",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Lambeek LC, van Tulder MW, Swinkels IC, Koppes LL, Anema JR, van Mechelen W. The trend in total cost of back pain in The Netherlands in the period 2002 to 2007. Spine (Phila Pa 1976). 2011;36(13):1050-8. PMID: 21150697. doi:10.1097/BRS.0b013e3181e70488",
+  "url": "https://doi.org/10.1097/BRS.0b013e3181e70488"
+ },
+ {
+  "n": 26,
+  "id": "E51",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Anema JR, Schellart AJ, Cassidy JD, Loisel P, Veerman TJ, van der Beek AJ. Can cross country differences in return-to-work after chronic occupational back pain be explained? An exploratory analysis on disability policies in a six country cohort study. J Occup Rehabil. 2009;19(4):419-26. PMID: 19760488. doi:10.1007/s10926-009-9202-3",
+  "url": "https://doi.org/10.1007/s10926-009-9202-3"
+ },
+ {
+  "n": 27,
+  "id": "E62",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Busch H, Bodin L, Bergström G, Jensen IB. Patterns of sickness absence a decade after pain-related multidisciplinary rehabilitation. Pain. 2011;152(8):1727-33. PMID: 21507573. doi:10.1016/j.pain.2011.02.004",
+  "url": "https://doi.org/10.1016/j.pain.2011.02.004"
+ },
+ {
+  "n": 28,
+  "id": "E63",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Busch H, Björk Brämberg E, Hagberg J, Bodin L, Jensen I. The effects of multimodal rehabilitation on pain-related sickness absence: an observational study. Disabil Rehabil. 2018;40(14):1646-53. PMID: 28345360. doi:10.1080/09638288.2017.1305456",
+  "url": "https://doi.org/10.1080/09638288.2017.1305456"
+ },
+ {
+  "n": 29,
+  "id": "E16",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Ojha HA, Snyder RS, Davenport TE. Direct access compared with referred physical therapy episodes of care: a systematic review. Phys Ther. 2014;94(1):14-30. PMID: 24029295. doi:10.2522/ptj.20130096",
+  "url": "https://doi.org/10.2522/ptj.20130096"
+ },
+ {
+  "n": 30,
+  "id": "E20",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Frogner BK, Harwood K, Andrilla CHA, Schwartz M, Pines JM. Physical therapy as the first point of care to treat low back pain: an instrumental variables approach to estimate impact on opioid prescription, health care utilization, and costs. Health Serv Res. 2018;53(6):4629-4646. PMID: 29790166. doi:10.1111/1475-6773.12984",
+  "url": "https://doi.org/10.1111/1475-6773.12984"
+ },
+ {
+  "n": 31,
+  "id": "E23",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Abuhl B, Ehrmantraut D, Wolden M. First-contact physical therapy compared to usual primary care for musculoskeletal disorders: a systematic review and meta-analysis of randomized controlled trials. Phys Ther. 2025;105(8):pzaf080. PMID: 40511847. doi:10.1093/ptj/pzaf080",
+  "url": "https://doi.org/10.1093/ptj/pzaf080"
+ },
+ {
+  "n": 32,
+  "id": "E90",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Fritz JM, Childs JD, Wainner RS, Flynn TW. Primary care referral of patients with low back pain to physical therapy: impact on future health care utilization and costs. Spine (Phila Pa 1976). 2012;37(25):2114-21. PMID: 22614792. doi:10.1097/BRS.0b013e31825d32f5",
+  "url": "https://doi.org/10.1097/BRS.0b013e31825d32f5"
+ },
+ {
+  "n": 33,
+  "id": "E91",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Nordeman L, Nilsson B, Möller M, Gunnarsson R. Early access to physical therapy treatment for subacute low back pain in primary health care: a prospective randomized clinical trial. Clin J Pain. 2006;22(6):505-11. PMID: 16788335. doi:10.1097/01.ajp.0000210696.46250.0d",
+  "url": "https://doi.org/10.1097/01.ajp.0000210696.46250.0d"
+ },
+ {
+  "n": 34,
+  "id": "E89",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Wand BM, Bird C, McAuley JH, Doré CJ, MacDowell M, De Souza LH. Early intervention for the management of acute low back pain: a single-blind randomized controlled trial of biopsychosocial education, manual therapy, and exercise. Spine (Phila Pa 1976). 2004;29(21):2350-6. PMID: 15507794. doi:10.1097/01.brs.0000143619.34308.b4",
+  "url": "https://doi.org/10.1097/01.brs.0000143619.34308.b4"
+ },
+ {
+  "n": 35,
+  "id": "E92",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Zigenfus GC, Yin J, Giang GM, Fogarty WT. Effectiveness of early physical therapy in the treatment of acute low back musculoskeletal disorders. J Occup Environ Med. 2000;42(1):35-9. PMID: 10652686. doi:10.1097/00043764-200001000-00010",
+  "url": "https://doi.org/10.1097/00043764-200001000-00010"
+ },
+ {
+  "n": 36,
+  "id": "E103",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "da Casa C, Suárez ÁV, Asensio N, Blanco JF. Quality assessment of orthopedic surgery referral request letters from primary care consultation: evaluation of a Spanish healthcare area. J Family Community Med. 2021;28(3):189-95. PMID: 34703379. doi:10.4103/jfcm.jfcm_133_21",
+  "url": "https://doi.org/10.4103/jfcm.jfcm_133_21"
+ },
+ {
+  "n": 37,
+  "id": "E11",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Downie F, McRitchie C, Monteith W, Turner H. Physiotherapist as an alternative to a GP for musculoskeletal conditions: a 2-year service evaluation of UK primary care data. Br J Gen Pract. 2019;69(682):e314-e320. PMID: 30962224. doi:10.3399/bjgp19X702245",
+  "url": "https://doi.org/10.3399/bjgp19X702245"
+ },
+ {
+  "n": 38,
+  "id": "E15",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Bradford B, Collier TS, Freeman M, Goodwin R. Primary care reattendance following an FCPP appointment: a national retrospective service evaluation. Musculoskeletal Care. 2025;23(2):e70143. PMID: 40515757. doi:10.1002/msc.70143",
+  "url": "https://doi.org/10.1002/msc.70143"
+ },
+ {
+  "n": 39,
+  "id": "C14n",
+  "estado": "Localizada",
+  "tipo": "nota oficial",
+  "cita": "Comunidad de Madrid. Los fisioterapeutas de los centros de salud de la Comunidad de Madrid atendieron a cerca de 159.000 pacientes en 2024 [nota de prensa]. Madrid; 5 de septiembre de 2025",
+  "url": "https://www.comunidad.madrid/noticias"
+ },
+ {
+  "n": 40,
+  "id": "E96",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Wood L, Hendrick P, Boszczyk B, Dunstan E. A review of the surgical conversion rate and independent management of spinal extended scope practitioners in a secondary care setting. Ann R Coll Surg Engl. 2016;98(3):187-91. PMID: 26741663. doi:10.1308/rcsann.2016.0054",
+  "url": "https://doi.org/10.1308/rcsann.2016.0054"
+ },
+ {
+  "n": 41,
+  "id": "E94",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Candy E, Haworth-Booth S, Knight-Davis M. Review of the effectiveness of a consultant physiotherapy-led musculoskeletal interface team: a Welsh experience. Musculoskeletal Care. 2016;14(3):185-91. PMID: 27605463. doi:10.1002/msc.1122",
+  "url": "https://doi.org/10.1002/msc.1122"
+ },
+ {
+  "n": 42,
   "id": "A2",
   "estado": "Localizada",
   "tipo": "norma",
@@ -184,7 +336,7 @@
   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-16212"
  },
  {
-  "n": 24,
+  "n": 43,
   "id": "A2b",
   "estado": "Localizada",
   "tipo": "web oficial",
@@ -192,7 +344,7 @@
   "url": "https://www.sanidad.gob.es/profesionales/prestacionesSanitarias/CarteraDeServicios/ContenidoCS/2AtencionPrimaria/AP-RehabilitacionBasica.htm"
  },
  {
-  "n": 25,
+  "n": 44,
   "id": "A3",
   "estado": "Localizada",
   "tipo": "norma",
@@ -200,7 +352,7 @@
   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-9277"
  },
  {
-  "n": 26,
+  "n": 45,
   "id": "A4",
   "estado": "Localizada",
   "tipo": "norma",
@@ -208,7 +360,7 @@
   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-10715"
  },
  {
-  "n": 27,
+  "n": 46,
   "id": "A6",
   "estado": "Localizada",
   "tipo": "plan",
@@ -216,7 +368,7 @@
   "url": "https://www.sanidad.gob.es/areas/calidadAsistencial/estrategias/atencionPrimaria/docs/Marco_Estrategico_APS_25Abril_2019.pdf"
  },
  {
-  "n": 28,
+  "n": 47,
   "id": "A7",
   "estado": "Localizada",
   "tipo": "plan",
@@ -224,7 +376,7 @@
   "url": "https://www.sanidad.gob.es/areas/calidadAsistencial/estrategias/atencionPrimaria/docs/Plan_de_Accion_de_Atencion_Primaria.pdf"
  },
  {
-  "n": 29,
+  "n": 48,
   "id": "A8",
   "estado": "Localizada",
   "tipo": "plan",
@@ -232,7 +384,7 @@
   "url": "https://www.sanidad.gob.es/areas/calidadAsistencial/estrategias/atencionPrimaria/docs/Plan_de_Accion_de_Atencion_Primaria_y_Comunitaria_2025-2027.pdf"
  },
  {
-  "n": 30,
+  "n": 49,
   "id": "A8n",
   "estado": "Localizada",
   "tipo": "nota oficial",
@@ -240,7 +392,15 @@
   "url": "https://www.sanidad.gob.es/gabinete/notasPrensa.do?id=6591"
  },
  {
-  "n": 31,
+  "n": 50,
+  "id": "G10",
+  "estado": "Verificada",
+  "tipo": "documento aportado",
+  "cita": "Situación actual de la fisioterapia en Atención Primaria de la Comunidad de Madrid [documento de trabajo sin autoría ni fecha, posterior a diciembre de 2024]. Madrid",
+  "url": "documento aportado por la autoría"
+ },
+ {
+  "n": 51,
   "id": "A9",
   "estado": "Localizada",
   "tipo": "plan",
@@ -248,7 +408,7 @@
   "url": "https://www.sanidad.gob.es/areas/calidadAsistencial/estrategias/abordajeCronicidad/docs/ESTRATEGIA_ABORDAJE_CRONICIDAD.pdf"
  },
  {
-  "n": 32,
+  "n": 52,
   "id": "A11",
   "estado": "Localizada",
   "tipo": "plan",
@@ -256,7 +416,7 @@
   "url": "https://www.sanidad.gob.es/areas/promocionPrevencion/estrategiaSNS/docs/EstrategiaPromocionSaludyPrevencionSNS.pdf"
  },
  {
-  "n": 33,
+  "n": 53,
   "id": "A10",
   "estado": "Localizada",
   "tipo": "plan",
@@ -264,7 +424,7 @@
   "url": "https://www.sanidad.gob.es/areas/saludDigital/doc/Estrategia_de_Salud_Digital_del_SNS.pdf"
  },
  {
-  "n": 34,
+  "n": 54,
   "id": "A5",
   "estado": "Localizada",
   "tipo": "norma",
@@ -272,7 +432,7 @@
   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2019-15604"
  },
  {
-  "n": 35,
+  "n": 55,
   "id": "G6",
   "estado": "Localizada",
   "tipo": "norma",
@@ -280,7 +440,7 @@
   "url": "https://eur-lex.europa.eu/eli/dir/2013/59/oj"
  },
  {
-  "n": 36,
+  "n": 56,
   "id": "E30",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -288,7 +448,7 @@
   "url": "https://doi.org/10.1017/S1463423619000811"
  },
  {
-  "n": 37,
+  "n": 57,
   "id": "B1",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -296,7 +456,7 @@
   "url": "https://www.sanidad.gob.es/estadEstudios/estadisticas/sisInfSanSNS/tablasEstadisticas/InfAnual2024/Monografico_RRHH_2024.pdf"
  },
  {
-  "n": 38,
+  "n": 58,
   "id": "B7",
   "estado": "Localizada",
   "tipo": "artículo",
@@ -304,7 +464,7 @@
   "url": "https://doi.org/10.1016/j.ft.2022.03.002"
  },
  {
-  "n": 39,
+  "n": 59,
   "id": "C9b",
   "estado": "Localizada",
   "tipo": "programa",
@@ -312,7 +472,7 @@
   "url": "https://salutweb.gencat.cat/ca/departament/ambits-estrategics/atencio-primaria-comunitaria/projectes/programa-incorporacio-fisioterapeutes/"
  },
  {
-  "n": 40,
+  "n": 60,
   "id": "C9",
   "estado": "Localizada",
   "tipo": "plan",
@@ -320,7 +480,7 @@
   "url": "https://scientiasalut.gencat.cat/handle/11351/9106"
  },
  {
-  "n": 41,
+  "n": 61,
   "id": "B1b",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -328,7 +488,7 @@
   "url": "https://pestadistico.inteligenciadegestion.sanidad.gob.es/publicoSNS/S/sistema-de-informacion-de-atencion-primaria-siap"
  },
  {
-  "n": 42,
+  "n": 62,
   "id": "C1b",
   "estado": "Localizada",
   "tipo": "cartera",
@@ -336,7 +496,7 @@
   "url": "https://www.sspa.juntadeandalucia.es/servicioandaluzdesalud/profesionales/cartera-de-servicios/atencion-primaria/iv-otros-servicios/2-otros-servicios-prestados-en-dispositivos-de-apoyo/23-fisioterapia"
  },
  {
-  "n": 43,
+  "n": 63,
   "id": "C1",
   "estado": "Localizada",
   "tipo": "nota oficial",
@@ -344,7 +504,7 @@
   "url": "https://www.sspa.juntadeandalucia.es/servicioandaluzdesalud/todas-noticia/sanidad-implanta-la-derivacion-desde-atencion-primaria-fisioterapia-en-toda-andalucia"
  },
  {
-  "n": 44,
+  "n": 64,
   "id": "C2",
   "estado": "Localizada",
   "tipo": "cartera",
@@ -352,7 +512,7 @@
   "url": "https://atencioncomunitaria.aragon.es/wp-content/uploads/2024/07/CARTERAATENCIONPRIMARIA.pdf"
  },
  {
-  "n": 45,
+  "n": 65,
   "id": "C4",
   "estado": "Localizada",
   "tipo": "protocolo",
@@ -360,7 +520,7 @@
   "url": "https://docusalut.com/rest/api/core/bitstreams/6baa0511-9642-47e3-aa79-1202fd49c1ce/content"
  },
  {
-  "n": 46,
+  "n": 66,
   "id": "C5",
   "estado": "Localizada",
   "tipo": "guía",
@@ -368,7 +528,7 @@
   "url": "https://www3.gobiernodecanarias.org/sanidad/scs/listaImagenes.jsp?idCarpeta=46a3e0a2-75c8-11e2-bc0c-6512fc1bab5e&idDocument=046b7b81-75d6-11e2-bc0c-6512fc1bab5e"
  },
  {
-  "n": 47,
+  "n": 67,
   "id": "C5n",
   "estado": "Localizada",
   "tipo": "nota oficial",
@@ -376,7 +536,7 @@
   "url": "https://www3.gobiernodecanarias.org/noticias/sanidad-despliega-servicio-de-fisioterapia-en-24-zonas-basicas-de-gran-canaria-tenerife-lanzarote-y-fuerteventura/"
  },
  {
-  "n": 48,
+  "n": 68,
   "id": "C7",
   "estado": "Localizada",
   "tipo": "guía",
@@ -384,7 +544,7 @@
   "url": "https://castillalamancha.es/actualidad/notasdeprensa"
  },
  {
-  "n": 49,
+  "n": 69,
   "id": "C8",
   "estado": "Localizada",
   "tipo": "protocolo",
@@ -392,7 +552,7 @@
   "url": "https://www.saludcastillayleon.es/profesionales/es/programas-guias-clinicas/guias-practica-clinica/guias-clinicas.ficheros/1105660-Fisioterapia.PDF"
  },
  {
-  "n": 50,
+  "n": 70,
   "id": "C10",
   "estado": "Localizada",
   "tipo": "cartera",
@@ -400,7 +560,7 @@
   "url": "https://www.san.gva.es/documents/d/assistencia-sanitaria/2_cartera_servicios_atencion_primaria_comunitaria_resumida_es-pdf"
  },
  {
-  "n": 51,
+  "n": 71,
   "id": "C11",
   "estado": "Localizada",
   "tipo": "protocolo",
@@ -408,7 +568,7 @@
   "url": "https://www.areasaludplasencia.es/docs/pgc/ses_plasencia_derivacion_fisioterapia_rehabilitacion.pdf"
  },
  {
-  "n": 52,
+  "n": 72,
   "id": "C12",
   "estado": "Localizada",
   "tipo": "cartera",
@@ -416,7 +576,7 @@
   "url": "https://www.sergas.gal/Asistencia-sanitaria/Documents/1795/Carteira_Unidades_de_fisioterapia_de_atencion_primaria.pdf"
  },
  {
-  "n": 53,
+  "n": 73,
   "id": "C14",
   "estado": "Localizada",
   "tipo": "cartera",
@@ -424,7 +584,7 @@
   "url": "https://www.comunidad.madrid/hospital/atencionprimaria/sites/atencionprimaria/files/2025-10/Cartera%20de%20Servicios%20Estandarizados%20AP.%20Actualizaci%C3%B3n%202510.pdf"
  },
  {
-  "n": 54,
+  "n": 74,
   "id": "C15",
   "estado": "Localizada",
   "tipo": "nota oficial",
@@ -432,7 +592,7 @@
   "url": "https://www.murciasalud.es/en/-/el-sms-aprueba-la-cartera-de-servicios-de-fisioterapia-en-atenci%C3%B3n-primaria-para-mejorar-la-atenci%C3%B3n-de-los-pacientes"
  },
  {
-  "n": 55,
+  "n": 75,
   "id": "C16",
   "estado": "Localizada",
   "tipo": "formación oficial",
@@ -440,7 +600,7 @@
   "url": "https://www.formacionsalud.navarra.es/actividad/idactividad/7576"
  },
  {
-  "n": 56,
+  "n": 76,
   "id": "C17",
   "estado": "Localizada",
   "tipo": "nota oficial",
@@ -448,7 +608,7 @@
   "url": "https://www.irekia.euskadi.eus/es/news/95370"
  },
  {
-  "n": 57,
+  "n": 77,
   "id": "C12n",
   "estado": "Secundaria",
   "tipo": "prensa",
@@ -456,7 +616,7 @@
   "url": "https://www.redaccionmedica.com/autonomias/galicia/los-fisioterapeutas-del-sergas-podran-atender-a-pacientes-bajo-demanda-7761"
  },
  {
-  "n": 58,
+  "n": 78,
   "id": "C14w",
   "estado": "Localizada",
   "tipo": "web oficial",
@@ -464,7 +624,7 @@
   "url": "https://www.comunidad.madrid/hospital/atencionprimaria/ciudadanos/unidades-atencion-especifica-fisioterapia"
  },
  {
-  "n": 59,
+  "n": 79,
   "id": "D4",
   "estado": "Localizada",
   "tipo": "plan",
@@ -472,7 +632,7 @@
   "url": "https://www.longtermplan.nhs.uk/online-version/chapter-1-a-new-service-model-for-the-21st-century/"
  },
  {
-  "n": 60,
+  "n": 80,
   "id": "D5",
   "estado": "Localizada",
   "tipo": "norma de financiación",
@@ -480,7 +640,7 @@
   "url": "https://www.england.nhs.uk/wp-content/uploads/2019/12/network-contract-des-additional-roles-reimbursement-scheme-guidance-december2019.pdf"
  },
  {
-  "n": 61,
+  "n": 81,
   "id": "D3",
   "estado": "Localizada",
   "tipo": "marco competencial",
@@ -488,7 +648,7 @@
   "url": "https://www.hee.nhs.uk/our-work/allied-health-professions/enable-workforce/roadmaps-practice/first-contact-practitioners-roadmaps-practice"
  },
  {
-  "n": 62,
+  "n": 82,
   "id": "D6",
   "estado": "Localizada",
   "tipo": "guía profesional",
@@ -496,7 +656,23 @@
   "url": "https://www.csp.org.uk/system/files/001404_fcp_guidance_england_2018.pdf"
  },
  {
-  "n": 63,
+  "n": 83,
+  "id": "E87",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Robert G, Stevens A. Should general practitioners refer patients directly to physical therapists? Br J Gen Pract. 1997;47(418):314-8. PMID: 9219412",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/9219412/"
+ },
+ {
+  "n": 84,
+  "id": "E88",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Hensher M. Improving general practitioner access to physiotherapy: a review of the economic evidence. Health Serv Manage Res. 1997;10(4):225-30. PMID: 10174512. doi:10.1177/095148489701000403",
+  "url": "https://doi.org/10.1177/095148489701000403"
+ },
+ {
+  "n": 85,
   "id": "E10",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -504,7 +680,7 @@
   "url": "https://doi.org/10.1017/S1463423616000189"
  },
  {
-  "n": 64,
+  "n": 86,
   "id": "E12",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -512,7 +688,7 @@
   "url": "https://doi.org/10.1016/j.physio.2021.08.002"
  },
  {
-  "n": 65,
+  "n": 87,
   "id": "E44",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -520,7 +696,7 @@
   "url": "https://doi.org/10.1002/msc.1599"
  },
  {
-  "n": 66,
+  "n": 88,
   "id": "E45",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -528,7 +704,7 @@
   "url": "https://doi.org/10.1016/j.physio.2021.08.003"
  },
  {
-  "n": 67,
+  "n": 89,
   "id": "E13",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -536,7 +712,7 @@
   "url": "https://doi.org/10.3399/BJGP.2023.0560"
  },
  {
-  "n": 68,
+  "n": 90,
   "id": "E13b",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -544,7 +720,7 @@
   "url": "https://doi.org/10.3310/RTKY7521"
  },
  {
-  "n": 69,
+  "n": 91,
   "id": "E26",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -552,7 +728,7 @@
   "url": "https://doi.org/10.2522/ptj.20070308"
  },
  {
-  "n": 70,
+  "n": 92,
   "id": "E27",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -560,7 +736,7 @@
   "url": "https://doi.org/10.2522/ptj.20130309"
  },
  {
-  "n": 71,
+  "n": 93,
   "id": "D20",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -568,7 +744,7 @@
   "url": "https://www.nivel.nl/nl/nieuws/jaarcijfers-fysiotherapie-2024-aandeel-patienten-met-een-verwijzing-daalt"
  },
  {
-  "n": 72,
+  "n": 94,
   "id": "D18",
   "estado": "Localizada",
   "tipo": "norma",
@@ -576,7 +752,7 @@
   "url": "https://www.regjeringen.no/no/dokumenter/prop.-71-l-20162017/id2546178/?ch=9"
  },
  {
-  "n": 73,
+  "n": 95,
   "id": "D19",
   "estado": "Localizada",
   "tipo": "web oficial",
@@ -584,7 +760,7 @@
   "url": "https://www.1177.se/Stockholm/undersokning-behandling/smartbehandlingar-och-rehabilitering/rehabilitering-i-stockholms-lan2/rehabilitering-i-oppenvard/"
  },
  {
-  "n": 74,
+  "n": 96,
   "id": "E29",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -592,7 +768,7 @@
   "url": "https://doi.org/10.1177/1759720X19827504"
  },
  {
-  "n": 75,
+  "n": 97,
   "id": "E29b",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -600,7 +776,7 @@
   "url": "https://doi.org/10.1186/s12891-019-2553-9"
  },
  {
-  "n": 76,
+  "n": 98,
   "id": "D21",
   "estado": "Localizada",
   "tipo": "declaración profesional",
@@ -608,7 +784,7 @@
   "url": "https://australian.physio/sites/default/files/APA%20Position-Statement%20on%20Scope%20of%20Practice%20May%202024_FA.pdf"
  },
  {
-  "n": 77,
+  "n": 99,
   "id": "D22",
   "estado": "Localizada",
   "tipo": "declaración profesional",
@@ -616,7 +792,63 @@
   "url": "https://physiotherapy.ca/app/uploads/2022/08/primary-health-care_en.pdf"
  },
  {
-  "n": 78,
+  "n": 100,
+  "id": "E95",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Napier C, McCormack RG, Hunt MA, Brooks-Hill A. A physiotherapy triage service for orthopaedic surgery: an effective strategy for reducing wait times. Physiother Can. 2013;65(4):358-63. PMID: 24396164. doi:10.3138/ptc.2012-53",
+  "url": "https://doi.org/10.3138/ptc.2012-53"
+ },
+ {
+  "n": 101,
+  "id": "E97",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Bath B, Grona SL, Janzen B. A spinal triage programme delivered by physiotherapists in collaboration with orthopaedic surgeons. Physiother Can. 2012;64(4):356-66. PMID: 23997390. doi:10.3138/ptc.2011-29",
+  "url": "https://doi.org/10.3138/ptc.2011-29"
+ },
+ {
+  "n": 102,
+  "id": "E100",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Miller J, Barber D, Donnelly C, French S, Green M, Hill J, et al. Determining the impact of a new physiotherapist-led primary care model for back pain: protocol for a pilot cluster randomized controlled trial. Trials. 2017;18(1):526. PMID: 29121989. doi:10.1186/s13063-017-2279-7",
+  "url": "https://doi.org/10.1186/s13063-017-2279-7"
+ },
+ {
+  "n": 103,
+  "id": "E93",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Oakley C, Shacklady C. The clinical effectiveness of the extended-scope physiotherapist role in musculoskeletal triage: a systematic review. Musculoskeletal Care. 2015;13(4):204-21. PMID: 25758358. doi:10.1002/msc.1100",
+  "url": "https://doi.org/10.1002/msc.1100"
+ },
+ {
+  "n": 104,
+  "id": "E106",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Samsson KS, Grimmer K, Larsson MEH, Morris J, Bernhardsson S. Effects on health and process outcomes of physiotherapist-led orthopaedic triage for patients with musculoskeletal disorders: a systematic review of comparative studies. BMC Musculoskelet Disord. 2020;21(1):673. PMID: 33038935. doi:10.1186/s12891-020-03673-9",
+  "url": "https://doi.org/10.1186/s12891-020-03673-9"
+ },
+ {
+  "n": 105,
+  "id": "E107",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Trøstrup J, Juhl CB, Mikkelsen LR. Effect of extended scope physiotherapists assessments in orthopaedic diagnostic setting: a systematic review. Physiotherapy. 2020;108:120-8. PMID: 32807362. doi:10.1016/j.physio.2017.08.004",
+  "url": "https://doi.org/10.1016/j.physio.2017.08.004"
+ },
+ {
+  "n": 106,
+  "id": "E105",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Lafrance S, Vincent R, Demont A, Charron M, Desmeules F. Advanced practice physiotherapists can diagnose and triage patients with musculoskeletal disorders while providing effective care: a systematic review. J Physiother. 2023;69(4):220-31. PMID: 37714771. doi:10.1016/j.jphys.2023.08.005",
+  "url": "https://doi.org/10.1016/j.jphys.2023.08.005"
+ },
+ {
+  "n": 107,
   "id": "E17",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -624,7 +856,7 @@
   "url": "https://doi.org/10.7417/CT.2018.2087"
  },
  {
-  "n": 79,
+  "n": 108,
   "id": "E18",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -632,7 +864,7 @@
   "url": "https://doi.org/10.1080/09638288.2019.1674388"
  },
  {
-  "n": 80,
+  "n": 109,
   "id": "E9",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -640,7 +872,7 @@
   "url": "https://doi.org/10.1371/journal.pone.0235364"
  },
  {
-  "n": 81,
+  "n": 110,
   "id": "E22",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -648,7 +880,7 @@
   "url": "https://doi.org/10.3390/jcm12185832"
  },
  {
-  "n": 82,
+  "n": 111,
   "id": "E21",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -656,7 +888,7 @@
   "url": "https://doi.org/10.1016/j.physio.2021.08.005"
  },
  {
-  "n": 83,
+  "n": 112,
   "id": "E6",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -664,7 +896,7 @@
   "url": "https://doi.org/10.1016/j.physio.2020.04.006"
  },
  {
-  "n": 84,
+  "n": 113,
   "id": "E24",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -672,7 +904,7 @@
   "url": "https://doi.org/10.1186/s12875-026-03186-9"
  },
  {
-  "n": 85,
+  "n": 114,
   "id": "E25",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -680,7 +912,23 @@
   "url": "https://doi.org/10.1093/fampra/cmag046"
  },
  {
-  "n": 86,
+  "n": 115,
+  "id": "E99",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Ojha H, Masaracchio M, Johnston M, Howard RJ, Egan WE, Kirker K, et al. Minimal physical therapy utilization compared with higher physical therapy utilization for patients with low back pain: a systematic review. Physiother Theory Pract. 2020;36(11):1179-200. PMID: 30739564. doi:10.1080/09593985.2019.1571135",
+  "url": "https://doi.org/10.1080/09593985.2019.1571135"
+ },
+ {
+  "n": 116,
+  "id": "E98",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Snow BL, Shamus E, Hill C. Physical therapy as primary health care: public perceptions. J Allied Health. 2001;30(1):35-8. PMID: 11265271",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/11265271/"
+ },
+ {
+  "n": 117,
   "id": "D14n",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -688,7 +936,7 @@
   "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20230818-1"
  },
  {
-  "n": 87,
+  "n": 118,
   "id": "D14",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -696,7 +944,7 @@
   "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Healthcare_personnel_statistics_-_dentists,_pharmacists_and_physiotherapists"
  },
  {
-  "n": 88,
+  "n": 119,
   "id": "D13",
   "estado": "Localizada",
   "tipo": "censo",
@@ -704,7 +952,7 @@
   "url": "https://world.physio/sites/default/files/2025-01/AMC2024-Global-report.pdf"
  },
  {
-  "n": 89,
+  "n": 120,
   "id": "E19",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -712,7 +960,7 @@
   "url": "https://doi.org/10.2522/ptj.20120060"
  },
  {
-  "n": 90,
+  "n": 121,
   "id": "G0",
   "estado": "Verificada",
   "tipo": "documento aportado",
@@ -720,7 +968,7 @@
   "url": "documento aportado por la autoría"
  },
  {
-  "n": 91,
+  "n": 122,
   "id": "E37",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -728,7 +976,7 @@
   "url": "https://doi.org/10.1002/14651858.CD012424.pub2"
  },
  {
-  "n": 92,
+  "n": 123,
   "id": "E31",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -736,7 +984,7 @@
   "url": "https://doi.org/10.3390/jcm9041201"
  },
  {
-  "n": 93,
+  "n": 124,
   "id": "E38",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -744,7 +992,7 @@
   "url": "https://doi.org/10.1002/14651858.CD004376.pub3"
  },
  {
-  "n": 94,
+  "n": 125,
   "id": "E39",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -752,7 +1000,7 @@
   "url": "https://doi.org/10.1002/14651858.CD003793.pub3"
  },
  {
-  "n": 95,
+  "n": 126,
   "id": "E40",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -760,7 +1008,79 @@
   "url": "https://doi.org/10.1002/14651858.CD009790.pub2"
  },
  {
-  "n": 96,
+  "n": 127,
+  "id": "E77",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Louw A, Zimney K, Puentedura EJ, Diener I. The efficacy of pain neuroscience education on musculoskeletal pain: a systematic review of the literature. Physiother Theory Pract. 2016;32(5):332-55. PMID: 27351541. doi:10.1080/09593985.2016.1194646",
+  "url": "https://doi.org/10.1080/09593985.2016.1194646"
+ },
+ {
+  "n": 128,
+  "id": "E78",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Geneen LJ, Martin DJ, Adams N, Clarke C, Dunbar M, Jones D, et al. Effects of education to facilitate knowledge about chronic pain for adults: a systematic review with meta-analysis. Syst Rev. 2015;4:132. PMID: 26428467. doi:10.1186/s13643-015-0120-5",
+  "url": "https://doi.org/10.1186/s13643-015-0120-5"
+ },
+ {
+  "n": 129,
+  "id": "E102",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Díaz-Cerrillo JL, Rondón-Ramos A, Pérez-González R, Clavero-Cano S. [Non-randomised trial of an educational intervention based on cognitive-behavioural principles for patients with chronic low back pain attended in Primary Care Physiotherapy]. Aten Primaria. 2016;48(7):440-8. Español. PMID: 26724987. doi:10.1016/j.aprim.2015.10.007",
+  "url": "https://doi.org/10.1016/j.aprim.2015.10.007"
+ },
+ {
+  "n": 130,
+  "id": "E104",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Cuenca-Zaldívar JN, Fernández-Carnero J, Sánchez-Romero EA, Álvarez-Gonzalo V, Conde-Rodríguez R, Rodríguez-Sanz D, et al. Effects of a therapeutic exercise protocol for patients with chronic non-specific back pain in primary health care: a single-group retrospective cohort study. J Clin Med. 2023;12(20):6478. PMID: 37892618. doi:10.3390/jcm12206478",
+  "url": "https://doi.org/10.3390/jcm12206478"
+ },
+ {
+  "n": 131,
+  "id": "E101",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Antúnez Sánchez LG, de la Casa Almeida M, Rebollo Roldán J, Ramírez Manzano A, Martín Valero R, Suárez Serrano C. [Effectiveness of an individualised physiotherapy program versus group therapy on neck pain and disability in patients with acute and subacute mechanical neck pain]. Aten Primaria. 2017;49(7):417-25. Español. PMID: 28089225. doi:10.1016/j.aprim.2016.09.010",
+  "url": "https://doi.org/10.1016/j.aprim.2016.09.010"
+ },
+ {
+  "n": 132,
+  "id": "E80",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Serra-Prat M, Sist X, Domenich R, Jurado L, Saiz A, Roces A, et al. Effectiveness of an intervention to prevent frailty in pre-frail community-dwelling older people consulting in primary care: a randomised controlled trial. Age Ageing. 2017;46(3):401-7. PMID: 28064172. doi:10.1093/ageing/afw242",
+  "url": "https://doi.org/10.1093/ageing/afw242"
+ },
+ {
+  "n": 133,
+  "id": "E81",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Romera-Liebana L, Orfila F, Segura JM, Real J, Fabra ML, Möller M, et al. Effects of a primary care-based multifactorial intervention on physical and cognitive function in frail, elderly individuals: a randomized controlled trial. J Gerontol A Biol Sci Med Sci. 2018;73(12):1688-74 [paginación tal como figura en PubMed]. PMID: 29346524. doi:10.1093/gerona/glx259",
+  "url": "https://doi.org/10.1093/gerona/glx259"
+ },
+ {
+  "n": 134,
+  "id": "E79",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Castell MV, Gutiérrez-Misis A, Sánchez-Martínez M, Prieto MA, Moreno B, Nuñez S, et al. Effectiveness of an intervention in multicomponent exercise in primary care to improve frailty parameters in patients over 70 years of age (MEFAP-project), a randomised clinical trial: rationale and study design. BMC Geriatr. 2019;19(1):25. PMID: 30691405. doi:10.1186/s12877-018-1024-8",
+  "url": "https://doi.org/10.1186/s12877-018-1024-8"
+ },
+ {
+  "n": 135,
+  "id": "E52",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Lin CW, Haas M, Maher CG, Machado LA, van Tulder MW. Cost-effectiveness of general practice care for low back pain: a systematic review. Eur Spine J. 2011;20(7):1012-23. PMID: 21203890. doi:10.1007/s00586-010-1675-4",
+  "url": "https://doi.org/10.1007/s00586-010-1675-4"
+ },
+ {
+  "n": 136,
   "id": "G3",
   "estado": "Localizada",
   "tipo": "resolución profesional",
@@ -768,7 +1088,7 @@
   "url": "citada en G1"
  },
  {
-  "n": 97,
+  "n": 137,
   "id": "E1",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -776,7 +1096,7 @@
   "url": "https://doi.org/10.1136/bmj.326.7386.417"
  },
  {
-  "n": 98,
+  "n": 138,
   "id": "G7",
   "estado": "Localizada",
   "tipo": "norma",
@@ -784,7 +1104,7 @@
   "url": "https://www.legislation.gov.uk/uksi/2017/1322"
  },
  {
-  "n": 99,
+  "n": 139,
   "id": "E2",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -792,7 +1112,7 @@
   "url": "https://pubmed.ncbi.nlm.nih.gov/8114236/"
  },
  {
-  "n": 100,
+  "n": 140,
   "id": "E3",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -800,7 +1120,47 @@
   "url": "https://doi.org/10.1136/bmj.f7095"
  },
  {
-  "n": 101,
+  "n": 141,
+  "id": "E49",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Foster NE, Anema JR, Cherkin D, Chou R, Cohen SP, Gross DP, et al. Prevention and treatment of low back pain: evidence, challenges, and promising directions. Lancet. 2018;391(10137):2368-83. PMID: 29573872. doi:10.1016/S0140-6736(18)30489-6",
+  "url": "https://doi.org/10.1016/S0140-6736(18)30489-6"
+ },
+ {
+  "n": 142,
+  "id": "E59",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Côté P, Wong JJ, Sutton D, Shearer HM, Mior S, Randhawa K, et al. Management of neck pain and associated disorders: a clinical practice guideline from the Ontario Protocol for Traffic Injury Management (OPTIMa) Collaboration. Eur Spine J. 2016;25(7):2000-22. PMID: 26984876. doi:10.1007/s00586-016-4467-7",
+  "url": "https://doi.org/10.1007/s00586-016-4467-7"
+ },
+ {
+  "n": 143,
+  "id": "E64",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Steuri R, Sattelmayer M, Elsig S, Kolly C, Tal A, Taeymans J, et al. Effectiveness of conservative interventions including exercise, manual therapy and medical management in adults with shoulder impingement: a systematic review and meta-analysis of RCTs. Br J Sports Med. 2017;51(18):1340-7. PMID: 28630217. doi:10.1136/bjsports-2016-096515",
+  "url": "https://doi.org/10.1136/bjsports-2016-096515"
+ },
+ {
+  "n": 144,
+  "id": "E83",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Karjalainen TV, Jain NB, Page CM, Lähdeoja TA, Johnston RV, Salamh P, et al. Subacromial decompression surgery for rotator cuff disease. Cochrane Database Syst Rev. 2019;1(1):CD005619. PMID: 30707445. doi:10.1002/14651858.CD005619.pub3",
+  "url": "https://doi.org/10.1002/14651858.CD005619.pub3"
+ },
+ {
+  "n": 145,
+  "id": "E74",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Bisset L, Beller E, Jull G, Brooks P, Darnell R, Vicenzino B. Mobilisation with movement and exercise, corticosteroid injection, or wait and see for tennis elbow: randomised trial. BMJ. 2006;333(7575):939. PMID: 17012266. doi:10.1136/bmj.38961.584653.AE",
+  "url": "https://doi.org/10.1136/bmj.38961.584653.AE"
+ },
+ {
+  "n": 146,
   "id": "E41",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -808,7 +1168,7 @@
   "url": "https://doi.org/10.1016/S0140-6736(11)60937-9"
  },
  {
-  "n": 102,
+  "n": 147,
   "id": "E42",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -816,7 +1176,79 @@
   "url": "https://doi.org/10.1016/j.aprim.2010.05.019"
  },
  {
-  "n": 103,
+  "n": 148,
+  "id": "E82",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Gallego-Izquierdo T, Ruiz-Vindel J, Ferragut-Garcías A, Martínez-Merinero P, Montañez-Aguilera FJ, Noriega-Matanza C, et al. Adaptation and transcultural translation into Spanish of the Patient-Rated Tennis Elbow Evaluation Questionnaire. J Orthop Res. 2020;38(12):2601-7. PMID: 32761913. doi:10.1002/jor.24820",
+  "url": "https://doi.org/10.1002/jor.24820"
+ },
+ {
+  "n": 149,
+  "id": "E73",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Vuurberg G, Hoorntje A, Wink LM, van der Doelen BFW, van den Bekerom MP, Dekker R, et al. Diagnosis, treatment and prevention of ankle sprains: update of an evidence-based clinical guideline. Br J Sports Med. 2018;52(15):956. PMID: 29514819. doi:10.1136/bjsports-2017-098106",
+  "url": "https://doi.org/10.1136/bjsports-2017-098106"
+ },
+ {
+  "n": 150,
+  "id": "E58",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Blanpied PR, Gross AR, Elliott JM, Devaney LL, Clewley D, Walton DM, et al. Neck pain: revision 2017. J Orthop Sports Phys Ther. 2017;47(7):A1-A83. PMID: 28666405. doi:10.2519/jospt.2017.0302",
+  "url": "https://doi.org/10.2519/jospt.2017.0302"
+ },
+ {
+  "n": 151,
+  "id": "E65",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Haahr JP, Østergaard S, Dalsgaard J, Norup K, Frost P, Lausen S, et al. Exercises versus arthroscopic decompression in patients with subacromial impingement: a randomised, controlled study in 90 cases with a one year follow up. Ann Rheum Dis. 2005;64(5):760-4. PMID: 15834056. doi:10.1136/ard.2004.021188",
+  "url": "https://doi.org/10.1136/ard.2004.021188"
+ },
+ {
+  "n": 152,
+  "id": "E66",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Ketola S, Lehtinen J, Rousi T, Nissinen M, Huhtala H, Konttinen YT, et al. No evidence of long-term benefits of arthroscopic acromioplasty in the treatment of shoulder impingement syndrome: five-year results of a randomised controlled trial. Bone Joint Res. 2013;2(7):132-9. PMID: 23836479. doi:10.1302/2046-3758.27.2000163",
+  "url": "https://doi.org/10.1302/2046-3758.27.2000163"
+ },
+ {
+  "n": 153,
+  "id": "E67",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Ketola S, Lehtinen JT, Arnala I. Arthroscopic decompression not recommended in the treatment of rotator cuff tendinopathy: a final review of a randomised controlled trial at a minimum follow-up of ten years. Bone Joint J. 2017;99-B(6):799-805. PMID: 28566400. doi:10.1302/0301-620X.99B6.BJJ-2016-0569.R1",
+  "url": "https://doi.org/10.1302/0301-620X.99B6.BJJ-2016-0569.R1"
+ },
+ {
+  "n": 154,
+  "id": "E85",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Kanto K, Bäck M, Ibounig T, Björkenheim R, Malmivaara A, Czuba T, et al. Arthroscopic subacromial decompression versus placebo surgery for subacromial pain syndrome: 10 year follow-up of the FIMPACT randomised, placebo surgery controlled trial. BMJ. 2025;391:e086201. PMID: 41330610. doi:10.1136/bmj-2025-086201",
+  "url": "https://doi.org/10.1136/bmj-2025-086201"
+ },
+ {
+  "n": 155,
+  "id": "E69",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Kukkonen J, Joukainen A, Lehtinen J, Mattila KT, Tuominen EK, Kauko T, et al. Treatment of non-traumatic rotator cuff tears: a randomised controlled trial with one-year clinical results. Bone Joint J. 2014;96-B(1):75-81. PMID: 24395315. doi:10.1302/0301-620X.96B1.32168",
+  "url": "https://doi.org/10.1302/0301-620X.96B1.32168"
+ },
+ {
+  "n": 156,
+  "id": "E71",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Kang JR, Sin AT, Cheung EV. Treatment of massive irreparable rotator cuff tears: a cost-effectiveness analysis. Orthopedics. 2017;40(1):e65-e76. PMID: 27684078. doi:10.3928/01477447-20160926-06",
+  "url": "https://doi.org/10.3928/01477447-20160926-06"
+ },
+ {
+  "n": 157,
   "id": "E14",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -824,7 +1256,7 @@
   "url": "https://doi.org/10.1016/j.physio.2020.04.005"
  },
  {
-  "n": 104,
+  "n": 158,
   "id": "B9",
   "estado": "Localizada",
   "tipo": "estadística",
@@ -832,7 +1264,7 @@
   "url": "https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177012&menu=ultiDatos&idp=1254734710990"
  },
  {
-  "n": 105,
+  "n": 159,
   "id": "E43",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -840,7 +1272,7 @@
   "url": "https://doi.org/10.4415/ANN_18_03_10"
  },
  {
-  "n": 106,
+  "n": 160,
   "id": "D7",
   "estado": "Localizada",
   "tipo": "nota profesional",
@@ -848,7 +1280,31 @@
   "url": "https://www.csp.org.uk/news/2022-01-19-csp-urges-government-boost-fcp-roll-out-across-england"
  },
  {
-  "n": 107,
+  "n": 161,
+  "id": "E53",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Lin CW, Haas M, Maher CG, Machado LA, van Tulder MW. Cost-effectiveness of guideline-endorsed treatments for low back pain: a systematic review. Eur Spine J. 2011;20(7):1024-38. PMID: 21229367. doi:10.1007/s00586-010-1676-3",
+  "url": "https://doi.org/10.1007/s00586-010-1676-3"
+ },
+ {
+  "n": 162,
+  "id": "E55",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Korthals-de Bos IB, Hoving JL, van Tulder MW, Rutten-van Mölken MP, Adèr HJ, de Vet HC, et al. Cost effectiveness of physiotherapy, manual therapy, and general practitioner care for neck pain: economic evaluation alongside a randomised controlled trial. BMJ. 2003;326(7395):911. PMID: 12714472. doi:10.1136/bmj.326.7395.911",
+  "url": "https://doi.org/10.1136/bmj.326.7395.911"
+ },
+ {
+  "n": 163,
+  "id": "E57",
+  "estado": "Verificada",
+  "tipo": "artículo",
+  "cita": "Driessen MT, Lin CW, van Tulder MW. Cost-effectiveness of conservative treatments for neck pain: a systematic review on economic evaluations. Eur Spine J. 2012;21(8):1441-50. PMID: 22447407. doi:10.1007/s00586-012-2272-5",
+  "url": "https://doi.org/10.1007/s00586-012-2272-5"
+ },
+ {
+  "n": 164,
   "id": "A15",
   "estado": "Localizada",
   "tipo": "modelo de gestión",
@@ -856,7 +1312,7 @@
   "url": "https://www.clubexcelencia.org/conocimiento/plataforma-de-conocimiento/modelo-efqm-2025"
  },
  {
-  "n": 108,
+  "n": 165,
   "id": "E32",
   "estado": "Verificada",
   "tipo": "artículo",
@@ -864,7 +1320,7 @@
   "url": "https://doi.org/10.1080/09638288.2025.2460723"
  },
  {
-  "n": 109,
+  "n": 166,
   "id": "E32b",
   "estado": "Verificada",
   "tipo": "artículo",

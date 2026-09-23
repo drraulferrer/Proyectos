@@ -225,3 +225,15 @@ solo puede citar identificadores que figuren en él. Esta sección resume lo añ
 Correcciones de año de edición impresa aplicadas desde PubMed: E6 es de 2021 (Physiotherapy
 111:48-56), E16 de 2014, E18 de 2021, E19 de 2013 y E44 de 2022.
 
+## I. Referencias añadidas en la versión 1.1
+
+La versión 1.1 añade 65 referencias al banco, de las que el documento cita 57. Las tres primeras son documentos aportados por la autoría y se han leído completos:
+
+- **G8.** Instrucción de la Gerencia Asistencial de Atención Primaria del Servicio Madrileño de Salud, «Atención a procesos de demanda en las consultas de las Unidades de Atención Específica de Atención Primaria», versión 8, julio de 2024.
+- **G9.** Sociedade Galega de Fisioterapeutas, «Análisis de la efectividad clínica e impacto económico de una gestión racional de los recursos de fisioterapia en patología de alta prevalencia en Atención Primaria», febrero de 2019.
+- **G10.** «Situación actual de la fisioterapia en Atención Primaria de la Comunidad de Madrid», documento de trabajo sin autoría ni fecha.
+
+Las otras 62 son artículos verificados en PubMed el 23 de septiembre de 2026 (E46 a E107). Ocho quedan en el banco sin cita en el texto: E56, E61, E68, E70, E75, E76, E84 y E86. La mayoría procede de la bibliografía del análisis gallego. Las demás salen de búsquedas complementarias: estudios españoles de fisioterapia de AP, revisiones recientes sobre triaje por fisioterapia, ensayos de cirugía de hombro y la validación española del PRTEE. La cita completa, el PMID y el DOI de cada una figuran en `documento/datos/referencias.csv`.
+
+Correcciones de cita respecto al análisis gallego: Kääriä 2006 (título), Lambeek 2011 (abreviatura de la revista), Anema 2009 y Korthals-de Bos 2003 (subtítulo), Côté 2016 (nombre completo de la colaboración), Wand 2004 (número 21), Ojha 2020 (año y volumen), Murphy 2019 y Romera 2014 (datos incompletos). El estudio de Burn y Beeson de 2014 no está indexado en PubMed y no se cita. Las discrepancias de contenido figuran en el apartado F.4 del documento.
+

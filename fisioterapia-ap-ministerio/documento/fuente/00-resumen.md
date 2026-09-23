@@ -25,6 +25,15 @@ Tabla R.1. Fases de dotación que propone este documento
 
 Fuente: modelo de demanda de la sección 9 y tabla 9.4.
 
+## Evidencia y experiencia en las que se apoya
+
+- **Experiencia española.** Madrid ya cita directamente con fisioterapia tres procesos, mediante una instrucción de su Gerencia Asistencial de AP con criterios escritos de inclusión y de exclusión. Galicia incorporó la fisioterapia a su protocolo de gestión de la demanda.
+- **Seguridad y uso de recursos.** Las revisiones internacionales no encuentran daños atribuibles al acceso directo, y sí menos pruebas de imagen y menos medicación.
+- **Momento del acceso.** La fisioterapia precoz se asocia a menos uso posterior de servicios y a un coste menor, aunque la evidencia procede de otros sistemas sanitarios.
+- **Procesos concretos.** En el hombro doloroso, los ensayos con seguimientos de hasta diez años no encuentran ventaja de la cirugía de descompresión sobre el ejercicio. En la epicondilalgia, la fisioterapia supera a la infiltración a medio plazo.
+- **Capacidad diagnóstica.** Las revisiones sobre práctica avanzada encuentran una concordancia diagnóstica alta entre el fisioterapeuta y el médico.
+- **Carencia declarada.** Ningún estudio ha evaluado todavía el acceso directo en el SNS. Por eso el despliegue se diseña para medir sus resultados desde el primer día.
+
 ## Lo que este documento no propone
 
 - No propone dimensionar la fisioterapia de atención primaria para absorber la demora de rehabilitación hospitalaria. La relación entre ambos niveles se regula con un circuito de continuidad.
@@ -34,4 +43,4 @@ Fuente: modelo de demanda de la sección 9 y tabla 9.4.
 
 ## Nota de método
 
-Todas las cifras del cuerpo del documento llevan su fuente y figuran en el anexo E. Las referencias proceden de fuentes primarias. El anexo F indica cuáles se han verificado abriendo la fuente y cuáles quedan pendientes de cotejo. El efecto del acceso directo sobre las consultas de medicina de familia se presenta como un resultado a evaluar y no como un resultado garantizado.
+Todas las cifras del cuerpo del documento llevan su fuente y figuran en el anexo E. Las referencias proceden de fuentes primarias. El anexo F indica cuáles se han verificado abriendo la fuente y cuáles quedan pendientes de cotejo. El efecto del acceso directo sobre las consultas de medicina de familia se presenta como un resultado a evaluar y no como un resultado garantizado. Los tres documentos aportados en la revisión se han contrastado con sus fuentes, y el anexo F recoge las cifras que no se han podido trazar.

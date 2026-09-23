@@ -155,7 +155,7 @@ const portada = [
   new Paragraph({ spacing: { before: 2600, after: 200 }, children: [new TextRun({ text: "Documento técnico dirigido al Ministerio de Sanidad", font: FUENTE, size: 24, color: GRIS })] }),
   new Paragraph({ spacing: { after: 300, line: 300, lineRule: "auto" }, children: [new TextRun({ text: "Fisioterapia en Atención Primaria en el Sistema Nacional de Salud", font: FUENTE, size: 52, bold: true, color: AZUL })] }),
   new Paragraph({ spacing: { after: 1200 }, children: [new TextRun({ text: "Modelo organizativo, acceso, dotación y evaluación", font: FUENTE, size: 32, color: AZUL })] }),
-  new Paragraph({ border: { top: { style: BorderStyle.SINGLE, size: 6, color: AZUL, space: 8 } }, spacing: { after: 120 }, children: [new TextRun({ text: "Versión de trabajo 1.0 · 22 de septiembre de 2026", font: FUENTE, size: 22, bold: true })] }),
+  new Paragraph({ border: { top: { style: BorderStyle.SINGLE, size: 6, color: AZUL, space: 8 } }, spacing: { after: 120 }, children: [new TextRun({ text: "Versión de trabajo 1.1 · 23 de septiembre de 2026", font: FUENTE, size: 22, bold: true })] }),
   new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Elaborado a partir del borrador «Propuesta de Fisioterapia en Atención Primaria para el Ministerio de Sanidad» y de las revisiones de Patricia Moreno Carrero y Raúl Ferrer Peña.", font: FUENTE, size: 20, color: GRIS })] }),
   new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Estado de las fuentes: los artículos científicos están verificados en PubMed. Las normas, los documentos autonómicos y las estadísticas oficiales están pendientes de cotejo en la fuente original, como detalla el anexo F.", font: FUENTE, size: 20, color: GRIS })] }),
 ];
@@ -189,7 +189,7 @@ const doc = new Document({
   sections: [{
     properties: { titlePage: true, page: { size: { width: 11906, height: 16838 }, margin: { top: 1418, bottom: 1418, left: 1134, right: 1134 } } },
     headers: {
-      default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ text: "Fisioterapia en Atención Primaria en el SNS · Documento técnico, versión de trabajo 1.0", font: FUENTE, size: 16, color: GRIS })] })] }),
+      default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ text: "Fisioterapia en Atención Primaria en el SNS · Documento técnico, versión de trabajo 1.1", font: FUENTE, size: 16, color: GRIS })] })] }),
       first: new Header({ children: [new Paragraph({ children: [] })] }),
     },
     footers: {

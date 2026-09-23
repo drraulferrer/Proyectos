@@ -43,7 +43,7 @@ Tabla 3.2. Modelos de fisioterapia de atención primaria por comunidad autónoma
 | Extremadura | Protocolo de derivación del Área de Salud de Plasencia [@C11] | 2019 | Sí | Sí, en esa área | No |
 | Galicia | Carteira de servizos de fisioterapia de AP del SERGAS [@C12] | 2022 | Sí | Sí | Sí, con motivos parametrizados |
 | La Rioja | No localizado | No consta | No consta | No consta | No |
-| Madrid | Cartera de Servicios Estandarizados de AP del Servicio Madrileño de Salud [@C14; @C14n] | 2025 | Sí | Sí | Sí, para tres procesos |
+| Madrid | Cartera de Servicios Estandarizados de AP del Servicio Madrileño de Salud e instrucción de la Gerencia Asistencial de AP sobre procesos de demanda [@C14; @G8; @C14n] | 2025 | Sí | Sí | Sí, para tres procesos |
 | Murcia | Cartera de Servicios de Fisioterapia en AP del Servicio Murciano de Salud [@C15] | 2026 | Sí | No consta | No |
 | Navarra | Formación oficial del Servicio Navarro de Salud sobre derivación directa [@C16] | No consta | Sí | Sí, para procesos determinados | No |
 | País Vasco | Información institucional de Osakidetza [@C17] | 2024 | Sí | No consta | No |
@@ -62,13 +62,57 @@ El Servizo Galego de Saúde (SERGAS) publica una cartera de servicios de fisiote
 
 ### Madrid admite el acceso directo para tres procesos
 
-La Cartera de Servicios Estandarizados de AP del Servicio Madrileño de Salud, actualizada en septiembre de 2025, incluye la atención fisioterapéutica a personas con procesos musculoesqueléticos agudos y subagudos [@C14]. La nota oficial de septiembre de 2025 describe la citación directa desde la Unidad de Atención al Usuario [@C14n]. Se aplica a quien refiere un posible esguince de tobillo, una epicondilalgia o una fascitis plantar [@C14n]. En los demás procesos, la página institucional de la Comunidad de Madrid indica que es necesaria la derivación del médico de familia [@C14w]. La búsqueda no ha localizado la instrucción de la Gerencia Asistencial de AP que regula la citación directa (anexo F).
+La Cartera de Servicios Estandarizados de AP del Servicio Madrileño de Salud, actualizada en septiembre de 2025, incluye la atención fisioterapéutica a personas con procesos musculoesqueléticos agudos y subagudos [@C14]. En los procesos que no admiten acceso directo, la página institucional de la Comunidad de Madrid indica que es necesaria la derivación del médico de familia [@C14w]. La nota oficial de septiembre de 2025 describe la citación directa desde la Unidad de Atención al Usuario [@C14n].
+
+La Gerencia Asistencial de AP regula esa citación en una instrucción interna titulada «Atención a procesos de demanda en las consultas de las Unidades de Atención Específica de Atención Primaria» [@G8]. La instrucción procede del Plan Estratégico 2020-2024 de la gerencia y de su proyecto de reorganización asistencial de los centros de salud [@G8]. Dentro de ese proyecto, el subproyecto de gestión de la demanda busca identificar «qué profesional es el que mejor respuesta puede dar a una demanda concreta» [@G8]. La instrucción se aplica a cuatro tipos de unidades: matronas, trabajo social sanitario, salud bucodental y fisioterapia [@G8].
+
+Para la fisioterapia, la instrucción describe tres procesos: la epicondilalgia, el esguince de tobillo y la fascitis plantar [@G8]. Cada proceso tiene una definición, sus códigos de la Clasificación Internacional de Atención Primaria, una pauta de valoración y unos criterios de derivación [@G8]. La tabla 3.3 resume esos elementos.
+
+Tabla 3.3. Procesos de citación directa con fisioterapia en la instrucción de la Gerencia Asistencial de AP de Madrid
+
+| Proceso | Códigos CIAP | Valoración que pide la instrucción | Se cita con fisioterapia | Se cita con medicina de familia |
+|---|---|---|---|---|
+| Epicondilalgia lateral o medial | L93 | Escala visual analógica del dolor, cuestionario PRTEE, pruebas de Cozen y de Thomson, prueba de la silla e indicadores de pronóstico negativo | Epicondilalgia sin antecedente traumático | Antecedente traumático en el codo, pérdida de movilidad del codo, la mano o los dedos, o pérdida de sensibilidad en el brazo |
+| Esguince de tobillo | L77 y L16 | Escala visual analógica del dolor, valoración de la función y maniobras dinámicas, con las reglas de Ottawa para descartar lesión ósea | Esguince de grado I o II | Traumatismo importante con afectación grave de la movilidad, alteración de la sensibilidad del pie e imposibilidad de apoyo |
+| Fascitis plantar | L87 y L17 | Escala visual analógica del dolor y valoración de la función | Toda persona con el cuadro clínico descrito | Traumatismo previo o pie con indicación de tratamiento ortopédico |
+
+Fuente: instrucción de la Gerencia Asistencial de Atención Primaria del Servicio Madrileño de Salud [@G8]. PRTEE: Patient-Rated Tennis Elbow Evaluation.
+
+La instrucción asigna la cita al fisioterapeuta de referencia de la persona, en un hueco de agenda que denomina «V verde» [@G8]. El personal de la Unidad de Atención al Usuario aplica así una lista cerrada de motivos, y la valoración clínica corresponde al fisioterapeuta. Este reparto de funciones coincide con el paso 2 del circuito de autorreferencia de la sección 6.2.
+
+La instrucción establece también que el diagnóstico de la epicondilalgia es clínico [@G8]. Las pruebas complementarias solo proceden si se sospecha otra entidad, y en ese caso la persona debe ser valorada por el médico de familia [@G8]. En el esguince de tobillo, la instrucción reconoce que la radiología ayuda a descartar lesiones óseas mediante las reglas de Ottawa [@G8]. Sin embargo, no habilita al fisioterapeuta para solicitarla, de modo que la persona con una regla positiva necesita otra consulta. La sección 7.4 desarrolla esta consecuencia.
+
+La copia aportada combina una portada de la versión 8, fechada en julio de 2024, con páginas de una edición anterior de marzo de 2023 [@G8]. Su ficha de gestión documental la sitúa en vigor desde febrero de 2023 [@G8]. El anexo F recoge la necesidad de confirmar la versión vigente antes de la entrega.
 
 ### Andalucía, Baleares y Castilla-La Mancha documentan la derivación directa
 
 El Servicio Andaluz de Salud implantó en mayo de 2026 la derivación desde medicina de familia a fisioterapia de AP en toda la comunidad [@C1]. El circuito cubre la lumbalgia, la cervicalgia, la gonalgia, el hombro doloroso, la fascitis plantar y la epicondilitis [@C1]. La Gerencia de Atención Primaria de Mallorca aprobó en 2023 un protocolo de derivación directa para doce patologías de baja complejidad y alta resolución [@C4]. El Servicio de Salud de Castilla-La Mancha publicó en 2022 una guía que permite al médico de familia y al pediatra derivar directamente a fisioterapia [@C7].
 
-## 3.4. Heterogeneidad e inequidad
+## 3.4. Diagnóstico de los modelos vigentes en los documentos profesionales
+
+Dos documentos profesionales aportados para esta revisión analizan los modelos de Galicia y de Madrid. Ambos coinciden en el diagnóstico, aunque difieren en la calidad de sus fuentes.
+
+### La Sociedade Galega de Fisioterapeutas pidió en 2019 la derivación directa
+
+La Sociedade Galega de Fisioterapeutas presentó en febrero de 2019 un análisis de la efectividad clínica y del impacto económico de la fisioterapia en AP [@G9]. Uno de sus autores representaba a la sociedad en el grupo de trabajo del nuevo modelo de AP del SERGAS [@G9]. El análisis revisó cinco grupos de procesos: el dolor lumbar no específico, el dolor cervical, el síndrome subacromial, el dolor persistente y la patología traumatológica y ortopédica de baja complejidad [@G9]. También revisó la evidencia internacional sobre la derivación directa desde medicina de familia y sobre el fisioterapeuta de triaje [@G9].
+
+Su conclusión pedía implantar la derivación directa desde medicina de familia en el nuevo modelo de AP gallego [@G9]. Tres años después, el SERGAS incorporó la fisioterapia a su protocolo de gestión de la demanda, según la fuente secundaria citada en la sección 3.3 [@C12n]. Este documento no establece una relación causal entre ambos hechos, porque ninguna fuente la documenta.
+
+Este documento ha contrastado las referencias de ese análisis con sus registros de PubMed. La mayoría de las citas son correctas, pero algunas afirmaciones no coinciden con el resumen del estudio citado. El anexo F detalla esas discrepancias. Por esa razón, las secciones siguientes citan siempre el estudio original y no el análisis que lo resume.
+
+### Un documento de trabajo madrileño describe tres limitaciones del modelo
+
+Un documento de trabajo sobre la situación de la fisioterapia de AP en la Comunidad de Madrid describe tres limitaciones del modelo madrileño [@G10]. La primera es que el acceso depende sobre todo de la derivación desde medicina de familia, con la excepción de la gestión compartida de la demanda [@G10]. La segunda es que la gestión compartida se ha implantado de forma desigual, y el personal de las unidades de atención al usuario tiene poca experiencia con ella [@G10]. La tercera es que la persona recibe el alta al terminar el tratamiento, sin un seguimiento longitudinal [@G10].
+
+El mismo documento propone tres líneas de mejora [@G10]:
+
+- **Competencias.** Incorporar al fisioterapeuta en el mapa de competencias del Plan de Acción de AP y Comunitaria 2025-2027, con acceso directo en procesos de alta prevalencia y baja discapacidad [@G10; @A8].
+- **Cartera de servicios.** Renombrar el servicio de procesos musculoesqueléticos como «Atención de Procesos Musculoesqueléticos», compartir la gestión de las listas de espera y crear una consulta a demanda para el seguimiento de procesos ya diagnosticados [@G10].
+- **Equipo.** Integrar al fisioterapeuta en el equipo multidisciplinar, con coordinación con medicina de familia, programas de educación para la salud grupales y comunitarios, y seguimiento con herramientas digitales [@G10].
+
+Este documento recoge las tres líneas. La consulta a demanda para procesos ya diagnosticados corresponde a la recidiva de la matriz del anexo C. La coordinación con medicina de familia y los programas de educación para la salud se desarrollan en las secciones 5 y 6. El documento de trabajo contiene además cifras epidemiológicas y de plantilla sin una fuente localizable, y dos de ellas se contradicen entre sí. Este documento no usa esas cifras, y el anexo F las enumera.
+
+## 3.5. Heterogeneidad e inequidad
 
 La misma cartera común se traduce en modelos muy distintos según el territorio. En la mayoría de las comunidades autónomas, la derivación directa desde medicina de familia ya está documentada (tabla 3.2). Sin embargo, solo Galicia y Madrid documentan el acceso directo del ciudadano, y Madrid lo limita a tres procesos [@C12n; @C14n].
 
