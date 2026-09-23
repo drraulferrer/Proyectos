@@ -9,6 +9,7 @@ Tabla D.1. Glosario
 | Artralgias vertebrales mecánicas | Lumbalgia mecánica y cervicalgia mecánica | Dolor de la columna vertebral de origen mecánico, sin signos de alarma ni déficit neurológico progresivo |
 | Autorreferencia o acceso directo del ciudadano | Autocita | Solicitud de cita con fisioterapia sin derivación previa de otro profesional, limitada a los procesos protocolizados |
 | Cribado clínico | Cribado administrativo y triaje administrativo | Valoración que realiza el fisioterapeuta en la primera consulta para detectar signos de alarma y estratificar el proceso |
+| Derivación directa | «Acceso directo» usado para la derivación entre profesionales | Remisión a fisioterapia de AP por un profesional del equipo de AP, sin paso previo por medicina física y rehabilitación. No equivale a la autorreferencia |
 | Dolor persistente | Dolor crónico | Dolor que se mantiene más allá del tiempo habitual de recuperación. Se admite «dolor crónico» solo en nombres propios y citas literales |
 | Gestión de la demanda con motivos parametrizados | Cribado administrativo-clínico | Protocolo por el que el personal administrativo asigna cita según una lista de motivos definida por los clínicos, sin valoración clínica |
 | Interconsulta no presencial | Interconsulta virtual | Consulta entre profesionales sin presencia de la persona atendida. En Madrid se denomina e-consulta |
@@ -36,7 +37,10 @@ Tabla D.2. Siglas
 | CIAP-2 | Clasificación Internacional de Atención Primaria, segunda edición |
 | EFQM | European Foundation for Quality Management |
 | EPOC | Enfermedad pulmonar obstructiva crónica |
+| ETC | Equivalente a tiempo completo |
 | OMS | Organización Mundial de la Salud |
+| PREM | Patient-Reported Experience Measure, medida de la experiencia referida por la persona atendida |
+| PROM | Patient-Reported Outcome Measure, medida de resultado referida por la persona atendida |
 | PRTEE | Patient-Rated Tennis Elbow Evaluation, cuestionario de dolor y función del codo |
 | SERGAS | Servizo Galego de Saúde |
 | SESCAM | Servicio de Salud de Castilla-La Mancha |

@@ -3,7 +3,7 @@
 
 | Campo | Valor |
 |---|---|
-| Versión de la especificación | 0.4 (documento v1.1 ampliado con tres documentos aportados y validado el 23 de septiembre de 2026; decisiones D-1 a D-6 resueltas) |
+| Versión de la especificación | 0.5 (documento v1.2 con las aportaciones de la valoración cántabra, validado el 23 de septiembre de 2026; decisiones D-1 a D-6 resueltas) |
 | Fecha | 23 de septiembre de 2026 |
 | Documento de partida | `Propuesta de Fisioterapia en Atención Primaria para el Ministerio de Sanidad` (borrador con 52 comentarios de revisión) |
 | Destinatario del documento final | Ministerio de Sanidad, Dirección General de Ordenación Profesional y Dirección General de Salud Pública y Equidad en Salud; Comisión de Atención Primaria del Consejo Interterritorial del SNS |
@@ -796,6 +796,15 @@ Resultado de la validación de la versión 1.1: todos los criterios en verde sal
 ### Versión de entrega
 
 El documento se redacta como producto final, sin narrar el proceso de trabajo. El texto no cita el borrador de trabajo ni los comentarios de revisión, el anexo E no muestra el estado interno de cada fuente y el anexo F describe la metodología de selección y verificación. El estado de cotejo sigue registrado en `documento/datos/referencias.csv`, el validador lo sigue informando en el criterio 9.2, y `revision-interna.md` recoge las referencias pendientes, las discrepancias y los datos que faltan.
+
+### Versión 1.2
+
+La versión 1.2 incorpora las aportaciones de la valoración del Colegio de Fisioterapeutas de Cantabria que la versión 1.1 no resolvía. No retira ningún contenido que el documento cántabro no recoja, como la ecografía, la solicitud de radiología simple, la matriz cerrada de procesos o el modelo de dotación.
+
+- Nueva sección 7.6 sobre la prescripción en el Proyecto de Ley de los Medicamentos y Productos Sanitarios; «Lo que no se pide» pasa a ser la 7.7.
+- Nuevo indicador IR-14 de seguridad clínica del acceso directo; IR-8 pasa a medir experiencia y satisfacción.
+- El apartado F.3 del anexo F se elimina y su tabla pasa a `revision-interna.md`. El comentario 14 se comprueba solo por la ausencia de la cifra retirada.
+- Nuevas referencias: Orden CIN/2135/2008 (A16), nota del Ministerio sobre el proyecto de ley (A17) y revisión de guías de Lin y colaboradores (E110).
 
 ## 10. Proceso de producción
 

@@ -10,6 +10,8 @@ Tabla 6.1. Vías de entrada a la fisioterapia de atención primaria
 
 Fuente: anexo C. Los códigos de proceso remiten a la matriz de coherencia.
 
+Este documento distingue dos formas de entrada que a menudo se confunden. En la derivación directa, un profesional del equipo de AP remite a la persona a fisioterapia sin paso previo por medicina física y rehabilitación. En la autorreferencia, o acceso directo del ciudadano, la persona pide cita sin la derivación de ningún profesional. Ambas vías tienen un tratamiento normativo distinto, que expone la sección 7.5.
+
 ## 6.2. Circuito 1. Autorreferencia
 
 La autorreferencia permite a una persona adulta pedir cita con fisioterapia sin derivación previa, solo para los procesos de la tabla 8.1. El circuito tiene cinco pasos:

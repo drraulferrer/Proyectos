@@ -4,17 +4,21 @@ Esta sección define cómo se organiza la fisioterapia dentro del equipo de AP. 
 
 ## 5.1. Principios
 
-El modelo se apoya en seis principios:
+El modelo se apoya en nueve principios:
 
-- **Integración en el equipo.** El fisioterapeuta forma parte del equipo de AP de cada zona básica de salud como miembro de pleno derecho y no como personal de apoyo.
+- **Integración en el equipo.** El fisioterapeuta forma parte del equipo de AP de cada zona básica de salud como miembro de pleno derecho, con una cartera propia, y no como personal de apoyo.
 - **Consulta propia.** Cada zona básica dispone de consulta de fisioterapia con espacio físico propio o compartido de forma estable.
 - **Agenda propia.** La agenda de fisioterapia admite citas por todas las vías de entrada de la sección 6.
 - **Historia clínica compartida.** El fisioterapeuta registra su actividad en la misma historia clínica que el resto del equipo.
+- **Intervenciones activas.** El plan de intervención prioriza la educación, el ejercicio terapéutico, la actividad física y el automanejo. La terapia manual y los medios físicos complementan esas intervenciones cuando están indicados y tienen respaldo en la evidencia. El número de sesiones se ajusta a la necesidad y a la respuesta de cada persona, y no a una pauta fija.
 - **Tiempo protegido.** La jornada reserva tiempo para la actividad comunitaria no clínica, la docencia, la investigación y la coordinación. El modelo de dotación de la sección 9 lo incluye de forma explícita.
+- **Coordinación territorial.** Cada gerencia o área de AP con tamaño suficiente cuenta con una coordinación de fisioterapia, que responde de la cartera, la calidad y la formación (sección 11.4).
 - **Medición común.** Todos los servicios de salud registran los indicadores de la sección 10.
 - **Seguimiento longitudinal.** El alta de un episodio no cierra la relación con la persona. Quien recibe el alta puede volver por autorreferencia si recae un proceso ya diagnosticado.
 
 El último principio responde a una limitación descrita en Madrid [@G12]. Allí, la persona recibe el alta al terminar el proceso y pierde el contacto con el fisioterapeuta hasta una nueva derivación [@G12]. La recidiva de un proceso diagnosticado figura por esa razón entre los motivos de autorreferencia del anexo C.
+
+El principio de intervenciones activas sigue las guías de práctica clínica. Una revisión de guías de alta calidad sobre el dolor musculoesquelético recomienda ofrecer educación y ejercicio, y usar la terapia manual solo como complemento de otros tratamientos [@E110]. Este documento aplica el mismo criterio a los medios físicos. La revisión sobre la intensidad del tratamiento de la sección 4.5 respalda además un número de sesiones ajustado a la necesidad [@E99].
 
 ## 5.2. Niveles de atención comunitaria
 
@@ -43,7 +47,7 @@ Tabla 5.2. Funciones clínicas del fisioterapeuta de atención primaria
 | Primer contacto | Valoración de procesos musculoesqueléticos con estratificación de su complejidad |
 | Cribado clínico | Detección de signos de alarma, riesgo neurológico, sospecha de fractura y enfermedad sistémica |
 | Diagnóstico fisioterapéutico | Dolor, función, movilidad, fuerza, equilibrio y marcha |
-| Plan de intervención | Ejercicio terapéutico, educación, autocuidado y, si procede, terapia manual o medios físicos |
+| Plan de intervención | Ejercicio terapéutico, educación y autocuidado como base, con terapia manual o medios físicos como complemento cuando estén indicados |
 | Prescripción de ejercicio | Individualizada y progresiva |
 | Apoyo a la valoración con ecografía | Uso de la ecografía para valorar y reevaluar, sin informe radiológico (sección 7.3) |
 | Derivación | A medicina de familia, enfermería, urgencias o recursos comunitarios |
@@ -51,7 +55,7 @@ Tabla 5.2. Funciones clínicas del fisioterapeuta de atención primaria
 
 Fuente: elaboración propia.
 
-La función de cribado tiene respaldo en la evidencia sobre práctica avanzada. Una revisión con metaanálisis encontró una concordancia diagnóstica alta entre el fisioterapeuta de práctica avanzada y el médico, con un kappa de 0,76 [@E105]. Esa revisión incluyó también ensayos en los que la atención por fisioterapia redujo el dolor de forma comparable o mayor que la atención habitual [@E105]. El fisioterapeuta de AP de esta propuesta no ejerce como fisioterapeuta de práctica avanzada, pero su primera consulta usa el mismo razonamiento clínico.
+La función de cribado tiene respaldo en la evidencia sobre práctica avanzada. Una revisión con metaanálisis encontró una concordancia diagnóstica alta entre el fisioterapeuta de práctica avanzada y el médico, con un kappa de 0,76 [@E105]. Esa revisión incluyó también ensayos en los que la atención por fisioterapia redujo el dolor de forma comparable o mayor que la atención habitual [@E105]. El fisioterapeuta de AP de esta propuesta no ejerce como fisioterapeuta de práctica avanzada, pero su primera consulta usa el mismo razonamiento clínico. Por eso la autorreferencia exige una formación acreditada en cribado clínico, sin crear una especialidad nueva (sección 11.3).
 
 La derivación a atención hospitalaria se hace a través de medicina de familia, salvo la derivación urgente. La solicitud de radiografía simple se trata en la sección 7.4 como petición de desarrollo normativo.
 
@@ -111,3 +115,5 @@ La tabla incluye dos modalidades que proceden de la experiencia madrileña. La p
 ## 5.6. Herramientas de salud digital
 
 La Estrategia de Salud Digital del SNS ofrece el marco para tres herramientas [@A10]. La teleconsulta permite el seguimiento de personas con dificultades de desplazamiento. El seguimiento remoto de la adherencia refuerza los planes de ejercicio. La prescripción digital de ejercicio facilita la continuidad entre sesiones. Estas herramientas son también una de las tres palancas del ajuste por ruralidad de la sección 9.4. La propuesta del colegio madrileño incluye también plataformas para la gestión de los datos clínicos y el seguimiento longitudinal de los pacientes [@G12].
+
+Las modalidades no presenciales complementan la atención presencial y no la sustituyen. Su uso se ajusta a la necesidad clínica y a la competencia digital de cada persona. La sección 10.4 desagrega los indicadores por modalidad de atención para detectar la brecha digital.

@@ -18,7 +18,7 @@ El modelo estima la carga anual de trabajo de fisioterapia por cada 10.000 habit
 - **Programas grupales y comunitarios.** Es la suma, para cada programa del anexo A, de las ediciones anuales por las horas de fisioterapia de cada edición. El programa de caídas y fragilidad crece en proporción a la población de 65 años o más.
 - **Atención domiciliaria.** Multiplica la población de 65 años o más (S65) por la fracción que necesita fisioterapia en el domicilio (D). El resultado se multiplica por las visitas por persona (Vd) y por las horas de cada visita (td).
 
-La capacidad de un fisioterapeuta a tiempo completo es su jornada anual (J) menos la fracción de tiempo protegido (Tp). La dotación necesaria es la carga total dividida por esa capacidad.
+La capacidad de un fisioterapeuta a tiempo completo es su jornada anual (J) menos la fracción de tiempo protegido (Tp). La dotación necesaria es la carga total dividida por esa capacidad. El resultado se expresa, por tanto, en equivalentes a tiempo completo (ETC). Una plantilla con jornadas parciales necesita más profesionales para cubrir la misma dotación.
 
 Tabla 9.1. Parámetros del modelo de demanda
 
@@ -46,7 +46,7 @@ El número de consultas por persona tampoco tiene un valor fijo. Una revisión d
 
 ## 9.3. Escenarios como fases
 
-Los tres escenarios del modelo se transforman en fases con un horizonte temporal. Las cifras de cada fase salen del modelo y no se fijan de antemano.
+Los tres escenarios del modelo se transforman en fases con un horizonte temporal. Las cifras de cada fase salen del modelo y no se fijan de antemano. Son referencias de planificación en ETC y no umbrales derivados de ensayos clínicos. Cada servicio de salud las ajusta con sus propios datos, como muestra la sección 9.4.
 
 Tabla 9.4. Fases de dotación
 

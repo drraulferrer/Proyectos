@@ -4,7 +4,7 @@ Este archivo no forma parte del documento que se entrega. Recoge lo que la versi
 
 ## 1. Referencias citadas pendientes de cotejo en la fuente original
 
-El entorno de trabajo solo permitió abrir PubMed y, para los documentos del Drive, leerlos completos. Estas 70 referencias están localizadas, con título y dirección oficial, pero nadie ha abierto todavía el documento para confirmar el dato citado. Algunas notas oficiales de la Comunidad de Madrid y el informe XIDE se han contrastado con el extracto del buscador, que no sustituye al cotejo. El número es el de la lista de referencias del documento. Al confirmar cada una, se cambia su estado a `Verificada` en `referencias.csv` y se reconstruye con `construir.sh`.
+El entorno de trabajo solo permitió abrir PubMed y, para los documentos del Drive, leerlos completos. Estas 72 referencias están localizadas, con título y dirección oficial, pero nadie ha abierto todavía el documento para confirmar el dato citado. Algunas notas oficiales de la Comunidad de Madrid y el informe XIDE se han contrastado con el extracto del buscador, que no sustituye al cotejo. El número es el de la lista de referencias del documento. Al confirmar cada una, se cambia su estado a `Verificada` en `referencias.csv` y se reconstruye con `construir.sh`.
 
 | N.º | Id | Tipo | Cita (inicio) |
 |---|---|---|---|
@@ -69,15 +69,17 @@ El entorno de trabajo solo permitió abrir PubMed y, para los documentos del Dri
 | 119 | D14n | estadística | Eurostat. Physicians and physiotherapists in the EU: how many? Eurostat News. Luxemburgo; 18 de agosto de 2023 |
 | 120 | D14 | estadística | Eurostat. Healthcare personnel statistics: dentists, pharmacists and physiotherapists. Statistics Explained [actualización periódica]. Luxem |
 | 121 | D13 | censo | World Physiotherapy. Annual Membership Census 2024. Global report. Londres: World Physiotherapy; 2025 |
-| 137 | C14s | informe oficial | Consejería de Sanidad de la Comunidad de Madrid. Informe del estado de salud de la población de la Comunidad de Madrid 2023. Resumen ejecuti |
-| 138 | G3 | resolución profesional | Consejo General de Colegios de Fisioterapeutas de España. Resolución 1/2023 sobre el empleo de la ecografía en Fisioterapia. Madrid: CGCFE;  |
-| 139 | C14e | nota oficial | Comunidad de Madrid. La Comunidad de Madrid culmina la implantación de la ecografía en los centros de salud, que disponen de 450 aparatos di |
-| 140 | C14f | nota oficial | Comunidad de Madrid. Atención Primaria de la Comunidad de Madrid impulsa la formación en fisioterapia manual e invasiva para mejorar el abor |
-| 142 | G7 | norma | The Ionising Radiation (Medical Exposure) Regulations 2017. SI 2017/1322. Reino Unido |
-| 163 | C14p | estadística | Servicio Madrileño de Salud. Portal estadístico de personal del Servicio Madrileño de Salud [base de datos]. Plantillas orgánicas a 30 de ab |
-| 166 | B9 | estadística | Instituto Nacional de Estadística. Estadística del Padrón Continuo [base de datos]. Madrid: INE |
-| 168 | D7 | nota profesional | Chartered Society of Physiotherapy. CSP urges government to boost FCP roll-out across England [nota]. Londres; 19 de enero de 2022 |
-| 172 | A15 | modelo de gestión | EFQM. Modelo EFQM 2025. Edición en español. Madrid: Club Excelencia en Gestión; 2025 |
+| 138 | C14s | informe oficial | Consejería de Sanidad de la Comunidad de Madrid. Informe del estado de salud de la población de la Comunidad de Madrid 2023. Resumen ejecuti |
+| 139 | A16 | norma | Orden CIN/2135/2008, de 3 de julio, por la que se establecen los requisitos para la verificación de los títulos universitarios oficiales que |
+| 140 | G3 | resolución profesional | Consejo General de Colegios de Fisioterapeutas de España. Resolución 1/2023 sobre el empleo de la ecografía en Fisioterapia. Madrid: CGCFE;  |
+| 141 | C14e | nota oficial | Comunidad de Madrid. La Comunidad de Madrid culmina la implantación de la ecografía en los centros de salud, que disponen de 450 aparatos di |
+| 142 | C14f | nota oficial | Comunidad de Madrid. Atención Primaria de la Comunidad de Madrid impulsa la formación en fisioterapia manual e invasiva para mejorar el abor |
+| 144 | G7 | norma | The Ionising Radiation (Medical Exposure) Regulations 2017. SI 2017/1322. Reino Unido |
+| 146 | A17 | nota oficial | Ministerio de Sanidad. El Gobierno aprueba el proyecto de ley del medicamento: más sostenibilidad, autonomía estratégica y modernización par |
+| 166 | C14p | estadística | Servicio Madrileño de Salud. Portal estadístico de personal del Servicio Madrileño de Salud [base de datos]. Plantillas orgánicas a 30 de ab |
+| 169 | B9 | estadística | Instituto Nacional de Estadística. Estadística del Padrón Continuo [base de datos]. Madrid: INE |
+| 171 | D7 | nota profesional | Chartered Society of Physiotherapy. CSP urges government to boost FCP roll-out across England [nota]. Londres; 19 de enero de 2022 |
+| 175 | A15 | modelo de gestión | EFQM. Modelo EFQM 2025. Edición en español. Madrid: Club Excelencia en Gestión; 2025 |
 
 Prioridad: las citas literales de normas (Ley 44/2003, arts. 4.7 y 7.2.b; RD 1030/2006, apartado 6 del anexo II; RD 601/2019, definición de prescriptor), la acción A.4.4 del Marco Estratégico y el efecto de la Orden SND/454/2025 sobre el apartado 6.
 
@@ -93,7 +95,7 @@ Tabla 1. Afirmaciones de los documentos aportados que no coinciden con su fuente
 | Análisis gallego (G9) | El efecto de la rehabilitación multimodal sobre las pensiones de incapacidad exige empezar en los primeros 60 días de baja | El resumen presenta los 60 días como implicación práctica de los autores y no como resultado medido; además, el programa nacional no redujo los días de baja (E63) | Se matiza (sección 1.3) |
 | Análisis gallego (G9) | El fisioterapeuta de triaje ofrece igual o mejor precisión diagnóstica que los médicos | El resumen de la revisión citada compara con un patrón de referencia como la cirugía, y solo un estudio diagnóstico era de alta calidad (E93) | Se sustituye por una revisión posterior que sí compara con el médico (E105) |
 | Análisis gallego (G9) | Ahorro del 27,3 % con el triaje ortopédico por fisioterapia | El estudio citado no está indexado en PubMed | No se usa (sección 4.4) |
-| Instrucción madrileña (G8) | Versión y fecha de la instrucción | La copia combina una portada de la versión 8 con páginas de una edición anterior | Se cita la versión 8 y se pide confirmar la vigente (apartado F.5) |
+| Instrucción madrileña (G8) | Versión y fecha de la instrucción | La copia combina una portada de la versión 8 con páginas de una edición anterior | Se cita la versión 8 y se pide confirmar la vigente (sección 3 de este archivo) |
 
 Fuente: contraste de los documentos aportados con los registros de PubMed y con su propia bibliografía.
 
@@ -116,6 +118,61 @@ El documento de trabajo madrileño ya no se cita. Su texto procede de la propues
 | Prevalencias de 50 %, 12 %, 8 %, 18 % y 40 %; 6,8 millones de habitantes; 430 centros y 286 zonas; 65 % metropolitano; esperanza de vida | Ninguna fuente localizada en los documentos de origen | No se usan. La estrategia madrileña de atención al dolor está en el Drive (BVCM050712.pdf) por si se quieren buscar las prevalencias |
 | Implantación desigual de la gestión compartida y poca experiencia de las unidades de atención al usuario | El TFM describe escasa difusión a la ciudadanía, carga para las unidades de atención al usuario y huecos sin usar | Se cita el TFM (G13) con su formulación |
 
+## 2 ter. Valoración del Colegio de Fisioterapeutas de Cantabria
+
+El Ilustre Colegio Profesional de Fisioterapeutas de Cantabria envió al Consejo General una valoración del borrador del Consejo y una propuesta de perfil y mapa de competencias (septiembre de 2026). Su valoración comenta el borrador del Consejo, no la versión 1.1 de este documento. La versión 1.2 incorpora sus aportaciones que no estaban ya resueltas y conserva todo lo que el documento cántabro no recoge.
+
+Tabla 2. Aportaciones de Cantabria incorporadas en la versión 1.2
+
+| Aportación | Dónde se incorpora |
+|---|---|
+| Prescripción de fisioterapia como línea de medio plazo, condicionada a la ley de medicamentos | Nueva sección 7.6; secciones 7.7, 11.3, 11.4 y 12; resumen |
+| Coordinación de fisioterapia en cada gerencia o área | Secciones 5.1, 11.4 y 12; resumen |
+| Primer contacto con formación acreditada en cribado | Secciones 5.3, 11.1, 11.3 y 12; resumen |
+| Distinción entre derivación directa y autorreferencia | Sección 6.1 y glosario |
+| Lectura prudente del inciso «previa indicación médica» | Sección 7.5 y apartado Segundo de la sección 12 |
+| Certeza de la evidencia del acceso directo | Sección 4.5, tabla 4.4 y resumen |
+| Indicador de seguridad y desagregación de indicadores | Nuevo indicador IR-14, IR-8 como PREM, sección 10.4, tabla 11.2 y sección 12 |
+| Intervenciones activas, con terapia manual y medios físicos como complemento | Sección 5.1, tabla 5.2 y sección 12 |
+| Orden CIN/2135/2008 y mapa de competencias del Plan de Acción | Sección 7.1 |
+| Teleconsulta como complemento | Sección 5.6 |
+| Dotación en equivalentes a tiempo completo y como referencia de planificación | Secciones 9.2, 9.3 y 12; tabla R.1 |
+| Imagen solo cuando cambia la decisión clínica | Sección 7.4 |
+
+Fuente: comparación de la valoración cántabra con la versión 1.1.
+
+Puntos del documento cántabro que no se incorporan:
+
+- Los datos de Cantabria de 2021 (66,7 % sin actividad comunitaria por presión asistencial y 95,7 % que desearía hacerla) no llevan fuente. Se incorporarán si el colegio cántabro la facilita.
+- La referencia [2] del perfil cántabro sitúa la rehabilitación básica en el apartado 5 del anexo II del Real Decreto 1030/2006. Está en el apartado 6.
+- La afirmación sobre la experiencia de Cantabria en 2026 no lleva fuente. La tabla 3.2 de este documento mantiene Cantabria como «No localizado»; conviene pedir su protocolo al colegio cántabro.
+- El documento cántabro no define el perfil por una lista cerrada de procesos. Este documento mantiene la matriz del anexo C, porque permite codificar y medir el acceso directo.
+- El documento cántabro deja la solicitud de pruebas para una fase posterior. Este documento mantiene la petición de la sección 7.4 con el protocolo compartido mientras tanto.
+
+Verificaciones pendientes de esta incorporación:
+
+- A17. La nota del Ministerio sobre el proyecto de ley se ha contrastado con el extracto del buscador y con prensa especializada, porque el sitio del Ministerio no se abre desde el entorno de trabajo. Conviene cotejar el texto del proyecto publicado en el Boletín Oficial de las Cortes Generales, en particular el alcance de la prescripción del fisioterapeuta.
+- A16. La Orden CIN/2135/2008 se cita por su identificador del BOE (BOE-A-2008-12389), confirmado en el buscador. El texto de las competencias debe cotejarse en el BOE.
+
+## 2 quater. Afirmaciones descartadas por falta de fuente
+
+Este listado estaba en el apartado F.3 del documento hasta la versión 1.1. Se conserva aquí como registro interno.
+
+Tabla 3. Afirmaciones sin fuente localizable y su tratamiento
+
+| Afirmación | Resultado de la búsqueda | Tratamiento en el documento |
+|---|---|---|
+| Resolución del Consejo General de Colegios de Fisioterapeutas de 2007 con ratios de dotación | No encontrada | Las ratios se calculan con el modelo de la sección 9 |
+| Cálculo atribuido a la Chartered Society of Physiotherapy sobre la mitad de las consultas musculoesqueléticas | No encontrado | No se usa |
+| Relación de países con autorreferencia normalizada atribuida a la región europea de World Physiotherapy | No encontrada | Cada país se sostiene con su propia fuente |
+| Solicitud de radiografía simple por fisioterapeutas de AP como práctica vigente en Madrid | No encontrada como norma | Se presenta como petición de desarrollo normativo |
+| Acceso directo del ciudadano en Cataluña | No encontrado | Cataluña figura como modelo de integración en el equipo |
+| Fuente oficial sobre el acceso directo en Nueva Zelanda | No encontrada | No se cita |
+| Estudio español que evalúe el acceso directo en el SNS | No encontrado | Se declara la carencia y se propone evaluar el despliegue |
+| Estudio sobre el coste del triaje ortopédico por fisioterapia con un ahorro del 27,3 % | No indexado en PubMed | No se cita |
+
+Fuente: búsqueda documental realizada para el documento.
+
 ## 3. Documentos y datos que faltan por incorporar
 
 - La versión vigente de la instrucción madrileña de atención a procesos de demanda, porque la copia aportada combina dos ediciones.
@@ -132,3 +189,4 @@ El documento de trabajo madrileño ya no se cita. Su texto procede de la propues
 - Visibilidad del repositorio `drraulferrer/Proyectos`, que es público.
 - Forma de citar la propuesta «Replanteamiento…» (G12): hoy figura como documento del CPFCM por su membrete, pero los metadatos la atribuyen a Raúl Ferrer Peña y Patricia Moreno Carrero. Confirmar también que el TFM de Patricia Moreno Carrero (G13) puede citarse.
 - Revisión del índice en Microsoft Word, porque las páginas se calculan sobre el PDF de LibreOffice.
+- Aprobación por la Junta de Gobierno de la línea de prescripción de la sección 7.6 y de la coordinación de fisioterapia por gerencia o área.

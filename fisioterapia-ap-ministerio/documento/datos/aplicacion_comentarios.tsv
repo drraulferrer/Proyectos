@@ -12,7 +12,7 @@ n	autoria	decision	seccion	debe_aparecer	no_debe_aparecer
 11	RFP	Advertencia metodológica destacada al inicio	4 y 9	Advertencia metodológica\.\*\* Las estadísticas internacionales	
 12	PMC	Tabla de fuentes y sistemas con referencias	4.6	Fuente: Eurostat	
 13	RFP	Cifras europeas con fuente, año y definición	4.6	\| Territorio \| 2021 \| 2023 \| Definición \|	
-14	RFP	Cálculo de la CSP retirado	4 y anexo F	Cálculo atribuido a la Chartered Society	equivalentes aproximadamente al 10 %
+14	RFP	Cálculo de la CSP retirado	4		equivalentes aproximadamente al 10 %
 15	PMC	Ratios derivadas de un modelo de demanda y escenarios como fases	9.2 y 9.3	Fases de dotación	
 16	RFP	Fisioterapeuta itinerante y salud digital en el ajuste por ruralidad	9.4	fisioterapeuta itinerante de área y las herramientas de salud digital	
 17	PMC y RFP	Demora en rehabilitación fuera de los ajustes de dotación	9.4	La demora en rehabilitación hospitalaria no es un factor de ajuste	Zonas con demora en Rehabilitación
@@ -27,7 +27,7 @@ n	autoria	decision	seccion	debe_aparecer	no_debe_aparecer
 26	PMC	Ninguna condición es una intervención	8.2	Ninguna condición de acceso es una intervención	\| Educación y ejercicio terapéutico \|
 27	PMC	Postquirúrgicos excluidos siempre	8.3	Postquirúrgico de cualquier complejidad	
 28	PMC	Menores excluidos del acceso directo	8.3	Menor de edad	
-29	RFP	Sin mención a fisioterapia pediátrica como especialidad	Resumen y 7.6	No propone crear especialidades	Fisioterapia pediátrica
+29	RFP	Sin mención a fisioterapia pediátrica como especialidad	Resumen y 7.7	No propone crear especialidades	Fisioterapia pediátrica
 30	RFP	Sin cribado administrativo, con gestión de la demanda parametrizada	6.2	gestión de la demanda con motivos de consulta parametrizados	cribado administrativo-clínico|cribado inicial administrativo
 31	PMC	Tres situaciones de derivación hospitalaria con la redacción propuesta, adaptada a la Voice DNA	6.5	Se proponen tres situaciones en las que la derivación desde medicina de atención hospitalaria	
 32	PMC	Definición de proceso abordable en AP	6.5	retorno a las actividades diarias con la mayor normalidad posible	
