@@ -1,0 +1,53 @@
+n	autoria	decision	seccion	debe_aparecer	no_debe_aparecer
+1	RFP	Matriz única de coherencia de la que se generan las tablas	Anexo C y 6.8	Anexo C\. Matriz de coherencia	
+2	RFP	Tres niveles de atención comunitaria redefinidos	5.2	Niveles de atención comunitaria	
+3	PMC	Salidas de la consulta de primer contacto hacia tratamiento individual o grupos	5.2	tratamiento individual.{0,60}programa grupal	
+4	RFP	Liderazgo, frecuencia y horas de cada programa grupal	5.4 y anexo A	Liderazgo.{0,400}Ediciones por 10\.000	
+5	PMC	Referencias a los documentos autonómicos	3.2	Tabla 3\.2\. Modelos de fisioterapia de atención primaria por comunidad autónoma	
+6	PMC	Comunidades con acceso directo citadas por orden alfabético y con soporte documental	3.5	solo Galicia y Madrid documentan el acceso directo	Galicia, Cataluña y
+7	RFP	Documento y año de cada comunidad	3.2	Documento de referencia \| Año	
+8	RFP	Noticia de prensa usada solo como fuente secundaria	3.3	como fuente secundaria	
+9	PMC	Documentos primero y noticias solo si no hay documentos	Anexo F	Una noticia de prensa solo se admite como fuente secundaria	
+10	RFP	Carteira del SERGAS citada	3.2	Carteira de servizos de fisioterapia	
+11	RFP	Advertencia metodológica destacada al inicio	4 y 9	Advertencia metodológica\.\*\* Las estadísticas internacionales	
+12	PMC	Tabla de fuentes y sistemas con referencias	4.6	Fuente: Eurostat	
+13	RFP	Cifras europeas con fuente, año y definición	4.6	\| Territorio \| 2021 \| 2023 \| Definición \|	
+14	RFP	Cálculo de la CSP retirado	4		equivalentes aproximadamente al 10 %
+15	PMC	Ratios derivadas de un modelo de demanda y escenarios como fases	9.2 y 9.3	Fases de dotación	
+16	RFP	Fisioterapeuta itinerante y salud digital en el ajuste por ruralidad	9.4	fisioterapeuta itinerante de área y las herramientas de salud digital	
+17	PMC y RFP	Demora en rehabilitación fuera de los ajustes de dotación	9.4	La demora en rehabilitación hospitalaria no es un factor de ajuste	Zonas con demora en Rehabilitación
+18	PMC	Peso de los procesos musculoesqueléticos en las consultas de medicina de familia	1.2	una de cada siete consultas	
+19	RFP	Proceso y condición coherentes y separados	8.2	Condición de acceso \| Vías de entrada	
+20	PMC	Artralgias vertebrales mecánicas y signos de alarma como criterio transversal	8.1 y 8.2	Artralgias vertebrales mecánicas	Lumbalgia mecánica no complicada
+21	PMC	Condición sin déficit neurológico progresivo	8.2	Sin déficit neurológico progresivo	
+22	PMC	Esguince con capacidad de cargar peso y caminar tres o cuatro pasos	8.2	cargar su peso y caminar tres o cuatro pasos	
+23	PMC	Recidivas de procesos diagnosticados por el médico de familia	8.2	Recidiva de un proceso diagnosticado previamente por su médico de familia	
+24	PMC	Cribado de fragilidad por enfermería como condición	6.4 y 6.6	Cribado de fragilidad positivo realizado por enfermería familiar y comunitaria	
+25	PMC	EPOC en fase estable	6.6	EPOC en fase estable	
+26	PMC	Ninguna condición es una intervención	8.2	Ninguna condición de acceso es una intervención	\| Educación y ejercicio terapéutico \|
+27	PMC	Postquirúrgicos excluidos siempre	8.3	Postquirúrgico de cualquier complejidad	
+28	PMC	Menores excluidos del acceso directo	8.3	Menor de edad	
+29	RFP	Sin mención a fisioterapia pediátrica como especialidad	Resumen y 7.7	No propone crear especialidades	Fisioterapia pediátrica
+30	RFP	Sin cribado administrativo, con gestión de la demanda parametrizada	6.2	gestión de la demanda con motivos de consulta parametrizados	cribado administrativo-clínico|cribado inicial administrativo
+31	PMC	Tres situaciones de derivación hospitalaria con la redacción propuesta, adaptada a la Voice DNA	6.5	Se proponen tres situaciones en las que la derivación desde medicina de atención hospitalaria	
+32	PMC	Definición de proceso abordable en AP	6.5	retorno a las actividades diarias con la mayor normalidad posible	
+33	PMC	Definición única de abordable en AP	Anexo D	Proceso abordable en AP	
+34	PMC	Primer contacto con estratificación y sin el adjetivo simples	5.3	estratificación de su complejidad	procesos musculoesqueléticos simples
+35	PMC	Cartera común del RD 1030/2006 analizada	2.2	previa indicación médica	
+36	PMC	Intervención grupal distinta de intervención comunitaria	5.4	La \*\*intervención grupal\*\* es	
+37	PMC	E-consulta de Madrid citada como precedente	5.5	e-consulta	
+38	PMC	Sin el verbo afirma	Todo el documento		\bafirma\b
+39	PMC	Sin la palabra aprovechable	Todo el documento		aprovechable\b
+40	PMC	Sin la palabra aprovechables	Todo el documento		aprovechables
+41	PMC	Aragón, Castilla y León, Extremadura y Madrid en orden alfabético	3.2	\| Aragón \|.*\| Castilla y León \|.*\| Extremadura \|.*\| Madrid \|	
+42	PMC	Cataluña, Galicia y Madrid en orden alfabético	3.2	\| Cataluña \|.*\| Galicia \|.*\| Madrid \|	
+43	RFP	Autonomía legal declarada de forma explícita	7	Este documento pide al Ministerio de Sanidad la habilitación expresa	
+44	PMC	Sesión clínica compartida definida	5.5	Sesión clínica compartida	
+45	RFP	Modelos internacionales con fuentes primarias	4 y anexo F	solo admite fuentes primarias	
+46	RFP	Indicadores en formato EFQM	10	Sistema de evaluación en formato EFQM	
+47	PMC	Cobertura e infraestructura no redundantes	10.3	IE-1 e IE-2 miden cosas distintas	
+48	RFP	Indicador de cobertura de personal e indicador de infraestructura	Anexo B	Cobertura de personal.*Infraestructura de consulta	
+49	Borrador	Introducción sobre papel, derivación oportuna, eficiencia y capacidad resolutiva	1	# 1\. Introducción y justificación	
+50	PMC	Fuentes de la densidad internacional	4.6	World Physiotherapy de 2024 estimó una media mundial	
+51	Revisión de coherencia	Ajuste por incapacidad temporal fundamentado	9.4	Carga de incapacidad temporal musculoesquelética	
+52	RFP	Circuito 1 sin cribado administrativo	6.2	El personal administrativo aplica un protocolo de gestión de la demanda	

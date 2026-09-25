@@ -30,3 +30,6 @@ venv/
 
 # Registros
 *.log
+
+# Scripts de construcción del documento de fisioterapia en AP (no son artefactos)
+!fisioterapia-ap-ministerio/documento/build/
