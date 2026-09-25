@@ -173,6 +173,33 @@ Tabla 3. Afirmaciones sin fuente localizable y su tratamiento
 
 Fuente: búsqueda documental realizada para el documento.
 
+## 2 quinquies. Versión definitiva: comentarios de revisión y ajustes
+
+La versión definitiva parte del texto editado en Word. Ese texto solo se ha tocado en los puntos de la tabla 4 y en las consecuencias de lo eliminado (la sección 7.7 y la tabla 9.3 de sensibilidad).
+
+Tabla 4. Comentarios de revisión y tratamiento
+
+| Comentario | Tratamiento |
+|---|---|
+| Las fuentes de las tablas se limitan a indicar si son de elaboración propia | Todas las líneas de fuente dicen «Fuente: elaboración propia.», salvo las tablas 3.1, 3.3, 4.5 y 11.1, que reproducen datos de una fuente externa no citada dentro de la tabla. En esas cuatro se mantiene solo la fuente. Las notas añadidas a las fuentes se eliminan. |
+| Frase imprecisa sobre la sección 7.5 (sección 2.2) | Se precisa que la sección 7.5 propone cómo salvar el inciso durante la implantación y cómo modificarlo en la cartera común. |
+| ¿Y el porcentaje restante? (sección 3.1) | El 84,8 % y el 10 % del informe monográfico corresponden al conjunto de profesionales de categorías distintas de medicina y enfermería (382.731), no solo a los fisioterapeutas. Se corrige la frase y el anexo E, y se añade el 5,2 % restante. Pendiente de cotejo en el PDF del informe, que no se abre desde el entorno de trabajo. |
+| ¿Unificar «autorreferencia» y «acceso directo»? | El glosario ya los define como sinónimos. Se añade una frase en la nota de método que lo declara. No se sustituyen las apariciones para no alterar el texto. |
+| Habilitación del sistema para pedir radiografías | Sin cambio: no hay fuente citable. La frase describe lo que establece la instrucción madrileña. |
+| Cita del TFM | Sin cambio. |
+| Encabezado «Se pide en este documento» (tabla 4.1) | Pasa a «Solicitud que recoge este documento». |
+| Formación del primer contacto y otras capacidades en Inglaterra (tabla 4.1) | La fila de primer contacto añade la formación acreditada en cribado clínico (sección 11.3). Se añade una fila sobre la prescripción independiente, con la norma británica de 2013 como referencia. La ecografía y las analíticas no se añaden por falta de fuente verificada. |
+| Precisar «Consultas de medicina general» (tabla 4.4) | Pasa a «Consultas de medicina general por problemas musculoesqueléticos», que es lo que miden STEMS-2 y la revisión de Fischer y colaboradores. «Por el mismo proceso» no se usa porque ningún estudio lo mide así. |
+
+Otros ajustes de la versión definitiva:
+
+- Se renumeran las citas por orden de primera aparición. El informe del colegio madrileño sobre la solicitud de radiología simple pasa del número 10 al 140, porque su primera cita estaba en un párrafo que se eliminó.
+- Se añade la referencia The Human Medicines (Amendment) Regulations 2013 (SI 2013/1855), localizada mediante el buscador. Queda pendiente de cotejo en legislation.gov.uk.
+- Las tablas 9.4, 9.5 y 9.6 pasan a 9.3, 9.4 y 9.5. Se retiran las remisiones a la sección 7.7 y a la antigua tabla 9.3.
+- El índice y la lista de referencias recuperan los tabuladores que Word Online había eliminado.
+- Se restauran los estilos de título de la plantilla CPFCM, que Word Online había duplicado, y el idioma del texto pasa de inglés a español.
+- Se eliminan los comentarios de revisión del archivo de entrega.
+
 ## 3. Documentos y datos que faltan por incorporar
 
 - La versión vigente de la instrucción madrileña de atención a procesos de demanda, porque la copia aportada combina dos ediciones.

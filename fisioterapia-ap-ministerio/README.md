@@ -12,7 +12,7 @@ acceso, dotación y evaluación», que amplía y corrige el borrador
 | [SPEC.md](SPEC.md) | Especificación del documento final: propósito, estructura, contenido obligatorio por sección, reglas de estilo y terminología, política de referencias, criterios de aceptación y decisiones pendientes de autoría. |
 | [trazabilidad-comentarios.md](trazabilidad-comentarios.md) | Los 52 comentarios de revisión del borrador y la decisión adoptada para cada uno. |
 | [referencias.md](referencias.md) | Banco de fuentes primarias con estado de verificación, en formato de lectura. |
-| [documento/salida/](documento/salida/) | **Documento v1.2** en Word y PDF: `fisioterapia-ap-sns.docx` y `fisioterapia-ap-sns.pdf`. |
+| [documento/salida/](documento/salida/) | **Versión definitiva para envío** en Word y PDF: `fisioterapia-ap-sns_definitiva.docx` y `.pdf`. La v1.2 generada desde las fuentes sigue en `fisioterapia-ap-sns.docx` y `.pdf`. |
 | [documento/fuente/](documento/fuente/) | Texto fuente de cada sección, en Markdown. |
 | [documento/datos/](documento/datos/) | Fuente única de datos: matriz de coherencia, vías, programas, indicadores, parámetros del modelo, cifras, referencias y comprobaciones de los 52 comentarios. |
 | [documento/build/](documento/build/) | Scripts de modelo, ensamblado, validación y maquetación. |
@@ -30,6 +30,10 @@ Requisitos: Python 3, Node.js, LibreOffice Writer, poppler-utils y la fuente Car
 Para cambiar un proceso, un programa, un indicador o un parámetro del modelo, se edita el
 archivo de `documento/datos/` y se reconstruye: las tablas de las secciones 5, 6, 8, 9 y
 10 y los anexos se regeneran solos.
+
+## Versión definitiva
+
+La redacción final se hizo en Word sobre la v1.2, y `documento/fuente/` no recoge esos cambios. Reconstruir con `construir.sh` genera la v1.2, no la versión definitiva. Sobre el texto final se aplicaron los comentarios de revisión, se renumeraron las citas por orden de aparición y se rehízo el índice. También se restauraron los estilos de la plantilla que Word Online había duplicado. La versión definitiva tiene 92 páginas y cita 178 referencias. El detalle está en la sección 2 quinquies de `revision-interna.md`.
 
 ## Estado de la versión 1.2
 
