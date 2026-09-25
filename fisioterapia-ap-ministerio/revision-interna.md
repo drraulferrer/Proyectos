@@ -199,6 +199,15 @@ Otros ajustes de la versión definitiva:
 - El índice y la lista de referencias recuperan los tabuladores que Word Online había eliminado.
 - Se restauran los estilos de título de la plantilla CPFCM, que Word Online había duplicado, y el idioma del texto pasa de inglés a español.
 - Se eliminan los comentarios de revisión del archivo de entrega.
+- Se corrigen erratas del texto editado en Word:
+  - una frase sin verbo en el resumen («El modelo propuesto combina…»);
+  - «del Instituto Nacional de la Seguridad Social»;
+  - «Se describen los tres niveles»;
+  - «considerar necesaria la citación»;
+  - «signos de alarma»;
+  - «apartado»;
+  - el espacio antes de la cita del RD 1030/2006;
+  - los dobles espacios.
 
 ## 3. Documentos y datos que faltan por incorporar
 
