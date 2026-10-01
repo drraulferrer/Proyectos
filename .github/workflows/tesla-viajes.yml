@@ -1,0 +1,94 @@
+name: tesla-viajes
+
+# Prueba el planificador, regenera los datos de cargadores desde el registro
+# oficial (DGT/MITERD, DATEX II) y publica la web en GitHub Pages.
+# Una vez al día se repite solo para que los datos tengan menos de 24 h.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - tesla-viajes/**
+      - .github/workflows/tesla-viajes.yml
+  pull_request:
+    paths:
+      - tesla-viajes/**
+      - .github/workflows/tesla-viajes.yml
+  schedule:
+    # La DGT publica el fichero hacia las 08:15 UTC.
+    - cron: "7 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tesla-viajes-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  probar:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: tesla-viajes
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Tests del motor y del conversor de datos
+        run: npm test
+      - name: Chromium para la prueba de interfaz
+        run: npx playwright install --with-deps chromium
+      - name: Prueba de la interfaz de punta a punta (sin red)
+        run: npm run test:interfaz
+
+  construir:
+    needs: probar
+    if: ${{ !cancelled() && (needs.probar.result == 'success' || needs.probar.result == 'skipped') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar el registro oficial y generar los datos
+        run: python3 tesla-viajes/scripts/construir_datos.py --salida tesla-viajes/web/datos --min-estaciones 8000
+      - name: Resumen de los datos
+        run: |
+          {
+            echo '### Registro oficial de puntos de recarga'
+            echo '```json'
+            cat tesla-viajes/web/datos/meta.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Preparar el sitio
+        run: |
+          mkdir -p _site
+          cp -r tesla-viajes/web _site/tesla-viajes
+          cat > _site/index.html <<'HTML'
+          <!doctype html>
+          <html lang="es"><meta charset="utf-8"><title>Proyectos</title>
+          <meta http-equiv="refresh" content="0; url=tesla-viajes/">
+          <a href="tesla-viajes/">Tesla Viajes</a></html>
+          HTML
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  desplegar:
+    needs: construir
+    if: ${{ !cancelled() && needs.construir.result == 'success' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}tesla-viajes/
+    steps:
+      - id: despliegue
+        uses: actions/deploy-pages@v4

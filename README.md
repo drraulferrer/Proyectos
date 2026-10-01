@@ -30,6 +30,7 @@ Proyectos/
 |----------|-------------|--------|
 | [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |
 | [skillspector](skillspector/) | Escáner de seguridad de NVIDIA para revisar habilidades (*Skills*) de Claude Code antes de instalarlas: detecta instrucciones ocultas, fugas de datos y código malicioso. | En uso |
+| [tesla-viajes](tesla-viajes/) | Planificador de viajes para Tesla Model Y (60 kWh) desde el navegador del coche: ruta, % de batería en cada cargador, paradas óptimas y medio de pago de cada punto según el registro oficial de la DGT/MITERD. Publicado en [GitHub Pages](https://drraulferrer.github.io/Proyectos/tesla-viajes/). | Nuevo |
 
 ## Notas
 

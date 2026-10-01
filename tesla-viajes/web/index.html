@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tesla Viajes</title>
+  <meta name="description" content="Planificador de viajes para Tesla Model Y RWD (60 kWh) con los puntos de recarga del registro oficial, su medio de pago y el % de batería en cada parada.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b63ce'/%3E%3Cpath d='M18 4 8 18h7l-2 10 11-15h-7z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="estilos.css">
+  <script>
+    // Tema antes de pintar, para no parpadear.
+    try {
+      const a = JSON.parse(localStorage.getItem('tesla-viajes:ajustes:v1') || '{}');
+      if (a.tema === 'claro' || a.tema === 'oscuro') document.documentElement.dataset.theme = a.tema === 'claro' ? 'light' : 'dark';
+    } catch (e) { /* almacenamiento no disponible */ }
+  </script>
+  <script defer src="vendor/leaflet/leaflet.js"></script>
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <header class="cabecera">
+    <div class="marca">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8"/><path d="M18 4 8 18h7l-2 10 11-15h-7z"/></svg>
+      <h1>Tesla Viajes</h1>
+    </div>
+    <p class="estado-datos" id="estado-datos" role="status">Cargando el registro oficial…</p>
+    <div class="acciones-cabecera">
+      <button type="button" class="boton-secundario" id="boton-cerca">Cerca de mí</button>
+      <button type="button" class="boton-icono" id="boton-tema" aria-label="Cambiar entre tema claro y oscuro" title="Tema claro u oscuro">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+      </button>
+      <button type="button" class="boton-icono" id="boton-ajustes" aria-label="Ajustes del coche y del cálculo" title="Ajustes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="disposicion">
+    <section class="panel" aria-label="Planificador de viaje">
+      <form id="formulario" class="formulario" autocomplete="off">
+        <div class="campo">
+          <label for="origen">Origen</label>
+          <div class="fila">
+            <input id="origen" name="origen" placeholder="Mi ubicación (GPS)" enterkeyhint="next">
+            <button type="button" class="boton-icono" id="boton-gps" aria-label="Usar mi ubicación como origen" title="Usar mi ubicación">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="destino">Destino</label>
+          <input id="destino" name="destino" placeholder="Ciudad, dirección o lugar" required enterkeyhint="go">
+        </div>
+        <div class="campo">
+          <label for="soc">Batería ahora</label>
+          <div class="fila fila-soc">
+            <input type="range" id="soc" name="soc" min="1" max="100" step="1" value="80">
+            <output id="soc-valor" for="soc">80 %</output>
+          </div>
+        </div>
+        <div class="campos-dobles">
+          <div class="campo">
+            <label for="salida">Salida</label>
+            <input type="datetime-local" id="salida" name="salida">
+          </div>
+          <div class="campo">
+            <label for="carga-max">Cargar hasta</label>
+            <select id="carga-max" name="carga-max">
+              <option value="70">70 %</option>
+              <option value="80" selected>80 %</option>
+              <option value="90">90 %</option>
+              <option value="100">100 %</option>
+            </select>
+          </div>
+        </div>
+        <fieldset class="filtros">
+          <legend>Cargadores aceptados</legend>
+          <span class="subetiqueta" id="etiqueta-potencia">Potencia mínima para tu coche</span>
+          <div class="segmentado" role="radiogroup" aria-labelledby="etiqueta-potencia">
+            <label><input type="radio" name="potencia" value="50" checked><span>50 kW</span></label>
+            <label><input type="radio" name="potencia" value="100"><span>100 kW</span></label>
+            <label><input type="radio" name="potencia" value="150"><span>150 kW</span></label>
+          </div>
+          <span class="subetiqueta" id="etiqueta-pago">Cómo quiero pagar</span>
+          <div class="segmentado" role="radiogroup" aria-labelledby="etiqueta-pago">
+            <label><input type="radio" name="pago" value="cualquiera" checked><span>Cualquiera</span></label>
+            <label><input type="radio" name="pago" value="tarjeta"><span>Tarjeta</span></label>
+            <label><input type="radio" name="pago" value="app"><span>App</span></label>
+          </div>
+          <label class="interruptor"><input type="checkbox" name="solo-tesla" id="solo-tesla"><span>Solo Superchargers de Tesla</span></label>
+        </fieldset>
+        <button type="submit" class="boton-principal" id="boton-planificar">Planificar viaje</button>
+      </form>
+
+      <div id="avisos" class="avisos" role="status" aria-live="polite"></div>
+      <div id="alternativas" class="alternativas" hidden></div>
+
+      <section id="resultado" class="resultado" hidden aria-label="Plan de viaje">
+        <div class="resumen" id="resumen"></div>
+        <figure class="grafica">
+          <svg id="grafica-soc" role="img" aria-label="Batería prevista a lo largo de la ruta"></svg>
+          <figcaption id="leyenda-grafica"></figcaption>
+        </figure>
+        <h2 class="titulo-seccion">Paradas</h2>
+        <ol id="paradas" class="paradas"></ol>
+        <h2 class="titulo-seccion">Cargadores en la ruta <span id="cuenta-en-ruta" class="cuenta"></span></h2>
+        <div class="segmentado chips" id="filtro-lista" role="radiogroup" aria-label="Filtrar la lista">
+          <label><input type="radio" name="lista" value="todos" checked><span>Todos</span></label>
+          <label><input type="radio" name="lista" value="150"><span>150+ kW</span></label>
+          <label><input type="radio" name="lista" value="tarjeta"><span>Tarjeta</span></label>
+          <label><input type="radio" name="lista" value="tesla"><span>Tesla</span></label>
+        </div>
+        <ul id="en-ruta" class="lista-cargadores"></ul>
+      </section>
+
+      <section id="cerca" class="resultado" hidden aria-label="Cargadores cerca de mí">
+        <h2 class="titulo-seccion">Cerca de ti <span id="cuenta-cerca" class="cuenta"></span></h2>
+        <ul id="lista-cerca" class="lista-cargadores"></ul>
+      </section>
+
+      <footer class="pie" id="pie">
+        <p>Cargadores: registro oficial de puntos de recarga del MITERD publicado por la DGT (CC BY 4.0). Rutas: OSRM.
+          Altitud y tiempo: Open-Meteo. Mapa y búsqueda: © colaboradores de OpenStreetMap.</p>
+        <p>El % de batería es una estimación física (velocidad, desnivel, temperatura, viento y lluvia). La disponibilidad en tiempo real y los precios no están en el registro.</p>
+      </footer>
+    </section>
+
+    <section class="mapa-contenedor" aria-label="Mapa">
+      <div id="mapa"></div>
+      <p class="pista-mapa" id="pista-mapa" hidden>Acerca el mapa para ver los cargadores rápidos</p>
+    </section>
+  </main>
+
+  <aside id="ficha" class="ficha" hidden aria-labelledby="ficha-titulo">
+    <div class="ficha-contenido" id="ficha-contenido"></div>
+  </aside>
+
+  <dialog id="ajustes" class="dialogo" aria-labelledby="ajustes-titulo">
+    <form method="dialog" id="form-ajustes">
+      <h2 id="ajustes-titulo">Ajustes</h2>
+      <p class="nota">Valores para un Tesla Model Y RWD con batería LFP de 60 kWh nominales. Ajusta el consumo si tu coche gasta más o menos que la estimación.</p>
+      <div class="rejilla-ajustes">
+        <label>Batería utilizable (kWh)<input type="number" name="capacidadUtilKwh" min="40" max="80" step="0.5"></label>
+        <label>Velocidad en autovía (km/h)<input type="number" name="velocidadMaxKmh" min="80" max="140" step="5"></label>
+        <label>Ajuste de consumo (%)<input type="number" name="factorConsumoPct" min="70" max="140" step="1"></label>
+        <label>Ocupantes y equipaje (kg)<input type="number" name="cargaKg" min="0" max="600" step="10"></label>
+        <label>Reserva al llegar a un cargador (%)<input type="number" name="reservaParadaPct" min="3" max="40" step="1"></label>
+        <label>Reserva al llegar al destino (%)<input type="number" name="reservaDestinoPct" min="3" max="60" step="1"></label>
+        <label>Distancia máxima a la ruta (km)<input type="number" name="radioKm" min="0.5" max="15" step="0.5"></label>
+        <label>Temperatura si no hay previsión (°C)<input type="number" name="temperaturaDefecto" min="-15" max="45" step="1"></label>
+      </div>
+      <label class="interruptor"><input type="checkbox" name="respetarHorario"><span>Descartar cargadores cerrados a la hora de llegada</span></label>
+      <div class="botones-dialogo">
+        <button type="button" class="boton-secundario" id="restaurar-ajustes">Valores de fábrica</button>
+        <button type="submit" class="boton-principal" value="guardar">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <noscript><p class="sin-js">Esta herramienta necesita JavaScript para calcular rutas.</p></noscript>
+</body>
+</html>
