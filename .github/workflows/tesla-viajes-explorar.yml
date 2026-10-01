@@ -15,74 +15,61 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Descargar XML DATEX II (DGT/MITERD)
+      - name: Listado del directorio DATEX II del MITERD en la DGT
         run: |
-          curl -sS --compressed -m 600 -D cabeceras.txt -H "Origin: https://example.org" \
-            -o electrolineras.xml \
-            https://infocar.dgt.es/datex2/v3/miterd/EnergyInfrastructureTablePublication/electrolineras.xml
-          cat cabeceras.txt
-          ls -la electrolineras.xml
-          head -c 3000 electrolineras.xml; echo
-
-      - name: Analizar estructura
-        run: python3 tesla-viajes/scripts/explorar_datex.py electrolineras.xml
-
-      - name: Sondear publicaciones dinámicas y catálogo CKAN del NAP
-        run: |
-          for u in \
-            https://infocar.dgt.es/datex2/v3/miterd/EnergyInfrastructureStatusPublication/electrolineras.xml \
-            https://infocar.dgt.es/datex2/v3/miterd/EnergyInfrastructureStatusPublication/ \
-            https://infocar.dgt.es/datex2/v3/miterd/ ; do
-            echo "== $u"; curl -sS -m 60 -o /tmp/r -w "HTTP %{http_code} %{content_type} %{size_download}B\n" "$u"; head -c 600 /tmp/r; echo
+          curl -sS -m 60 https://infocar.dgt.es/datex2/v3/miterd/ \
+            | python3 -c "import re,sys,html; t=sys.stdin.read(); print('\n'.join(html.unescape(x) for x in re.findall(r'href=\"([^\"]+)\"', t)))"
+          for d in EnergyInfrastructureTablePublication; do
+            echo "== $d"
+            curl -sS -m 60 "https://infocar.dgt.es/datex2/v3/miterd/$d/" \
+              | python3 -c "import re,sys,html; t=sys.stdin.read(); print('\n'.join(html.unescape(x) for x in re.findall(r'href=\"([^\"]+)\"', t)))"
           done
-          echo "== CKAN package_show"
-          curl -sS -m 60 "https://nap.dgt.es/api/3/action/package_show?id=puntos-de-recarga-electrica-para-vehiculos" | head -c 8000; echo
-          echo "== CKAN package_search recarga"
-          curl -sS -m 60 "https://nap.dgt.es/api/3/action/package_search?q=recarga&rows=20" \
-            | python3 -c "import json,sys; d=json.load(sys.stdin); [print(p['name'], '|', p.get('title'), '|', [r.get('url') for r in p.get('resources',[])]) for p in d['result']['results']]" || true
 
-      - name: Sondear API pública de Mapa REVE
+      - name: CSV de RIPREE (MITECO)
         run: |
-          for u in https://www.mapareve.es/api-contacto https://www.mapareve.es/ ; do
-            echo "== $u"
-            curl -sSL -m 60 "$u" -o /tmp/p.html -w "HTTP %{http_code}\n"
-            python3 - <<'PY'
-          import re, html
-          t = open('/tmp/p.html', encoding='utf-8', errors='replace').read()
-          enlaces = sorted(set(re.findall(r'(?:href|src)="([^"]+)"', t)))
-          print('ENLACES:', [e for e in enlaces if 'api' in e.lower() or 'doc' in e.lower() or e.endswith('.js')][:60])
-          texto = re.sub(r'<script.*?</script>|<style.*?</style>', ' ', t, flags=re.S)
-          texto = html.unescape(re.sub(r'<[^>]+>', ' ', texto))
-          print(re.sub(r'\s+', ' ', texto)[:4000])
+          curl -sSL -m 300 -D cab.txt -o ripree.csv "https://energia.serviciosmin.gob.es/Ripree/ExportarInstalaciones/Export" || true
+          cat cab.txt
+          ls -la ripree.csv || true
+          file ripree.csv || true
+          head -c 4000 ripree.csv | iconv -f latin1 -t utf-8 2>/dev/null || head -c 4000 ripree.csv
+          echo; wc -l ripree.csv || true
+
+      - name: Recurso XML del catálogo MITECO
+        run: |
+          curl -sSL -m 60 "https://catalogo.datosabiertos.miteco.gob.es/catalogo/es/dataset/6ee8d46f-93bd-478f-8e29-3ba4f6d8405c/resource/8b73c0ea-9244-4a2b-a152-ba41fbd16b0b" \
+            | python3 -c "import re,sys,html; t=sys.stdin.read(); print('\n'.join(sorted(set(html.unescape(x) for x in re.findall(r'href=\"([^\"]+)\"', t) if 'download' in x or x.endswith(('.xml','.csv','.zip')) or 'Export' in x))))"
+
+      - name: URLs de API en el bundle de Mapa REVE
+        run: |
+          curl -sSL -m 60 https://www.mapareve.es/ -o reve.html
+          for js in $(grep -oE '/assets/[^"]+\.js' reve.html | sort -u); do
+            curl -sSL -m 60 "https://www.mapareve.es$js" -o b.js
+            echo "== $js $(wc -c < b.js)B"
+            grep -oE 'https?://[a-zA-Z0-9./_-]+' b.js | grep -viE 'w3.org|reactjs|mozilla|github|npm|fb.me|googleapis|gstatic|openstreetmap|mapbox|leaflet|apple.com|google.com|schema' | sort | uniq -c | sort -rn | head -40
+            grep -oE '.{60}(api-contacto|x-api-key|apiKey|/api/v[0-9]|swagger|openapi).{80}' b.js | head -20
+          done
+
+      - name: Ruta OSRM con anotaciones (Madrid → Valencia)
+        run: |
+          curl -sS -m 60 -o osrm.json "https://router.project-osrm.org/route/v1/driving/-3.7038,40.4168;-0.3763,39.4699?overview=full&geometries=polyline6&steps=true&annotations=distance,duration,speed"
+          ls -la osrm.json
+          python3 - <<'PY'
+          import json, collections
+          d = json.load(open('osrm.json'))
+          r = d['routes'][0]
+          print('distancia km', r['distance']/1000, 'duración h', r['duration']/3600)
+          ann = r['legs'][0]['annotation']
+          sp = collections.Counter(round(s*3.6/5)*5 for s in ann['speed'])
+          dist_by_speed = collections.Counter()
+          for s, dd in zip(ann['speed'], ann['distance']):
+              dist_by_speed[round(s*3.6/5)*5] += dd/1000
+          print('km por velocidad OSRM (km/h):', sorted((k, round(v,1)) for k, v in dist_by_speed.items()))
+          clases = collections.Counter()
+          for st in r['legs'][0]['steps']:
+              for it in st.get('intersections', []):
+                  for c in it.get('classes', []):
+                      clases[c] += 1
+          print('clases', clases)
+          print('pasos', len(r['legs'][0]['steps']), 'segmentos', len(ann['speed']))
+          print('ejemplo paso', json.dumps(r['legs'][0]['steps'][3])[:1500])
           PY
-          done
-
-      - name: Catálogo datos.gob.es (RIPREE)
-        run: |
-          curl -sS -m 60 "https://datos.gob.es/apidata/catalog/dataset/e05068001-puntos-de-recarga-de-vehiculos-electricos.json" \
-            | python3 -c "
-          import json,sys
-          d=json.load(sys.stdin)
-          for it in d['result']['items']:
-              print('TITULO', it.get('title'))
-              print('MODIFICADO', it.get('modified'))
-              dist = it.get('distribution', [])
-              dist = dist if isinstance(dist, list) else [dist]
-              for x in dist:
-                  print('DIST', x.get('format'), x.get('accessURL'), x.get('title'))
-          " || true
-
-      - name: Cabeceras CORS de servicios del navegador
-        run: |
-          probar() { echo "== $1"; curl -sS -m 40 -r 0-3000 -o /tmp/b -D - -H "Origin: https://drraulferrer.github.io" "$1" | grep -iE '^(HTTP|access-control|content-type|retry-after|x-ratelimit)' ; head -c 300 /tmp/b; echo; }
-          probar "https://router.project-osrm.org/route/v1/driving/-3.7038,40.4168;-0.3763,39.4699?overview=false&annotations=maxspeed"
-          probar "https://routing.openstreetmap.de/routed-car/route/v1/driving/-3.7038,40.4168;-0.3763,39.4699?overview=false"
-          probar "https://api.open-meteo.com/v1/elevation?latitude=40.4,39.5&longitude=-3.7,-0.4"
-          probar "https://api.open-meteo.com/v1/forecast?latitude=40.4,39.5&longitude=-3.7,-0.4&hourly=temperature_2m,wind_speed_10m,wind_direction_10m&forecast_days=1"
-          probar "https://nominatim.openstreetmap.org/search?q=Valencia&format=json&limit=1&countrycodes=es"
-          probar "https://photon.komoot.io/api/?q=Valencia&limit=1&lang=es"
-          probar "https://api.openchargemap.io/v3/poi?output=json&countrycode=ES&maxresults=1"
-          probar "https://tile.openstreetmap.org/6/31/24.png"
-          probar "https://infocar.dgt.es/datex2/v3/miterd/EnergyInfrastructureTablePublication/electrolineras.xml" || true
