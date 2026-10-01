@@ -174,6 +174,15 @@ function iniciarMapa() {
   estado.capas.exploracion = L.layerGroup().addTo(mapa);
   estado.capas.viaje = L.layerGroup().addTo(mapa);
   mapa.on('moveend', pintarExploracion);
+  const leyenda = L.control({ position: 'bottomleft' });
+  leyenda.onAdd = () => {
+    const div = L.DomUtil.create('div', 'leyenda-mapa');
+    div.innerHTML = [
+      ['rapida', '150 kW o más'], ['media', '50 a 149 kW'], ['lenta', 'menos de 50 kW'], ['tesla', 'Supercharger'],
+    ].map(([clase, texto]) => `<span><i style="background: var(--${clase})"></i>${texto}</span>`).join('');
+    return div;
+  };
+  leyenda.addTo(mapa);
 }
 
 function colorPotencia(e) {
@@ -263,10 +272,11 @@ function ofrecerAlternativas(lugares) {
   if (!conOtras.length) { caja.hidden = true; return; }
   caja.replaceChildren();
   for (const l of conOtras) {
-    const p = document.createElement('p');
-    p.textContent = `${l.cual === 'origen' ? 'Origen' : 'Destino'}: «${l.nombre}». ¿Era otro?`;
-    caja.append(p);
-    for (const alt of l.alternativas.slice(0, 3)) {
+    const detalles = document.createElement('details');
+    const resumen = document.createElement('summary');
+    resumen.textContent = `${l.cual === 'origen' ? 'Origen' : 'Destino'}: ${l.nombre.split(',').slice(0, 2).join(',')}. ¿Era otro sitio?`;
+    const opciones = document.createElement('div');
+    for (const alt of l.alternativas.slice(0, 4)) {
       const b = document.createElement('button');
       b.type = 'button';
       b.className = 'boton-secundario';
@@ -277,8 +287,10 @@ function ofrecerAlternativas(lugares) {
         $(`#${l.cual}`).value = nombre;
         planificarViaje();
       });
-      caja.append(b);
+      opciones.append(b);
     }
+    detalles.append(resumen, opciones);
+    caja.append(detalles);
   }
   caja.hidden = false;
 }
@@ -354,6 +366,7 @@ async function planificarViaje(evento) {
     ctx.avisos.forEach((a) => avisar(a));
     ofrecerAlternativas([origen, destino]);
     pintarViaje(viaje);
+    $('#avisos').scrollIntoView({ block: 'start', behavior: 'smooth' });
   } catch (e) {
     avisar(e.message, 'error');
   } finally {
@@ -389,25 +402,43 @@ function pintarViaje(viaje) {
   }
 }
 
+function nombreCorto(lugar) {
+  const partes = String(lugar.nombre || '').split(',').map((x) => x.trim()).filter(Boolean);
+  if (!partes.length) return 'Origen';
+  return partes[0].length < 4 || /^\d+$/.test(partes[0]) ? partes.slice(0, 2).join(', ') : partes[0];
+}
+
 function pintarResumen(viaje) {
   const { plan, ruta, perfil, origen, destino, salida, ctx } = viaje;
   const distanciaKm = ruta.acum.at(-1) / 1000;
   const energia = perfil.energia.at(-1);
   const whKm = (energia * 1000) / Math.max(1, distanciaKm);
   const reserva = viaje.opciones.reservaDestinoPct;
-  const llegadaSoc = plan.factible ? plan.socLlegada : Math.round(viaje.soc.at(-1));
-  const clima = ctx.temperaturaMin !== undefined
-    ? ` · ${nf0.format(ctx.temperaturaMin)}–${nf0.format(ctx.temperaturaMax)} °C`
-    : '';
+  const sinCargar = Math.round(viaje.soc.at(-1));
+  let cifra, etiqueta, bajo;
+  if (plan.factible) {
+    cifra = `${nf0.format(plan.socLlegada)} %`;
+    etiqueta = `al llegar, a las ${hora(plan.llegada)}`;
+    bajo = plan.socLlegada < reserva;
+  } else {
+    cifra = sinCargar > 0 ? `≈ ${nf0.format(sinCargar)} %` : 'No llegas';
+    etiqueta = sinCargar > 0 ? 'al llegar sin cargar' : 'sin cargar por el camino';
+    bajo = true;
+  }
+  let clima = '';
+  if (ctx.temperaturaMin !== undefined) {
+    const min = Math.round(ctx.temperaturaMin), max = Math.round(ctx.temperaturaMax);
+    clima = ` · ${min === max ? `${min}` : `${min} a ${max}`} °C`;
+  }
   $('#resumen').innerHTML = `
-    <p class="ruta-texto">${esc(origen.nombre)} → ${esc(destino.nombre)}<br>Salida ${hora(salida)}${clima}</p>
-    <div class="dato destacado${llegadaSoc < reserva ? ' bajo' : ''}">
-      <span class="valor">${plan.factible ? '' : '≈ '}${nf0.format(llegadaSoc)} %</span>
-      <span class="etiqueta">${plan.factible ? `al llegar, ${hora(plan.llegada)}` : 'al llegar sin cargar'}</span>
+    <p class="ruta-texto">${esc(nombreCorto(origen))} → ${esc(nombreCorto(destino))} · salida ${hora(salida)}${clima}</p>
+    <div class="dato destacado${bajo ? ' bajo' : ''}${/\d/.test(cifra) ? '' : ' texto'}">
+      <span class="valor">${cifra}</span>
+      <span class="etiqueta">${etiqueta}</span>
     </div>
     <div class="dato">
       <span class="valor">${plan.factible ? duracion(plan.duracionMin) : '—'}</span>
-      <span class="etiqueta">${plan.factible ? `total · ${duracion(plan.minutosCarga)} cargando` : 'sin plan posible'}</span>
+      <span class="etiqueta">${plan.factible ? `en total, ${duracion(plan.minutosCarga)} cargando` : 'sin plan posible'}</span>
     </div>
     <div class="dato">
       <span class="valor">${nf0.format(distanciaKm)} km</span>
@@ -486,7 +517,7 @@ function pintarParadas(viaje) {
   li.className = 'parada';
   li.innerHTML = `
     <span class="numero" aria-hidden="true">●</span>
-    <span class="nombre">${esc(viaje.destino.nombre.split(',')[0])}</span>
+    <span class="nombre">${esc(nombreCorto(viaje.destino))}</span>
     <span class="bateria">${plan.socLlegada} % <small>llegada ${hora(plan.llegada)}</small></span>`;
   ol.append(li);
 }
@@ -556,7 +587,7 @@ async function cercaDeMi() {
       li.tabIndex = 0;
       li.innerHTML = `
         <span class="nombre">${esc(nombreVisible(e))}</span>
-        <span class="llegada">${nf0.format(llegada)} %<small>≈ al llegar</small></span>
+        <span class="llegada${llegada < estado.ajustes.reservaParadaPct ? ' baja' : ''}">${llegada < 0 ? '—' : `${nf0.format(llegada)} %`}<small>${llegada < 0 ? 'no llegas' : '≈ al llegar'}</small></span>
         <span class="sub">${nf1.format(km)} km · ${lineaPotencia(e)}</span>
         <span class="pagos">${chipsPago(e)}</span>`;
       const abrir = () => { abrirFicha(e, { socLlegada: llegada }); estado.mapa.flyTo([e.lat, e.lon], 14); };
@@ -613,7 +644,7 @@ function abrirFicha(e, extra = {}) {
       ${e.compatibleDc ? `<p class="cifra-grande">${nf0.format(e.kwCcsEfectiva)} kW</p>
       <p>${e.puntosCcs} ${e.puntosCcs === 1 ? 'punto' : 'puntos'} CCS2 en corriente continua. ${e.kwCcs > e.kwCcsEfectiva + 5 ? `El punto declara ${nf0.format(e.kwCcs)} kW, pero su intensidad máxima limita la potencia con una batería de ~370 V.` : ''}</p>`
       : `<p>Sin carga rápida CCS2. ${e.puntosAc ? `Corriente alterna hasta ${nf1.format(e.kwAcEfectiva)} kW${e.acNecesitaCable ? ', con tu propio cable Tipo 2' : ''}.` : ''}</p>`}
-      <ul class="lista-medios">${resumenConectores(e).map((t) => `<li><span></span><div>${esc(t)}</div></li>`).join('')}</ul>
+      <ul class="lista-conectores">${resumenConectores(e).map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
     </div>
     <div class="bloque">
       <h3>Horario</h3>
@@ -623,7 +654,7 @@ function abrirFicha(e, extra = {}) {
       <h3>Dónde</h3>
       <p>${esc(e.direccion)}${e.cp ? `, ${esc(e.cp)}` : ''} ${esc(e.municipio)}${e.provincia && e.provincia !== e.municipio ? ` (${esc(e.provincia)})` : ''}</p>
       <p class="nota">${esc(TIPOS_SITIO[e.tipo] || '')}${e.servicios.length ? `${e.tipo ? ' · ' : ''}${e.servicios.map((s) => esc(SERVICIOS[s])).join(', ')}` : ''}</p>
-      <p class="nota">${nf1.format(e.lat)}, ${nf1.format(e.lon)} · <span>${e.lat.toFixed(5)}, ${e.lon.toFixed(5)}</span></p>
+      <p class="nota">Coordenadas: ${e.lat.toFixed(5)}, ${e.lon.toFixed(5)}</p>
     </div>
     <div class="bloque">
       <h3>Disponibilidad en tiempo real</h3>

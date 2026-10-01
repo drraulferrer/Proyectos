@@ -145,13 +145,22 @@ test('estaciones: horarios, incluidos los tramos nocturnos', () => {
   const electra = porNombre('ELECTRA ALTO MIÑO');
   assert.equal(abiertaEn(electra, new Date(2026, 8, 28, 10, 0)), true); // lunes
   assert.equal(abiertaEn(electra, new Date(2026, 8, 28, 15, 0)), false);
-  assert.equal(abiertaEn(electra, new Date(2026, 9, 3, 10, 0)), false); // sábado
-  assert.equal(horarioLegible(electra), 'L-V 08:00-14:00 · S-D cerrado');
+  assert.equal(abiertaEn(electra, new Date(2026, 9, 3, 10, 0)), null); // sábado «00:00-00:00»
+  assert.equal(horarioLegible(electra), 'L-V 08:00-14:00 · S-D sin dato');
   const raros = porNombre('Casos raros & potencia en kW');
   assert.equal(abiertaEn(raros, new Date(2026, 9, 2, 23, 0)), true); // viernes 23 h
   assert.equal(abiertaEn(raros, new Date(2026, 9, 3, 1, 30)), true); // sábado 1:30, sigue el tramo
-  assert.equal(abiertaEn(raros, new Date(2026, 9, 3, 3, 0)), false);
+  assert.equal(abiertaEn(raros, new Date(2026, 9, 3, 3, 0)), null); // sábado sin dato
+  assert.equal(abiertaEn(raros, new Date(2026, 9, 2, 20, 0)), false); // viernes antes de las 22
   assert.equal(abiertaEn({ horario: null }, new Date()), null);
+});
+
+test('estaciones: un horario que contradice el «24/7» no la da por cerrada', () => {
+  const madrid = porNombre('Madrid_1');
+  assert.equal(madrid.horarioDudoso, true);
+  assert.equal(abiertaEn(madrid, new Date(2026, 8, 30, 15, 0)), true); // miércoles 15 h
+  assert.equal(abiertaEn(madrid, new Date(2026, 8, 30, 20, 0)), null); // fuera de tramo, pero dudoso
+  assert.match(horarioLegible(madrid), /también la marca como 24 h/);
 });
 
 test('planificador: viaje sin paradas si la batería da de sobra', () => {
@@ -203,6 +212,19 @@ test('planificador: explica qué tramo no tiene cobertura', () => {
   const plan = planificar({ ruta, perfil, candidatos: estacionesEnRuta(lista, ruta), socInicial: 90 });
   assert.equal(plan.factible, false);
   assert.match(plan.motivo, /km 100 y el 4(49|50)/);
+});
+
+test('planificador: saliendo en reserva va primero al cargador más cercano', () => {
+  const ruta = rutaRecta(300);
+  const perfil = perfilRuta(ruta, {});
+  const lista = [estacionSintetica('cerca', 12), estacionSintetica('lejos', 150)];
+  const plan = planificar({ ruta, perfil, candidatos: estacionesEnRuta(lista, ruta), socInicial: 8 });
+  assert.equal(plan.factible, true, plan.motivo);
+  assert.equal(plan.paradas[0].estacion.id, 'cerca');
+  assert.ok(plan.paradas[0].socLlegada >= OPCIONES_PLAN.margenTramoPct);
+  const imposible = planificar({ ruta, perfil, candidatos: estacionesEnRuta([estacionSintetica('lejos', 150)], ruta), socInicial: 8 });
+  assert.equal(imposible.factible, false);
+  assert.match(imposible.motivo, /Zunder en .* km 150/);
 });
 
 test('planificador: filtros de pago y de Superchargers', () => {

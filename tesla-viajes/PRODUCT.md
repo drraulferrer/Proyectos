@@ -22,8 +22,9 @@ registro oficial con menos de 24 h.
 ## Qué queda fuera (y por qué)
 
 - **Disponibilidad en tiempo real.** No existe hoy una fuente abierta: la DGT
-  solo publica el registro estático y la API de Mapa REVE exige solicitar clave
-  y limita a 5 peticiones por hora. Se dice claramente en cada ficha.
+  solo publica el registro estático y la API de Mapa REVE exige pedir clave por
+  formulario, con un límite citado de 5 peticiones por hora. Se dice claramente
+  en cada ficha.
 - **Precios.** El registro oficial no los incluye; inventarlos sería peor que no
   mostrarlos.
 - **Leer la batería del coche.** Exigiría la Fleet API de Tesla (registro de

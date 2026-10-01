@@ -157,6 +157,11 @@ export function planificar({ ruta, perfil, candidatos, socInicial, salida = new 
     return { necesario, pico, segundos };
   }
 
+  // Si se sale con poca batería, al primer cargador se puede llegar con menos
+  // reserva (nunca por debajo del margen de seguridad): es mejor ir a cargar
+  // que no tener plan.
+  const s0Real = Math.max(0, Math.min(100, socInicial));
+  const reservaPrimerTramo = Math.min(op.reservaParadaPct, Math.max(op.margenTramoPct, s0Real - 5));
   const mejorTiempo = nodos.map(() => new Float64Array(101).fill(Infinity));
   const previo = nodos.map(() => new Array(101).fill(null));
   const socMaxCerrado = new Float64Array(nodos.length).fill(-1);
@@ -177,7 +182,7 @@ export function planificar({ ruta, perfil, candidatos, socInicial, salida = new 
     const tope = puedeCargar ? Math.max(s, op.cargaMaxPct) : s;
     for (let j = i + 1; j <= ultimo; j++) {
       const { necesario, pico, segundos } = tramo(i, j);
-      const reserva = j === ultimo ? op.reservaDestinoPct : op.reservaParadaPct;
+      const reserva = j === ultimo ? op.reservaDestinoPct : i === 0 ? reservaPrimerTramo : op.reservaParadaPct;
       const requerido = Math.max(necesario + reserva, pico + op.margenTramoPct);
       if (requerido > tope) {
         // Más lejos solo puede costar más salvo bajadas largas: se sigue
@@ -204,7 +209,7 @@ export function planificar({ ruta, perfil, candidatos, socInicial, salida = new 
     }
   }
 
-  if (!final) return { factible: false, ...diagnostico(nodos, tramo, socInicial, op) };
+  if (!final) return { factible: false, ...diagnostico(nodos, tramo, socInicial, { ...op, reservaPrimerTramo }) };
 
   // Reconstrucción del camino.
   const pasos = [];
@@ -249,17 +254,26 @@ export function planificar({ ruta, perfil, candidatos, socInicial, salida = new 
   };
 }
 
+function nombreParaMotivo(nodo) {
+  const e = nodo.estacion;
+  return e.esTesla ? `el Supercharger de ${e.municipio || e.nombre}` : `${e.operador.marca} en ${e.municipio || e.nombre}`;
+}
+
 function diagnostico(nodos, tramo, socInicial, op) {
   const ultimo = nodos.length - 1;
   // ¿Llega al menos al primer cargador?
   const alcanceInicial = nodos.findIndex((n, k) => k > 0 &&
-    Math.max(tramo(0, k).necesario + (k === ultimo ? op.reservaDestinoPct : op.reservaParadaPct),
+    Math.max(tramo(0, k).necesario + (k === ultimo ? op.reservaDestinoPct : op.reservaPrimerTramo),
       tramo(0, k).pico + op.margenTramoPct) <= socInicial);
   if (alcanceInicial === -1) {
     const primero = nodos[1];
+    if (!primero || primero.tipo !== 'estacion') {
+      return { motivo: 'No hay cargadores que cumplan los filtros cerca de la ruta y la batería no alcanza para llegar.' };
+    }
     return {
-      motivo: `Con un ${Math.round(socInicial)} % no llegas con la reserva mínima ni al primer cargador compatible` +
-        (primero && primero.tipo === 'estacion' ? ` (km ${Math.round(primero.posM / 1000)}).` : '.'),
+      motivo: `Con un ${Math.round(socInicial)} % no llegas ni al primer cargador que cumple los filtros, ` +
+        `${nombreParaMotivo(primero)} en el km ${Math.round(primero.posM / 1000)}: necesitarías un ` +
+        `${Math.ceil(tramo(0, 1).necesario + op.margenTramoPct)} %. Carga antes de salir o relaja los filtros.`,
     };
   }
   // Mayor hueco entre cargadores consecutivos.

@@ -50,6 +50,7 @@ export function cargarEstaciones(datos, veh = MODEL_Y_RWD_LFP) {
       provincia: f[i.provincia],
       cp: f[i.cp],
       horario: f[i.horario],
+      horarioDudoso: i.horario_dudoso !== undefined && f[i.horario_dudoso] === 1,
       pagosBits: f[i.pagos],
       pagos: MEDIOS_PAGO.filter((m) => f[i.pagos] & bitsPago[m.clave]).map((m) => m.clave),
       tipo: f[i.tipo],
@@ -134,23 +135,20 @@ function minutosDelDia(hhmm) {
 }
 
 // ¿Abierta en `fecha` (Date, hora local del navegador = hora de España)?
-// Devuelve true, false o null si el horario es desconocido.
+// true, false o null si el registro no permite saberlo. Un día «?» o un
+// horario marcado como dudoso nunca dan «cerrada»: como mucho, «no se sabe».
 export function abiertaEn(e, fecha) {
   if (e.horario === '24/7') return true;
   if (!Array.isArray(e.horario)) return null;
   const dia = (fecha.getDay() + 6) % 7; // lunes = 0
   const minuto = fecha.getHours() * 60 + fecha.getMinutes();
-  const dentro = (texto, d, m) => texto.split(',').filter(Boolean).some((tramo) => {
-    const [a, b] = tramo.split('-').map(minutosDelDia);
-    return b > a ? m >= a && m < b : m >= a; // los tramos nocturnos siguen al día siguiente
-  });
-  if (dentro(e.horario[dia], dia, minuto)) return true;
+  const tramos = (texto) => (texto && texto !== '?' ? texto.split(',') : []).map((t) => t.split('-').map(minutosDelDia));
   // Tramo nocturno que empezó el día anterior (p. ej. viernes 22:00-02:00).
-  const anterior = e.horario[(dia + 6) % 7];
-  return anterior.split(',').filter(Boolean).some((tramo) => {
-    const [a, b] = tramo.split('-').map(minutosDelDia);
-    return b <= a && minuto < b;
-  });
+  if (tramos(e.horario[(dia + 6) % 7]).some(([a, b]) => b <= a && minuto < b)) return true;
+  if (e.horario[dia] === '?') return null;
+  const abierta = tramos(e.horario[dia]).some(([a, b]) => (b > a ? minuto >= a && minuto < b : minuto >= a));
+  if (!abierta && e.horarioDudoso) return null;
+  return abierta;
 }
 
 export function horarioLegible(e) {
@@ -162,11 +160,12 @@ export function horarioLegible(e) {
     if (ultimo && ultimo.h === h) ultimo.hasta = d;
     else grupos.push({ desde: d, hasta: d, h });
   });
-  return grupos.map((g) => {
+  const texto = grupos.map((g) => {
     const dias = g.desde === g.hasta ? DIAS_CORTOS[g.desde] : `${DIAS_CORTOS[g.desde]}-${DIAS_CORTOS[g.hasta]}`;
-    const horas = g.h ? g.h.replaceAll('00:00-24:00', '24 h').replaceAll(',', ' y ') : 'cerrado';
+    const horas = g.h === '?' ? 'sin dato' : g.h ? g.h.replaceAll('00:00-24:00', '24 h').replaceAll(',', ' y ') : 'cerrado';
     return `${dias} ${horas}`;
   }).join(' · ');
+  return e.horarioDudoso ? `${texto} (el registro también la marca como 24 h)` : texto;
 }
 
 export function resumenConectores(e) {

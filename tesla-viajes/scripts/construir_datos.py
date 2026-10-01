@@ -200,34 +200,46 @@ def prefijo_comun(a, b):
 
 
 def parsear_horario(horario, stats=None):
-    """«24/7», lista de 7 cadenas (lunes→domingo; "" = cerrado) o None si se desconoce.
+    """Devuelve (horario, dudoso).
 
-    Si el identificador dice «24/7» pero la etiqueta detalla tramos más cortos,
-    manda la etiqueta: es el dato más específico y evita proponer una parada
-    cerrada.
+    horario: «24/7», None si se desconoce, o lista de 7 cadenas de lunes a
+    domingo con tramos «HH:MM-HH:MM» separados por comas, o «?» si ese día no
+    tiene un dato fiable.
+
+    Calidad del registro: muchos operadores escriben «00:00 - 00:00» para decir
+    24 horas, y otros omiten días. Por eso «00:00 - 00:00» en todos los días se
+    lee como 24/7 y un día omitido o ambiguo queda como «?», nunca como cerrado.
+    dudoso = el identificador dice «24/7» pero la etiqueta detalla otro horario.
     """
     if horario is None:
-        return None
+        return None, False
     ident = (horario.get("id") or "").strip()
     etiqueta = texto(hijo(horario, "label"))
     tramos = RE_TRAMO.findall(etiqueta)
     if not tramos:
-        return "24/7" if ident == "24/7" else None
-    dias = [[] for _ in range(7)]
+        return ("24/7" if ident == "24/7" else None), False
+    dias = [None] * 7
+    ambiguos = 0
     for nombre_dia, h1, m1, h2, m2 in tramos:
         d = DIAS[nombre_dia.lower()]
         inicio, fin = f"{int(h1):02d}:{m1}", f"{int(h2):02d}:{m2}"
-        if inicio == fin:  # «00:00 - 00:00»: cerrado ese día
+        if inicio == fin:  # «00:00 - 00:00»: ¿24 h o cerrado? Depende del operador
+            ambiguos += 1
             continue
         if fin == "23:59":
             fin = "24:00"
-        dias[d].append(f"{inicio}-{fin}")
-    resultado = [",".join(sorted(set(t))) for t in dias]
+        dias[d] = (dias[d] or []) + [f"{inicio}-{fin}"]
+    if all(t is None for t in dias):
+        if stats is not None and ambiguos:
+            stats["horario_00_00_leido_como_24h"] += 1
+        return "24/7", False
+    resultado = [",".join(sorted(set(t))) if t is not None else "?" for t in dias]
     if all(r == "00:00-24:00" for r in resultado):
-        return "24/7"
-    if ident == "24/7" and stats is not None:
+        return "24/7", False
+    dudoso = ident == "24/7"
+    if dudoso and stats is not None:
         stats["horario_24_7_contradictorio"] += 1
-    return resultado
+    return resultado, dudoso
 
 
 def coordenadas(ref, stats):
@@ -319,7 +331,7 @@ def parsear_sitio(sitio, stats):
         "lat": coords[0],
         "lon": coords[1],
         **direccion(ref),
-        "horario": parsear_horario(hijo(sitio, "operatingHours"), stats),
+        **dict(zip(("horario", "horario_dudoso"), parsear_horario(hijo(sitio, "operatingHours"), stats))),
         "pagos": pagos,
         "tipo": TIPO_SITIO.get(texto(hijo(sitio, "typeOfSite")), ""),
         "servicios": servicios,
@@ -347,7 +359,8 @@ def fusionar(sitios):
         base["actualizado"] = max(base["actualizado"], s["actualizado"])
         base["nombre"] = prefijo_comun(base["nombre"], s["nombre"]) or base["nombre"]
         if base["horario"] is None or (s["horario"] == "24/7"):
-            base["horario"] = s["horario"] if s["horario"] is not None else base["horario"]
+            if s["horario"] is not None:
+                base["horario"], base["horario_dudoso"] = s["horario"], s["horario_dudoso"]
     return list(por_clave.values())
 
 
@@ -372,6 +385,7 @@ def leer_xml(ruta):
 CAMPOS = [
     "id", "nombre", "operador", "lat", "lon", "direccion", "municipio", "provincia",
     "cp", "horario", "pagos", "tipo", "servicios", "actualizado", "puntos", "conectores",
+    "horario_dudoso",
 ]
 
 
@@ -394,7 +408,7 @@ def construir(ruta_xml, generado=None):
             s["ids"][0] if len(s["ids"]) == 1 else "+".join(s["ids"]),
             s["nombre"], indice_op[s["op_id"]], s["lat"], s["lon"], s["direccion"], s["municipio"],
             s["provincia"], s["cp"], s["horario"], s["pagos"], s["tipo"], s["servicios"],
-            s["actualizado"], s["n_puntos"], conectores,
+            s["actualizado"], s["n_puntos"], conectores, 1 if s["horario_dudoso"] else 0,
         ])
     resumen = resumir(estaciones, stats)
     datos = {
@@ -435,7 +449,7 @@ def resumir(estaciones, stats):
         "descartes": {k: stats[k] for k in ("sin_coordenadas_validas", "sin_conectores")},
         "correcciones": {k: stats[k] for k in (
             "coordenadas_intercambiadas", "potencia_en_kw_corregida", "potencia_desmesurada_corregida",
-            "horario_24_7_contradictorio")},
+            "horario_24_7_contradictorio", "horario_00_00_leido_como_24h")},
         "pagos_desconocidos": dict(stats["pagos_desconocidos"]),
     }
 

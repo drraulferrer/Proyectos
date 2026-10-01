@@ -65,16 +65,28 @@ class ConstruirDatos(unittest.TestCase):
 
     def test_horarios(self):
         electra = self.estacion("ELECTRA ALTO MIÑO")
-        self.assertEqual(electra["horario"], ["08:00-14:00"] * 5 + ["", ""])
+        # Sábado y domingo vienen como «00:00 - 00:00» junto a días con horario:
+        # no se sabe si es cerrado o 24 h, así que queda «?».
+        self.assertEqual(electra["horario"], ["08:00-14:00"] * 5 + ["?", "?"])
+        self.assertEqual(electra["horario_dudoso"], 0)
         raros = self.estacion("Casos raros & potencia en kW")
         self.assertEqual(raros["horario"][0], "08:00-14:00,16:00-20:00")
         self.assertEqual(raros["horario"][4], "22:00-02:00")
-        self.assertEqual(raros["horario"][5], "")  # «00:00 - 00:00» = cerrado
+        self.assertEqual(raros["horario"][5], "?")
+        self.assertEqual(raros["horario"][1], "?")  # día omitido = sin dato, no cerrado
         self.assertEqual(self.estacion("IONITY Pola de Lena")["horario"], "24/7")
 
-    def test_horario_24_7_contradictorio_manda_la_etiqueta(self):
+    def test_todo_00_00_es_24_horas(self):
+        import xml.etree.ElementTree as ET
+        horario = ET.fromstring(
+            '<h xmlns:f="x" id="Horario habitual"><f:label>Lunes (00:00 - 00:00) Martes (00:00 - 00:00) '
+            'Domingo (00:00 - 00:00)</f:label></h>')
+        self.assertEqual(cd.parsear_horario(horario), ("24/7", False))
+
+    def test_horario_24_7_contradictorio_queda_marcado(self):
         madrid = self.estacion("Madrid_1")
-        self.assertEqual(madrid["horario"], ["", "", "14:00-16:00", "14:00-16:00", "14:00-16:00", "14:00-16:00", ""])
+        self.assertEqual(madrid["horario"], ["?", "?", "14:00-16:00", "14:00-16:00", "14:00-16:00", "14:00-16:00", "?"])
+        self.assertEqual(madrid["horario_dudoso"], 1)
         self.assertEqual(self.resumen["correcciones"]["horario_24_7_contradictorio"], 1)
 
     def test_corrige_coordenadas_intercambiadas_y_potencia_en_kw(self):

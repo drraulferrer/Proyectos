@@ -1,0 +1,19 @@
+{
+  "name": "tesla-viajes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Planificador de viajes para Tesla Model Y con los puntos de recarga del registro oficial y sus medios de pago.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs && cd scripts && python3 -m unittest -q",
+    "test:interfaz": "node test/interfaz.e2e.mjs",
+    "datos": "python3 scripts/construir_datos.py",
+    "servir": "python3 -m http.server --directory web 8080"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

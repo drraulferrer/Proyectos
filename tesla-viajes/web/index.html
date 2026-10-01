@@ -56,7 +56,7 @@
         <div class="campo">
           <label for="soc">Batería ahora</label>
           <div class="fila fila-soc">
-            <input type="range" id="soc" name="soc" min="5" max="100" step="1" value="80">
+            <input type="range" id="soc" name="soc" min="1" max="100" step="1" value="80">
             <output id="soc-valor" for="soc">80 %</output>
           </div>
         </div>
@@ -77,17 +77,19 @@
         </div>
         <fieldset class="filtros">
           <legend>Cargadores aceptados</legend>
-          <div class="segmentado" role="radiogroup" aria-label="Potencia mínima">
-            <label><input type="radio" name="potencia" value="50" checked><span>≥ 50 kW</span></label>
-            <label><input type="radio" name="potencia" value="100"><span>≥ 100 kW</span></label>
-            <label><input type="radio" name="potencia" value="150"><span>≥ 150 kW</span></label>
+          <span class="subetiqueta" id="etiqueta-potencia">Potencia mínima para tu coche</span>
+          <div class="segmentado" role="radiogroup" aria-labelledby="etiqueta-potencia">
+            <label><input type="radio" name="potencia" value="50" checked><span>50 kW</span></label>
+            <label><input type="radio" name="potencia" value="100"><span>100 kW</span></label>
+            <label><input type="radio" name="potencia" value="150"><span>150 kW</span></label>
           </div>
-          <div class="segmentado" role="radiogroup" aria-label="Medio de pago">
-            <label><input type="radio" name="pago" value="cualquiera" checked><span>Cualquier pago</span></label>
-            <label><input type="radio" name="pago" value="tarjeta"><span>Tarjeta bancaria</span></label>
-            <label><input type="radio" name="pago" value="app"><span>Con app</span></label>
+          <span class="subetiqueta" id="etiqueta-pago">Cómo quiero pagar</span>
+          <div class="segmentado" role="radiogroup" aria-labelledby="etiqueta-pago">
+            <label><input type="radio" name="pago" value="cualquiera" checked><span>Cualquiera</span></label>
+            <label><input type="radio" name="pago" value="tarjeta"><span>Tarjeta</span></label>
+            <label><input type="radio" name="pago" value="app"><span>App</span></label>
           </div>
-          <label class="interruptor"><input type="checkbox" name="solo-tesla" id="solo-tesla"><span>Solo Superchargers</span></label>
+          <label class="interruptor"><input type="checkbox" name="solo-tesla" id="solo-tesla"><span>Solo Superchargers de Tesla</span></label>
         </fieldset>
         <button type="submit" class="boton-principal" id="boton-planificar">Planificar viaje</button>
       </form>
@@ -106,9 +108,9 @@
         <h2 class="titulo-seccion">Cargadores en la ruta <span id="cuenta-en-ruta" class="cuenta"></span></h2>
         <div class="segmentado chips" id="filtro-lista" role="radiogroup" aria-label="Filtrar la lista">
           <label><input type="radio" name="lista" value="todos" checked><span>Todos</span></label>
-          <label><input type="radio" name="lista" value="150"><span>≥ 150 kW</span></label>
+          <label><input type="radio" name="lista" value="150"><span>150+ kW</span></label>
           <label><input type="radio" name="lista" value="tarjeta"><span>Tarjeta</span></label>
-          <label><input type="radio" name="lista" value="tesla"><span>Supercharger</span></label>
+          <label><input type="radio" name="lista" value="tesla"><span>Tesla</span></label>
         </div>
         <ul id="en-ruta" class="lista-cargadores"></ul>
       </section>

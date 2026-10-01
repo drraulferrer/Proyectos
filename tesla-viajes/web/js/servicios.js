@@ -99,7 +99,7 @@ export function miUbicacion({ timeoutMs = 12000 } = {}) {
 // una función d → altitud (m) o null si falla.
 export async function perfilAltitud(ruta, pasoM = 1000) {
   const total = ruta.acum.at(-1);
-  const paso = Math.max(pasoM, total / 1500); // como mucho 15 peticiones
+  const paso = Math.max(pasoM, total / 1500); // como mucho 16 peticiones de 100 puntos
   const muestras = remuestrear(ruta.puntos, ruta.acum, paso);
   const lotes = [];
   for (let k = 0; k < muestras.length; k += 100) lotes.push(muestras.slice(k, k + 100));
