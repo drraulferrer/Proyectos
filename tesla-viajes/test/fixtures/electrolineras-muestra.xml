@@ -1,0 +1,1741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Muestra real del registro oficial de puntos de recarga (MITERD) publicado
+     por la DGT en DATEX II v3, 30/09/2026. Licencia CC BY 4.0. Las dos últimas
+     estaciones son casos límite sintéticos para los tests. -->
+<d2:payload xmlns:d2="http://datex2.eu/schema/3/d2Payload" xsi:type="egi:EnergyInfrastructureTablePublication" lang="es" modelBaseVersion="3" xmlns:com="http://datex2.eu/schema/3/common" xmlns:loc="http://datex2.eu/schema/3/locationReferencing" xmlns:egi="http://datex2.eu/schema/3/energyInfrastructure" xmlns:fac="http://datex2.eu/schema/3/facilities" xmlns:locx="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <com:publicationTime>2026-09-30T10:16:30.263+02:00</com:publicationTime>
+  <egi:energyInfrastructureTable id="ELECTROLINERAS" version="20260930">
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2023002088" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">Centro Porsche Baleares CP2</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2023-11-21T11:39:04.000+01:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="Horario habitual" version="">
+        <ns1:label>Miercoles (08:30 - 17:30) Lunes (00:00 - 23:59) Jueves (08:30 - 17:30) Martes (08:30 - 17:30) Sabado (08:30 - 17:30) Viernes (08:30 - 17:30) Domingo (00:00 - 23:59) </ns1:label>
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>7011</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: Camí dels Reis 166</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Palma</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Balears, Illes</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Balears, Illes</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>39.5948</ns4:latitude>
+          <ns4:longitude>2.63586</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*915" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">Motor Box Mallorca SL</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns0:typeOfSite>other</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2023002088_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000010507PR00000269" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*915*EES00025600000020000001</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>350000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>920.0</ns0:voltage>
+            <ns0:maximumCurrent>348.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2023002089" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">Centro Porsche Baleares CP1</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2023-11-21T11:43:04.000+01:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="Horario habitual" version="">
+        <ns1:label>Miercoles (08:30 - 17:30) Lunes (00:00 - 23:59) Martes (08:30 - 17:30) Domingo (00:00 - 23:59) Sabado (08:30 - 17:30) Jueves (08:30 - 17:30) Viernes (08:30 - 17:30) </ns1:label>
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>7011</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: Camí dels Reis 166</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Palma</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Balears, Illes</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Balears, Illes</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>39.5948</ns4:latitude>
+          <ns4:longitude>2.6359</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*915" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">Motor Box Mallorca SL</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns0:typeOfSite>other</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2023002089_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000010508PR00000270" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*915*EES00025600000010000001</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>350000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>920.0</ns0:voltage>
+            <ns0:maximumCurrent>348.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2024000002" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">McDonald's Ronda Norte</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2024-01-31T15:04:19.000+01:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label>Lunes (00:00 - 23:59) Miercoles (00:00 - 23:59) Martes (00:00 - 23:59) Sabado (00:00 - 23:59) Jueves (00:00 - 23:59) Viernes (00:00 - 23:59) Domingo (00:00 - 23:59) </ns1:label>
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>46025</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: Hermanos Machado,141</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: València</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Valencia/València</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Comunitat Valenciana</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>39.49761</ns4:latitude>
+          <ns4:longitude>-0.383267</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*IBD" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">IBERDROLA CLIENTES S.A.U</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns0:energyInfrastructureStation id="2024000002_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20240000019999PR00000002" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*IBD*E220426</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>100000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>1000.0</ns0:voltage>
+            <ns0:maximumCurrent>400.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20240000020000PR00000003" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*IBD*E220427</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>100000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>1000.0</ns0:voltage>
+            <ns0:maximumCurrent>400.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2023002061" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">GALP Posada de Llanes - Dirección Oviedo</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2023-08-02T18:41:54.000+02:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label />
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>33594</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: Autovía del Cantábrico, 33594 Llanes, Astur</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Llanes</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Asturias</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Asturias, Principado de</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>43.43266</ns4:latitude>
+          <ns4:longitude>-4.858186</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*PWH" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">Punto Recargas SL</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns0:typeOfSite>onstreet</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2023002061_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000010335PR00000101" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*PWH*EGALASTICH00141</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>50000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>200.0</ns0:voltage>
+            <ns0:maximumCurrent>250.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000010336PR00000102" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*PWH*EGALASTICH00142</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>50000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>200.0</ns0:voltage>
+            <ns0:maximumCurrent>250.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2023002186" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">ES San Pelayo</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2023-08-31T13:31:23.000+02:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label />
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>33820</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: Ctra. San Pelayo (Estación Repsol) 9</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Colunga</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Asturias</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Asturias, Principado de</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>43.393627</ns4:latitude>
+          <ns4:longitude>-6.063614</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*EDP" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">EDP CLIENTES SAU</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns0:typeOfSite>onstreet</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2023002186_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000011430PR00000446" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*EDP*E00073</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>chademo</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>50000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>500.0</ns0:voltage>
+            <ns0:maximumCurrent>125.0</ns0:maximumCurrent>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>50000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>500.0</ns0:voltage>
+            <ns0:maximumCurrent>125.0</ns0:maximumCurrent>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2</ns0:connectorType>
+            <ns0:chargingMode>mode3AC3p</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>43000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>230.0</ns0:voltage>
+            <ns0:maximumCurrent>63.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2023004065" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">Madrid_1</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2023-10-10T16:17:48.000+02:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label>Jueves (14:00 - 16:00) Viernes (14:00 - 16:00) Miercoles (14:00 - 16:00) Sabado (14:00 - 16:00) </ns1:label>
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>28053</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: Av. Eje Central, 7</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Madrid</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Madrid</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Madrid, Comunidad de</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>40.3639</ns4:latitude>
+          <ns4:longitude>-3.656059</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*NTG" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">Naturgy Iberia</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns1:supplementalFacility xsi:type="fac:SupplementalServiceFacility" id="0" version="">
+        <ns1:serviceFacilityType>petrolStation</ns1:serviceFacilityType>
+      </ns1:supplementalFacility>
+      <ns0:typeOfSite>onstreet</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2023004065_1" version="">
+        <ns0:authenticationAndIdentificationMethods>creditCard</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000015336PR00004270" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*NTG*E1</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>chademo</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>50000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>230.0</ns0:voltage>
+            <ns0:maximumCurrent>80.0</ns0:maximumCurrent>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2</ns0:connectorType>
+            <ns0:chargingMode>mode3AC3p</ns0:chargingMode>
+            <ns0:connectorFormat>socket</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>50000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>400.0</ns0:voltage>
+            <ns0:maximumCurrent>80.0</ns0:maximumCurrent>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode3AC3p</ns0:chargingMode>
+            <ns0:connectorFormat>socket</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>50000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>400.0</ns0:voltage>
+            <ns0:maximumCurrent>80.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2023004069" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">Burgos - Calle de la Igualdad</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2023-10-13T13:32:22.000+02:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label />
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>9007</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: C. De La Igualdad, 5</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Burgos</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Burgos</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Castilla y León</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>42.350525</ns4:latitude>
+          <ns4:longitude>-3.669021</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*ZUN" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">(ZUNDER) Grupo Easychargar SA </ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns0:typeOfSite>onstreet</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2023004069_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>creditCard</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000015340PR00004274" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*ZUN*E0912ER1</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>180000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>1000.0</ns0:voltage>
+            <ns0:maximumCurrent>500.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000015341PR00004275" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*ZUN*E0912ER2</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>180000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>1000.0</ns0:voltage>
+            <ns0:maximumCurrent>500.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2023004128" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">Cepsa I Dir.Francia - Mutilva</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2023-10-13T13:32:22.000+02:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label />
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>31192</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: Aranguren, 31192, Navarra</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Aranguren</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Navarra</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Navarra, Comunidad Foral de</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>42.800457</ns4:latitude>
+          <ns4:longitude>-1.6115102</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*ZUN" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">(ZUNDER) Grupo Easychargar SA </ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns1:associatedFacility>
+        <ns1:type>airport</ns1:type>
+      </ns1:associatedFacility>
+      <ns1:supplementalFacility xsi:type="fac:SupplementalServiceFacility" id="0" version="">
+        <ns1:serviceFacilityType>cafe</ns1:serviceFacilityType>
+      </ns1:supplementalFacility>
+      <ns1:supplementalFacility xsi:type="fac:SupplementalServiceFacility" id="2" version="">
+        <ns1:serviceFacilityType>petrolStation</ns1:serviceFacilityType>
+      </ns1:supplementalFacility>
+      <ns0:typeOfSite>onstreet</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2023004128_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000015632PR00004566" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*ZUN*E3104ER1</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>360000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>1000.0</ns0:voltage>
+            <ns0:maximumCurrent>500.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000015633PR00004567" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*ZUN*E3104ER2</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>360000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>1000.0</ns0:voltage>
+            <ns0:maximumCurrent>500.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000015634PR00004568" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*ZUN*E3104ER3</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>360000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>1000.0</ns0:voltage>
+            <ns0:maximumCurrent>500.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000015635PR00004569" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*ZUN*E3104ER4</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>360000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>1000.0</ns0:voltage>
+            <ns0:maximumCurrent>500.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2024001766" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">ELECTRA ALTO MIÑO</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2024-03-04T09:54:08.000+01:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="Horario habitual" version="">
+        <ns1:label>Lunes (08:00 - 14:00) Domingo (00:00 - 00:00) Miercoles (08:00 - 14:00) Martes (08:00 - 14:00) Jueves (08:00 - 14:00) Viernes (08:00 - 14:00) Sabado (00:00 - 00:00) </ns1:label>
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>36450</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: Polígono Industrial Chan da Ponte</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Salvaterra de Miño</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Pontevedra</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Galicia</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>42.08793</ns4:latitude>
+          <ns4:longitude>-8.506638</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*ENE" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">ENERGEA CONSULTING Y ASESORES SL</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns1:associatedFacility>
+        <ns1:type>parkingSite</ns1:type>
+      </ns1:associatedFacility>
+      <ns0:typeOfSite>openSpace</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2024001766_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>creditCard</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20240000024310PR00004248" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*ENE*E038</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2</ns0:connectorType>
+            <ns0:chargingMode>mode3AC3p</ns0:chargingMode>
+            <ns0:connectorFormat>socket</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>22000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>400.0</ns0:voltage>
+            <ns0:maximumCurrent>32.0</ns0:maximumCurrent>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2</ns0:connectorType>
+            <ns0:chargingMode>mode3AC3p</ns0:chargingMode>
+            <ns0:connectorFormat>socket</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>22000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>400.0</ns0:voltage>
+            <ns0:maximumCurrent>32.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20240000024311PR00004249" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*ENE*E039</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T1COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>180000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>400.0</ns0:voltage>
+            <ns0:maximumCurrent>200.0</ns0:maximumCurrent>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>180000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>400.0</ns0:voltage>
+            <ns0:maximumCurrent>200.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2024003898" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">Hotel La Perdiz</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2024-06-12T10:13:11.000+02:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label>Martes (00:00 - 23:59) Miercoles (00:00 - 23:59) Jueves (00:00 - 23:59) Lunes (00:00 - 23:59) Viernes (00:00 - 23:59) Sabado (00:00 - 23:59) Domingo (00:00 - 23:59) </ns1:label>
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>23200</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: Calle Alfredo Calderón, 53</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Carolina, La</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Jaén</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Andalucía</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>38.27035</ns4:latitude>
+          <ns4:longitude>-3.610288</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*WEN" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">WENEA EMOBILITY SERVICES S.L.</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns0:typeOfSite>onstreet</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2024003898_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20240000033258PR00009450" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*WEN*ELAPERDIZ12</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>100000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>400.0</ns0:voltage>
+            <ns0:maximumCurrent>250.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20240000033259PR00009451" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*WEN*ELAPERDIZ11</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>100000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>400.0</ns0:voltage>
+            <ns0:maximumCurrent>250.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2024004881" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">GASOLINERA BP AMANECER</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2024-09-04T00:19:31.000+02:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label />
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>7004</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: C/ Alfons el Magnánïm, 90</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Palma</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Balears, Illes</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Balears, Illes</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>39.594334</ns4:latitude>
+          <ns4:longitude>2.6546504</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*FEN" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">FENIE ENERGIA, SA</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns1:supplementalFacility xsi:type="fac:SupplementalServiceFacility" id="0" version="">
+        <ns1:serviceFacilityType>petrolStation</ns1:serviceFacilityType>
+      </ns1:supplementalFacility>
+      <ns0:typeOfSite>openSpace</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2024004881_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20240000040457PR00012687" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*FEN*E*0599</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>50000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>500.0</ns0:voltage>
+            <ns0:maximumCurrent>125.0</ns0:maximumCurrent>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>chademo</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>50000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>500.0</ns0:voltage>
+            <ns0:maximumCurrent>125.0</ns0:maximumCurrent>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2</ns0:connectorType>
+            <ns0:chargingMode>mode3AC3p</ns0:chargingMode>
+            <ns0:connectorFormat>socket</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>22000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>400.0</ns0:voltage>
+            <ns0:maximumCurrent>32.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2023000086" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">Atenoil Valdepeñas</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2024-09-10T15:46:25.000+02:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label />
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>13310</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: carretera del sur a4,185</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Valdepeñas</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Ciudad Real</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Castilla - La Mancha</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>38.89988</ns4:latitude>
+          <ns4:longitude>-3.39051</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*ATE" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">Atlante Iberia SL</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns1:supplementalFacility xsi:type="fac:SupplementalServiceFacility" id="0" version="">
+        <ns1:serviceFacilityType>petrolStation</ns1:serviceFacilityType>
+      </ns1:supplementalFacility>
+      <ns0:typeOfSite>openSpace</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2023000086_1" version="">
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000010529PR00000307" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*ATE*E00018</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>60000.0</ns0:maxPowerAtSocket>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>60000.0</ns0:maxPowerAtSocket>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2023002122" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">IONITY Pola de Lena</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2023-08-28T14:55:12.000+02:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label />
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>33695</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: A-66, Km 58</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Lena</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Asturias</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Asturias, Principado de</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>43.182007</ns4:latitude>
+          <ns4:longitude>-5.811178</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*IOY" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">IONITY GmbH Sucursal en España</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns0:typeOfSite>onstreet</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2023002122_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000011304PR00000320" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*IOY*E420701</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>350000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>800.0</ns0:voltage>
+            <ns0:maximumCurrent>438.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000011305PR00000321" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*IOY*E420702</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>350000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>800.0</ns0:voltage>
+            <ns0:maximumCurrent>438.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2024006376" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">Torrent Southbound, Spain</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2024-10-22T11:17:56.000+02:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label>Martes (00:00 - 23:59) Jueves (00:00 - 23:59) Miercoles (00:00 - 23:59) Lunes (00:00 - 23:59) Viernes (00:00 - 23:59) Domingo (00:00 - 23:59) Sabado (00:00 - 23:59) </ns1:label>
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>46901</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: Eess Galp, Ap-7, Km. 515</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Torrent</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Valencia/València</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Comunitat Valenciana</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>39.400635</ns4:latitude>
+          <ns4:longitude>-0.493216</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*TSL" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">Tesla Spain SLU</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns0:typeOfSite>onstreet</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2024006376_1" version="">
+        <ns0:authenticationAndIdentificationMethods>nfc</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20240000043678PR00015815" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*TSL*E002KK3</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>150000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>464.0</ns0:voltage>
+            <ns0:maximumCurrent>400.0</ns0:maximumCurrent>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>150000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>464.0</ns0:voltage>
+            <ns0:maximumCurrent>400.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20240000043679PR00015816" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*TSL*E002KK0</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>150000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>464.0</ns0:voltage>
+            <ns0:maximumCurrent>400.0</ns0:maximumCurrent>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>150000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>464.0</ns0:voltage>
+            <ns0:maximumCurrent>400.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2025000054" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">ESTACION SERVICIO CASTEJON DEL PUENTE - Moeve</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2025-02-13T13:28:26.000+01:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label />
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>22310</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: CTA NAC 240 PK. 149.500</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Castejón del Puente</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Huesca</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Aragón</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>41.950005</ns4:latitude>
+          <ns4:longitude>0.15355359</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*JA1" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">ESTACION SERVICIO JAIME I, S.A. </ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns1:associatedFacility>
+        <ns1:type>parkingSite</ns1:type>
+      </ns1:associatedFacility>
+      <ns1:supplementalFacility xsi:type="fac:SupplementalServiceFacility" id="1" version="">
+        <ns1:serviceFacilityType>petrolStation</ns1:serviceFacilityType>
+      </ns1:supplementalFacility>
+      <ns1:supplementalFacility xsi:type="fac:SupplementalServiceFacility" id="2" version="">
+        <ns1:serviceFacilityType>foodShopping</ns1:serviceFacilityType>
+      </ns1:supplementalFacility>
+      <ns0:energyInfrastructureStation id="2025000054_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20250000047887PR00000220" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*JA1*E*CASTEJON</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2COMBO</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>50000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>400.0</ns0:voltage>
+            <ns0:maximumCurrent>80.0</ns0:maximumCurrent>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2</ns0:connectorType>
+            <ns0:chargingMode>mode3AC3p</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>22000.0</ns0:maxPowerAtSocket>
+          </ns0:connector>
+          <ns0:connector>
+            <ns0:connectorType>chademo</ns0:connectorType>
+            <ns0:chargingMode>mode4DC</ns0:chargingMode>
+            <ns0:connectorFormat>cableMode3</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>50000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>400.0</ns0:voltage>
+            <ns0:maximumCurrent>80.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <ns0:energyInfrastructureSite xmlns:ns0="http://datex2.eu/schema/3/energyInfrastructure" xmlns:ns1="http://datex2.eu/schema/3/facilities" xmlns:ns2="http://datex2.eu/schema/3/common" xmlns:ns4="http://datex2.eu/schema/3/locationReferencing" xmlns:ns5="http://datex2.eu/schema/3/locationExtension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="2023002452" version="">
+      <ns1:name>
+        <ns2:values>
+          <ns2:value lang="es">22XP22T3KKJAK00963</ns2:value>
+        </ns2:values>
+      </ns1:name>
+      <ns1:lastUpdated>2025-04-23T09:35:26.000+02:00</ns1:lastUpdated>
+      <ns1:accessibility xsi:nil="true" />
+      <ns1:operatingHours xsi:type="fac:OperatingHoursSpecification" id="24/7" version="">
+        <ns1:label>Miercoles (00:00 - 23:59) Martes (00:00 - 23:59) Sabado (00:00 - 23:59) Lunes (00:00 - 23:59) Viernes (00:00 - 23:59) Jueves (00:00 - 23:59) Domingo (00:00 - 23:59) </ns1:label>
+        <ns1:overallPeriod>
+          <ns2:overallStartTime>2023-01-01T00:00:00.000+01:00</ns2:overallStartTime>
+        </ns1:overallPeriod>
+      </ns1:operatingHours>
+      <ns1:locationReference xsi:type="loc:PointLocation">
+        <ns4:_locationReferenceExtension>
+          <ns4:facilityLocation>
+            <ns5:address>
+              <ns5:postcode>41300</ns5:postcode>
+              <ns5:addressLine order="1">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Dirección: Polígono Industrial Los Espartales, A4, Km</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="2">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Municipio: Rinconada, La</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="3">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Provincia: Sevilla</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+              <ns5:addressLine order="4">
+                <ns5:type>generalTextLine</ns5:type>
+                <ns5:text>
+                  <ns2:values>
+                    <ns2:value lang="es">Comunidad Autónoma: Andalucía</ns2:value>
+                  </ns2:values>
+                </ns5:text>
+              </ns5:addressLine>
+            </ns5:address>
+          </ns4:facilityLocation>
+        </ns4:_locationReferenceExtension>
+        <ns4:coordinatesForDisplay>
+          <ns4:latitude>37.43946</ns4:latitude>
+          <ns4:longitude>-5.885547</ns4:longitude>
+        </ns4:coordinatesForDisplay>
+      </ns1:locationReference>
+      <ns1:operator xsi:type="fac:OrganisationSpecification" id="ES*ESX" version="">
+        <ns1:name>
+          <ns2:values>
+            <ns2:value lang="es">ENDESA X WAY, S.L.</ns2:value>
+          </ns2:values>
+        </ns1:name>
+        <ns1:organisationUnit />
+      </ns1:operator>
+      <ns0:typeOfSite>openSpace</ns0:typeOfSite>
+      <ns0:energyInfrastructureStation id="2023002452_1" version="">
+        <ns0:authenticationAndIdentificationMethods>rfid</ns0:authenticationAndIdentificationMethods>
+        <ns0:authenticationAndIdentificationMethods>apps</ns0:authenticationAndIdentificationMethods>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000013960PR00000993" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*ESX*E22XP22T3KKJAK009631</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2</ns0:connectorType>
+            <ns0:chargingMode>mode3AC3p</ns0:chargingMode>
+            <ns0:connectorFormat>socket</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>22000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>0.0</ns0:voltage>
+            <ns0:maximumCurrent>0.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+        <ns0:refillPoint xsi:type="egi:ElectricChargingPoint" id="COD20230000013961PR00000994" version="">
+          <ns1:name>
+            <ns2:values>
+              <ns2:value lang="es">ES*ESX*E22XP22T3KKJAK009632</ns2:value>
+            </ns2:values>
+          </ns1:name>
+          <ns0:connector>
+            <ns0:connectorType>iec62196T2</ns0:connectorType>
+            <ns0:chargingMode>mode3AC3p</ns0:chargingMode>
+            <ns0:connectorFormat>socket</ns0:connectorFormat>
+            <ns0:maxPowerAtSocket>22000.0</ns0:maxPowerAtSocket>
+            <ns0:voltage>0.0</ns0:voltage>
+            <ns0:maximumCurrent>0.0</ns0:maximumCurrent>
+          </ns0:connector>
+        </ns0:refillPoint>
+      </ns0:energyInfrastructureStation>
+    </ns0:energyInfrastructureSite>
+    <egi:energyInfrastructureSite id="SINT-SIN-COORD" version="">
+      <fac:name><com:values><com:value lang="es">Sin coordenadas</com:value></com:values></fac:name>
+      <fac:operator xsi:type="fac:OrganisationSpecification" id="ES*XXX" version=""><fac:name><com:values><com:value lang="es">PRUEBAS, S.L.</com:value></com:values></fac:name></fac:operator>
+      <egi:energyInfrastructureStation id="SINT-SIN-COORD_1" version="">
+        <egi:refillPoint xsi:type="egi:ElectricChargingPoint" id="X1" version="">
+          <egi:connector><egi:connectorType>iec62196T2COMBO</egi:connectorType><egi:chargingMode>mode4DC</egi:chargingMode><egi:connectorFormat>cableMode3</egi:connectorFormat><egi:maxPowerAtSocket>50000.0</egi:maxPowerAtSocket></egi:connector>
+        </egi:refillPoint>
+      </egi:energyInfrastructureStation>
+    </egi:energyInfrastructureSite>
+    <egi:energyInfrastructureSite id="SINT-RAROS" version="">
+      <fac:name><com:values><com:value lang="es">Casos raros &amp; potencia en kW</com:value></com:values></fac:name>
+      <fac:lastUpdated>2026-02-25T00:01:13.000+01:00</fac:lastUpdated>
+      <fac:operatingHours xsi:type="fac:OperatingHoursSpecification" id="Horario habitual" version="">
+        <fac:label>Sabado (00:00 - 00:00) Lunes (08:00 - 14:00) Lunes (16:00 - 20:00) Viernes (22:00 - 02:00) </fac:label>
+      </fac:operatingHours>
+      <fac:locationReference xsi:type="loc:PointLocation">
+        <loc:_locationReferenceExtension><loc:facilityLocation><locx:address>
+          <locx:postcode>8028</locx:postcode>
+          <locx:addressLine order="2"><locx:type>generalTextLine</locx:type><locx:text><com:values><com:value lang="es">Municipio: Barcelona</com:value></com:values></locx:text></locx:addressLine>
+          <locx:addressLine order="1"><locx:type>generalTextLine</locx:type><locx:text><com:values><com:value lang="es">Dirección: Carrer de Prova 1</com:value></com:values></locx:text></locx:addressLine>
+        </locx:address></loc:facilityLocation></loc:_locationReferenceExtension>
+        <loc:coordinatesForDisplay><loc:latitude>2.12666</loc:latitude><loc:longitude>41.38</loc:longitude></loc:coordinatesForDisplay>
+      </fac:locationReference>
+      <fac:operator xsi:type="fac:OrganisationSpecification" id="ES*XXX" version=""><fac:name><com:values><com:value lang="es">PRUEBAS, S.L.</com:value></com:values></fac:name></fac:operator>
+      <egi:energyInfrastructureStation id="SINT-RAROS_1" version="">
+        <egi:authenticationAndIdentificationMethods>debitCard</egi:authenticationAndIdentificationMethods>
+        <egi:authenticationAndIdentificationMethods>pinpad</egi:authenticationAndIdentificationMethods>
+        <egi:authenticationAndIdentificationMethods>metodoDesconocido</egi:authenticationAndIdentificationMethods>
+        <egi:refillPoint xsi:type="egi:ElectricChargingPoint" id="R1" version="">
+          <egi:connector><egi:connectorType>iec62196T2COMBO</egi:connectorType><egi:chargingMode>mode4DC</egi:chargingMode><egi:connectorFormat>cableMode3</egi:connectorFormat><egi:maxPowerAtSocket>120.0</egi:maxPowerAtSocket><egi:voltage>0.0</egi:voltage><egi:maximumCurrent>0.0</egi:maximumCurrent></egi:connector>
+        </egi:refillPoint>
+        <egi:refillPoint xsi:type="egi:ElectricChargingPoint" id="R2" version="">
+          <egi:connector><egi:connectorType>domesticF</egi:connectorType><egi:chargingMode>mode2AC1p</egi:chargingMode><egi:connectorFormat>socket</egi:connectorFormat><egi:maxPowerAtSocket>2300.0</egi:maxPowerAtSocket></egi:connector>
+        </egi:refillPoint>
+      </egi:energyInfrastructureStation>
+    </egi:energyInfrastructureSite>
+  </egi:energyInfrastructureTable>
+</d2:payload>

@@ -5,71 +5,57 @@ on:
     branches: [claude/tesla-trip-planner-chargers-3b8my3]
     paths:
       - .github/workflows/tesla-viajes-explorar.yml
-      - tesla-viajes/scripts/explorar_datex.py
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   explorar:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Listado del directorio DATEX II del MITERD en la DGT
-        run: |
-          curl -sS -m 60 https://infocar.dgt.es/datex2/v3/miterd/ \
-            | python3 -c "import re,sys,html; t=sys.stdin.read(); print('\n'.join(html.unescape(x) for x in re.findall(r'href=\"([^\"]+)\"', t)))"
-          for d in EnergyInfrastructureTablePublication; do
-            echo "== $d"
-            curl -sS -m 60 "https://infocar.dgt.es/datex2/v3/miterd/$d/" \
-              | python3 -c "import re,sys,html; t=sys.stdin.read(); print('\n'.join(html.unescape(x) for x in re.findall(r'href=\"([^\"]+)\"', t)))"
-          done
+      - uses: actions/checkout@v4
 
-      - name: CSV de RIPREE (MITECO)
+      - name: Construir el JSON completo con datos reales
         run: |
-          curl -sSL -m 300 -D cab.txt -o ripree.csv "https://energia.serviciosmin.gob.es/Ripree/ExportarInstalaciones/Export" || true
-          cat cab.txt
-          ls -la ripree.csv || true
-          file ripree.csv || true
-          head -c 4000 ripree.csv | iconv -f latin1 -t utf-8 2>/dev/null || head -c 4000 ripree.csv
-          echo; wc -l ripree.csv || true
+          python3 tesla-viajes/scripts/construir_datos.py --salida /tmp/datos --min-estaciones 8000
+          ls -la /tmp/datos
+          gzip -k -9 /tmp/datos/estaciones.json && ls -la /tmp/datos
 
-      - name: Recurso XML del catálogo MITECO
+      - name: Operadores y estadísticas
         run: |
-          curl -sSL -m 60 "https://catalogo.datosabiertos.miteco.gob.es/catalogo/es/dataset/6ee8d46f-93bd-478f-8e29-3ba4f6d8405c/resource/8b73c0ea-9244-4a2b-a152-ba41fbd16b0b" \
-            | python3 -c "import re,sys,html; t=sys.stdin.read(); print('\n'.join(sorted(set(html.unescape(x) for x in re.findall(r'href=\"([^\"]+)\"', t) if 'download' in x or x.endswith(('.xml','.csv','.zip')) or 'Export' in x))))"
-
-      - name: URLs de API en el bundle de Mapa REVE
-        run: |
-          curl -sSL -m 60 https://www.mapareve.es/ -o reve.html
-          for js in $(grep -oE '/assets/[^"]+\.js' reve.html | sort -u); do
-            curl -sSL -m 60 "https://www.mapareve.es$js" -o b.js
-            echo "== $js $(wc -c < b.js)B"
-            grep -oE 'https?://[a-zA-Z0-9./_-]+' b.js | grep -viE 'w3.org|reactjs|mozilla|github|npm|fb.me|googleapis|gstatic|openstreetmap|mapbox|leaflet|apple.com|google.com|schema' | sort | uniq -c | sort -rn | head -40
-            grep -oE '.{60}(api-contacto|x-api-key|apiKey|/api/v[0-9]|swagger|openapi).{80}' b.js | head -20
-          done
-
-      - name: Ruta OSRM con anotaciones (Madrid → Valencia)
-        run: |
-          curl -sS -m 60 -o osrm.json "https://router.project-osrm.org/route/v1/driving/-3.7038,40.4168;-0.3763,39.4699?overview=full&geometries=polyline6&steps=true&annotations=distance,duration,speed"
-          ls -la osrm.json
           python3 - <<'PY'
           import json, collections
-          d = json.load(open('osrm.json'))
-          r = d['routes'][0]
-          print('distancia km', r['distance']/1000, 'duración h', r['duration']/3600)
-          ann = r['legs'][0]['annotation']
-          sp = collections.Counter(round(s*3.6/5)*5 for s in ann['speed'])
-          dist_by_speed = collections.Counter()
-          for s, dd in zip(ann['speed'], ann['distance']):
-              dist_by_speed[round(s*3.6/5)*5] += dd/1000
-          print('km por velocidad OSRM (km/h):', sorted((k, round(v,1)) for k, v in dist_by_speed.items()))
-          clases = collections.Counter()
-          for st in r['legs'][0]['steps']:
-              for it in st.get('intersections', []):
-                  for c in it.get('classes', []):
-                      clases[c] += 1
-          print('clases', clases)
-          print('pasos', len(r['legs'][0]['steps']), 'segmentos', len(ann['speed']))
-          print('ejemplo paso', json.dumps(r['legs'][0]['steps'][3])[:1500])
+          d = json.load(open('/tmp/datos/estaciones.json'))
+          i = {c: k for k, c in enumerate(d['campos'])}
+          n = collections.Counter(f[i['operador']] for f in d['estaciones'])
+          for k, o in enumerate(d['operadores'][:70]):
+              print(f"{n[k]:>5}  {o['id']:<8} {o['marca']:<40} | {o['razon_social']}")
+          kws = collections.Counter()
+          for f in d['estaciones']:
+              for c in f[i['conectores']]:
+                  if c[0] == 'C2' and c[1] == 'DC':
+                      kws[int(c[3] // 50 * 50)] += c[6]
+          print('Puntos CCS2 DC por potencia (tramos de 50 kW):', sorted(kws.items()))
+          horarios = collections.Counter('24/7' if f[i['horario']] == '24/7' else ('desconocido' if f[i['horario']] is None else 'tramos') for f in d['estaciones'])
+          print('Horarios:', horarios)
+          pagos = collections.Counter(f[i['pagos']] for f in d['estaciones'])
+          print('Combinaciones de pago más comunes:', pagos.most_common(15))
           PY
+
+      - name: Capturar fixtures del corredor Madrid → Valencia
+        run: |
+          python3 tesla-viajes/scripts/capturar_fixtures.py --datos /tmp/datos/estaciones.json --salida tesla-viajes/test/fixtures
+          ls -la tesla-viajes/test/fixtures
+
+      - name: Estado de GitHub Pages del repositorio
+        run: |
+          curl -sS -o /dev/null -w "github.io/Proyectos/ -> HTTP %{http_code}\n" https://drraulferrer.github.io/Proyectos/ || true
+
+      - name: Subir fixtures a la rama
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tesla-viajes/test/fixtures/estaciones-corredor.json tesla-viajes/test/fixtures/osrm-madrid-valencia.json
+          git commit -m "tesla-viajes: fixtures reales del corredor Madrid → Valencia para probar la interfaz sin red"
+          git push origin HEAD:claude/tesla-trip-planner-chargers-3b8my3
