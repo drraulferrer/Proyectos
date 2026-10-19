@@ -1,8 +1,10 @@
 # Especificación: Informe técnico para la creación de la especialidad de Fisioterapia Familiar y Comunitaria
 
-**Estado:** borrador v0.4.1 · **Fecha:** 19 de octubre de 2026 · **Responsable:** Raúl Ferrer
+**Estado:** borrador v0.4.2 · **Fecha:** 19 de octubre de 2026 · **Responsable:** Raúl Ferrer
 
-**Cambios respecto a v0.4:** se fija que la solicitud la impulsa el Consejo General de Colegios de Fisioterapeutas de España. Como el art. 4.1 del RD 589/2022 reserva la iniciativa a sociedades científicas o a la Comisión de Recursos Humanos del SNS, y el art. 5.2 atribuye a los colegios el papel de informantes, se define una configuración de la solicitud que no dependa de una interpretación favorable (sección 2.4).
+**Cambios respecto a v0.4.1:** la vía B tiene ya cosolicitante: la Asociación Española de Fisioterapeutas (AEF), a través de su sección nacional de Atención Primaria. Se añaden la documentación que debe aportar y el riesgo residual sobre el cómputo del 70 % (sección 2.4).
+
+**Cambios de v0.4.1 respecto a v0.4:** se fija que la solicitud la impulsa el Consejo General de Colegios de Fisioterapeutas de España. Como el art. 4.1 del RD 589/2022 reserva la iniciativa a sociedades científicas o a la Comisión de Recursos Humanos del SNS, y el art. 5.2 atribuye a los colegios el papel de informantes, se define una configuración de la solicitud que no dependa de una interpretación favorable (sección 2.4).
 
 **Cambios de v0.4 respecto a v0.3:** se incorporan el RD 589/2022 (versión consolidada) y la Orden CIN/2135/2008. La matriz de la sección 7 recoge ya el literal de los cinco criterios del anexo I. El procedimiento de los arts. 4 a 6 añade requisitos que cambian el plan de trabajo: iniciativa de sociedades científicas que representen al menos al 70 % de los profesionales del área, o de la Comisión de Recursos Humanos del SNS; necesidad acreditada por al menos 7 consejerías; informe vinculante del Ministerio de Universidades; y cinco años de bloqueo si la resolución es desfavorable. El criterio 4.1 (al menos el 50 % de competencias exclusivas) obliga a etiquetar cada competencia; la cláusula de no exclusividad del modelo EFyC se mantiene solo para dejar claro que no se crea reserva de actividad. Los elementos diferenciales se redactan con la terminología de la Orden CIN y se excluye lo que no es competencia del fisioterapeuta. El cruce de competencias está en [referencias/cruce-competencias-grado-fisioterapia.md](referencias/cruce-competencias-grado-fisioterapia.md).
 
@@ -64,10 +66,17 @@ Una ACE se constituye sobre una o varias especialidades ya existentes. La Fisiot
 | Vía | Cómo | Ventaja | Inconveniente |
 |---|---|---|---|
 | A. Consulta previa | El Consejo consulta por escrito a la DGOP si admite su legitimación como solicitante | Despeja la duda antes de invertir en el informe | Depende de una interpretación administrativa |
-| B. Solicitud conjunta | El Consejo presenta junto con una o varias sociedades científicas nacionales de fisioterapia; el Consejo aporta la acreditación del 100 % de los colegiados como respaldo de la representatividad | Cubre los dos requisitos a la vez: sociedad científica y representatividad | Requiere acuerdo formal con las sociedades |
+| B. Solicitud conjunta | El Consejo presenta junto con la **Asociación Española de Fisioterapeutas (AEF)**, sociedad científica de ámbito nacional, a través de su sección de Atención Primaria; el Consejo aporta la acreditación del 100 % de los colegiados como respaldo de la representatividad | Cubre los dos requisitos a la vez: sociedad científica y representatividad | Requiere acuerdo formal entre el Consejo y la AEF |
 | C. Comisión de Recursos Humanos del SNS | El Consejo entrega el informe a la Comisión y le pide que inicie el procedimiento | Legitimación sin discusión; las comunidades autónomas ya están dentro, lo que ayuda con el criterio 3.1 | El calendario lo controla la Comisión |
 
-**Recomendación de la spec:** A como primer paso y B como configuración por defecto si la respuesta no es clara. C se prepara en paralelo, porque las mismas consejerías que deben acreditar la necesidad forman parte de la Comisión.
+**Decisión:** vía B, Consejo General y AEF. La consulta A se mantiene como paso previo para confirmar que la DGOP acepta el cómputo conjunto de la representatividad. C se prepara en paralelo, porque las mismas consejerías que deben acreditar la necesidad forman parte de la Comisión.
+
+**Condiciones de la vía B:**
+- **Quién firma.** La solicitante es la AEF como persona jurídica, no su sección de Atención Primaria, que es un órgano interno sin personalidad jurídica propia. La sección aporta el grupo de expertos y el contenido técnico (criterio 5.1).
+- **Riesgo residual del 70 %.** El art. 4.1 pide que sean las sociedades científicas las que acrediten el 70 %. Si la DGOP no suma la representación del Consejo a la de la AEF, la AEF tendría que acreditarla por sí sola. Por eso la consulta A pregunta expresamente si admite el cómputo conjunto. Si la respuesta es negativa, se activa la vía C.
+- **Documentación de la AEF para el anexo I:** estatutos e inscripción en el registro de asociaciones, que acrediten el ámbito nacional y el carácter científico; acuerdo del órgano de gobierno que aprueba la solicitud conjunta; certificado de constitución y miembros de la sección de Atención Primaria; número de socios.
+- **Documentación del Consejo General para el anexo I:** acuerdo de su órgano de gobierno y certificado del número de colegiados en ejercicio.
+- **Afiliación internacional.** Verificar si la AEF es la organización miembro de España en World Physiotherapy. Si lo es, refuerza la alineación europea (criterio 3.5) y el capítulo 6.
 
 **Consecuencias para el informe:** el informe se redacta igual en las tres vías. Cambian la portada, la petición formal del capítulo 11 y el anexo I. El Consejo no podrá emitir el informe de colegios del art. 5.2 sobre su propia solicitud con la misma independencia; el informe debe prever que el Ministerio lo pida igualmente.
 
@@ -299,7 +308,7 @@ Evaluación conforme al RD 472/2021 y a la Directiva 2005/36/CE, aplicables por 
 - F. Mapa de recursos por comunidad autónoma.
 - G. Lista de comprobación de acreditación.
 - H. Modelo de libro del residente y de GIFT.
-- I. Acreditación de la necesidad por las consejerías (criterio 3.1); acuerdo del Consejo General de Colegios de Fisioterapeutas; acreditación de la representatividad de las sociedades científicas cosolicitantes o acuerdo de la Comisión de Recursos Humanos del SNS (art. 4.1); cartas de apoyo institucional.
+- I. Acreditación de la necesidad por las consejerías (criterio 3.1); documentación de legitimación del Consejo General y de la AEF (sección 2.4 de la spec); respuesta de la DGOP a la consulta previa; cartas de apoyo institucional.
 - J. Cruce de competencias con la Orden CIN/2135/2008 y con los programas de MFyC y EFyC, con el recuento del criterio 4.1.
 
 Extensión total orientativa: 100 a 140 páginas sin anexos. Referencia de profundidad del Libro Blanco: documento general de 26 páginas; capítulo por ACE con mediana de 22 páginas (rango 14-44) y anexos con mediana de 34 (rango 10-214); Pediatría de AP, 24 páginas de capítulo y 128 de anexos. El informe de FFyC es más largo porque añade texto normativo, test de proporcionalidad y matriz del RD 589/2022.
@@ -382,7 +391,7 @@ Los capítulos 7 y 8 no llevan ficha porque se redactan con formato de texto nor
 | Capacidad docente insuficiente al inicio, porque hay pocos fisioterapeutas por centro de salud | Capacidad inicial de 1 residente/año por centro y acreditación bienal, con el mismo criterio de excepción que admite el anexo II para centros pequeños |
 | Duración de 2 o 3 años | Propuesta de 2 años por paridad con EFyC; cierre tras el consenso de expertos |
 | Atención continuada | Decidir si tiene sentido en fisioterapia o si se sustituye por actividad de tarde, domicilio y comunidad |
-| Entidades promotoras y firmantes | **Decidido en v0.4.1:** promotor, el Consejo General de Colegios de Fisioterapeutas de España. Pendiente: qué sociedades científicas cosolicitan o si se pide a la Comisión de Recursos Humanos del SNS que inicie; apoyo de universidades |
+| Entidades promotoras y firmantes | **Decidido en v0.4.2:** Consejo General de Colegios de Fisioterapeutas de España y Asociación Española de Fisioterapeutas (sección de Atención Primaria), por la vía B. Pendiente: respuesta de la DGOP sobre el cómputo conjunto del 70 % y apoyo de universidades |
 | Texto del RD 589/2022 | **Resuelto en v0.4.** Anexo I transcrito en la sección 7 |
 | Contraste con el Libro Blanco de la AEP | **Resuelto en v0.3.** Ver [referencias/contraste-libro-blanco-ACE-2024.md](referencias/contraste-libro-blanco-ACE-2024.md) |
 
