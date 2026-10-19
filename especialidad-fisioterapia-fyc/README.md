@@ -11,9 +11,12 @@ Modelos: *Libro Blanco de las ACE Pediátricas 2024* (AEP) para la estructura de
   - RD 183/2008, versión consolidada
   - Orden SAS/1729/2010, programa de EFyC
   - Orden PJC/798/2024, programa de MFyC y requisitos de acreditación de las UDMAFyC
+  - RD 589/2022, versión consolidada: procedimiento y criterios del anexo I
+  - Orden CIN/2135/2008, competencias del Grado en Fisioterapia
+- [referencias/cruce-competencias-grado-fisioterapia.md](referencias/cruce-competencias-grado-fisioterapia.md): competencias del grado frente a la FFyC y frente a los programas de MFyC y EFyC; competencias exclusivas, compartidas y límites.
 - [referencias/contraste-libro-blanco-ACE-2024.md](referencias/contraste-libro-blanco-ACE-2024.md): estructura, profundidad y datos de método del Libro Blanco de las ACE Pediátricas 2024, y cambios que motivaron la spec v0.3.
 
 ## Pendiente
 
-- PDF del RD 589/2022 para transcribir los criterios de su anexo I.
+- Entidad legitimada para iniciar el procedimiento (art. 4.1 del RD 589/2022) y contacto con al menos 7 consejerías.
 - Decisiones abiertas de la sección 11 de la spec.
