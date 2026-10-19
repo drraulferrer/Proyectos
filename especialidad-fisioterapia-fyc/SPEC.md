@@ -6,7 +6,7 @@
 
 **Cambios de v0.4.3 respecto a v0.4.2:** la sección de Atención Primaria de la AEF tiene personalidad jurídica propia como asociación vinculada a la AEF. Pasa a ser cosolicitante, porque es la entidad que mejor encaja con la «sociedad científica […] en relación con el área de especialización» del art. 4.1.
 
-**Cambios de v0.4.1 respecto a v0.4:** la vía B tiene ya cosolicitante: la Asociación Española de Fisioterapeutas (AEF), a través de su sección nacional de Atención Primaria. Se añaden la documentación que debe aportar y el riesgo residual sobre el cómputo del 70 % (sección 2.4).
+**Cambios de v0.4.2 respecto a v0.4.1:** la vía B tiene ya cosolicitante: la Asociación Española de Fisioterapeutas (AEF), a través de su sección nacional de Atención Primaria. Se añaden la documentación que debe aportar y el riesgo residual sobre el cómputo del 70 % (sección 2.4).
 
 **Cambios de v0.4.1 respecto a v0.4:** se fija que la solicitud la impulsa el Consejo General de Colegios de Fisioterapeutas de España. Como el art. 4.1 del RD 589/2022 reserva la iniciativa a sociedades científicas o a la Comisión de Recursos Humanos del SNS, y el art. 5.2 atribuye a los colegios el papel de informantes, se define una configuración de la solicitud que no dependa de una interpretación favorable (sección 2.4).
 
