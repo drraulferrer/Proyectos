@@ -1,8 +1,10 @@
 # Especificación: Informe técnico para la creación de la especialidad de Fisioterapia Familiar y Comunitaria
 
-**Estado:** borrador v0.4.3 · **Fecha:** 19 de octubre de 2026 · **Responsable:** Raúl Ferrer
+**Estado:** borrador v0.4.4 · **Fecha:** 19 de octubre de 2026 · **Responsable:** Raúl Ferrer
 
-**Cambios respecto a v0.4.2:** la sección de Atención Primaria de la AEF tiene personalidad jurídica propia como asociación vinculada a la AEF. Pasa a ser cosolicitante, porque es la entidad que mejor encaja con la «sociedad científica […] en relación con el área de especialización» del art. 4.1.
+**Cambios respecto a v0.4.3:** la DGOP ha aceptado al Consejo General como solicitante. La sección 2.4 se simplifica: legitimación resuelta, con la condición de que conste por escrito; la asociación de la sección de AP y la AEF pasan a reforzar el contenido, no la legitimación.
+
+**Cambios de v0.4.3 respecto a v0.4.2:** la sección de Atención Primaria de la AEF tiene personalidad jurídica propia como asociación vinculada a la AEF. Pasa a ser cosolicitante, porque es la entidad que mejor encaja con la «sociedad científica […] en relación con el área de especialización» del art. 4.1.
 
 **Cambios de v0.4.1 respecto a v0.4:** la vía B tiene ya cosolicitante: la Asociación Española de Fisioterapeutas (AEF), a través de su sección nacional de Atención Primaria. Se añaden la documentación que debe aportar y el riesgo residual sobre el cómputo del 70 % (sección 2.4).
 
@@ -59,29 +61,27 @@ Una ACE se constituye sobre una o varias especialidades ya existentes. La Fisiot
 
 ### 2.4 Quién presenta la solicitud
 
-**Decisión:** la solicitud la impulsa el **Consejo General de Colegios de Fisioterapeutas de España**, que representa a todos los fisioterapeutas colegiados en ejercicio.
+**Decisión:** solicitante, el **Consejo General de Colegios de Fisioterapeutas de España**, que representa a todos los fisioterapeutas colegiados en ejercicio.
 
-**Problema de encaje.** El art. 4.1 del RD 589/2022 no menciona a la organización colegial. Legitima a sociedades científicas de ámbito nacional con al menos el 70 % de representación del área, y a la Comisión de Recursos Humanos del SNS. El art. 5.2 asigna a los colegios profesionales otro papel: el Ministerio les pide informe sobre la solicitud. La representatividad del Consejo es incuestionable, pero su naturaleza jurídica no es la de una sociedad científica. Si la Dirección General de Ordenación Profesional lo interpreta así, requerirá subsanación en 10 días y, si no se subsana, tendrá la petición por desistida (art. 5.1).
+**Legitimación: resuelta.** El art. 4.1 del RD 589/2022 menciona solo a sociedades científicas de ámbito nacional con al menos el 70 % de representación del área y a la Comisión de Recursos Humanos del SNS. La Dirección General de Ordenación Profesional ha aceptado al Consejo General como solicitante. Con eso desaparecen el riesgo de subsanación o desistimiento (art. 5.1) y la duda sobre el cómputo del 70 %.
 
-**Configuración de la solicitud.** Se elige una antes de la fase 1:
+**Condición:** la aceptación tiene que constar **por escrito** (oficio, correo institucional o acta de reunión) e incorporarse al anexo I del informe. Si fue verbal, se pide confirmación escrita antes de la fase 1, porque la persona que resuelva dentro de seis meses puede no ser la misma que la dio.
 
-| Vía | Cómo | Ventaja | Inconveniente |
-|---|---|---|---|
-| A. Consulta previa | El Consejo consulta por escrito a la DGOP si admite su legitimación como solicitante | Despeja la duda antes de invertir en el informe | Depende de una interpretación administrativa |
-| B. Solicitud conjunta | El Consejo presenta junto con la **asociación de la sección de Atención Primaria de la AEF**, sociedad científica nacional del área de especialización, y con la **Asociación Española de Fisioterapeutas (AEF)** como entidad matriz; el Consejo aporta la acreditación del 100 % de los colegiados como respaldo de la representatividad | Cubre los dos requisitos a la vez: sociedad científica y representatividad | Requiere acuerdo formal entre las tres entidades |
-| C. Comisión de Recursos Humanos del SNS | El Consejo entrega el informe a la Comisión y le pide que inicie el procedimiento | Legitimación sin discusión; las comunidades autónomas ya están dentro, lo que ayuda con el criterio 3.1 | El calendario lo controla la Comisión |
+**Entidades que acompañan la solicitud.** Ya no son necesarias para la legitimación, pero se mantienen como cosolicitantes o adherentes porque refuerzan el contenido:
 
-**Decisión:** vía B, con el Consejo General, la asociación de la sección de Atención Primaria y la AEF. La consulta A se mantiene como paso previo para confirmar que la DGOP acepta el cómputo conjunto de la representatividad. C se prepara en paralelo, porque las mismas consejerías que deben acreditar la necesidad forman parte de la Comisión.
+| Entidad | Papel | Criterio del anexo I que refuerza |
+|---|---|---|
+| Asociación de la sección de Atención Primaria de la AEF (personalidad jurídica propia, vinculada a la AEF) | Grupo de expertos, redacción técnica del programa y de los requisitos de acreditación | 5.1 (grupo de personas expertas), 1.1 (campo diferenciado) |
+| Asociación Española de Fisioterapeutas (AEF) | Respaldo de la sociedad científica generalista; verificar si es la organización miembro de España en World Physiotherapy | 3.5 (alineación con la UE), 4.3 (base para futuras especialidades) |
 
-**Condiciones de la vía B:**
-- **Quién firma.** Las tres entidades. La sección de Atención Primaria tiene personalidad jurídica propia como asociación vinculada a la AEF, así que puede solicitar por sí misma. Es la que mejor encaja con el art. 4.1, que pide sociedades científicas «en relación con el área de especialización»: su ámbito coincide con el de la FFyC. La AEF añade el respaldo de la sociedad generalista y su peso institucional; el Consejo, la representatividad. La sección aporta además el grupo de expertos y el contenido técnico (criterio 5.1).
-- **Riesgo residual del 70 %.** El art. 4.1 pide que sean las sociedades científicas las que acrediten el 70 %. Si la DGOP no suma la representación del Consejo a la de las dos asociaciones, estas tendrían que acreditarla por sí solas, y la de una sección especializada será necesariamente menor. Por eso la consulta A pregunta expresamente si admite el cómputo conjunto. Si la respuesta es negativa, se activa la vía C.
-- **Documentación de la asociación de la sección de Atención Primaria para el anexo I:** estatutos e inscripción en el registro de asociaciones, que acrediten personalidad jurídica, ámbito estatal y fines científicos; documento que formalice su vínculo con la AEF; acuerdo de su órgano de gobierno que aprueba la solicitud conjunta; número de socios y composición del grupo de expertos.
-- **Documentación de la AEF para el anexo I:** estatutos e inscripción en el registro de asociaciones, que acrediten el ámbito nacional y el carácter científico; acuerdo del órgano de gobierno que aprueba la solicitud conjunta; número de socios.
-- **Documentación del Consejo General para el anexo I:** acuerdo de su órgano de gobierno y certificado del número de colegiados en ejercicio.
-- **Afiliación internacional.** Verificar si la AEF es la organización miembro de España en World Physiotherapy. Si lo es, refuerza la alineación europea (criterio 3.5) y el capítulo 6.
+La vía C (pedir a la Comisión de Recursos Humanos del SNS que inicie el procedimiento) queda descartada como vía de legitimación. La Comisión sigue siendo clave como informante (art. 5.2) y porque en ella están las consejerías del criterio 3.1.
 
-**Consecuencias para el informe:** el informe se redacta igual en las tres vías. Cambian la portada, la petición formal del capítulo 11 y el anexo I. El Consejo no podrá emitir el informe de colegios del art. 5.2 sobre su propia solicitud con la misma independencia; el informe debe prever que el Ministerio lo pida igualmente.
+**Documentación para el anexo I:**
+- Consejo General: acuerdo de su órgano de gobierno, certificado del número de colegiados en ejercicio y documento escrito de aceptación de la DGOP.
+- Asociación de la sección de Atención Primaria: estatutos e inscripción registral (ámbito estatal y fines científicos), documento de vinculación con la AEF, acuerdo de su órgano de gobierno y composición del grupo de expertos.
+- AEF: acuerdo de su órgano de gobierno de apoyo o cosolicitud.
+
+**Doble papel del Consejo.** El art. 5.2 prevé que el Ministerio pida informe a «los colegios profesionales que correspondan». Siendo el Consejo el solicitante, el informe debe prever que el Ministerio lo pida a los colegios autonómicos o lo dé por emitido con la propia solicitud. Conviene que los colegios autonómicos conozcan el informe antes de presentarlo, para que su respuesta sea coherente.
 
 ## 3. Destinatarios y uso
 
@@ -311,7 +311,7 @@ Evaluación conforme al RD 472/2021 y a la Directiva 2005/36/CE, aplicables por 
 - F. Mapa de recursos por comunidad autónoma.
 - G. Lista de comprobación de acreditación.
 - H. Modelo de libro del residente y de GIFT.
-- I. Acreditación de la necesidad por las consejerías (criterio 3.1); documentación de legitimación del Consejo General, de la asociación de la sección de Atención Primaria y de la AEF (sección 2.4 de la spec); respuesta de la DGOP a la consulta previa; cartas de apoyo institucional.
+- I. Acreditación de la necesidad por las consejerías (criterio 3.1); aceptación escrita de la DGOP del Consejo General como solicitante; documentación del Consejo General, de la asociación de la sección de Atención Primaria y de la AEF (sección 2.4 de la spec); cartas de apoyo institucional.
 - J. Cruce de competencias con la Orden CIN/2135/2008 y con los programas de MFyC y EFyC, con el recuento del criterio 4.1.
 
 Extensión total orientativa: 100 a 140 páginas sin anexos. Referencia de profundidad del Libro Blanco: documento general de 26 páginas; capítulo por ACE con mediana de 22 páginas (rango 14-44) y anexos con mediana de 34 (rango 10-214); Pediatría de AP, 24 páginas de capítulo y 128 de anexos. El informe de FFyC es más largo porque añade texto normativo, test de proporcionalidad y matriz del RD 589/2022.
@@ -382,7 +382,7 @@ Los capítulos 7 y 8 no llevan ficha porque se redactan con formato de texto nor
 
 | Riesgo o decisión | Mitigación o propuesta |
 |---|---|
-| Legitimación del Consejo General como solicitante (art. 4.1) | El Consejo es una corporación de derecho público, no una sociedad científica, y el art. 5.2 lo sitúa como informante. Riesgo de requerimiento de subsanación y, si no se subsana en 10 días, de desistimiento (art. 5.1). Mitigación en la sección 2.4: consulta previa a la DGOP y solicitud que incluya a una entidad cuya legitimación no admita discusión |
+| Legitimación del Consejo General como solicitante (art. 4.1) | **Resuelto en v0.4.4:** la DGOP lo acepta. Pendiente solo que la aceptación conste por escrito en el anexo I |
 | Necesidad acreditada por al menos 7 consejerías (criterio 3.1) | Contactos con las consejerías desde la fase 0; sin esas 7, no se presenta la solicitud |
 | Resolución desfavorable con bloqueo de 5 años (art. 6.3) | No presentar hasta tener todos los criterios del anexo I cubiertos y revisados por alguien con experiencia en formación sanitaria especializada |
 | No alcanzar el 50 % de competencias exclusivas (criterio 4.1) | Etiquetado de cada competencia desde el principio; reforzar el núcleo propio de la fisioterapia (valoración, ejercicio terapéutico, terapia manual, agentes físicos, fisioterapia respiratoria, neurológica y de suelo pélvico) |
@@ -394,7 +394,7 @@ Los capítulos 7 y 8 no llevan ficha porque se redactan con formato de texto nor
 | Capacidad docente insuficiente al inicio, porque hay pocos fisioterapeutas por centro de salud | Capacidad inicial de 1 residente/año por centro y acreditación bienal, con el mismo criterio de excepción que admite el anexo II para centros pequeños |
 | Duración de 2 o 3 años | Propuesta de 2 años por paridad con EFyC; cierre tras el consenso de expertos |
 | Atención continuada | Decidir si tiene sentido en fisioterapia o si se sustituye por actividad de tarde, domicilio y comunidad |
-| Entidades promotoras y firmantes | **Decidido en v0.4.3:** Consejo General de Colegios de Fisioterapeutas de España, asociación de la sección de Atención Primaria de la AEF y Asociación Española de Fisioterapeutas, por la vía B. Pendiente: respuesta de la DGOP sobre el cómputo conjunto del 70 % y apoyo de universidades |
+| Entidades promotoras y firmantes | **Decidido en v0.4.4:** solicitante, el Consejo General de Colegios de Fisioterapeutas de España, aceptado por la DGOP. Acompañan la asociación de la sección de Atención Primaria de la AEF y la AEF. Pendiente: apoyo de universidades |
 | Texto del RD 589/2022 | **Resuelto en v0.4.** Anexo I transcrito en la sección 7 |
 | Contraste con el Libro Blanco de la AEP | **Resuelto en v0.3.** Ver [referencias/contraste-libro-blanco-ACE-2024.md](referencias/contraste-libro-blanco-ACE-2024.md) |
 
@@ -402,7 +402,7 @@ Los capítulos 7 y 8 no llevan ficha porque se redactan con formato de texto nor
 
 | Fase | Contenido | Producto |
 |---|---|---|
-| 0 | Validar la spec, cerrar las decisiones de la sección 11, consulta previa del Consejo General a la DGOP sobre su legitimación y elección de la vía de la sección 2.4 y abrir contacto con las consejerías (criterio 3.1) | Spec v1.0 y hoja de ruta institucional |
+| 0 | Validar la spec, cerrar las decisiones de la sección 11, obtener por escrito la aceptación de la DGOP, formalizar los acuerdos con la sección de AP y la AEF y abrir contacto con las consejerías (criterio 3.1) | Spec v1.0 y hoja de ruta institucional |
 | 1 | Revisión normativa y bibliográfica; comparación internacional | Capítulos 2, 6 y 10; anexo C |
 | 2 | Recogida de datos: SIAP, BDCAP, consejerías, encuesta | Capítulos 4 y 5; anexos D y F |
 | 3 | Consenso de expertos sobre definición, competencias y actividades mínimas | Capítulos 3 y 7; anexo E |
@@ -423,4 +423,4 @@ Los capítulos 7 y 8 no llevan ficha porque se redactan con formato de texto nor
 9. La estructura de capítulos de justificación se ha contrastado con el Libro Blanco de las ACE Pediátricas 2024 (cumplido en la spec v0.3; el informe debe mantener los elementos diferenciales, las siete categorías de necesidad y la matriz de relación).
 10. Las competencias exclusivas son al menos el 50 % del programa, con el recuento del anexo J.
 11. Ninguna competencia del programa sale del ámbito del fisioterapeuta (Ley 44/2003, art. 7.2.b; Orden CIN/2135/2008).
-12. Constan los documentos de al menos 7 consejerías y la legitimación del solicitante según el art. 4.1, con la configuración de la sección 2.4.
+12. Constan los documentos de al menos 7 consejerías y la aceptación escrita de la DGOP del Consejo General como solicitante.
