@@ -1,8 +1,10 @@
 # Especificación: Informe técnico para la creación de la especialidad de Fisioterapia Familiar y Comunitaria
 
-**Estado:** borrador v0.4 · **Fecha:** 19 de octubre de 2026 · **Responsable:** Raúl Ferrer
+**Estado:** borrador v0.4.1 · **Fecha:** 19 de octubre de 2026 · **Responsable:** Raúl Ferrer
 
-**Cambios respecto a v0.3:** se incorporan el RD 589/2022 (versión consolidada) y la Orden CIN/2135/2008. La matriz de la sección 7 recoge ya el literal de los cinco criterios del anexo I. El procedimiento de los arts. 4 a 6 añade requisitos que cambian el plan de trabajo: iniciativa de sociedades científicas que representen al menos al 70 % de los profesionales del área, o de la Comisión de Recursos Humanos del SNS; necesidad acreditada por al menos 7 consejerías; informe vinculante del Ministerio de Universidades; y cinco años de bloqueo si la resolución es desfavorable. El criterio 4.1 (al menos el 50 % de competencias exclusivas) obliga a etiquetar cada competencia; la cláusula de no exclusividad del modelo EFyC se mantiene solo para dejar claro que no se crea reserva de actividad. Los elementos diferenciales se redactan con la terminología de la Orden CIN y se excluye lo que no es competencia del fisioterapeuta. El cruce de competencias está en [referencias/cruce-competencias-grado-fisioterapia.md](referencias/cruce-competencias-grado-fisioterapia.md).
+**Cambios respecto a v0.4:** se fija que la solicitud la impulsa el Consejo General de Colegios de Fisioterapeutas de España. Como el art. 4.1 del RD 589/2022 reserva la iniciativa a sociedades científicas o a la Comisión de Recursos Humanos del SNS, y el art. 5.2 atribuye a los colegios el papel de informantes, se define una configuración de la solicitud que no dependa de una interpretación favorable (sección 2.4).
+
+**Cambios de v0.4 respecto a v0.3:** se incorporan el RD 589/2022 (versión consolidada) y la Orden CIN/2135/2008. La matriz de la sección 7 recoge ya el literal de los cinco criterios del anexo I. El procedimiento de los arts. 4 a 6 añade requisitos que cambian el plan de trabajo: iniciativa de sociedades científicas que representen al menos al 70 % de los profesionales del área, o de la Comisión de Recursos Humanos del SNS; necesidad acreditada por al menos 7 consejerías; informe vinculante del Ministerio de Universidades; y cinco años de bloqueo si la resolución es desfavorable. El criterio 4.1 (al menos el 50 % de competencias exclusivas) obliga a etiquetar cada competencia; la cláusula de no exclusividad del modelo EFyC se mantiene solo para dejar claro que no se crea reserva de actividad. Los elementos diferenciales se redactan con la terminología de la Orden CIN y se excluye lo que no es competencia del fisioterapeuta. El cruce de competencias está en [referencias/cruce-competencias-grado-fisioterapia.md](referencias/cruce-competencias-grado-fisioterapia.md).
 
 **Cambios de v0.3 respecto a v0.2:** la estructura se contrasta con el PDF del *Libro Blanco de las ACE Pediátricas 2024* (detalle y datos en [referencias/contraste-libro-blanco-ACE-2024.md](referencias/contraste-libro-blanco-ACE-2024.md)). El libro no sigue la estructura que suponía la v0.1: tiene un documento general y una proforma de cuatro bloques por ACE, y no trae capítulo de comparación internacional. Se incorporan los elementos diferenciales, la clasificación de necesidades en siete categorías, la matriz de relación entre especialidades, el bloque de descripción de la asistencia y los requisitos de acreditación de tutores.
 
@@ -32,7 +34,7 @@ Una ACE se constituye sobre una o varias especialidades ya existentes. La Fisiot
 |---|---|---|
 | Ámbito profesional de partida | Ley 44/2003, art. 7.2.b); Orden CIN/2135/2008 | La especialidad profundiza competencias que ya son de la profesión; no puede reclamar actuaciones que la ley y el grado atribuyen a otras profesiones (ver el cruce de competencias, apartado 6) |
 | Habilitación legal | Ley 44/2003, art. 16 | Corresponde al Gobierno crear nuevos títulos de especialista, previo informe del Consejo Nacional de Especialidades en Ciencias de la Salud y de la organización colegial correspondiente |
-| Iniciativa | RD 589/2022, art. 4.1 | La solicitud solo la pueden presentar una o varias sociedades científicas de ámbito nacional que acrediten representar al menos al 70 % de los profesionales del área, o la Comisión de Recursos Humanos del SNS. Se presenta por la sede electrónica del Ministerio de Sanidad con el modelo que se determine (art. 4.3) |
+| Iniciativa | RD 589/2022, art. 4.1 | El literal reserva la iniciativa a «una o varias sociedades científicas de ámbito nacional válidamente constituidas en relación con el área de especialización […] que acrediten la representación de, al menos, el setenta por ciento de los profesionales de esa área» o a la Comisión de Recursos Humanos del SNS. El promotor es el Consejo General de Colegios de Fisioterapeutas; su encaje en este artículo se trata en la sección 2.4. Se presenta por la sede electrónica del Ministerio de Sanidad con el modelo que se determine (art. 4.3) |
 | Criterios | RD 589/2022, art. 4.3 y **anexo I** | La solicitud debe justificar los cinco criterios del anexo I (sección 7). La Orden PJC/798/2024 confirma que es el estándar: la revisión de MFyC exigió un «informe de viabilidad» frente a ese anexo (art. 7) |
 | Tramitación | RD 589/2022, art. 5 | Subsanación en 10 días o desistimiento. Informes de los colegios profesionales, del Consejo Nacional de Especialidades, de la Comisión de Recursos Humanos del SNS y del **Ministerio de Universidades, con carácter vinculante**. Se aplican el RD 472/2021 y la Directiva 2005/36/CE |
 | Resolución | RD 589/2022, art. 6 | Plazo de 6 meses, con silencio negativo. Si se estima, la norma de creación se inicia en 4 meses. **Si es desfavorable, no puede volver a pedirse en 5 años** |
@@ -50,6 +52,24 @@ Una ACE se constituye sobre una o varias especialidades ya existentes. La Fisiot
 - **Psicología Clínica:** especialidad de una profesión sanitaria no médica con categoría propia en el anexo I.
 - **Ampliaciones recientes del anexo I:** Psiquiatría Infantil y de la Adolescencia (RD 689/2021) y Medicina de Urgencias y Emergencias demuestran que el anexo se modifica cuando se acredita la necesidad. Verificar la norma de creación de esta última.
 - **Acceso excepcional de profesionales en ejercicio:** RD 1753/1998 para MFyC y la vía transitoria del RD 450/2005 para las especialidades de enfermería. Verificar disposición exacta.
+
+### 2.4 Quién presenta la solicitud
+
+**Decisión:** la solicitud la impulsa el **Consejo General de Colegios de Fisioterapeutas de España**, que representa a todos los fisioterapeutas colegiados en ejercicio.
+
+**Problema de encaje.** El art. 4.1 del RD 589/2022 no menciona a la organización colegial. Legitima a sociedades científicas de ámbito nacional con al menos el 70 % de representación del área, y a la Comisión de Recursos Humanos del SNS. El art. 5.2 asigna a los colegios profesionales otro papel: el Ministerio les pide informe sobre la solicitud. La representatividad del Consejo es incuestionable, pero su naturaleza jurídica no es la de una sociedad científica. Si la Dirección General de Ordenación Profesional lo interpreta así, requerirá subsanación en 10 días y, si no se subsana, tendrá la petición por desistida (art. 5.1).
+
+**Configuración de la solicitud.** Se elige una antes de la fase 1:
+
+| Vía | Cómo | Ventaja | Inconveniente |
+|---|---|---|---|
+| A. Consulta previa | El Consejo consulta por escrito a la DGOP si admite su legitimación como solicitante | Despeja la duda antes de invertir en el informe | Depende de una interpretación administrativa |
+| B. Solicitud conjunta | El Consejo presenta junto con una o varias sociedades científicas nacionales de fisioterapia; el Consejo aporta la acreditación del 100 % de los colegiados como respaldo de la representatividad | Cubre los dos requisitos a la vez: sociedad científica y representatividad | Requiere acuerdo formal con las sociedades |
+| C. Comisión de Recursos Humanos del SNS | El Consejo entrega el informe a la Comisión y le pide que inicie el procedimiento | Legitimación sin discusión; las comunidades autónomas ya están dentro, lo que ayuda con el criterio 3.1 | El calendario lo controla la Comisión |
+
+**Recomendación de la spec:** A como primer paso y B como configuración por defecto si la respuesta no es clara. C se prepara en paralelo, porque las mismas consejerías que deben acreditar la necesidad forman parte de la Comisión.
+
+**Consecuencias para el informe:** el informe se redacta igual en las tres vías. Cambian la portada, la petición formal del capítulo 11 y el anexo I. El Consejo no podrá emitir el informe de colegios del art. 5.2 sobre su propia solicitud con la misma independencia; el informe debe prever que el Ministerio lo pida igualmente.
 
 ## 3. Destinatarios y uso
 
@@ -265,7 +285,7 @@ Evaluación conforme al RD 472/2021 y a la Directiva 2005/36/CE, aplicables por 
 - **Aceptación:** responde a todos los elementos de evaluación del RD 472/2021.
 
 ### 11. Conclusiones y propuesta formal (1-2 páginas)
-- Petición concreta en los términos del art. 4 del RD 589/2022, firmada por las entidades legitimadas (sociedades científicas que acrediten el 70 % de representación, o petición dirigida a la Comisión de Recursos Humanos del SNS para que inicie el procedimiento).
+- Petición concreta en los términos del art. 4 del RD 589/2022, firmada por el Consejo General de Colegios de Fisioterapeutas con la configuración elegida en la sección 2.4 de esta spec.
 
 ### Bibliografía
 - Vancouver; referencias verificadas, con enlace o DOI.
@@ -279,7 +299,7 @@ Evaluación conforme al RD 472/2021 y a la Directiva 2005/36/CE, aplicables por 
 - F. Mapa de recursos por comunidad autónoma.
 - G. Lista de comprobación de acreditación.
 - H. Modelo de libro del residente y de GIFT.
-- I. Acreditación de la necesidad por las consejerías (criterio 3.1), acreditación de la representatividad de las sociedades promotoras (art. 4.1) y cartas de apoyo institucional.
+- I. Acreditación de la necesidad por las consejerías (criterio 3.1); acuerdo del Consejo General de Colegios de Fisioterapeutas; acreditación de la representatividad de las sociedades científicas cosolicitantes o acuerdo de la Comisión de Recursos Humanos del SNS (art. 4.1); cartas de apoyo institucional.
 - J. Cruce de competencias con la Orden CIN/2135/2008 y con los programas de MFyC y EFyC, con el recuento del criterio 4.1.
 
 Extensión total orientativa: 100 a 140 páginas sin anexos. Referencia de profundidad del Libro Blanco: documento general de 26 páginas; capítulo por ACE con mediana de 22 páginas (rango 14-44) y anexos con mediana de 34 (rango 10-214); Pediatría de AP, 24 páginas de capítulo y 128 de anexos. El informe de FFyC es más largo porque añade texto normativo, test de proporcionalidad y matriz del RD 589/2022.
@@ -350,7 +370,7 @@ Los capítulos 7 y 8 no llevan ficha porque se redactan con formato de texto nor
 
 | Riesgo o decisión | Mitigación o propuesta |
 |---|---|
-| Legitimación para iniciar el procedimiento (art. 4.1) | Decidir la vía: sociedades científicas que acrediten juntas el 70 % de los fisioterapeutas del área, o pedir a la Comisión de Recursos Humanos del SNS que lo inicie. Hay que definir qué es «el área» y cómo se mide la representatividad |
+| Legitimación del Consejo General como solicitante (art. 4.1) | El Consejo es una corporación de derecho público, no una sociedad científica, y el art. 5.2 lo sitúa como informante. Riesgo de requerimiento de subsanación y, si no se subsana en 10 días, de desistimiento (art. 5.1). Mitigación en la sección 2.4: consulta previa a la DGOP y solicitud que incluya a una entidad cuya legitimación no admita discusión |
 | Necesidad acreditada por al menos 7 consejerías (criterio 3.1) | Contactos con las consejerías desde la fase 0; sin esas 7, no se presenta la solicitud |
 | Resolución desfavorable con bloqueo de 5 años (art. 6.3) | No presentar hasta tener todos los criterios del anexo I cubiertos y revisados por alguien con experiencia en formación sanitaria especializada |
 | No alcanzar el 50 % de competencias exclusivas (criterio 4.1) | Etiquetado de cada competencia desde el principio; reforzar el núcleo propio de la fisioterapia (valoración, ejercicio terapéutico, terapia manual, agentes físicos, fisioterapia respiratoria, neurológica y de suelo pélvico) |
@@ -362,7 +382,7 @@ Los capítulos 7 y 8 no llevan ficha porque se redactan con formato de texto nor
 | Capacidad docente insuficiente al inicio, porque hay pocos fisioterapeutas por centro de salud | Capacidad inicial de 1 residente/año por centro y acreditación bienal, con el mismo criterio de excepción que admite el anexo II para centros pequeños |
 | Duración de 2 o 3 años | Propuesta de 2 años por paridad con EFyC; cierre tras el consenso de expertos |
 | Atención continuada | Decidir si tiene sentido en fisioterapia o si se sustituye por actividad de tarde, domicilio y comunidad |
-| Entidades promotoras y firmantes | Pendiente: Consejo General, sociedades científicas de fisioterapia en AP, universidades |
+| Entidades promotoras y firmantes | **Decidido en v0.4.1:** promotor, el Consejo General de Colegios de Fisioterapeutas de España. Pendiente: qué sociedades científicas cosolicitan o si se pide a la Comisión de Recursos Humanos del SNS que inicie; apoyo de universidades |
 | Texto del RD 589/2022 | **Resuelto en v0.4.** Anexo I transcrito en la sección 7 |
 | Contraste con el Libro Blanco de la AEP | **Resuelto en v0.3.** Ver [referencias/contraste-libro-blanco-ACE-2024.md](referencias/contraste-libro-blanco-ACE-2024.md) |
 
@@ -370,7 +390,7 @@ Los capítulos 7 y 8 no llevan ficha porque se redactan con formato de texto nor
 
 | Fase | Contenido | Producto |
 |---|---|---|
-| 0 | Validar la spec, cerrar las decisiones de la sección 11, fijar la entidad legitimada para la solicitud (art. 4.1) y abrir contacto con las consejerías (criterio 3.1) | Spec v1.0 y hoja de ruta institucional |
+| 0 | Validar la spec, cerrar las decisiones de la sección 11, consulta previa del Consejo General a la DGOP sobre su legitimación y elección de la vía de la sección 2.4 y abrir contacto con las consejerías (criterio 3.1) | Spec v1.0 y hoja de ruta institucional |
 | 1 | Revisión normativa y bibliográfica; comparación internacional | Capítulos 2, 6 y 10; anexo C |
 | 2 | Recogida de datos: SIAP, BDCAP, consejerías, encuesta | Capítulos 4 y 5; anexos D y F |
 | 3 | Consenso de expertos sobre definición, competencias y actividades mínimas | Capítulos 3 y 7; anexo E |
@@ -391,4 +411,4 @@ Los capítulos 7 y 8 no llevan ficha porque se redactan con formato de texto nor
 9. La estructura de capítulos de justificación se ha contrastado con el Libro Blanco de las ACE Pediátricas 2024 (cumplido en la spec v0.3; el informe debe mantener los elementos diferenciales, las siete categorías de necesidad y la matriz de relación).
 10. Las competencias exclusivas son al menos el 50 % del programa, con el recuento del anexo J.
 11. Ninguna competencia del programa sale del ámbito del fisioterapeuta (Ley 44/2003, art. 7.2.b; Orden CIN/2135/2008).
-12. Constan los documentos de al menos 7 consejerías y la legitimación del promotor según el art. 4.1.
+12. Constan los documentos de al menos 7 consejerías y la legitimación del solicitante según el art. 4.1, con la configuración de la sección 2.4.
