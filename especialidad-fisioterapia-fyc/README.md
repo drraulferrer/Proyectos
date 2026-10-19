@@ -6,6 +6,10 @@ Modelos: *Libro Blanco de las ACE Pediátricas 2024* (AEP) para la estructura de
 
 ## Contenido
 
+- [ARRANQUE.md](ARRANQUE.md): punto de entrada para redactar el informe. Estado, decisiones, orden de redacción y mensaje para abrir una sesión nueva.
+- [CLAUDE.md](CLAUDE.md): reglas de contenido y estilo para cualquier sesión de trabajo.
+- [informe/](informe/): esqueleto del informe, un archivo por capítulo, y anexos (el anexo A, matriz del RD 589/2022, ya precargado).
+- [seguimiento/](seguimiento/): registro de decisiones, pendientes externos y datos necesarios por capítulo.
 - [SPEC.md](SPEC.md): encuadre normativo, tabla comparada MFyC, EFyC y FFyC, estructura capítulo a capítulo, matriz de trazabilidad con el RD 589/2022, estilo, riesgos, plan de trabajo y criterios de aceptación.
 - [referencias/normativa/](referencias/normativa/): BOE de referencia.
   - RD 183/2008, versión consolidada
