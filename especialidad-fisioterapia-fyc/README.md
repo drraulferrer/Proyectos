@@ -18,6 +18,6 @@ Modelos: *Libro Blanco de las ACE Pediátricas 2024* (AEP) para la estructura de
 
 ## Pendiente
 
-- Solicitantes: Consejo General de Colegios de Fisioterapeutas de España y Asociación Española de Fisioterapeutas (sección de Atención Primaria). Pendiente la consulta previa a la DGOP sobre el cómputo conjunto del 70 % (spec, sección 2.4).
+- Solicitantes: Consejo General de Colegios de Fisioterapeutas de España, asociación de la sección de Atención Primaria de la AEF y Asociación Española de Fisioterapeutas. Pendiente la consulta previa a la DGOP sobre el cómputo conjunto del 70 % (spec, sección 2.4).
 - Contacto con al menos 7 consejerías.
 - Decisiones abiertas de la sección 11 de la spec.
