@@ -29,6 +29,7 @@ Proyectos/
 | Proyecto | Descripción | Estado |
 |----------|-------------|--------|
 | [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |
+| [especialidad-fisioterapia-fyc](especialidad-fisioterapia-fyc/) | Especificaciones del informe al Ministerio de Sanidad para crear la especialidad de Fisioterapia Familiar y Comunitaria, siguiendo el modelo del Libro Blanco de las ACE Pediátricas. | Borrador |
 | [skillspector](skillspector/) | Escáner de seguridad de NVIDIA para revisar habilidades (*Skills*) de Claude Code antes de instalarlas: detecta instrucciones ocultas, fugas de datos y código malicioso. | En uso |
 
 ## Notas
