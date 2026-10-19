@@ -1,8 +1,10 @@
 # Especificación: Informe técnico para la creación de la especialidad de Fisioterapia Familiar y Comunitaria
 
-**Estado:** borrador v0.2 · **Fecha:** 19 de octubre de 2026 · **Responsable:** Raúl Ferrer
+**Estado:** borrador v0.3 · **Fecha:** 19 de octubre de 2026 · **Responsable:** Raúl Ferrer
 
-**Cambios respecto a v0.1:** el encuadre normativo se ajusta al texto del RD 183/2008 consolidado. El programa formativo y los requisitos de acreditación se calcan de la estructura de los dos programas oficiales más próximos: Medicina Familiar y Comunitaria (Orden PJC/798/2024) y Enfermería Familiar y Comunitaria (Orden SAS/1729/2010). Se añaden la tabla comparada MFyC, EFyC y FFyC, el test de proporcionalidad (RD 472/2021) y la propuesta de texto normativo.
+**Cambios respecto a v0.2:** la estructura se contrasta con el PDF del *Libro Blanco de las ACE Pediátricas 2024* (detalle y datos en [referencias/contraste-libro-blanco-ACE-2024.md](referencias/contraste-libro-blanco-ACE-2024.md)). El libro no sigue la estructura que suponía la v0.1: tiene un documento general y una proforma de cuatro bloques por ACE, y no trae capítulo de comparación internacional. Se incorporan los elementos diferenciales, la clasificación de necesidades en siete categorías, la matriz de relación entre especialidades, el bloque de descripción de la asistencia y los requisitos de acreditación de tutores.
+
+**Cambios de v0.2 respecto a v0.1:** el encuadre normativo se ajusta al texto del RD 183/2008 consolidado. El programa formativo y los requisitos de acreditación se calcan de la estructura de los dos programas oficiales más próximos: Medicina Familiar y Comunitaria (Orden PJC/798/2024) y Enfermería Familiar y Comunitaria (Orden SAS/1729/2010). Se añaden la tabla comparada MFyC, EFyC y FFyC, el test de proporcionalidad (RD 472/2021) y la propuesta de texto normativo.
 
 ## 1. Propósito
 
@@ -12,7 +14,7 @@ El informe combina tres modelos:
 
 | Modelo | Qué se toma de él |
 |---|---|
-| *Libro Blanco de las ACE Pediátricas 2024* (AEP) | Estructura y profundidad del informe de justificación: definición, necesidad, situación en España, comparación internacional, necesidades de profesionales |
+| *Libro Blanco de las ACE Pediátricas 2024* (AEP) | Método y profundidad del informe de justificación: documento general (introducción, justificación, metodología, comentarios finales); proforma de cuatro bloques (datos identificativos, análisis de la especialidad, propuesta de formación, descripción de la asistencia); necesidades clasificadas en siete categorías; elementos diferenciales; matriz de relación entre especialidades; requisitos de acreditación de tutores |
 | Orden PJC/798/2024 (programa de MFyC y requisitos de las UDMAFyC) | Estructura del programa oficial vigente, formato de competencias con instrumentos de evaluación, requisitos de acreditación de las UDMAFyC |
 | Orden SAS/1729/2010 (programa de EFyC) | Modelo de especialidad no médica de 2 años en la misma unidad docente: valores, competencias prioritarias, actividades mínimas por lugar de aprendizaje, cronograma |
 
@@ -78,7 +80,7 @@ Formato de lectura: un **resumen ejecutivo** autónomo de 4 a 6 páginas y el **
 | Ley 16/2003, art. 2 | Principios del SNS, citados en las competencias transversales |
 
 ### 4.2 Modelo de informe
-- AEP. *Libro Blanco de las ACE Pediátricas 2024* y edición de 2021.
+- AEP. *Libro Blanco de las ACE Pediátricas 2024* y edición de 2021. Contrastado en [referencias/contraste-libro-blanco-ACE-2024.md](referencias/contraste-libro-blanco-ACE-2024.md); el capítulo de Pediatría de Atención Primaria (pp. 383-405) es el modelo de datos más próximo.
 
 ### 4.3 Marco estratégico
 - Marco Estratégico para la Atención Primaria y Comunitaria (2019) y su Plan de Acción. El programa de MFyC de 2024 declara alinearse con él; el de FFyC debe hacer lo mismo.
@@ -137,7 +139,8 @@ Cada sección indica contenido obligatorio, extensión orientativa y criterio de
 - Antecedentes de las especialidades en fisioterapia en España.
 - Por qué se toman como modelos el Libro Blanco de la AEP y los programas de MFyC y EFyC.
 - Método: grupo de trabajo, revisión de literatura, encuesta a fisioterapeutas de AP, consenso de expertos (Delphi o grupo nominal), revisión externa.
-- **Aceptación:** método reproducible y conflictos de interés declarados.
+- Recogida de datos con proformas homogéneas, como hizo la AEP con las 19 sociedades (apartado 3 del documento general del Libro Blanco): necesidades clasificadas en siete categorías, elementos diferenciales y matriz de relación con otras especialidades.
+- **Aceptación:** método reproducible, proformas incluidas como anexo y conflictos de interés declarados.
 
 ### 2. Marco normativo (5-7 páginas)
 - Desarrollo de la tabla de la sección 2.2 con cita literal de cada precepto.
@@ -150,8 +153,9 @@ Redactada con la fórmula de los programas oficiales. Modelo de MFyC: «Especial
 - Definición formal de la FFyC.
 - Misión y valores, siguiendo el apartado 2 del programa de EFyC (compromiso con las personas, familias y comunidad; equidad y gestión eficiente; mejora continua; ética; seguridad del paciente; desarrollo profesional).
 - Ámbito de actuación, siguiendo el apartado 5 del programa de MFyC: centro de salud, domicilio, recursos comunitarios, centros residenciales, unidades de apoyo a AP, docencia e investigación.
-- Delimitación con MFyC, EFyC, Medicina Física y Rehabilitación y fisioterapia hospitalaria. Debe incluir la salvaguarda que usa el programa de EFyC: las competencias avanzadas «en ningún caso» suponen ámbitos exclusivos de actuación, en el marco de la interdisciplinariedad que consagra la Ley 44/2003.
-- **Aceptación:** existe una tabla de delimitación sin solapamientos de competencias exclusivas.
+- **Elementos diferenciales** frente al área funcional del fisioterapeuta graduado, con el esquema del apartado 2.2 de la proforma del Libro Blanco adaptado a la fisioterapia: indicación, realización e interpretación de pruebas de valoración; manejo de procesos crónicos; actividades propias del centro de salud y la comunidad. Son la prueba de que la especialidad añade competencias que el grado no garantiza.
+- Delimitación con MFyC, EFyC, Medicina Física y Rehabilitación y fisioterapia hospitalaria, con una matriz de relación como la de la p. 26 del Libro Blanco: 0, sin elementos compartidos; 1, relación fuerte, con límites de proceso y coordinación que hay que fijar; 2, relación débil. Debe incluir la salvaguarda que usa el programa de EFyC: las competencias avanzadas «en ningún caso» suponen ámbitos exclusivos de actuación, en el marco de la interdisciplinariedad que consagra la Ley 44/2003.
+- **Aceptación:** existe una lista de elementos diferenciales y una matriz de relación en la que cada relación fuerte lleva sus límites de proceso; no hay solapamientos de competencias exclusivas.
 
 ### 4. Justificación de la necesidad (8-12 páginas)
 - Carga de enfermedad susceptible de fisioterapia en AP: trastornos musculoesqueléticos, dolor crónico, cronicidad y pluripatología, fragilidad y caídas, suelo pélvico, patología respiratoria crónica, desarrollo infantil.
@@ -160,17 +164,23 @@ Redactada con la fórmula de los programas oficiales. Modelo de MFyC: «Especial
 - Brecha formativa entre el grado y el trabajo en AP; heterogeneidad del posgrado.
 - Evidencia de efectividad y eficiencia del fisioterapeuta en AP y en primer contacto.
 - Alineación con el Marco Estratégico de AP y Comunitaria y con las estrategias del SNS.
-- **Aceptación:** cada afirmación de necesidad lleva dato cuantitativo con fuente y año.
+- Tabla de necesidades × siete categorías del Libro Blanco (necesidades profesionales; nuevas modalidades asistenciales; calidad asistencial y seguridad del paciente; desarrollos tecnológicos; necesidades organizativas de las administraciones; cambios demográficos y epidemiológicos; avances científicos), partiendo de sus nueve necesidades tipo adaptadas a la fisioterapia.
+- **Aceptación:** cada afirmación de necesidad lleva dato cuantitativo con fuente y año, y cada necesidad está clasificada en al menos una categoría.
 
 ### 5. Situación actual en España (6-10 páginas)
-- Mapa de recursos por comunidad: fisioterapeutas de AP, ratio por población, modelo organizativo, acceso directo.
+Sigue el bloque 4 de la proforma del Libro Blanco y el capítulo de Pediatría de Atención Primaria, que presenta centros por comunidad, profesionales por comunidad, actividad (SIAP y BDCAP), estimación de profesionales necesarios y conclusiones numeradas.
+- Mapa de recursos por comunidad: centros de salud con fisioterapia, fisioterapeutas de AP, ratio por población asignada, edad de la plantilla, modelo organizativo, acceso directo.
+- Actividad asistencial de fisioterapia en AP (SIAP, BDCAP).
 - Cartera de servicios de fisioterapia en AP (anexo II del RD 1030/2006 y carteras autonómicas).
 - Presencia actual de fisioterapeutas en las UDMAFyC. El anexo II de la Orden PJC/798/2024 ya pide a cada UDMAFyC que declare cuántos fisioterapeutas tiene, entre los «otros profesionales».
 - Experiencias de referencia y oferta de posgrado.
 - Resultados de la encuesta propia.
+- Conclusiones numeradas, cada una con su cifra.
 - **Aceptación:** cubre las 17 comunidades, Ceuta y Melilla; los huecos de información se declaran.
 
 ### 6. Comparación internacional (4-6 páginas)
+Aportación propia: el Libro Blanco no tiene este capítulo y trata lo internacional a través del currículo europeo de cada ACE (ítem 1.9 y programa 3.3.1 de la proforma).
+- Si existe un currículo europeo de fisioterapia en AP o de práctica avanzada en fisioterapia, y cómo se traspone al programa del capítulo 7. Pendiente de verificar.
 - Modelos de especialización y práctica avanzada; posición de World Physiotherapy.
 - Tabla: país, reconocimiento, vía formativa, duración, funciones, acceso directo.
 - Lecciones aplicables a España.
@@ -213,13 +223,14 @@ Se redacta **listo para publicarse como anexo I de una orden ministerial**, con 
 Se redacta como **adenda al anexo II de la Orden PJC/798/2024**, que hoy permite acreditar dos residentes por año de MFyC y EFyC. Se reproduce su estructura y se añaden los requisitos específicos de FFyC:
 
 1. **Estructura docente:** comisión de docencia, jefatura de estudios, tutores de FFyC (hasta 5 residentes por tutor, el mismo durante toda la residencia), otras figuras docentes y comité de evaluación de FFyC.
+   - **Requisitos de acreditación de tutores**, con el esquema que propone el Libro Blanco para Pediatría de AP (p. 396): servicio activo en AP con al menos dos años de experiencia; formación acreditada en docencia, comunicación, investigación, calidad y bioética; proyecto docente (objetivos, seguimiento, evaluación formativa) validado por la comisión de docencia y usado para la reacreditación; autoevaluación de méritos en formación, docencia, investigación y gestión clínica.
 2. **Plan de gestión de la calidad docente**, recursos docentes e investigación, con los mismos mínimos que el anexo II.
 3. **Aplicación del programa:** guía o itinerario formativo tipo (GIFT), plan individual de formación, programación de la evaluación y protocolo de supervisión.
 4. **Requisitos del centro de salud** (paralelos al apartado 3.1 del anexo II):
    - Organización: unidad o fisioterapeutas integrados en el EAP con al menos dos años de funcionamiento y protocolos de fisioterapia actualizados.
    - Recursos humanos: número mínimo de fisioterapeutas (propuesta de partida: dos, de los que al menos uno será tutor acreditado).
    - Área física y recursos materiales: sala de fisioterapia, espacio para intervención grupal, equipamiento mínimo y acceso a la historia clínica con registro diferenciado de fisioterapia.
-   - Actividad asistencial mínima: primeras consultas, sucesivas, atención domiciliaria e intervenciones grupales por año, que se fijarán por consenso.
+   - Actividad asistencial mínima: primeras consultas, sucesivas, atención domiciliaria e intervenciones grupales por año, que se fijarán por consenso. Referencia: el Libro Blanco exige al centro docente de Pediatría de AP al menos 5.000 consultas pediátricas al año.
    - Actividad docente: sesiones clínicas específicas de fisioterapia y sesiones conjuntas con MFyC y EFyC.
    - Indicadores de eficiencia y calidad específicos: demora de acceso, porcentaje de procesos resueltos sin derivación a atención hospitalaria, adherencia al ejercicio, intervenciones grupales completadas.
 5. **Dispositivos hospitalarios y otros dispositivos**, con convenio de colaboración.
@@ -250,13 +261,13 @@ Evaluación conforme al RD 472/2021: objetivo de interés general (protección d
 - B. **Propuesta de texto normativo:** (1) real decreto que añade al anexo I del RD 183/2008 el apartado «Especialidades de Fisioterapia» y modifica la letra c) de su anexo II; (2) orden que aprueba el programa formativo de FFyC y la adenda de requisitos de acreditación de las UDMAFyC.
 - C. Estrategia de búsqueda y tablas de evidencia.
 - D. Cuestionario y resultados de la encuesta a fisioterapeutas de AP.
-- E. Resultados del consenso de expertos.
+- E. Resultados del consenso de expertos y proformas de recogida de datos.
 - F. Mapa de recursos por comunidad autónoma.
 - G. Lista de comprobación de acreditación.
 - H. Modelo de libro del residente y de GIFT.
 - I. Cartas de apoyo institucional.
 
-Extensión total orientativa: 100 a 140 páginas sin anexos.
+Extensión total orientativa: 100 a 140 páginas sin anexos. Referencia de profundidad del Libro Blanco: documento general de 26 páginas; capítulo por ACE con mediana de 22 páginas (rango 14-44) y anexos con mediana de 34 (rango 10-214); Pediatría de AP, 24 páginas de capítulo y 128 de anexos. El informe de FFyC es más largo porque añade texto normativo, test de proporcionalidad y matriz del RD 589/2022.
 
 ## 7. Matriz de trazabilidad con el RD 589/2022
 
@@ -266,9 +277,11 @@ Antes de redactar, se transcribe literalmente del BOE cada criterio del anexo I 
 |---|---|---|---|
 | *Pendiente de transcribir: falta el PDF del RD 589/2022* | | | |
 
-## 8. Plantilla de capítulo inspirada en el Libro Blanco de la AEP
+Mientras tanto, sirve como lista provisional de contraste el contenido mínimo de la memoria que el Libro Blanco extrae del RD 639/2015 y del RD 639/2014 anulado (pp. 21-22): denominación, especialidades de acceso, elementos diferenciales, programa formativo, fundamentos científicos y necesidades asistenciales, itinerario, evaluación de competencias, duración, profesionales que ya ejercen esas funciones, unidades docentes propuestas y requisitos de acreditación de tutores. No sustituye al anexo I del RD 589/2022.
 
-Los capítulos 3 a 6, 9 y 10 abren con una ficha resumen:
+## 8. Plantilla de capítulo
+
+El Libro Blanco no usa fichas resumen: su plantilla común es la proforma de cuatro bloques, que en este informe se reparte entre los capítulos 3 (datos identificativos y elementos diferenciales), 4 (justificación), 7 y 8 (formación y tutores) y 5 (asistencia). La ficha siguiente es una aportación propia para facilitar la lectura al decisor. Los capítulos 3 a 6, 9 y 10 abren con ella:
 
 | Campo | Contenido |
 |---|---|
@@ -308,7 +321,7 @@ Los capítulos 7 y 8 no llevan ficha porque se redactan con formato de texto nor
 | Atención continuada | Decidir si tiene sentido en fisioterapia o si se sustituye por actividad de tarde, domicilio y comunidad |
 | Entidades promotoras y firmantes | Pendiente: Consejo General, sociedades científicas de fisioterapia en AP, universidades |
 | Texto del RD 589/2022 | Conseguir el PDF y transcribir el anexo I y las competencias transversales |
-| Contraste con el Libro Blanco de la AEP | Verificar la estructura de capítulo contra el PDF y ajustar las secciones 6 y 8 |
+| Contraste con el Libro Blanco de la AEP | **Resuelto en v0.3.** Ver [referencias/contraste-libro-blanco-ACE-2024.md](referencias/contraste-libro-blanco-ACE-2024.md) |
 
 ## 12. Plan de trabajo
 
@@ -332,4 +345,4 @@ Los capítulos 7 y 8 no llevan ficha porque se redactan con formato de texto nor
 6. Cada dato cuantitativo es trazable a una fuente pública o a un anexo propio.
 7. El resumen ejecutivo es comprensible por un decisor no fisioterapeuta.
 8. Al menos una revisión externa por una persona ajena al comité, con experiencia en formación sanitaria especializada.
-9. La estructura de capítulos de justificación se ha contrastado con el Libro Blanco de las ACE Pediátricas 2024.
+9. La estructura de capítulos de justificación se ha contrastado con el Libro Blanco de las ACE Pediátricas 2024 (cumplido en la spec v0.3; el informe debe mantener los elementos diferenciales, las siete categorías de necesidad y la matriz de relación).

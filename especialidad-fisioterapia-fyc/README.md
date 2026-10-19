@@ -11,9 +11,9 @@ Modelos: *Libro Blanco de las ACE Pediátricas 2024* (AEP) para la estructura de
   - RD 183/2008, versión consolidada
   - Orden SAS/1729/2010, programa de EFyC
   - Orden PJC/798/2024, programa de MFyC y requisitos de acreditación de las UDMAFyC
+- [referencias/contraste-libro-blanco-ACE-2024.md](referencias/contraste-libro-blanco-ACE-2024.md): estructura, profundidad y datos de método del Libro Blanco de las ACE Pediátricas 2024, y cambios que motivaron la spec v0.3.
 
 ## Pendiente
 
 - PDF del RD 589/2022 para transcribir los criterios de su anexo I.
-- PDF del Libro Blanco de las ACE Pediátricas 2024 para contrastar la estructura.
 - Decisiones abiertas de la sección 11 de la spec.
