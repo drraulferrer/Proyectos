@@ -1,13 +1,19 @@
 # Especialidad de Fisioterapia Familiar y Comunitaria
 
-Especificaciones para elaborar un informe técnico, dirigido al Ministerio de Sanidad, que proponga la creación de la especialidad en Ciencias de la Salud de Fisioterapia Familiar y Comunitaria con formación por residencia (FIR).
+Especificaciones para elaborar un informe técnico, dirigido al Ministerio de Sanidad, que proponga la creación de la especialidad en Ciencias de la Salud de Fisioterapia Familiar y Comunitaria con formación por residencia (FIR) en las Unidades Docentes Multiprofesionales de Atención Familiar y Comunitaria.
 
-Modelo de estructura y profundidad: *Libro Blanco de las ACE Pediátricas 2024* (AEP).
+Modelos: *Libro Blanco de las ACE Pediátricas 2024* (AEP) para la estructura del informe, y los programas oficiales de Medicina Familiar y Comunitaria (Orden PJC/798/2024) y Enfermería Familiar y Comunitaria (Orden SAS/1729/2010) para el programa formativo y la acreditación.
 
 ## Contenido
 
-- [SPEC.md](SPEC.md): encuadre normativo, fuentes, estructura capítulo a capítulo, matriz de trazabilidad con el RD 589/2022, estilo, riesgos, plan de trabajo y criterios de aceptación.
+- [SPEC.md](SPEC.md): encuadre normativo, tabla comparada MFyC, EFyC y FFyC, estructura capítulo a capítulo, matriz de trazabilidad con el RD 589/2022, estilo, riesgos, plan de trabajo y criterios de aceptación.
+- [referencias/normativa/](referencias/normativa/): BOE de referencia.
+  - RD 183/2008, versión consolidada
+  - Orden SAS/1729/2010, programa de EFyC
+  - Orden PJC/798/2024, programa de MFyC y requisitos de acreditación de las UDMAFyC
 
-## Estado
+## Pendiente
 
-Borrador v0.1. Pendiente de contrastar con el PDF del Libro Blanco y de cerrar las decisiones abiertas de la sección 10.
+- PDF del RD 589/2022 para transcribir los criterios de su anexo I.
+- PDF del Libro Blanco de las ACE Pediátricas 2024 para contrastar la estructura.
+- Decisiones abiertas de la sección 11 de la spec.
