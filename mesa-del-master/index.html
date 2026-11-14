@@ -1,0 +1,650 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>Mesa del Máster</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700;800&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: banda de fieltro fija arriba con ronda y estado; pestañas; columna de trabajo + bandeja de dados siempre a mano */
+:root{
+  --bg:#eef1ec; --surface:#f9faf7; --sunk:#e3e8e1; --ink:#1c2a24; --muted:#56665e; --line:#cbd5cc;
+  --felt:#22483a; --on-felt:#f3ecd8; --on-felt-muted:#b9cbbf;
+  --brass:#8f6212; --brass-ink:#ffffff; --hurt:#b3372f; --heal:#2b7449; --warn:#9a6a0c;
+  --display:"Alegreya",Georgia,"Times New Roman",serif;
+  --body:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121a16; --surface:#1a2520; --sunk:#0e1512; --ink:#e6ece7; --muted:#97a89e; --line:#2e3d35;
+  --felt:#0e2a20; --on-felt:#f3ecd8; --on-felt-muted:#9fb5a8;
+  --brass:#d9a441; --brass-ink:#1a1407; --hurt:#e56f66; --heal:#62c48a; --warn:#e0b04a; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#121a16; --surface:#1a2520; --sunk:#0e1512; --ink:#e6ece7; --muted:#97a89e; --line:#2e3d35;
+  --felt:#0e2a20; --on-felt:#f3ecd8; --on-felt-muted:#9fb5a8;
+  --brass:#d9a441; --brass-ink:#1a1407; --hurt:#e56f66; --heal:#62c48a; --warn:#e0b04a; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.45}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--felt)}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h2{font-size:1.45rem;font-weight:700}
+h3{font-size:1.1rem;font-weight:700}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+
+/* cabecera */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--felt);color:var(--on-felt)}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding-block:10px}
+.top h1{font-size:1.5rem;font-weight:800;letter-spacing:.01em}
+.round{display:flex;align-items:baseline;gap:6px;font-family:var(--display)}
+.round b{font-size:1.5rem}
+.round span{color:var(--on-felt-muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;font-family:var(--body)}
+.top .spacer{flex:1}
+#status{color:var(--on-felt-muted);font-size:.85rem}
+.top button{background:transparent;color:var(--on-felt);border:1px solid var(--on-felt-muted)}
+.top button[aria-pressed="true"]{background:var(--on-felt);color:var(--felt);border-color:var(--on-felt)}
+
+nav{background:var(--felt)}
+nav .wrap{display:flex;gap:2px;overflow-x:auto}
+nav a{color:var(--on-felt-muted);text-decoration:none;padding:8px 14px;border-radius:var(--r) var(--r) 0 0;font-weight:500;white-space:nowrap}
+nav a[aria-current="page"]{background:var(--bg);color:var(--ink);font-weight:700}
+
+/* controles */
+button{font:inherit;font-weight:500;min-height:36px;padding:4px 12px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--brass)}
+button.pri{background:var(--brass);border-color:var(--brass);color:var(--brass-ink);font-weight:700}
+button.ghost{background:transparent;border-color:transparent;color:var(--muted);padding:4px 8px}
+button.hurt{color:var(--hurt)} button.heal{color:var(--heal)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:4px 8px;min-height:36px;min-width:0}
+input[type=number]{width:4.2em;font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+label{display:flex;flex-direction:column;gap:2px;font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+label input,label select{text-transform:none;letter-spacing:0;font-size:1rem}
+
+.page{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding-block:20px 48px;align-items:start}
+@media (min-width:980px){ .page{grid-template-columns:minmax(0,1fr) 300px} aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 110px)} }
+main{min-width:0;display:flex;flex-direction:column;gap:20px}
+section.tab{display:flex;flex-direction:column;gap:18px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:12px}
+.empty{border:1px dashed var(--line);border-radius:var(--r);padding:22px;color:var(--muted);display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+
+/* dificultad */
+.diff{display:flex;flex-direction:column;gap:6px}
+.meter{position:relative;height:10px;background:var(--sunk);border-radius:5px;overflow:hidden}
+.meter i{position:absolute;inset:0 auto 0 0;background:var(--heal);border-radius:5px}
+.meter i.mod{background:var(--warn)} .meter i.high,.meter i.over{background:var(--hurt)}
+.ticks{position:relative;height:1.2em;font-size:.78rem;color:var(--muted)}
+.ticks span{position:absolute;transform:translateX(-100%);white-space:nowrap}
+
+/* orden de iniciativa */
+ol.order{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+ol.order li{display:grid;grid-template-columns:3.6em minmax(0,1fr) auto;gap:6px 12px;align-items:center;padding:10px 8px;border-bottom:1px solid var(--line)}
+ol.order li.cur{background:var(--surface);box-shadow:inset 4px 0 0 var(--brass)}
+ol.order li.down .who b{text-decoration:line-through;color:var(--muted)}
+.ini{width:3.2em!important;text-align:center;font-family:var(--display);font-weight:700;font-size:1.15rem}
+.who{min-width:0;display:flex;flex-direction:column;gap:4px}
+.who b{font-family:var(--display);font-size:1.15rem;overflow-wrap:anywhere}
+.who .sub{font-size:.85rem;color:var(--muted)}
+.tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;border:1px solid var(--line);border-radius:3px;padding:0 5px;color:var(--muted)}
+.tag.turn{background:var(--brass);border-color:var(--brass);color:var(--brass-ink);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.chip{font:inherit;font-size:.8rem;min-height:26px;padding:0 8px;border-radius:13px;border:1px solid var(--warn);color:var(--warn);background:transparent}
+.chips select{min-height:26px;padding:0 4px;font-size:.8rem;color:var(--muted);max-width:9em}
+.hpbox{grid-column:2 / -1;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+@media (min-width:700px){ ol.order li{grid-template-columns:3.6em minmax(0,1fr) auto auto} .hpbox{grid-column:auto} }
+.hp{display:flex;flex-direction:column;gap:3px;min-width:7.5em}
+.hp .n{font-weight:700;font-variant-numeric:tabular-nums}
+.hpbar{height:6px;background:var(--sunk);border-radius:3px;overflow:hidden}
+.hpbar i{display:block;height:100%;background:var(--heal)}
+.hpbar i.half{background:var(--warn)} .hpbar i.low{background:var(--hurt)}
+.band{font-weight:700} .band.b1{color:var(--heal)} .band.b2{color:var(--warn)} .band.b3,.band.b4{color:var(--hurt)}
+
+/* tabla del grupo */
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);text-align:left;font-weight:500;padding:4px 6px}
+td{padding:4px 6px;border-top:1px solid var(--line)}
+td input{width:100%;min-width:3.4em} td input.t{min-width:7em}
+
+/* dados */
+aside{display:flex;flex-direction:column;gap:12px;min-width:0}
+.dice{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.dice button{font-family:var(--display);font-weight:700;padding:4px 0}
+#dice-out{font-family:var(--display);font-weight:800;font-size:3.2rem;line-height:1;font-variant-numeric:tabular-nums}
+#dice-out.crit{color:var(--heal)} #dice-out.fumble{color:var(--hurt)}
+#dice-log{list-style:none;margin:0;padding:0;font-size:.88rem;color:var(--muted);display:flex;flex-direction:column;gap:2px}
+.seg{display:flex} .seg button{border-radius:0;flex:1;padding:4px 6px;font-size:.9rem}
+.seg button:first-child{border-radius:var(--r) 0 0 var(--r)} .seg button:last-child{border-radius:0 var(--r) var(--r) 0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* chuleta */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px}
+.cols > div{display:flex;flex-direction:column;gap:10px;min-width:0}
+dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px}
+dt{font-weight:700} dd{margin:0}
+.prose{max-width:65ch;display:flex;flex-direction:column;gap:8px}
+ul.plain{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:4px}
+.check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.check label{flex-direction:row;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;font-size:1rem;color:var(--ink)}
+.check input{min-height:0;margin-top:.3em}
+textarea{width:100%;min-height:14em;resize:vertical;line-height:1.45}
+
+/* máster IA */
+#ia-on,#ia-body{display:flex;flex-direction:column;gap:14px}
+#ia-modes{max-width:30em}
+.chat{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.chat li{padding:10px 4px;border-bottom:1px solid var(--line);white-space:pre-wrap;overflow-wrap:anywhere;max-width:70ch}
+.chat li.u{color:var(--muted)}
+.chat li.u::before{content:"La mesa: ";font-weight:700}
+.chat li.a{font-size:1.08rem}
+.out{white-space:pre-wrap;overflow-wrap:anywhere;max-width:70ch}
+#ia-input{min-height:3.4em} #ia-premise{min-height:4.6em} #ia-draft-text{min-height:11em}
+#ia-form label{flex:1 1 16em}
+summary{cursor:pointer}
+
+body.players .dm{display:none!important}
+@media (prefers-reduced-motion:no-preference){ .hpbar i,.meter i{transition:width .25s} }
+</style>
+
+<header class="top"><div class="wrap gut">
+  <h1>Mesa del Máster</h1>
+  <div class="round"><span>Ronda</span><b id="round" class="num">–</b></div>
+  <div class="spacer"></div>
+  <span id="status" role="status">Cargando…</span>
+  <button id="btn-players" type="button" aria-pressed="false" title="Oculta los PG de los monstruos y tus notas para enseñar la pantalla a la mesa">Pantalla de jugadores</button>
+</div></header>
+<nav aria-label="Secciones"><div class="wrap gut">
+  <a href="#combate">Combate</a><a href="#grupo">Grupo</a><a href="#ia">Máster IA</a><a href="#chuleta">Chuleta de reglas</a><a href="#notas" class="dm">Sesión y notas</a>
+</div></nav>
+
+<div class="page wrap gut">
+<main>
+  <!-- COMBATE -->
+  <section class="tab" id="tab-combate">
+    <div class="bar">
+      <button class="pri" id="btn-next" type="button">Siguiente turno</button>
+      <button id="btn-rollmon" type="button" class="dm">Tirar iniciativa de monstruos</button>
+      <button id="btn-addparty" type="button" class="dm">Meter al grupo</button>
+      <span class="spacer" style="flex:1"></span>
+      <button id="btn-end" type="button" class="ghost dm">Terminar combate</button>
+      <span id="end-confirm" hidden class="dm"><button id="btn-end-yes" type="button" class="hurt">Sí, vaciar</button> <button id="btn-end-no" type="button">No</button></span>
+    </div>
+    <div id="diff" class="diff dm"></div>
+    <div id="order"></div>
+    <form id="add-mon" class="panel dm" autocomplete="off">
+      <h3>Añadir criatura</h3>
+      <div class="bar">
+        <label>Del bestiario<select id="m-pick"></select></label>
+        <label>Nombre<input id="m-name" required style="width:11em"></label>
+        <label>CA<input id="m-ac" type="number" min="1" max="30" value="12"></label>
+        <label>PG<input id="m-hp" type="number" min="1" max="999" value="10"></label>
+        <label>Inic.<input id="m-init" type="number" min="-5" max="15" value="0"></label>
+        <label>VD<select id="m-cr"></select></label>
+        <label>Cantidad<input id="m-qty" type="number" min="1" max="20" value="1"></label>
+        <button class="pri" type="submit">Añadir</button>
+      </div>
+      <p class="small muted">Las cifras del bestiario son orientativas y editables. Confírmalas con tu Manual de Monstruos antes de usarlas.</p>
+    </form>
+  </section>
+
+  <!-- GRUPO -->
+  <section class="tab" id="tab-grupo" hidden>
+    <h2>El grupo</h2>
+    <div id="party"></div>
+    <div class="bar dm">
+      <button class="pri" id="btn-addpc" type="button">Añadir personaje</button>
+      <button id="btn-rest" type="button" title="Todos recuperan sus PG máximos">Descanso largo</button>
+    </div>
+  </section>
+
+  <!-- MÁSTER IA -->
+  <section class="tab" id="tab-ia" hidden>
+    <h2>Máster IA</h2>
+    <div id="ia-off" class="empty" hidden><p><b>Claude no está disponible en esta vista.</b></p><p>El máster automático necesita que abras la página con tu cuenta de Claude y le des permiso la primera vez. Para usar Hermes u otro motor, abre la copia descargable del panel en tu ordenador.</p></div>
+    <div id="ia-on">
+      <div class="seg" id="ia-modes" role="group" aria-label="Modo del máster IA">
+        <button type="button" data-ia="copiloto">Copiloto</button>
+        <button type="button" data-ia="narrador">Narrador</button>
+        <button type="button" data-ia="auto">Autónomo</button>
+      </div>
+      <p id="ia-desc" class="prose"></p>
+      <p id="ia-only-claude" class="small muted dm" hidden>Esta página publicada solo puede hablar con Claude. Para usar Hermes u otro motor, abre la copia descargable del panel en tu ordenador.</p>
+      <details id="motor" class="panel dm" hidden>
+        <summary>Motor de IA: <b id="motor-now"></b></summary>
+        <p class="small muted">Sirve cualquier motor con API compatible con OpenAI: Hermes en Ollama o LM Studio, o un servicio con capa gratuita. La clave se guarda solo en este navegador.</p>
+        <div class="bar">
+          <label>Preajuste<select id="mo-preset">
+            <option value="">Elegir…</option>
+            <option value="http://localhost:11434/v1">Ollama en este ordenador</option>
+            <option value="http://localhost:1234/v1">LM Studio en este ordenador</option>
+            <option value="https://openrouter.ai/api/v1">OpenRouter (tiene modelos gratis)</option>
+            <option value="https://api.groq.com/openai/v1">Groq (capa gratuita)</option>
+          </select></label>
+          <label style="flex:1 1 16em">Dirección de la API<input id="mo-base" placeholder="http://localhost:11434/v1" style="width:100%"></label>
+        </div>
+        <div class="bar">
+          <label style="flex:1 1 12em">Modelo<input id="mo-model" list="mo-models" placeholder="hermes3" style="width:100%"><datalist id="mo-models"></datalist></label>
+          <label style="flex:1 1 12em">Clave, si el motor la pide<input id="mo-key" type="password" autocomplete="off" style="width:100%"></label>
+          <button type="button" id="mo-test">Probar y ver modelos</button>
+        </div>
+        <p id="mo-msg" class="small muted" role="status"></p>
+      </details>
+      <label class="dm">La aventura en pocas líneas: dónde ocurre, qué pasa, quién es el villano
+        <textarea id="ia-premise" placeholder="Un pueblo minero. Han desaparecido tres mineros y alguien ha visto luces en la galería vieja…"></textarea></label>
+      <div id="ia-secret" class="empty" hidden><p>Este modo es solo para el máster. Está oculto mientras la pantalla de jugadores esté activa.</p></div>
+      <div id="ia-body">
+        <div id="ia-quick" class="bar">
+          <button type="button" data-q="lugar">Describe el lugar</button>
+          <button type="button" data-q="pnj">Improvisa un PNJ</button>
+          <button type="button" data-q="monstruo">¿Qué hace el monstruo?</button>
+          <button type="button" data-q="complica">Complica la escena</button>
+          <button type="button" data-q="resumen">Resumen para la próxima sesión</button>
+        </div>
+        <div id="ia-outbox" class="panel" hidden>
+          <div id="ia-out" class="out"></div>
+          <div class="bar"><button type="button" id="ia-tonotes">Guardar en mis notas</button></div>
+        </div>
+        <ol id="ia-log" class="chat"></ol>
+        <div id="ia-empty" class="empty" hidden><p><b>La historia todavía no ha empezado.</b></p><p>Escribe la aventura arriba, apunta al grupo en «Grupo» y pulsa «Empezar la aventura». Lo que se narre aquí se guarda con la partida.</p></div>
+        <div id="ia-draft" class="panel" hidden>
+          <h3>Propuesta del narrador</h3>
+          <p class="small muted">Edita lo que quieras antes de aceptarla. Solo lo aceptado pasa a la historia.</p>
+          <textarea id="ia-draft-text" aria-label="Propuesta del narrador"></textarea>
+          <div class="bar"><button type="button" class="pri" id="ia-accept">Aceptar</button><button type="button" id="ia-regen">Otra versión</button><button type="button" class="ghost" id="ia-discard">Descartar</button></div>
+        </div>
+        <p id="ia-note" class="small muted" role="status"></p>
+        <form id="ia-form" class="bar" autocomplete="off">
+          <label><span id="ia-label"></span><textarea id="ia-input"></textarea></label>
+          <button type="submit" class="pri" id="ia-send">Enviar</button>
+          <button type="button" id="ia-stop" hidden>Parar</button>
+        </form>
+        <div class="bar" id="ia-story">
+          <button type="button" id="ia-start">Empezar la aventura</button>
+          <button type="button" id="ia-sum" class="dm" title="Condensa los turnos antiguos para que no se olviden">Resumir la historia antigua</button>
+          <button type="button" id="ia-clear" class="ghost dm">Borrar la historia</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHULETA -->
+  <section class="tab" id="tab-chuleta" hidden>
+    <h2>Chuleta de reglas</h2>
+    <div class="cols">
+      <div>
+        <h3>Clase de dificultad</h3>
+        <dl class="num"><dt>5</dt><dd>Muy fácil</dd><dt>10</dt><dd>Fácil</dd><dt>15</dt><dd>Media</dd><dt>20</dt><dd>Difícil</dd><dt>25</dt><dd>Muy difícil</dd><dt>30</dt><dd>Casi imposible</dd></dl>
+        <p class="small muted">Si dudas, CD 15. Si fallar no tiene consecuencias, no pidas tirada.</p>
+        <h3>En tu turno</h3>
+        <ul class="plain"><li>Te mueves hasta tu velocidad, repartida como quieras.</li><li>Una acción.</li><li>Una acción adicional, solo si un rasgo o conjuro te la da.</li><li>Una reacción por ronda, normalmente el ataque de oportunidad.</li><li>Una interacción gratis con un objeto: abrir una puerta, desenvainar.</li></ul>
+        <h3>Acciones</h3>
+        <p>Atacar, Magia, Correr, Destrabarse, Esquivar, Ayudar, Esconderse, Preparar, Buscar, Estudiar, Influir, Utilizar.</p>
+      </div>
+      <div>
+        <h3>Lo que más se pregunta</h3>
+        <dl>
+          <dt>Ventaja</dt><dd>Dos d20, te quedas el alto. Desventaja, el bajo. Si tienes ambas, se anulan.</dd>
+          <dt>Crítico</dt><dd>20 natural en un ataque: impacta siempre y tira el doble de dados de daño.</dd>
+          <dt>A 0 PG</dt><dd>Salvación contra muerte al empezar tu turno, CD 10. Tres éxitos, estable. Tres fallos, muerto. Un 1 cuenta como dos fallos; un 20 te devuelve 1 PG.</dd>
+          <dt>Concentración</dt><dd>Al recibir daño, salvación de CON con CD 10 o la mitad del daño, la mayor (máximo 30).</dd>
+          <dt>Cobertura</dt><dd>Media: +2 a CA y salvaciones de DES. Tres cuartos: +5. Total: no se le puede elegir como objetivo.</dd>
+          <dt>Descanso corto</dt><dd>1 hora. Se gastan dados de golpe para curarse.</dd>
+          <dt>Descanso largo</dt><dd>8 horas. Se recuperan todos los PG y los dados de golpe.</dd>
+          <dt>Oportunidad</dt><dd>Si un enemigo sale de tu alcance sin Destrabarse, gastas la reacción en un ataque cuerpo a cuerpo.</dd>
+        </dl>
+      </div>
+      <div>
+        <h3>Estados</h3>
+        <dl id="conds" class="small"></dl>
+      </div>
+    </div>
+    <p class="small muted">Resumen para decidir rápido en mesa. El texto completo está en el glosario del Manual del Jugador.</p>
+  </section>
+
+  <!-- NOTAS -->
+  <section class="tab dm" id="tab-notas" hidden>
+    <h2>Sesión y notas</h2>
+    <div class="cols">
+      <div>
+        <h3>Cómo se dirige, en tres pasos</h3>
+        <div class="prose">
+          <p><b>1. Describes</b> dónde están y qué perciben. Tres frases, y terminas con «¿qué hacéis?».</p>
+          <p><b>2. Ellos dicen</b> qué intentan. No piden tiradas, describen acciones.</p>
+          <p><b>3. Tú resuelves.</b> Si el resultado es obvio, lo narras. Si es incierto y fallar importa, pides una prueba con d20 contra una CD y cuentas lo que pasa.</p>
+          <p class="muted">Si no recuerdas una regla, decide algo razonable, sigue jugando y búscala después de la sesión.</p>
+        </div>
+        <h3>Antes de la primera sesión</h3>
+        <ul class="check" id="checklist"></ul>
+      </div>
+      <div>
+        <h3>Notas de la partida</h3>
+        <textarea id="notes" placeholder="PNJ que han conocido, pistas, deudas, qué quedó a medias…"></textarea>
+      </div>
+    </div>
+  </section>
+</main>
+
+<aside aria-label="Dados">
+  <div class="panel">
+    <h3>Dados</h3>
+    <div id="dice-out" aria-live="polite">–</div>
+    <p id="dice-detail" class="small muted">Pulsa un dado o escribe una tirada.</p>
+    <div class="dice" id="dice-btns"></div>
+    <div class="seg" id="dice-mode" role="group" aria-label="Modo del d20">
+      <button type="button" data-mode="dis" aria-pressed="false">Desventaja</button>
+      <button type="button" data-mode="norm" aria-pressed="true">Normal</button>
+      <button type="button" data-mode="adv" aria-pressed="false">Ventaja</button>
+    </div>
+    <form id="dice-form" class="bar" autocomplete="off">
+      <label style="flex:1">Tirada libre<input id="dice-expr" placeholder="2d6+3" style="width:100%"></label>
+      <button type="submit">Tirar</button>
+    </form>
+    <ul id="dice-log"></ul>
+  </div>
+</aside>
+</div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s){return document.querySelector(s)};
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function uid(){return Math.random().toString(36).slice(2,10)}
+function int(v,d){var n=parseInt(v,10);return isNaN(n)?d:n}
+function d(n){return 1+Math.floor(Math.random()*n)}
+
+/* ---- datos de referencia ---- */
+var XP={"0":10,"1/8":25,"1/4":50,"1/2":100,"1":200,"2":450,"3":700,"4":1100,"5":1800,"6":2300,"7":2900,"8":3900,"9":5000,"10":5900};
+// Presupuesto de PX por personaje (baja, moderada, alta), Guía del Dungeon Master 2024
+var BUD=[[50,75,100],[100,150,200],[150,225,400],[250,375,500],[500,750,1100],[600,1000,1400],[750,1300,1700],[1000,1700,2100],[1300,2000,2600],[1600,2300,3100],[1900,2900,4100],[2200,3700,4700],[2600,4200,5400],[2900,4900,6200],[3300,5400,7800],[3800,6100,9800],[4500,7200,11700],[5000,8700,14200],[5500,10700,17200],[6400,13200,22000]];
+// nombre, CA, PG, mod. iniciativa, VD
+var BEST=[["Rata gigante",13,7,3,"1/8"],["Bandido",12,11,1,"1/8"],["Sectario",12,9,1,"1/8"],["Kóbold guerrero",14,7,2,"1/8"],["Estirge",13,5,3,"1/8"],["Goblin guerrero",15,10,2,"1/4"],["Esqueleto",14,13,3,"1/4"],["Zombi",8,15,-2,"1/4"],["Lobo",12,11,2,"1/4"],["Hobgoblin guerrero",18,11,1,"1/2"],["Matón",12,32,1,"1/2"],["Osgo guerrero",14,33,2,"1"],["Araña gigante",14,26,3,"1"],["Lobo terrible",14,22,2,"1"],["Necrófago",12,22,2,"1"],["Oso pardo",11,22,1,"1"],["Ogro",11,68,-1,"2"],["Capitán bandido",15,52,3,"2"],["Cubo gelatinoso",6,63,-4,"2"],["Mímico",12,58,1,"2"],["Oso lechuza",13,59,1,"3"],["Trol",15,94,1,"5"]];
+var CONDS=[["Agarrado","Velocidad 0. Desventaja al atacar a quien no sea su agarrador."],["Agotamiento","Por nivel: −2 a toda prueba con d20 y −1,5 m de velocidad. Muere al nivel 6."],["Apresado","Velocidad 0. Ataca con desventaja, le atacan con ventaja, desventaja en salvaciones de DES."],["Asustado","Desventaja en pruebas y ataques mientras vea la fuente. No puede acercarse a ella."],["Aturdido","Incapacitado. Falla salvaciones de FUE y DES. Le atacan con ventaja."],["Cegado","Falla lo que requiera vista. Ataca con desventaja, le atacan con ventaja."],["Derribado","Solo se arrastra; levantarse cuesta media velocidad. Ataca con desventaja. Ventaja contra él a 1,5 m, desventaja desde más lejos."],["Ensordecido","Falla lo que requiera oído."],["Envenenado","Desventaja en ataques y pruebas de característica."],["Hechizado","No puede atacar a quien lo hechizó, que tiene ventaja en pruebas sociales con él."],["Incapacitado","Sin acciones, acciones adicionales ni reacciones. Pierde la concentración."],["Inconsciente","Incapacitado y derribado. Falla FUE y DES. Ventaja contra él; a 1,5 m todo impacto es crítico."],["Invisible","Ataca con ventaja y le atacan con desventaja, salvo que puedan verlo."],["Paralizado","Incapacitado, velocidad 0. Falla FUE y DES. Ventaja contra él; a 1,5 m todo impacto es crítico."],["Petrificado","Incapacitado, convertido en piedra. Resistencia a todo el daño. Falla FUE y DES."]];
+var CHECK=[["c1","Leer el capítulo «Cómo jugar» del Manual del Jugador. El resto se consulta."],["c2","Sesión cero: qué tono queréis, qué temas no, cada cuánto se juega."],["c3","Cada jugador tiene su hoja hecha y sabe su CA, PG y ataque principal."],["c4","Una aventura corta preparada: un gancho, tres escenas, un final."],["c5","Dos combates montados aquí, de dificultad baja o moderada."],["c6","Cinco nombres de PNJ apuntados para improvisar."],["c7","Figuras, dados y algo donde dibujar el mapa."]];
+
+/* ---- estado ---- */
+function blank(){return{rev:"",party:[],combat:{round:0,turnId:null,list:[]},notes:"",checks:{},ia:{mode:"copiloto",premise:"",summary:"",log:[]}}}
+function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
+  var a=o.ia||{};b.ia={mode:["copiloto","narrador","auto"].indexOf(a.mode)>=0?a.mode:"copiloto",premise:typeof a.premise==="string"?a.premise:"",summary:typeof a.summary==="string"?a.summary:"",log:Array.isArray(a.log)?a.log.filter(function(x){return x&&typeof x.t==="string"&&x.t}):[]};
+  b.rev=o.rev||"";b.party=Array.isArray(o.party)?o.party:[];b.notes=typeof o.notes==="string"?o.notes:"";b.checks=o.checks&&typeof o.checks==="object"?o.checks:{};
+  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[]};return b}
+var S=blank(), LS="mesa-master-v1", players=false, mode="norm";
+try{var raw=localStorage.getItem(LS);if(raw)S=norm(JSON.parse(raw));players=localStorage.getItem(LS+"-players")==="1"}catch(e){}
+
+/* ---- guardado ---- */
+var ref=null, dirty=false, saving=false, timer=null, readOnly=false, pendingDraw=false;
+function status(t){$("#status").textContent=t}
+function touch(render){S.rev=uid();dirty=true;try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){}
+  if(ref&&!readOnly){status("Guardando…");clearTimeout(timer);timer=setTimeout(flush,700)}
+  if(render!==false)draw()}
+function flush(){if(!ref||saving||!dirty||readOnly)return;saving=true;dirty=false;
+  ref.set(JSON.parse(JSON.stringify(S))).then(function(){saving=false;if(dirty)flush();else status("Guardado")},
+  function(e){saving=false;dirty=true;
+    if(e&&e.code==="invalid_argument"){readOnly=true;status("Solo lectura: los cambios se quedan en este dispositivo")}
+    else status("Sin conexión: se guardará al siguiente cambio")})}
+function typing(){var a=document.activeElement;return a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.closest("main")}
+function fromRemote(o){S=norm(JSON.parse(JSON.stringify(o)));try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){}
+  if(typing())pendingDraw=true;else draw()}
+document.addEventListener("focusout",function(){if(pendingDraw)setTimeout(function(){if(!typing()){pendingDraw=false;draw()}},50)});
+
+function boot(db){
+  if(!db){status("Guardado solo en este dispositivo");return}
+  ref=db.doc("mesa/campana");
+  var t=setTimeout(function(){status("No se puede leer la partida guardada todavía")},10000);
+  ref.onSnapshot(function(snap){
+    if(!snap.metadata.fromCache){clearTimeout(t);if(!dirty&&!saving)status(snap.exists?"Guardado":"Lista para empezar")}
+    if(!snap.exists||snap.metadata.hasPendingWrites||dirty||saving||busy)return;
+    var o=snap.data();if(o&&o.rev!==S.rev)fromRemote(o);
+  },function(){clearTimeout(t);ref=null;status("Guardado solo en este dispositivo")});
+}
+if(window.claude&&window.claude.use)window.claude.use("db").then(boot,function(){boot(null)});else boot(null);
+
+/* ---- combate ---- */
+function pc(id){for(var i=0;i<S.party.length;i++)if(S.party[i].id===id)return S.party[i];return null}
+function view(c){ // datos efectivos de un combatiente
+  if(c.pcId){var p=pc(c.pcId);if(p)return{name:p.name||"Sin nombre",ac:p.ac,hp:p.hp,max:p.max,pc:true,sub:[p.cls,p.player].filter(Boolean).join(" · ")}}
+  return{name:c.name,ac:c.ac,hp:c.hp,max:c.max,pc:false,sub:c.cr!=null?"VD "+c.cr:""}}
+function setHp(c,v){var o=c.pcId&&pc(c.pcId)||c;o.hp=Math.max(0,Math.min(o.max,v))}
+function sortList(){S.combat.list.sort(function(a,b){var x=a.init==null?-99:a.init,y=b.init==null?-99:b.init;return y-x})}
+function alive(c){var v=view(c);return v.pc||v.hp>0}
+function next(){var L=S.combat.list;if(!L.length)return;
+  sortList();var i=-1;for(var k=0;k<L.length;k++)if(L[k].id===S.combat.turnId)i=k;
+  if(i<0||!S.combat.round){S.combat.round=1;i=-1}
+  for(var n=0;n<L.length;n++){i++;if(i>=L.length){i=0;S.combat.round++}if(alive(L[i]))break}
+  S.combat.turnId=L[i].id;touch()}
+function band(v){if(v.hp<=0)return["Caído","b4"];var r=v.hp/v.max;if(r<=.5)return["Malherido","b3"];if(r<1)return["Herido","b2"];return["Ileso","b1"]}
+
+function drawDiff(){var el=$("#diff"),xp=0,bud=[0,0,0];
+  S.combat.list.forEach(function(c){if(!c.pcId)xp+=XP[c.cr]||0});
+  S.party.forEach(function(p){var b=BUD[Math.max(1,Math.min(20,int(p.level,1)))-1];bud[0]+=b[0];bud[1]+=b[1];bud[2]+=b[2]});
+  if(!S.party.length){el.innerHTML='<p class="small muted">Añade personajes en «Grupo» para medir la dificultad del encuentro.</p>';return}
+  var cls="low",txt="Baja";
+  if(!xp){txt="Sin monstruos todavía"}else if(xp>bud[2]){cls="over";txt="Por encima de alta: puede morir alguien"}else if(xp>bud[1]){cls="high";txt="Alta"}else if(xp>bud[0]){cls="mod";txt="Moderada"}
+  var top=bud[2]*1.25,pct=function(x){return Math.min(100,x/top*100)};
+  el.innerHTML='<p><b>Dificultad: '+txt+'</b> <span class="muted num">· '+xp+' PX de monstruos para '+S.party.length+' personajes</span></p>'+
+   '<div class="meter"><i class="'+cls+'" style="width:'+pct(xp)+'%"></i></div>'+
+   '<div class="ticks num"><span style="left:'+pct(bud[0])+'%">baja '+bud[0]+'</span><span style="left:'+pct(bud[1])+'%">moderada '+bud[1]+'</span><span style="left:'+pct(bud[2])+'%">alta '+bud[2]+'</span></div>'}
+
+function drawOrder(){var L=S.combat.list,el=$("#order");
+  $("#round").textContent=S.combat.round||"–";
+  $("#btn-next").textContent=S.combat.round?"Siguiente turno":"Empezar combate";
+  if(!L.length){el.innerHTML='<div class="empty"><p><b>No hay combate en marcha.</b></p><p>Aquí aparecerá el orden de iniciativa con los puntos de golpe y los estados de cada criatura. Pulsa «Meter al grupo», añade monstruos del bestiario y apunta la iniciativa que saque cada jugador.</p>'+(S.party.length?'':'<button type="button" class="dm" data-act="demo">Cargar un grupo de ejemplo</button>')+'</div>';return}
+  var opts='<option value="">+ estado</option>'+CONDS.map(function(c){return'<option>'+c[0]+'</option>'}).join("");
+  el.innerHTML='<ol class="order">'+L.map(function(c){var v=view(c),cur=c.id===S.combat.turnId&&S.combat.round>0,dead=!v.pc&&v.hp<=0,r=v.max?v.hp/v.max:0;
+    var hp;
+    if(players&&!v.pc){var b=band(v);hp='<span class="band '+b[1]+'">'+b[0]+'</span>'}
+    else hp='<div class="hp"><span class="n">'+v.hp+' / '+v.max+' PG</span><div class="hpbar"><i class="'+(r<=.25?"low":r<=.5?"half":"")+'" style="width:'+Math.round(r*100)+'%"></i></div></div>'+
+      '<span class="dm bar"><input type="number" min="0" max="999" aria-label="Cantidad de daño o curación para '+esc(v.name)+'" data-amt="'+c.id+'" id="amt-'+c.id+'" placeholder="0"><button type="button" class="hurt" data-act="dmg" data-id="'+c.id+'">Daño</button><button type="button" class="heal" data-act="heal" data-id="'+c.id+'">Curar</button></span>';
+    return'<li class="'+(cur?"cur ":"")+(dead||(v.pc&&v.hp<=0)?"down":"")+'">'+
+     '<input class="ini" type="number" id="ini-'+c.id+'" data-ini="'+c.id+'" value="'+(c.init==null?"":c.init)+'" placeholder="–" aria-label="Iniciativa de '+esc(v.name)+'"'+(players?" readonly":"")+'>'+
+     '<div class="who"><span><b>'+esc(v.name)+'</b> '+(cur?'<span class="tag turn">Su turno</span>':'')+' <span class="tag">'+(v.pc?"PJ":"Monstruo")+'</span></span>'+
+     '<span class="sub">'+((!players||v.pc)?'CA '+esc(v.ac):'')+(v.sub&&(!players||v.pc)?' · '+esc(v.sub):'')+'</span>'+
+     '<span class="chips">'+(c.conds||[]).map(function(k){return'<button type="button" class="chip" data-act="uncond" data-id="'+c.id+'" data-k="'+esc(k)+'" title="Quitar">'+esc(k)+' ×</button>'}).join("")+
+     '<select class="dm" data-cond="'+c.id+'" id="cond-'+c.id+'" aria-label="Añadir estado a '+esc(v.name)+'">'+opts+'</select></span></div>'+
+     '<div class="hpbox">'+hp+'</div>'+
+     '<button type="button" class="ghost dm" data-act="rm" data-id="'+c.id+'" aria-label="Quitar a '+esc(v.name)+' del combate">✕</button></li>'}).join("")+'</ol>'}
+
+function find(id){for(var i=0;i<S.combat.list.length;i++)if(S.combat.list[i].id===id)return S.combat.list[i];return null}
+$("#order").addEventListener("click",function(e){var b=e.target.closest("[data-act]");if(!b)return;var a=b.dataset.act,c=find(b.dataset.id);
+  if(a==="demo"){S.party=[["Brenna","","Guerrera",1,16,12,10,2],["Tobías","","Mago",1,12,8,13,2],["Sira","","Pícara",1,14,9,14,3],["Hermano Odo","","Clérigo",1,16,10,13,0]].map(function(x){return{id:uid(),name:x[0]+" (ejemplo)",player:x[1],cls:x[2],level:x[3],ac:x[4],hp:x[5],max:x[5],pp:x[6],init:x[7]}});addParty();return}
+  if(!c)return;
+  if(a==="dmg"||a==="heal"){var n=int($("#amt-"+c.id).value,0);if(n<=0)return;var v=view(c);setHp(c,v.hp+(a==="dmg"?-n:n));
+    if(a==="dmg"&&view(c).hp<=0&&(c.conds||[]).indexOf("Inconsciente")<0&&c.pcId){c.conds=(c.conds||[]).concat("Inconsciente")}
+    touch()}
+  else if(a==="rm"){S.combat.list=S.combat.list.filter(function(x){return x!==c});if(S.combat.turnId===c.id)S.combat.turnId=null;if(!S.combat.list.length)S.combat.round=0;touch()}
+  else if(a==="uncond"){c.conds=(c.conds||[]).filter(function(k){return k!==b.dataset.k});touch()}});
+$("#order").addEventListener("change",function(e){var t=e.target,c;
+  if(t.dataset.ini&&(c=find(t.dataset.ini))){c.init=t.value===""?null:int(t.value,0);sortList();touch()}
+  else if(t.dataset.cond&&(c=find(t.dataset.cond))&&t.value){c.conds=c.conds||[];if(c.conds.indexOf(t.value)<0)c.conds.push(t.value);touch()}});
+$("#order").addEventListener("keydown",function(e){if(e.key==="Enter"&&e.target.dataset.amt){var b=e.target.parentNode.querySelector('[data-act="dmg"]');if(b)b.click()}});
+
+function addParty(){S.party.forEach(function(p){if(!S.combat.list.some(function(c){return c.pcId===p.id}))S.combat.list.push({id:uid(),pcId:p.id,init:null,conds:[]})});touch()}
+$("#btn-next").onclick=next;
+$("#btn-addparty").onclick=addParty;
+$("#btn-rollmon").onclick=function(){S.combat.list.forEach(function(c){if(!c.pcId)c.init=d(20)+int(c.mod,0)});sortList();touch()};
+$("#btn-end").onclick=function(){$("#end-confirm").hidden=false;$("#btn-end").hidden=true};
+$("#btn-end-no").onclick=function(){$("#end-confirm").hidden=true;$("#btn-end").hidden=false};
+$("#btn-end-yes").onclick=function(){S.combat={round:0,turnId:null,list:[]};$("#btn-end-no").onclick();touch()};
+
+$("#m-pick").innerHTML='<option value="">Personalizada</option>'+BEST.map(function(m,i){return'<option value="'+i+'">'+esc(m[0])+' (VD '+m[4]+')</option>'}).join("");
+$("#m-cr").innerHTML=Object.keys(XP).sort(function(a,b){return XP[a]-XP[b]}).map(function(k){return'<option>'+k+'</option>'}).join("");
+$("#m-pick").onchange=function(){var m=BEST[this.value];if(!m)return;$("#m-name").value=m[0];$("#m-ac").value=m[1];$("#m-hp").value=m[2];$("#m-init").value=m[3];$("#m-cr").value=m[4]};
+$("#add-mon").addEventListener("submit",function(e){e.preventDefault();var name=$("#m-name").value.trim();if(!name)return;
+  var q=Math.max(1,Math.min(20,int($("#m-qty").value,1))),hp=Math.max(1,int($("#m-hp").value,1)),same=S.combat.list.filter(function(c){return!c.pcId&&c.base===name}).length;
+  for(var i=0;i<q;i++){S.combat.list.push({id:uid(),base:name,name:(q>1||same)?name+" "+(same+i+1):name,ac:int($("#m-ac").value,10),hp:hp,max:hp,mod:int($("#m-init").value,0),cr:$("#m-cr").value,init:null,conds:[]})}
+  $("#m-qty").value=1;touch()});
+
+/* ---- grupo ---- */
+var COLS=[["name","Nombre","t"],["player","Jugador","t"],["cls","Clase","t"],["level","Nivel","n"],["ac","CA","n"],["hp","PG","n"],["max","PG máx.","n"],["pp","Perc. pasiva","n"],["init","Inic.","n"]];
+function drawParty(){var el=$("#party");
+  if(!S.party.length){el.innerHTML='<div class="empty"><p><b>Todavía no hay personajes.</b></p><p>Apunta aquí a cada personaje con su CA, sus PG y su Percepción pasiva. Así no tendrás que preguntarlo en mitad de la escena.</p></div>';return}
+  el.innerHTML='<div class="scroll"><table><thead><tr>'+COLS.map(function(c){return'<th>'+c[1]+'</th>'}).join("")+'<th class="dm"></th></tr></thead><tbody>'+
+   S.party.map(function(p){return'<tr>'+COLS.map(function(c){return'<td><input id="p-'+p.id+'-'+c[0]+'" data-pc="'+p.id+'" data-f="'+c[0]+'" aria-label="'+c[1]+'" '+(c[2]==="n"?'type="number" class="num"':'class="t"')+' value="'+esc(p[c[0]])+'"'+(players?" readonly":"")+'></td>'}).join("")+
+   '<td class="dm"><button type="button" class="ghost" data-rmpc="'+p.id+'" aria-label="Eliminar a '+esc(p.name)+'">✕</button></td></tr>'}).join("")+'</tbody></table></div>'}
+$("#party").addEventListener("change",function(e){var t=e.target,p=pc(t.dataset.pc);if(!p)return;var f=t.dataset.f;
+  p[f]=t.type==="number"?int(t.value,0):t.value.trim();if(f==="max"&&p.hp>p.max)p.hp=p.max;if(f==="hp")p.hp=Math.max(0,Math.min(p.max,p.hp));touch(false);drawOrder();drawDiff()});
+$("#party").addEventListener("click",function(e){var b=e.target.closest("[data-rmpc]");if(!b)return;var id=b.dataset.rmpc;
+  S.party=S.party.filter(function(p){return p.id!==id});S.combat.list=S.combat.list.filter(function(c){return c.pcId!==id});touch()});
+$("#btn-addpc").onclick=function(){var p={id:uid(),name:"",player:"",cls:"",level:1,ac:10,hp:10,max:10,pp:10,init:0};S.party.push(p);touch();var i=$("#p-"+p.id+"-name");if(i)i.focus()};
+$("#btn-rest").onclick=function(){S.party.forEach(function(p){p.hp=p.max});S.combat.list.forEach(function(c){if(c.pcId)c.conds=[]});touch()};
+
+/* ---- notas ---- */
+$("#conds").innerHTML=CONDS.map(function(c){return'<dt>'+c[0]+'</dt><dd>'+c[1]+'</dd>'}).join("");
+function drawNotes(){var n=$("#notes");if(document.activeElement!==n)n.value=S.notes;
+  $("#checklist").innerHTML=CHECK.map(function(c){return'<li><label><input type="checkbox" id="chk-'+c[0]+'" data-chk="'+c[0]+'"'+(S.checks[c[0]]?" checked":"")+'><span>'+c[1]+'</span></label></li>'}).join("")}
+$("#notes").addEventListener("input",function(){S.notes=this.value;touch(false)});
+$("#checklist").addEventListener("change",function(e){var k=e.target.dataset.chk;if(k){S.checks[k]=e.target.checked;touch(false)}});
+
+/* ---- dados ---- */
+var log=[];
+$("#dice-btns").innerHTML=[4,6,8,10,12,20,100].map(function(n){return'<button type="button" data-d="'+n+'">d'+n+'</button>'}).join("");
+function show(total,detail,cls){var o=$("#dice-out");o.textContent=total;o.className=cls||"";$("#dice-detail").textContent=detail;
+  log.unshift(detail+" = "+total);log=log.slice(0,6);$("#dice-log").innerHTML=log.slice(1).map(function(l){return"<li>"+esc(l)+"</li>"}).join("")}
+function roll(n,sides,mod){var r=[],t=0,cls="";
+  if(n===1&&sides===20&&mode!=="norm"){var a=d(20),b=d(20),k=mode==="adv"?Math.max(a,b):Math.min(a,b);t=k;cls=k===20?"crit":k===1?"fumble":"";
+    show(t+mod,"d20 con "+(mode==="adv"?"ventaja":"desventaja")+" ("+a+", "+b+")"+(mod?(mod>0?" +":" −")+Math.abs(mod):""),cls);return}
+  for(var i=0;i<n;i++){var x=d(sides);r.push(x);t+=x}
+  if(n===1&&sides===20)cls=t===20?"crit":t===1?"fumble":"";
+  show(t+mod,n+"d"+sides+(n>1?" ("+r.join(", ")+")":"")+(mod?(mod>0?" +":" −")+Math.abs(mod):""),cls)}
+$("#dice-btns").addEventListener("click",function(e){var b=e.target.closest("[data-d]");if(b)roll(1,+b.dataset.d,0)});
+$("#dice-mode").addEventListener("click",function(e){var b=e.target.closest("[data-mode]");if(!b)return;mode=b.dataset.mode;
+  [].forEach.call(this.children,function(x){x.setAttribute("aria-pressed",x===b)})});
+$("#dice-form").addEventListener("submit",function(e){e.preventDefault();var m=/^\s*(\d{0,2})\s*d\s*(\d{1,3})\s*([+-]\s*\d{1,3})?\s*$/i.exec($("#dice-expr").value);
+  if(!m||+m[2]<2){$("#dice-detail").textContent="Escribe la tirada así: 2d6+3";return}
+  roll(Math.max(1,Math.min(40,int(m[1],1))),+m[2],m[3]?int(m[3].replace(/\s/g,""),0):0)});
+
+/* ---- máster IA ---- */
+var sample=null, iaKnown=false, busy=false, ctl=null, lastOut="";
+var BASE="Ayudas en una partida de mesa de Dungeons & Dragons con las reglas de 2024 (5.5), en español de España. Usa metros (1,5 m por casilla). Escribe texto plano, sin Markdown ni asteriscos. Si no estás seguro de una regla o de una cifra, dilo y remite al manual en lugar de inventarla. El tono es de aventura entre amigos.";
+var MODES={
+ copiloto:{desc:"Tú diriges. El copiloto te da ideas, descripciones y aclaraciones de reglas solo para tus ojos, usando lo que hay apuntado en el panel.",label:"Pregunta al copiloto: reglas, ideas, qué hacer ahora",
+  rules:"Hablas solo con el máster, que es novato. Da respuestas cortas que pueda usar al momento, de 120 palabras como máximo salvo que pida más. Si te pide texto para leer en voz alta, ponlo entre comillas « ». Tú propones; el máster decide."},
+ narrador:{desc:"Tú escribes lo que hacen los jugadores y el narrador redacta una propuesta. La revisas, la editas y solo entonces la lees a la mesa. Los dados y la última palabra son tuyos.",label:"Qué hacen los jugadores",
+  rules:"Redactas una propuesta que el máster revisará antes de leerla a la mesa. Primero la narración para leer en voz alta, de 120 palabras como máximo, que termine dando pie a los jugadores. Después, en una línea aparte que empiece por «Para el máster:», indica qué tirada pedir y con qué CD, o qué harán los monstruos. No resuelvas tiradas que aún no se han hecho y no decidas por los personajes."},
+ auto:{desc:"La IA dirige. Los jugadores escriben lo que hacen, tiran sus propios dados y apuntan el resultado. Sirve para probar o para jugar tú también; vigila las reglas, porque puede equivocarse con seguridad.",label:"Qué hacéis",
+  rules:"Diriges tú la partida. Los jugadores escriben lo que hacen sus personajes. Narra en segunda persona del plural, con 150 palabras como máximo por respuesta. Cuando el resultado sea incierto y fallar importe, pide una tirada concreta con su CD y espera a que te escriban el resultado; nunca tires por los jugadores ni decidas sus acciones. Di que no cuando algo sea imposible y haz que los fallos tengan consecuencias. Reparte el protagonismo entre todos los personajes. En combate, respeta el orden de iniciativa, usa el daño medio de los monstruos y termina con una línea «Estado:» con los PG actuales de cada criatura."}};
+var QUICK={lugar:"Describe en 3 o 4 frases, para leer en voz alta, el lugar donde están ahora los personajes según la aventura y las notas. Incluye un detalle para el oído o el olfato y algo con lo que puedan interactuar.",
+ pnj:"Dame un PNJ improvisado que encaje en la escena: nombre, aspecto en una frase, qué quiere, una manía al hablar y una frase suya de ejemplo.",
+ monstruo:"Es el turno de la criatura activa del combate. Dime qué haría este turno de forma creíble, a quién ataca y por qué, y una frase para describirlo.",
+ complica:"Propón tres complicaciones breves que podría introducir ahora mismo en la escena, ordenadas de leve a grave.",
+ resumen:"Con las notas y la historia, escribe un resumen de cinco líneas para leer a los jugadores al empezar la próxima sesión."};
+var MSG={cancelled:"",rate_limited:"Has llegado al límite de uso de Claude. Prueba dentro de un rato.",session_expired:"Vuelve a iniciar sesión en Claude y repite la petición.",refused:"Claude no ha respondido a esta petición. Cámbiala y prueba otra vez.",empty_completion:"No hubo respuesta. Pide algo más concreto.",prompt_too_large:"Hay demasiado texto. Resume la historia antigua y vuelve a intentarlo.",upstream_error:"Se cortó la conexión. Vuelve a intentarlo."};
+var GONE=["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed"];
+MSG.auth="El motor ha rechazado la clave. Revísala en «Motor de IA».";
+MSG.model="El motor no encuentra ese modelo o esa dirección. Pulsa «Probar y ver modelos».";
+MSG.network="No se puede conectar con el motor. Comprueba que está encendido, la dirección, y que admite peticiones desde esta página (CORS).";
+var inArtifact=!!(window.claude&&window.claude.use), cfg={base:"",model:"",key:""};
+try{var mc=JSON.parse(localStorage.getItem(LS+"-motor")||"{}");["base","model","key"].forEach(function(k){if(typeof mc[k]==="string")cfg[k]=mc[k]})}catch(e){}
+function canAsk(){return inArtifact?!!sample:!!(cfg.base&&cfg.model)}
+function ready(){if(busy)return false;if(canAsk())return true;if(!inArtifact){note("Configura primero el motor de IA.");$("#motor").open=true}return false}
+function url(p){return cfg.base.replace(/\/+$/,"")+p}
+function heads(){var h={"Content-Type":"application/json"};if(cfg.key)h.Authorization="Bearer "+cfg.key;return h}
+function httpCode(s){return s===401||s===403?"auth":s===429?"rate_limited":s===404||s===400?"model":"upstream_error"}
+function strip(t){return t.replace(/<think>[\s\S]*?(<\/think>|$)/g,"").replace(/^\s+/,"")}
+function other(input,o){var full="",msgs=[];
+  (typeof input==="string"?[{role:"user",content:input}]:input.map(function(m,i){return{role:i===0?"system":m.role,content:m.content}})).forEach(function(m){
+    var l=msgs[msgs.length-1];if(l&&l.role===m.role)l.content+="\n\n"+m.content;else msgs.push({role:m.role,content:m.content})});
+  return fetch(url("/chat/completions"),{method:"POST",signal:o.signal,headers:heads(),body:JSON.stringify({model:cfg.model,messages:msgs,stream:true})}).then(function(res){
+    if(!res.ok)throw{code:httpCode(res.status)};
+    var rd=res.body.getReader(),dec=new TextDecoder(),buf="";
+    function pump(){return rd.read().then(function(x){if(x.done)return;buf+=dec.decode(x.value,{stream:true});var lines=buf.split("\n");buf=lines.pop();
+      lines.forEach(function(l){l=l.trim();if(l.indexOf("data:")!==0)return;var s=l.slice(5).trim();if(s==="[DONE]")return;
+        try{var j=JSON.parse(s),c=j.choices&&j.choices[0]&&j.choices[0].delta&&j.choices[0].delta.content;if(c){full+=c;var v=strip(full);if(v)o.onText({text:v})}}catch(e){}});
+      return pump()})}
+    return pump().then(function(){var v=strip(full).trim();if(!v)throw{code:"empty_completion"};return{text:v,truncated:false}})
+  }).catch(function(e){throw{code:e&&e.code?e.code:e&&e.name==="AbortError"?"cancelled":"network",text:strip(full).trim()}})}
+function saveCfg(){cfg.base=$("#mo-base").value.trim();cfg.model=$("#mo-model").value.trim();cfg.key=$("#mo-key").value.trim();
+  try{localStorage.setItem(LS+"-motor",JSON.stringify(cfg))}catch(e){}$("#motor-now").textContent=cfg.model||"sin configurar"}
+$("#mo-base").value=cfg.base;$("#mo-model").value=cfg.model;$("#mo-key").value=cfg.key;
+["#mo-base","#mo-model","#mo-key"].forEach(function(s){$(s).addEventListener("change",saveCfg)});
+$("#mo-preset").onchange=function(){if(this.value){$("#mo-base").value=this.value;saveCfg()}};
+$("#mo-test").onclick=function(){saveCfg();var m=$("#mo-msg");if(!cfg.base){m.textContent="Escribe la dirección de la API.";return}m.textContent="Probando…";
+  fetch(url("/models"),{headers:heads()}).then(function(r){if(!r.ok)throw{code:httpCode(r.status)};return r.json()}).then(function(j){
+    var ids=((j&&j.data)||[]).map(function(x){return String(x.id)}).slice(0,400);
+    $("#mo-models").innerHTML=ids.map(function(i){return'<option value="'+esc(i)+'">'}).join("");
+    m.textContent="Conexión correcta: "+ids.length+" modelos. Elige uno en el campo «Modelo».";
+    if(!cfg.model&&ids.length===1){$("#mo-model").value=ids[0];saveCfg()}
+  },function(e){m.textContent=MSG[e&&e.code]||MSG.network})};
+function note(t){$("#ia-note").textContent=t}
+function turnName(){var c=find(S.combat.turnId);return c&&S.combat.round?view(c).name:""}
+function iaCtx(){var L=[];
+  if(S.ia.premise)L.push("AVENTURA:\n"+S.ia.premise.slice(0,2000));
+  if(S.ia.summary)L.push("RESUMEN DE LO OCURRIDO HASTA AHORA:\n"+S.ia.summary);
+  if(S.party.length)L.push("PERSONAJES:\n"+S.party.map(function(p){return"- "+(p.name||"Sin nombre")+", "+(p.cls||"clase sin apuntar")+" de nivel "+p.level+", CA "+p.ac+", PG "+p.hp+"/"+p.max+", Percepción pasiva "+p.pp}).join("\n"));
+  if(S.combat.list.length)L.push("COMBATE EN MARCHA, ronda "+(S.combat.round||0)+(turnName()?", turno de "+turnName():"")+":\n"+S.combat.list.map(function(c){var v=view(c);
+    return"- "+v.name+(v.pc?" (personaje)":" (monstruo, VD "+c.cr+")")+", iniciativa "+(c.init==null?"sin tirar":c.init)+", CA "+v.ac+", PG "+v.hp+"/"+v.max+((c.conds||[]).length?", estados: "+c.conds.join(", "):"")}).join("\n"));
+  if(S.notes)L.push("NOTAS DEL MÁSTER:\n"+S.notes.slice(-2500));
+  return L.join("\n\n")||"Todavía no hay datos de la partida apuntados en el panel."}
+function lead(m){var t=BASE+"\n\n"+MODES[m].rules;
+  if(m==="auto"){var p=[];for(var i=0;i<8;i++)p.push(d(20));t+="\n\nPara las tiradas de d20 de monstruos y PNJ usa, en este orden, estos resultados que ya se han tirado con dados reales: "+p.join(", ")+"."}
+  return t+"\n\nESTADO DE LA MESA\n\n"+iaCtx()}
+function turns(m){var out=[{role:"user",content:lead(m)}];
+  S.ia.log.slice(-30).forEach(function(x){out.push({role:x.r==="a"?"assistant":"user",content:x.t})});return out}
+function run(input,onText){busy=true;ctl=new AbortController();note("Pensando…");iaButtons();
+  return (inArtifact?sample:other)(input,{cache:false,signal:ctl.signal,onText:function(u){note("Escribiendo…");onText(u.text)}}).then(
+    function(r){busy=false;note(r.truncated?"La respuesta se cortó por longitud.":"");return{text:r.text}},
+    function(e){busy=false;var c=(e&&e.code)||"upstream_error";if(inArtifact&&GONE.indexOf(c)>=0)sample=null;
+      note(MSG[c]!==undefined?MSG[c]:MSG.upstream_error);return{text:c==="refused"?"":(e&&e.text)||"",err:c}})}
+function iaButtons(){$("#ia-send").disabled=busy;$("#ia-stop").hidden=!busy;
+  ["#ia-start","#ia-sum","#ia-clear","#ia-accept","#ia-regen","#ia-discard"].forEach(function(s){$(s).disabled=busy});
+  [].forEach.call(document.querySelectorAll("#ia-quick button"),function(b){b.disabled=busy})}
+function logPush(r,t){S.ia.log.push({r:r,t:t});if(S.ia.log.length>80)S.ia.log.splice(0,S.ia.log.length-80)}
+function drawLog(){var ol=$("#ia-log");ol.textContent="";
+  S.ia.log.forEach(function(x){var li=document.createElement("li");li.className=x.r==="a"?"a":"u";li.textContent=x.t;ol.appendChild(li)})}
+function drawIA(){var m=S.ia.mode,chat=m!=="copiloto",hide=players&&m!=="auto";
+  var off=inArtifact&&iaKnown&&!sample;$("#ia-off").hidden=!off;$("#ia-on").hidden=off;$("#motor").hidden=inArtifact;$("#ia-only-claude").hidden=!inArtifact;$("#motor-now").textContent=cfg.model||"sin configurar";
+  [].forEach.call($("#ia-modes").children,function(b){b.setAttribute("aria-pressed",b.dataset.ia===m)});
+  $("#ia-desc").textContent=MODES[m].desc;$("#ia-label").textContent=MODES[m].label;
+  var pr=$("#ia-premise");if(document.activeElement!==pr)pr.value=S.ia.premise;
+  $("#ia-secret").hidden=!hide;$("#ia-body").hidden=hide;
+  $("#ia-quick").hidden=chat;$("#ia-outbox").hidden=chat||!lastOut;
+  $("#ia-log").hidden=!chat;$("#ia-story").hidden=!chat;$("#ia-empty").hidden=!chat||S.ia.log.length>0||busy;
+  $("#ia-start").hidden=S.ia.log.length>0;$("#ia-sum").hidden=S.ia.log.length<=24;$("#ia-clear").hidden=!S.ia.log.length;
+  if(m!=="narrador")$("#ia-draft").hidden=true;
+  $("#ia-send").textContent=m==="narrador"?"Pedir propuesta":"Enviar";
+  if(chat&&!busy)drawLog();iaButtons()}
+function propose(){var box=$("#ia-draft"),ta=$("#ia-draft-text");box.hidden=false;ta.value="";ta.readOnly=true;
+  run(turns("narrador"),function(t){ta.value=t}).then(function(r){ta.readOnly=false;if(!r.text){box.hidden=true}else ta.value=r.text;drawIA()})}
+function autoReply(){var li=document.createElement("li");li.className="a";$("#ia-log").appendChild(li);$("#ia-empty").hidden=true;
+  run(turns("auto"),function(t){li.textContent=t}).then(function(r){if(r.text){logPush("a",r.text+(r.err&&r.err!=="cancelled"?"\n(respuesta interrumpida)":""));touch(false)}drawIA()})}
+function say(text){logPush("u",text);touch(false);drawLog();if(S.ia.mode==="narrador")propose();else autoReply()}
+$("#ia-modes").addEventListener("click",function(e){var b=e.target.closest("[data-ia]");if(!b||busy)return;S.ia.mode=b.dataset.ia;touch(false);drawIA();route()});
+$("#ia-premise").addEventListener("input",function(){S.ia.premise=this.value;touch(false)});
+$("#ia-form").addEventListener("submit",function(e){e.preventDefault();var i=$("#ia-input"),q=i.value.trim();if(!q||!ready())return;i.value="";
+  if(S.ia.mode==="copiloto")copilot(q);else say(q)});
+$("#ia-input").addEventListener("keydown",function(e){if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)){e.preventDefault();$("#ia-send").click()}});
+function copilot(q){var hist=S.ia.log.slice(-6).map(function(x){return(x.r==="a"?"Máster: ":"Jugadores: ")+x.t}).join("\n");
+  lastOut="";$("#ia-outbox").hidden=false;$("#ia-out").textContent="";
+  run(lead("copiloto")+(hist?"\n\nÚLTIMOS TURNOS DE LA HISTORIA:\n"+hist:"")+"\n\nPETICIÓN DEL MÁSTER:\n"+q,function(t){$("#ia-out").textContent=t}).then(function(r){lastOut=r.text;$("#ia-out").textContent=r.text;drawIA()})}
+$("#ia-quick").addEventListener("click",function(e){var b=e.target.closest("[data-q]");if(b&&ready())copilot(QUICK[b.dataset.q])});
+$("#ia-tonotes").onclick=function(){if(!lastOut)return;S.notes=(S.notes?S.notes.replace(/\s+$/,"")+"\n\n":"")+lastOut;touch();note("Guardado en tus notas.")};
+$("#ia-stop").onclick=function(){if(ctl)ctl.abort()};
+$("#ia-start").onclick=function(){if(ready())say("Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.")};
+$("#ia-accept").onclick=function(){var t=$("#ia-draft-text").value.trim();if(!t)return;logPush("a",t);$("#ia-draft").hidden=true;touch(false);drawIA()};
+$("#ia-regen").onclick=function(){if(ready())propose()};
+$("#ia-discard").onclick=function(){var L=S.ia.log;if(L.length&&L[L.length-1].r==="u"){$("#ia-input").value=L.pop().t;touch(false)}$("#ia-draft").hidden=true;drawIA()};
+$("#ia-sum").onclick=function(){if(S.ia.log.length<=12||!ready())return;var old=S.ia.log.slice(0,-12);
+  run("Resume en 250 palabras como máximo lo ocurrido en esta partida de rol, en español y en texto plano. Conserva nombres, lugares, pactos, objetos conseguidos y cabos sueltos.\n\n"+(S.ia.summary?"RESUMEN ANTERIOR:\n"+S.ia.summary+"\n\n":"")+"TRANSCRIPCIÓN:\n"+old.map(function(x){return(x.r==="a"?"Máster: ":"Jugadores: ")+x.t}).join("\n"),function(){}).then(function(r){
+    if(r.text&&!r.err){S.ia.summary=r.text;S.ia.log=S.ia.log.slice(-12);touch(false);note("Historia antigua resumida. Los últimos turnos siguen completos.")}drawIA()})};
+var clearArm=0;
+$("#ia-clear").onclick=function(){var b=this;if(Date.now()-clearArm<4000){clearArm=0;b.textContent="Borrar la historia";S.ia.log=[];S.ia.summary="";$("#ia-draft").hidden=true;touch(false);drawIA()}
+  else{clearArm=Date.now();b.textContent="Pulsa otra vez para borrarla";setTimeout(function(){b.textContent="Borrar la historia"},4000)}};
+if(window.claude&&window.claude.use)window.claude.use("sample").then(function(s){sample=s;iaKnown=true;drawIA()},function(){iaKnown=true;drawIA()});else iaKnown=true;
+
+/* ---- pestañas y modo jugadores ---- */
+var TABS=["combate","grupo","ia","chuleta","notas"];
+function route(){var h=location.hash.replace("#","");if(TABS.indexOf(h)<0||(players&&h==="notas"))h="combate";
+  TABS.forEach(function(t){$("#tab-"+t).hidden=t!==h});
+  [].forEach.call(document.querySelectorAll("nav a"),function(a){if(a.getAttribute("href")==="#"+h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")})}
+window.addEventListener("hashchange",route);
+$("#btn-players").onclick=function(){players=!players;try{localStorage.setItem(LS+"-players",players?"1":"0")}catch(e){}draw();route()};
+function draw(){document.body.classList.toggle("players",players);$("#btn-players").setAttribute("aria-pressed",players);
+  drawDiff();drawOrder();drawParty();drawNotes();drawIA()}
+draw();route();
+})();
+</script>
+
+</body></html>
