@@ -200,7 +200,7 @@ dt{color:var(--ink)} dd{color:var(--muted)}
 
 /* piezas del diseño */
 .badge{display:inline-flex;align-items:center;font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
-.badge.ok{color:var(--heal);background:var(--ok-soft)} .badge.pause{color:var(--warn);background:var(--pause-soft)} .badge.done{color:var(--muted);background:var(--done-soft)}
+.badge.ok{color:var(--heal);background:var(--ok-soft)} .badge.pause{color:var(--warn);background:var(--pause-soft)} .badge.done{color:var(--muted);background:var(--done-soft)} .badge.bad{color:var(--hurt);background:#33211f}
 .ava{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.9rem}
 .ava.sm{width:30px;height:30px;font-size:.72rem}
 .a0{background:#2c3a37;color:#8fbf9b} .a1{background:#3b3020;color:#d9a05b} .a2{background:#3a2428;color:#e2796f} .a3{background:#262f42;color:#8fb0d9} .a4{background:#33284a;color:#b79be0} .adm{background:var(--gold-soft);color:var(--brass)}
@@ -247,7 +247,8 @@ dt{color:var(--ink)} dd{color:var(--muted)}
 .chap:last-child{border-bottom:0} .chap .t{flex:1;min-width:0;overflow-wrap:anywhere} .chap .t small{display:block;color:var(--faint);font-size:.8rem}
 .chap .n{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:.82rem;font-weight:700;border:1.5px solid var(--line);color:var(--faint)}
 .chap.hecho .n{border-color:transparent;background:var(--ok-soft);color:var(--heal)} .chap.curso .n{border-color:var(--brass);color:var(--brass)} .chap.pend .t b{color:var(--muted)}
-.chap button.badge{border:0;min-height:28px;cursor:pointer}
+.chap button.badge,.note button.badge{border:0;min-height:28px;cursor:pointer}
+.note .rowb{align-items:center}
 .note{padding:12px 0;border-bottom:1px solid var(--divider);display:flex;flex-direction:column;gap:4px}
 .note:last-child{border-bottom:0} .note p{color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
@@ -323,6 +324,19 @@ label{display:flex;flex-direction:column;gap:3px}
         <div class="stack">
           <div class="card"><h2>Capítulos</h2><div id="sd-chaps"></div>
             <form id="chap-form" class="bar dm" autocomplete="off"><label style="flex:1 1 14em">Nuevo capítulo<input id="chap-title" placeholder="Las criptas del rey" style="width:100%"></label><button type="submit">Añadir</button></form></div>
+          <div class="card"><h2>Misiones</h2><div id="sd-quests"></div>
+            <form id="quest-form" class="stack dm" style="gap:8px" autocomplete="off">
+              <div class="fgrid"><label>Nueva misión<input id="q-title" placeholder="Recuperar la campana del templo"></label><label>Quién la encarga<input id="q-giver" placeholder="La alcaldesa"></label><label>Recompensa<input id="q-reward" placeholder="50 po y un favor"></label></div>
+              <div class="bar"><button type="submit">Añadir misión</button></div>
+            </form></div>
+          <div class="card"><h2>PNJ</h2><div id="sd-npcs"></div>
+            <form id="npc-form" class="stack dm" style="gap:8px" autocomplete="off">
+              <div class="fgrid"><label>Nombre<input id="n-name" placeholder="Maese Ordul"></label><label>Papel<input id="n-role" placeholder="Farero retirado"></label><label>Dónde está<input id="n-where" placeholder="El faro viejo"></label></div>
+              <label class="wide">Qué quiere<input id="n-wants" placeholder="Que nadie baje a la cripta"></label>
+              <label class="wide">Secreto, solo para ti<input id="n-secret" placeholder="Fue él quien hundió la campana"></label>
+              <div class="bar"><button type="submit">Añadir PNJ</button><button type="button" id="npc-ai" class="ghost">Proponer uno con la IA</button></div>
+              <p id="npc-msg" class="sub" role="status"></p>
+            </form></div>
           <div class="card"><h2>Sesiones registradas</h2><ul class="list" id="sd-ses"></ul></div>
           <details class="card dm" id="sd-edit"><summary>Editar historia</summary>
             <div class="fgrid">
@@ -335,6 +349,13 @@ label{display:flex;flex-direction:column;gap:3px}
             </div>
             <label class="wide">De qué va: lugar, conflicto y villano. El máster IA lo usa como base<textarea id="st-desc" placeholder="Un pueblo minero. Han desaparecido tres mineros y alguien ha visto luces en la galería vieja…"></textarea></label>
             <div class="bar"><button type="button" id="st-del" class="ghost hurt">Eliminar esta historia</button></div>
+          </details>
+          <details class="card dm" id="sd-imp"><summary>Crear capítulos, PNJ y misiones desde un texto</summary>
+            <p class="sub">Pega tus apuntes o el resumen de una aventura y la IA lo ordena en capítulos, PNJ y misiones. Revisas el resultado antes de añadirlo. El texto se envía al motor de IA que tengas configurado.</p>
+            <label class="wide">Texto<textarea id="imp-text" style="min-height:9em" placeholder="El grupo llega a un pueblo costero donde la campana del templo lleva un año sin sonar…"></textarea></label>
+            <div class="bar"><button type="button" id="imp-go" class="pri">Ordenar con la IA</button><button type="button" id="imp-add" hidden>Añadir a la historia</button><button type="button" id="imp-no" class="ghost" hidden>Descartar</button></div>
+            <p id="imp-msg" class="sub" role="status"></p>
+            <div id="imp-out"></div>
           </details>
         </div>
         <div class="stack">
@@ -632,14 +653,14 @@ var CHECK=[["c1","Leer el capítulo «Cómo jugar» del Manual del Jugador. El r
 
 /* ---- estado ---- */
 function blank(){return{rev:"",party:[],combat:{round:0,turnId:null,list:[]},notes:"",checks:{},stories:[],storyId:null,activity:[],maps:[],mapId:null,ia:{mode:"copiloto",premise:"",summary:"",log:[]}}}
-function mkStory(t,i){return{id:uid(),title:t,system:"D&D 5.5",status:"activa",desc:"",cover:["castillo","dragon","bosque"][i%3],chapters:[],sessions:[],notes:[],next:{date:"",time:""}}}
+function mkStory(t,i){return{id:uid(),title:t,system:"D&D 5.5",status:"activa",desc:"",cover:["castillo","dragon","bosque"][i%3],chapters:[],sessions:[],notes:[],npcs:[],quests:[],next:{date:"",time:""}}}
 function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   b.maps=Array.isArray(o.maps)?o.maps.filter(function(m){return m&&m.id&&m.cell>0&&m.w>0&&m.h>0}).map(function(m){m.tokens=Array.isArray(m.tokens)?m.tokens:[];m.fx=Array.isArray(m.fx)?m.fx:[];return m}):[];b.mapId=o.mapId||null;
   var a=o.ia||{};b.ia={mode:["copiloto","narrador","auto"].indexOf(a.mode)>=0?a.mode:"copiloto",premise:typeof a.premise==="string"?a.premise:"",summary:typeof a.summary==="string"?a.summary:"",log:Array.isArray(a.log)?a.log.filter(function(x){return x&&typeof x.t==="string"&&x.t}):[]};
   b.rev=o.rev||"";b.party=Array.isArray(o.party)?o.party:[];b.notes=typeof o.notes==="string"?o.notes:"";b.checks=o.checks&&typeof o.checks==="object"?o.checks:{};
   var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[]};
   function arr(v){return Array.isArray(v)?v:[]}
-  b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.next=x.next||{date:"",time:""};return x});
+  b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.npcs=arr(x.npcs);x.quests=arr(x.quests);x.next=x.next||{date:"",time:""};return x});
   b.storyId=o.storyId||null;b.activity=arr(o.activity);
   b.party.forEach(function(p){if(!p.status)p.status="activo"});
   if(!b.stories.length&&(b.party.length||b.notes||b.ia.premise)){var st=mkStory("Mi campaña",0);st.desc=b.ia.premise;
@@ -756,6 +777,7 @@ $("#add-mon").addEventListener("submit",function(e){e.preventDefault();var name=
 var COVERS={castillo:"Castillo en ruinas",dragon:"Tesoro del dragón",bosque:"Bosque feérico"};
 var ST={activa:["Activa","ok"],pausa:["En pausa","pause"],completada:["Completada","done"],borrador:["Borrador","done"]};
 var CST={pend:["Pendiente","done"],curso:["En curso","pause"],hecho:["Completado","ok"]};
+var QST={abierta:["Abierta","pause"],hecha:["Completada","ok"],fallida:["Fallida","done"]},NST={neutral:["Neutral","done"],aliado:["Aliado","ok"],hostil:["Hostil","bad"],muerto:["Muerto","done"]};
 var stFilter="todas", chFilter="", chQ="", chEdit=null;
 function story(){for(var i=0;i<S.stories.length;i++)if(S.stories[i].id===S.storyId)return S.stories[i];return S.stories[0]||null}
 function storyById(id){for(var i=0;i<S.stories.length;i++)if(S.stories[i].id===id)return S.stories[i];return null}
@@ -785,7 +807,7 @@ function drawPanel(){var s=story(),act=0,ses=0,hrs=0,R=roster();
   $("#panel-sub").textContent=cap(new Date().toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"}))+" | "+(!s?"Crea tu primera historia para empezar":s.next.date?"Próxima sesión: "+fdate(s.next.date).toLowerCase():"Sin próxima sesión fijada");
   $("#side-story").textContent=s?s.title:"Sin historia en mesa";
   $("#kpis").innerHTML=[["Historias activas",act,S.stories.length+" en total"],["Sesiones jugadas",ses,"entre todas las historias"],["Personajes",S.party.length,R.length+" en mesa"],["Horas de juego",fmt(hrs),"registradas"]].map(function(k){return'<div class="kpi"><span>'+k[0]+'</span><b>'+k[1]+'</b><small>'+k[2]+'</small></div>'}).join("");
-  if(!s){$("#p-cont").innerHTML='<div class="empty"><p><b>Todavía no hay ninguna historia.</b></p><p>Una historia agrupa capítulos, sesiones, notas y personajes. Aquí verás la que tengas en marcha, con su progreso.</p><p><button type="button" class="pri dm" data-new-story>+ Nueva historia</button></p></div>';$("#p-next").innerHTML="";}
+  if(!s){$("#p-cont").innerHTML='<div class="empty"><p><b>Todavía no hay ninguna historia.</b></p><p>Una historia agrupa capítulos, sesiones, notas y personajes. Aquí verás la que tengas en marcha, con su progreso.</p><p class="bar"><button type="button" class="pri dm" data-new-story>+ Nueva historia</button><button type="button" class="dm" data-demo-story>Cargar una historia de ejemplo</button></p></div>';$("#p-next").innerHTML="";}
   else{var ci=curChap(s),p=prog(s);
     $("#p-cont").innerHTML='<div class="card cont"><img src="'+coverOf(s)+'" alt=""><div class="body"><div class="rowb">'+badge(s.status)+'<span>'+(s.chapters.length?(ci>=0?"Capítulo "+(ci+1)+" de "+s.chapters.length:"Todos los capítulos completados"):"Sin capítulos todavía")+'</span></div>'+
       '<h2>'+esc(s.title)+'</h2><p class="sub">'+esc((s.desc||"Añade una descripción en «Editar historia» para que el máster IA sepa de qué va.").slice(0,220))+'</p>'+
@@ -812,8 +834,12 @@ function drawStory(){var s=story();$("#sd-none").hidden=!!s;$("#sd").hidden=!s;i
     '<button type="button" class="badge '+b[1]+'" data-chap="'+c.id+'" title="Cambiar estado">'+b[0]+'</button><button type="button" class="ghost dm" data-chap-rm="'+c.id+'" aria-label="Quitar capítulo">✕</button></div>'}).join(""):'<p class="sub">Divide la historia en capítulos para ver el progreso. Pulsa el estado de cada uno para avanzarlo.</p>';
   $("#sd-ses").innerHTML=s.sessions.length?s.sessions.slice().reverse().map(function(x,i){return'<li><span class="n ava sm adm">'+(s.sessions.length-i)+'</span><span class="t"><b>'+esc(fdate(x.d))+'</b> · '+fmt(+x.h||0)+' h<small>'+esc(x.x||"Sin resumen")+'</small></span><button type="button" class="ghost dm" data-ses-rm="'+x.id+'" aria-label="Quitar sesión">✕</button></li>'}).join(""):'<li><span class="t sub">Aún no hay sesiones registradas.</span></li>';
   var done=s.chapters.filter(function(c){return c.st==="hecho"}).length;
-  $("#sd-sum").innerHTML=[["Sesiones jugadas",s.sessions.length],["Horas de juego",fmt(hours(s))],["Personajes",S.party.filter(function(p){return p.story===s.id}).length],["Capítulos completados",done+" de "+s.chapters.length]].map(function(r){return'<div class="rowb"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>'}).join("");
+  $("#sd-sum").innerHTML=[["Sesiones jugadas",s.sessions.length],["Horas de juego",fmt(hours(s))],["Personajes",S.party.filter(function(p){return p.story===s.id}).length],["Capítulos completados",done+" de "+s.chapters.length],["PNJ creados",s.npcs.length],["Misiones abiertas",'<span style="color:var(--brass)">'+s.quests.filter(function(q){return q.st==="abierta"}).length+'</span>']].map(function(r){return'<div class="rowb"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>'}).join("");
   $("#sd-notes").innerHTML=s.notes.length?s.notes.slice().reverse().map(function(n){return'<div class="note"><div class="rowb"><b>'+esc(n.title||"Nota")+'</b><span>'+ago(n.t)+' <button type="button" class="ghost" data-note-rm="'+n.id+'" aria-label="Borrar nota" style="min-height:24px;padding:0 6px">✕</button></span></div><p>'+esc(n.text)+'</p></div>'}).join(""):'<p class="sub">Lo que solo sabes tú: secretos de PNJ, pistas pendientes, qué preparar.</p>';
+  $("#sd-quests").innerHTML=s.quests.length?s.quests.map(function(q){var b=QST[q.st]||QST.abierta;return'<div class="note"><div class="rowb"><b>'+esc(q.title)+'</b><span><button type="button" class="badge '+b[1]+'" data-quest="'+q.id+'" title="Cambiar estado">'+b[0]+'</button> <button type="button" class="ghost dm" data-quest-rm="'+q.id+'" aria-label="Quitar misión" style="min-height:24px;padding:0 6px">✕</button></span></div>'+
+    ((q.giver||q.reward)?'<p>'+esc([q.giver?"Encargo de "+q.giver:"",q.reward?"Recompensa: "+q.reward:""].filter(Boolean).join(" | "))+'</p>':"")+'</div>'}).join(""):'<p class="sub">Lo que el grupo tiene pendiente. Pulsa el estado para marcarla como completada o fallida.</p>';
+  $("#sd-npcs").innerHTML=s.npcs.length?s.npcs.map(function(n){var b=NST[n.st]||NST.neutral;return'<div class="note"><div class="rowb"><span style="display:flex;gap:10px;align-items:center;min-width:0">'+ava(n.name||"?",1)+'<b style="overflow-wrap:anywhere">'+esc(n.name)+'</b></span><span><button type="button" class="badge '+b[1]+'" data-npc="'+n.id+'" title="Cambiar actitud">'+b[0]+'</button> <button type="button" class="ghost dm" data-npc-rm="'+n.id+'" aria-label="Quitar PNJ" style="min-height:24px;padding:0 6px">✕</button></span></div>'+
+    ((n.role||n.where)?'<p>'+esc([n.role,n.where].filter(Boolean).join(" | "))+'</p>':"")+(n.wants?'<p>Quiere: '+esc(n.wants)+'</p>':"")+(n.secret?'<p class="dm" style="color:var(--warn)">Secreto: '+esc(n.secret)+'</p>':"")+'</div>'}).join(""):'<p class="sub">La gente que el grupo conoce: quién es, qué quiere y qué esconde.</p>';
   $("#st-cover").innerHTML=Object.keys(COVERS).map(function(k){return'<option value="'+k+'">'+COVERS[k]+'</option>'}).join("");
   setVal("#st-title",s.title);setVal("#st-system",s.system||"");$("#st-status").value=s.status;$("#st-cover").value=COVERS[s.cover]?s.cover:"castillo";setVal("#st-date",s.next.date||"");setVal("#st-time",s.next.time||"");setVal("#st-desc",s.desc||"")}
 function stEdit(fn,redraw){var s=story();if(!s)return;fn(s);touch(false);if(redraw!==false){drawPanel();drawStories();drawStory();drawIA()}}
@@ -840,6 +866,52 @@ function sesClose(){$("#ses-form").hidden=true;$("#ses-open").hidden=false;$("#s
 $("#ses-cancel").onclick=sesClose;
 $("#ses-form").addEventListener("submit",function(e){e.preventDefault();var d=$("#ses-date").value,h=parseFloat($("#ses-h").value)||0,x=$("#ses-sum").value.trim();if(!d)return;
   stEdit(function(s){s.sessions.push({id:uid(),d:d,h:h,x:x});s.sessions.sort(function(a,b){return a.d<b.d?-1:a.d>b.d?1:0});logAct("Sesión "+s.sessions.length+" registrada en "+s.title)});sesClose()});
+
+function nextKey(o,k){var K=Object.keys(o);return K[(K.indexOf(k)+1)%K.length]}
+$("#tab-historia").addEventListener("click",function(e){var b;
+  if(b=e.target.closest("[data-quest]"))stEdit(function(s){s.quests.forEach(function(q){if(q.id===b.dataset.quest){q.st=nextKey(QST,QST[q.st]?q.st:"abierta");if(q.st==="hecha")logAct("Misión completada: "+q.title)}})});
+  else if(b=e.target.closest("[data-quest-rm]"))stEdit(function(s){s.quests=s.quests.filter(function(q){return q.id!==b.dataset.questRm})});
+  else if(b=e.target.closest("[data-npc]"))stEdit(function(s){s.npcs.forEach(function(n){if(n.id===b.dataset.npc)n.st=nextKey(NST,NST[n.st]?n.st:"neutral")})});
+  else if(b=e.target.closest("[data-npc-rm]"))stEdit(function(s){s.npcs=s.npcs.filter(function(n){return n.id!==b.dataset.npcRm})})});
+function val(id){var e=$(id),v=e.value.trim();e.value="";return v}
+$("#quest-form").addEventListener("submit",function(e){e.preventDefault();var t=val("#q-title");if(!t)return;var g=val("#q-giver"),r=val("#q-reward");
+  stEdit(function(s){s.quests.push({id:uid(),title:t,giver:g,reward:r,st:"abierta"});logAct("Nueva misión: "+t)})});
+$("#npc-form").addEventListener("submit",function(e){e.preventDefault();var n=val("#n-name");if(!n)return;var o={id:uid(),name:n,role:val("#n-role"),where:val("#n-where"),wants:val("#n-wants"),secret:val("#n-secret"),st:"neutral"};
+  $("#npc-msg").textContent="";stEdit(function(s){s.npcs.push(o);logAct("Nuevo PNJ: "+n+(o.role?", "+o.role.toLowerCase():""))})});
+function parseJSON(t){t=String(t||"");var c=[t,t.replace(/^[\s\S]*?```(?:json)?/i,"").replace(/```[\s\S]*$/,""),t.slice(t.indexOf("{"),t.lastIndexOf("}")+1)];
+  for(var i=0;i<c.length;i++){try{var v=JSON.parse(c[i]);if(v&&typeof v==="object")return v}catch(e){}}return null}
+function askJSON(prompt,el){if(busy){el.textContent="La IA está ocupada con otra petición.";return Promise.resolve(null)}
+  if(!canAsk()){el.textContent=inArtifact?"Claude no está disponible en esta vista.":"Configura primero el motor de IA en «Máster IA».";return Promise.resolve(null)}
+  el.textContent="Pensando…";return run(prompt,function(){}).then(function(r){drawIA();if(r.err){el.textContent=$("#ia-note").textContent||"No se pudo completar.";return null}
+    var j=parseJSON(r.text);if(!j){el.textContent="La IA no ha devuelto un resultado legible. Prueba otra vez o con otro modelo.";return null}el.textContent="";return j})}
+function str(v,n){return typeof v==="string"?v.trim().slice(0,n||200):""}
+$("#npc-ai").onclick=function(){var el=$("#npc-msg");
+  askJSON(BASE+"\n\nPropón un personaje no jugador nuevo que encaje en esta historia y no repita a los que ya existen. Responde solo con JSON, sin más texto, con esta forma: {\"nombre\":\"\",\"papel\":\"\",\"donde\":\"\",\"quiere\":\"\",\"secreto\":\"\"}. Cada valor, una frase corta.\n\nESTADO DE LA MESA\n\n"+iaCtx(),el).then(function(j){if(!j)return;
+    $("#n-name").value=str(j.nombre,60);$("#n-role").value=str(j.papel,80);$("#n-where").value=str(j.donde,80);$("#n-wants").value=str(j.quiere);$("#n-secret").value=str(j.secreto);
+    el.textContent="Propuesta lista. Cámbiala si quieres y pulsa «Añadir PNJ».";})};
+var impData=null;
+function impShow(){var d=impData,o=$("#imp-out");$("#imp-add").hidden=$("#imp-no").hidden=!d;if(!d){o.innerHTML="";return}
+  o.innerHTML='<div class="stack" style="gap:6px">'+[["Capítulos",d.c.map(function(x){return x})],["PNJ",d.n.map(function(x){return x.name+(x.role?" ("+x.role+")":"")})],["Misiones",d.q.map(function(x){return x.title})]].map(function(g){return'<p><b>'+g[0]+" ("+g[1].length+")</b>"+(g[1].length?": "+esc(g[1].join("; ")):"")+'</p>'}).join("")+'</div>'}
+$("#imp-go").onclick=function(){var t=$("#imp-text").value.trim(),el=$("#imp-msg");if(t.length<40){el.textContent="Pega un texto algo más largo.";return}
+  askJSON("Ordena el texto siguiente como material para una campaña de rol. Resume con tus propias palabras, en español, sin copiar frases del texto. Responde solo con JSON, sin más texto, con esta forma: {\"capitulos\":[\"título\"],\"pnj\":[{\"nombre\":\"\",\"papel\":\"\",\"donde\":\"\",\"quiere\":\"\",\"secreto\":\"\"}],\"misiones\":[{\"titulo\":\"\",\"encargo\":\"\",\"recompensa\":\"\"}]}. Como máximo 10 capítulos, 12 PNJ y 10 misiones. Deja vacío lo que el texto no diga.\n\nTEXTO:\n"+t.slice(0,12000),el).then(function(j){if(!j)return;
+    impData={c:(Array.isArray(j.capitulos)?j.capitulos:[]).map(function(x){return str(x,90)}).filter(Boolean).slice(0,10),
+      n:(Array.isArray(j.pnj)?j.pnj:[]).map(function(x){x=x||{};return{name:str(x.nombre,60),role:str(x.papel,80),where:str(x.donde,80),wants:str(x.quiere),secret:str(x.secreto)}}).filter(function(x){return x.name}).slice(0,12),
+      q:(Array.isArray(j.misiones)?j.misiones:[]).map(function(x){x=x||{};return{title:str(x.titulo,90),giver:str(x.encargo,80),reward:str(x.recompensa,80)}}).filter(function(x){return x.title}).slice(0,10)};
+    el.textContent=impData.c.length+impData.n.length+impData.q.length?"Revisa lo encontrado y añádelo si te sirve.":"La IA no ha encontrado capítulos, PNJ ni misiones en ese texto.";impShow()})};
+$("#imp-no").onclick=function(){impData=null;impShow();$("#imp-msg").textContent=""};
+$("#imp-add").onclick=function(){var d=impData;if(!d)return;impData=null;
+  stEdit(function(s){d.c.forEach(function(t){s.chapters.push({id:uid(),title:t,st:s.chapters.length?"pend":"curso"})});
+    d.n.forEach(function(x){x.id=uid();x.st="neutral";s.npcs.push(x)});d.q.forEach(function(x){x.id=uid();x.st="abierta";s.quests.push(x)});
+    logAct("Material añadido a "+s.title+": "+d.c.length+" capítulos, "+d.n.length+" PNJ y "+d.q.length+" misiones")});
+  impShow();$("#imp-text").value="";$("#imp-msg").textContent="Añadido a la historia."};
+function demoStory(){var s=mkStory("La campana hundida (ejemplo)",S.stories.length);
+  s.desc="Historia de ejemplo para probar el panel. En el pueblo costero de Brumaverde la campana del templo lleva un año sin sonar, desde la noche en que se hundió con la barca que la traía. Ahora suena bajo el agua cada luna nueva y, cada vez, alguien del pueblo desaparece.";
+  s.chapters=[["Llegada a Brumaverde","hecho"],["El faro viejo","curso"],["Lo que guarda la cripta inundada","pend"]].map(function(c){return{id:uid(),title:c[0],st:c[1]}});
+  s.npcs=[["Maese Ordul","Farero retirado","El faro viejo","Que nadie baje a la cripta","Cortó las amarras de la barca la noche del hundimiento","neutral"],["Alcaldesa Yeva Torrent","Autoridad del pueblo","La casa consistorial","Acabar con las desapariciones sin escándalo","Paga al farero por su silencio","aliado"],["Hermana Calia","Sacerdotisa joven","El templo sin campana","Recuperar la campana","Oye la campana en sueños desde hace un mes","aliado"]].map(function(n){return{id:uid(),name:n[0],role:n[1],where:n[2],wants:n[3],secret:n[4],st:n[5]}});
+  s.quests=[["Averiguar por qué suena la campana","Alcaldesa Yeva Torrent","100 po","abierta"],["Encontrar al pescador desaparecido","Su hija Mirel","Un mapa de la costa","abierta"],["Escoltar a la Hermana Calia al faro","Hermana Calia","Una bendición","hecha"]].map(function(q){return{id:uid(),title:q[0],giver:q[1],reward:q[2],st:q[3]}});
+  s.notes=[{id:uid(),title:"Cómo usar este ejemplo",text:"Cambia los estados de capítulos, misiones y PNJ pulsando sus etiquetas. Cuando tengas tu propia historia, elimina esta en «Editar historia».",t:Date.now()}];
+  S.stories.push(s);logAct("Historia de ejemplo cargada");openStory(s.id);draw()}
+document.addEventListener("click",function(e){if(e.target.closest("[data-demo-story]"))demoStory()});
 
 /* personajes */
 var PF=[["name","Nombre","t"],["race","Especie","t"],["cls","Clase","t"],["player","Jugador","t"],["level","Nivel","n"],["ac","CA","n"],["hp","PG actuales","n"],["max","PG máx.","n"],["pp","Percepción pasiva","n"],["init","Mod. iniciativa","n"]];
@@ -948,6 +1020,8 @@ function turnName(){var c=find(S.combat.turnId);return c&&S.combat.round?view(c)
 function iaCtx(){var L=[];
   var hs=story();
   if(hs){L.push("HISTORIA: "+hs.title+" ("+(hs.system||"D&D 5.5")+")"+(hs.desc?"\n"+hs.desc.slice(0,2000):""));
+    if(hs.npcs.length)L.push("PNJ DE LA HISTORIA:\n"+hs.npcs.slice(0,25).map(function(n){return"- "+n.name+" ("+[n.role,n.where,(NST[n.st]||NST.neutral)[0].toLowerCase()].filter(Boolean).join(", ")+")"+(n.wants?". Quiere: "+n.wants:"")+(n.secret?". Secreto que los jugadores no conocen: "+n.secret:"")}).join("\n"));
+    var oq=hs.quests.filter(function(q){return q.st==="abierta"});if(oq.length)L.push("MISIONES ABIERTAS:\n"+oq.map(function(q){return"- "+q.title+(q.giver?", encargo de "+q.giver:"")+(q.reward?", recompensa: "+q.reward:"")}).join("\n"));
     if(hs.chapters.length)L.push("CAPÍTULOS:\n"+hs.chapters.map(function(c,i){return"- "+(i+1)+". "+c.title+" ("+(c.st==="hecho"?"completado":c.st==="curso"?"en curso":"pendiente")+")"}).join("\n"));
     var ls=hs.sessions[hs.sessions.length-1];if(ls&&ls.x)L.push("ÚLTIMA SESIÓN JUGADA:\n"+ls.x.slice(0,800))}
   if(S.ia.summary)L.push("RESUMEN DE LO OCURRIDO HASTA AHORA:\n"+S.ia.summary);
