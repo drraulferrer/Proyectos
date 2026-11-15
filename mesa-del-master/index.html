@@ -1345,7 +1345,7 @@ function placeFromText(t){var g=/\[COLOCAR:\s*([^\]]+)\]/i.exec(t||"");if(!g)ret
     if(!tk){var ref=null;S.combat.list.forEach(function(c){if(!ref&&view(c).name.toLowerCase().indexOf(k)>=0)ref=c.pcId||c.id});
       if(!ref)roster().forEach(function(p){if(!ref&&(p.name||"").toLowerCase().indexOf(k)>=0)ref=p.id});
       if(!ref){var sx=story();if(sx)sx.npcs.forEach(function(n){if(!ref&&(n.name||"").toLowerCase().indexOf(k)>=0)ref="npc:"+n.id})}
-      tk={id:uid(),ref:ref,name:ref?"":name.slice(0,40),kind:"oth",x:0,y:0,size:1};m.tokens.push(tk)}
+      tk={id:uid(),ref:ref,name:ref?"":name.slice(0,40),kind:"oth",x:0,y:0,size:1};m.tokens.push(tk);if(typeof ref==="string"&&ref.indexOf("npc:")===0)npcOff(ref,m)}
     tk.x=x;tk.y=y;n++});
   if(n){touch(false);note("El máster ha colocado "+n+(n===1?" figura":" figuras")+" en el mapa «"+m.name+"».")}}
 
@@ -1654,13 +1654,10 @@ function chapNpcs(s){var i=curChap(s),c=i>=0?s.chapters[i]:null,open={};s.quests
   return s.npcs.filter(function(n){if(n.st==="muerto")return false;if(n.chap)return!!c&&n.chap===c.id;var k=(n.name||"").toLowerCase();return Object.keys(open).some(function(g){return g.indexOf(k)>=0||k.indexOf(g)>=0})})}
 function placeParty(){var m=curMap(),cols=Math.max(4,Math.floor(m.w/m.cell)),rows=Math.max(4,Math.floor(m.h/m.cell)),L=roster().filter(function(p){return!m.tokens.some(function(t){return t.ref===p.id})}),x0=Math.max(1,Math.floor(cols*.2)),y0=Math.max(0,Math.floor(rows/2-L.length/2));
   L.forEach(function(p,i){var t={id:uid(),ref:p.id,name:"",x:x0+(i%2),y:Math.min(rows-1,y0+i),size:1};m.tokens.push(t);fogAuto(m,t)});return L.length}
-function placeNpcs(s,quiet){if(!s)return 0;var m=curMap(),cols=Math.max(4,Math.floor(m.w/m.cell)),rows=Math.max(4,Math.floor(m.h/m.cell)),L=chapNpcs(s).filter(function(n){return!m.tokens.some(function(t){return t.ref==="npc:"+n.id})}),x0=Math.floor(cols*.55),y0=Math.max(0,Math.floor(rows/2-L.length/2));
-  L.forEach(function(n,i){var x=x0+(i%2),y=Math.min(rows-1,y0+i);while(m.tokens.some(function(t){return t.x===x&&t.y===y})&&x<cols-1)x++;m.tokens.push({id:uid(),ref:"npc:"+n.id,name:n.name,kind:"oth",x:x,y:y,size:1})});
-  if(L.length){touch(false);if(!quiet)mapMsg("Colocados "+L.length+" PNJ del capítulo: "+L.map(function(n){return n.name}).join(", ")+". Arrástralos a su sitio.")}
-  else if(!quiet)mapMsg(chapNpcs(s).length?"Los PNJ de este capítulo ya están en el mapa.":"Ningún PNJ está asignado a este capítulo. Asígnalos en el detalle de la historia, en «Aparece en».");return L.length}
 $("#tok-npcs").onclick=function(){var s=story();if(!s){mapMsg("No hay ninguna historia en mesa.");return}placeNpcs(s,false);drawSvg()};
 $("#sd-npcs").addEventListener("change",function(e){var id=e.target.dataset.npcChap;if(!id)return;var v=e.target.value;stEdit(function(s){s.npcs.forEach(function(n){if(n.id===id)n.chap=v||null})},false)});
-function npcChapSel(n){var s=story();if(!s||!s.chapters.length)return"";return'<select data-npc-chap="'+n.id+'" id="nc-'+n.id+'" aria-label="Capítulo en el que aparece" style="min-height:28px;padding:0 6px;font-size:.8rem;max-width:14em"><option value="">Aparece en: sin fijar</option>'+s.chapters.map(function(c,i){return'<option value="'+c.id+'"'+(n.chap===c.id?" selected":"")+'>Aparece en: '+(i+1)+". "+esc(c.title)+'</option>'}).join("")+'</select>'}
+function npcChapSel(n){var s=story();if(!s||!s.chapters.length)return"";return'<select data-npc-chap="'+n.id+'" id="nc-'+n.id+'" aria-label="Capítulo en el que aparece" style="min-height:28px;padding:0 6px;font-size:.8rem;max-width:14em"><option value="">Aparece en: sin fijar</option>'+s.chapters.map(function(c,i){return'<option value="'+c.id+'"'+(n.chap===c.id?" selected":"")+'>Aparece en: '+(i+1)+". "+esc(c.title)+'</option>'}).join("")+'</select>'+npcFollowCk(n)}
+function npcFollowCk(n){return'<label class="ck dm" style="font-size:.8rem"><input type="checkbox" data-npc-follow="'+n.id+'"'+(n.follow?" checked":"")+'> Acompaña al grupo</label>'}
 
 function pubCtx(s){var L=[],i=curChap(s),m=curMap(),R=roster();L.push("HISTORIA: "+s.title);
   if(i>=0)L.push("CAPÍTULO EN CURSO: "+s.chapters[i].title);
@@ -2225,6 +2222,25 @@ function combatFromText(t){var g=/\[COMBATE:?\s*([^\]]*)\]/i.exec(t||""),C=S.com
     if(m&&tot<cap){q=Math.max(1,Math.min(cap-tot,q));tot+=q;G.push([m,q])}});
   if(G.length<2)return combatFromText0(t);if(!buildEncounter(G,0,true))return false;stopSpeak();location.hash="combate";return true}
 $("#cb-auto").addEventListener("change",function(e){if(e.target.id!=="au-mix")return;mixOn=e.target.checked;try{localStorage.setItem(LS+"-mezcla",mixOn?"1":"0")}catch(x){}});
+/* ---- los PNJ se quedan en su mapa ---- */
+function npcTokMap(n){var r=null;S.maps.forEach(function(m){if(!r&&m.tokens.some(function(t){return t.ref==="npc:"+n.id}))r=m});return r}
+function npcOff(ref,keep){S.maps.forEach(function(m){if(m!==keep)m.tokens=m.tokens.filter(function(t){return t.ref!==ref})})}
+function spotWords(t){return flat(t).split(/[^a-z0-9]+/).filter(function(w){return w.length>=4})}
+function sameSpot(a,b){a=flat(a);b=flat(b);if(!a||!b)return false;if(a.indexOf(b)>=0||b.indexOf(a)>=0)return true;var B=spotWords(b);return spotWords(a).some(function(w){return B.indexOf(w)>=0})}
+function mapSpots(s,m){var L=[m.name];(s.places||[]).forEach(function(p){if(p.map===m.id)L.push(p.title)});return L}
+function storyMap(s,id){return!!s&&((s.places||[]).some(function(p){return p.map===id})||s.chapters.some(function(c){return c.map===id})||s.mapId===id||S.maps.some(function(m){return m.id===id&&m.story===s.id}))}
+function npcHere(s,n,m,first){if(n.where){if(mapSpots(s,m).some(function(x){return sameSpot(n.where,x)}))return true;
+    if(S.maps.some(function(o){return o!==m&&storyMap(s,o.id)&&mapSpots(s,o).some(function(x){return sameSpot(n.where,x)})}))return false}
+  var i=curChap(s),c=i>=0?s.chapters[i]:null;if(c&&c.map&&mapName(c.map))return c.map===m.id;return first}
+function placeNpcs(s,quiet){if(!s)return 0;var m=curMap(),cols=Math.max(4,Math.floor(m.w/m.cell)),rows=Math.max(4,Math.floor(m.h/m.cell)),C=chapNpcs(s),first=!s.npcs.some(npcTokMap),stay=[],
+    L=quiet?s.npcs.filter(function(n){if(n.st==="muerto")return false;if(n.follow)return true;if(C.indexOf(n)<0)return false;var at=npcTokMap(n);if(at){if(at!==m)stay.push(n.name+" («"+at.name+"»)");return false}return npcHere(s,n,m,first)}):C.slice();
+  L=L.filter(function(n){return!m.tokens.some(function(t){return t.ref==="npc:"+n.id})});var y0=Math.max(0,Math.floor(rows/2-L.length/2));
+  L.forEach(function(n,i){npcOff("npc:"+n.id,m);var x=Math.floor(cols*(n.follow?.2:.55))+(n.follow?2:0)+(i%2),y=Math.min(rows-1,y0+i);while(m.tokens.some(function(t){return t.x===x&&t.y===y})&&x<cols-1)x++;m.tokens.push({id:uid(),ref:"npc:"+n.id,name:n.name,kind:"oth",x:x,y:y,size:1})});
+  if(L.length)touch(false);
+  if(L.length||stay.length)mapMsg((L.length?"En esta escena: "+L.map(function(n){return n.name+(n.follow?", que acompaña al grupo":"")}).join("; ")+". ":"")+(stay.length?"Se quedan donde estaban: "+stay.join(", ")+".":""));
+  else if(!quiet)mapMsg(C.length?"Los PNJ de este capítulo ya están en el mapa.":"Ningún PNJ está asignado a este capítulo. Asígnalos en el detalle de la historia, en «Aparece en».");return L.length}
+function npcWhere(s){var L=[];s.npcs.forEach(function(n){var m=npcTokMap(n);if(m)L.push(n.name+": "+(m===curMap()?"aquí, en el mapa en pantalla":"se quedó en «"+m.name+"»")+(n.follow?", acompaña al grupo":""))});return L.length?"DÓNDE ESTÁ CADA PNJ CON FIGURA: "+L.join("; ")+". Un PNJ que se quedó en otro mapa no está en esta escena: no habla ni actúa aquí salvo que la historia lo traiga, y entonces inclúyelo en la marca [COLOCAR].":""}
+$("#sd-npcs").addEventListener("change",function(e){var id=e.target.dataset.npcFollow;if(!id)return;var v=e.target.checked;stEdit(function(s){s.npcs.forEach(function(n){if(n.id===id)n.follow=v})},false);var s=story();if(s&&v){placeNpcs(s,true);touch(false)}});
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -2427,7 +2443,7 @@ function iaCtx(){var L=[];
     return"- "+v.name+(v.pc?" (personaje)":c.ally?" (aliado al que hay que proteger)":" (monstruo, VD "+c.cr+")")+", iniciativa "+(c.init==null?"sin tirar":c.init)+", CA "+v.ac+", PG "+v.hp+"/"+v.max+((c.conds||[]).length?", estados: "+c.conds.join(", "):"")}).join("\n"));
   if(S.combat.goal&&S.combat.goal.k!=="all"&&S.combat.round)L.push("OBJETIVO DEL COMBATE: "+goalTxt(S.combat.goal)+".");
   if(S.combat.auto&&(S.combat.log||[]).length)L.push("REGISTRO DEL COMBATE, con resultados ya tirados que no debes cambiar:\n"+S.combat.log.slice(-10).join("\n"));
-  var mc2=mapCtx();if(mc2)L.push(mc2);
+  var mc2=mapCtx();if(mc2)L.push(mc2);if(hs){var nw=npcWhere(hs);if(nw)L.push(nw)}
   if(hs&&hs.notes.length)L.push("NOTAS DEL MÁSTER:\n"+hs.notes.map(function(n){return"- "+n.title+": "+n.text}).join("\n").slice(-2500));
   return L.join("\n\n")||"Todavía no hay datos de la partida apuntados en el panel."}
 function lead(m){var t=BASE+"\n\n"+MODES[m].rules;
@@ -2437,7 +2453,7 @@ function lead(m){var t=BASE+"\n\n"+MODES[m].rules;
     t+="\n\nTIRADAS DE LOS PERSONAJES: conoces la ficha de cada uno, más abajo. Cuando una acción sea incierta, decide qué personaje concreto la hace según lo que haya dicho y no la resuelvas ni pidas cifras: termina con una línea exactamente así por cada personaje implicado: [TIRADA: nombre del personaje | habilidad, característica o salvación | CD]. El panel tira el d20, suma el modificador exacto de su ficha y te escribe el resultado; entonces narra la consecuencia sin cambiarlo. Si actúa todo el grupo, pide una tirada por personaje. Ten en cuenta su velocidad, sus conjuros y los espacios que le quedan: no le dejes lanzar un conjuro que no tiene o para el que no le quedan espacios.";
     if(tAct)t+="\n\nEl último mensaje es de "+tAct+": resuelve su acción con sus estadísticas, no con las de otro."+(tNext?" RONDA POR TURNOS: los jugadores hablan de uno en uno. Responde en 80 palabras como máximo y termina preguntando por su nombre a "+tNext+" qué hace.":"");
     t+="\n\nPara ambientar la escena puedes cambiar el sonido de fondo con una línea exactamente así: [AMBIENTE: nombre], con uno de estos nombres: lluvia, mazmorra, bosque, taberna, misterio, silencio.";
-    var sq=story(),cn=sq?chapNpcs(sq):[];if(cn.length)t+="\n\nLos PNJ de este capítulo son: "+cn.map(function(n){return n.name}).join(", ")+". Ya tienen figura en el mapa: inclúyelos en la marca [COLOCAR] cuando entren en escena o cambien de sitio.";
+    var sq=story(),cn=sq?chapNpcs(sq):[];if(cn.length)t+="\n\nLos PNJ de este capítulo son: "+cn.map(function(n){return n.name}).join(", ")+". Cada PNJ se queda en el mapa donde estaba: al cambiar de mapa solo aparecen los que pertenecen a ese lugar o acompañan al grupo. Si un PNJ viaja con los personajes o entra en la escena nueva, inclúyelo en la marca [COLOCAR]; si no, no lo des por presente.";
     var cm=curMap();if(cm.src||cm.desc)t+="\n\nLa escena actual transcurre en el mapa en pantalla, descrito más abajo: ambienta la narración en ese lugar concreto y ten en cuenta dónde está cada figura."}
   if(helpOn)t+=m==="copiloto"?"\n\nEl máster es novato: explica en pocas palabras cada regla que menciones.":"\n\nMODO EXPLICACIÓN: los jugadores no han jugado nunca. Después de narrar añade una línea que empiece por «Opciones:» con tres o cuatro cosas concretas que podrían hacer sus personajes ahora, y explica entre paréntesis, en pocas palabras, cada término de reglas que uses. Cuando el panel te dé el resultado de una tirada, di primero en una frase qué se sumó al dado y por qué, y luego narra la consecuencia.";
   return t+"\n\nESTADO DE LA MESA\n\n"+iaCtx()}
@@ -2616,7 +2632,7 @@ $("#map-tools").addEventListener("click",function(e){var b=e.target.closest("[da
   var def={circulo:6,cono:4.5,linea:9,cubo:4.5}[TOOL];if(def)$("#fx-m").value=def;drawMapUI()});
 $("#fx-undo").onclick=function(){var m=curMap();if(m.fx.length){m.fx.pop();touch(false);drawSvg()}};
 $("#fx-clear").onclick=function(){var m=curMap();lastRule=null;if(m.fx.length){m.fx=[];touch(false)}drawSvg()};
-$("#map-sel").onchange=function(){S.mapId=this.value;selTok=null;lastRule=null;V.fit=false;touch(false);drawMapUI()};
+$("#map-sel").onchange=function(){S.mapId=this.value;selTok=null;lastRule=null;V.fit=false;var hs=story();if(hs&&storyMap(hs,S.mapId)){placeParty();placeNpcs(hs,true)}touch(false);drawMapUI()};
 $("#map-new").onclick=function(){var m=newMap("Mapa "+(S.maps.length+1));S.maps.push(m);S.mapId=m.id;selTok=null;V.fit=false;touch(false);drawMapUI();$("#map-cfg").open=true;$("#map-name").focus();$("#map-name").select()};
 function freeCell(m,x,y){while(m.tokens.some(function(t){return t.x===x&&t.y===y}))x++;return x}
 var placing=[],ghost=null,solo=false;
