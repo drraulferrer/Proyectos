@@ -1,75 +1,23 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
-<title>Mesa del Máster</title>
+<title>Crónicas D&amp;D</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700;800&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Liter&family=Inter:wght@500;600;700&display=swap">
 <style>
-/* Layout: banda de fieltro fija arriba con ronda y estado; pestañas; columna de trabajo + bandeja de dados siempre a mano */
-:root{
-  --bg:#eef1ec; --surface:#f9faf7; --sunk:#e3e8e1; --ink:#1c2a24; --muted:#56665e; --line:#cbd5cc;
-  --felt:#22483a; --on-felt:#f3ecd8; --on-felt-muted:#b9cbbf;
-  --brass:#8f6212; --brass-ink:#ffffff; --hurt:#b3372f; --heal:#2b7449; --warn:#9a6a0c;
-  --display:"Alegreya",Georgia,"Times New Roman",serif;
-  --body:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
-  --r:6px;
-}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#121a16; --surface:#1a2520; --sunk:#0e1512; --ink:#e6ece7; --muted:#97a89e; --line:#2e3d35;
-  --felt:#0e2a20; --on-felt:#f3ecd8; --on-felt-muted:#9fb5a8;
-  --brass:#d9a441; --brass-ink:#1a1407; --hurt:#e56f66; --heal:#62c48a; --warn:#e0b04a; color-scheme:dark } }
-:root[data-theme="dark"]{
-  --bg:#121a16; --surface:#1a2520; --sunk:#0e1512; --ink:#e6ece7; --muted:#97a89e; --line:#2e3d35;
-  --felt:#0e2a20; --on-felt:#f3ecd8; --on-felt-muted:#9fb5a8;
-  --brass:#d9a441; --brass-ink:#1a1407; --hurt:#e56f66; --heal:#62c48a; --warn:#e0b04a; color-scheme:dark }
-
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.45}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--felt)}
-.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.wrap{max-width:1180px;margin:0 auto}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
-h2{font-size:1.45rem;font-weight:700}
-h3{font-size:1.1rem;font-weight:700}
 p{margin:0}
 .num{font-variant-numeric:tabular-nums}
 .muted{color:var(--muted)}
 .small{font-size:.9rem}
 
 /* cabecera */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--felt);color:var(--on-felt)}
-.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding-block:10px}
-.top h1{font-size:1.5rem;font-weight:800;letter-spacing:.01em}
-.round{display:flex;align-items:baseline;gap:6px;font-family:var(--display)}
-.round b{font-size:1.5rem}
-.round span{color:var(--on-felt-muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;font-family:var(--body)}
-.top .spacer{flex:1}
-#status{color:var(--on-felt-muted);font-size:.85rem}
-.top button{background:transparent;color:var(--on-felt);border:1px solid var(--on-felt-muted)}
-.top button[aria-pressed="true"]{background:var(--on-felt);color:var(--felt);border-color:var(--on-felt)}
 
-nav{background:var(--felt)}
-nav .wrap{display:flex;gap:2px;overflow-x:auto}
-nav a{color:var(--on-felt-muted);text-decoration:none;padding:8px 14px;border-radius:var(--r) var(--r) 0 0;font-weight:500;white-space:nowrap}
-nav a[aria-current="page"]{background:var(--bg);color:var(--ink);font-weight:700}
 
 /* controles */
-button{font:inherit;font-weight:500;min-height:36px;padding:4px 12px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
-button:hover{border-color:var(--brass)}
-button.pri{background:var(--brass);border-color:var(--brass);color:var(--brass-ink);font-weight:700}
-button.ghost{background:transparent;border-color:transparent;color:var(--muted);padding:4px 8px}
 button.hurt{color:var(--hurt)} button.heal{color:var(--heal)}
-input,select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:4px 8px;min-height:36px;min-width:0}
 input[type=number]{width:4.2em;font-variant-numeric:tabular-nums}
 :focus-visible{outline:2px solid var(--brass);outline-offset:2px}
-label{display:flex;flex-direction:column;gap:2px;font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 label input,label select{text-transform:none;letter-spacing:0;font-size:1rem}
 
-.page{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding-block:20px 48px;align-items:start}
-@media (min-width:980px){ .page{grid-template-columns:minmax(0,1fr) 300px} aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 110px)} }
-main{min-width:0;display:flex;flex-direction:column;gap:20px}
-section.tab{display:flex;flex-direction:column;gap:18px}
 .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:12px}
-.empty{border:1px dashed var(--line);border-radius:var(--r);padding:22px;color:var(--muted);display:flex;flex-direction:column;gap:10px;align-items:flex-start}
 
 /* dificultad */
 .diff{display:flex;flex-direction:column;gap:6px}
@@ -104,13 +52,8 @@ ol.order li.down .who b{text-decoration:line-through;color:var(--muted)}
 
 /* tabla del grupo */
 .scroll{overflow-x:auto}
-table{border-collapse:collapse;width:100%}
-th{font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);text-align:left;font-weight:500;padding:4px 6px}
-td{padding:4px 6px;border-top:1px solid var(--line)}
-td input{width:100%;min-width:3.4em} td input.t{min-width:7em}
 
 /* dados */
-aside{display:flex;flex-direction:column;gap:12px;min-width:0}
 .dice{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .dice button{font-family:var(--display);font-weight:700;padding:4px 0}
 #dice-out{font-family:var(--display);font-weight:800;font-size:3.2rem;line-height:1;font-variant-numeric:tabular-nums}
@@ -147,8 +90,6 @@ summary{cursor:pointer}
 
 /* mapa */
 :root{--tok-pc:#1f5a45;--tok-mon:#a3322a;--tok-oth:#45508f;--tok-ink:#ffffff;--fx:#f0a81c}
-.page.wide{grid-template-columns:minmax(0,1fr)}
-.page.wide aside{position:static;max-width:420px}
 #board{position:relative;height:min(72vh,760px);min-height:380px;background:var(--sunk);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
 #board.t-fx{cursor:crosshair}
 #stage{position:absolute;left:0;top:0;transform-origin:0 0}
@@ -179,23 +120,256 @@ summary{cursor:pointer}
 
 body.players .dm{display:none!important}
 @media (prefers-reduced-motion:no-preference){ .hpbar i,.meter i{transition:width .25s} }
+
+/* Crónicas: barra lateral fija, cabecera por pantalla en Cinzel, tarjetas oscuras con acento dorado. Un solo tema, oscuro. */
+:root{
+  color-scheme:dark;
+  --bg:#0e0c14; --side:#131019; --surface:#181522; --raised:#211c30; --sunk:#0b0910; --line:#272233; --divider:#201b2b;
+  --ink:#ece7f3; --muted:#a39cb6; --faint:#6e6680;
+  --brass:#c9a45c; --brass-ink:#1c1508; --gold-soft:#2d2522;
+  --heal:#8fbf9b; --ok-soft:#1f2e2a; --warn:#d9a05b; --pause-soft:#32282a; --hurt:#e2796f; --done-soft:#231f31;
+  --display:"Cinzel","Trajan Pro",Georgia,serif;
+  --body:"Liter","Inter","Segoe UI",system-ui,sans-serif;
+  --r:8px; --rc:14px;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--side)}
+h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance}
+h1{font-family:var(--display);font-weight:500;font-size:1.7rem;letter-spacing:.03em}
+h2{font-family:var(--body);font-size:1rem;font-weight:700}
+h3{font-family:var(--body);font-size:.95rem;font-weight:700}
+a{color:var(--brass)}
+
+/* estructura */
+.app{display:grid;grid-template-columns:236px minmax(0,1fr);min-height:100dvh;align-items:start}
+.app.dice-on{grid-template-columns:236px minmax(0,1fr) 304px}
+.side{position:sticky;top:env(safe-area-inset-top,0px);height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));background:var(--side);border-right:1px solid var(--divider);display:flex;flex-direction:column;gap:6px;padding:22px 14px 16px;overflow-y:auto}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.15rem;letter-spacing:.12em;padding:0 8px 16px;color:var(--ink);text-decoration:none}
+.logo svg{color:var(--brass);flex:none}
+.side nav{display:flex;flex-direction:column;gap:2px}
+.side nav a,.side .tool{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:var(--r);color:var(--muted);text-decoration:none;font-weight:500;border:0;background:transparent;min-height:40px;text-align:left;width:100%;font-size:inherit}
+.side nav a svg,.side .tool svg{flex:none;opacity:.85}
+.side nav a:hover,.side .tool:hover{color:var(--ink)}
+.side nav a[aria-current="page"],.side .tool[aria-pressed="true"]{background:var(--gold-soft);color:var(--brass)}
+.side .sep{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);padding:14px 12px 4px}
+.side .grow{flex:1}
+#status{color:var(--faint);font-size:.78rem;padding:4px 12px}
+.profile{display:flex;align-items:center;gap:12px;padding:10px 8px 0;border-top:1px solid var(--divider);margin-top:6px}
+.profile b{display:block;font-size:.9rem} .profile span{font-size:.78rem;color:var(--faint);overflow-wrap:anywhere}
+.content{min-width:0;padding-block:26px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.content > main{max-width:1180px;margin:0 auto;padding-inline:clamp(0px,1.6vw,18px);display:flex;flex-direction:column;gap:20px}
+.dicebox{position:sticky;top:env(safe-area-inset-top,0px);padding:26px 16px 16px 0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.app:not(.dice-on) .dicebox{display:none}
+@media (max-width:1100px){ .app.dice-on{grid-template-columns:236px minmax(0,1fr)} .dicebox{grid-column:2;position:static;padding:0 16px 40px;max-width:420px} }
+@media (max-width:820px){
+  .app,.app.dice-on{grid-template-columns:minmax(0,1fr)}
+  .side{position:sticky;height:auto;flex-direction:row;align-items:center;gap:4px;padding:8px max(12px,env(safe-area-inset-right,0px)) 8px max(12px,env(safe-area-inset-left,0px));border-right:0;border-bottom:1px solid var(--divider);overflow-x:auto;overflow-y:hidden;z-index:9}
+  .logo{padding:0 8px 0 4px} .logo span,.side .sep,.profile,.side .grow,#status{display:none}
+  .side nav{flex-direction:row} .side nav a,.side .tool{white-space:nowrap;width:auto;padding:8px 10px}
+  .side nav a svg,.side .tool svg{display:none}
+  .dicebox{grid-column:1}
+}
+section.tab{display:flex;flex-direction:column;gap:20px}
+.head{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--divider)}
+.head .ttl{flex:1 1 14em;min-width:0;display:flex;flex-direction:column;gap:4px}
+.head .sub,.sub{color:var(--muted);font-size:.86rem}
+.head .acts{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+/* controles */
+button{font:inherit;font-weight:600;min-height:38px;padding:6px 14px;border-radius:var(--r);border:1px solid var(--line);background:var(--raised);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--brass)}
+button:disabled{opacity:.5;cursor:default}
+button.pri{background:var(--brass);border-color:var(--brass);color:var(--brass-ink);font-weight:700}
+button.ghost{background:transparent;border-color:transparent;color:var(--muted)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--raised);border:1px solid var(--line);border-radius:var(--r);padding:6px 10px;min-height:38px;min-width:0}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+label{color:var(--muted);font-size:.74rem}
+.panel,.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--rc);padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.empty{border:1px dashed var(--line);border-radius:var(--rc);padding:24px;color:var(--muted)}
+.seg button{background:var(--raised)} .seg button[aria-pressed="true"]{background:var(--brass);color:var(--brass-ink);border-color:var(--brass)}
+ol.order{border-top:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--rc);overflow:hidden}
+ol.order li{padding:12px 14px;border-bottom:1px solid var(--divider)} ol.order li:last-child{border-bottom:0}
+ol.order li.cur{background:var(--gold-soft);box-shadow:inset 3px 0 0 var(--brass)}
+.who b,.ini,#dice-out,.dice button{font-family:var(--body)} .who b{font-size:1rem;font-weight:700} .ini{font-size:1rem}
+.tag{border-radius:999px;padding:1px 8px} .chip{border-radius:999px}
+.meter,.hpbar{background:var(--raised)}
+.chat{border-top:1px solid var(--divider)} .chat li{border-bottom:1px solid var(--divider)}
+dt{color:var(--ink)} dd{color:var(--muted)}
+#board{border-radius:var(--rc)}
+
+/* piezas del diseño */
+.badge{display:inline-flex;align-items:center;font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.badge.ok{color:var(--heal);background:var(--ok-soft)} .badge.pause{color:var(--warn);background:var(--pause-soft)} .badge.done{color:var(--muted);background:var(--done-soft)}
+.ava{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.ava.sm{width:30px;height:30px;font-size:.72rem}
+.a0{background:#2c3a37;color:#8fbf9b} .a1{background:#3b3020;color:#d9a05b} .a2{background:#3a2428;color:#e2796f} .a3{background:#262f42;color:#8fb0d9} .a4{background:#33284a;color:#b79be0} .adm{background:var(--gold-soft);color:var(--brass)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.fchip{border-radius:999px;background:transparent;font-weight:500;min-height:36px}
+.fchip[aria-pressed="true"]{background:var(--gold-soft);border-color:var(--brass);color:var(--brass);font-weight:700}
+.bar2{height:5px;border-radius:3px;background:var(--raised);overflow:hidden} .bar2 i{display:block;height:100%;background:var(--brass);border-radius:3px}
+.bar2.hp i{background:var(--heal)} .bar2.hp i.half{background:var(--warn)} .bar2.hp i.low{background:var(--hurt)}
+.rowb{display:flex;justify-content:space-between;gap:12px;align-items:baseline} .rowb span{color:var(--muted);font-size:.84rem} .rowb b{font-variant-numeric:tabular-nums}
+.grid2{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px;align-items:start}
+.grid2.even{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:980px){ .grid2,.grid2.even{grid-template-columns:minmax(0,1fr)} }
+.stack{display:flex;flex-direction:column;gap:20px;min-width:0}
+/* panel */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--rc);padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.kpi span{color:var(--muted);font-size:.84rem} .kpi b{font-size:1.7rem;line-height:1.1;font-variant-numeric:tabular-nums} .kpi small{color:var(--faint);font-size:.78rem}
+.cont{padding:0;overflow:hidden;display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:0}
+.cont img{width:100%;height:100%;min-height:180px;object-fit:cover;display:block}
+.cont .body{padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.cont h2{font-family:var(--display);font-weight:500;font-size:1.3rem;letter-spacing:.02em}
+@media (max-width:620px){ .cont{grid-template-columns:minmax(0,1fr)} .cont img{max-height:160px} }
+.eyebrow{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);font-weight:700}
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.list li{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--divider);min-width:0}
+.list li:last-child{border-bottom:0} .list .t{flex:1;min-width:0;overflow-wrap:anywhere} .list .t small,.list time{display:block;color:var(--faint);font-size:.78rem}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--brass)}
+/* historias */
+.scards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.scard{padding:0;text-align:left;display:flex;flex-direction:column;align-items:stretch;background:var(--surface);border-radius:var(--rc);overflow:hidden;font-weight:400;position:relative}
+.scard img{width:100%;aspect-ratio:736/300;object-fit:cover;display:block}
+.scard .badge{position:absolute;left:12px;top:12px}
+.scard .body{padding:16px;display:flex;flex-direction:column;gap:10px}
+.scard h2{font-family:var(--display);font-weight:500;font-size:1.05rem;letter-spacing:.02em;overflow-wrap:anywhere}
+.scard.on{border-color:var(--brass)}
+/* detalle */
+.banner{position:relative;border-radius:var(--rc);overflow:hidden;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding:20px;border:1px solid var(--line)}
+.banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,12,20,.92),rgba(14,12,20,.55) 55%,rgba(14,12,20,.25))}
+.banner > *:not(img){position:relative;z-index:1}
+.banner .back{align-self:flex-start;margin-bottom:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:7px 14px;color:var(--ink);text-decoration:none;font-weight:600}
+.banner h1{font-size:1.9rem;overflow-wrap:anywhere}
+.chap{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--divider)}
+.chap:last-child{border-bottom:0} .chap .t{flex:1;min-width:0;overflow-wrap:anywhere} .chap .t small{display:block;color:var(--faint);font-size:.8rem}
+.chap .n{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:.82rem;font-weight:700;border:1.5px solid var(--line);color:var(--faint)}
+.chap.hecho .n{border-color:transparent;background:var(--ok-soft);color:var(--heal)} .chap.curso .n{border-color:var(--brass);color:var(--brass)} .chap.pend .t b{color:var(--muted)}
+.chap button.badge{border:0;min-height:28px;cursor:pointer}
+.note{padding:12px 0;border-bottom:1px solid var(--divider);display:flex;flex-direction:column;gap:4px}
+.note:last-child{border-bottom:0} .note p{color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.fgrid label,.wide{display:flex;flex-direction:column;gap:3px} .fgrid input,.fgrid select,.wide textarea,.wide input{width:100%}
+textarea{min-height:5.5em}
+/* personajes */
+.pcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px;align-items:start}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--rc);padding:18px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.pc-top{display:flex;gap:12px;align-items:center;min-width:0} .pc-top .t{flex:1;min-width:0;overflow-wrap:anywhere} .pc-top .t b{display:block}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tiles div{background:var(--raised);border-radius:var(--r);padding:8px 10px;display:flex;flex-direction:column;gap:2px}
+.tiles span{color:var(--muted);font-size:.74rem} .tiles b{font-variant-numeric:tabular-nums}
+.pc-foot{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--faint);font-size:.8rem;min-width:0}
+.pc-foot span{min-width:0;overflow-wrap:anywhere}
+.search{min-width:12em}
+
+label textarea{font-size:1rem}
+
+label{display:flex;flex-direction:column;gap:3px}
+.empty{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.empty p{margin:0}
 </style>
 
-<header class="top"><div class="wrap gut">
-  <h1>Mesa del Máster</h1>
-  <div class="round"><span>Ronda</span><b id="round" class="num">–</b></div>
-  <div class="spacer"></div>
+<div class="app" id="app">
+<aside class="side" aria-label="Navegación">
+  <a class="logo" href="#panel"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 21 7v10l-9 5-9-5V7z"/><path d="M12 7l4.5 8h-9zM3 7l9 0M21 7l-4.5 8M3 7l4.5 8M12 22v-7"/></svg><span>CRÓNICAS</span></a>
+  <nav aria-label="Secciones">
+    <a href="#panel"><svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2 2 9h2v8h5v-5h2v5h5V9h2z"/></svg>Panel</a>
+    <a href="#historias" data-also="historia"><svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M3 3h6v14H3zM11 3h6v14h-6zM4.5 5v10h3V5z"/></svg>Historias</a>
+    <a href="#personajes"><svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><circle cx="7" cy="7" r="3"/><circle cx="14.5" cy="8" r="2.3"/><path d="M1.5 16c0-3 2.5-5 5.500-5s5.500 2 5.500 5zM13.500 16c0-1.800-.6-3.200-1.600-4.200.8-.5 1.700-.8 2.600-.8 2.300 0 4 1.700 4 5z"/></svg>Personajes</a>
+    <div class="sep">En la mesa</div>
+    <a href="#combate"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 3l10 10M17 3 7 13M5 15l-2 2M15 15l2 2M4 12l4 4M16 12l-4 4"/></svg>Combate</a>
+    <a href="#mapa"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M2 5l5-2 6 2 5-2v12l-5 2-6-2-5 2zM7 3v12M13 5v12"/></svg>Mapa</a>
+    <a href="#ia"><svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2l1.800 5.200L17 9l-5.200 1.800L10 16l-1.800-5.200L3 9l5.200-1.800zM16 13l.8 2.200L19 16l-2.200.8L16 19l-.8-2.200L13 16l2.200-.8z"/></svg>Máster IA</a>
+    <a href="#chuleta"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h9l2 2v12H5zM8 7h5M8 10h5M8 13h3"/></svg>Reglas</a>
+  </nav>
+  <div class="sep">Herramientas</div>
+  <button type="button" class="tool" id="btn-dice" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="3"/><circle cx="7" cy="7" r=".9" fill="currentColor"/><circle cx="13" cy="13" r=".9" fill="currentColor"/><circle cx="10" cy="10" r=".9" fill="currentColor"/></svg>Dados</button>
+  <button type="button" class="tool" id="btn-players" aria-pressed="false" title="Oculta los PG de los monstruos y tus notas para enseñar la pantalla a la mesa"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="16" height="10" rx="1.500"/><path d="M7 17h6"/></svg>Pantalla de jugadores</button>
+  <div class="grow"></div>
   <span id="status" role="status">Cargando…</span>
-  <button id="btn-players" type="button" aria-pressed="false" title="Oculta los PG de los monstruos y tus notas para enseñar la pantalla a la mesa">Pantalla de jugadores</button>
-</div></header>
-<nav aria-label="Secciones"><div class="wrap gut">
-  <a href="#combate">Combate</a><a href="#mapa">Mapa</a><a href="#grupo">Grupo</a><a href="#ia">Máster IA</a><a href="#chuleta">Chuleta de reglas</a><a href="#notas" class="dm">Sesión y notas</a>
-</div></nav>
+  <div class="profile"><span class="ava adm">DM</span><div><b>Dungeon Master</b><span id="side-story">Sin historia en mesa</span></div></div>
+</aside>
 
-<div class="page wrap gut">
+<div class="content">
 <main>
+  <!-- PANEL -->
+  <section class="tab" id="tab-panel">
+    <div class="head"><div class="ttl"><h1>Panel</h1><p class="sub" id="panel-sub"></p></div>
+      <div class="acts dm"><button type="button" class="pri" data-new-story>+ Nueva historia</button></div></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="grid2"><div id="p-cont"></div><div id="p-next"></div></div>
+    <div class="grid2 even">
+      <div class="card"><h2>Actividad reciente</h2><ul class="list" id="p-act"></ul></div>
+      <div class="card"><h2>Personajes en mesa</h2><ul class="list" id="p-party"></ul></div>
+    </div>
+  </section>
+
+  <!-- HISTORIAS -->
+  <section class="tab" id="tab-historias" hidden>
+    <div class="head"><div class="ttl"><h1>Historias</h1><p class="sub" id="st-sub"></p></div>
+      <div class="acts dm"><button type="button" class="pri" data-new-story>+ Nueva historia</button></div></div>
+    <div class="chips" id="st-filters"></div>
+    <div id="st-cards"></div>
+  </section>
+
+  <!-- DETALLE DE HISTORIA -->
+  <section class="tab" id="tab-historia" hidden>
+    <div id="sd-none" class="empty" hidden><p><b>No hay ninguna historia abierta.</b></p><p>Vuelve a «Historias» y elige una, o crea la primera.</p></div>
+    <div id="sd" class="stack">
+      <div class="banner" id="sd-banner"></div>
+      <div class="grid2">
+        <div class="stack">
+          <div class="card"><h2>Capítulos</h2><div id="sd-chaps"></div>
+            <form id="chap-form" class="bar dm" autocomplete="off"><label style="flex:1 1 14em">Nuevo capítulo<input id="chap-title" placeholder="Las criptas del rey" style="width:100%"></label><button type="submit">Añadir</button></form></div>
+          <div class="card"><h2>Sesiones registradas</h2><ul class="list" id="sd-ses"></ul></div>
+          <details class="card dm" id="sd-edit"><summary>Editar historia</summary>
+            <div class="fgrid">
+              <label>Título<input id="st-title"></label>
+              <label>Sistema<input id="st-system"></label>
+              <label>Estado<select id="st-status"><option value="activa">Activa</option><option value="pausa">En pausa</option><option value="completada">Completada</option><option value="borrador">Borrador</option></select></label>
+              <label>Portada<select id="st-cover"></select></label>
+              <label>Próxima sesión<input id="st-date" type="date"></label>
+              <label>Hora<input id="st-time" type="time"></label>
+            </div>
+            <label class="wide">De qué va: lugar, conflicto y villano. El máster IA lo usa como base<textarea id="st-desc" placeholder="Un pueblo minero. Han desaparecido tres mineros y alguien ha visto luces en la galería vieja…"></textarea></label>
+            <div class="bar"><button type="button" id="st-del" class="ghost hurt">Eliminar esta historia</button></div>
+          </details>
+        </div>
+        <div class="stack">
+          <div class="card"><h2>Resumen</h2><div id="sd-sum" class="stack" style="gap:10px"></div></div>
+          <div class="card dm"><h2>Notas del DM</h2><div id="sd-notes"></div>
+            <form id="note-form" class="stack" style="gap:8px" autocomplete="off">
+              <label class="wide">Título de la nota<input id="note-title" placeholder="El vidente de Vallaki"></label>
+              <label class="wide">Nota<textarea id="note-text" placeholder="Qué sabe, qué quiere, qué queda pendiente…"></textarea></label>
+              <button type="submit">Guardar nota</button>
+            </form></div>
+          <div class="card dm">
+            <button type="button" class="pri" id="ses-open">Registrar sesión</button>
+            <form id="ses-form" class="stack" style="gap:8px" hidden autocomplete="off">
+              <div class="fgrid"><label>Fecha<input id="ses-date" type="date" required></label><label>Horas jugadas<input id="ses-h" type="number" min="0" max="24" step="0.5" value="3"></label></div>
+              <label class="wide">Qué pasó<textarea id="ses-sum" placeholder="Bajaron a las criptas, pactaron con el vidente y perdieron la antorcha."></textarea></label>
+              <div class="bar"><button type="submit" class="pri">Guardar sesión</button><button type="button" id="ses-cancel" class="ghost">Cancelar</button></div>
+            </form></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAJES -->
+  <section class="tab" id="tab-personajes" hidden>
+    <div class="head"><div class="ttl"><h1>Personajes</h1><p class="sub" id="ch-sub"></p></div>
+      <div class="acts"><input id="ch-q" class="search" type="search" placeholder="Buscar personajes…" aria-label="Buscar personajes">
+        <button type="button" id="btn-rest" class="dm" title="Todos recuperan sus PG máximos">Descanso largo</button>
+        <button type="button" class="pri dm" id="btn-addpc">+ Nuevo personaje</button></div></div>
+    <div class="chips" id="ch-filters"></div>
+    <div id="ch-cards"></div>
+  </section>
+
   <!-- COMBATE -->
-  <section class="tab" id="tab-combate">
+  <section class="tab" id="tab-combate" hidden>
+    <div class="head"><div class="ttl"><h1>Combate</h1><p class="sub">Ronda <b id="round" class="num">–</b></p></div></div>
     <div class="bar">
       <button class="pri" id="btn-next" type="button">Siguiente turno</button>
       <button id="btn-rollmon" type="button" class="dm">Tirar iniciativa de monstruos</button>
@@ -224,6 +398,7 @@ body.players .dm{display:none!important}
 
   <!-- MAPA -->
   <section class="tab" id="tab-mapa" hidden>
+    <div class="head"><div class="ttl"><h1>Mapa</h1><p class="sub">Cada casilla mide 1,5 m</p></div></div>
     <div class="bar">
       <label>Mapa<select id="map-sel" style="max-width:16em"></select></label>
       <button type="button" id="map-new" class="dm">Nuevo mapa</button>
@@ -298,19 +473,9 @@ body.players .dm{display:none!important}
     </details>
   </section>
 
-  <!-- GRUPO -->
-  <section class="tab" id="tab-grupo" hidden>
-    <h2>El grupo</h2>
-    <div id="party"></div>
-    <div class="bar dm">
-      <button class="pri" id="btn-addpc" type="button">Añadir personaje</button>
-      <button id="btn-rest" type="button" title="Todos recuperan sus PG máximos">Descanso largo</button>
-    </div>
-  </section>
-
   <!-- MÁSTER IA -->
   <section class="tab" id="tab-ia" hidden>
-    <h2>Máster IA</h2>
+    <div class="head"><div class="ttl"><h1>Máster IA</h1><p class="sub" id="ia-story"></p></div></div>
     <div id="ia-off" class="empty" hidden><p><b>Claude no está disponible en esta vista.</b></p><p>El máster automático necesita que abras la página con tu cuenta de Claude y le des permiso la primera vez. Para usar Hermes u otro motor, abre la copia descargable del panel en tu ordenador.</p></div>
     <div id="ia-on">
       <div class="seg" id="ia-modes" role="group" aria-label="Modo del máster IA">
@@ -340,8 +505,6 @@ body.players .dm{display:none!important}
         </div>
         <p id="mo-msg" class="small muted" role="status"></p>
       </details>
-      <label class="dm">La aventura en pocas líneas: dónde ocurre, qué pasa, quién es el villano
-        <textarea id="ia-premise" placeholder="Un pueblo minero. Han desaparecido tres mineros y alguien ha visto luces en la galería vieja…"></textarea></label>
       <div id="ia-secret" class="empty" hidden><p>Este modo es solo para el máster. Está oculto mientras la pantalla de jugadores esté activa.</p></div>
       <div id="ia-body">
         <div id="ia-quick" class="bar">
@@ -356,7 +519,7 @@ body.players .dm{display:none!important}
           <div class="bar"><button type="button" id="ia-tonotes">Guardar en mis notas</button></div>
         </div>
         <ol id="ia-log" class="chat"></ol>
-        <div id="ia-empty" class="empty" hidden><p><b>La historia todavía no ha empezado.</b></p><p>Escribe la aventura arriba, apunta al grupo en «Grupo» y pulsa «Empezar la aventura». Lo que se narre aquí se guarda con la partida.</p></div>
+        <div id="ia-empty" class="empty" hidden><p><b>La historia todavía no ha empezado.</b></p><p>Describe la historia en «Historias», apunta a los personajes y pulsa «Empezar la aventura». Lo que se narre aquí se guarda con la partida.</p></div>
         <div id="ia-draft" class="panel" hidden>
           <h3>Propuesta del narrador</h3>
           <p class="small muted">Edita lo que quieras antes de aceptarla. Solo lo aceptado pasa a la historia.</p>
@@ -380,7 +543,7 @@ body.players .dm{display:none!important}
 
   <!-- CHULETA -->
   <section class="tab" id="tab-chuleta" hidden>
-    <h2>Chuleta de reglas</h2>
+    <div class="head"><div class="ttl"><h1>Reglas</h1><p class="sub">Chuleta para decidir rápido en mesa</p></div></div>
     <div class="cols">
       <div>
         <h3>Clase de dificultad</h3>
@@ -410,13 +573,7 @@ body.players .dm{display:none!important}
       </div>
     </div>
     <p class="small muted">Resumen para decidir rápido en mesa. El texto completo está en el glosario del Manual del Jugador.</p>
-  </section>
-
-  <!-- NOTAS -->
-  <section class="tab dm" id="tab-notas" hidden>
-    <h2>Sesión y notas</h2>
-    <div class="cols">
-      <div>
+    <div class="card dm">
         <h3>Cómo se dirige, en tres pasos</h3>
         <div class="prose">
           <p><b>1. Describes</b> dónde están y qué perciben. Tres frases, y terminas con «¿qué hacéis?».</p>
@@ -426,16 +583,15 @@ body.players .dm{display:none!important}
         </div>
         <h3>Antes de la primera sesión</h3>
         <ul class="check" id="checklist"></ul>
-      </div>
-      <div>
-        <h3>Notas de la partida</h3>
-        <textarea id="notes" placeholder="PNJ que han conocido, pistas, deudas, qué quedó a medias…"></textarea>
-      </div>
     </div>
   </section>
-</main>
 
-<aside aria-label="Dados">
+
+</main>
+</div>
+
+<aside class="dicebox" aria-label="Dados">
+
   <div class="panel">
     <h3>Dados</h3>
     <div id="dice-out" aria-live="polite">–</div>
@@ -452,6 +608,7 @@ body.players .dm{display:none!important}
     </form>
     <ul id="dice-log"></ul>
   </div>
+
 </aside>
 </div>
 
@@ -474,12 +631,21 @@ var CONDS=[["Agarrado","Velocidad 0. Desventaja al atacar a quien no sea su agar
 var CHECK=[["c1","Leer el capítulo «Cómo jugar» del Manual del Jugador. El resto se consulta."],["c2","Sesión cero: qué tono queréis, qué temas no, cada cuánto se juega."],["c3","Cada jugador tiene su hoja hecha y sabe su CA, PG y ataque principal."],["c4","Una aventura corta preparada: un gancho, tres escenas, un final."],["c5","Dos combates montados aquí, de dificultad baja o moderada."],["c6","Cinco nombres de PNJ apuntados para improvisar."],["c7","Figuras, dados y algo donde dibujar el mapa."]];
 
 /* ---- estado ---- */
-function blank(){return{rev:"",party:[],combat:{round:0,turnId:null,list:[]},notes:"",checks:{},maps:[],mapId:null,ia:{mode:"copiloto",premise:"",summary:"",log:[]}}}
+function blank(){return{rev:"",party:[],combat:{round:0,turnId:null,list:[]},notes:"",checks:{},stories:[],storyId:null,activity:[],maps:[],mapId:null,ia:{mode:"copiloto",premise:"",summary:"",log:[]}}}
+function mkStory(t,i){return{id:uid(),title:t,system:"D&D 5.5",status:"activa",desc:"",cover:["castillo","dragon","bosque"][i%3],chapters:[],sessions:[],notes:[],next:{date:"",time:""}}}
 function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   b.maps=Array.isArray(o.maps)?o.maps.filter(function(m){return m&&m.id&&m.cell>0&&m.w>0&&m.h>0}).map(function(m){m.tokens=Array.isArray(m.tokens)?m.tokens:[];m.fx=Array.isArray(m.fx)?m.fx:[];return m}):[];b.mapId=o.mapId||null;
   var a=o.ia||{};b.ia={mode:["copiloto","narrador","auto"].indexOf(a.mode)>=0?a.mode:"copiloto",premise:typeof a.premise==="string"?a.premise:"",summary:typeof a.summary==="string"?a.summary:"",log:Array.isArray(a.log)?a.log.filter(function(x){return x&&typeof x.t==="string"&&x.t}):[]};
   b.rev=o.rev||"";b.party=Array.isArray(o.party)?o.party:[];b.notes=typeof o.notes==="string"?o.notes:"";b.checks=o.checks&&typeof o.checks==="object"?o.checks:{};
-  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[]};return b}
+  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[]};
+  function arr(v){return Array.isArray(v)?v:[]}
+  b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.next=x.next||{date:"",time:""};return x});
+  b.storyId=o.storyId||null;b.activity=arr(o.activity);
+  b.party.forEach(function(p){if(!p.status)p.status="activo"});
+  if(!b.stories.length&&(b.party.length||b.notes||b.ia.premise)){var st=mkStory("Mi campaña",0);st.desc=b.ia.premise;
+    if(b.notes)st.notes.push({id:uid(),title:"Notas de la partida",text:b.notes,t:Date.now()});
+    b.party.forEach(function(p){if(!p.story)p.story=st.id});b.stories=[st];b.storyId=st.id}
+  b.notes="";return b}
 var S=blank(), LS="mesa-master-v1", players=false, mode="norm";
 try{var raw=localStorage.getItem(LS);if(raw)S=norm(JSON.parse(raw));players=localStorage.getItem(LS+"-players")==="1"}catch(e){}
 
@@ -528,12 +694,12 @@ function band(v){if(v.hp<=0)return["Caído","b4"];var r=v.hp/v.max;if(r<=.5)retu
 
 function drawDiff(){var el=$("#diff"),xp=0,bud=[0,0,0];
   S.combat.list.forEach(function(c){if(!c.pcId)xp+=XP[c.cr]||0});
-  S.party.forEach(function(p){var b=BUD[Math.max(1,Math.min(20,int(p.level,1)))-1];bud[0]+=b[0];bud[1]+=b[1];bud[2]+=b[2]});
-  if(!S.party.length){el.innerHTML='<p class="small muted">Añade personajes en «Grupo» para medir la dificultad del encuentro.</p>';return}
+  roster().forEach(function(p){var b=BUD[Math.max(1,Math.min(20,int(p.level,1)))-1];bud[0]+=b[0];bud[1]+=b[1];bud[2]+=b[2]});
+  if(!roster().length){el.innerHTML='<p class="small muted">Añade personajes en «Personajes» para medir la dificultad del encuentro.</p>';return}
   var cls="low",txt="Baja";
   if(!xp){txt="Sin monstruos todavía"}else if(xp>bud[2]){cls="over";txt="Por encima de alta: puede morir alguien"}else if(xp>bud[1]){cls="high";txt="Alta"}else if(xp>bud[0]){cls="mod";txt="Moderada"}
   var top=bud[2]*1.25,pct=function(x){return Math.min(100,x/top*100)};
-  el.innerHTML='<p><b>Dificultad: '+txt+'</b> <span class="muted num">· '+xp+' PX de monstruos para '+S.party.length+' personajes</span></p>'+
+  el.innerHTML='<p><b>Dificultad: '+txt+'</b> <span class="muted num">· '+xp+' PX de monstruos para '+roster().length+' personajes</span></p>'+
    '<div class="meter"><i class="'+cls+'" style="width:'+pct(xp)+'%"></i></div>'+
    '<div class="ticks num"><span style="left:'+pct(bud[0])+'%">baja '+bud[0]+'</span><span style="left:'+pct(bud[1])+'%">moderada '+bud[1]+'</span><span style="left:'+pct(bud[2])+'%">alta '+bud[2]+'</span></div>'}
 
@@ -558,7 +724,7 @@ function drawOrder(){var L=S.combat.list,el=$("#order");
 
 function find(id){for(var i=0;i<S.combat.list.length;i++)if(S.combat.list[i].id===id)return S.combat.list[i];return null}
 $("#order").addEventListener("click",function(e){var b=e.target.closest("[data-act]");if(!b)return;var a=b.dataset.act,c=find(b.dataset.id);
-  if(a==="demo"){S.party=[["Brenna","","Guerrera",1,16,12,10,2],["Tobías","","Mago",1,12,8,13,2],["Sira","","Pícara",1,14,9,14,3],["Hermano Odo","","Clérigo",1,16,10,13,0]].map(function(x){return{id:uid(),name:x[0]+" (ejemplo)",player:x[1],cls:x[2],level:x[3],ac:x[4],hp:x[5],max:x[5],pp:x[6],init:x[7]}});addParty();return}
+  if(a==="demo"){var ds=story();S.party=S.party.concat([["Brenna","","Guerrera",1,16,12,10,2],["Tobías","","Mago",1,12,8,13,2],["Sira","","Pícara",1,14,9,14,3],["Hermano Odo","","Clérigo",1,16,10,13,0]].map(function(x){return{id:uid(),name:x[0]+" (ejemplo)",player:x[1],cls:x[2],level:x[3],ac:x[4],hp:x[5],max:x[5],pp:x[6],init:x[7],race:"",story:ds?ds.id:"",status:"activo"}}));addParty();return}
   if(!c)return;
   if(a==="dmg"||a==="heal"){var n=int($("#amt-"+c.id).value,0);if(n<=0)return;var v=view(c);setHp(c,v.hp+(a==="dmg"?-n:n));
     if(a==="dmg"&&view(c).hp<=0&&(c.conds||[]).indexOf("Inconsciente")<0&&c.pcId){c.conds=(c.conds||[]).concat("Inconsciente")}
@@ -570,7 +736,7 @@ $("#order").addEventListener("change",function(e){var t=e.target,c;
   else if(t.dataset.cond&&(c=find(t.dataset.cond))&&t.value){c.conds=c.conds||[];if(c.conds.indexOf(t.value)<0)c.conds.push(t.value);touch()}});
 $("#order").addEventListener("keydown",function(e){if(e.key==="Enter"&&e.target.dataset.amt){var b=e.target.parentNode.querySelector('[data-act="dmg"]');if(b)b.click()}});
 
-function addParty(){S.party.forEach(function(p){if(!S.combat.list.some(function(c){return c.pcId===p.id}))S.combat.list.push({id:uid(),pcId:p.id,init:null,conds:[]})});touch()}
+function addParty(){roster().forEach(function(p){if(!S.combat.list.some(function(c){return c.pcId===p.id}))S.combat.list.push({id:uid(),pcId:p.id,init:null,conds:[]})});touch()}
 $("#btn-next").onclick=next;
 $("#btn-addparty").onclick=addParty;
 $("#btn-rollmon").onclick=function(){S.combat.list.forEach(function(c){if(!c.pcId)c.init=d(20)+int(c.mod,0)});sortList();touch()};
@@ -586,25 +752,124 @@ $("#add-mon").addEventListener("submit",function(e){e.preventDefault();var name=
   for(var i=0;i<q;i++){S.combat.list.push({id:uid(),base:name,name:(q>1||same)?name+" "+(same+i+1):name,ac:int($("#m-ac").value,10),hp:hp,max:hp,mod:int($("#m-init").value,0),cr:$("#m-cr").value,init:null,conds:[]})}
   $("#m-qty").value=1;touch()});
 
-/* ---- grupo ---- */
-var COLS=[["name","Nombre","t"],["player","Jugador","t"],["cls","Clase","t"],["level","Nivel","n"],["ac","CA","n"],["hp","PG","n"],["max","PG máx.","n"],["pp","Perc. pasiva","n"],["init","Inic.","n"]];
-function drawParty(){var el=$("#party");
-  if(!S.party.length){el.innerHTML='<div class="empty"><p><b>Todavía no hay personajes.</b></p><p>Apunta aquí a cada personaje con su CA, sus PG y su Percepción pasiva. Así no tendrás que preguntarlo en mitad de la escena.</p></div>';return}
-  el.innerHTML='<div class="scroll"><table><thead><tr>'+COLS.map(function(c){return'<th>'+c[1]+'</th>'}).join("")+'<th class="dm"></th></tr></thead><tbody>'+
-   S.party.map(function(p){return'<tr>'+COLS.map(function(c){return'<td><input id="p-'+p.id+'-'+c[0]+'" data-pc="'+p.id+'" data-f="'+c[0]+'" aria-label="'+c[1]+'" '+(c[2]==="n"?'type="number" class="num"':'class="t"')+' value="'+esc(p[c[0]])+'"'+(players?" readonly":"")+'></td>'}).join("")+
-   '<td class="dm"><button type="button" class="ghost" data-rmpc="'+p.id+'" aria-label="Eliminar a '+esc(p.name)+'">✕</button></td></tr>'}).join("")+'</tbody></table></div>'}
-$("#party").addEventListener("change",function(e){var t=e.target,p=pc(t.dataset.pc);if(!p)return;var f=t.dataset.f;
-  p[f]=t.type==="number"?int(t.value,0):t.value.trim();if(f==="max"&&p.hp>p.max)p.hp=p.max;if(f==="hp")p.hp=Math.max(0,Math.min(p.max,p.hp));touch(false);drawOrder();drawDiff()});
-$("#party").addEventListener("click",function(e){var b=e.target.closest("[data-rmpc]");if(!b)return;var id=b.dataset.rmpc;
-  S.party=S.party.filter(function(p){return p.id!==id});S.combat.list=S.combat.list.filter(function(c){return c.pcId!==id});touch()});
-$("#btn-addpc").onclick=function(){var p={id:uid(),name:"",player:"",cls:"",level:1,ac:10,hp:10,max:10,pp:10,init:0};S.party.push(p);touch();var i=$("#p-"+p.id+"-name");if(i)i.focus()};
-$("#btn-rest").onclick=function(){S.party.forEach(function(p){p.hp=p.max});S.combat.list.forEach(function(c){if(c.pcId)c.conds=[]});touch()};
+/* ---- historias, panel y personajes ---- */
+var COVERS={castillo:"Castillo en ruinas",dragon:"Tesoro del dragón",bosque:"Bosque feérico"};
+var ST={activa:["Activa","ok"],pausa:["En pausa","pause"],completada:["Completada","done"],borrador:["Borrador","done"]};
+var CST={pend:["Pendiente","done"],curso:["En curso","pause"],hecho:["Completado","ok"]};
+var stFilter="todas", chFilter="", chQ="", chEdit=null;
+function story(){for(var i=0;i<S.stories.length;i++)if(S.stories[i].id===S.storyId)return S.stories[i];return S.stories[0]||null}
+function storyById(id){for(var i=0;i<S.stories.length;i++)if(S.stories[i].id===id)return S.stories[i];return null}
+function roster(){var s=story();return S.party.filter(function(p){return p.status!=="pausa"&&(!s||!p.story||p.story===s.id)})}
+function logAct(x){S.activity.unshift({t:Date.now(),x:x});S.activity=S.activity.slice(0,20)}
+function day0(t){var d=new Date(t);d.setHours(0,0,0,0);return d.getTime()}
+function ago(t){var n=Math.round((day0(Date.now())-day0(t))/864e5);if(n<=0)return"Hoy";if(n===1)return"Ayer";if(n<7)return"Hace "+n+" días";if(n<28)return"Hace "+Math.round(n/7)+(Math.round(n/7)===1?" semana":" semanas");
+  return new Date(t).toLocaleDateString("es-ES",{day:"numeric",month:"long"})}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+function fdate(iso){var d=new Date(iso+"T12:00:00");return isNaN(d)?"":cap(d.toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"}))}
+function prog(s){var n=s.chapters.length;return n?Math.round(s.chapters.filter(function(c){return c.st==="hecho"}).length/n*100):0}
+function curChap(s){var i,c=s.chapters;for(i=0;i<c.length;i++)if(c[i].st==="curso")return i;for(i=0;i<c.length;i++)if(c[i].st!=="hecho")return i;return-1}
+function hours(s){var h=0;s.sessions.forEach(function(x){h+=+x.h||0});return h}
+function badge(st){var b=ST[st]||ST.activa;return'<span class="badge '+b[1]+'">'+b[0]+'</span>'}
+function coverOf(s,big){var k=COVERS[s.cover]?s.cover:"castillo";return"img/"+k+(big&&k==="castillo"?"-banner":"")+".jpg"}
+function ava(name,sm){var w=(name||"?").replace(/\(.*?\)/g,"").trim().split(/\s+/),i=((w[0]||"?").charAt(0)+(w[1]?w[1].charAt(0):(w[0]||"").charAt(1))).toUpperCase(),h=0;
+  for(var k=0;k<name.length;k++)h=(h*31+name.charCodeAt(k))%5;return'<span class="ava a'+h+(sm?" sm":"")+'" title="'+esc(name)+'">'+esc(i)+'</span>'}
+function pcSub(p){return[p.race,p.cls].filter(Boolean).join(" | ")||"Sin clase apuntada"}
+function meta(s){var n=S.party.filter(function(p){return p.story===s.id}).length;return esc(s.system||"D&D 5.5")+" | "+s.sessions.length+(s.sessions.length===1?" sesión":" sesiones")+" | "+n+(n===1?" jugador":" jugadores")}
+function lastSes(s){var L=s.sessions;return L.length?"Última sesión: "+ago(new Date(L[L.length-1].d+"T12:00:00").getTime()).toLowerCase():"Sin estrenar"}
+function openStory(id){S.storyId=id;touch(false);if(location.hash==="#historia"){route();draw()}else location.hash="historia"}
+function addStory(){var s=mkStory("Nueva historia",S.stories.length);S.stories.push(s);logAct("Nueva historia creada");openStory(s.id);draw();$("#sd-edit").open=true;var t=$("#st-title");t.focus();t.select()}
+document.addEventListener("click",function(e){if(e.target.closest("[data-new-story]"))addStory();var b=e.target.closest("[data-story]");if(b)openStory(b.dataset.story)});
 
-/* ---- notas ---- */
+function drawPanel(){var s=story(),act=0,ses=0,hrs=0,R=roster();
+  S.stories.forEach(function(x){if(x.status==="activa")act++;ses+=x.sessions.length;hrs+=hours(x)});
+  $("#panel-sub").textContent=cap(new Date().toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"}))+" | "+(!s?"Crea tu primera historia para empezar":s.next.date?"Próxima sesión: "+fdate(s.next.date).toLowerCase():"Sin próxima sesión fijada");
+  $("#side-story").textContent=s?s.title:"Sin historia en mesa";
+  $("#kpis").innerHTML=[["Historias activas",act,S.stories.length+" en total"],["Sesiones jugadas",ses,"entre todas las historias"],["Personajes",S.party.length,R.length+" en mesa"],["Horas de juego",fmt(hrs),"registradas"]].map(function(k){return'<div class="kpi"><span>'+k[0]+'</span><b>'+k[1]+'</b><small>'+k[2]+'</small></div>'}).join("");
+  if(!s){$("#p-cont").innerHTML='<div class="empty"><p><b>Todavía no hay ninguna historia.</b></p><p>Una historia agrupa capítulos, sesiones, notas y personajes. Aquí verás la que tengas en marcha, con su progreso.</p><p><button type="button" class="pri dm" data-new-story>+ Nueva historia</button></p></div>';$("#p-next").innerHTML="";}
+  else{var ci=curChap(s),p=prog(s);
+    $("#p-cont").innerHTML='<div class="card cont"><img src="'+coverOf(s)+'" alt=""><div class="body"><div class="rowb">'+badge(s.status)+'<span>'+(s.chapters.length?(ci>=0?"Capítulo "+(ci+1)+" de "+s.chapters.length:"Todos los capítulos completados"):"Sin capítulos todavía")+'</span></div>'+
+      '<h2>'+esc(s.title)+'</h2><p class="sub">'+esc((s.desc||"Añade una descripción en «Editar historia» para que el máster IA sepa de qué va.").slice(0,220))+'</p>'+
+      '<div><div class="rowb"><span>Progreso de la campaña</span><b>'+p+'%</b></div><div class="bar2"><i style="width:'+p+'%"></i></div></div>'+
+      '<div class="rowb" style="align-items:center"><span>'+meta(s)+'</span><button type="button" class="pri" data-story="'+s.id+'">Abrir historia</button></div></div></div>';
+    $("#p-next").innerHTML='<div class="card"><span class="eyebrow">Próxima sesión</span><div><h2 style="font-size:1.25rem">'+(s.next.date?esc(fdate(s.next.date)):"Sin fecha")+'</h2><p class="sub">'+(s.next.time?esc(s.next.time)+" | ":"")+esc(s.title)+'</p></div>'+
+      '<div style="border-top:1px solid var(--divider);padding-top:12px" class="stack" style="gap:8px"><span class="sub">Jugadores en mesa</span><div class="chips">'+(R.length?R.map(function(x){return ava(x.name||"?",1)}).join(""):'<span class="sub">Ninguno todavía</span>')+'</div></div>'+
+      '<p class="sub dm">La fecha se cambia en «Editar historia».</p></div>'}
+  $("#p-act").innerHTML=S.activity.length?S.activity.slice(0,6).map(function(a){return'<li><span class="dot"></span><span class="t">'+esc(a.x)+'<time>'+ago(a.t)+'</time></span></li>'}).join(""):'<li><span class="t sub">Aquí irá apareciendo lo que registres: sesiones, personajes y notas.</span></li>';
+  $("#p-party").innerHTML=R.length?R.slice(0,5).map(function(x){return'<li>'+ava(x.name||"?")+'<span class="t"><b>'+esc(x.name||"Sin nombre")+'</b><small>'+esc(pcSub(x))+'</small></span><span class="badge done">Nv '+esc(x.level)+'</span></li>'}).join(""):'<li><span class="t sub">Añade personajes en «Personajes» y asígnalos a la historia.</span></li>'}
+
+function drawStories(){var act=S.stories.filter(function(x){return x.status==="activa"}).length,cur=story();
+  $("#st-sub").textContent=S.stories.length+(S.stories.length===1?" campaña":" campañas")+" | "+act+(act===1?" activa":" activas");
+  $("#st-filters").innerHTML=[["todas","Todas"],["activa","Activas"],["pausa","En pausa"],["completada","Completadas"],["borrador","Borradores"]].map(function(f){return'<button type="button" class="fchip" data-stf="'+f[0]+'" aria-pressed="'+(stFilter===f[0])+'">'+f[1]+'</button>'}).join("");
+  var L=S.stories.filter(function(x){return stFilter==="todas"||x.status===stFilter});
+  $("#st-cards").innerHTML=L.length?'<div class="scards">'+L.map(function(s){var p=prog(s);return'<button type="button" class="scard'+(cur&&cur.id===s.id?" on":"")+'" data-story="'+s.id+'"><img src="'+coverOf(s)+'" alt="" loading="lazy">'+badge(s.status)+
+    '<div class="body"><h2>'+esc(s.title)+'</h2><span class="sub">'+meta(s)+'</span><div class="rowb" style="align-items:center;gap:10px"><div class="bar2" style="flex:1"><i style="width:'+p+'%"></i></div><b style="font-size:.84rem">'+p+'%</b></div><span class="sub">'+lastSes(s)+'</span></div></button>'}).join("")+'</div>'
+    :'<div class="empty"><p><b>'+(S.stories.length?"Ninguna historia con ese estado.":"Todavía no hay historias.")+'</b></p><p>Cada historia aparece aquí como una tarjeta con su portada, su progreso y la fecha de la última sesión.</p></div>'}
+$("#st-filters").addEventListener("click",function(e){var b=e.target.closest("[data-stf]");if(b){stFilter=b.dataset.stf;drawStories()}});
+
+function drawStory(){var s=story();$("#sd-none").hidden=!!s;$("#sd").hidden=!s;if(!s)return;
+  $("#sd-banner").innerHTML='<img src="'+coverOf(s,1)+'" alt=""><a class="back" href="#historias">← Volver</a><div>'+badge(s.status)+'</div><h1>'+esc(s.title)+'</h1><p class="sub" style="color:var(--ink)">'+meta(s)+(roster().length?" | Nivel medio "+Math.round(roster().reduce(function(a,p){return a+int(p.level,1)},0)/roster().length):"")+'</p>';
+  $("#sd-chaps").innerHTML=s.chapters.length?s.chapters.map(function(c,i){var b=CST[c.st]||CST.pend;return'<div class="chap '+(CST[c.st]?c.st:"pend")+'"><span class="n">'+(c.st==="hecho"?"✓":i+1)+'</span><span class="t"><b>'+(i+1)+". "+esc(c.title)+'</b></span>'+
+    '<button type="button" class="badge '+b[1]+'" data-chap="'+c.id+'" title="Cambiar estado">'+b[0]+'</button><button type="button" class="ghost dm" data-chap-rm="'+c.id+'" aria-label="Quitar capítulo">✕</button></div>'}).join(""):'<p class="sub">Divide la historia en capítulos para ver el progreso. Pulsa el estado de cada uno para avanzarlo.</p>';
+  $("#sd-ses").innerHTML=s.sessions.length?s.sessions.slice().reverse().map(function(x,i){return'<li><span class="n ava sm adm">'+(s.sessions.length-i)+'</span><span class="t"><b>'+esc(fdate(x.d))+'</b> · '+fmt(+x.h||0)+' h<small>'+esc(x.x||"Sin resumen")+'</small></span><button type="button" class="ghost dm" data-ses-rm="'+x.id+'" aria-label="Quitar sesión">✕</button></li>'}).join(""):'<li><span class="t sub">Aún no hay sesiones registradas.</span></li>';
+  var done=s.chapters.filter(function(c){return c.st==="hecho"}).length;
+  $("#sd-sum").innerHTML=[["Sesiones jugadas",s.sessions.length],["Horas de juego",fmt(hours(s))],["Personajes",S.party.filter(function(p){return p.story===s.id}).length],["Capítulos completados",done+" de "+s.chapters.length]].map(function(r){return'<div class="rowb"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>'}).join("");
+  $("#sd-notes").innerHTML=s.notes.length?s.notes.slice().reverse().map(function(n){return'<div class="note"><div class="rowb"><b>'+esc(n.title||"Nota")+'</b><span>'+ago(n.t)+' <button type="button" class="ghost" data-note-rm="'+n.id+'" aria-label="Borrar nota" style="min-height:24px;padding:0 6px">✕</button></span></div><p>'+esc(n.text)+'</p></div>'}).join(""):'<p class="sub">Lo que solo sabes tú: secretos de PNJ, pistas pendientes, qué preparar.</p>';
+  $("#st-cover").innerHTML=Object.keys(COVERS).map(function(k){return'<option value="'+k+'">'+COVERS[k]+'</option>'}).join("");
+  setVal("#st-title",s.title);setVal("#st-system",s.system||"");$("#st-status").value=s.status;$("#st-cover").value=COVERS[s.cover]?s.cover:"castillo";setVal("#st-date",s.next.date||"");setVal("#st-time",s.next.time||"");setVal("#st-desc",s.desc||"")}
+function stEdit(fn,redraw){var s=story();if(!s)return;fn(s);touch(false);if(redraw!==false){drawPanel();drawStories();drawStory();drawIA()}}
+$("#st-title").onchange=function(){var v=this.value.trim()||"Historia sin título";stEdit(function(s){s.title=v})};
+$("#st-system").onchange=function(){var v=this.value.trim();stEdit(function(s){s.system=v})};
+$("#st-status").onchange=function(){var v=this.value;stEdit(function(s){s.status=v})};
+$("#st-cover").onchange=function(){var v=this.value;stEdit(function(s){s.cover=v})};
+$("#st-date").onchange=function(){var v=this.value;stEdit(function(s){s.next.date=v})};
+$("#st-time").onchange=function(){var v=this.value;stEdit(function(s){s.next.time=v})};
+$("#st-desc").oninput=function(){var v=this.value;stEdit(function(s){s.desc=v},false)};
+var stDelArm=0;
+$("#st-del").onclick=function(){var b=this,s=story();if(!s)return;if(Date.now()-stDelArm<4000){stDelArm=0;b.textContent="Eliminar esta historia";S.stories=S.stories.filter(function(x){return x!==s});S.party.forEach(function(p){if(p.story===s.id)p.story=""});S.storyId=S.stories[0]?S.stories[0].id:null;touch(false);location.hash="historias";draw()}
+  else{stDelArm=Date.now();b.textContent="Pulsa otra vez para eliminarla";setTimeout(function(){b.textContent="Eliminar esta historia"},4000)}};
+$("#chap-form").addEventListener("submit",function(e){e.preventDefault();var i=$("#chap-title"),v=i.value.trim();if(!v)return;i.value="";stEdit(function(s){s.chapters.push({id:uid(),title:v,st:s.chapters.some(function(c){return c.st==="curso"})||s.chapters.length?"pend":"curso"})})});
+$("#tab-historia").addEventListener("click",function(e){var b;
+  if(b=e.target.closest("[data-chap]"))stEdit(function(s){s.chapters.forEach(function(c){if(c.id===b.dataset.chap){c.st=c.st==="pend"?"curso":c.st==="curso"?"hecho":"pend";if(c.st==="hecho")logAct("Capítulo completado: "+c.title)}})});
+  else if(b=e.target.closest("[data-chap-rm]"))stEdit(function(s){s.chapters=s.chapters.filter(function(c){return c.id!==b.dataset.chapRm})});
+  else if(b=e.target.closest("[data-note-rm]"))stEdit(function(s){s.notes=s.notes.filter(function(n){return n.id!==b.dataset.noteRm})});
+  else if(b=e.target.closest("[data-ses-rm]"))stEdit(function(s){s.sessions=s.sessions.filter(function(x){return x.id!==b.dataset.sesRm})})});
+$("#note-form").addEventListener("submit",function(e){e.preventDefault();var t=$("#note-title"),x=$("#note-text"),v=x.value.trim(),ti=t.value.trim();if(!v&&!ti)return;t.value="";x.value="";
+  stEdit(function(s){s.notes.push({id:uid(),title:ti||"Nota",text:v,t:Date.now()});logAct("Nota guardada: "+(ti||"Nota"))})});
+$("#ses-open").onclick=function(){$("#ses-form").hidden=false;this.hidden=true;var d=new Date();$("#ses-date").value=d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2);$("#ses-sum").focus()};
+function sesClose(){$("#ses-form").hidden=true;$("#ses-open").hidden=false;$("#ses-sum").value=""}
+$("#ses-cancel").onclick=sesClose;
+$("#ses-form").addEventListener("submit",function(e){e.preventDefault();var d=$("#ses-date").value,h=parseFloat($("#ses-h").value)||0,x=$("#ses-sum").value.trim();if(!d)return;
+  stEdit(function(s){s.sessions.push({id:uid(),d:d,h:h,x:x});s.sessions.sort(function(a,b){return a.d<b.d?-1:a.d>b.d?1:0});logAct("Sesión "+s.sessions.length+" registrada en "+s.title)});sesClose()});
+
+/* personajes */
+var PF=[["name","Nombre","t"],["race","Especie","t"],["cls","Clase","t"],["player","Jugador","t"],["level","Nivel","n"],["ac","CA","n"],["hp","PG actuales","n"],["max","PG máx.","n"],["pp","Percepción pasiva","n"],["init","Mod. iniciativa","n"]];
+function drawChars(){var camps={},n=0;S.party.forEach(function(p){if(p.story&&storyById(p.story)){if(!camps[p.story])n++;camps[p.story]=1}});
+  $("#ch-sub").textContent=S.party.length+(S.party.length===1?" personaje":" personajes")+(n?" en "+n+(n===1?" campaña":" campañas"):"");
+  $("#ch-filters").innerHTML=S.stories.length?'<button type="button" class="fchip" data-chf="" aria-pressed="'+(chFilter==="")+'">Todas las campañas</button>'+S.stories.map(function(s){return'<button type="button" class="fchip" data-chf="'+s.id+'" aria-pressed="'+(chFilter===s.id)+'">'+esc(s.title)+'</button>'}).join(""):"";
+  var q=chQ.toLowerCase(),L=S.party.filter(function(p){return(!chFilter||p.story===chFilter)&&(!q||[p.name,p.race,p.cls,p.player].join(" ").toLowerCase().indexOf(q)>=0)});
+  $("#ch-cards").innerHTML=L.length?'<div class="pcards">'+L.map(function(p){var r=p.max?Math.max(0,Math.min(1,p.hp/p.max)):0,s=storyById(p.story),ed=chEdit===p.id&&!players;
+    return'<article class="pcard"><div class="pc-top">'+ava(p.name||"?")+'<span class="t"><b>'+esc(p.name||"Sin nombre")+'</b><span class="sub">'+esc(pcSub(p))+'</span></span>'+(p.status==="pausa"?'<span class="badge pause">En pausa</span>':'<span class="badge ok">Activo</span>')+'</div>'+
+    '<div class="tiles"><div><span>CA</span><b>'+esc(p.ac)+'</b></div><div><span>PG máx</span><b>'+esc(p.max)+'</b></div><div><span>Nivel</span><b>'+esc(p.level)+'</b></div></div>'+
+    '<div><div class="rowb"><span>Puntos de golpe</span><b>'+esc(p.hp)+"/"+esc(p.max)+'</b></div><div class="bar2 hp"><i class="'+(r<=.25?"low":r<=.6?"half":"")+'" style="width:'+Math.round(r*100)+'%"></i></div></div>'+
+    '<div class="pc-foot"><span>'+esc([p.player,s?s.title:"Sin historia"].filter(Boolean).join(" | "))+'</span><button type="button" class="ghost dm" data-ch-edit="'+p.id+'">'+(ed?"Listo":"Editar")+'</button></div>'+
+    (ed?'<div class="fgrid">'+PF.map(function(c){return'<label>'+c[1]+'<input id="c-'+p.id+'-'+c[0]+'" data-pc="'+p.id+'" data-f="'+c[0]+'" '+(c[2]==="n"?'type="number"':"")+' value="'+esc(p[c[0]]==null?"":p[c[0]])+'"></label>'}).join("")+
+      '<label>Historia<select id="c-'+p.id+'-story" data-pc="'+p.id+'" data-f="story"><option value="">Sin historia</option>'+S.stories.map(function(x){return'<option value="'+x.id+'"'+(p.story===x.id?" selected":"")+'>'+esc(x.title)+'</option>'}).join("")+'</select></label>'+
+      '<label>Estado<select id="c-'+p.id+'-status" data-pc="'+p.id+'" data-f="status"><option value="activo">Activo</option><option value="pausa"'+(p.status==="pausa"?" selected":"")+'>En pausa</option></select></label></div>'+
+      '<div class="bar"><button type="button" class="ghost hurt" data-rmpc="'+p.id+'">Eliminar personaje</button></div>':"")+'</article>'}).join("")+'</div>'
+    :'<div class="empty"><p><b>'+(S.party.length?"Ningún personaje coincide.":"Todavía no hay personajes.")+'</b></p><p>Cada personaje tendrá aquí su tarjeta con CA, puntos de golpe y nivel, para no preguntarlo en mitad de la escena.</p></div>'}
+$("#ch-filters").addEventListener("click",function(e){var b=e.target.closest("[data-chf]");if(b){chFilter=b.dataset.chf;drawChars()}});
+$("#ch-q").addEventListener("input",function(){chQ=this.value.trim();drawChars()});
+$("#ch-cards").addEventListener("change",function(e){var t=e.target,p=pc(t.dataset.pc);if(!p)return;var f=t.dataset.f;
+  p[f]=t.type==="number"?int(t.value,0):t.value.trim();if(p.hp>p.max)p.hp=p.max;if(p.hp<0)p.hp=0;touch(false);drawOrder();drawDiff();drawPanel()});
+$("#ch-cards").addEventListener("click",function(e){var b=e.target.closest("[data-ch-edit]"),r=e.target.closest("[data-rmpc]"),p;
+  if(b){p=pc(b.dataset.chEdit);if(chEdit===b.dataset.chEdit){chEdit=null;if(p&&p.isNew){delete p.isNew;logAct("Nuevo personaje: "+(p.name||"sin nombre")+(p.cls?", "+p.cls.toLowerCase():""));touch(false)}}else chEdit=b.dataset.chEdit;draw()}
+  else if(r){var id=r.dataset.rmpc;S.party=S.party.filter(function(x){return x.id!==id});S.combat.list=S.combat.list.filter(function(c){return c.pcId!==id});chEdit=null;touch()}});
+$("#btn-addpc").onclick=function(){var s=story(),p={id:uid(),name:"",race:"",cls:"",player:"",level:1,ac:10,hp:10,max:10,pp:10,init:0,story:chFilter||(s?s.id:""),status:"activo",isNew:true};S.party.push(p);chEdit=p.id;chQ="";$("#ch-q").value="";touch();var i=$("#c-"+p.id+"-name");if(i)i.focus()};
+$("#btn-rest").onclick=function(){S.party.forEach(function(p){p.hp=p.max});S.combat.list.forEach(function(c){if(c.pcId)c.conds=[]});logAct("Descanso largo: el grupo recupera sus PG");touch()};
+
+/* ---- guía y lista de preparación ---- */
 $("#conds").innerHTML=CONDS.map(function(c){return'<dt>'+c[0]+'</dt><dd>'+c[1]+'</dd>'}).join("");
-function drawNotes(){var n=$("#notes");if(document.activeElement!==n)n.value=S.notes;
-  $("#checklist").innerHTML=CHECK.map(function(c){return'<li><label><input type="checkbox" id="chk-'+c[0]+'" data-chk="'+c[0]+'"'+(S.checks[c[0]]?" checked":"")+'><span>'+c[1]+'</span></label></li>'}).join("")}
-$("#notes").addEventListener("input",function(){S.notes=this.value;touch(false)});
+function drawNotes(){$("#checklist").innerHTML=CHECK.map(function(c){return'<li><label><input type="checkbox" id="chk-'+c[0]+'" data-chk="'+c[0]+'"'+(S.checks[c[0]]?" checked":"")+'><span>'+c[1]+'</span></label></li>'}).join("")}
 $("#checklist").addEventListener("change",function(e){var k=e.target.dataset.chk;if(k){S.checks[k]=e.target.checked;touch(false)}});
 
 /* ---- dados ---- */
@@ -640,8 +905,9 @@ var QUICK={lugar:"Describe en 3 o 4 frases, para leer en voz alta, el lugar dond
  monstruo:"Es el turno de la criatura activa del combate. Dime qué haría este turno de forma creíble, a quién ataca y por qué, y una frase para describirlo.",
  complica:"Propón tres complicaciones breves que podría introducir ahora mismo en la escena, ordenadas de leve a grave.",
  resumen:"Con las notas y la historia, escribe un resumen de cinco líneas para leer a los jugadores al empezar la próxima sesión."};
-var MSG={cancelled:"",rate_limited:"Has llegado al límite de uso de Claude. Prueba dentro de un rato.",session_expired:"Vuelve a iniciar sesión en Claude y repite la petición.",refused:"Claude no ha respondido a esta petición. Cámbiala y prueba otra vez.",empty_completion:"No hubo respuesta. Pide algo más concreto.",prompt_too_large:"Hay demasiado texto. Resume la historia antigua y vuelve a intentarlo.",upstream_error:"Se cortó la conexión. Vuelve a intentarlo."};
+var MSG={cancelled:"",rate_limited:"Has llegado al límite de uso. Prueba dentro de un rato.",session_expired:"Vuelve a iniciar sesión en Claude y repite la petición.",refused:"Claude no ha respondido a esta petición. Cámbiala y prueba otra vez.",empty_completion:"No hubo respuesta. Pide algo más concreto.",prompt_too_large:"Hay demasiado texto. Resume la historia antigua y vuelve a intentarlo.",upstream_error:"Se cortó la conexión. Vuelve a intentarlo."};
 var GONE=["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed"];
+MSG.rate_other="Ese motor ha respondido que has superado su límite de peticiones (error 429). Es el límite de ese servicio, no de Claude. Espera un minuto o elige otro modelo en «Motor de IA»; los modelos gratuitos se saturan a menudo.";
 MSG.auth="El motor ha rechazado la clave. Revísala en «Motor de IA».";
 MSG.model="El motor no encuentra ese modelo o esa dirección. Pulsa «Probar y ver modelos».";
 MSG.network="No se puede conectar con el motor. Comprueba que está encendido, la dirección, y que admite peticiones desde esta página (CORS).";
@@ -651,7 +917,7 @@ function canAsk(){return inArtifact?!!sample:!!(cfg.base&&cfg.model)}
 function ready(){if(busy)return false;if(canAsk())return true;if(!inArtifact){note("Configura primero el motor de IA.");$("#motor").open=true}return false}
 function url(p){return cfg.base.replace(/\/+$/,"")+p}
 function heads(){var h={"Content-Type":"application/json"};if(cfg.key)h.Authorization="Bearer "+cfg.key;return h}
-function httpCode(s){return s===401||s===403?"auth":s===429?"rate_limited":s===404||s===400?"model":"upstream_error"}
+function httpCode(s){return s===401||s===403?"auth":s===429?"rate_other":s===404||s===400?"model":"upstream_error"}
 function strip(t){return t.replace(/<think>[\s\S]*?(<\/think>|$)/g,"").replace(/^\s+/,"")}
 function other(input,o){var full="",msgs=[];
   (typeof input==="string"?[{role:"user",content:input}]:input.map(function(m,i){return{role:i===0?"system":m.role,content:m.content}})).forEach(function(m){
@@ -680,13 +946,16 @@ $("#mo-test").onclick=function(){saveCfg();var m=$("#mo-msg");if(!cfg.base){m.te
 function note(t){$("#ia-note").textContent=t}
 function turnName(){var c=find(S.combat.turnId);return c&&S.combat.round?view(c).name:""}
 function iaCtx(){var L=[];
-  if(S.ia.premise)L.push("AVENTURA:\n"+S.ia.premise.slice(0,2000));
+  var hs=story();
+  if(hs){L.push("HISTORIA: "+hs.title+" ("+(hs.system||"D&D 5.5")+")"+(hs.desc?"\n"+hs.desc.slice(0,2000):""));
+    if(hs.chapters.length)L.push("CAPÍTULOS:\n"+hs.chapters.map(function(c,i){return"- "+(i+1)+". "+c.title+" ("+(c.st==="hecho"?"completado":c.st==="curso"?"en curso":"pendiente")+")"}).join("\n"));
+    var ls=hs.sessions[hs.sessions.length-1];if(ls&&ls.x)L.push("ÚLTIMA SESIÓN JUGADA:\n"+ls.x.slice(0,800))}
   if(S.ia.summary)L.push("RESUMEN DE LO OCURRIDO HASTA AHORA:\n"+S.ia.summary);
-  if(S.party.length)L.push("PERSONAJES:\n"+S.party.map(function(p){return"- "+(p.name||"Sin nombre")+", "+(p.cls||"clase sin apuntar")+" de nivel "+p.level+", CA "+p.ac+", PG "+p.hp+"/"+p.max+", Percepción pasiva "+p.pp}).join("\n"));
+  if(roster().length)L.push("PERSONAJES:\n"+roster().map(function(p){return"- "+(p.name||"Sin nombre")+", "+([p.race,p.cls].filter(Boolean).join(" ")||"clase sin apuntar")+" de nivel "+p.level+", CA "+p.ac+", PG "+p.hp+"/"+p.max+", Percepción pasiva "+p.pp}).join("\n"));
   if(S.combat.list.length)L.push("COMBATE EN MARCHA, ronda "+(S.combat.round||0)+(turnName()?", turno de "+turnName():"")+":\n"+S.combat.list.map(function(c){var v=view(c);
     return"- "+v.name+(v.pc?" (personaje)":" (monstruo, VD "+c.cr+")")+", iniciativa "+(c.init==null?"sin tirar":c.init)+", CA "+v.ac+", PG "+v.hp+"/"+v.max+((c.conds||[]).length?", estados: "+c.conds.join(", "):"")}).join("\n"));
   var mc2=mapCtx();if(mc2)L.push(mc2);
-  if(S.notes)L.push("NOTAS DEL MÁSTER:\n"+S.notes.slice(-2500));
+  if(hs&&hs.notes.length)L.push("NOTAS DEL MÁSTER:\n"+hs.notes.map(function(n){return"- "+n.title+": "+n.text}).join("\n").slice(-2500));
   return L.join("\n\n")||"Todavía no hay datos de la partida apuntados en el panel."}
 function lead(m){var t=BASE+"\n\n"+MODES[m].rules;
   if(m==="auto"){var p=[];for(var i=0;i<8;i++)p.push(d(20));t+="\n\nPara las tiradas de d20 de monstruos y PNJ usa, en este orden, estos resultados que ya se han tirado con dados reales: "+p.join(", ")+"."}
@@ -708,7 +977,7 @@ function drawIA(){var m=S.ia.mode,chat=m!=="copiloto",hide=players&&m!=="auto";
   var off=inArtifact&&iaKnown&&!sample;$("#ia-off").hidden=!off;$("#ia-on").hidden=off;$("#motor").hidden=inArtifact;$("#ia-only-claude").hidden=!inArtifact;$("#motor-now").textContent=cfg.model||"sin configurar";
   [].forEach.call($("#ia-modes").children,function(b){b.setAttribute("aria-pressed",b.dataset.ia===m)});
   $("#ia-desc").textContent=MODES[m].desc;$("#ia-label").textContent=MODES[m].label;
-  var pr=$("#ia-premise");if(document.activeElement!==pr)pr.value=S.ia.premise;
+  var hs=story();$("#ia-story").textContent=hs?"Historia en mesa: «"+hs.title+"». Usa su descripción, capítulos, notas y el mapa en pantalla.":"No hay historia en mesa. Crea una en «Historias» para darle contexto.";
   $("#ia-secret").hidden=!hide;$("#ia-body").hidden=hide;
   $("#ia-quick").hidden=chat;$("#ia-outbox").hidden=chat||!lastOut;
   $("#ia-log").hidden=!chat;$("#ia-story").hidden=!chat;$("#ia-empty").hidden=!chat||S.ia.log.length>0||busy;
@@ -722,7 +991,6 @@ function autoReply(){var li=document.createElement("li");li.className="a";$("#ia
   run(turns("auto"),function(t){li.textContent=t}).then(function(r){if(r.text){logPush("a",r.text+(r.err&&r.err!=="cancelled"?"\n(respuesta interrumpida)":""));mapFromText(r.text);touch(false)}drawIA()})}
 function say(text){logPush("u",text);touch(false);drawLog();if(S.ia.mode==="narrador")propose();else autoReply()}
 $("#ia-modes").addEventListener("click",function(e){var b=e.target.closest("[data-ia]");if(!b||busy)return;S.ia.mode=b.dataset.ia;touch(false);drawIA();route()});
-$("#ia-premise").addEventListener("input",function(){S.ia.premise=this.value;touch(false)});
 $("#ia-form").addEventListener("submit",function(e){e.preventDefault();var i=$("#ia-input"),q=i.value.trim();if(!q||!ready())return;i.value="";
   if(S.ia.mode==="copiloto")copilot(q);else say(q)});
 $("#ia-input").addEventListener("keydown",function(e){if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)){e.preventDefault();$("#ia-send").click()}});
@@ -730,7 +998,7 @@ function copilot(q){var hist=S.ia.log.slice(-6).map(function(x){return(x.r==="a"
   lastOut="";$("#ia-outbox").hidden=false;$("#ia-out").textContent="";
   run(lead("copiloto")+(hist?"\n\nÚLTIMOS TURNOS DE LA HISTORIA:\n"+hist:"")+"\n\nPETICIÓN DEL MÁSTER:\n"+q,function(t){$("#ia-out").textContent=t}).then(function(r){lastOut=r.text;$("#ia-out").textContent=r.text;drawIA()})}
 $("#ia-quick").addEventListener("click",function(e){var b=e.target.closest("[data-q]");if(b&&ready())copilot(QUICK[b.dataset.q])});
-$("#ia-tonotes").onclick=function(){if(!lastOut)return;S.notes=(S.notes?S.notes.replace(/\s+$/,"")+"\n\n":"")+lastOut;touch();note("Guardado en tus notas.")};
+$("#ia-tonotes").onclick=function(){var hs=story();if(!lastOut)return;if(!hs){note("Crea primero una historia en «Historias».");return}hs.notes.push({id:uid(),title:"Del copiloto",text:lastOut,t:Date.now()});touch();note("Guardado en las notas de «"+hs.title+"».")};
 $("#ia-stop").onclick=function(){if(ctl)ctl.abort()};
 $("#ia-start").onclick=function(){if(ready())say("Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.")};
 $("#ia-accept").onclick=function(){var t=$("#ia-draft-text").value.trim();if(!t)return;logPush("a",t);$("#ia-draft").hidden=true;mapFromText(t);touch(false);drawIA()};
@@ -851,9 +1119,9 @@ $("#fx-clear").onclick=function(){var m=curMap();lastRule=null;if(m.fx.length){m
 $("#map-sel").onchange=function(){S.mapId=this.value;selTok=null;lastRule=null;V.fit=false;touch(false);drawMapUI()};
 $("#map-new").onclick=function(){var m=newMap("Mapa "+(S.maps.length+1));S.maps.push(m);S.mapId=m.id;selTok=null;V.fit=false;touch(false);drawMapUI();$("#map-cfg").open=true;$("#map-name").focus();$("#map-name").select()};
 function freeCell(m,x,y){while(m.tokens.some(function(t){return t.x===x&&t.y===y}))x++;return x}
-$("#tok-auto").onclick=function(){var m=curMap(),src=S.combat.list.length?S.combat.list.map(function(c){return{ref:c.pcId||c.id,pc:!!c.pcId}}):S.party.map(function(p){return{ref:p.id,pc:true}}),n=0;
+$("#tok-auto").onclick=function(){var m=curMap(),src=S.combat.list.length?S.combat.list.map(function(c){return{ref:c.pcId||c.id,pc:!!c.pcId}}):roster().map(function(p){return{ref:p.id,pc:true}}),n=0;
   src.forEach(function(s){if(m.tokens.some(function(t){return t.ref===s.ref}))return;var y=s.pc?1:3;m.tokens.push({id:uid(),ref:s.ref,name:"",x:freeCell(m,1,y),y:y,size:1});n++});
-  mapMsg(n?"Colocadas "+n+" figuras arriba a la izquierda. Arrástralas a su sitio.":src.length?"Todas las figuras ya están en el mapa.":"No hay personajes ni combate. Añádelos en «Grupo» o «Combate».");if(n){touch(false);drawSvg()}};
+  mapMsg(n?"Colocadas "+n+" figuras arriba a la izquierda. Arrástralas a su sitio.":src.length?"Todas las figuras ya están en el mapa.":"No hay personajes ni combate. Añádelos en «Personajes» o «Combate».");if(n){touch(false);drawSvg()}};
 $("#tok-add").onclick=function(){var m=curMap(),i=$("#tok-name"),n=i.value.trim()||"Figura";var t={id:uid(),ref:null,name:n,kind:"oth",x:freeCell(m,1,5),y:5,size:1};m.tokens.push(t);selTok=t.id;i.value="";touch(false);drawSvg();tokBar()};
 function tkEdit(fn){var t=selTok&&tokGet(selTok);if(!t)return;fn(t);touch(false);drawSvg()}
 $("#tk-name").onchange=function(){var v=this.value.trim();tkEdit(function(t){if(!tokRef(t))t.name=v||"Figura"})};
@@ -922,14 +1190,17 @@ function mapFromText(t){var g=/\[MAPA:\s*([^\]]+)\]/i.exec(t||"");if(!g)return;v
   if(hit&&hit.id!==S.mapId){S.mapId=hit.id;selTok=null;V.fit=false;note("El máster ha cambiado al mapa «"+hit.name+"». Está en la pestaña «Mapa».")}}
 
 /* ---- pestañas y modo jugadores ---- */
-var TABS=["combate","mapa","grupo","ia","chuleta","notas"];
-function route(){var h=location.hash.replace("#","");if(TABS.indexOf(h)<0||(players&&h==="notas"))h="combate";
-  TABS.forEach(function(t){$("#tab-"+t).hidden=t!==h});document.querySelector(".page").classList.toggle("wide",h==="mapa");if(h==="mapa")drawMapUI();
-  [].forEach.call(document.querySelectorAll("nav a"),function(a){if(a.getAttribute("href")==="#"+h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")})}
-window.addEventListener("hashchange",route);
+var TABS=["panel","historias","historia","personajes","combate","mapa","ia","chuleta"],diceOn=false;
+try{var dv=localStorage.getItem(LS+"-dados");diceOn=dv?dv==="1":window.innerWidth>=1280}catch(e){}
+function route(){var h=location.hash.replace("#","");if(TABS.indexOf(h)<0)h="panel";
+  TABS.forEach(function(t){$("#tab-"+t).hidden=t!==h});if(h==="mapa")drawMapUI();
+  [].forEach.call(document.querySelectorAll(".side nav a"),function(a){if(a.getAttribute("href")==="#"+h||a.dataset.also===h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")})}
+window.addEventListener("hashchange",function(){route();window.scrollTo(0,0)});
 $("#btn-players").onclick=function(){players=!players;try{localStorage.setItem(LS+"-players",players?"1":"0")}catch(e){}draw();route()};
+$("#btn-dice").onclick=function(){diceOn=!diceOn;try{localStorage.setItem(LS+"-dados",diceOn?"1":"0")}catch(e){}V.fit=false;draw()};
 function draw(){document.body.classList.toggle("players",players);$("#btn-players").setAttribute("aria-pressed",players);
-  drawDiff();drawOrder();drawParty();drawNotes();drawIA();if(!$("#tab-mapa").hidden)drawMapUI()}
+  $("#app").classList.toggle("dice-on",diceOn);$("#btn-dice").setAttribute("aria-pressed",diceOn);
+  drawPanel();drawStories();drawStory();drawChars();drawDiff();drawOrder();drawNotes();drawIA();if(!$("#tab-mapa").hidden)drawMapUI()}
 draw();route();
 })();
 </script>
