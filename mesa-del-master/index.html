@@ -115,6 +115,10 @@ summary{cursor:pointer}
 #map-desc{min-height:4.6em}
 a.btn{display:inline-flex;align-items:center;min-height:38px;padding:6px 14px;border-radius:var(--r);border:1px solid var(--line);background:var(--raised);color:var(--ink);text-decoration:none;font-weight:600}
 a.btn:hover{border-color:var(--brass)}
+body:not(.help-on) .help{display:none!important}
+.card.help{border-color:var(--gold-soft);background:linear-gradient(180deg,var(--gold-soft),var(--surface) 90px)}
+.no-tts .tts{display:none!important}
+.chat li.a div{white-space:pre-wrap}
 .solo-only{display:none}
 body.solo .solo-only{display:inline-flex}
 body.solo .side,body.solo .dicebox,body.solo #tab-mapa > :not(#board){display:none!important}
@@ -297,6 +301,7 @@ label{display:flex;flex-direction:column;gap:3px}
   </nav>
   <div class="sep">Herramientas</div>
   <button type="button" class="tool" id="btn-dice" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="3"/><circle cx="7" cy="7" r=".9" fill="currentColor"/><circle cx="13" cy="13" r=".9" fill="currentColor"/><circle cx="10" cy="10" r=".9" fill="currentColor"/></svg>Dados</button>
+  <button type="button" class="tool" id="btn-help" aria-pressed="true" title="Explica las reglas y las opciones de los personajes"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M7.800 8a2.300 2.300 0 1 1 3.400 2c-.8.500-1.200 1-1.200 1.800M10 14.300v.2"/></svg>Explicaciones</button>
   <button type="button" class="tool" id="btn-players" aria-pressed="false" title="Oculta los PG de los monstruos y tus notas para enseñar la pantalla a la mesa"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="16" height="10" rx="1.500"/><path d="M7 17h6"/></svg>Pantalla de jugadores</button>
   <div class="grow"></div>
   <span id="status" role="status">Cargando…</span>
@@ -369,6 +374,7 @@ label{display:flex;flex-direction:column;gap:3px}
               <label>O una imagen tuya<input id="st-cover-file" type="file" accept="image/*"></label>
               <label>Próxima sesión<input id="st-date" type="date"></label>
               <label>Hora<input id="st-time" type="time"></label>
+              <label>Mapa de esta historia<select id="st-map"></select></label>
             </div>
             <label class="wide">De qué va: lugar, conflicto y villano. El máster IA lo usa como base<textarea id="st-desc" placeholder="Un pueblo minero. Han desaparecido tres mineros y alguien ha visto luces en la galería vieja…"></textarea></label>
             <div class="bar"><button type="button" id="st-del" class="ghost hurt">Eliminar esta historia</button></div>
@@ -418,6 +424,7 @@ label{display:flex;flex-direction:column;gap:3px}
     <div class="head"><div class="ttl"><h1>Combate</h1><p class="sub">Ronda <b id="round" class="num">–</b></p></div>
       <div class="acts dm"><div class="seg" id="cb-mode" role="group" aria-label="Modo de combate"><button type="button" data-cb="manual">Manual</button><button type="button" data-cb="auto">Automático</button></div></div></div>
     <div id="cb-auto" class="card" hidden></div>
+    <div class="card help" id="help-combat"></div>
     <div class="bar">
       <button class="pri" id="btn-next" type="button">Siguiente turno</button>
       <button id="btn-rollmon" type="button" class="dm">Tirar iniciativa de monstruos</button>
@@ -515,6 +522,7 @@ label{display:flex;flex-direction:column;gap:3px}
         <label>Desfase Y (px)<input id="map-oy" type="number" step="any"></label>
       </div>
       <label>Qué hay en este mapa, para el máster IA<textarea id="map-desc" placeholder="Callejón estrecho entre dos almacenes. Barriles al fondo, una escalera de incendios al este."></textarea></label>
+      <div class="bar"><button type="button" id="map-ai">Describir el mapa con la IA</button><span id="map-ai-msg" class="sub" role="status"></span></div>
       <div class="bar">
         <label>Imagen desde un archivo<input id="map-file" type="file" accept="image/*"></label>
         <label id="map-url-l" style="flex:1 1 16em">O enlace de Drive al archivo de imagen<input id="map-url" placeholder="https://drive.google.com/file/d/…/view" style="width:100%"></label>
@@ -528,6 +536,7 @@ label{display:flex;flex-direction:column;gap:3px}
   <!-- MÁSTER IA -->
   <section class="tab" id="tab-ia" hidden>
     <div class="head"><div class="ttl"><h1>Máster IA</h1><p class="sub" id="ia-story"></p></div></div>
+    <div class="card help" id="help-ia"></div>
     <div id="ia-off" class="empty" hidden><p><b>Claude no está disponible en esta vista.</b></p><p>El máster automático necesita que abras la página con tu cuenta de Claude y le des permiso la primera vez. Para usar Hermes u otro motor, abre la copia descargable del panel en tu ordenador.</p></div>
     <div id="ia-on">
       <div class="seg" id="ia-modes" role="group" aria-label="Modo del máster IA">
@@ -557,6 +566,21 @@ label{display:flex;flex-direction:column;gap:3px}
         </div>
         <p id="mo-msg" class="small muted" role="status"></p>
       </details>
+      <details id="voz" class="panel dm" hidden>
+        <summary>Voz de lectura: <b id="voz-now"></b></summary>
+        <p class="small muted">Por defecto lee la voz de tu navegador. Con una clave de ElevenLabs lee una de tus voces, con mucha mejor calidad. La clave se guarda solo en este navegador y cada lectura gasta caracteres de tu cuenta.</p>
+        <div class="bar">
+          <label>Lee<select id="vz-eng"><option value="nav">La voz del navegador</option><option value="eleven">ElevenLabs</option></select></label>
+          <label style="flex:1 1 12em">Clave de API de ElevenLabs<input id="vz-key" type="password" autocomplete="off" style="width:100%"></label>
+          <button type="button" id="vz-load">Cargar mis voces</button>
+        </div>
+        <div class="bar">
+          <label style="flex:1 1 14em">Voz<select id="vz-voice" style="width:100%"></select></label>
+          <label>Calidad<select id="vz-model"><option value="eleven_flash_v2_5">Rápida, gasta la mitad</option><option value="eleven_multilingual_v2">Máxima calidad</option></select></label>
+          <button type="button" id="vz-test">Probar la voz</button>
+        </div>
+        <p id="vz-msg" class="small muted" role="status"></p>
+      </details>
       <div id="ia-secret" class="empty" hidden><p>Este modo es solo para el máster. Está oculto mientras la pantalla de jugadores esté activa.</p></div>
       <div id="ia-body">
         <div id="ia-quick" class="bar">
@@ -568,7 +592,7 @@ label{display:flex;flex-direction:column;gap:3px}
         </div>
         <div id="ia-outbox" class="panel" hidden>
           <div id="ia-out" class="out"></div>
-          <div class="bar"><button type="button" id="ia-tonotes">Guardar en mis notas</button></div>
+          <div class="bar"><button type="button" id="ia-tonotes">Guardar en mis notas</button><button type="button" id="ia-read" class="tts">Leer en voz alta</button></div>
         </div>
         <ol id="ia-log" class="chat"></ol>
         <div id="ia-empty" class="empty" hidden><p><b>La historia todavía no ha empezado.</b></p><p>Describe la historia en «Historias», apunta a los personajes y pulsa «Empezar la aventura». Lo que se narre aquí se guarda con la partida.</p></div>
@@ -576,7 +600,7 @@ label{display:flex;flex-direction:column;gap:3px}
           <h3>Propuesta del narrador</h3>
           <p class="small muted">Edita lo que quieras antes de aceptarla. Solo lo aceptado pasa a la historia.</p>
           <textarea id="ia-draft-text" aria-label="Propuesta del narrador"></textarea>
-          <div class="bar"><button type="button" class="pri" id="ia-accept">Aceptar</button><button type="button" id="ia-regen">Otra versión</button><button type="button" class="ghost" id="ia-discard">Descartar</button></div>
+          <div class="bar"><button type="button" class="pri" id="ia-accept">Aceptar</button><button type="button" id="ia-regen">Otra versión</button><button type="button" id="ia-draft-read" class="tts">Leer en voz alta</button><button type="button" class="ghost" id="ia-discard">Descartar</button></div>
         </div>
         <p id="ia-note" class="small muted" role="status"></p>
         <form id="ia-form" class="bar" autocomplete="off">
@@ -586,6 +610,7 @@ label{display:flex;flex-direction:column;gap:3px}
         </form>
         <div class="bar" id="ia-story">
           <button type="button" id="ia-start">Empezar la aventura</button>
+          <label class="tts" style="flex-direction:row;align-items:center;gap:6px;font-size:.95rem;color:var(--ink)"><input id="ia-autoread" type="checkbox" style="min-height:0"> Leer cada respuesta en voz alta</label>
           <button type="button" id="ia-sum" class="dm" title="Condensa los turnos antiguos para que no se olviden">Resumir la historia antigua</button>
           <button type="button" id="ia-clear" class="ghost dm">Borrar la historia</button>
         </div>
@@ -689,7 +714,7 @@ function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   b.maps=Array.isArray(o.maps)?o.maps.filter(function(m){return m&&m.id&&m.cell>0&&m.w>0&&m.h>0}).map(function(m){m.tokens=Array.isArray(m.tokens)?m.tokens:[];m.fx=Array.isArray(m.fx)?m.fx:[];return m}):[];b.mapId=o.mapId||null;
   var a=o.ia||{};b.ia={mode:["copiloto","narrador","auto"].indexOf(a.mode)>=0?a.mode:"copiloto",premise:typeof a.premise==="string"?a.premise:"",summary:typeof a.summary==="string"?a.summary:"",log:Array.isArray(a.log)?a.log.filter(function(x){return x&&typeof x.t==="string"&&x.t}):[]};if("sid" in a)b.ia.sid=a.sid;
   b.rev=o.rev||"";b.party=Array.isArray(o.party)?o.party:[];b.notes=typeof o.notes==="string"?o.notes:"";b.checks=o.checks&&typeof o.checks==="object"?o.checks:{};
-  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null};
+  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null,byIA:!!c.byIA};
   function arr(v){return Array.isArray(v)?v:[]}
   b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.npcs=arr(x.npcs);x.quests=arr(x.quests);x.next=x.next||{date:"",time:""};return x});
   b.storyId=o.storyId||null;b.activity=arr(o.activity);
@@ -827,7 +852,7 @@ function ava(name,sm){var w=(name||"?").replace(/\(.*?\)/g,"").trim().split(/\s+
 function pcSub(p){return[p.race,p.cls].filter(Boolean).join(" | ")||"Sin clase apuntada"}
 function meta(s){var n=S.party.filter(function(p){return p.story===s.id}).length;return esc(s.system||"D&D 5.5")+" | "+s.sessions.length+(s.sessions.length===1?" sesión":" sesiones")+" | "+n+(n===1?" jugador":" jugadores")}
 function lastSes(s){var L=s.sessions;return L.length?"Última sesión: "+ago(new Date(L[L.length-1].d+"T12:00:00").getTime()).toLowerCase():"Sin estrenar"}
-function openStory(id){S.storyId=id;iaBind();touch(false);if(location.hash==="#historia"){route();draw()}else location.hash="historia"}
+function openStory(id){S.storyId=id;iaBind();useStoryMap();touch(false);if(location.hash==="#historia"){route();draw()}else location.hash="historia"}
 function addStory(){var s=mkStory("Nueva historia",S.stories.length);S.stories.push(s);logAct("Nueva historia creada");openStory(s.id);draw();$("#sd-edit").open=true;var t=$("#st-title");t.focus();t.select()}
 document.addEventListener("click",function(e){if(e.target.closest("[data-new-story]"))addStory();var b=e.target.closest("[data-story]");if(b)openStory(b.dataset.story)});
 
@@ -870,7 +895,8 @@ function drawStory(){var s=story();$("#sd-none").hidden=!!s;$("#sd").hidden=!s;i
   $("#sd-npcs").innerHTML=s.npcs.length?s.npcs.map(function(n){var b=NST[n.st]||NST.neutral;return'<div class="note"><div class="rowb"><span style="display:flex;gap:10px;align-items:center;min-width:0">'+ava(n.name||"?",1)+'<b style="overflow-wrap:anywhere">'+esc(n.name)+'</b></span><span><button type="button" class="badge '+b[1]+'" data-npc="'+n.id+'" title="Cambiar actitud">'+b[0]+'</button> <button type="button" class="ghost dm" data-npc-rm="'+n.id+'" aria-label="Quitar PNJ" style="min-height:24px;padding:0 6px">✕</button></span></div>'+
     ((n.role||n.where)?'<p>'+esc([n.role,n.where].filter(Boolean).join(" | "))+'</p>':"")+(n.wants?'<p>Quiere: '+esc(n.wants)+'</p>':"")+(n.secret?'<p class="dm" style="color:var(--warn)">Secreto: '+esc(n.secret)+'</p>':"")+'</div>'}).join(""):'<p class="sub">La gente que el grupo conoce: quién es, qué quiere y qué esconde.</p>';
   $("#st-cover").innerHTML=Object.keys(COVERS).map(function(k){return'<option value="'+k+'">'+COVERS[k]+'</option>'}).join("")+(s.cover==="propia"?'<option value="propia">Imagen propia</option>':"");
-  setVal("#st-title",s.title);setVal("#st-system",s.system||"");$("#st-status").value=s.status;$("#st-cover").value=COVERS[s.cover]||s.cover==="propia"?s.cover:"castillo";setVal("#st-date",s.next.date||"");setVal("#st-time",s.next.time||"");setVal("#st-desc",s.desc||"")}
+  setVal("#st-title",s.title);setVal("#st-system",s.system||"");$("#st-status").value=s.status;$("#st-cover").value=COVERS[s.cover]||s.cover==="propia"?s.cover:"castillo";setVal("#st-date",s.next.date||"");setVal("#st-time",s.next.time||"");setVal("#st-desc",s.desc||"");
+  $("#st-map").innerHTML='<option value="">Sin mapa fijo</option>'+S.maps.map(function(m){return'<option value="'+m.id+'"'+(s.mapId===m.id?" selected":"")+'>'+esc(m.name)+'</option>'}).join("")}
 function stEdit(fn,redraw){var s=story();if(!s)return;fn(s);touch(false);if(redraw!==false){drawPanel();drawStories();drawStory();drawIA()}}
 $("#st-title").onchange=function(){var v=this.value.trim()||"Historia sin título";stEdit(function(s){s.title=v})};
 $("#st-system").onchange=function(){var v=this.value.trim();stEdit(function(s){s.system=v})};
@@ -993,11 +1019,7 @@ function autoEncounter(){var R=roster(),k=int($("#au-diff").value,1),bud=0,C=S.c
   var maxQ=R.length+(k===2?1:0),all=BEST.filter(function(m){return XP[m[4]]<=bud}),ok=all.filter(function(m){return Math.floor(bud/XP[m[4]])<=maxQ});
   if(!ok.length){all.sort(function(x,y){return XP[y[4]]-XP[x[4]]});ok=all.length?all.slice(0,3):[BEST[0]]}
   var m=ok[Math.floor(Math.random()*ok.length)],q=Math.max(1,Math.min(Math.max(maxQ,2),Math.floor(bud/XP[m[4]])));
-  C.list=[];C.round=0;C.turnId=null;C.over=null;C.log=[];
-  R.forEach(function(p){p.hp=Math.max(p.hp,1);C.list.push({id:uid(),pcId:p.id,init:null,conds:[]})});
-  for(var i=0;i<q;i++)C.list.push(mkMon(m,q>1?m[0]+" "+(i+1):m[0]));
-  autoStart();C.log.splice(0,0,(q>1?"Aparecen "+q+" enemigos: "+m[0].toLowerCase():"Aparece un enemigo: "+m[0].toLowerCase())+". Se tira iniciativa.");
-  logAct("Combate automático contra "+q+" × "+m[0]);touch()}
+  buildEncounter(m,q,false)}
 function mkMon(m,name){return{id:uid(),base:m[0],name:name,ac:m[1],hp:m[2],max:m[2],mod:m[3],cr:m[4],atk:m[5],dmg:m[6],n:m[7],an:m[8],init:null,conds:[]}}
 function pcAct(fn){var c=find(S.combat.turnId);if(!c||!isPc(c)||S.combat.over)return;if(fn(c,view(c))===false)return;if(!checkOver()){advance();autoStep()}touch()}
 function drawAuto(){var C=S.combat,el=$("#cb-auto"),lg=$("#cb-log"),c=find(C.turnId),h=[];
@@ -1008,7 +1030,7 @@ function drawAuto(){var C=S.combat,el=$("#cb-auto"),lg=$("#cb-log"),c=find(C.tur
       if(!roster().length)h.push('<p class="sub">Hacen falta personajes. Añádelos en «Personajes» o carga el grupo de ejemplo de abajo.</p>');
       else h.push('<p class="sub">El panel elige enemigos a la medida del grupo, tira la iniciativa de todos y resuelve los turnos de los monstruos. Vosotros solo decidís qué hacen vuestros personajes.</p><div class="bar"><label>Dificultad<select id="au-diff"><option value="0">Fácil</option><option value="1" selected>Normal</option><option value="2">Difícil</option></select></label><button type="button" class="pri" data-au="enc">Empezar un combate</button></div>')}
     else if(!C.round)h.push('<h2>Combate automático</h2><p class="sub">Ya hay criaturas en la lista. El panel tirará la iniciativa que falte y resolverá los turnos de los monstruos.</p><div class="bar"><button type="button" class="pri" data-au="start">Empezar este combate</button></div>');
-    else if(C.over)h.push('<h2>'+(C.over==="win"?"Victoria":"El grupo ha caído")+'</h2><p class="sub">'+esc((C.log||[]).slice(-1)[0]||"")+'</p><div class="bar"><button type="button" class="pri" data-au="end">Terminar el combate</button></div>');
+    else if(C.over)h.push('<h2>'+(C.over==="win"?"Victoria":"El grupo ha caído")+'</h2><p class="sub">'+esc((C.log||[]).slice(-1)[0]||"")+'</p><div class="bar">'+(C.byIA?'<button type="button" class="pri" data-au="back">Volver a la historia</button>':"")+'<button type="button" '+(C.byIA?"":'class="pri" ')+'data-au="end">Terminar el combate</button></div>');
     else if(c&&isPc(c)){var v=view(c),p=pc(c.pcId),F=foes(),A=heroes(false);
       h.push('<span class="eyebrow">Ronda '+C.round+'</span><h2 style="font-size:1.2rem">Turno de '+esc(v.name)+'</h2><p class="sub">'+v.hp+" de "+v.max+' PG. Elige qué hace.</p>');
       h.push('<div class="fgrid"><label>Objetivo<select id="au-target">'+F.map(function(x){var y=view(x);return'<option value="'+x.id+'">'+esc(y.name)+'</option>'}).join("")+'</select></label>'+
@@ -1016,7 +1038,8 @@ function drawAuto(){var C=S.combat,el=$("#cb-auto"),lg=$("#cb-log"),c=find(C.tur
         '<div class="bar"><button type="button" class="pri" data-au="atk">Atacar, que tire el panel</button></div>'+
         '<div class="bar"><label>Si tiráis con dados: ataque total<input id="au-roll" type="number" placeholder="17"></label><label>Daño<input id="au-rdmg" type="number" placeholder="8"></label><button type="button" data-au="own">Aplicar mi tirada</button></div>'+
         '<div class="bar"><label>Curar a<select id="au-heal-t">'+A.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x===c?" selected":"")+'>'+esc(y.name)+" ("+y.hp+"/"+y.max+')</option>'}).join("")+'</select></label><label>PG<input id="au-heal-n" type="number" min="1" placeholder="6"></label><button type="button" class="heal" data-au="heal">Curar</button>'+
-        '<span style="flex:1"></span><button type="button" data-au="pass">Otra acción o pasar turno</button></div>')}
+        '<span style="flex:1"></span><button type="button" data-au="pass">Otra acción o pasar turno</button></div>'+
+        '<p class="sub help">«Atacar, que tire el panel» lanza el d20 por ti y aplica el daño. Si preferís vuestros dados, escribid el total y pulsad «Aplicar mi tirada». Para un conjuro, moverse o cualquier otra cosa, resolvedlo hablando, apuntad el daño o la cura a mano y pulsad «Otra acción o pasar turno».</p>')}
     else h.push('<p class="sub">Resolviendo turnos…</p><div class="bar"><button type="button" data-au="pass">Continuar</button></div>');
     el.innerHTML=h.join("")}
   lg.innerHTML='<h2>Registro del combate</h2><ul class="list">'+(C.log||[]).slice().reverse().slice(0,30).map(function(t){return'<li><span class="t'+(/^— /.test(t)?" sub":"")+'">'+esc(t)+'</span></li>'}).join("")+'</ul>'}
@@ -1027,6 +1050,7 @@ $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data
   if(a==="enc")autoEncounter();
   else if(a==="start")next();
   else if(a==="end"){S.combat={round:0,turnId:null,list:[],auto:true,log:[],over:null};touch()}
+  else if(a==="back")backToStory();
   else if(a==="pass"){var cc=find(S.combat.turnId);if(cc&&isPc(cc))pcAct(function(c,v){clog(v.name+" hace otra cosa o pasa su turno.")});else next()}
   else if(a==="atk")pcAct(function(c,v){var t=find($("#au-target").value);if(!t)return false;var tv=view(t),atk=int($("#au-atk").value,5),r=d(20),tot=r+atk,ac=int(tv.ac,10);
     if(r===1||(r!==20&&tot<ac))clog(v.name+" ataca a "+tv.name+": saca "+tot+" contra CA "+ac+" y falla.");
@@ -1036,6 +1060,104 @@ $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data
     else{if(dm<=0)return false;hurt(t,dm);clog(v.name+" ataca a "+tv.name+": "+tot+" contra CA "+ac+", impacta y hace "+dm+" de daño."+(hpOf(t)<=0?" "+tv.name+" cae.":" Le quedan "+hpOf(t)+" PG."))}})
   else if(a==="heal")pcAct(function(c,v){var t=find($("#au-heal-t").value),n=int($("#au-heal-n").value,0);if(!t||n<=0)return false;mend(t,n);clog(v.name+" cura "+n+" PG a "+view(t).name+", que queda con "+hpOf(t)+" PG.")})});
 
+/* ---- voz, explicaciones y enlace entre historia, mapa y combate ---- */
+var helpOn=true,autoRead=false,ttsCap=null,speaking=null;
+try{helpOn=localStorage.getItem(LS+"-ayuda")!=="0";autoRead=localStorage.getItem(LS+"-leer")==="1"}catch(e){}
+function clean(t){return String(t||"").replace(/\[(MAPA|COMBATE)[^\]]*\]/gi,"").replace(/[ \t]+\n/g,"\n").trim()}
+var vc={eng:"nav",key:"",voice:"",name:"",model:"eleven_flash_v2_5"},vAudio=null,vAbort=null;
+try{var vz0=JSON.parse(localStorage.getItem(LS+"-voz")||"{}");["eng","key","voice","name","model"].forEach(function(k){if(typeof vz0[k]==="string"&&vz0[k])vc[k]=vz0[k]})}catch(e){}
+function eleven(){return!(window.claude&&window.claude.use)&&vc.eng==="eleven"&&vc.key&&vc.voice}
+function vzSave(){vc.eng=$("#vz-eng").value;vc.key=$("#vz-key").value.trim();vc.model=$("#vz-model").value;var o=$("#vz-voice").selectedOptions[0];if(o&&o.value){vc.voice=o.value;vc.name=o.textContent}
+  try{localStorage.setItem(LS+"-voz",JSON.stringify(vc))}catch(e){}vzDraw()}
+function vzDraw(){$("#voz").hidden=!!(window.claude&&window.claude.use);$("#voz-now").textContent=eleven()?"ElevenLabs, "+(vc.name||"voz elegida"):vc.eng==="eleven"?"ElevenLabs sin terminar de configurar":"la del navegador";
+  if(!$("#vz-voice").options.length&&vc.voice)$("#vz-voice").innerHTML='<option value="'+esc(vc.voice)+'">'+esc(vc.name||"Voz guardada")+'</option>'}
+function vzErr(st){return st===401?"ElevenLabs ha rechazado la clave.":st===429?"ElevenLabs dice que has agotado tu cuota o vas demasiado rápido.":st===402||st===403?"Tu plan de ElevenLabs no permite esta voz o este modelo.":"No se puede conectar con ElevenLabs."}
+$("#vz-eng").value=vc.eng;$("#vz-key").value=vc.key;$("#vz-model").value=vc.model;
+["#vz-eng","#vz-key","#vz-model","#vz-voice"].forEach(function(q){$(q).addEventListener("change",vzSave)});
+$("#vz-load").onclick=function(){vzSave();var el=$("#vz-msg");if(!vc.key){el.textContent="Escribe primero tu clave de API.";return}el.textContent="Cargando voces…";
+  fetch("https://api.elevenlabs.io/v1/voices",{headers:{"xi-api-key":vc.key}}).then(function(r){if(!r.ok)throw{st:r.status};return r.json()}).then(function(j){
+    var L=(j.voices||[]).map(function(v){var l=v.labels||{};return{id:v.voice_id,name:v.name,es:/^es/i.test(l.language||""),st:/narrat|story/i.test(l.use_case||"")}});
+    L.sort(function(a,b){return(b.es-a.es)||(b.st-a.st)||a.name.localeCompare(b.name)});
+    $("#vz-voice").innerHTML=L.map(function(v){return'<option value="'+esc(v.id)+'"'+(v.id===vc.voice?" selected":"")+'>'+esc(v.name+(v.es?" · español":""))+'</option>'}).join("");
+    $("#vz-eng").value="eleven";vzSave();el.textContent=L.length+" voces cargadas. Las que hablan español salen primero."},function(e){el.textContent=vzErr(e&&e.st)})};
+$("#vz-test").onclick=function(){vzSave();speak("La niebla cubre el puerto y, en algún lugar bajo el agua, suena una campana.",null)};
+function elevenSay(text,me,done){var el=$("#vz-msg");vAbort=new AbortController();
+  fetch("https://api.elevenlabs.io/v1/text-to-speech/"+encodeURIComponent(vc.voice)+"?output_format=mp3_44100_128",{method:"POST",signal:vAbort.signal,headers:{"xi-api-key":vc.key,"Content-Type":"application/json"},body:JSON.stringify({text:text.slice(0,2500),model_id:vc.model,language_code:vc.model==="eleven_flash_v2_5"?"es":undefined})})
+  .then(function(r){if(!r.ok)throw{st:r.status};return r.blob()}).then(function(b){if(speaking!==me)return;var u=URL.createObjectURL(b);vAudio=new Audio(u);
+    vAudio.onended=vAudio.onerror=function(){URL.revokeObjectURL(u);done()};el.textContent="";return vAudio.play()})
+  .catch(function(e){if(e&&e.name==="AbortError")return;el.textContent=(e&&e.st?vzErr(e.st):"No se ha podido reproducir el audio.")+" Leo con la voz del navegador.";if(speaking===me)navSay(text,done)})}
+function navSay(text,done){if(!(window.speechSynthesis&&window.SpeechSynthesisUtterance)){done();return}
+  var u=new SpeechSynthesisUtterance(text),vs=window.speechSynthesis.getVoices().filter(function(v){return/^es/i.test(v.lang)});
+  u.lang="es-ES";if(vs.length)u.voice=vs.filter(function(v){return/es-ES/i.test(v.lang)})[0]||vs[0];u.rate=.95;u.onend=done;u.onerror=done;window.speechSynthesis.speak(u)}
+function ttsOk(){if(eleven())return true;return inArtifact?!!ttsCap:!!(window.speechSynthesis&&window.SpeechSynthesisUtterance)}
+function ttsMark(){document.body.classList.toggle("no-tts",!ttsOk());[].forEach.call(document.querySelectorAll("[data-say],#ia-read,#ia-draft-read"),function(b){b.textContent=speaking&&b===speaking.btn?"Parar la lectura":"Leer en voz alta"})}
+function stopSpeak(){if(!speaking)return;speaking=null;try{if(vAbort)vAbort.abort();if(vAudio){vAudio.pause();vAudio=null}if(inArtifact){if(ttsCap)ttsCap.stop()}else window.speechSynthesis.cancel()}catch(e){}ttsMark()}
+function speak(text,btn){if(speaking&&(!btn||speaking.btn===btn)){stopSpeak();if(btn)return}stopSpeak();text=clean(text);if(!text||!ttsOk())return;var me={btn:btn||null};speaking=me;ttsMark();
+  function done(){if(speaking===me){speaking=null;ttsMark()}}
+  if(inArtifact){ttsCap.speak(text.slice(0,2000),{language:"es"}).then(done,done);return}
+  if(eleven())elevenSay(text,me,done);else navSay(text,done)}
+vzDraw();
+if(window.claude&&window.claude.use)window.claude.use("tts").then(function(t){ttsCap=t;ttsMark()},function(){ttsMark()});
+function drawLog(){var ol=$("#ia-log");ol.textContent="";
+  S.ia.log.forEach(function(x,i){var li=document.createElement("li");li.className=x.r==="a"?"a":"u";
+    if(x.r==="a"){var sp=document.createElement("div");sp.textContent=clean(x.t);li.appendChild(sp);var b=document.createElement("button");b.type="button";b.className="ghost tts";b.dataset.say=i;b.textContent="Leer en voz alta";b.style.cssText="min-height:28px;padding:0 8px;font-size:.8rem;margin-top:4px";li.appendChild(b)}
+    else li.textContent=x.t;ol.appendChild(li)});ttsMark()}
+$("#ia-log").addEventListener("click",function(e){var b=e.target.closest("[data-say]");if(b&&S.ia.log[b.dataset.say])speak(S.ia.log[b.dataset.say].t,b)});
+$("#ia-read").onclick=function(){speak(lastOut,this)};
+$("#ia-draft-read").onclick=function(){speak($("#ia-draft-text").value,this)};
+$("#ia-autoread").checked=autoRead;
+$("#ia-autoread").onchange=function(){autoRead=this.checked;try{localStorage.setItem(LS+"-leer",autoRead?"1":"0")}catch(e){}if(!autoRead)stopSpeak()};
+function afterReply(t){if(combatFromText(t))return;if(autoRead)speak(t,null)}
+
+/* el máster IA lanza un combate */
+function buildEncounter(m,q,byIA){var R=roster(),C=S.combat;if(!R.length)return false;
+  C.auto=true;C.list=[];C.round=0;C.turnId=null;C.over=null;C.log=[];C.byIA=!!byIA;
+  R.forEach(function(p){p.hp=Math.max(p.hp,1);C.list.push({id:uid(),pcId:p.id,init:null,conds:[]})});
+  for(var i=0;i<q;i++)C.list.push(mkMon(m,q>1?m[0]+" "+(i+1):m[0]));
+  autoStart();C.log.splice(0,0,(q>1?"Aparecen "+q+" enemigos: "+m[0].toLowerCase():"Aparece un enemigo: "+m[0].toLowerCase())+". Se tira iniciativa.");
+  autoPlace();logAct("Combate contra "+q+" × "+m[0]);touch();return true}
+function autoPlace(){var m=curMap(),cols=Math.max(4,Math.floor(m.w/m.cell)),rows=Math.max(4,Math.floor(m.h/m.cell)),P=[],M=[];
+  m.tokens=m.tokens.filter(function(t){return!t.ref||pc(t.ref)||find(t.ref)});
+  S.combat.list.forEach(function(c){var ref=c.pcId||c.id;if(m.tokens.some(function(t){return t.ref===ref}))return;(c.pcId?P:M).push(ref)});
+  function col(L,x){var y0=Math.max(0,Math.floor(rows/2-L.length));L.forEach(function(ref,i){m.tokens.push({id:uid(),ref:ref,name:"",x:Math.min(cols-1,x+(i%2)),y:Math.min(rows-1,y0+i*2-(i%2)),size:1})})}
+  col(P,Math.max(1,Math.floor(cols*.2)));col(M,Math.max(2,Math.floor(cols*.7)))}
+function combatFromText(t){var g=/\[COMBATE:?\s*([^\]]*)\]/i.exec(t||""),C=S.combat;if(!g||(C.round&&!C.over&&C.list.length))return false;
+  if(!roster().length){note("El máster quería iniciar un combate, pero no hay personajes en esta historia.");return false}
+  var raw=g[1].trim(),qm=/(?:x|×|\*)\s*(\d+)\s*$/i.exec(raw)||/^(\d+)\s+/.exec(raw),q=qm?int(qm[1],1):0,n=raw.replace(/(?:x|×|\*)\s*\d+\s*$/i,"").replace(/^\d+\s+/,"").trim().toLowerCase(),hit=null;
+  if(n)BEST.forEach(function(m){var k=m[0].toLowerCase();if(!hit&&(k===n||k.indexOf(n)>=0||n.indexOf(k)>=0||k.split(" ")[0]===n.split(" ")[0].replace(/s$/,"")))hit=m});
+  if(!hit){var bud=0;roster().forEach(function(p){bud+=BUD[Math.max(1,Math.min(20,int(p.level,1)))-1][1]});var ok=BEST.filter(function(m){return XP[m[4]]<=bud&&Math.floor(bud/XP[m[4]])<=roster().length});hit=ok[Math.floor(Math.random()*ok.length)]||BEST[5];q=0}
+  if(!q){var b2=0;roster().forEach(function(p){b2+=BUD[Math.max(1,Math.min(20,int(p.level,1)))-1][1]});q=Math.floor(b2/XP[hit[4]])}
+  q=Math.max(1,Math.min(roster().length+2,q));
+  if(!buildEncounter(hit,q,true))return false;stopSpeak();location.hash="combate";return true}
+function backToStory(){var C=S.combat,win=C.over==="win",res=(C.log||[]).slice(-6).join(" ");
+  S.combat={round:0,turnId:null,list:[],auto:true,log:[],over:null,byIA:false};S.ia.mode="auto";touch(false);location.hash="ia";route();draw();
+  if(canAsk()&&!busy)say("El combate ha terminado con "+(win?"la victoria del grupo":"la derrota del grupo")+". Así acabó: "+res+" Continúa la historia desde aquí"+(win?".":" y decide qué les ocurre a los personajes caídos."))}
+function useStoryMap(){var s=story();if(s&&s.mapId&&S.maps.some(function(m){return m.id===s.mapId})&&S.mapId!==s.mapId){S.mapId=s.mapId;selTok=null;V.fit=false}}
+$("#st-map").onchange=function(){var v=this.value;stEdit(function(s){s.mapId=v||null},false);useStoryMap();touch(false)};
+
+/* describir el mapa con la IA */
+function mapImage(m){return new Promise(function(res,rej){if(!m.src)return rej();
+  if(m.src.t==="url"){if(inArtifact)return rej();res({url:m.src.v});return}
+  idbGet(m.id).then(function(b){if(!b)return rej();var u=URL.createObjectURL(b),im=new Image();
+    im.onload=function(){var k=Math.min(1,1600/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement("canvas");c.width=Math.round(im.naturalWidth*k);c.height=Math.round(im.naturalHeight*k);
+      c.getContext("2d").drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);c.toBlob(function(bl){bl?res({blob:bl,url:c.toDataURL("image/jpeg",.8)}):rej()},"image/jpeg",.8)};
+    im.onerror=rej;im.src=u},rej)})}
+$("#map-ai").onclick=function(){var m=curMap(),el=$("#map-ai-msg");if(busy){el.textContent="La IA está ocupada.";return}
+  if(!m.src){el.textContent="Este mapa no tiene imagen. Escribe tú la descripción.";return}
+  if(!canAsk()){el.textContent=inArtifact?"Claude no está disponible en esta vista.":"Configura primero el motor de IA en «Máster IA».";return}
+  el.textContent="Mirando el mapa…";
+  mapImage(m).then(function(img){return run("Esta imagen es un mapa de batalla de un juego de rol, visto desde arriba. Descríbelo en 70 palabras como máximo para quien dirige la partida: qué lugar es, sus zonas, las entradas y salidas, los obstáculos y los elementos con los que se puede interactuar. Responde solo con la descripción, en español y en texto plano.",function(t){$("#map-desc").value=t},img).then(function(r){drawIA();
+    if(r.err||!r.text){el.textContent=($("#ia-note").textContent||"No se pudo.")+" Hace falta un modelo de IA con visión; si no, escribe tú la descripción.";return}
+    m.desc=r.text.trim();$("#map-desc").value=m.desc;touch(false);el.textContent="Descripción guardada. El máster IA la usará al narrar."})},function(){el.textContent="No se puede leer la imagen de este mapa en este dispositivo."})};
+
+/* modo explicación */
+var HELP_ACTS=[["Atacar","Golpeas o disparas. Tiras un d20 y sumas tu bono; si igualas o superas la CA del objetivo, impactas y tiras el daño."],["Lanzar un conjuro","Usas un hechizo de tu lista. Unos piden tirada de ataque y otros obligan al enemigo a una tirada de salvación."],["Correr","Te mueves el doble este turno, pero no atacas."],["Destrabarse","Te alejas de un enemigo sin que pueda darte un golpe gratis al irte."],["Esquivar","Te centras en defenderte: quien te ataque tira con desventaja hasta tu próximo turno."],["Ayudar","Echas una mano a un compañero: su próxima prueba o ataque tira con ventaja."],["Esconderse","Intentas que no te vean, con una prueba de Sigilo."],["Preparar","Guardas tu acción para reaccionar cuando pase algo concreto, por ejemplo «disparo si abre la puerta»."],["Buscar o estudiar","Observas el entorno o recuerdas algo, con una prueba de Sabiduría o de Inteligencia."],["Usar un objeto","Bebes una poción, tiras de una palanca, enciendes una antorcha."]];
+var GLOSS=[["d20","El dado de veinte caras. Casi todo se decide tirándolo y sumando un número de tu hoja."],["PG","Puntos de golpe: cuánto daño aguantas. A 0 caes inconsciente."],["CA","Clase de armadura: lo difícil que es darte. El atacante tiene que igualarla o superarla con su tirada."],["Bono o modificador","El número que sumas al dado, por ejemplo +5. Sale de tus características y de lo que sabes hacer."],["Iniciativa","La tirada que decide el orden de los turnos al empezar un combate."],["CD","Clase de dificultad: el número que hay que igualar o superar en una prueba. 10 es fácil, 15 medio, 20 difícil."],["Tirada de salvación","Una tirada para resistir algo malo, como un veneno o una bola de fuego."],["Ventaja y desventaja","Con ventaja tiras dos d20 y te quedas el mejor. Con desventaja, el peor."],["Crítico","Sacar un 20 en el dado al atacar: impactas seguro y tiras el doble de dados de daño."],["Acción adicional","Una acción extra y rápida que solo tienes si un rasgo o conjuro te la da."],["Reacción","Algo que haces fuera de tu turno, una vez por ronda. La más común es el ataque de oportunidad."],["Salvación contra muerte","Si empiezas tu turno a 0 PG tiras un d20: con 10 o más es un éxito. Tres éxitos te estabilizan, tres fallos te matan."],["Descanso","Corto, una hora, para recuperar algo. Largo, ocho horas, para recuperar todos los PG."]];
+function helpHtml(intro){return'<h2>Modo explicación</h2><p class="sub">'+intro+' Se apaga con «Explicaciones» en el menú.</p><details open><summary>Qué puede hacer tu personaje en su turno</summary><p class="sub" style="margin:8px 0">En tu turno te mueves hasta tu velocidad, normalmente 9 m o seis casillas, y haces una de estas acciones, antes o después de moverte:</p><dl>'+HELP_ACTS.map(function(a){return'<dt>'+a[0]+'</dt><dd>'+a[1]+'</dd>'}).join("")+'</dl></details><details><summary>Qué significa cada palabra</summary><dl style="margin-top:8px">'+GLOSS.map(function(a){return'<dt>'+a[0]+'</dt><dd>'+a[1]+'</dd>'}).join("")+'</dl></details>'}
+$("#help-combat").innerHTML=helpHtml("Guía rápida para quien no ha jugado nunca.");
+$("#help-ia").innerHTML=helpHtml("Con este modo el máster IA explica las reglas que usa y propone opciones a los personajes.");
+$("#btn-help").onclick=function(){helpOn=!helpOn;try{localStorage.setItem(LS+"-ayuda",helpOn?"1":"0")}catch(e){}draw()};
+
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -1043,7 +1165,7 @@ function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===unde
   S.ia.log=s&&Array.isArray(s.log)?s.log:[];S.ia.summary=s&&s.sum||"";S.ia.sid=id;if(s){delete s.log;delete s.sum}}
 function started(s){return(S.ia.sid===s.id?S.ia.log:s.log||[]).length>0}
 function startBtn(s){return'<button type="button" class="pri" data-start-story="'+s.id+'">'+(started(s)?"Continuar historia":"Iniciar historia")+'</button>'}
-function startStory(id){var s=storyById(id);if(!s||busy)return;S.storyId=id;iaBind();S.ia.mode="auto";
+function startStory(id){var s=storyById(id);if(!s||busy)return;S.storyId=id;iaBind();useStoryMap();S.ia.mode="auto";
   if(!s.chapters.some(function(c){return c.st==="curso"})){var f=s.chapters.filter(function(c){return c.st!=="hecho"})[0];if(f)f.st="curso"}
   if(s.status==="borrador")s.status="activa";
   touch(false);if(location.hash!=="#ia")location.hash="ia";route();draw();window.scrollTo(0,0);
@@ -1238,6 +1360,9 @@ function iaCtx(){var L=[];
   return L.join("\n\n")||"Todavía no hay datos de la partida apuntados en el panel."}
 function lead(m){var t=BASE+"\n\n"+MODES[m].rules;
   if(m==="auto"){var p=[];for(var i=0;i<8;i++)p.push(d(20));t+="\n\nPara las tiradas de d20 de monstruos y PNJ usa, en este orden, estos resultados que ya se han tirado con dados reales: "+p.join(", ")+"."}
+  if(m!=="copiloto"){t+="\n\nCuando estalle un combate no lo resuelvas tú: termina tu respuesta con una línea exactamente así: [COMBATE: nombre de la criatura x cantidad], usando solo criaturas de esta lista: "+BEST.map(function(x){return x[0]}).join(", ")+". El panel tirará los dados y después te contará cómo acabó.";
+    var cm=curMap();if(cm.src||cm.desc)t+="\n\nLa escena actual transcurre en el mapa en pantalla, descrito más abajo: ambienta la narración en ese lugar concreto y ten en cuenta dónde está cada figura."}
+  if(helpOn)t+=m==="copiloto"?"\n\nEl máster es novato: explica en pocas palabras cada regla que menciones.":"\n\nMODO EXPLICACIÓN: los jugadores no han jugado nunca. Después de narrar añade una línea que empiece por «Opciones:» con tres o cuatro cosas concretas que podrían hacer sus personajes ahora, y explica entre paréntesis, en pocas palabras, cada término de reglas que uses.";
   return t+"\n\nESTADO DE LA MESA\n\n"+iaCtx()}
 function turns(m){var out=[{role:"user",content:lead(m)}];
   S.ia.log.slice(-30).forEach(function(x){out.push({role:x.r==="a"?"assistant":"user",content:x.t})});return out}
@@ -1251,8 +1376,6 @@ function iaButtons(){$("#ia-send").disabled=busy;$("#ia-stop").hidden=!busy;
   ["#ia-start","#ia-sum","#ia-clear","#ia-accept","#ia-regen","#ia-discard"].forEach(function(s){$(s).disabled=busy});
   [].forEach.call(document.querySelectorAll("#ia-quick button"),function(b){b.disabled=busy})}
 function logPush(r,t){S.ia.log.push({r:r,t:t});if(S.ia.log.length>80)S.ia.log.splice(0,S.ia.log.length-80)}
-function drawLog(){var ol=$("#ia-log");ol.textContent="";
-  S.ia.log.forEach(function(x){var li=document.createElement("li");li.className=x.r==="a"?"a":"u";li.textContent=x.t;ol.appendChild(li)})}
 function drawIA(){var m=S.ia.mode,chat=m!=="copiloto",hide=players&&m!=="auto";
   var off=inArtifact&&iaKnown&&!sample;$("#ia-off").hidden=!off;$("#ia-on").hidden=off;$("#motor").hidden=inArtifact;$("#ia-only-claude").hidden=!inArtifact;$("#motor-now").textContent=cfg.model||"sin configurar";
   [].forEach.call($("#ia-modes").children,function(b){b.setAttribute("aria-pressed",b.dataset.ia===m)});
@@ -1268,7 +1391,7 @@ function drawIA(){var m=S.ia.mode,chat=m!=="copiloto",hide=players&&m!=="auto";
 function propose(){var box=$("#ia-draft"),ta=$("#ia-draft-text");box.hidden=false;ta.value="";ta.readOnly=true;
   run(turns("narrador"),function(t){ta.value=t}).then(function(r){ta.readOnly=false;if(!r.text){box.hidden=true}else ta.value=r.text;drawIA()})}
 function autoReply(){var li=document.createElement("li");li.className="a";$("#ia-log").appendChild(li);$("#ia-empty").hidden=true;
-  run(turns("auto"),function(t){li.textContent=t}).then(function(r){if(r.text){logPush("a",r.text+(r.err&&r.err!=="cancelled"?"\n(respuesta interrumpida)":""));mapFromText(r.text);touch(false)}drawIA()})}
+  run(turns("auto"),function(t){li.textContent=t}).then(function(r){if(r.text){logPush("a",r.text+(r.err&&r.err!=="cancelled"?"\n(respuesta interrumpida)":""));mapFromText(r.text);touch(false);afterReply(r.text)}drawIA()})}
 function say(text){logPush("u",text);touch(false);drawLog();if(S.ia.mode==="narrador")propose();else autoReply()}
 $("#ia-modes").addEventListener("click",function(e){var b=e.target.closest("[data-ia]");if(!b||busy)return;S.ia.mode=b.dataset.ia;touch(false);drawIA();route()});
 $("#ia-form").addEventListener("submit",function(e){e.preventDefault();var i=$("#ia-input"),q=i.value.trim();if(!q||!ready())return;i.value="";
@@ -1281,7 +1404,7 @@ $("#ia-quick").addEventListener("click",function(e){var b=e.target.closest("[dat
 $("#ia-tonotes").onclick=function(){var hs=story();if(!lastOut)return;if(!hs){note("Crea primero una historia en «Historias».");return}hs.notes.push({id:uid(),title:"Del copiloto",text:lastOut,t:Date.now()});touch();note("Guardado en las notas de «"+hs.title+"».")};
 $("#ia-stop").onclick=function(){if(ctl)ctl.abort()};
 $("#ia-start").onclick=function(){if(ready())say(START)};
-$("#ia-accept").onclick=function(){var t=$("#ia-draft-text").value.trim();if(!t)return;logPush("a",t);$("#ia-draft").hidden=true;mapFromText(t);touch(false);drawIA()};
+$("#ia-accept").onclick=function(){var t=$("#ia-draft-text").value.trim();if(!t)return;logPush("a",t);$("#ia-draft").hidden=true;mapFromText(t);touch(false);drawIA();afterReply(t)};
 $("#ia-regen").onclick=function(){if(ready())propose()};
 $("#ia-discard").onclick=function(){var L=S.ia.log;if(L.length&&L[L.length-1].r==="u"){$("#ia-input").value=L.pop().t;touch(false)}$("#ia-draft").hidden=true;drawIA()};
 $("#ia-sum").onclick=function(){if(S.ia.log.length<=12||!ready())return;var old=S.ia.log.slice(0,-12);
@@ -1492,7 +1615,7 @@ function route(){var h=location.hash.replace("#","");solo=h==="mapa-completo";if
 window.addEventListener("hashchange",function(){route();draw();window.scrollTo(0,0)});
 $("#btn-players").onclick=function(){players=!players;try{localStorage.setItem(LS+"-players",players?"1":"0")}catch(e){}draw();route()};
 $("#btn-dice").onclick=function(){diceOn=!diceOn;try{localStorage.setItem(LS+"-dados",diceOn?"1":"0")}catch(e){}V.fit=false;draw()};
-function draw(){iaBind();document.body.classList.toggle("players",players);$("#btn-players").setAttribute("aria-pressed",players);
+function draw(){iaBind();document.body.classList.toggle("help-on",helpOn);$("#btn-help").setAttribute("aria-pressed",helpOn);document.body.classList.toggle("players",players);$("#btn-players").setAttribute("aria-pressed",players);
   $("#app").classList.toggle("dice-on",diceOn);$("#btn-dice").setAttribute("aria-pressed",diceOn);
   drawPanel();drawStories();drawStory();drawChars();drawDiff();drawOrder();drawAuto();drawNotes();drawIA();if(!$("#tab-mapa").hidden)drawMapUI()}
 draw();route();
