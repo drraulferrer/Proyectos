@@ -320,7 +320,19 @@ label{display:flex;flex-direction:column;gap:3px}
   <!-- HISTORIAS -->
   <section class="tab" id="tab-historias" hidden>
     <div class="head"><div class="ttl"><h1>Historias</h1><p class="sub" id="st-sub"></p></div>
-      <div class="acts dm"><button type="button" class="pri" data-new-story>+ Nueva historia</button></div></div>
+      <div class="acts dm"><button type="button" id="gen-open">Generar con IA</button><button type="button" class="pri" data-new-story>+ Nueva historia</button></div></div>
+    <details class="card dm" id="gen"><summary>Generar una historia completa con la IA</summary>
+      <p class="sub">El motor de IA que tengas configurado inventa una aventura original con su sinopsis, escena inicial, capítulos, PNJ y misiones. La revisas antes de crearla.</p>
+      <div class="fgrid">
+        <label>Tono<select id="gen-tone"><option value="aventura clásica">Aventura clásica</option><option value="misterio e investigación">Misterio</option><option value="terror gótico">Terror</option><option value="exploración de mazmorras">Mazmorras</option><option value="humor y enredos">Humor</option><option value="intriga política">Intriga</option></select></label>
+        <label>Duración<select id="gen-len"><option value="3">Corta, 3 capítulos</option><option value="5" selected>Media, 5 capítulos</option><option value="8">Larga, 8 capítulos</option></select></label>
+        <label>Nivel de los personajes<input id="gen-lvl" type="number" min="1" max="20" value="1"></label>
+      </div>
+      <label class="wide">Idea de partida, si tienes alguna<textarea id="gen-idea" placeholder="Un faro que se enciende solo, un gremio de ladrones honrados, una boda entre familias enemigas…"></textarea></label>
+      <div class="bar"><button type="button" id="gen-go" class="pri">Generar historia</button><button type="button" id="gen-ok" hidden>Crear esta historia</button><button type="button" id="gen-no" class="ghost" hidden>Descartar</button></div>
+      <p id="gen-msg" class="sub" role="status"></p>
+      <div id="gen-out"></div>
+    </details>
     <div class="chips" id="st-filters"></div>
     <div id="st-cards"></div>
   </section>
@@ -354,6 +366,7 @@ label{display:flex;flex-direction:column;gap:3px}
               <label>Sistema<input id="st-system"></label>
               <label>Estado<select id="st-status"><option value="activa">Activa</option><option value="pausa">En pausa</option><option value="completada">Completada</option><option value="borrador">Borrador</option></select></label>
               <label>Portada<select id="st-cover"></select></label>
+              <label>O una imagen tuya<input id="st-cover-file" type="file" accept="image/*"></label>
               <label>Próxima sesión<input id="st-date" type="date"></label>
               <label>Hora<input id="st-time" type="time"></label>
             </div>
@@ -392,8 +405,10 @@ label{display:flex;flex-direction:column;gap:3px}
   <section class="tab" id="tab-personajes" hidden>
     <div class="head"><div class="ttl"><h1>Personajes</h1><p class="sub" id="ch-sub"></p></div>
       <div class="acts"><input id="ch-q" class="search" type="search" placeholder="Buscar personajes…" aria-label="Buscar personajes">
+        <button type="button" id="imp-btn" class="dm" title="Desde el PDF o una captura de la hoja de D&amp;D Beyond">Importar de D&amp;D Beyond</button><input id="imp-file" type="file" accept="application/pdf,image/*" hidden>
         <button type="button" id="btn-rest" class="dm" title="Todos recuperan sus PG máximos">Descanso largo</button>
         <button type="button" class="pri dm" id="btn-addpc">+ Nuevo personaje</button></div></div>
+    <p id="ch-msg" class="sub" role="status"></p>
     <div class="chips" id="ch-filters"></div>
     <div id="ch-cards"></div>
   </section>
@@ -664,10 +679,10 @@ var CHECK=[["c1","Leer el capítulo «Cómo jugar» del Manual del Jugador. El r
 
 /* ---- estado ---- */
 function blank(){return{rev:"",party:[],combat:{round:0,turnId:null,list:[]},notes:"",checks:{},stories:[],storyId:null,activity:[],maps:[],mapId:null,ia:{mode:"copiloto",premise:"",summary:"",log:[]}}}
-function mkStory(t,i){return{id:uid(),title:t,system:"D&D 5.5",status:"activa",desc:"",cover:["castillo","dragon","bosque"][i%3],chapters:[],sessions:[],notes:[],npcs:[],quests:[],next:{date:"",time:""}}}
+function mkStory(t,i){return{id:uid(),title:t,system:"D&D 5.5",status:"activa",desc:"",cover:["castillo","dragon","bosque","cripta","puerto","montana","desierto","pantano","taberna","ciudad","barco","volcan"][i%12],chapters:[],sessions:[],notes:[],npcs:[],quests:[],next:{date:"",time:""}}}
 function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   b.maps=Array.isArray(o.maps)?o.maps.filter(function(m){return m&&m.id&&m.cell>0&&m.w>0&&m.h>0}).map(function(m){m.tokens=Array.isArray(m.tokens)?m.tokens:[];m.fx=Array.isArray(m.fx)?m.fx:[];return m}):[];b.mapId=o.mapId||null;
-  var a=o.ia||{};b.ia={mode:["copiloto","narrador","auto"].indexOf(a.mode)>=0?a.mode:"copiloto",premise:typeof a.premise==="string"?a.premise:"",summary:typeof a.summary==="string"?a.summary:"",log:Array.isArray(a.log)?a.log.filter(function(x){return x&&typeof x.t==="string"&&x.t}):[]};
+  var a=o.ia||{};b.ia={mode:["copiloto","narrador","auto"].indexOf(a.mode)>=0?a.mode:"copiloto",premise:typeof a.premise==="string"?a.premise:"",summary:typeof a.summary==="string"?a.summary:"",log:Array.isArray(a.log)?a.log.filter(function(x){return x&&typeof x.t==="string"&&x.t}):[]};if("sid" in a)b.ia.sid=a.sid;
   b.rev=o.rev||"";b.party=Array.isArray(o.party)?o.party:[];b.notes=typeof o.notes==="string"?o.notes:"";b.checks=o.checks&&typeof o.checks==="object"?o.checks:{};
   var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[]};
   function arr(v){return Array.isArray(v)?v:[]}
@@ -785,7 +800,8 @@ $("#add-mon").addEventListener("submit",function(e){e.preventDefault();var name=
   $("#m-qty").value=1;touch()});
 
 /* ---- historias, panel y personajes ---- */
-var COVERS={castillo:"Castillo en ruinas",dragon:"Tesoro del dragón",bosque:"Bosque feérico"};
+var COVERS={castillo:"Castillo en ruinas",dragon:"Tesoro del dragón",bosque:"Bosque feérico",cripta:"Cripta inundada",puerto:"Puerto de noche",montana:"Fortaleza en la montaña",desierto:"Ruinas del desierto",pantano:"Torre del pantano",taberna:"Taberna del camino",ciudad:"Ciudad gótica",barco:"Barco fantasma",volcan:"Ciudadela del volcán"};
+var coverCache={};
 var ST={activa:["Activa","ok"],pausa:["En pausa","pause"],completada:["Completada","done"],borrador:["Borrador","done"]};
 var CST={pend:["Pendiente","done"],curso:["En curso","pause"],hecho:["Completado","ok"]};
 var QST={abierta:["Abierta","pause"],hecha:["Completada","ok"],fallida:["Fallida","done"]},NST={neutral:["Neutral","done"],aliado:["Aliado","ok"],hostil:["Hostil","bad"],muerto:["Muerto","done"]};
@@ -803,13 +819,15 @@ function prog(s){var n=s.chapters.length;return n?Math.round(s.chapters.filter(f
 function curChap(s){var i,c=s.chapters;for(i=0;i<c.length;i++)if(c[i].st==="curso")return i;for(i=0;i<c.length;i++)if(c[i].st!=="hecho")return i;return-1}
 function hours(s){var h=0;s.sessions.forEach(function(x){h+=+x.h||0});return h}
 function badge(st){var b=ST[st]||ST.activa;return'<span class="badge '+b[1]+'">'+b[0]+'</span>'}
-function coverOf(s,big){var k=COVERS[s.cover]?s.cover:"castillo";return"img/"+k+(big&&k==="castillo"?"-banner":"")+".jpg"}
+function coverOf(s,big){if(s.cover==="propia"){var ck=s.id+"|"+(s.cv||0);if(coverCache[ck])return coverCache[ck];
+    if(coverCache[ck]===undefined){coverCache[ck]=null;idbGet("cover-"+s.id).then(function(b){if(b){coverCache[ck]=URL.createObjectURL(b);if(typing())pendingDraw=true;else draw()}},function(){})}return"img/castillo.jpg"}
+  var k=COVERS[s.cover]?s.cover:"castillo";return"img/"+k+(big&&k==="castillo"?"-banner":"")+".jpg"}
 function ava(name,sm){var w=(name||"?").replace(/\(.*?\)/g,"").trim().split(/\s+/),i=((w[0]||"?").charAt(0)+(w[1]?w[1].charAt(0):(w[0]||"").charAt(1))).toUpperCase(),h=0;
   for(var k=0;k<name.length;k++)h=(h*31+name.charCodeAt(k))%5;return'<span class="ava a'+h+(sm?" sm":"")+'" title="'+esc(name)+'">'+esc(i)+'</span>'}
 function pcSub(p){return[p.race,p.cls].filter(Boolean).join(" | ")||"Sin clase apuntada"}
 function meta(s){var n=S.party.filter(function(p){return p.story===s.id}).length;return esc(s.system||"D&D 5.5")+" | "+s.sessions.length+(s.sessions.length===1?" sesión":" sesiones")+" | "+n+(n===1?" jugador":" jugadores")}
 function lastSes(s){var L=s.sessions;return L.length?"Última sesión: "+ago(new Date(L[L.length-1].d+"T12:00:00").getTime()).toLowerCase():"Sin estrenar"}
-function openStory(id){S.storyId=id;touch(false);if(location.hash==="#historia"){route();draw()}else location.hash="historia"}
+function openStory(id){S.storyId=id;iaBind();touch(false);if(location.hash==="#historia"){route();draw()}else location.hash="historia"}
 function addStory(){var s=mkStory("Nueva historia",S.stories.length);S.stories.push(s);logAct("Nueva historia creada");openStory(s.id);draw();$("#sd-edit").open=true;var t=$("#st-title");t.focus();t.select()}
 document.addEventListener("click",function(e){if(e.target.closest("[data-new-story]"))addStory();var b=e.target.closest("[data-story]");if(b)openStory(b.dataset.story)});
 
@@ -823,7 +841,7 @@ function drawPanel(){var s=story(),act=0,ses=0,hrs=0,R=roster();
     $("#p-cont").innerHTML='<div class="card cont"><img src="'+coverOf(s)+'" alt=""><div class="body"><div class="rowb">'+badge(s.status)+'<span>'+(s.chapters.length?(ci>=0?"Capítulo "+(ci+1)+" de "+s.chapters.length:"Todos los capítulos completados"):"Sin capítulos todavía")+'</span></div>'+
       '<h2>'+esc(s.title)+'</h2><p class="sub">'+esc((s.desc||"Añade una descripción en «Editar historia» para que el máster IA sepa de qué va.").slice(0,220))+'</p>'+
       '<div><div class="rowb"><span>Progreso de la campaña</span><b>'+p+'%</b></div><div class="bar2"><i style="width:'+p+'%"></i></div></div>'+
-      '<div class="rowb" style="align-items:center"><span>'+meta(s)+'</span><button type="button" class="pri" data-story="'+s.id+'">Abrir historia</button></div></div></div>';
+      '<div class="rowb" style="align-items:center"><span>'+meta(s)+'</span><span class="bar">'+startBtn(s)+'<button type="button" data-story="'+s.id+'">Abrir</button></span></div></div></div>';
     $("#p-next").innerHTML='<div class="card"><span class="eyebrow">Próxima sesión</span><div><h2 style="font-size:1.25rem">'+(s.next.date?esc(fdate(s.next.date)):"Sin fecha")+'</h2><p class="sub">'+(s.next.time?esc(s.next.time)+" | ":"")+esc(s.title)+'</p></div>'+
       '<div style="border-top:1px solid var(--divider);padding-top:12px" class="stack" style="gap:8px"><span class="sub">Jugadores en mesa</span><div class="chips">'+(R.length?R.map(function(x){return ava(x.name||"?",1)}).join(""):'<span class="sub">Ninguno todavía</span>')+'</div></div>'+
       '<p class="sub dm">La fecha se cambia en «Editar historia».</p></div>'}
@@ -840,8 +858,8 @@ function drawStories(){var act=S.stories.filter(function(x){return x.status==="a
 $("#st-filters").addEventListener("click",function(e){var b=e.target.closest("[data-stf]");if(b){stFilter=b.dataset.stf;drawStories()}});
 
 function drawStory(){var s=story();$("#sd-none").hidden=!!s;$("#sd").hidden=!s;if(!s)return;
-  $("#sd-banner").innerHTML='<img src="'+coverOf(s,1)+'" alt=""><a class="back" href="#historias">← Volver</a><div>'+badge(s.status)+'</div><h1>'+esc(s.title)+'</h1><p class="sub" style="color:var(--ink)">'+meta(s)+(roster().length?" | Nivel medio "+Math.round(roster().reduce(function(a,p){return a+int(p.level,1)},0)/roster().length):"")+'</p>';
-  $("#sd-chaps").innerHTML=s.chapters.length?s.chapters.map(function(c,i){var b=CST[c.st]||CST.pend;return'<div class="chap '+(CST[c.st]?c.st:"pend")+'"><span class="n">'+(c.st==="hecho"?"✓":i+1)+'</span><span class="t"><b>'+(i+1)+". "+esc(c.title)+'</b></span>'+
+  $("#sd-banner").innerHTML='<img src="'+coverOf(s,1)+'" alt=""><a class="back" href="#historias">← Volver</a><div>'+badge(s.status)+'</div><h1>'+esc(s.title)+'</h1><p class="sub" style="color:var(--ink)">'+meta(s)+(roster().length?" | Nivel medio "+Math.round(roster().reduce(function(a,p){return a+int(p.level,1)},0)/roster().length):"")+'</p><div>'+startBtn(s)+'</div>';
+  $("#sd-chaps").innerHTML=s.chapters.length?s.chapters.map(function(c,i){var b=CST[c.st]||CST.pend;return'<div class="chap '+(CST[c.st]?c.st:"pend")+'"><span class="n">'+(c.st==="hecho"?"✓":i+1)+'</span><span class="t"><b>'+(i+1)+". "+esc(c.title)+'</b>'+(c.note?'<small>'+esc(c.note)+'</small>':"")+'</span>'+
     '<button type="button" class="badge '+b[1]+'" data-chap="'+c.id+'" title="Cambiar estado">'+b[0]+'</button><button type="button" class="ghost dm" data-chap-rm="'+c.id+'" aria-label="Quitar capítulo">✕</button></div>'}).join(""):'<p class="sub">Divide la historia en capítulos para ver el progreso. Pulsa el estado de cada uno para avanzarlo.</p>';
   $("#sd-ses").innerHTML=s.sessions.length?s.sessions.slice().reverse().map(function(x,i){return'<li><span class="n ava sm adm">'+(s.sessions.length-i)+'</span><span class="t"><b>'+esc(fdate(x.d))+'</b> · '+fmt(+x.h||0)+' h<small>'+esc(x.x||"Sin resumen")+'</small></span><button type="button" class="ghost dm" data-ses-rm="'+x.id+'" aria-label="Quitar sesión">✕</button></li>'}).join(""):'<li><span class="t sub">Aún no hay sesiones registradas.</span></li>';
   var done=s.chapters.filter(function(c){return c.st==="hecho"}).length;
@@ -851,13 +869,15 @@ function drawStory(){var s=story();$("#sd-none").hidden=!!s;$("#sd").hidden=!s;i
     ((q.giver||q.reward)?'<p>'+esc([q.giver?"Encargo de "+q.giver:"",q.reward?"Recompensa: "+q.reward:""].filter(Boolean).join(" | "))+'</p>':"")+'</div>'}).join(""):'<p class="sub">Lo que el grupo tiene pendiente. Pulsa el estado para marcarla como completada o fallida.</p>';
   $("#sd-npcs").innerHTML=s.npcs.length?s.npcs.map(function(n){var b=NST[n.st]||NST.neutral;return'<div class="note"><div class="rowb"><span style="display:flex;gap:10px;align-items:center;min-width:0">'+ava(n.name||"?",1)+'<b style="overflow-wrap:anywhere">'+esc(n.name)+'</b></span><span><button type="button" class="badge '+b[1]+'" data-npc="'+n.id+'" title="Cambiar actitud">'+b[0]+'</button> <button type="button" class="ghost dm" data-npc-rm="'+n.id+'" aria-label="Quitar PNJ" style="min-height:24px;padding:0 6px">✕</button></span></div>'+
     ((n.role||n.where)?'<p>'+esc([n.role,n.where].filter(Boolean).join(" | "))+'</p>':"")+(n.wants?'<p>Quiere: '+esc(n.wants)+'</p>':"")+(n.secret?'<p class="dm" style="color:var(--warn)">Secreto: '+esc(n.secret)+'</p>':"")+'</div>'}).join(""):'<p class="sub">La gente que el grupo conoce: quién es, qué quiere y qué esconde.</p>';
-  $("#st-cover").innerHTML=Object.keys(COVERS).map(function(k){return'<option value="'+k+'">'+COVERS[k]+'</option>'}).join("");
-  setVal("#st-title",s.title);setVal("#st-system",s.system||"");$("#st-status").value=s.status;$("#st-cover").value=COVERS[s.cover]?s.cover:"castillo";setVal("#st-date",s.next.date||"");setVal("#st-time",s.next.time||"");setVal("#st-desc",s.desc||"")}
+  $("#st-cover").innerHTML=Object.keys(COVERS).map(function(k){return'<option value="'+k+'">'+COVERS[k]+'</option>'}).join("")+(s.cover==="propia"?'<option value="propia">Imagen propia</option>':"");
+  setVal("#st-title",s.title);setVal("#st-system",s.system||"");$("#st-status").value=s.status;$("#st-cover").value=COVERS[s.cover]||s.cover==="propia"?s.cover:"castillo";setVal("#st-date",s.next.date||"");setVal("#st-time",s.next.time||"");setVal("#st-desc",s.desc||"")}
 function stEdit(fn,redraw){var s=story();if(!s)return;fn(s);touch(false);if(redraw!==false){drawPanel();drawStories();drawStory();drawIA()}}
 $("#st-title").onchange=function(){var v=this.value.trim()||"Historia sin título";stEdit(function(s){s.title=v})};
 $("#st-system").onchange=function(){var v=this.value.trim();stEdit(function(s){s.system=v})};
 $("#st-status").onchange=function(){var v=this.value;stEdit(function(s){s.status=v})};
 $("#st-cover").onchange=function(){var v=this.value;stEdit(function(s){s.cover=v})};
+$("#st-cover-file").onchange=function(){var f=this.files&&this.files[0],s=story();this.value="";if(!f||!s)return;
+  idbPut("cover-"+s.id,f).then(function(){stEdit(function(x){x.cover="propia";x.cv=Date.now()})},function(){$("#imp-msg").textContent="Este navegador no deja guardar la imagen."})};
 $("#st-date").onchange=function(){var v=this.value;stEdit(function(s){s.next.date=v})};
 $("#st-time").onchange=function(){var v=this.value;stEdit(function(s){s.next.time=v})};
 $("#st-desc").oninput=function(){var v=this.value;stEdit(function(s){s.desc=v},false)};
@@ -891,9 +911,9 @@ $("#npc-form").addEventListener("submit",function(e){e.preventDefault();var n=va
   $("#npc-msg").textContent="";stEdit(function(s){s.npcs.push(o);logAct("Nuevo PNJ: "+n+(o.role?", "+o.role.toLowerCase():""))})});
 function parseJSON(t){t=String(t||"");var c=[t,t.replace(/^[\s\S]*?```(?:json)?/i,"").replace(/```[\s\S]*$/,""),t.slice(t.indexOf("{"),t.lastIndexOf("}")+1)];
   for(var i=0;i<c.length;i++){try{var v=JSON.parse(c[i]);if(v&&typeof v==="object")return v}catch(e){}}return null}
-function askJSON(prompt,el){if(busy){el.textContent="La IA está ocupada con otra petición.";return Promise.resolve(null)}
+function askJSON(prompt,el,img){if(busy){el.textContent="La IA está ocupada con otra petición.";return Promise.resolve(null)}
   if(!canAsk()){el.textContent=inArtifact?"Claude no está disponible en esta vista.":"Configura primero el motor de IA en «Máster IA».";return Promise.resolve(null)}
-  el.textContent="Pensando…";return run(prompt,function(){}).then(function(r){drawIA();if(r.err){el.textContent=$("#ia-note").textContent||"No se pudo completar.";return null}
+  el.textContent="Pensando…";return run(prompt,function(){},img).then(function(r){drawIA();if(r.err){el.textContent=$("#ia-note").textContent||"No se pudo completar.";return null}
     var j=parseJSON(r.text);if(!j){el.textContent="La IA no ha devuelto un resultado legible. Prueba otra vez o con otro modelo.";return null}el.textContent="";return j})}
 function str(v,n){return typeof v==="string"?v.trim().slice(0,n||200):""}
 $("#npc-ai").onclick=function(){var el=$("#npc-msg");
@@ -923,6 +943,86 @@ function demoStory(){var s=mkStory("La campana hundida (ejemplo)",S.stories.leng
   s.notes=[{id:uid(),title:"Cómo usar este ejemplo",text:"Cambia los estados de capítulos, misiones y PNJ pulsando sus etiquetas. Cuando tengas tu propia historia, elimina esta en «Editar historia».",t:Date.now()}];
   S.stories.push(s);logAct("Historia de ejemplo cargada");openStory(s.id);draw()}
 document.addEventListener("click",function(e){if(e.target.closest("[data-demo-story]"))demoStory()});
+
+/* ---- iniciar historia ---- */
+var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
+function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
+  var old=storyById(S.ia.sid);if(old){old.log=S.ia.log;old.sum=S.ia.summary}
+  S.ia.log=s&&Array.isArray(s.log)?s.log:[];S.ia.summary=s&&s.sum||"";S.ia.sid=id;if(s){delete s.log;delete s.sum}}
+function started(s){return(S.ia.sid===s.id?S.ia.log:s.log||[]).length>0}
+function startBtn(s){return'<button type="button" class="pri" data-start-story="'+s.id+'">'+(started(s)?"Continuar historia":"Iniciar historia")+'</button>'}
+function startStory(id){var s=storyById(id);if(!s||busy)return;S.storyId=id;iaBind();S.ia.mode="auto";
+  if(!s.chapters.some(function(c){return c.st==="curso"})){var f=s.chapters.filter(function(c){return c.st!=="hecho"})[0];if(f)f.st="curso"}
+  if(s.status==="borrador")s.status="activa";
+  touch(false);if(location.hash!=="#ia")location.hash="ia";route();draw();window.scrollTo(0,0);
+  if(S.ia.log.length){note("La historia sigue donde la dejasteis. Escribid qué hacéis.");return}
+  if(!canAsk()){if(inArtifact)note(iaKnown?"Claude no está disponible en esta vista.":"Conectando con Claude. Pulsa «Empezar la aventura» en unos segundos.");
+    else{note("Falta un paso: elige aquí arriba el motor de IA y pulsa «Empezar la aventura».");$("#motor").open=true}return}
+  logAct("Historia iniciada: "+s.title);say(START);
+  if(!roster().length)note("No hay personajes apuntados en esta historia: el máster IA narrará sin conocerlos.")}
+document.addEventListener("click",function(e){var b=e.target.closest("[data-start-story]");if(b)startStory(b.dataset.startStory)});
+
+/* ---- generar una historia completa ---- */
+var genData=null;
+function genShow(){var d=genData,o=$("#gen-out");$("#gen-ok").hidden=$("#gen-no").hidden=!d;if(!d){o.innerHTML="";return}
+  o.innerHTML='<div class="stack" style="gap:8px"><h2 style="font-family:var(--display);font-weight:500;font-size:1.2rem">'+esc(d.title)+'</h2><p class="sub">'+esc(d.desc)+'</p>'+
+    (d.hook?'<p><b>Escena inicial:</b> '+esc(d.hook)+'</p>':"")+
+    '<p><b>Capítulos ('+d.c.length+'):</b> '+esc(d.c.map(function(x){return x.title}).join("; "))+'</p>'+
+    '<p><b>PNJ ('+d.n.length+'):</b> '+esc(d.n.map(function(x){return x.name+(x.role?" ("+x.role+")":"")}).join("; "))+'</p>'+
+    '<p><b>Misiones ('+d.q.length+'):</b> '+esc(d.q.map(function(x){return x.title}).join("; "))+'</p></div>'}
+$("#gen-open").onclick=function(){var g=$("#gen");g.open=true;g.scrollIntoView({block:"nearest"});$("#gen-idea").focus()};
+$("#gen-go").onclick=function(){var el=$("#gen-msg"),R=roster(),n=R.length||4,lvl=Math.max(1,Math.min(20,int($("#gen-lvl").value,1))),len=int($("#gen-len").value,5),idea=$("#gen-idea").value.trim().slice(0,1500);
+  var p=BASE+"\n\nInventa una aventura original y completa para "+n+" personajes de nivel "+lvl+", de tono "+$("#gen-tone").value+", dividida en "+len+" capítulos."+
+    (idea?" Parte de esta idea: "+idea:"")+(R.length?"\nPersonajes del grupo: "+R.map(function(x){return(x.name||"sin nombre")+" ("+([x.race,x.cls].filter(Boolean).join(" ")||"sin clase")+")"}).join(", ")+".":"")+
+    "\nNo uses nombres, lugares ni tramas de aventuras publicadas. Responde solo con JSON, sin más texto, con esta forma: "+
+    "{\"titulo\":\"\",\"descripcion\":\"sinopsis para el máster en unas 120 palabras, con el conflicto, el villano y su secreto\",\"escena_inicial\":\"unas 80 palabras para leer en voz alta al empezar\",\"portada\":\"\",\"capitulos\":[{\"titulo\":\"\",\"resumen\":\"qué ocurre y cómo termina, en dos frases\"}],\"pnj\":[{\"nombre\":\"\",\"papel\":\"\",\"donde\":\"\",\"quiere\":\"\",\"secreto\":\"\"}],\"misiones\":[{\"titulo\":\"\",\"encargo\":\"\",\"recompensa\":\"\"}]}. "+
+    "Incluye entre 4 y 6 PNJ y entre 3 y 5 misiones. En «portada» pon la clave que mejor encaje de esta lista: "+Object.keys(COVERS).map(function(k){return k+" ("+COVERS[k].toLowerCase()+")"}).join(", ")+".";
+  askJSON(p,el).then(function(j){if(!j)return;var A=function(v){return Array.isArray(v)?v:[]};
+    genData={title:str(j.titulo,90)||"Historia sin título",desc:str(j.descripcion,1500),hook:str(j.escena_inicial,900),cover:COVERS[str(j.portada,20)]?str(j.portada,20):"",
+      c:A(j.capitulos).map(function(x){x=typeof x==="string"?{titulo:x}:x||{};return{title:str(x.titulo,90),note:str(x.resumen,400)}}).filter(function(x){return x.title}).slice(0,10),
+      n:A(j.pnj).map(function(x){x=x||{};return{name:str(x.nombre,60),role:str(x.papel,80),where:str(x.donde,80),wants:str(x.quiere),secret:str(x.secreto)}}).filter(function(x){return x.name}).slice(0,8),
+      q:A(j.misiones).map(function(x){x=x||{};return{title:str(x.titulo,90),giver:str(x.encargo,80),reward:str(x.recompensa,80)}}).filter(function(x){return x.title}).slice(0,8)};
+    el.textContent=genData.c.length?"Revisa la propuesta. Si no te convence, pulsa otra vez «Generar historia».":"La IA ha devuelto una historia sin capítulos. Prueba otra vez o con otro modelo.";genShow()})};
+$("#gen-no").onclick=function(){genData=null;genShow();$("#gen-msg").textContent=""};
+$("#gen-ok").onclick=function(){var d=genData;if(!d)return;genData=null;var s=mkStory(d.title,S.stories.length);s.desc=d.desc;if(d.cover)s.cover=d.cover;
+  s.chapters=d.c.map(function(x,i){return{id:uid(),title:x.title,note:x.note,st:i?"pend":"curso"}});
+  s.npcs=d.n.map(function(x){x.id=uid();x.st="neutral";return x});s.quests=d.q.map(function(x){x.id=uid();x.st="abierta";return x});
+  if(d.hook)s.notes.push({id:uid(),title:"Escena inicial",text:d.hook,t:Date.now()});
+  S.stories.push(s);logAct("Historia generada con IA: "+s.title);genShow();$("#gen-msg").textContent="";$("#gen").open=false;openStory(s.id);draw()};
+
+/* ---- importar personajes de D&D Beyond ---- */
+var pdfP=null;
+function loadPdf(){if(!pdfP)pdfP=new Promise(function(res,rej){var sc=document.createElement("script"),b="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";sc.src=b+"pdf.min.js";
+  sc.onload=function(){if(!window.pdfjsLib)return rej();window.pdfjsLib.GlobalWorkerOptions.workerSrc=b+"pdf.worker.min.js";res(window.pdfjsLib)};sc.onerror=function(){pdfP=null;rej()};document.head.appendChild(sc)});return pdfP}
+function nk(s){return String(s||"").toLowerCase().replace(/[^a-z0-9]/g,"")}
+function num(v){var m=/-?\d+/.exec(String(v==null?"":v).replace("−","-"));return m?parseInt(m[0],10):0}
+function classLevel(v){var t=String(v||""),lv=0;(t.match(/\d+/g)||[]).forEach(function(x){lv+=+x});return{cls:t.replace(/\d+/g,"").replace(/\s*\/\s*/g," / ").replace(/\s+/g," ").trim(),level:lv}}
+function fromFields(F){function g(){for(var i=0;i<arguments.length;i++){var v=F[arguments[i]];if(v!=null&&String(v).trim()!=="")return String(v).trim()}return""}
+  var name=g("charactername","charactername2","name");if(!name)return null;var cl=classLevel(g("classlevel","classandlevel","class"));
+  return{nombre:name,especie:g("race","species"),clase:cl.cls,nivel:cl.level||num(g("level")),ca:num(g("ac","armorclass")),pg_max:num(g("maxhp","hpmax","hitpointmaximum")),pg_actuales:num(g("currenthp","curhp","hpcurrent")),
+    percepcion_pasiva:num(g("passive1","passiveperception","passive")),iniciativa:num(g("init","initiative")),jugador:g("playername","player")}}
+function addImported(j,how){var el=$("#ch-msg"),s=story(),mx=num(j.pg_max),hp=j.pg_actuales==null||j.pg_actuales===""?mx:num(j.pg_actuales);
+  if(!str(j.nombre,60)){el.textContent="No he encontrado el nombre del personaje. Prueba con el PDF que exporta D&D Beyond.";return}
+  var p={id:uid(),name:str(j.nombre,60),race:str(j.especie,60),cls:str(j.clase,60),player:str(j.jugador,40),level:Math.max(1,num(j.nivel)||1),ac:num(j.ca)||10,max:mx||10,hp:mx?Math.min(mx,hp||mx):10,pp:num(j.percepcion_pasiva)||10,init:num(j.iniciativa),story:chFilter||(s?s.id:""),status:"activo",isNew:true};
+  S.party.push(p);chEdit=p.id;chQ="";$("#ch-q").value="";touch();el.textContent="«"+p.name+"» importado "+how+". Revisa los datos y pulsa «Listo».";
+  var c=$("#c-"+p.id+"-name");if(c)c.scrollIntoView({block:"center"})}
+var IMPQ="Extrae los datos de esta hoja de personaje de Dungeons & Dragons y responde solo con JSON, sin más texto, con esta forma: {\"nombre\":\"\",\"especie\":\"\",\"clase\":\"\",\"nivel\":0,\"ca\":0,\"pg_max\":0,\"pg_actuales\":0,\"percepcion_pasiva\":0,\"iniciativa\":0,\"jugador\":\"\"}. La CA es la clase de armadura. La iniciativa es el modificador, con su signo. Usa 0 o cadena vacía en lo que no aparezca.";
+function importPdf(f){var el=$("#ch-msg");el.textContent="Leyendo el PDF…";
+  f.arrayBuffer().then(function(buf){return loadPdf().then(function(lib){return lib.getDocument({data:buf}).promise})}).then(function(doc){var F={},T=[],ps=[];
+    for(var i=1;i<=Math.min(doc.numPages,3);i++)ps.push(doc.getPage(i).then(function(pg){return Promise.all([pg.getAnnotations().then(function(A){A.forEach(function(a){if(a.fieldName&&a.fieldValue!=null&&String(a.fieldValue).trim()!==""){F[nk(a.fieldName)]=a.fieldValue;T.push(a.fieldName+": "+a.fieldValue)}})}),
+      pg.getTextContent().then(function(tc){T.push(tc.items.map(function(x){return x.str}).join(" "))})])}));
+    return Promise.all(ps).then(function(){var j=fromFields(F);if(j){addImported(j,"desde el PDF");return}
+      var txt=T.join("\n").replace(/\s+\n/g,"\n").slice(0,7000);if(txt.length<40){el.textContent="Este PDF no tiene datos legibles. Si es una imagen escaneada, importa una captura.";return}
+      return askJSON(IMPQ+"\n\nCONTENIDO DEL PDF:\n"+txt,el).then(function(r){if(r)addImported(r,"con ayuda de la IA")})})
+  }).catch(function(){el.textContent="No se ha podido leer ese PDF."})}
+function importImage(f){var el=$("#ch-msg"),u=URL.createObjectURL(f),im=new Image();el.textContent="Preparando la imagen…";
+  im.onload=function(){var k=Math.min(1,1800/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement("canvas");c.width=Math.round(im.naturalWidth*k);c.height=Math.round(im.naturalHeight*k);
+    c.getContext("2d").drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);
+    c.toBlob(function(b){if(!b){el.textContent="No se ha podido preparar la imagen.";return}
+      askJSON(IMPQ,el,{blob:b,url:c.toDataURL("image/jpeg",.85)}).then(function(r){if(r)addImported(r,"desde la captura");else el.textContent+=" Leer una captura necesita un modelo de IA con visión; con el PDF de D&D Beyond no hace falta IA."})},"image/jpeg",.85)};
+  im.onerror=function(){el.textContent="Ese archivo no es una imagen que se pueda leer."};im.src=u}
+$("#imp-btn").onclick=function(){$("#imp-file").click()};
+$("#imp-file").onchange=function(){var f=this.files&&this.files[0];this.value="";if(!f)return;if(f.type==="application/pdf"||/\.pdf$/i.test(f.name))importPdf(f);else importImage(f)};
 
 /* personajes */
 var PF=[["name","Nombre","t"],["race","Especie","t"],["cls","Clase","t"],["player","Jugador","t"],["level","Nivel","n"],["ac","CA","n"],["hp","PG actuales","n"],["max","PG máx.","n"],["pp","Percepción pasiva","n"],["init","Mod. iniciativa","n"]];
@@ -1005,6 +1105,7 @@ function strip(t){return t.replace(/<think>[\s\S]*?(<\/think>|$)/g,"").replace(/
 function other(input,o){var full="",msgs=[];
   (typeof input==="string"?[{role:"user",content:input}]:input.map(function(m,i){return{role:i===0?"system":m.role,content:m.content}})).forEach(function(m){
     var l=msgs[msgs.length-1];if(l&&l.role===m.role)l.content+="\n\n"+m.content;else msgs.push({role:m.role,content:m.content})});
+  if(o.img){var lm=msgs[msgs.length-1];lm.content=[{type:"text",text:lm.content},{type:"image_url",image_url:{url:o.img}}]}
   return fetch(url("/chat/completions"),{method:"POST",signal:o.signal,headers:heads(),body:JSON.stringify({model:cfg.model,messages:msgs,stream:true})}).then(function(res){
     if(!res.ok)throw{code:httpCode(res.status)};
     var rd=res.body.getReader(),dec=new TextDecoder(),buf="";
@@ -1033,7 +1134,7 @@ function iaCtx(){var L=[];
   if(hs){L.push("HISTORIA: "+hs.title+" ("+(hs.system||"D&D 5.5")+")"+(hs.desc?"\n"+hs.desc.slice(0,2000):""));
     if(hs.npcs.length)L.push("PNJ DE LA HISTORIA:\n"+hs.npcs.slice(0,25).map(function(n){return"- "+n.name+" ("+[n.role,n.where,(NST[n.st]||NST.neutral)[0].toLowerCase()].filter(Boolean).join(", ")+")"+(n.wants?". Quiere: "+n.wants:"")+(n.secret?". Secreto que los jugadores no conocen: "+n.secret:"")}).join("\n"));
     var oq=hs.quests.filter(function(q){return q.st==="abierta"});if(oq.length)L.push("MISIONES ABIERTAS:\n"+oq.map(function(q){return"- "+q.title+(q.giver?", encargo de "+q.giver:"")+(q.reward?", recompensa: "+q.reward:"")}).join("\n"));
-    if(hs.chapters.length)L.push("CAPÍTULOS:\n"+hs.chapters.map(function(c,i){return"- "+(i+1)+". "+c.title+" ("+(c.st==="hecho"?"completado":c.st==="curso"?"en curso":"pendiente")+")"}).join("\n"));
+    if(hs.chapters.length)L.push("CAPÍTULOS:\n"+hs.chapters.map(function(c,i){return"- "+(i+1)+". "+c.title+" ("+(c.st==="hecho"?"completado":c.st==="curso"?"en curso":"pendiente")+")"+(c.note?": "+c.note:"")}).join("\n"));
     var ls=hs.sessions[hs.sessions.length-1];if(ls&&ls.x)L.push("ÚLTIMA SESIÓN JUGADA:\n"+ls.x.slice(0,800))}
   if(S.ia.summary)L.push("RESUMEN DE LO OCURRIDO HASTA AHORA:\n"+S.ia.summary);
   if(roster().length)L.push("PERSONAJES:\n"+roster().map(function(p){return"- "+(p.name||"Sin nombre")+", "+([p.race,p.cls].filter(Boolean).join(" ")||"clase sin apuntar")+" de nivel "+p.level+", CA "+p.ac+", PG "+p.hp+"/"+p.max+", Percepción pasiva "+p.pp}).join("\n"));
@@ -1047,8 +1148,9 @@ function lead(m){var t=BASE+"\n\n"+MODES[m].rules;
   return t+"\n\nESTADO DE LA MESA\n\n"+iaCtx()}
 function turns(m){var out=[{role:"user",content:lead(m)}];
   S.ia.log.slice(-30).forEach(function(x){out.push({role:x.r==="a"?"assistant":"user",content:x.t})});return out}
-function run(input,onText){busy=true;ctl=new AbortController();note("Pensando…");iaButtons();
-  return (inArtifact?sample:other)(input,{cache:false,signal:ctl.signal,onText:function(u){note("Escribiendo…");onText(u.text)}}).then(
+function run(input,onText,img){busy=true;ctl=new AbortController();note("Pensando…");iaButtons();
+  var o={cache:false,signal:ctl.signal,onText:function(u){note("Escribiendo…");onText(u.text)}};if(img){if(inArtifact)o.images=[img.blob];else o.img=img.url}
+  return (inArtifact?sample:other)(input,o).then(
     function(r){busy=false;note(r.truncated?"La respuesta se cortó por longitud.":"");return{text:r.text}},
     function(e){busy=false;var c=(e&&e.code)||"upstream_error";if(inArtifact&&GONE.indexOf(c)>=0)sample=null;
       note(MSG[c]!==undefined?MSG[c]:MSG.upstream_error);return{text:c==="refused"?"":(e&&e.text)||"",err:c}})}
@@ -1085,7 +1187,7 @@ function copilot(q){var hist=S.ia.log.slice(-6).map(function(x){return(x.r==="a"
 $("#ia-quick").addEventListener("click",function(e){var b=e.target.closest("[data-q]");if(b&&ready())copilot(QUICK[b.dataset.q])});
 $("#ia-tonotes").onclick=function(){var hs=story();if(!lastOut)return;if(!hs){note("Crea primero una historia en «Historias».");return}hs.notes.push({id:uid(),title:"Del copiloto",text:lastOut,t:Date.now()});touch();note("Guardado en las notas de «"+hs.title+"».")};
 $("#ia-stop").onclick=function(){if(ctl)ctl.abort()};
-$("#ia-start").onclick=function(){if(ready())say("Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.")};
+$("#ia-start").onclick=function(){if(ready())say(START)};
 $("#ia-accept").onclick=function(){var t=$("#ia-draft-text").value.trim();if(!t)return;logPush("a",t);$("#ia-draft").hidden=true;mapFromText(t);touch(false);drawIA()};
 $("#ia-regen").onclick=function(){if(ready())propose()};
 $("#ia-discard").onclick=function(){var L=S.ia.log;if(L.length&&L[L.length-1].r==="u"){$("#ia-input").value=L.pop().t;touch(false)}$("#ia-draft").hidden=true;drawIA()};
@@ -1294,10 +1396,10 @@ try{var dv=localStorage.getItem(LS+"-dados");diceOn=dv?dv==="1":window.innerWidt
 function route(){var h=location.hash.replace("#","");solo=h==="mapa-completo";if(solo)h="mapa";document.body.classList.toggle("solo",solo);V.fit=false;if(TABS.indexOf(h)<0)h="panel";
   TABS.forEach(function(t){$("#tab-"+t).hidden=t!==h});if(h==="mapa")drawMapUI();
   [].forEach.call(document.querySelectorAll(".side nav a"),function(a){if(a.getAttribute("href")==="#"+h||a.dataset.also===h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")})}
-window.addEventListener("hashchange",function(){route();window.scrollTo(0,0)});
+window.addEventListener("hashchange",function(){route();draw();window.scrollTo(0,0)});
 $("#btn-players").onclick=function(){players=!players;try{localStorage.setItem(LS+"-players",players?"1":"0")}catch(e){}draw();route()};
 $("#btn-dice").onclick=function(){diceOn=!diceOn;try{localStorage.setItem(LS+"-dados",diceOn?"1":"0")}catch(e){}V.fit=false;draw()};
-function draw(){document.body.classList.toggle("players",players);$("#btn-players").setAttribute("aria-pressed",players);
+function draw(){iaBind();document.body.classList.toggle("players",players);$("#btn-players").setAttribute("aria-pressed",players);
   $("#app").classList.toggle("dice-on",diceOn);$("#btn-dice").setAttribute("aria-pressed",diceOn);
   drawPanel();drawStories();drawStory();drawChars();drawDiff();drawOrder();drawNotes();drawIA();if(!$("#tab-mapa").hidden)drawMapUI()}
 draw();route();
