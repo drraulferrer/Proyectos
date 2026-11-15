@@ -403,12 +403,21 @@ label{display:flex;flex-direction:column;gap:3px}
           <div class="card"><h2>Criaturas de esta historia</h2><div id="sd-mons"></div>
             <div class="bar dm"><button type="button" class="pri" id="mon-photo-btn">Añadir desde una foto del manual</button>
               <input id="mon-photo" type="file" accept="image/*" capture="environment" hidden><input id="mon-pic-file" type="file" accept="image/*" hidden></div>
+            <div id="mon-gen" class="stack dm" style="gap:8px;border-top:1px solid var(--divider);padding-top:12px" hidden>
+              <span class="eyebrow">Imagen de <span id="mon-gen-name"></span></span>
+              <label class="wide">Aspecto de la criatura<input id="mon-gen-desc" placeholder="Cómo es: forma, piel, armas, actitud"></label>
+              <div class="bar"><button type="button" id="mon-gen-go">Crear el prompt</button></div>
+              <label class="wide">Prompt para el generador de imágenes<textarea id="mon-gen-text" style="min-height:7em" readonly></textarea></label>
+              <div class="bar"><button type="button" class="pri" id="mon-gen-copy">Copiar el prompt</button><button type="button" id="mon-gen-up">Subir la imagen generada</button><button type="button" id="mon-gen-x" class="ghost">Cerrar</button></div>
+              <p class="sub">Pega el prompt en tu generador de imágenes, por ejemplo Kie.ai, pide formato cuadrado, descarga el resultado y súbelo aquí. El estilo coincide con el de los retratos del bestiario.</p>
+            </div>
             <p id="mon-msg" class="sub dm" role="status"></p><p id="mon-out" class="sub dm"></p>
             <div class="bar dm"><button type="button" id="mon-add" class="pri" hidden>Añadir a la historia</button><button type="button" id="mon-no" class="ghost" hidden>Descartar</button></div>
             <details class="dm"><summary>Añadir una criatura a mano</summary>
               <form id="mon-form" class="stack" style="gap:8px;margin-top:8px" autocomplete="off">
                 <div class="fgrid"><label>Nombre<input id="mo-n"></label><label>CA<input id="mo-ca" type="number" value="13"></label><label>PG<input id="mo-pg" type="number" value="20"></label><label>Mod. iniciativa<input id="mo-in" type="number" value="1"></label>
                   <label>VD<input id="mo-vd" value="1/2"></label><label>Bono de ataque<input id="mo-at" type="number" value="4"></label><label>Daño<input id="mo-dm" value="1d8+2"></label><label>Ataques por turno<input id="mo-na" type="number" value="1" min="1" max="5"></label></div>
+                <label class="wide">Aspecto, para generar su imagen<input id="mo-ds" placeholder="Reptil bípedo de escamas verdes, con cresta y un garrote de hueso"></label>
                 <div class="bar"><button type="submit">Añadir criatura</button></div></form></details>
             <details class="dm"><summary>Sacar criaturas de un manual con la IA</summary>
               <p class="sub" style="margin:8px 0">Elige el PDF de tu manual y las páginas, o pega el texto. La IA extrae las estadísticas y tú las revisas. El manual no se sube a ningún sitio: solo el texto de esas páginas va al motor de IA que tengas configurado.</p>
@@ -467,7 +476,7 @@ label{display:flex;flex-direction:column;gap:3px}
         <button type="button" id="imp-btn" class="dm" title="Desde el PDF o una captura de la hoja de D&amp;D Beyond">Importar de D&amp;D Beyond</button><input id="imp-file" type="file" accept="application/pdf,image/*" hidden>
         <button type="button" id="btn-rest" class="dm" title="Todos recuperan sus PG máximos">Descanso largo</button>
         <button type="button" class="pri dm" id="btn-addpc">+ Nuevo personaje</button></div></div>
-    <p id="ch-msg" class="sub" role="status"></p>
+    <p id="ch-msg" class="sub" role="status"></p><input id="pc-pic-file" type="file" accept="image/*" hidden>
     <div class="chips" id="ch-filters"></div>
     <div id="ch-cards"></div>
   </section>
@@ -856,7 +865,7 @@ function drawOrder(){var L=S.combat.list,el=$("#order");
       '<span class="dm bar"><input type="number" min="0" max="999" aria-label="Cantidad de daño o curación para '+esc(v.name)+'" data-amt="'+c.id+'" id="amt-'+c.id+'" placeholder="0"><button type="button" class="hurt" data-act="dmg" data-id="'+c.id+'">Daño</button><button type="button" class="heal" data-act="heal" data-id="'+c.id+'">Curar</button></span>';
     return'<li class="'+(cur?"cur ":"")+(dead||(v.pc&&v.hp<=0)?"down":"")+'">'+
      '<input class="ini" type="number" id="ini-'+c.id+'" data-ini="'+c.id+'" value="'+(c.init==null?"":c.init)+'" placeholder="–" aria-label="Iniciativa de '+esc(v.name)+'"'+((players||soloCb)?" readonly":"")+'>'+
-     '<div class="who"><span>'+(v.pc||!c.base?"":picTag(c.base,34)+" ")+'<b>'+esc(v.name)+'</b> '+(cur?'<span class="tag turn">Su turno</span>':'')+' <span class="tag">'+(v.pc?"PJ":"Monstruo")+'</span></span>'+
+     '<div class="who"><span>'+(v.pc?(pcPic(pc(c.pcId))?pcAva(pc(c.pcId),1)+" ":""):c.base?picTag(c.base,34)+" ":"")+'<b>'+esc(v.name)+'</b> '+(cur?'<span class="tag turn">Su turno</span>':'')+' <span class="tag">'+(v.pc?"PJ":"Monstruo")+'</span></span>'+
      '<span class="sub">'+((!(players||soloCb)||v.pc)?'CA '+esc(v.ac):'')+(v.sub&&(!(players||soloCb)||v.pc)?' · '+esc(v.sub):'')+'</span>'+
      duelTxt(c)+'<span class="chips">'+(c.conds||[]).map(function(k){return'<button type="button" class="chip" data-act="uncond" data-id="'+c.id+'" data-k="'+esc(k)+'" title="Quitar">'+esc(k)+' ×</button>'}).join("")+
      '<select class="dm" data-cond="'+c.id+'" id="cond-'+c.id+'" aria-label="Añadir estado a '+esc(v.name)+'">'+opts+'</select></span></div>'+
@@ -936,10 +945,10 @@ function drawPanel(){var s=story(),act=0,ses=0,hrs=0,R=roster();
       '<div><div class="rowb"><span>Progreso de la campaña</span><b>'+p+'%</b></div><div class="bar2"><i style="width:'+p+'%"></i></div></div>'+
       '<div class="rowb" style="align-items:center"><span>'+meta(s)+'</span><span class="bar">'+startBtn(s)+'<button type="button" data-story="'+s.id+'">Abrir</button></span></div></div></div>';
     $("#p-next").innerHTML='<div class="card"><span class="eyebrow">Próxima sesión</span><div><h2 style="font-size:1.25rem">'+(s.next.date?esc(fdate(s.next.date)):"Sin fecha")+'</h2><p class="sub">'+(s.next.time?esc(s.next.time)+" | ":"")+esc(s.title)+'</p></div>'+
-      '<div style="border-top:1px solid var(--divider);padding-top:12px" class="stack" style="gap:8px"><span class="sub">Jugadores en mesa</span><div class="chips">'+(R.length?R.map(function(x){return ava(x.name||"?",1)}).join(""):'<span class="sub">Ninguno todavía</span>')+'</div></div>'+
+      '<div style="border-top:1px solid var(--divider);padding-top:12px" class="stack" style="gap:8px"><span class="sub">Jugadores en mesa</span><div class="chips">'+(R.length?R.map(function(x){return pcAva(x,1)}).join(""):'<span class="sub">Ninguno todavía</span>')+'</div></div>'+
       '<p class="sub dm">La fecha se cambia en «Editar historia».</p></div>'}
   $("#p-act").innerHTML=S.activity.length?S.activity.slice(0,6).map(function(a){return'<li><span class="dot"></span><span class="t">'+esc(a.x)+'<time>'+ago(a.t)+'</time></span></li>'}).join(""):'<li><span class="t sub">Aquí irá apareciendo lo que registres: sesiones, personajes y notas.</span></li>';
-  $("#p-party").innerHTML=R.length?R.slice(0,5).map(function(x){return'<li>'+ava(x.name||"?")+'<span class="t"><b>'+esc(x.name||"Sin nombre")+'</b><small>'+esc(pcSub(x))+'</small></span><span class="badge done">Nv '+esc(x.level)+'</span></li>'}).join(""):'<li><span class="t sub">Añade personajes en «Personajes» y asígnalos a la historia.</span></li>'}
+  $("#p-party").innerHTML=R.length?R.slice(0,5).map(function(x){return'<li>'+pcAva(x)+'<span class="t"><b>'+esc(x.name||"Sin nombre")+'</b><small>'+esc(pcSub(x))+'</small></span><span class="badge done">Nv '+esc(x.level)+'</span></li>'}).join(""):'<li><span class="t sub">Añade personajes en «Personajes» y asígnalos a la historia.</span></li>'}
 
 function drawStories(){var act=S.stories.filter(function(x){return x.status==="activa"}).length,cur=story();
   $("#st-sub").textContent=S.stories.length+(S.stories.length===1?" campaña":" campañas")+" | "+act+(act===1?" activa":" activas");
@@ -1252,11 +1261,11 @@ function placeFromText(t){var g=/\[COLOCAR:\s*([^\]]+)\]/i.exec(t||"");if(!g)ret
 
 /* criaturas de la historia */
 function crKey(v){v=String(v==null?"":v).trim().replace(",",".");if(XP[v])return v;var f={"0.125":"1/8","0.25":"1/4","0.5":"1/2"}[v];if(f)return f;var n=Math.round(parseFloat(v));return XP[n]?String(n):n>10?"10":"1"}
-function monArr(o){return[str(o.nombre,60),Math.max(1,num(o.ca)||12),Math.max(1,num(o.pg)||10),num(o.iniciativa),crKey(o.vd),num(o.ataque)||4,str(o.dano,20)||"1d6+2",Math.max(1,Math.min(5,num(o.ataques)||1)),str(o.nombre_ataque,40)||"un ataque"]}
+function monArr(o){return[str(o.nombre,60),Math.max(1,num(o.ca)||12),Math.max(1,num(o.pg)||10),num(o.iniciativa),crKey(o.vd),num(o.ataque)||4,str(o.dano,20)||"1d6+2",Math.max(1,Math.min(5,num(o.ataques)||1)),str(o.nombre_ataque,40)||"un ataque",null,str(o.descripcion,300)]}
 var monData=null;
 function monShow(){$("#mon-add").hidden=$("#mon-no").hidden=!monData;$("#mon-out").textContent=monData?monData.length+" criaturas encontradas: "+monData.map(function(m){return m[0]+" (VD "+m[4]+")"}).join("; "):""}
 function monAsk(txt){var el=$("#mon-msg");if(txt.replace(/\s/g,"").length<60){el.textContent="No hay texto suficiente. Si el PDF es una imagen escaneada, copia y pega el texto.";return}
-  askJSON("Del texto siguiente, sacado de un manual de monstruos de Dungeons & Dragons, extrae las criaturas con sus estadísticas de combate. Responde solo con JSON, sin más texto, con esta forma: {\"criaturas\":[{\"nombre\":\"\",\"ca\":0,\"pg\":0,\"iniciativa\":0,\"vd\":\"1/4\",\"ataque\":0,\"dano\":\"1d6+2\",\"ataques\":1,\"nombre_ataque\":\"\"}]}. «iniciativa» es el modificador. «ataque» es el bono de su ataque principal, «dano» la fórmula de dados de ese ataque, «ataques» cuántos hace por turno y «nombre_ataque» cómo se llama, en español y con artículo, por ejemplo «su hacha». Como máximo 15 criaturas; ignora lo que no sea una criatura.\n\nTEXTO:\n"+txt.slice(0,14000),el).then(function(j){if(!j)return;
+  askJSON("Del texto siguiente, sacado de un manual de monstruos de Dungeons & Dragons, extrae las criaturas con sus estadísticas de combate. Responde solo con JSON, sin más texto, con esta forma: {\"criaturas\":[{\"nombre\":\"\",\"ca\":0,\"pg\":0,\"iniciativa\":0,\"vd\":\"1/4\",\"ataque\":0,\"dano\":\"1d6+2\",\"ataques\":1,\"nombre_ataque\":\"\",\"descripcion\":\"\"}]}. «descripcion» es su aspecto físico en una frase. «iniciativa» es el modificador. «ataque» es el bono de su ataque principal, «dano» la fórmula de dados de ese ataque, «ataques» cuántos hace por turno y «nombre_ataque» cómo se llama, en español y con artículo, por ejemplo «su hacha». Como máximo 15 criaturas; ignora lo que no sea una criatura.\n\nTEXTO:\n"+txt.slice(0,14000),el).then(function(j){if(!j)return;
     monData=(Array.isArray(j.criaturas)?j.criaturas:Array.isArray(j)?j:[]).map(function(o){return monArr(o||{})}).filter(function(m){return m[0]}).slice(0,15);
     if(!monData.length){monData=null;el.textContent="La IA no ha encontrado criaturas en ese texto."}else el.textContent="Revisa la lista y añádela si es correcta.";monShow()})}
 $("#mon-go").onclick=function(){var f=$("#mon-file").files[0],el=$("#mon-msg"),pasted=$("#mon-text").value.trim();
@@ -1268,7 +1277,7 @@ $("#mon-go").onclick=function(){var f=$("#mon-file").files[0],el=$("#mon-msg"),p
 $("#mon-no").onclick=function(){monData=null;monShow();$("#mon-msg").textContent=""};
 $("#mon-add").onclick=function(){var d=monData;if(!d)return;monData=null;stEdit(function(s){s.mons=(s.mons||[]).concat(d);logAct(d.length+" criaturas añadidas a "+s.title)});monShow();$("#mon-msg").textContent="Añadidas. Ya están en el bestiario de «Combate».";$("#mon-text").value="";$("#mon-file").value=""};
 $("#mon-form").addEventListener("submit",function(e){e.preventDefault();var n=val("#mo-n");if(!n)return;
-  var m=monArr({nombre:n,ca:$("#mo-ca").value,pg:$("#mo-pg").value,iniciativa:$("#mo-in").value,vd:$("#mo-vd").value,ataque:$("#mo-at").value,dano:$("#mo-dm").value,ataques:$("#mo-na").value,nombre_ataque:""});stEdit(function(s){s.mons=(s.mons||[]).concat([m])})});
+  var m=monArr({nombre:n,ca:$("#mo-ca").value,pg:$("#mo-pg").value,iniciativa:$("#mo-in").value,vd:$("#mo-vd").value,ataque:$("#mo-at").value,dano:$("#mo-dm").value,ataques:$("#mo-na").value,nombre_ataque:"",descripcion:val("#mo-ds")});stEdit(function(s){s.mons=(s.mons||[]).concat([m])})});
 $("#tab-historia").addEventListener("click",function(e){var b=e.target.closest("[data-mon-rm]");if(b)stEdit(function(s){s.mons.splice(int(b.dataset.monRm,-1),1)})});
 
 /* registrar la sesión al terminar */
@@ -1309,14 +1318,29 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-pic]
   if(e.target.closest("#lightbox"))lb.hidden=true});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")$("#lightbox").hidden=true});
 function drawMons(){var s=story(),el=$("#sd-mons");if(!s)return;
-  el.innerHTML=(s.mons||[]).length?s.mons.map(function(m,i){return'<div class="note"><div class="rowb"><span style="display:flex;gap:10px;align-items:center;min-width:0">'+picTag(m[0],44)+'<b style="overflow-wrap:anywhere">'+esc(m[0])+'</b></span><span><span class="badge done">VD '+esc(m[4])+'</span> <button type="button" class="ghost dm" data-mon-pic="'+i+'" style="min-height:24px;padding:0 6px">'+(m[9]?"Cambiar foto":"Poner foto")+'</button> <button type="button" class="ghost dm" data-mon-rm="'+i+'" aria-label="Quitar criatura" style="min-height:24px;padding:0 6px">✕</button></span></div><p>CA '+esc(m[1])+' | '+esc(m[2])+' PG | iniciativa '+sgn(int(m[3],0))+' | '+esc(m[7])+' × '+esc(m[8])+' '+sgn(int(m[5],0))+', '+esc(m[6])+'</p></div>'}).join("")
+  el.innerHTML=(s.mons||[]).length?s.mons.map(function(m,i){return'<div class="note"><div class="rowb"><span style="display:flex;gap:10px;align-items:center;min-width:0">'+picTag(m[0],44)+'<b style="overflow-wrap:anywhere">'+esc(m[0])+'</b></span><span><span class="badge done">VD '+esc(m[4])+'</span> <button type="button" class="ghost dm" data-mon-pic="'+i+'" style="min-height:24px;padding:0 6px">'+(m[9]?"Cambiar foto":"Poner foto")+'</button> <button type="button" class="ghost dm" data-mon-gen="'+i+'" style="min-height:24px;padding:0 6px">Generar imagen</button> <button type="button" class="ghost dm" data-mon-rm="'+i+'" aria-label="Quitar criatura" style="min-height:24px;padding:0 6px">✕</button></span></div><p>CA '+esc(m[1])+' | '+esc(m[2])+' PG | iniciativa '+sgn(int(m[3],0))+' | '+esc(m[7])+' × '+esc(m[8])+' '+sgn(int(m[5],0))+', '+esc(m[6])+'</p>'+(m[10]?'<p>'+esc(m[10])+'</p>':"")+'</div>'}).join("")
     :'<p class="sub">Criaturas propias de esta historia. Aparecen en el bestiario de «Combate» y el máster IA puede usarlas.</p>'}
 $("#sd-mons").addEventListener("click",function(e){var b=e.target.closest("[data-mon-pic]");if(!b)return;picTarget=int(b.dataset.monPic,-1);$("#mon-pic-file").click()});
 $("#mon-pic-file").onchange=function(){var f=this.files&&this.files[0],s=story(),i=picTarget;this.value="";if(!f||!s||!s.mons[i])return;
   imgPrep(f,900).then(function(r){var id=s.mons[i][9]||uid();return idbPut("mon-"+id,r.blob).then(function(){delete picCache[id];stEdit(function(x){x.mons[i][9]=id})})}).catch(function(){$("#mon-msg").textContent="No se ha podido guardar esa imagen en este navegador."})};
+var genIdx=-1,GENSTYLE="Dark fantasy creature portrait, digital painting, dramatic rim light, moody purple and black background with mist, painterly detailed concept art, centered subject, square format, no text, no frame: ";
+function genOpen(i){var s=story(),m=s&&s.mons[i];if(!m)return;genIdx=i;$("#mon-gen").hidden=false;$("#mon-gen-name").textContent=m[0];$("#mon-gen-desc").value=m[10]||"";$("#mon-gen-text").value="";genMake();$("#mon-gen").scrollIntoView({block:"nearest"})}
+function genMake(){var s=story(),m=s&&s.mons[genIdx],el=$("#mon-msg"),tx=$("#mon-gen-text");if(!m)return;var ds=$("#mon-gen-desc").value.trim();
+  if(ds!==(m[10]||"")){m[10]=ds;touch(false)}
+  tx.value=GENSTYLE+(ds?m[0]+", "+ds:m[0]+", a fantasy monster");
+  if(!canAsk()||busy){el.textContent=ds?"Prompt listo. Con un motor de IA configurado saldría más detallado y en inglés.":"Escribe el aspecto de la criatura para que el prompt sea útil.";return}
+  el.textContent="Redactando el prompt…";
+  run("Escribe en inglés, en una sola frase de 45 palabras como máximo, la descripción visual de esta criatura de fantasía para un generador de imágenes: cuerpo, piel o pelaje, rasgos de la cara, armas o ropa y actitud. Devuelve solo la frase, sin comillas ni explicaciones.\n\nCriatura: "+m[0]+"\nAspecto: "+(ds||"no descrito; dedúcelo del nombre")+"\nSu ataque: "+m[8],function(){}).then(function(r){drawIA();
+    if(r.text&&!r.err){tx.value=GENSTYLE+r.text.trim().replace(/^["«]|["»]$/g,"");el.textContent="Prompt listo. Cópialo y pégalo en tu generador de imágenes."}else el.textContent="No se pudo usar la IA; el prompt es el básico."})}
+$("#sd-mons").addEventListener("click",function(e){var b=e.target.closest("[data-mon-gen]");if(b)genOpen(int(b.dataset.monGen,-1))});
+$("#mon-gen-go").onclick=genMake;
+$("#mon-gen-x").onclick=function(){$("#mon-gen").hidden=true;genIdx=-1};
+$("#mon-gen-up").onclick=function(){if(genIdx<0)return;picTarget=genIdx;$("#mon-pic-file").click()};
+$("#mon-gen-copy").onclick=function(){var tx=$("#mon-gen-text"),el=$("#mon-msg");if(!tx.value)return;function fb(){tx.focus();tx.select();el.textContent="Texto seleccionado: cópialo con Ctrl+C."}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(tx.value).then(function(){el.textContent="Prompt copiado."},fb);else fb()};
 $("#mon-photo-btn").onclick=function(){$("#mon-photo").click()};
 $("#mon-photo").onchange=function(){var f=this.files&&this.files[0],el=$("#mon-msg");this.value="";if(!f)return;el.textContent="Preparando la foto…";
-  imgPrep(f,2000).then(function(img){return askJSON("La imagen es una foto de una página de un manual de monstruos de Dungeons & Dragons. Extrae las criaturas que aparezcan con sus estadísticas de combate. Responde solo con JSON, sin más texto, con esta forma: {\"criaturas\":[{\"nombre\":\"\",\"ca\":0,\"pg\":0,\"iniciativa\":0,\"vd\":\"1/4\",\"ataque\":0,\"dano\":\"1d6+2\",\"ataques\":1,\"nombre_ataque\":\"\"}]}. «iniciativa» es el modificador. «ataque» es el bono de su ataque principal, «dano» la fórmula de dados de ese ataque, «ataques» cuántos hace por turno y «nombre_ataque» cómo se llama, en español y con artículo, por ejemplo «su hacha». Si un número no se lee bien, pon tu mejor lectura.",el,img)}).then(function(j){
+  imgPrep(f,2000).then(function(img){return askJSON("La imagen es una foto de una página de un manual de monstruos de Dungeons & Dragons. Extrae las criaturas que aparezcan con sus estadísticas de combate. Responde solo con JSON, sin más texto, con esta forma: {\"criaturas\":[{\"nombre\":\"\",\"ca\":0,\"pg\":0,\"iniciativa\":0,\"vd\":\"1/4\",\"ataque\":0,\"dano\":\"1d6+2\",\"ataques\":1,\"nombre_ataque\":\"\",\"descripcion\":\"\"}]}. «descripcion» es su aspecto físico en una frase. «iniciativa» es el modificador. «ataque» es el bono de su ataque principal, «dano» la fórmula de dados de ese ataque, «ataques» cuántos hace por turno y «nombre_ataque» cómo se llama, en español y con artículo, por ejemplo «su hacha». Si un número no se lee bien, pon tu mejor lectura.",el,img)}).then(function(j){
     if(!j){el.textContent+=" Leer una foto necesita un modelo de IA con visión.";return}
     monData=(Array.isArray(j.criaturas)?j.criaturas:Array.isArray(j)?j:[j]).map(function(o){return monArr(o||{})}).filter(function(m){return m[0]}).slice(0,15);
     if(!monData.length){monData=null;el.textContent="La IA no ha encontrado ninguna criatura en la foto. Prueba con más luz y la página entera."}else el.textContent="Revisa los datos, sobre todo los números, y añádela si es correcta.";monShow()},function(){el.textContent="Ese archivo no es una imagen que se pueda leer."})};
@@ -1363,7 +1387,7 @@ $("#ia-recap-read").onclick=function(){speak($("#ia-recap-text").textContent,thi
 
 /* ---- combate en pantalla aparte y enfrentamientos ---- */
 var soloCb=false;
-function who(c){var v=view(c),p=!isPc(c)&&c.base?picTag(c.base,36):"";return(p||ava(v.name,1))+'<b>'+esc(v.name)+'</b>'}
+function who(c){var v=view(c),p=!isPc(c)&&c.base?picTag(c.base,36):"";return(p||(isPc(c)?pcAva(pc(c.pcId),1):ava(v.name,1)))+'<b>'+esc(v.name)+'</b>'}
 function duelTxt(c){var t=c.tgt&&find(c.tgt);if(!t||!S.combat.round||S.combat.over||hpOf(c)<=0||(!isPc(t)&&hpOf(t)<=0))return"";return'<span class="sub" style="color:var(--brass)">⚔ contra '+esc(view(t).name)+'</span>'}
 function drawDuels(){var C=S.combat,el=$("#cb-duels"),L=[];
   if(C.round&&!C.over)C.list.forEach(function(c){var t=c.tgt&&find(c.tgt);if(!t||hpOf(c)<=0||(isPc(c)&&has(c,"Muerto"))||(!isPc(t)&&hpOf(t)<=0))return;L.push([c,t])});
@@ -1476,6 +1500,23 @@ $("#cb-auto").addEventListener("change",function(e){var c=find(S.combat.turnId),
   else if(t.dataset.slot!=null){p.slots[+t.dataset.slot]=Math.max(0,Math.min(9,int(t.value,0)));touch()}});
 $("#cb-auto").addEventListener("click",function(e){if(e.target.closest('[data-au="cast"]'))pcAct(castSpell)});
 
+/* ---- retratos de personajes ---- */
+var pcGenId=null,pcGenText="",pcPicTarget=null,PCSTYLE="Dark fantasy character portrait, head and shoulders, digital painting, dramatic rim light, moody purple and black background with mist, painterly detailed concept art, centered subject, square format, no text, no frame: ";
+function pcPic(p){if(!p||!p.pic)return"";var id="pc-"+p.id;if(picCache[id])return picCache[id];if(picCache[id]===undefined){picCache[id]=null;idbGet(id).then(function(b){if(b){picCache[id]=URL.createObjectURL(b);if(typing())pendingDraw=true;else draw()}},function(){})}return""}
+function pcAva(p,sm){var u=pcPic(p),n=(p&&p.name)||"?",px=sm?30:42;return u?'<img class="mpic" src="'+esc(u)+'" data-full="'+esc(u)+'" data-cap="'+esc(n)+'" alt="" style="width:'+px+'px;height:'+px+'px">':ava(n,sm)}
+$("#ch-cards").addEventListener("click",function(e){var a=e.target.closest("[data-pc-pic]"),g=e.target.closest("[data-pc-gen]"),c=e.target.closest("[data-pc-copy]"),el=$("#ch-msg"),p;
+  if(a){pcPicTarget=a.dataset.pcPic;$("#pc-pic-file").click()}
+  else if(c){var tx=$("#pcg-text");if(!tx)return;var fb=function(){tx.focus();tx.select();el.textContent="Texto seleccionado: cópialo con Ctrl+C."};
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(tx.value).then(function(){el.textContent="Prompt copiado."},fb);else fb()}
+  else if(g&&(p=pc(g.dataset.pcGen))){var lk=$("#c-"+p.id+"-look");if(lk&&lk.value.trim()!==(p.look||"")){p.look=lk.value.trim();touch(false)}
+    var who=[p.race,p.cls].filter(Boolean).join(" ")||"adventurer";pcGenId=p.id;pcGenText=PCSTYLE+who+(p.look?", "+p.look:"");drawChars();
+    if(!canAsk()||busy){el.textContent=p.look?"Prompt listo. Con un motor de IA configurado saldría más detallado y en inglés.":"Escribe cómo es el personaje para que el prompt sea útil.";return}
+    el.textContent="Redactando el prompt…";
+    run("Escribe en inglés, en una sola frase de 45 palabras como máximo, la descripción visual de este personaje de fantasía para un generador de imágenes: especie, edad aparente, rasgos de la cara, pelo, ropa o armadura, arma y actitud. Devuelve solo la frase, sin comillas ni explicaciones.\n\nNombre: "+(p.name||"sin nombre")+"\nEspecie y clase: "+who+"\nCómo es: "+(p.look||"no descrito; dedúcelo de su especie y su clase"),function(){}).then(function(r){drawIA();
+      if(r.text&&!r.err&&pcGenId===p.id){pcGenText=PCSTYLE+r.text.trim().replace(/^["«]|["»]$/g,"");el.textContent="Prompt listo. Cópialo y pégalo en tu generador de imágenes."}else el.textContent="No se pudo usar la IA; el prompt es el básico.";drawChars()})}});
+$("#pc-pic-file").onchange=function(){var f=this.files&&this.files[0],p=pc(pcPicTarget);this.value="";if(!f||!p)return;
+  imgPrep(f,900).then(function(r){return idbPut("pc-"+p.id,r.blob).then(function(){delete picCache["pc-"+p.id];p.pic=Date.now();touch()})}).catch(function(){$("#ch-msg").textContent="No se ha podido guardar esa imagen en este navegador."})};
+
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -1563,13 +1604,16 @@ function drawChars(){var camps={},n=0;S.party.forEach(function(p){if(p.story&&st
   $("#ch-filters").innerHTML=S.stories.length?'<button type="button" class="fchip" data-chf="" aria-pressed="'+(chFilter==="")+'">Todas las campañas</button>'+S.stories.map(function(s){return'<button type="button" class="fchip" data-chf="'+s.id+'" aria-pressed="'+(chFilter===s.id)+'">'+esc(s.title)+'</button>'}).join(""):"";
   var q=chQ.toLowerCase(),L=S.party.filter(function(p){return(!chFilter||p.story===chFilter)&&(!q||[p.name,p.race,p.cls,p.player].join(" ").toLowerCase().indexOf(q)>=0)});
   $("#ch-cards").innerHTML=L.length?'<div class="pcards">'+L.map(function(p){var r=p.max?Math.max(0,Math.min(1,p.hp/p.max)):0,s=storyById(p.story),ed=chEdit===p.id&&!players;
-    return'<article class="pcard"><div class="pc-top">'+ava(p.name||"?")+'<span class="t"><b>'+esc(p.name||"Sin nombre")+'</b><span class="sub">'+esc(pcSub(p))+'</span></span>'+(p.status==="pausa"?'<span class="badge pause">En pausa</span>':'<span class="badge ok">Activo</span>')+'</div>'+
+    return'<article class="pcard"><div class="pc-top">'+pcAva(p)+'<span class="t"><b>'+esc(p.name||"Sin nombre")+'</b><span class="sub">'+esc(pcSub(p))+'</span></span>'+(p.status==="pausa"?'<span class="badge pause">En pausa</span>':'<span class="badge ok">Activo</span>')+'</div>'+
     '<div class="tiles"><div><span>CA</span><b>'+esc(p.ac)+'</b></div><div><span>PG máx</span><b>'+esc(p.max)+'</b></div><div><span>Nivel</span><b>'+esc(p.level)+'</b></div></div>'+
     '<div><div class="rowb"><span>Puntos de golpe</span><b>'+esc(p.hp)+"/"+esc(p.max)+'</b></div><div class="bar2 hp"><i class="'+(r<=.25?"low":r<=.6?"half":"")+'" style="width:'+Math.round(r*100)+'%"></i></div></div>'+
     xpHtml(p)+'<div class="pc-foot"><span>'+esc([p.player,s?s.title:"Sin historia"].filter(Boolean).join(" | "))+'</span><button type="button" class="ghost dm" data-ch-edit="'+p.id+'">'+(ed?"Listo":"Editar")+'</button></div>'+
     (ed?'<div class="fgrid">'+PF.map(function(c){return'<label>'+c[1]+'<input id="c-'+p.id+'-'+c[0]+'" data-pc="'+p.id+'" data-f="'+c[0]+'" '+(c[2]==="n"?'type="number"':"")+' value="'+esc(p[c[0]]==null?"":p[c[0]])+'"></label>'}).join("")+
       '<label>Historia<select id="c-'+p.id+'-story" data-pc="'+p.id+'" data-f="story"><option value="">Sin historia</option>'+S.stories.map(function(x){return'<option value="'+x.id+'"'+(p.story===x.id?" selected":"")+'>'+esc(x.title)+'</option>'}).join("")+'</select></label>'+
       '<label>Estado<select id="c-'+p.id+'-status" data-pc="'+p.id+'" data-f="status"><option value="activo">Activo</option><option value="pausa"'+(p.status==="pausa"?" selected":"")+'>En pausa</option></select></label></div>'+
+      '<label class="wide">Cómo es, para generar su retrato<input id="c-'+p.id+'-look" data-pc="'+p.id+'" data-f="look" value="'+esc(p.look||"")+'" placeholder="Pelirroja, cicatriz en la ceja, armadura de placas abollada, mirada desafiante"></label>'+
+      '<div class="bar"><button type="button" data-pc-pic="'+p.id+'">'+(p.pic?"Cambiar retrato":"Subir retrato")+'</button><button type="button" data-pc-gen="'+p.id+'">Generar imagen</button></div>'+
+      (pcGenId===p.id?'<label class="wide">Prompt para el generador de imágenes<textarea id="pcg-text" style="min-height:7em" readonly>'+esc(pcGenText)+'</textarea></label><div class="bar"><button type="button" class="pri" data-pc-copy="1">Copiar el prompt</button></div><p class="sub">Pégalo en tu generador de imágenes, pide formato cuadrado, descarga el resultado y súbelo con «Subir retrato».</p>':"")+
       '<div class="bar"><button type="button" class="ghost hurt" data-rmpc="'+p.id+'">Eliminar personaje</button></div>':"")+'</article>'}).join("")+'</div>'
     :'<div class="empty"><p><b>'+(S.party.length?"Ningún personaje coincide.":"Todavía no hay personajes.")+'</b></p><p>Cada personaje tendrá aquí su tarjeta con CA, puntos de golpe y nivel, para no preguntarlo en mitad de la escena.</p></div>'}
 $("#ch-filters").addEventListener("click",function(e){var b=e.target.closest("[data-chf]");if(b){chFilter=b.dataset.chf;drawChars()}});
@@ -1795,7 +1839,7 @@ function drawSvg(){var m=curMap(),c=m.cell,h=[],fs=14/V.z;
   var ln=drag&&drag.line||lastRule;
   if(ln)h.push('<line class="rl0" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><line class="rl1'+(ln.bad?" bad":"")+'" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><text class="rt'+(ln.bad?" bad":"")+'" font-size="'+fs+'" x="'+(ln.x2+fs*.8)+'" y="'+(ln.y2-fs*.8)+'">'+esc(ln.label)+'</text>');
   var sv=$("#map-svg");sv.setAttribute("class",m.src?"onimg":"");sv.innerHTML=h.join("")}
-function tokPicUrl(t){var cc=t.ref&&find(t.ref);return cc&&!cc.pcId&&cc.base?monPic(cc.base):""}
+function tokPicUrl(t){var cc=t.ref&&find(t.ref),P=t.ref&&(pc(t.ref)||(cc&&cc.pcId&&pc(cc.pcId)));if(P)return pcPic(P);return cc&&!cc.pcId&&cc.base?monPic(cc.base):""}
 function tokBody(t,n,R,fs){var u=tokPicUrl(t);if(!u)return'<text font-size="'+fs+'">'+esc(initials(n))+'</text>';var k=/(\d+)\s*$/.exec(n);
   return'<image href="'+esc(u)+'" x="'+(-R)+'" y="'+(-R)+'" width="'+2*R+'" height="'+2*R+'" preserveAspectRatio="xMidYMid slice" style="clip-path:circle(50%)"/><circle class="ring" r="'+R+'"/>'+(k?'<text class="tn" font-size="'+fs*.8+'" x="'+R*.72+'" y="'+R*.72+'">'+k[1]+'</text>':"")}
 function tokBar(){var t=selTok&&tokGet(selTok),b=$("#tok-bar");b.hidden=!t;if(!t)return;
