@@ -566,6 +566,21 @@ label{display:flex;flex-direction:column;gap:3px}
         </div>
         <p id="mo-msg" class="small muted" role="status"></p>
       </details>
+      <details id="voz" class="panel dm" hidden>
+        <summary>Voz de lectura: <b id="voz-now"></b></summary>
+        <p class="small muted">Por defecto lee la voz de tu navegador. Con una clave de ElevenLabs lee una de tus voces, con mucha mejor calidad. La clave se guarda solo en este navegador y cada lectura gasta caracteres de tu cuenta.</p>
+        <div class="bar">
+          <label>Lee<select id="vz-eng"><option value="nav">La voz del navegador</option><option value="eleven">ElevenLabs</option></select></label>
+          <label style="flex:1 1 12em">Clave de API de ElevenLabs<input id="vz-key" type="password" autocomplete="off" style="width:100%"></label>
+          <button type="button" id="vz-load">Cargar mis voces</button>
+        </div>
+        <div class="bar">
+          <label style="flex:1 1 14em">Voz<select id="vz-voice" style="width:100%"></select></label>
+          <label>Calidad<select id="vz-model"><option value="eleven_flash_v2_5">Rápida, gasta la mitad</option><option value="eleven_multilingual_v2">Máxima calidad</option></select></label>
+          <button type="button" id="vz-test">Probar la voz</button>
+        </div>
+        <p id="vz-msg" class="small muted" role="status"></p>
+      </details>
       <div id="ia-secret" class="empty" hidden><p>Este modo es solo para el máster. Está oculto mientras la pantalla de jugadores esté activa.</p></div>
       <div id="ia-body">
         <div id="ia-quick" class="bar">
@@ -1049,14 +1064,39 @@ $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data
 var helpOn=true,autoRead=false,ttsCap=null,speaking=null;
 try{helpOn=localStorage.getItem(LS+"-ayuda")!=="0";autoRead=localStorage.getItem(LS+"-leer")==="1"}catch(e){}
 function clean(t){return String(t||"").replace(/\[(MAPA|COMBATE)[^\]]*\]/gi,"").replace(/[ \t]+\n/g,"\n").trim()}
-function ttsOk(){return inArtifact?!!ttsCap:!!(window.speechSynthesis&&window.SpeechSynthesisUtterance)}
+var vc={eng:"nav",key:"",voice:"",name:"",model:"eleven_flash_v2_5"},vAudio=null,vAbort=null;
+try{var vz0=JSON.parse(localStorage.getItem(LS+"-voz")||"{}");["eng","key","voice","name","model"].forEach(function(k){if(typeof vz0[k]==="string"&&vz0[k])vc[k]=vz0[k]})}catch(e){}
+function eleven(){return!(window.claude&&window.claude.use)&&vc.eng==="eleven"&&vc.key&&vc.voice}
+function vzSave(){vc.eng=$("#vz-eng").value;vc.key=$("#vz-key").value.trim();vc.model=$("#vz-model").value;var o=$("#vz-voice").selectedOptions[0];if(o&&o.value){vc.voice=o.value;vc.name=o.textContent}
+  try{localStorage.setItem(LS+"-voz",JSON.stringify(vc))}catch(e){}vzDraw()}
+function vzDraw(){$("#voz").hidden=!!(window.claude&&window.claude.use);$("#voz-now").textContent=eleven()?"ElevenLabs, "+(vc.name||"voz elegida"):vc.eng==="eleven"?"ElevenLabs sin terminar de configurar":"la del navegador";
+  if(!$("#vz-voice").options.length&&vc.voice)$("#vz-voice").innerHTML='<option value="'+esc(vc.voice)+'">'+esc(vc.name||"Voz guardada")+'</option>'}
+function vzErr(st){return st===401?"ElevenLabs ha rechazado la clave.":st===429?"ElevenLabs dice que has agotado tu cuota o vas demasiado rápido.":st===402||st===403?"Tu plan de ElevenLabs no permite esta voz o este modelo.":"No se puede conectar con ElevenLabs."}
+$("#vz-eng").value=vc.eng;$("#vz-key").value=vc.key;$("#vz-model").value=vc.model;
+["#vz-eng","#vz-key","#vz-model","#vz-voice"].forEach(function(q){$(q).addEventListener("change",vzSave)});
+$("#vz-load").onclick=function(){vzSave();var el=$("#vz-msg");if(!vc.key){el.textContent="Escribe primero tu clave de API.";return}el.textContent="Cargando voces…";
+  fetch("https://api.elevenlabs.io/v1/voices",{headers:{"xi-api-key":vc.key}}).then(function(r){if(!r.ok)throw{st:r.status};return r.json()}).then(function(j){
+    var L=(j.voices||[]).map(function(v){var l=v.labels||{};return{id:v.voice_id,name:v.name,es:/^es/i.test(l.language||""),st:/narrat|story/i.test(l.use_case||"")}});
+    L.sort(function(a,b){return(b.es-a.es)||(b.st-a.st)||a.name.localeCompare(b.name)});
+    $("#vz-voice").innerHTML=L.map(function(v){return'<option value="'+esc(v.id)+'"'+(v.id===vc.voice?" selected":"")+'>'+esc(v.name+(v.es?" · español":""))+'</option>'}).join("");
+    $("#vz-eng").value="eleven";vzSave();el.textContent=L.length+" voces cargadas. Las que hablan español salen primero."},function(e){el.textContent=vzErr(e&&e.st)})};
+$("#vz-test").onclick=function(){vzSave();speak("La niebla cubre el puerto y, en algún lugar bajo el agua, suena una campana.",null)};
+function elevenSay(text,me,done){var el=$("#vz-msg");vAbort=new AbortController();
+  fetch("https://api.elevenlabs.io/v1/text-to-speech/"+encodeURIComponent(vc.voice)+"?output_format=mp3_44100_128",{method:"POST",signal:vAbort.signal,headers:{"xi-api-key":vc.key,"Content-Type":"application/json"},body:JSON.stringify({text:text.slice(0,2500),model_id:vc.model,language_code:vc.model==="eleven_flash_v2_5"?"es":undefined})})
+  .then(function(r){if(!r.ok)throw{st:r.status};return r.blob()}).then(function(b){if(speaking!==me)return;var u=URL.createObjectURL(b);vAudio=new Audio(u);
+    vAudio.onended=vAudio.onerror=function(){URL.revokeObjectURL(u);done()};el.textContent="";return vAudio.play()})
+  .catch(function(e){if(e&&e.name==="AbortError")return;el.textContent=(e&&e.st?vzErr(e.st):"No se ha podido reproducir el audio.")+" Leo con la voz del navegador.";if(speaking===me)navSay(text,done)})}
+function navSay(text,done){if(!(window.speechSynthesis&&window.SpeechSynthesisUtterance)){done();return}
+  var u=new SpeechSynthesisUtterance(text),vs=window.speechSynthesis.getVoices().filter(function(v){return/^es/i.test(v.lang)});
+  u.lang="es-ES";if(vs.length)u.voice=vs.filter(function(v){return/es-ES/i.test(v.lang)})[0]||vs[0];u.rate=.95;u.onend=done;u.onerror=done;window.speechSynthesis.speak(u)}
+function ttsOk(){if(eleven())return true;return inArtifact?!!ttsCap:!!(window.speechSynthesis&&window.SpeechSynthesisUtterance)}
 function ttsMark(){document.body.classList.toggle("no-tts",!ttsOk());[].forEach.call(document.querySelectorAll("[data-say],#ia-read,#ia-draft-read"),function(b){b.textContent=speaking&&b===speaking.btn?"Parar la lectura":"Leer en voz alta"})}
-function stopSpeak(){if(!speaking)return;speaking=null;try{if(inArtifact){if(ttsCap)ttsCap.stop()}else window.speechSynthesis.cancel()}catch(e){}ttsMark()}
+function stopSpeak(){if(!speaking)return;speaking=null;try{if(vAbort)vAbort.abort();if(vAudio){vAudio.pause();vAudio=null}if(inArtifact){if(ttsCap)ttsCap.stop()}else window.speechSynthesis.cancel()}catch(e){}ttsMark()}
 function speak(text,btn){if(speaking&&(!btn||speaking.btn===btn)){stopSpeak();if(btn)return}stopSpeak();text=clean(text);if(!text||!ttsOk())return;var me={btn:btn||null};speaking=me;ttsMark();
   function done(){if(speaking===me){speaking=null;ttsMark()}}
   if(inArtifact){ttsCap.speak(text.slice(0,2000),{language:"es"}).then(done,done);return}
-  var u=new SpeechSynthesisUtterance(text),vs=window.speechSynthesis.getVoices().filter(function(v){return/^es/i.test(v.lang)});
-  u.lang="es-ES";if(vs.length)u.voice=vs.filter(function(v){return/es-ES/i.test(v.lang)})[0]||vs[0];u.rate=.95;u.onend=done;u.onerror=done;window.speechSynthesis.speak(u)}
+  if(eleven())elevenSay(text,me,done);else navSay(text,done)}
+vzDraw();
 if(window.claude&&window.claude.use)window.claude.use("tts").then(function(t){ttsCap=t;ttsMark()},function(){ttsMark()});
 function drawLog(){var ol=$("#ia-log");ol.textContent="";
   S.ia.log.forEach(function(x,i){var li=document.createElement("li");li.className=x.r==="a"?"a":"u";
