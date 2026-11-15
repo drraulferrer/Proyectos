@@ -104,7 +104,18 @@ summary{cursor:pointer}
 .tk.pc circle{fill:var(--tok-pc)} .tk.mon circle{fill:var(--tok-mon)} .tk.oth circle{fill:var(--tok-oth)}
 .tk.sel circle{stroke:var(--fx);stroke-width:5} .tk.hid{opacity:.45}
 .tk image{pointer-events:none}
+.abg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.chk{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center} .chk .lv{flex:0 0 100%;font-size:.8rem;color:var(--muted)}
+label.ck{flex-direction:row;align-items:center;gap:6px;text-transform:none;letter-spacing:0;font-size:.9rem;color:var(--ink)} label.ck input{min-height:0;width:auto}
+.sheet{display:block} .sheet[open]>*{margin-top:10px} .sheet summary{cursor:pointer;font-weight:700} .sheetl{line-height:1.5}
+.slots{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0} .slots b{letter-spacing:3px;color:var(--fx)}
+.guide{border:1px solid var(--divider);border-radius:10px;padding:10px 14px} .guide ol{margin:6px 0 0;padding-left:20px;display:grid;gap:4px}
+.sub.warn{color:var(--fx)}
+.rollc{border-top:1px solid var(--divider);padding-top:10px;margin-top:10px} .rollc p{margin:0 0 6px}
 .tk .ring{fill:none}
+.tk.chest{cursor:grab} .tk.chest.sel .cb{stroke:var(--fx);stroke-width:4}
+.tlab rect{fill:#000;fill-opacity:.8;stroke:#f3d9a0;stroke-opacity:.6;stroke-width:1;vector-effect:non-scaling-stroke}
+.tlab text{fill:#fff;text-anchor:middle;font-family:var(--body)} .tlab .tl0{font-weight:700;fill:#f3d9a0}
 .tk .tn{font-size:11px;paint-order:stroke;stroke:#000;stroke-width:3px}
 .tk text{fill:var(--tok-ink);font-family:var(--body);font-weight:700;text-anchor:middle;dominant-baseline:central;pointer-events:none}
 .rl0{stroke:#000;stroke-opacity:.7;stroke-width:6;vector-effect:non-scaling-stroke;stroke-linecap:round}
@@ -441,6 +452,10 @@ label{display:flex;flex-direction:column;gap:3px}
             </div>
             <p id="mon-msg" class="sub dm" role="status"></p><p id="mon-out" class="sub dm"></p>
             <div class="bar dm"><button type="button" id="mon-add" class="pri" hidden>Añadir a la historia</button><button type="button" id="mon-no" class="ghost" hidden>Descartar</button></div>
+            <details class="dm" id="mi" hidden><summary>Buscar en mi índice de criaturas</summary>
+              <div class="bar" style="margin-top:8px"><label style="flex:1 1 10em">Nombre o tipo<input id="mi-q" placeholder="dragón, undead…" style="width:100%"></label><label>VD<select id="mi-cr"></select></label></div>
+              <div id="mi-out"></div><p class="small muted">El índice solo trae nombre, tipo y VD. El panel estima CA, PG y ataque a partir del VD; corrígelos con tu manual.</p>
+            </details>
             <details class="dm"><summary>Añadir una criatura a mano</summary>
               <form id="mon-form" class="stack" style="gap:8px;margin-top:8px" autocomplete="off">
                 <div class="fgrid"><label>Nombre<input id="mo-n"></label><label>CA<input id="mo-ca" type="number" value="13"></label><label>PG<input id="mo-pg" type="number" value="20"></label><label>Mod. iniciativa<input id="mo-in" type="number" value="1"></label>
@@ -479,6 +494,11 @@ label{display:flex;flex-direction:column;gap:3px}
           <div class="card"><h2>Resumen</h2><div id="sd-sum" class="stack" style="gap:10px"></div></div>
           <div class="card"><h2>Botín del grupo</h2><div id="sd-loot"></div>
             <form id="loot-form" class="bar dm" autocomplete="off"><label style="flex:1 1 12em">Añadir al botín<input id="loot-x" placeholder="Llave de plata, 30 po…" style="width:100%"></label><button type="submit">Añadir</button></form></div>
+          <details class="panel dm" id="cat"><summary>Catálogo: objetos mágicos, tesoros y trampas</summary>
+            <p class="small muted">Ideas listas para meter en la historia. Los objetos y tesoros van al botín del grupo; las trampas y los hallazgos, a las notas del DM.</p>
+            <div class="bar"><label style="flex:1 1 9em">Buscar<input id="cat-q" placeholder="poción, fuego…" style="width:100%"></label><label>Tipo<select id="cat-k"></select></label><button type="button" id="cat-rnd">Uno al azar</button></div>
+            <div id="cat-list"></div><p id="cat-msg" class="sub" role="status"></p>
+          </details>
           <div class="card dm"><h2>Notas del DM</h2><div id="sd-notes"></div>
             <form id="note-form" class="stack" style="gap:8px" autocomplete="off">
               <label class="wide">Título de la nota<input id="note-title" placeholder="El vidente de Vallaki"></label>
@@ -502,7 +522,8 @@ label{display:flex;flex-direction:column;gap:3px}
     <div class="head"><div class="ttl"><h1>Personajes</h1><p class="sub" id="ch-sub"></p></div>
       <div class="acts"><input id="ch-q" class="search" type="search" placeholder="Buscar personajes…" aria-label="Buscar personajes">
         <button type="button" id="imp-btn" class="dm" title="Desde el PDF o una captura de la hoja de D&amp;D Beyond">Importar de D&amp;D Beyond</button><input id="imp-file" type="file" accept="application/pdf,image/*" hidden>
-        <button type="button" id="btn-rest" class="dm" title="Todos recuperan sus PG máximos">Descanso largo</button>
+        <button type="button" id="btn-srest" class="dm" title="Una hora de respiro">Descanso corto</button>
+        <button type="button" id="btn-rest" class="dm" title="Todos recuperan sus PG máximos y sus espacios de conjuro">Descanso largo</button>
         <button type="button" class="pri dm" id="btn-addpc">+ Nuevo personaje</button></div></div>
     <p id="ch-msg" class="sub" role="status"></p><input id="pc-pic-file" type="file" accept="image/*" hidden>
     <div class="chips" id="ch-filters"></div>
@@ -586,6 +607,11 @@ label{display:flex;flex-direction:column;gap:3px}
         <label style="flex-direction:row;align-items:center;gap:6px;text-transform:none;letter-spacing:0;font-size:1rem;color:var(--ink)"><input id="tk-hid" type="checkbox" style="min-height:0"> Oculta a los jugadores</label>
         <button type="button" id="tk-rm" class="hurt">Quitar del mapa</button>
       </div>
+      <p id="tk-info" class="sub" style="color:var(--ink)"></p>
+      <div id="tk-loose" class="bar">
+        <label>Se dibuja como<select id="tk-kind"><option value="fig">Figura</option><option value="chest">Cofre</option></select></label>
+        <span id="tk-chest" class="bar" style="flex:1 1 20em"><label style="flex:1 1 12em">Contiene<input id="tk-loot" list="cat-dl" placeholder="40 po; Poción de curación" style="width:100%"></label><button type="button" id="tk-open">Abrir el cofre</button></span>
+      </div><datalist id="cat-dl"></datalist>
     </div>
     <div class="bar dm">
       <button type="button" class="pri" id="tok-auto">Colocar al grupo y al combate</button>
@@ -725,7 +751,11 @@ label{display:flex;flex-direction:column;gap:3px}
           <textarea id="ia-draft-text" aria-label="Propuesta del narrador"></textarea>
           <div class="bar"><button type="button" class="pri" id="ia-accept">Aceptar</button><button type="button" id="ia-regen">Otra versión</button><button type="button" id="ia-draft-read" class="tts">Leer en voz alta</button><button type="button" class="ghost" id="ia-discard">Descartar</button></div>
         </div>
+        <div id="ia-rolls" class="card" hidden></div>
         <p id="ia-note" class="small muted" role="status"></p>
+        <div id="ia-whobar" class="bar" hidden><label>Quién actúa<select id="ia-who"></select></label>
+          <label class="ck"><input type="checkbox" id="ia-turns"> Por turnos, de uno en uno</label>
+          <span class="small muted" style="flex:1 1 14em">Elige al personaje que habla para que el máster use sus estadísticas.</span></div>
         <form id="ia-form" class="bar" autocomplete="off">
           <label><span id="ia-label"></span><textarea id="ia-input"></textarea></label>
           <button type="submit" class="pri" id="ia-send">Enviar</button>
@@ -780,6 +810,14 @@ label{display:flex;flex-direction:column;gap:3px}
       </div>
     </div>
     <p class="small muted">Resumen para decidir rápido en mesa. El texto completo está en el glosario del Manual del Jugador.</p>
+    <div class="card" id="lists">
+        <h3>Mis listados: glosario e índice de criaturas</h3>
+        <p class="small muted dm">Carga tus hojas de cálculo (.xlsx o .csv): un glosario inglés-español o un índice de criaturas con columnas de nombre, tipo y VD. Se leen y se guardan solo en este navegador; no se suben a ningún sitio.</p>
+        <div class="bar dm"><label style="flex:1 1 14em">Añadir listados<input id="ls-file" type="file" accept=".xlsx,.xls,.csv" multiple></label><button type="button" id="ls-clear" class="ghost">Borrar mis listados</button></div>
+        <p id="ls-msg" class="sub" role="status"></p>
+        <div class="bar"><label style="flex:1 1 14em">Buscar un término en mi glosario<input id="gl-q" placeholder="grappled, cegado, fireball…" style="width:100%"></label></div>
+        <div id="gl-out"></div>
+    </div>
     <div class="card dm">
         <h3>Cómo se dirige, en tres pasos</h3>
         <div class="prose">
@@ -1106,7 +1144,8 @@ function demoStory(){var s=mkStory("La campana hundida (ejemplo)",S.stories.leng
 document.addEventListener("click",function(e){if(e.target.closest("[data-demo-story]"))demoStory()});
 
 /* ---- combate automático ---- */
-function clog(t){var C=S.combat;if(!Array.isArray(C.log))C.log=[];C.log.push(t);if(C.log.length>80)C.log.splice(0,C.log.length-80)}
+var capt=null;
+function clog(t){var C=S.combat;if(capt)capt.push(t);if(!Array.isArray(C.log))C.log=[];C.log.push(t);if(C.log.length>80)C.log.splice(0,C.log.length-80)}
 function rollF(f,crit){var m=/(\d*)\s*d\s*(\d+)\s*([+-]\s*\d+)?/i.exec(String(f||"")),n,sd,k,r=[],t=0;
   if(!m){t=Math.max(1,int(f,1));return{total:t,text:String(t)}}
   n=Math.max(1,int(m[1],1))*(crit?2:1);sd=Math.max(2,int(m[2],6));k=m[3]?int(m[3].replace(/\s/g,""),0):0;
@@ -1119,7 +1158,7 @@ function addCond(c,k){c.conds=c.conds||[];if(c.conds.indexOf(k)<0)c.conds.push(k
 function delCond(c,k){c.conds=(c.conds||[]).filter(function(x){return x!==k})}
 function foes(){return S.combat.list.filter(function(c){return!isPc(c)&&hpOf(c)>0})}
 function heroes(up){return S.combat.list.filter(function(c){return isPc(c)&&!has(c,"Muerto")&&(!up||hpOf(c)>0)})}
-function hurt(c,n){var v=view(c);setHp(c,v.hp-n);if(isPc(c)&&hpOf(c)<=0){addCond(c,"Inconsciente");c.ds={s:0,f:0};delCond(c,"Estable")}}
+function hurt(c,n){var v=view(c);setHp(c,v.hp-n);delCond(c,"Dormido");if(isPc(c)&&hpOf(c)<=0){addCond(c,"Inconsciente");c.ds={s:0,f:0};delCond(c,"Estable")}}
 function mend(c,n){setHp(c,hpOf(c)+n);if(hpOf(c)>0){delCond(c,"Inconsciente");delCond(c,"Estable");c.ds=null}}
 function checkOver(){var C=S.combat;if(C.over||!C.round)return!!C.over;
   if(!foes().length&&C.list.some(function(c){return!isPc(c)})){var xp=0,n=C.list.filter(isPc).length||1;C.list.forEach(function(c){if(!isPc(c))xp+=XP[c.cr]||0});
@@ -1130,22 +1169,12 @@ function advance(){var C=S.combat,L=C.list;if(!L.length)return;sortList();var i=
   if(i<0||!C.round){C.round=1;i=-1}
   for(var n=0;n<L.length;n++){i++;if(i>=L.length){i=0;C.round++}if(alive(L[i]))break}
   C.turnId=L[i].id;if(C.auto&&C.round!==r0)clog("— Ronda "+C.round+" —")}
-function monsterTurn(c){var v=view(c),n=Math.max(1,int(c.n,1)),atk=int(c.atk,4),an=c.an||"ataque";
-  for(var i=0;i<n;i++){var T=heroes(true);if(!T.length)return;var pv=find(c.tgt),t=pv&&isPc(pv)&&hpOf(pv)>0&&Math.random()<.7?pv:T[Math.floor(Math.random()*T.length)],tv=view(t),r=d(20),tot=r+atk,ac=int(tv.ac,10);c.tgt=t.id;
-    if(r===1||(r!==20&&tot<ac))clog(v.name+" ataca a "+tv.name+" con "+an+": saca "+tot+" contra CA "+ac+" y falla.");
-    else{var dm=rollF(c.dmg||"1d6+2",r===20);hurt(t,dm.total);clog(v.name+" ataca a "+tv.name+" con "+an+": saca "+tot+" contra CA "+ac+(r===20?", crítico":", impacta")+" y hace "+dm.total+" de daño ("+dm.text+")."+(hpOf(t)<=0?" "+tv.name+" cae inconsciente.":" Le quedan "+hpOf(t)+" PG."))}}}
 function deathSave(c){var n=view(c).name,r=d(20);c.ds=c.ds||{s:0,f:0};
   if(r===20){mend(c,1);clog(n+" saca un 20 en su salvación contra muerte y se levanta con 1 PG.");return}
   if(r===1)c.ds.f+=2;else if(r>=10)c.ds.s++;else c.ds.f++;
   if(c.ds.f>=3){addCond(c,"Muerto");delCond(c,"Inconsciente");clog(n+" saca "+r+" en su salvación contra muerte: tercer fallo. Muere.")}
   else if(c.ds.s>=3){addCond(c,"Estable");clog(n+" saca "+r+" en su salvación contra muerte: tercer éxito. Queda estable, inconsciente.")}
   else clog(n+" saca "+r+" en su salvación contra muerte: "+(r>=10?"éxito":"fallo")+" ("+c.ds.s+" éxitos, "+c.ds.f+" fallos).")}
-function autoStep(){var C=S.combat;for(var g=0;g<60;g++){if(checkOver())return;var c=find(C.turnId);if(!c)return;
-    if(!isPc(c)){if(hpOf(c)>0)monsterTurn(c)}
-    else if(has(c,"Muerto")||has(c,"Estable")){}
-    else if(hpOf(c)<=0)deathSave(c);
-    else return;
-    if(checkOver())return;advance()}}
 function autoStart(){var C=S.combat;C.over=null;C.log=[];ambCombat(true);C.list.forEach(function(c){if(c.init==null)c.init=d(20)+int(isPc(c)?pc(c.pcId).init:c.mod,0)});
   sortList();C.round=1;C.turnId=C.list[0].id;clog("— Ronda 1 —");autoStep()}
 function next(){var C=S.combat;if(!C.list.length)return;if(C.auto&&!C.round)autoStart();else{if(C.auto&&C.over)return;advance();if(C.auto)autoStep()}touch()}
@@ -1156,7 +1185,6 @@ function autoEncounter(){var R=roster(),k=int($("#au-diff").value,1),bud=0,C=S.c
   var m=ok[Math.floor(Math.random()*ok.length)],q=Math.max(1,Math.min(Math.max(maxQ,2),Math.floor(bud/XP[m[4]])));
   buildEncounter(m,q,false)}
 function mkMon(m,name){return{id:uid(),base:m[0],name:name,ac:m[1],hp:m[2],max:m[2],mod:m[3],cr:m[4],atk:m[5],dmg:m[6],n:m[7],an:m[8],init:null,conds:[]}}
-function pcAct(fn){var c=find(S.combat.turnId);if(!c||!isPc(c)||S.combat.over)return;if(fn(c,view(c))===false)return;if(!checkOver()){advance();autoStep()}touch()}
 function drawAuto(){var C=S.combat,el=$("#cb-auto"),lg=$("#cb-log"),c=find(C.turnId),h=[];
   [].forEach.call($("#cb-mode").children,function(b){b.setAttribute("aria-pressed",(b.dataset.cb==="auto")===!!C.auto)});
   el.hidden=!C.auto||players;lg.hidden=!C.auto||!(C.log||[]).length;$("#btn-next").hidden=!!C.auto;$("#btn-rollmon").hidden=!!C.auto;
@@ -1165,10 +1193,11 @@ function drawAuto(){var C=S.combat,el=$("#cb-auto"),lg=$("#cb-log"),c=find(C.tur
       if(!roster().length)h.push('<p class="sub">Hacen falta personajes. Añádelos en «Personajes» o carga el grupo de ejemplo de abajo.</p>');
       else h.push('<p class="sub">El panel elige enemigos a la medida del grupo, tira la iniciativa de todos y resuelve los turnos de los monstruos. Vosotros solo decidís qué hacen vuestros personajes.</p><div class="bar"><label>Dificultad<select id="au-diff"><option value="0">Fácil</option><option value="1" selected>Normal</option><option value="2">Difícil</option></select></label><button type="button" class="pri" data-au="enc">Empezar un combate</button></div>')}
     else if(!C.round)h.push('<h2>Combate automático</h2><p class="sub">Ya hay criaturas en la lista. El panel tirará la iniciativa que falte y resolverá los turnos de los monstruos.</p><div class="bar"><button type="button" class="pri" data-au="start">Empezar este combate</button></div>');
-    else if(C.over)h.push('<h2>'+(C.over==="win"?"Victoria":"El grupo ha caído")+'</h2><p class="sub">'+esc((C.log||[]).slice(-1)[0]||"")+'</p><div class="bar">'+(C.byIA?'<button type="button" class="pri" data-au="back">Volver a la historia</button>':"")+'<button type="button" '+(C.byIA?"":'class="pri" ')+'data-au="end">Terminar el combate</button></div>');
+    else if(C.over)h.push('<h2>'+(C.over==="win"?"Victoria":"El grupo ha caído")+'</h2><p class="sub">'+esc((C.log||[]).slice(-1)[0]||"")+'</p><div class="bar">'+(C.byIA?'<button type="button" class="pri" data-au="back">Volver a la historia</button>':"")+'<button type="button" '+(C.byIA?"":'class="pri" ')+'data-au="end">Terminar el combate</button><button type="button" data-au="lrest" title="Recupera los PG y los espacios de conjuro de todos">Descanso largo</button></div>');
+    else if(C.wait)h.push(waitHtml());
     else if(c&&isPc(c)){var v=view(c),p=pc(c.pcId),F=foes(),A=heroes(false);
-      h.push('<span class="eyebrow">Ronda '+C.round+'</span><h2 style="font-size:1.2rem">Turno de '+esc(v.name)+'</h2><p class="sub">'+v.hp+" de "+v.max+' PG. Elige qué hace.</p>');
-      h.push('<div class="fgrid"><label>Objetivo<select id="au-target">'+F.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x.id===c.tgt?" selected":"")+'>'+esc(y.name)+" ("+band(y)[0].toLowerCase()+')</option>'}).join("")+'</select></label>'+
+      h.push('<span class="eyebrow">Ronda '+C.round+'</span><h2 style="font-size:1.2rem">Turno de '+esc(v.name)+'</h2><p class="sub">'+v.hp+" de "+v.max+' PG. Elige qué hace.</p>');if(helpOn)h.push(turnGuide(p));
+      h.push('<div class="fgrid"><label>Objetivo<select id="au-target">'+F.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x.id===c.tgt?" selected":"")+'>'+esc(y.name)+" ("+band(y)[0].toLowerCase()+((x.conds||[]).length?", "+x.conds.join(", ").toLowerCase():"")+')</option>'}).join("")+'</select></label>'+
         '<label>Bono de ataque<input id="au-atk" type="number" value="'+esc(p.atk==null?5:p.atk)+'"></label><label>Daño<input id="au-dmg" value="'+esc(p.dmg||"1d8+3")+'"></label></div>'+
         '<div class="bar"><button type="button" class="pri" data-au="atk">Atacar, que tire el panel</button></div>'+
         '<div class="bar"><label>Si tiráis con dados: ataque total<input id="au-roll" type="number" placeholder="17"></label><label>Daño<input id="au-rdmg" type="number" placeholder="8"></label><button type="button" data-au="own">Aplicar mi tirada</button></div>'+
@@ -1187,9 +1216,10 @@ $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data
   else if(a==="end"){S.combat={round:0,turnId:null,list:[],auto:true,log:[],over:null};touch()}
   else if(a==="back")backToStory();
   else if(a==="pass"){var cc=find(S.combat.turnId);if(cc&&isPc(cc))pcAct(function(c,v){clog(v.name+" hace otra cosa o pasa su turno.")});else next()}
-  else if(a==="atk")pcAct(function(c,v){var t=find($("#au-target").value);if(!t)return false;c.tgt=t.id;var tv=view(t),atk=int($("#au-atk").value,5),r=d(20),tot=r+atk,ac=int(tv.ac,10);
-    if(r===1||(r!==20&&tot<ac))clog(v.name+" ataca a "+tv.name+": saca "+tot+" contra CA "+ac+" y falla.");
-    else{var dm=rollF($("#au-dmg").value||"1d8+3",r===20);hurt(t,dm.total);clog(v.name+" ataca a "+tv.name+": saca "+tot+" contra CA "+ac+(r===20?", crítico":", impacta")+" y hace "+dm.total+" de daño ("+dm.text+")."+(hpOf(t)<=0?" "+tv.name+" cae.":" Le quedan "+hpOf(t)+" PG."))}})
+  else if(a==="atk")pcAct(function(c,v){var t=find($("#au-target").value);if(!t)return false;c.tgt=t.id;var tv=view(t),atk=int($("#au-atk").value,5),R=atkRoll(c,atk,t);
+    if(!R.hit)clog(v.name+" ataca a "+tv.name+". "+R.txt+": falla.");
+    else{var dm=rollF($("#au-dmg").value||"1d8+3",R.crit);hurt(t,dm.total);clog(v.name+" ataca a "+tv.name+". "+R.txt+": "+(R.crit?"crítico":"impacta")+" y hace "+dm.total+" de daño ("+dm.text+")."+fall(t))}
+    why(atkWhy(pc(c.pcId),atk)+(R.adv?" Tira con ventaja por el estado del enemigo.":""))})
   else if(a==="own")pcAct(function(c,v){var t=find($("#au-target").value),tot=int($("#au-roll").value,NaN),dm=int($("#au-rdmg").value,0);if(!t||isNaN(tot))return false;c.tgt=t.id;var tv=view(t),ac=int(tv.ac,10);
     if(tot<ac)clog(v.name+" ataca a "+tv.name+": "+tot+" contra CA "+ac+", falla.");
     else{if(dm<=0)return false;hurt(t,dm);clog(v.name+" ataca a "+tv.name+": "+tot+" contra CA "+ac+", impacta y hace "+dm+" de daño."+(hpOf(t)<=0?" "+tv.name+" cae.":" Le quedan "+hpOf(t)+" PG."))}})
@@ -1198,7 +1228,7 @@ $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data
 /* ---- voz, explicaciones y enlace entre historia, mapa y combate ---- */
 var helpOn=true,autoRead=false,ttsCap=null,speaking=null;
 try{helpOn=localStorage.getItem(LS+"-ayuda")!=="0";autoRead=localStorage.getItem(LS+"-leer")==="1"}catch(e){}
-function clean(t){return String(t||"").replace(/\[(MAPA|COMBATE|COLOCAR|AMBIENTE)[^\]]*\]/gi,"").replace(/[ \t]+\n/g,"\n").trim()}
+function clean(t){return String(t||"").replace(/\[(MAPA|COMBATE|COLOCAR|AMBIENTE|TIRADA)[^\]]*\]/gi,"").replace(/[ \t]+\n/g,"\n").trim()}
 var vc={eng:"nav",key:"",voice:"",name:"",model:"eleven_flash_v2_5"},vAudio=null,vAbort=null;
 try{var vz0=JSON.parse(localStorage.getItem(LS+"-voz")||"{}");["eng","key","voice","name","model","rate"].forEach(function(k){if(typeof vz0[k]==="string"&&vz0[k])vc[k]=vz0[k]})}catch(e){}
 function eleven(){return!(window.claude&&window.claude.use)&&vc.eng==="eleven"&&vc.key&&vc.voice}
@@ -1245,7 +1275,7 @@ $("#ia-read").onclick=function(){speak(lastOut,this)};
 $("#ia-draft-read").onclick=function(){speak($("#ia-draft-text").value,this)};
 $("#ia-autoread").checked=autoRead;
 $("#ia-autoread").onchange=function(){autoRead=this.checked;try{localStorage.setItem(LS+"-leer",autoRead?"1":"0")}catch(e){}if(!autoRead)stopSpeak()};
-function afterReply(t){ambFromText(t);var cb=combatFromText(t);placeFromText(t);if(cb)return;if(autoRead)speak(t,null)}
+function afterReply(t){rollsFromText(t);ambFromText(t);var cb=combatFromText(t);placeFromText(t);if(cb)return;if(autoRead)speak(t,null)}
 
 /* el máster IA lanza un combate */
 function buildEncounter(m,q,byIA){var R=roster(),C=S.combat;if(!R.length)return false;
@@ -1542,25 +1572,6 @@ var SPELLS=[["Descarga de fuego",0,"atk","1d10","",0,1,1],["Rayo de escarcha",0,
 function crNum(v){v=String(v||"0");if(v.indexOf("/")>0){var q=v.split("/");return(+q[0]||0)/(+q[1]||1)}return parseFloat(v)||0}
 function saveMod(c,ab){return ab==="DES"?int(c.mod,0):Math.min(6,Math.round(crNum(c.cr)))}
 function slotsOf(p){if(!Array.isArray(p.slots))p.slots=[0,0,0];if(!Array.isArray(p.used))p.used=[0,0,0];return p}
-function spellHtml(p){slotsOf(p);var last=p.lastSpell||"";
-  return'<div class="stack" style="gap:8px;border-top:1px solid var(--divider);padding-top:12px"><div class="fgrid"><label>Conjuro<select id="au-spell">'+[0,1,2,3].map(function(l){return'<optgroup label="'+(l?"Nivel "+l:"Trucos")+'">'+SPELLS.filter(function(x){return x[1]===l}).map(function(x){return'<option'+(x[0]===last?" selected":"")+'>'+x[0]+'</option>'}).join("")+'</optgroup>'}).join("")+'</select></label>'+
-    '<label>Bono de ataque de conjuro<input id="au-satk" type="number" value="'+esc(p.satk==null?5:p.satk)+'"></label><label>CD de tus conjuros<input id="au-sdc" type="number" value="'+esc(p.sdc==null?13:p.sdc)+'"></label></div>'+
-    '<div class="bar">'+[1,2,3].map(function(l){return'<label>Espacios de nivel '+l+' (quedan '+Math.max(0,p.slots[l-1]-p.used[l-1])+')<input type="number" min="0" max="9" data-slot="'+(l-1)+'" id="au-sl'+l+'" value="'+p.slots[l-1]+'"></label>'}).join("")+'<button type="button" class="pri" data-au="cast">Lanzar conjuro</button></div>'+
-    '<p class="sub help">Los conjuros de daño van contra el «Objetivo» de arriba; los de zona alcanzan también a los enemigos siguientes. Los de curación van a quien elijas en «Curar a». Si pones los espacios a 0, el panel no los cuenta.</p></div>'}
-function castSpell(c,v){var p=pc(c.pcId),sp=null,nm=$("#au-spell").value;SPELLS.forEach(function(x){if(x[0]===nm)sp=x});if(!sp||!p)return false;slotsOf(p);
-  var lv=sp[1],atk=int($("#au-satk").value,5),dc=int($("#au-sdc").value,13);p.lastSpell=nm;
-  if(lv>0&&p.slots[lv-1]>0){if(p.used[lv-1]>=p.slots[lv-1]){clog(v.name+" no tiene espacios de nivel "+lv+" para lanzar "+nm+". Elige otra cosa.");touch();return false}p.used[lv-1]++}
-  if(sp[2]==="heal"){var T=sp[6]>1?heroes(false):[find($("#au-heal-t").value)].filter(Boolean);if(!T.length)return false;
-    T.forEach(function(t){var h=rollF(sp[3]).total+3;mend(t,h);clog(v.name+" lanza "+nm+" y cura "+h+" PG a "+view(t).name+", que queda con "+hpOf(t)+" PG.")});return}
-  var first=find($("#au-target").value),F=foes();if(!first||!F.length)return false;c.tgt=first.id;
-  var targets=[first].concat(F.filter(function(x){return x!==first})).slice(0,sp[6]);
-  if(sp[2]==="auto"){var dm=rollF(sp[3]);hurt(first,dm.total);clog(v.name+" lanza "+nm+" contra "+view(first).name+": impacta sin tirada y hace "+dm.total+" de daño ("+dm.text+")."+(hpOf(first)<=0?" "+view(first).name+" cae.":" Le quedan "+hpOf(first)+" PG."))}
-  else if(sp[2]==="atk"){for(var i=0;i<sp[7];i++){var t=hpOf(first)>0?first:foes()[0];if(!t)break;var tv=view(t),r=d(20),tot=r+atk,ac=int(tv.ac,10);
-      if(r===1||(r!==20&&tot<ac))clog(v.name+" lanza "+nm+" contra "+tv.name+": saca "+tot+" contra CA "+ac+" y falla.");
-      else{var d2=rollF(sp[3],r===20);hurt(t,d2.total);clog(v.name+" lanza "+nm+" contra "+tv.name+": saca "+tot+" contra CA "+ac+(r===20?", crítico":", impacta")+" y hace "+d2.total+" de daño ("+d2.text+")."+(hpOf(t)<=0?" "+tv.name+" cae.":" Le quedan "+hpOf(t)+" PG."))}}}
-  else{var base=rollF(sp[3]);clog(v.name+" lanza "+nm+" (salvación de "+sp[4]+", CD "+dc+"): "+base.total+" de daño ("+base.text+")"+(targets.length>1?" a "+targets.length+" enemigos.":"."));
-    targets.forEach(function(t){var tv=view(t),r=d(20)+saveMod(t,sp[4]),ok=r>=dc,n=ok?(sp[5]?Math.floor(base.total/2):0):base.total;if(n>0)hurt(t,n);
-      clog("  "+tv.name+" saca "+r+": "+(ok?"supera la salvación"+(n?" y recibe la mitad, "+n:" y no recibe daño"):"falla y recibe "+n)+"."+(n>0?(hpOf(t)<=0?" Cae.":" Le quedan "+hpOf(t)+" PG."):""))})}}
 $("#cb-auto").addEventListener("change",function(e){var c=find(S.combat.turnId),p=c&&pc(c.pcId),t=e.target;if(!p)return;slotsOf(p);
   if(t.id==="au-satk"){p.satk=int(t.value,5);touch(false)}else if(t.id==="au-sdc"){p.sdc=int(t.value,13);touch(false)}else if(t.id==="au-spell"){p.lastSpell=t.value;touch(false)}
   else if(t.dataset.slot!=null){p.slots[+t.dataset.slot]=Math.max(0,Math.min(9,int(t.value,0)));touch()}});
@@ -1729,6 +1740,274 @@ $("#sd-npcs").addEventListener("click",function(e){var b=e.target.closest("[data
   kieRun(b,$("#npc-msg"),PCSTYLE+[n.name,n.role,n.where?"found at "+n.where:""].filter(Boolean).join(", ")+", fantasy non-player character","1:1",function(bl){return setNpcPic(n.id,bl)})});
 kieDraw();
 
+/* ---- figuras: etiqueta con datos, cofres ---- */
+function isChest(t){return!t.ref&&(t.kind==="chest"||(t.kind!=="fig"&&/cofre|ba[uú]l|arc[oó]n|tesoro/i.test(t.name||"")))}
+function baseOfName(n){var k=String(n||"").replace(/\s*\d+\s*$/,"").trim().toLowerCase(),r=null;if(!k)return null;BL().forEach(function(m){if(!r&&String(m[0]).toLowerCase()===k)r=m});return r}
+function tokGuess(t){var n=tokName(t).trim().toLowerCase(),u="",s=story();if(!n)return"";
+  S.party.forEach(function(p){if(!u&&p.pic&&(p.name||"").trim().toLowerCase()===n)u=pcPic(p)});if(u)return u;
+  if(s)s.npcs.forEach(function(x){if(!u&&(x.name||"").trim().toLowerCase()===n)u=npcPic(x)});if(u)return u;
+  var b=baseOfName(n);return b?monPic(b[0]):""}
+function chestSvg(R,open){var w=R*1.8,h=R*1.3,x=-w/2,y=-h/2+R*.14,b=y+h*.42,sw=' stroke="#2a1708" stroke-width="1.5" vector-effect="non-scaling-stroke"',g=[];
+  g.push('<rect class="cb" x="'+x+'" y="'+b+'" width="'+w+'" height="'+h*.58+'" rx="'+R*.08+'" fill="#7a4a21"'+sw+'/>');
+  if(open){g.push('<ellipse cx="0" cy="'+b+'" rx="'+w*.42+'" ry="'+h*.16+'" fill="#f5d04a"'+sw+'/>');
+    g.push('<path class="cb" d="M'+x+','+(b-h*.3)+' L'+x+','+(b-h*.5)+' Q0,'+(b-h*.86)+' '+(x+w)+','+(b-h*.5)+' L'+(x+w)+','+(b-h*.3)+' Z" fill="#8f5a2a"'+sw+'/>')}
+  else g.push('<path class="cb" d="M'+x+','+b+' L'+x+','+(y+h*.2)+' Q0,'+(y-h*.16)+' '+(x+w)+','+(y+h*.2)+' L'+(x+w)+','+b+' Z" fill="#8f5a2a"'+sw+'/>');
+  [.16,.76].forEach(function(f){g.push('<rect x="'+(x+w*f)+'" y="'+b+'" width="'+w*.08+'" height="'+h*.58+'" fill="#d9a93b"/>')});
+  g.push('<rect x="'+(-w*.07)+'" y="'+(b-h*.06)+'" width="'+w*.14+'" height="'+h*.24+'" rx="'+R*.04+'" fill="#f0c64b"'+sw+'/>');
+  return'<rect x="'+(-R)+'" y="'+(-R)+'" width="'+2*R+'" height="'+2*R+'" fill="transparent"/>'+g.join("")}
+function tokLines(t){var pub=players||solo,L=[tokName(t)],nn=npcOfTok(t),cc=t.ref&&find(t.ref),P=t.ref&&(pc(t.ref)||(cc&&cc.pcId&&pc(cc.pcId)));
+  if(P){L.push([[P.race,P.cls].filter(Boolean).join(" "),"nivel "+P.level].filter(Boolean).join(", "));L.push("CA "+P.ac+" · PG "+P.hp+"/"+P.max+" · Perc. pasiva "+P.pp);if(cc&&(cc.conds||[]).length)L.push(cc.conds.join(", "))}
+  else if(nn){L.push([nn.role,nn.where].filter(Boolean).join(", ")||"PNJ");if(!pub&&nn.wants)L.push("Quiere: "+String(nn.wants).slice(0,60))}
+  else if(cc){var v=view(cc);if(pub)L.push(band(v)[0]);else{L.push("CA "+v.ac+" · PG "+v.hp+"/"+v.max+" · VD "+cc.cr);L.push("Ataque "+sgn(int(cc.atk,4))+", daño "+(cc.dmg||"")+(cc.n>1?", "+cc.n+" ataques":""))}if((cc.conds||[]).length)L.push(cc.conds.join(", "))}
+  else if(isChest(t)){L.push(t.open?"Cofre abierto":"Cofre cerrado");if(!pub&&t.loot)L.push("Contiene: "+String(t.loot).slice(0,60))}
+  else{var bm=baseOfName(tokName(t));if(bm&&!pub)L.push("CA "+bm[1]+" · PG "+bm[2]+" · VD "+bm[4])}
+  return L.filter(Boolean)}
+function tokLabel(m,t,c){var L=tokLines(t),lf=13/V.z,sz=t.size||1,w=Math.max.apply(null,L.map(function(x){return x.length}))*lf*.56+lf*1.4,hh=L.length*lf*1.35+lf*.6,
+    cx=Math.max(w/2,Math.min(m.w-w/2,m.ox+(t.x+sz/2)*c)),cy=m.oy+(t.y+sz)*c+lf*.3;if(cy+hh>m.h)cy=Math.max(0,m.oy+t.y*c-hh-lf*.3);
+  return'<g class="tlab" pointer-events="none"><rect x="'+(cx-w/2)+'" y="'+cy+'" width="'+w+'" height="'+hh+'" rx="'+lf*.4+'"/>'+L.map(function(x,i){return'<text'+(i?"":' class="tl0"')+' font-size="'+lf+'" x="'+cx+'" y="'+(cy+lf*(1.1+i*1.35))+'">'+esc(x)+'</text>'}).join("")+'</g>'}
+
+/* ---- catálogo propio: objetos, tesoros, trampas y hallazgos ---- */
+var CATK={magico:"Objeto mágico",consumible:"Poción o pergamino",tesoro:"Tesoro",trampa:"Trampa",hallazgo:"Hallazgo"};
+var CAT=[
+["consumible","Poción de curación","Al beberla recuperas 2d4+2 PG.",0],["consumible","Poción de curación mayor","Al beberla recuperas 4d4+4 PG.",1],["consumible","Poción de escalada","Durante una hora trepas con la soltura de una araña.",0],
+["consumible","Poción de respirar bajo el agua","Durante una hora respiras bajo el agua.",0],["consumible","Poción de fuerza de gigante","Durante una hora tu Fuerza sube a 21.",1],["consumible","Poción de invisibilidad","Eres invisible una hora o hasta que ataques.",2],
+["consumible","Pergamino de conjuro de nivel 1","Un conjuro de un solo uso que elige quien dirige.",0],["consumible","Pergamino de conjuro de nivel 2","Un conjuro de nivel 2 de un solo uso.",1],["consumible","Aceite de afilado","Un arma untada suma 1 al ataque y al daño durante una hora.",0],
+["consumible","Antídoto del boticario","Termina un veneno y da ventaja contra venenos durante una hora.",0],["consumible","Vela de la vigilia","Mientras arde, nadie en 3 m puede ser sorprendido mientras duerme.",0],
+["magico","Arma +1","Suma 1 a las tiradas de ataque y de daño.",1],["magico","Escudo +1","Suma 1 más a la CA mientras lo empuñas.",1],["magico","Armadura +1","Suma 1 a la CA que da la armadura.",2],
+["magico","Capa del caminante gris","Ventaja en las pruebas de Sigilo con la capucha puesta.",1],["magico","Botas de paso callado","Tus pasos no hacen ruido.",1],["magico","Bolsa sin fondo","Por dentro es mucho más grande que por fuera.",1],
+["magico","Varita de dardos de luz","7 cargas. Cada carga lanza un dardo que no falla y hace 1d4+1.",1],["magico","Anillo de protección","Suma 1 a la CA y a las tiradas de salvación.",2],["magico","Amuleto de la buena salud","Tu Constitución pasa a ser 19 mientras lo llevas.",2],
+["magico","Farol del sendero","Su luz muestra las huellas de quien pasó por allí en el último día.",0],["magico","Cuerda obediente","18 m de cuerda que se ata y desata sola cuando se lo ordenas.",0],["magico","Brújula del deseo","Señala hacia lo que más quiere quien la sostiene, no hacia el norte.",1],
+["magico","Guantes del herrero","Resistencia al daño de fuego en las manos: puedes sostener brasas.",0],["magico","Espada de la marea","Arma +1. Una vez al día empuja 3 m a quien golpea, como una ola.",2],["magico","Cuerno del último aviso","Una vez al día, su toque despierta y pone en pie a todos los aliados en 18 m.",1],
+["magico","Máscara del otro rostro","Una vez al día cambia tu cara por la de alguien que hayas visto, durante una hora.",1],["magico","Piedra de mensaje","Dos piedras gemelas: lo que se susurra a una se oye en la otra, una vez al día.",1],["magico","Yelmo del que no duerme","No necesitas dormir y no pueden dormirte con magia.",2],
+["tesoro","Bolsa de monedas","2d6 × 10 po en monedas mezcladas.",0],["tesoro","Gemas talladas","Tres gemas que valen 50 po cada una.",0],["tesoro","Cáliz de plata","Vale 75 po. Lleva grabado el escudo de una familia noble.",0],["tesoro","Collar de perlas","Vale 250 po. Alguien lo estará buscando.",1],
+["tesoro","Mapa incompleto","Media ruta hacia un lugar marcado con una cruz. Falta la otra mitad.",0],["tesoro","Escritura de una propiedad","El título de una casa o una torre en ruinas, a nombre del portador.",1],["tesoro","Estatuilla de jade","Vale 150 po. Representa a un dios olvidado.",0],["tesoro","Cofre de especias raras","Vale 100 po para el mercader adecuado.",0],
+["trampa","Foso oculto","Percepción CD 13 para verlo. Quien cae recibe 1d6 por cada 3 m y queda dentro.",0],["trampa","Dardos envenenados","Una losa dispara dardos: ataque +6, 1d4 de daño y salvación de CON CD 12 o envenenado una hora.",0],["trampa","Techo que baja","El techo desciende en cuatro rondas. Fuerza CD 15 para frenarlo, o encontrar la palanca.",1],
+["trampa","Runa explosiva","Al tocarla estalla: salvación de DES CD 13, 3d6 de fuego, la mitad si la supera.",1],["trampa","Red y campanas","Una red cae y suena una alarma. Fuerza CD 12 para soltarse; los guardias llegan en dos rondas.",0],["trampa","Estatua que escupe fuego","Cono de 4,5 m: salvación de DES CD 14, 4d6 de fuego, la mitad si la supera.",2],["trampa","Puerta falsa","Parece la salida. Al abrirla, un péndulo: ataque +7, 2d10 de daño.",1],
+["hallazgo","Diario mojado","Las últimas páginas hablan de un socio que traicionó al autor.",0],["hallazgo","Llave sin cerradura","Una llave de hierro negro. Vibra al acercarse a cierta puerta.",0],["hallazgo","Carta sellada","Va dirigida a un PNJ de la historia. Abrirla tiene consecuencias.",0],["hallazgo","Altar apagado","Una ofrenda lo enciende y concede a uno del grupo inspiración.",0],
+["hallazgo","Prisionero","Alguien encerrado que promete una recompensa. Quizá miente.",0],["hallazgo","Marcas en la pared","Un código de ladrones: indica una ruta segura o una trampa cercana.",0],["hallazgo","Fuente extraña","Quien bebe tira un d6: con 1 queda envenenado una hora, con 6 recupera 2d6 PG.",0],["hallazgo","Campamento abandonado","Aún hay brasas. Quien lo dejó se fue con prisa y dejó algo atrás.",0]];
+function catRare(n){return["común","poco común","raro"][n]||"común"}
+function catHtml(L){return L.length?'<ul class="list">'+L.map(function(x){var loot=x[0]!=="trampa"&&x[0]!=="hallazgo";return'<li><span class="t"><b>'+esc(x[1])+'</b> <span class="badge">'+CATK[x[0]]+(loot?", "+catRare(x[3]):"")+'</span><time>'+esc(x[2])+'</time></span><button type="button" data-cat="'+CAT.indexOf(x)+'" style="min-height:28px;padding:0 8px;font-size:.8rem">'+(loot?"Al botín":"A las notas")+'</button></li>'}).join("")+'</ul>':'<p class="sub">Nada coincide.</p>'}
+function drawCat(){var el=$("#cat-list");if(!el)return;var q=$("#cat-q").value.trim().toLowerCase(),k=$("#cat-k").value;
+  el.innerHTML=catHtml(CAT.filter(function(x){return(!k||x[0]===k)&&(!q||(x[1]+" "+x[2]).toLowerCase().indexOf(q)>=0)}))}
+function catUse(x){var s=story();if(!s)return;if(x[0]==="trampa"||x[0]==="hallazgo")stEdit(function(s){s.notes.push({id:uid(),title:CATK[x[0]]+": "+x[1],text:x[2],t:Date.now()})});
+  else stEdit(function(s){s.loot=(s.loot||[]).concat([{id:uid(),x:x[1]+" ("+x[2]+")",t:Date.now()}])});
+  $("#cat-msg").textContent="«"+x[1]+"» añadido a"+(x[0]==="trampa"||x[0]==="hallazgo"?" las notas del DM.":"l botín del grupo.")}
+$("#cat-k").innerHTML='<option value="">Todo</option>'+Object.keys(CATK).map(function(k){return'<option value="'+k+'">'+CATK[k]+'</option>'}).join("");
+$("#cat-dl").innerHTML=CAT.filter(function(x){return x[0]!=="trampa"&&x[0]!=="hallazgo"}).map(function(x){return'<option value="'+esc(x[1])+'">'}).join("");
+$("#cat-q").addEventListener("input",drawCat);$("#cat-k").addEventListener("change",drawCat);
+$("#cat-rnd").onclick=function(){var k=$("#cat-k").value,L=CAT.filter(function(x){return!k||x[0]===k});$("#cat-list").innerHTML=catHtml([L[Math.floor(Math.random()*L.length)]])};
+$("#cat-list").addEventListener("click",function(e){var b=e.target.closest("[data-cat]");if(b&&CAT[+b.dataset.cat])catUse(CAT[+b.dataset.cat])});
+drawCat();
+function chestRoll(){var out=[d(6)*10+" po"],L=CAT.filter(function(x){return(x[0]==="magico"||x[0]==="consumible")&&x[3]<=1});if(Math.random()<.6)out.push(L[Math.floor(Math.random()*L.length)][1]);return out.join("; ")}
+$("#tk-kind").onchange=function(){var v=this.value;tkEdit(function(t){if(!t.ref)t.kind=v});tokBar()};
+$("#tk-loot").onchange=function(){var v=this.value.trim();tkEdit(function(t){t.loot=v})};
+$("#tk-open").onclick=function(){var t=selTok&&tokGet(selTok),s=story();if(!t||!isChest(t))return;
+  if(t.open){t.open=false;touch(false);drawSvg();tokBar();return}
+  if(!t.loot)t.loot=chestRoll();t.open=true;var P=String(t.loot).split(";").map(function(x){return x.trim()}).filter(Boolean);
+  if(s){s.loot=s.loot||[];P.forEach(function(x){s.loot.push({id:uid(),x:x,t:Date.now()})})}
+  logAct("Cofre abierto: "+P.join("; "));touch();mapMsg("El cofre contiene: "+P.join("; ")+"."+(s?" Apuntado en el botín del grupo.":""))};
+
+/* ---- listados del usuario: glosario e índice de criaturas ---- */
+var LISTS={glos:[],mons:[]},xlsP=null,glMap={};
+var MTYPE={aberration:"Aberración",beast:"Bestia",celestial:"Celestial",construct:"Autómata",dragon:"Dragón",elemental:"Elemental",fey:"Feérico",fiend:"Infernal",giant:"Gigante",humanoid:"Humanoide",monstrosity:"Monstruosidad",ooze:"Cieno",plant:"Planta",undead:"No muerto"};
+function loadXls(){if(!xlsP)xlsP=new Promise(function(res,rej){var sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";sc.onload=function(){window.XLSX?res(window.XLSX):rej()};sc.onerror=function(){xlsP=null;rej()};document.head.appendChild(sc)});return xlsP}
+function cellTxt(v){return v==null?"":String(v).trim()}
+function listParse(name,rows){var H=(rows[0]||[]).map(function(x){return cellTxt(x).toLowerCase()}),ni=-1,ci=-1,ti=-1,n=0;
+  H.forEach(function(h,i){if(ni<0&&(h==="name"||h==="nombre"))ni=i;if(ci<0&&(h==="cr"||h==="vd"))ci=i;if(ti<0&&(h==="type"||h==="tipo"))ti=i});
+  if(ni>=0&&ci>=0){rows.slice(1).forEach(function(r){var nm=cellTxt(r[ni]);if(!nm)return;var v=parseFloat(String(r[ci]).replace(",","."));if(isNaN(v))v=crNum(cellTxt(r[ci]));
+      LISTS.mons.push([nm.slice(0,60),ti>=0?cellTxt(r[ti]).slice(0,30):"",v>10?String(Math.round(v)):crKey(v)]);n++});return n}
+  var st=[];(rows[0]||[]).forEach(function(x,i){if(cellTxt(x))st.push(i)});if(!st.length||st[0]!==0)st.unshift(0);
+  rows.slice(1).forEach(function(r){st.forEach(function(a,k){var b=k+1<st.length?st[k+1]:r.length,P=[];for(var i=a;i<b;i++){var t=cellTxt(r[i]);if(t)P.push(t.slice(0,80))}
+      if(P.length>=2){LISTS.glos.push([cellTxt((rows[0]||[])[a]).slice(0,60)||name,P.join(" · ")]);n++}})});return n}
+function listIndex(){glMap={};LISTS.glos.forEach(function(g){var P=g[1].split(" · ");if(P.length===2)glMap[P[0].toLowerCase()]=P[1]});
+  $("#ls-msg").textContent=LISTS.glos.length||LISTS.mons.length?"Cargado en este navegador: "+LISTS.glos.length+" términos de glosario y "+LISTS.mons.length+" criaturas.":"Todavía no has cargado ningún listado.";
+  $("#mi").hidden=!LISTS.mons.length;drawGlos();drawMi()}
+function drawGlos(){var q=$("#gl-q").value.trim().toLowerCase(),el=$("#gl-out");if(q.length<2){el.innerHTML="";return}
+  var L=LISTS.glos.filter(function(g){return g[1].toLowerCase().indexOf(q)>=0}).slice(0,40);
+  el.innerHTML=L.length?'<ul class="list">'+L.map(function(g){return'<li><span class="t">'+esc(g[1])+'<time>'+esc(g[0])+'</time></span></li>'}).join("")+'</ul>':'<p class="sub">'+(LISTS.glos.length?"Ningún término coincide.":"Carga primero tu glosario.")+'</p>'}
+function miName(m){var k=m[0].toLowerCase(),q=k.split(/,\s*/),es=glMap[k]||(q.length===2?glMap[q[0]+" "+q[1]]||glMap[q[1]+" "+q[0]]:"");return es?es.charAt(0).toUpperCase()+es.slice(1):m[0]}
+function miEst(cr){var n=crNum(cr),k=Math.max(0,Math.min(10,n));return{ca:Math.min(19,12+Math.round(k/2.5)),pg:Math.round(k<1?6+k*30:14*k+16),ini:Math.min(4,1+Math.floor(k/4)),at:3+Math.round(k/2),dm:k<1?(k<.25?"1d4+1":"1d6+2"):(1+Math.floor(k/3))+"d8+"+(2+Math.floor(k/3)),na:k>=3?2:1}}
+function drawMi(){var el=$("#mi-out");if(!el)return;var q=$("#mi-q").value.trim().toLowerCase(),cr=$("#mi-cr").value;if(!q&&!cr){el.innerHTML='<p class="sub">Escribe un nombre o elige un VD.</p>';return}
+  var L=LISTS.mons.filter(function(m){return(!cr||m[2]===cr)&&(!q||(m[0]+" "+miName(m)+" "+m[1]+" "+(MTYPE[m[1].toLowerCase()]||"")).toLowerCase().indexOf(q)>=0)});
+  el.innerHTML=(L.length?'<ul class="list">'+L.slice(0,40).map(function(m){var es=miName(m);return'<li><span class="t"><b>'+esc(es)+'</b>'+(es!==m[0]?" ("+esc(m[0])+")":"")+'<time>'+esc([MTYPE[m[1].toLowerCase()]||m[1],"VD "+m[2]].filter(Boolean).join(", "))+'</time></span><button type="button" data-mi="'+LISTS.mons.indexOf(m)+'" style="min-height:28px;padding:0 8px;font-size:.8rem">Añadir a la historia</button></li>'}).join("")+'</ul>':'<p class="sub">Ninguna criatura coincide.</p>')+(L.length>40?'<p class="sub">Hay '+L.length+' resultados; afina la búsqueda.</p>':"")}
+$("#mi-cr").innerHTML='<option value="">Cualquiera</option>'+Object.keys(XP).map(function(k){return'<option>'+k+'</option>'}).join("");
+$("#mi-q").addEventListener("input",drawMi);$("#mi-cr").addEventListener("change",drawMi);$("#gl-q").addEventListener("input",drawGlos);
+$("#mi-out").addEventListener("click",function(e){var b=e.target.closest("[data-mi]"),m=b&&LISTS.mons[+b.dataset.mi];if(!m||!story())return;var z=miEst(m[2]),nm=miName(m);
+  stEdit(function(s){s.mons.push(monArr({nombre:nm,ca:z.ca,pg:z.pg,iniciativa:z.ini,vd:m[2],ataque:z.at,dano:z.dm,ataques:z.na,nombre_ataque:"su ataque",descripcion:""}))});
+  $("#mon-msg").textContent="«"+nm+"» añadida con cifras estimadas a partir de su VD"+(crNum(m[2])>10?" (el panel solo calcula hasta VD 10)":"")+". Revísalas con tu manual."});
+$("#ls-file").addEventListener("change",function(){var F=[].slice.call(this.files||[]),inp=this,el=$("#ls-msg");if(!F.length)return;el.textContent="Leyendo…";
+  loadXls().then(function(X){return Promise.all(F.map(function(f){return f.arrayBuffer().then(function(buf){var wb=X.read(buf,{type:"array"}),n=0;
+      wb.SheetNames.forEach(function(sn){n+=listParse(sn,X.utils.sheet_to_json(wb.Sheets[sn],{header:1,defval:null}))});return n})}))})
+  .then(function(N){inp.value="";return idbPut("lists",LISTS).catch(function(){}).then(function(){listIndex();el.textContent+=" Añadidas "+N.reduce(function(a,b){return a+b},0)+" filas."})},
+    function(){inp.value="";el.textContent="No se ha podido leer el archivo. Tiene que ser .xlsx o .csv."})});
+$("#ls-clear").onclick=function(){LISTS={glos:[],mons:[]};idbDel("lists");listIndex()};
+idbGet("lists").then(function(v){if(v&&Array.isArray(v.glos)&&Array.isArray(v.mons))LISTS=v;listIndex()},function(){listIndex()});
+/* ---- ficha completa ---- */
+var ABK=["fue","des","con","int","sab","car"],ABN={fue:"FUE",des:"DES",con:"CON",int:"INT",sab:"SAB",car:"CAR"},ABL={fue:"Fuerza",des:"Destreza",con:"Constitución",int:"Inteligencia",sab:"Sabiduría",car:"Carisma"};
+var SKL=[["Acrobacias","des"],["Atletismo","fue"],["Conocimiento arcano","int"],["Engaño","car"],["Historia","int"],["Interpretación","car"],["Intimidación","car"],["Investigación","int"],["Juego de manos","des"],["Medicina","sab"],["Naturaleza","int"],["Percepción","sab"],["Perspicacia","sab"],["Persuasión","car"],["Religión","int"],["Sigilo","des"],["Supervivencia","sab"],["Trato con animales","sab"]];
+function castGuess(cls){var c=String(cls||"").toLowerCase();return/mag|art[ií]fice/.test(c)?"int":/cl[eé]rig|druid|explorador/.test(c)?"sab":/bard|hechicer|bruj|palad/.test(c)?"car":""}
+function sheet(p){if(!p.ab||typeof p.ab!=="object")p.ab={};ABK.forEach(function(k){if(typeof p.ab[k]!=="number")p.ab[k]=10});["sv","sk","spells"].forEach(function(k){if(!Array.isArray(p[k]))p[k]=[]});if(p.speed==null)p.speed=9;if(typeof p.cast!=="string")p.cast=castGuess(p.cls);return p}
+function abMod(p,k){return Math.floor(((sheet(p).ab[k]||10)-10)/2)}
+function prof(p){return 2+Math.floor((Math.max(1,Math.min(20,int(p.level,1)))-1)/4)}
+function saveBonus(p,k){return abMod(p,k)+(p.sv.indexOf(k)>=0?prof(p):0)}
+function skillBonus(p,i){return abMod(p,SKL[i][1])+(p.sk.indexOf(SKL[i][0])>=0?prof(p):0)}
+function slotTable(p){var c=String(p.cls||"").toLowerCase(),l=int(p.level,1);
+  if(/bruj/.test(c))return l>=5?[0,0,2]:l>=3?[0,2,0]:[l>=2?2:1,0,0];
+  if(/palad|explorador/.test(c))return l>=9?[4,3,2]:l>=7?[4,3,0]:l>=5?[4,2,0]:l>=3?[3,0,0]:l>=2?[2,0,0]:[0,0,0];
+  if(!castGuess(p.cls))return[0,0,0];
+  return l>=6?[4,3,3]:l>=5?[4,3,2]:l>=4?[4,3,0]:l>=3?[4,2,0]:l>=2?[3,0,0]:[2,0,0]}
+function sheetCalc(p){sheet(p);var pb=prof(p);p.init=abMod(p,"des");p.pp=10+skillBonus(p,11);p.atk=pb+Math.max(abMod(p,"fue"),abMod(p,"des"));
+  if(p.cast){p.satk=pb+abMod(p,p.cast);p.sdc=8+pb+abMod(p,p.cast)}p.slots=slotTable(p);slotsOf(p);p.full=true}
+function ckBox(id,k,v,on,label){return'<label class="ck"><input type="checkbox" data-sh="'+id+'" data-k="'+k+'" data-v="'+esc(v)+'"'+(on?" checked":"")+'> '+esc(label)+'</label>'}
+function shIn(id,k,label,val,extra){return'<label>'+label+'<input data-sh="'+id+'" data-k="'+k+'" value="'+esc(val==null?"":val)+'" '+(extra||'type="number"')+'></label>'}
+function sheetLine(p){if(!p.full)return"";sheet(p);var sk=SKL.map(function(x,i){return p.sk.indexOf(x[0])>=0?x[0]+" "+sgn(skillBonus(p,i)):""}).filter(Boolean);
+  return'<p class="sub sheetl">'+ABK.map(function(k){return ABN[k]+" "+sgn(abMod(p,k))}).join(" · ")+(sk.length?"<br>"+esc(sk.join(", ")):"")+(p.cast&&p.spells.length?"<br>Conjuros: "+esc(p.spells.join(", ")):"")+'</p>'}
+function sheetHtml(p){sheet(p);slotsOf(p);var id=p.id;
+  return'<details class="sheet"'+(p.full||shOpen===id?" open":"")+' data-sh-box="'+id+'"><summary>Ficha completa</summary><p class="sub">Bono de competencia '+sgn(prof(p))+' a nivel '+esc(p.level)+'. Escribe las seis características y marca en qué es competente: el panel calcula los bonos y el máster IA los usa en cada tirada.</p>'+
+    '<div class="abg">'+ABK.map(function(k){return'<label>'+ABL[k]+' <b>'+sgn(abMod(p,k))+'</b><input type="number" min="1" max="30" data-sh="'+id+'" data-k="ab" data-v="'+k+'" value="'+p.ab[k]+'"></label>'}).join("")+'</div>'+
+    '<span class="eyebrow">Salvaciones en las que es competente</span><div class="chk">'+ABK.map(function(k){return ckBox(id,"sv",k,p.sv.indexOf(k)>=0,ABN[k]+" "+sgn(saveBonus(p,k)))}).join("")+'</div>'+
+    '<span class="eyebrow">Habilidades en las que es competente</span><div class="chk">'+SKL.map(function(x,i){return ckBox(id,"sk",x[0],p.sk.indexOf(x[0])>=0,x[0]+" "+sgn(skillBonus(p,i)))}).join("")+'</div>'+
+    '<div class="fgrid">'+shIn(id,"speed","Velocidad (m)",p.speed,'type="number" step="1.5"')+'<label>Característica de conjuros<select data-sh="'+id+'" data-k="cast"><option value="">No lanza conjuros</option>'+ABK.map(function(k){return'<option value="'+k+'"'+(p.cast===k?" selected":"")+'>'+ABL[k]+'</option>'}).join("")+'</select></label>'+
+      shIn(id,"atk","Bono de ataque",p.atk==null?"":p.atk)+shIn(id,"dmg","Daño del arma",p.dmg||"",'placeholder="1d8+3"')+(p.cast?shIn(id,"satk","Ataque de conjuro",p.satk==null?"":p.satk)+shIn(id,"sdc","CD de conjuros",p.sdc==null?"":p.sdc)+
+      [1,2,3].map(function(l){return'<label>Espacios de nivel '+l+'<input type="number" min="0" max="9" data-sh="'+id+'" data-k="slot" data-v="'+(l-1)+'" value="'+p.slots[l-1]+'"></label>'}).join(""):"")+'</div>'+
+    (p.cast?'<span class="eyebrow">Conjuros que conoce o tiene preparados</span>'+[0,1,2,3].map(function(l){return'<div class="chk"><b class="lv">'+(l?"Nivel "+l:"Trucos")+'</b>'+SPELLS.filter(function(x){return x[1]===l}).map(function(x){return ckBox(id,"spells",x[0],p.spells.indexOf(x[0])>=0,x[0])}).join("")+'</div>'}).join(""):"")+
+    '<div class="bar"><button type="button" data-sh-calc="'+id+'">Calcular desde la ficha</button></div><p class="sub">«Calcular desde la ficha» rellena iniciativa, percepción pasiva, ataque, ataque y CD de conjuros y espacios según la clase y el nivel. Contrasta el resultado con tu hoja.</p></details>'}
+var shOpen=null;
+function shRedraw(){setTimeout(function(){var a=document.activeElement,q=a&&a.dataset&&a.dataset.sh?'[data-sh="'+a.dataset.sh+'"][data-k="'+a.dataset.k+'"]'+(a.dataset.v!=null?'[data-v="'+a.dataset.v+'"]':""):"";drawChars();if(q){var n=document.querySelector(q);if(n)n.focus()}},0)}
+$("#ch-cards").addEventListener("change",function(e){var t=e.target,p=t.dataset.sh&&pc(t.dataset.sh);if(!p)return;sheet(p);var k=t.dataset.k,v=t.dataset.v;p.full=true;
+  if(k==="ab")p.ab[v]=Math.max(1,Math.min(30,int(t.value,10)));
+  else if(k==="sv"||k==="sk"||k==="spells"){p[k]=p[k].filter(function(x){return x!==v});if(t.checked)p[k].push(v)}
+  else if(k==="speed")p.speed=parseFloat(t.value)||9;else if(k==="cast")p.cast=t.value;
+  else if(k==="slot"){slotsOf(p);p.slots[+v]=Math.max(0,Math.min(9,int(t.value,0)))}
+  else if(k==="dmg")p.dmg=t.value.trim()||"1d8+3";else p[k]=int(t.value,0);
+  touch(false);if(k==="ab"){var bb=t.parentNode.querySelector("b");if(bb)bb.textContent=sgn(abMod(p,v))}else shRedraw()});
+$("#ch-cards").addEventListener("focusout",function(e){var g=e.target.closest&&e.target.closest(".abg");if(g&&!(e.relatedTarget&&g.contains(e.relatedTarget)))shRedraw()});
+$("#ch-cards").addEventListener("toggle",function(e){var b=e.target;if(b.dataset&&b.dataset.shBox)shOpen=b.open?b.dataset.shBox:null},true);
+$("#ch-cards").addEventListener("click",function(e){var b=e.target.closest("[data-sh-calc]"),p=b&&pc(b.dataset.shCalc);if(!p)return;sheetCalc(p);touch();$("#ch-msg").textContent="Ficha de "+(p.name||"personaje")+" calculada: iniciativa "+sgn(p.init)+", percepción pasiva "+p.pp+", ataque "+sgn(p.atk)+(p.cast?", conjuros "+sgn(p.satk)+" y CD "+p.sdc:"")+"."});
+$("#btn-srest").onclick=function(){var n=0;S.party.forEach(function(p){if(/bruj/i.test(p.cls||"")&&Array.isArray(p.used)){p.used=[0,0,0];n++}});logAct("Descanso corto");touch();$("#ch-msg").textContent="Descanso corto, una hora. "+(n?"Los brujos recuperan sus espacios de conjuro. ":"")+"Quien quiera gasta dados de golpe para curarse: tira el dado de su clase, suma Constitución y apunta los PG en su tarjeta."};
+
+/* ---- combate: ventaja, estados y explicación paso a paso ---- */
+var SKIP=["Paralizado","Dormido","Incapacitado","Aturdido"],ADVV=["Paralizado","Dormido","Apresado","Iluminado","Marcado","Aturdido"],DISA=["Asustado","Apresado","Distraído","Cegado"];
+var CONDTXT={Marcado:"el siguiente ataque contra él tiene ventaja",Distraído:"tiene desventaja en su próximo ataque",Iluminado:"los ataques contra él tienen ventaja",Dormido:"pierde sus turnos hasta que reciba daño o supere la salvación",Incapacitado:"pierde sus turnos hasta que supere la salvación",Paralizado:"pierde sus turnos y los impactos contra él son críticos",Apresado:"ataca con desventaja y le atacan con ventaja",Asustado:"ataca con desventaja",Bendecido:"suma 1d4 a sus tiradas de ataque","Escudo de fe":"suma 2 a su CA"};
+function anyOf(c,L){return L.some(function(k){return has(c,k)})}
+function acOf(c){return int(view(c).ac,10)+(has(c,"Escudo de fe")?2:0)}
+function why(t){if(helpOn)clog("   ↳ "+t)}
+function atkRoll(a,bonus,t){var adv=anyOf(t,ADVV),dis=anyOf(a,DISA),r1=d(20),r2=d(20),A=adv&&!dis,D=dis&&!adv,r=A?Math.max(r1,r2):D?Math.min(r1,r2):r1,bl=isPc(a)&&has(a,"Bendecido")?d(4):0,tot=r+bonus+bl,ac=acOf(t),
+    hit=r!==1&&(r===20||tot>=ac),crit=hit&&(r===20||anyOf(t,["Paralizado","Dormido"]));
+  delCond(t,"Marcado");delCond(a,"Distraído");
+  return{r:r,tot:tot,hit:hit,crit:crit,adv:A,dis:D,txt:"Tira d20: "+r+(A?" (ventaja, el mejor de "+r1+" y "+r2+")":D?" (desventaja, el peor de "+r1+" y "+r2+")":"")+" "+sgn(bonus)+(bl?" +"+bl+" por Bendición":"")+" = "+tot+" contra CA "+ac}}
+function setFx(t,cond,ab,dc){addCond(t,cond);if(ab){t.fx=t.fx||{};t.fx[cond]={ab:ab,dc:dc}}}
+function endSaves(c){if(!c.fx)return;Object.keys(c.fx).forEach(function(k){if(!has(c,k)){delete c.fx[k];return}var f=c.fx[k],r=d(20),m=saveMod(c,f.ab),ok=r+m>=f.dc;
+  clog("  "+view(c).name+" repite la salvación de "+f.ab+" contra «"+k+"»: "+r+" "+sgn(m)+" = "+(r+m)+" contra CD "+f.dc+": "+(ok?"se libra.":"sigue "+k.toLowerCase()+"."));if(ok){delCond(c,k);delete c.fx[k]}})}
+function fall(t,pcw){return hpOf(t)<=0?" "+view(t).name+(pcw?" cae inconsciente.":" cae."):" Le quedan "+hpOf(t)+" PG."}
+function monsterTurn(c){var v=view(c),n=Math.max(1,int(c.n,1)),atk=int(c.atk,4),an=c.an||"ataque";
+  if(anyOf(c,SKIP)){clog(v.name+" está "+c.conds.filter(function(k){return SKIP.indexOf(k)>=0})[0].toLowerCase()+" y pierde su turno.");why("Una criatura incapacitada no puede actuar. Al final de su turno repite la salvación para librarse.");endSaves(c);return}
+  for(var i=0;i<n;i++){var T=heroes(true);if(!T.length)return;var pv=find(c.tgt),t=pv&&isPc(pv)&&hpOf(pv)>0&&Math.random()<.7?pv:T[Math.floor(Math.random()*T.length)],tv=view(t);c.tgt=t.id;var R=atkRoll(c,atk,t);
+    if(!R.hit)clog(v.name+" ataca a "+tv.name+" con "+an+". "+R.txt+": falla.");
+    else{var dm=rollF(c.dmg||"1d6+2",R.crit);hurt(t,dm.total);clog(v.name+" ataca a "+tv.name+" con "+an+". "+R.txt+": "+(R.crit?"crítico":"impacta")+" y hace "+dm.total+" de daño ("+dm.text+")."+fall(t,true))}
+    if(!i)why("El monstruo tira 1d20 y suma su bono de ataque, "+sgn(atk)+". Si el total iguala o supera la CA del personaje, impacta y tira el daño. Un 20 natural es crítico y dobla los dados de daño; un 1 natural siempre falla."+(R.dis?" Tira con desventaja por su estado.":""))}
+  endSaves(c)}
+function atkWhy(p,atk){return"Se tira 1d20 y se suma el bono de ataque de "+(p.name||"el personaje")+", "+sgn(atk)+(p.full?" (competencia "+sgn(prof(p))+" y característica "+sgn(atk-prof(p))+")":"")+". Si el total iguala o supera la CA del enemigo, impacta y se tira el daño."}
+function autoStep(){var C=S.combat;for(var g=0;g<60;g++){if(checkOver())return;var c=find(C.turnId);if(!c)return;var acted=false;capt=[];
+    if(!isPc(c)){if(hpOf(c)>0){monsterTurn(c);acted=true}}
+    else if(has(c,"Muerto")||has(c,"Estable")){}
+    else if(hpOf(c)<=0){deathSave(c);why("Un personaje a 0 PG tira 1d20 al empezar su turno: 10 o más es un éxito, menos es un fallo. Tres éxitos lo estabilizan, tres fallos lo matan, un 20 lo levanta con 1 PG.");acted=true}
+    else{capt=null;return}
+    var got=capt;capt=null;if(checkOver())return;advance();if(acted&&helpOn){C.last=got;C.wait=1;return}}}
+function pcAct(fn){var C=S.combat,c=find(C.turnId);if(!c||!isPc(c)||C.over||C.wait)return;capt=[];var r=fn(c,view(c)),got=capt;capt=null;if(r===false)return;
+  if(!checkOver()){advance();if(helpOn){C.last=got;C.wait=1}else autoStep()}touch()}
+function waitHtml(){var C=S.combat,n=find(C.turnId);return'<span class="eyebrow">Ronda '+C.round+' · paso a paso</span><h2 style="font-size:1.2rem">Qué acaba de pasar</h2><ul class="list">'+(C.last||[]).map(function(t){return'<li><span class="t'+(/^\s+↳/.test(t)?" sub":"")+'">'+esc(t)+'</span></li>'}).join("")+'</ul>'+
+  '<div class="bar"><button type="button" class="pri" data-au="cont">Continuar'+(n?": turno de "+esc(view(n).name):"")+'</button></div><p class="sub help">El panel se para tras cada acción para explicarla. Si preferís que corra sin pausas, apagad «Explicaciones» en el menú.</p>'}
+function turnGuide(p){sheet(p);var sp=p.speed||9;return'<div class="guide"><b>Tu turno, paso a paso</b><ol><li><b>Muévete</b> hasta '+fmt(sp)+' m, que son '+Math.floor(sp/1.5)+' casillas. Puedes repartir el movimiento antes y después de actuar.</li><li><b>Haz una acción</b>: atacar (el panel tira d20 '+sgn(p.atk==null?5:p.atk)+' y, si impacta, '+esc(p.dmg||"1d8+3")+' de daño)'+(p.cast?", lanzar un conjuro":"")+', o cualquier otra cosa: esquivar, ayudar, esconderte, usar un objeto.</li><li><b>Acción adicional</b>, solo si un rasgo o un conjuro te la da.</li><li>Pulsa abajo el botón de lo que hagas. El panel tira, aplica el resultado y te explica el porqué.</li></ol></div>'}
+
+/* ---- conjuros según la ficha ---- */
+SPELLS.forEach(function(x){if(x[0]==="Rayo guía")x[8]={c:"Marcado"};if(x[0]==="Burla dañina")x[8]={c:"Distraído"}});
+SPELLS.push(["Fuego feérico",1,"cond","","DES",0,3,1,{c:"Iluminado"}],["Sueño",1,"cond","","SAB",0,2,1,{c:"Dormido",ab:"SAB"}],["Risa horrible",1,"cond","","SAB",0,1,1,{c:"Incapacitado",ab:"SAB"}],["Bendición",1,"buff","","",0,3,1,{c:"Bendecido"}],["Escudo de fe",1,"buff","","",0,1,1,{c:"Escudo de fe"}],
+  ["Inmovilizar persona",2,"cond","","SAB",0,1,1,{c:"Paralizado",ab:"SAB"}],["Telaraña",2,"cond","","DES",0,3,1,{c:"Apresado",ab:"FUE"}],["Miedo",3,"cond","","SAB",0,3,1,{c:"Asustado",ab:"SAB"}]);
+function spellByName(n){var r=null;SPELLS.forEach(function(x){if(x[0]===n)r=x});return r}
+function spellPool(p){sheet(p);var L=SPELLS.filter(function(x){return p.spells.indexOf(x[0])>=0});return L.length?L:SPELLS}
+function slotsOn(p){slotsOf(p);return p.slots[0]+p.slots[1]+p.slots[2]>0}
+function slotLeft(p,l){slotsOf(p);return Math.max(0,p.slots[l-1]-p.used[l-1])}
+function canCast(p,sp){return sp[1]===0||!slotsOn(p)||slotLeft(p,sp[1])>0}
+function cantripDice(p,f){var L=int(p.level,1),k=1+(L>=5?1:0)+(L>=11?1:0)+(L>=17?1:0);return k>1?String(f).replace(/^\d+/,k):f}
+function spellInfo(p,sp){if(!sp)return"";var ef=sp[8],f=sp[1]===0?cantripDice(p,sp[3]):sp[3],T=[sp[1]?"Nivel "+sp[1]+", gasta un espacio":"Truco, no gasta nada"];
+  T.push({atk:"tirada de ataque de conjuro contra la CA",save:"el enemigo tira salvación de "+sp[4]+(sp[5]?"; si la supera recibe la mitad":"; si la supera no le afecta"),auto:"impacta sin tirada",heal:"cura a un aliado",cond:"el enemigo tira salvación de "+sp[4]+"; si falla sufre el efecto",buff:"refuerza a tus aliados"}[sp[2]]);
+  if(f)T.push((sp[2]==="heal"?"cura ":"daño ")+f+(sp[7]>1?" por rayo, "+sp[7]+" rayos":""));if(sp[6]>1&&sp[2]!=="heal")T.push(sp[6]>9?"a todos":"hasta "+sp[6]+" objetivos");
+  if(ef)T.push("efecto «"+ef.c+"»: "+CONDTXT[ef.c]+(ef.ab?"; repite la salvación al final de cada turno suyo":""));return T.join(" · ")}
+function spellHtml(p){sheet(p);slotsOf(p);var P=spellPool(p),own=p.spells.length>0,on=slotsOn(p),last=spellByName(p.lastSpell),cur=last&&P.indexOf(last)>=0&&canCast(p,last)?last:P.filter(function(x){return canCast(p,x)})[0]||P[0],
+    dry=on&&!P.some(function(x){return x[1]>0&&canCast(p,x)})&&P.some(function(x){return x[1]>0}),sa=p.satk==null?(p.full&&p.cast?prof(p)+abMod(p,p.cast):5):p.satk,sd=p.sdc==null?(p.full&&p.cast?8+prof(p)+abMod(p,p.cast):13):p.sdc;
+  return'<div class="stack" style="gap:8px;border-top:1px solid var(--divider);padding-top:12px"><span class="eyebrow">Conjuros de '+esc(p.name||"este personaje")+(own?"":" · lista general")+'</span><div class="fgrid"><label>Conjuro<select id="au-spell">'+[0,1,2,3].map(function(l){var L=P.filter(function(x){return x[1]===l});return L.length?'<optgroup label="'+(l?"Nivel "+l+(on?", quedan "+slotLeft(p,l)+" de "+p.slots[l-1]:""):"Trucos, sin límite")+'">'+L.map(function(x){var ok=canCast(p,x);return'<option value="'+esc(x[0])+'"'+(x===cur?" selected":"")+(ok?"":" disabled")+'>'+esc(x[0])+(ok?"":" (sin espacios)")+'</option>'}).join("")+'</optgroup>':""}).join("")+'</select></label>'+
+    '<label>Bono de ataque de conjuro<input id="au-satk" type="number" value="'+esc(sa)+'"></label><label>CD de tus conjuros<input id="au-sdc" type="number" value="'+esc(sd)+'"></label></div>'+
+    '<p id="au-spinfo" class="sub" style="color:var(--ink)">'+esc(spellInfo(p,cur))+'</p>'+
+    (on?'<p class="slots">'+[1,2,3].map(function(l){if(!p.slots[l-1])return"";var k=slotLeft(p,l),s="";for(var i=0;i<p.slots[l-1];i++)s+=i<k?"●":"○";return'<span>Nivel '+l+' <b>'+s+'</b></span>'}).join("")+'</p>':"")+
+    (dry?'<p class="sub warn">No quedan espacios de conjuro. Hasta un descanso largo solo puede lanzar trucos, atacar o hacer otra acción.</p>':"")+
+    '<div class="bar">'+[1,2,3].map(function(l){return'<label>Espacios de nivel '+l+'<input type="number" min="0" max="9" data-slot="'+(l-1)+'" id="au-sl'+l+'" value="'+p.slots[l-1]+'"></label>'}).join("")+'<button type="button" class="pri" data-au="cast"'+(cur&&canCast(p,cur)?"":" disabled")+'>Lanzar conjuro</button></div>'+
+    '<p class="sub help">'+(own?"Salen los conjuros marcados en la ficha de este personaje.":"Este personaje no tiene conjuros marcados en su ficha, así que sale la lista general. Márcalos en «Personajes», «Editar», «Ficha completa».")+' Los de daño y los de estado van contra el «Objetivo» de arriba y, si alcanzan a varios, a los enemigos siguientes. Los de curación y refuerzo van a quien elijas en «Curar a». '+(on?"Cada conjuro de nivel gasta un espacio y los espacios vuelven con un descanso largo.":"Si los espacios están a 0, el panel no los cuenta.")+'</p></div>'}
+function castSpell(c,v){var p=pc(c.pcId),nm=$("#au-spell").value,sp=spellByName(nm);if(!sp||!p)return false;slotsOf(p);
+  var lv=sp[1],atk=int($("#au-satk").value,5),dc=int($("#au-sdc").value,13),ef=sp[8],f=lv===0?cantripDice(p,sp[3]):sp[3],ally=sp[2]==="heal"||sp[2]==="buff";p.lastSpell=nm;
+  if(!canCast(p,sp)){clog(v.name+" no tiene espacios de nivel "+lv+" para lanzar "+nm+". Hasta un descanso largo solo puede usar trucos u otra acción.");touch();return false}
+  var first=find($("#au-target").value),ch=find($("#au-heal-t").value),T;
+  if(ally){T=[ch].concat(heroes(sp[2]==="buff").filter(function(x){return x!==ch})).filter(Boolean).slice(0,sp[6]);if(!T.length)return false}
+  else{if(!first||!foes().length)return false;c.tgt=first.id;T=[first].concat(foes().filter(function(x){return x!==first})).slice(0,sp[6])}
+  var cost="";if(lv>0&&slotsOn(p)){p.used[lv-1]++;cost=" Gasta un espacio de nivel "+lv+"; le quedan "+slotLeft(p,lv)+"."}
+  if(sp[2]==="heal"){var bn=p.full&&p.cast?Math.max(0,abMod(p,p.cast)):3;T.forEach(function(t){var h=rollF(f).total+bn;mend(t,h);clog(v.name+" lanza "+nm+" y cura "+h+" PG a "+view(t).name+", que queda con "+hpOf(t)+" PG."+cost);cost=""});
+    why("La curación tira los dados del conjuro y suma el modificador de la característica de conjuros, "+sgn(bn)+". No hace falta tirada de ataque.")}
+  else if(sp[2]==="buff"){T.forEach(function(t){addCond(t,ef.c)});clog(v.name+" lanza "+nm+" sobre "+T.map(function(t){return view(t).name}).join(", ")+": "+CONDTXT[ef.c]+" durante este combate."+cost);why("Es un conjuro de refuerzo: no se tira nada. El panel aplica el bono solo en cada tirada.")}
+  else if(sp[2]==="auto"){var dm=rollF(f);hurt(first,dm.total);clog(v.name+" lanza "+nm+" contra "+view(first).name+": impacta sin tirada y hace "+dm.total+" de daño ("+dm.text+")."+fall(first)+cost);why("Este conjuro no falla nunca: solo se tiran los dados de daño.")}
+  else if(sp[2]==="atk"){for(var i=0;i<sp[7];i++){var t=hpOf(first)>0?first:foes()[0];if(!t)break;var tv=view(t),R=atkRoll(c,atk,t);
+      if(!R.hit)clog(v.name+" lanza "+nm+" contra "+tv.name+". "+R.txt+": falla."+cost);
+      else{var d2=rollF(f,R.crit);hurt(t,d2.total);var ex="";if(ef&&hpOf(t)>0){setFx(t,ef.c,ef.ab,dc);ex=" Queda «"+ef.c+"»: "+CONDTXT[ef.c]+"."}
+        clog(v.name+" lanza "+nm+" contra "+tv.name+". "+R.txt+": "+(R.crit?"crítico":"impacta")+" y hace "+d2.total+" de daño ("+d2.text+")."+fall(t)+ex+cost)}cost=""}
+    why("Un conjuro de ataque tira 1d20 más el bono de ataque de conjuro, "+sgn(atk)+(p.full&&p.cast?" (competencia "+sgn(prof(p))+" y "+ABL[p.cast]+" "+sgn(abMod(p,p.cast))+")":"")+", contra la CA del enemigo.")}
+  else{var base=f?rollF(f):null;clog(v.name+" lanza "+nm+": salvación de "+sp[4]+" contra CD "+dc+(base?", "+base.total+" de daño ("+base.text+")":"")+(T.length>1?", a "+T.length+" enemigos.":".")+cost);
+    T.forEach(function(t){var tv=view(t),r=d(20),m=saveMod(t,sp[4]),ok=r+m>=dc,n=base?(ok?(sp[5]?Math.floor(base.total/2):0):base.total):0;if(n>0)hurt(t,n);var ex="";
+      if(!ok&&ef&&hpOf(t)>0){setFx(t,ef.c,ef.ab,dc);ex=" Queda «"+ef.c+"»: "+CONDTXT[ef.c]+"."}
+      clog("  "+tv.name+" tira "+r+" "+sgn(m)+" = "+(r+m)+": "+(ok?"supera la salvación"+(base?(n?" y recibe la mitad, "+n:" y no recibe daño"):" y no le afecta"):"falla"+(base?" y recibe "+n:""))+"."+(n>0?fall(t):"")+ex)});
+    why("Aquí no tira quien lanza: cada enemigo tira 1d20 más su modificador de "+sp[4]+" contra la CD de conjuros, "+dc+(p.full&&p.cast?" (8 + competencia "+prof(p)+" + "+ABL[p.cast]+" "+abMod(p,p.cast)+")":"")+". Si saca menos, sufre el efecto completo.")}}
+$("#cb-auto").addEventListener("change",function(e){if(e.target.id!=="au-spell")return;var c=find(S.combat.turnId),p=c&&pc(c.pcId);if(p)$("#au-spinfo").textContent=spellInfo(p,spellByName(e.target.value))});
+$("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data-au]");if(!b)return;
+  if(b.dataset.au==="cont"){S.combat.wait=0;autoStep();touch()}
+  else if(b.dataset.au==="lrest"){$("#btn-rest").click()}});
+/* ---- máster IA: fichas, tiradas guiadas y turnos ---- */
+function pcCtx(p){var b="- "+(p.name||"Sin nombre")+", "+([p.race,p.cls].filter(Boolean).join(" ")||"clase sin apuntar")+" de nivel "+p.level+", CA "+p.ac+", PG "+p.hp+"/"+p.max+", Percepción pasiva "+p.pp;if(!p.full)return b+" (sin ficha completa: no conoces sus modificadores)";sheet(p);slotsOf(p);
+  var sk=SKL.map(function(x,i){return p.sk.indexOf(x[0])>=0?x[0]+" "+sgn(skillBonus(p,i)):""}).filter(Boolean);
+  b+=", velocidad "+fmt(p.speed)+" m, competencia "+sgn(prof(p))+". Características: "+ABK.map(function(k){return ABN[k]+" "+sgn(abMod(p,k))}).join(", ")+". Salvaciones: "+ABK.map(function(k){return ABN[k]+" "+sgn(saveBonus(p,k))}).join(", ")+"."+(sk.length?" Habilidades con competencia: "+sk.join(", ")+".":"")+" Ataque "+sgn(p.atk==null?prof(p):p.atk)+(p.dmg?", daño "+p.dmg:"")+".";
+  if(p.cast)b+=" Conjuros ("+ABL[p.cast]+", ataque "+sgn(p.satk==null?prof(p)+abMod(p,p.cast):p.satk)+", CD "+(p.sdc==null?8+prof(p)+abMod(p,p.cast):p.sdc)+"): "+(p.spells.length?p.spells.join(", "):"sin apuntar")+"."+(slotsOn(p)?" Espacios que le quedan: "+[1,2,3].map(function(l){return p.slots[l-1]?"nivel "+l+": "+slotLeft(p,l)+" de "+p.slots[l-1]:""}).filter(Boolean).join(", ")+".":"");
+  return b}
+function flat(t){return String(t||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").trim()}
+function pcByName(n){var k=flat(n),R=roster(),r=null;if(!k)return null;R.forEach(function(p){if(!r&&flat(p.name)===k)r=p});
+  if(!r)R.forEach(function(p){var f=flat(p.name);if(!r&&f&&(f.indexOf(k)===0||k.indexOf(f.split(" ")[0])===0))r=p});return r}
+function rollMod(p,what){var w=flat(what),ab=null,i;if(!p.full)return{m:0,txt:"sin ficha completa, sin modificador"};sheet(p);
+  function abOf(){var r=null;ABK.forEach(function(k){if(!r&&(w.indexOf(flat(ABL[k]))>=0||new RegExp("\\b"+k+"\\b").test(w)))r=k});return r}
+  if(/salvaci/.test(w)&&(ab=abOf()))return{m:saveBonus(p,ab),txt:ABL[ab]+" "+sgn(abMod(p,ab))+(p.sv.indexOf(ab)>=0?", competencia "+sgn(prof(p)):", sin competencia")};
+  for(i=0;i<SKL.length;i++)if(w.indexOf(flat(SKL[i][0]))>=0){var on=p.sk.indexOf(SKL[i][0])>=0;return{m:skillBonus(p,i),txt:ABL[SKL[i][1]]+" "+sgn(abMod(p,SKL[i][1]))+(on?", competencia "+sgn(prof(p)):", sin competencia")}}
+  if(/iniciativa/.test(w))return{m:int(p.init,0),txt:"iniciativa"};
+  if(/ataque/.test(w))return{m:int(p.atk,prof(p)),txt:"bono de ataque"};
+  if((ab=abOf()))return{m:abMod(p,ab),txt:ABL[ab]+" "+sgn(abMod(p,ab))};
+  return{m:0,txt:"el panel no reconoce esa prueba: ajusta el modificador a mano"}}
+var pend=[],tAct="",tNext="",turnsOn=false;
+try{turnsOn=localStorage.getItem(LS+"-turnos")==="1"}catch(e){}
+function rollsFromText(t){var re=/\[TIRADA:\s*([^\]|]+)\|([^\]|]+)\|[^\]\d]*(\d+)[^\]]*\]/gi,m,n=0;pend=pend.filter(function(x){return x.res==null});
+  while((m=re.exec(String(t||"")))){var who=m[1].trim(),P=pcByName(who),L=P?[P]:/todos|grupo|cada/i.test(who)?roster():[];
+    L.forEach(function(p){var z=rollMod(p,m[2]);pend.push({id:uid(),pc:p.id,what:m[2].trim().slice(0,50),dc:int(m[3],10),m:z.m,txt:z.txt,res:null});n++})}
+  drawRolls();return n}
+function rollLine(x){var p=pc(x.pc);return(p?p.name||"Sin nombre":"Alguien")+" saca "+x.res.tot+" en "+x.what+" (d20: "+x.res.r+" "+sgn(x.m)+") contra CD "+x.dc+": "+(x.res.tot>=x.dc?"éxito":"fallo")+(x.res.r===20?", con un 20 natural":x.res.r===1?", con un 1 natural":"")+"."}
+function drawRolls(){var el=$("#ia-rolls");if(!el)return;var L=pend.filter(function(x){return pc(x.pc)});el.hidden=!L.length||S.ia.mode==="copiloto";if(el.hidden)return;
+  el.innerHTML='<span class="eyebrow">Tiradas que pide el máster</span>'+L.map(function(x){var p=pc(x.pc);
+    return'<div class="rollc"><p><b>'+esc(p.name||"Sin nombre")+'</b>: '+esc(x.what)+', CD '+x.dc+'</p>'+(x.res?'<p class="sub" style="color:var(--ink)">'+esc(rollLine(x))+(helpOn?' Se suma al d20 el modificador de la ficha ('+esc(x.txt)+'); si el total iguala o supera la CD, lo consigue.':"")+'</p>':
+      '<p class="sub">Tira 1d20 y suma '+sgn(x.m)+' ('+esc(x.txt)+').</p><div class="bar"><button type="button" class="pri" data-roll="'+x.id+'">Que tire el panel</button><label>Modificador<input type="number" id="rm-'+x.id+'" value="'+x.m+'" style="width:5em"></label><label>Si tiráis con dados, el d20<input type="number" min="1" max="20" id="rd-'+x.id+'" placeholder="14" style="width:5em"></label><button type="button" data-roll-own="'+x.id+'">Aplicar mi dado</button></div>')+'</div>'}).join("")+
+    (L.some(function(x){return x.res==null})?'<div class="bar"><button type="button" class="ghost" id="rolls-skip">Descartar estas tiradas</button></div>':"")}
+function rollDone(){drawRolls();var L=pend.filter(function(x){return pc(x.pc)});if(!L.length||L.some(function(x){return x.res==null}))return;
+  var t="Resultados de las tiradas, hechas con los modificadores de cada ficha: "+L.map(rollLine).join(" ");setTimeout(function(){if(busy||!ready())return;pend=[];say(t);drawRolls()},700)}
+$("#ia-rolls").addEventListener("click",function(e){var a=e.target.closest("[data-roll]"),o=e.target.closest("[data-roll-own]"),id=a?a.dataset.roll:o?o.dataset.rollOwn:null,x=null;
+  if(e.target.id==="rolls-skip"){pend=[];drawRolls();return}if(!id)return;pend.forEach(function(q){if(q.id===id)x=q});if(!x)return;
+  x.m=int($("#rm-"+id).value,x.m);var r=a?d(20):int($("#rd-"+id).value,0);if(r<1||r>20)return;x.res={r:r,tot:r+x.m};rollDone()});
+function drawWho(){var b=$("#ia-whobar");if(!b)return;var R=roster();b.hidden=S.ia.mode==="copiloto"||!R.length;var s=$("#ia-who"),cur=s.value;
+  s.innerHTML='<option value="">Todo el grupo</option>'+R.map(function(p){return'<option value="'+p.id+'">'+esc(p.name||"Sin nombre")+'</option>'}).join("");s.value=cur;if(s.selectedIndex<0)s.selectedIndex=0;
+  $("#ia-turns").checked=turnsOn;if(turnsOn&&!s.value&&R.length)s.value=R[0].id;drawRolls()}
+$("#ia-turns").addEventListener("change",function(){turnsOn=this.checked;try{localStorage.setItem(LS+"-turnos",turnsOn?"1":"0")}catch(e){}drawWho()});
+function whoWrap(q){var R=roster(),p=pc($("#ia-who").value);tAct=tNext="";if(!p)return q;var i=R.indexOf(p),nx=R[(i+1)%R.length];tAct=p.name||"";
+  if(turnsOn&&nx&&nx!==p){tNext=nx.name||"";$("#ia-who").value=nx.id}return(p.name||"Personaje")+": "+q}
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -1819,14 +2098,14 @@ function drawChars(){var camps={},n=0;S.party.forEach(function(p){if(p.story&&st
     return'<article class="pcard"><div class="pc-top">'+pcAva(p)+'<span class="t"><b>'+esc(p.name||"Sin nombre")+'</b><span class="sub">'+esc(pcSub(p))+'</span></span>'+(p.status==="pausa"?'<span class="badge pause">En pausa</span>':'<span class="badge ok">Activo</span>')+'</div>'+
     '<div class="tiles"><div><span>CA</span><b>'+esc(p.ac)+'</b></div><div><span>PG máx</span><b>'+esc(p.max)+'</b></div><div><span>Nivel</span><b>'+esc(p.level)+'</b></div></div>'+
     '<div><div class="rowb"><span>Puntos de golpe</span><b>'+esc(p.hp)+"/"+esc(p.max)+'</b></div><div class="bar2 hp"><i class="'+(r<=.25?"low":r<=.6?"half":"")+'" style="width:'+Math.round(r*100)+'%"></i></div></div>'+
-    xpHtml(p)+'<div class="pc-foot"><span>'+esc([p.player,s?s.title:"Sin historia"].filter(Boolean).join(" | "))+'</span><button type="button" class="ghost dm" data-ch-edit="'+p.id+'">'+(ed?"Listo":"Editar")+'</button></div>'+
+    sheetLine(p)+xpHtml(p)+'<div class="pc-foot"><span>'+esc([p.player,s?s.title:"Sin historia"].filter(Boolean).join(" | "))+'</span><button type="button" class="ghost dm" data-ch-edit="'+p.id+'">'+(ed?"Listo":"Editar")+'</button></div>'+
     (ed?'<div class="fgrid">'+PF.map(function(c){return'<label>'+c[1]+'<input id="c-'+p.id+'-'+c[0]+'" data-pc="'+p.id+'" data-f="'+c[0]+'" '+(c[2]==="n"?'type="number"':"")+' value="'+esc(p[c[0]]==null?"":p[c[0]])+'"></label>'}).join("")+
       '<label>Historia<select id="c-'+p.id+'-story" data-pc="'+p.id+'" data-f="story"><option value="">Sin historia</option>'+S.stories.map(function(x){return'<option value="'+x.id+'"'+(p.story===x.id?" selected":"")+'>'+esc(x.title)+'</option>'}).join("")+'</select></label>'+
       '<label>Estado<select id="c-'+p.id+'-status" data-pc="'+p.id+'" data-f="status"><option value="activo">Activo</option><option value="pausa"'+(p.status==="pausa"?" selected":"")+'>En pausa</option></select></label></div>'+
       '<label class="wide">Cómo es, para generar su retrato<input id="c-'+p.id+'-look" data-pc="'+p.id+'" data-f="look" value="'+esc(p.look||"")+'" placeholder="Pelirroja, cicatriz en la ceja, armadura de placas abollada, mirada desafiante"></label>'+
       '<div class="bar"><button type="button" data-pc-pic="'+p.id+'">'+(p.pic?"Cambiar retrato":"Subir retrato")+'</button><button type="button" data-pc-gen="'+p.id+'">Generar imagen</button><button type="button" class="kie-only" data-pc-kie="'+p.id+'">Generar con Kie.ai</button></div>'+
       (pcGenId===p.id?'<label class="wide">Prompt para el generador de imágenes<textarea id="pcg-text" style="min-height:7em" readonly>'+esc(pcGenText)+'</textarea></label><div class="bar"><button type="button" class="pri" data-pc-copy="1">Copiar el prompt</button></div><p class="sub">Pégalo en tu generador de imágenes, pide formato cuadrado, descarga el resultado y súbelo con «Subir retrato».</p>':"")+
-      '<div class="bar"><button type="button" class="ghost hurt" data-rmpc="'+p.id+'">Eliminar personaje</button></div>':"")+'</article>'}).join("")+'</div>'
+      sheetHtml(p)+'<div class="bar"><button type="button" class="ghost hurt" data-rmpc="'+p.id+'">Eliminar personaje</button></div>':"")+'</article>'}).join("")+'</div>'
     :'<div class="empty"><p><b>'+(S.party.length?"Ningún personaje coincide.":"Todavía no hay personajes.")+'</b></p><p>Cada personaje tendrá aquí su tarjeta con CA, puntos de golpe y nivel, para no preguntarlo en mitad de la escena.</p></div>'}
 $("#ch-filters").addEventListener("click",function(e){var b=e.target.closest("[data-chf]");if(b){chFilter=b.dataset.chf;drawChars()}});
 $("#ch-q").addEventListener("input",function(){chQ=this.value.trim();drawChars()});
@@ -1836,7 +2115,7 @@ $("#ch-cards").addEventListener("click",function(e){var b=e.target.closest("[dat
   if(b){p=pc(b.dataset.chEdit);if(chEdit===b.dataset.chEdit){chEdit=null;if(p&&p.isNew){delete p.isNew;logAct("Nuevo personaje: "+(p.name||"sin nombre")+(p.cls?", "+p.cls.toLowerCase():""));touch(false)}}else chEdit=b.dataset.chEdit;draw()}
   else if(r){var id=r.dataset.rmpc;S.party=S.party.filter(function(x){return x.id!==id});S.combat.list=S.combat.list.filter(function(c){return c.pcId!==id});chEdit=null;touch()}});
 $("#btn-addpc").onclick=function(){var s=story(),p={id:uid(),name:"",race:"",cls:"",player:"",level:1,ac:10,hp:10,max:10,pp:10,init:0,story:chFilter||(s?s.id:""),status:"activo",isNew:true};S.party.push(p);chEdit=p.id;chQ="";$("#ch-q").value="";touch();var i=$("#c-"+p.id+"-name");if(i)i.focus()};
-$("#btn-rest").onclick=function(){S.party.forEach(function(p){p.hp=p.max;if(Array.isArray(p.used))p.used=[0,0,0]});S.combat.list.forEach(function(c){if(c.pcId)c.conds=[]});logAct("Descanso largo: el grupo recupera sus PG");touch()};
+$("#btn-rest").onclick=function(){S.party.forEach(function(p){p.hp=p.max;if(Array.isArray(p.used))p.used=[0,0,0]});S.combat.list.forEach(function(c){if(c.pcId)c.conds=[]});logAct("Descanso largo: el grupo recupera sus PG y sus espacios de conjuro");touch();$("#ch-msg").textContent="Descanso largo, ocho horas: todos recuperan sus PG y sus espacios de conjuro."};
 
 /* ---- guía y lista de preparación ---- */
 $("#conds").innerHTML=CONDS.map(function(c){return'<dt>'+c[0]+'</dt><dd>'+c[1]+'</dd>'}).join("");
@@ -1926,7 +2205,7 @@ function iaCtx(){var L=[];
     if(hs.chapters.length)L.push("CAPÍTULOS:\n"+hs.chapters.map(function(c,i){return"- "+(i+1)+". "+c.title+" ("+(c.st==="hecho"?"completado":c.st==="curso"?"en curso":"pendiente")+")"+(c.note?": "+c.note:"")+(mapName(c.map)?" [mapa: "+mapName(c.map)+"]":c.mapHint?" [mapa que conviene: "+c.mapHint+"]":"")}).join("\n"));
     var ls=hs.sessions[hs.sessions.length-1];if(ls&&ls.x)L.push("ÚLTIMA SESIÓN JUGADA:\n"+ls.x.slice(0,800))}
   if(S.ia.summary)L.push("RESUMEN DE LO OCURRIDO HASTA AHORA:\n"+S.ia.summary);
-  if(roster().length)L.push("PERSONAJES:\n"+roster().map(function(p){return"- "+(p.name||"Sin nombre")+", "+([p.race,p.cls].filter(Boolean).join(" ")||"clase sin apuntar")+" de nivel "+p.level+", CA "+p.ac+", PG "+p.hp+"/"+p.max+", Percepción pasiva "+p.pp}).join("\n"));
+  if(roster().length)L.push("PERSONAJES:\n"+roster().map(pcCtx).join("\n"));
   if(S.combat.list.length)L.push("COMBATE EN MARCHA, ronda "+(S.combat.round||0)+(turnName()?", turno de "+turnName():"")+":\n"+S.combat.list.map(function(c){var v=view(c);
     return"- "+v.name+(v.pc?" (personaje)":" (monstruo, VD "+c.cr+")")+", iniciativa "+(c.init==null?"sin tirar":c.init)+", CA "+v.ac+", PG "+v.hp+"/"+v.max+((c.conds||[]).length?", estados: "+c.conds.join(", "):"")}).join("\n"));
   if(S.combat.auto&&(S.combat.log||[]).length)L.push("REGISTRO DEL COMBATE, con resultados ya tirados que no debes cambiar:\n"+S.combat.log.slice(-10).join("\n"));
@@ -1937,10 +2216,12 @@ function lead(m){var t=BASE+"\n\n"+MODES[m].rules;
   if(m==="auto"){var p=[];for(var i=0;i<8;i++)p.push(d(20));t+="\n\nPara las tiradas de d20 de monstruos y PNJ usa, en este orden, estos resultados que ya se han tirado con dados reales: "+p.join(", ")+"."}
   if(m!=="copiloto"){t+="\n\nCuando estalle un combate no lo resuelvas tú: termina tu respuesta con una línea exactamente así: [COMBATE: nombre de la criatura x cantidad], usando solo criaturas de esta lista: "+BL().map(function(x){return x[0]}).join(", ")+". El panel tirará los dados y después te contará cómo acabó.";
     t+="\n\nCuando la escena cambie de lugar, carga el mapa que encaje con una línea exactamente así: [MAPA: nombre del mapa], usando el nombre de uno de los lugares de la historia o de los mapas disponibles. Hazlo en tu primera respuesta y cada vez que la escena cambie de sitio. Prefiere los lugares que ya tienen mapa; si la escena exige un lugar nuevo, usa igualmente la marca con su nombre y el panel preparará un tablero en blanco y pedirá su imagen."+(story()&&placesCtx(story())?" "+placesCtx(story()):"")+" Al empezar una escena nueva o un combate añade una línea que empiece por «Colocación:» explicando a quien dirige en qué zona del mapa poner a los personajes, a las criaturas y los objetos importantes, y después una marca exactamente así: [COLOCAR: Nombre=columna,fila; Nombre=columna,fila], con casillas dentro del tamaño del mapa.";
+    t+="\n\nTIRADAS DE LOS PERSONAJES: conoces la ficha de cada uno, más abajo. Cuando una acción sea incierta, decide qué personaje concreto la hace según lo que haya dicho y no la resuelvas ni pidas cifras: termina con una línea exactamente así por cada personaje implicado: [TIRADA: nombre del personaje | habilidad, característica o salvación | CD]. El panel tira el d20, suma el modificador exacto de su ficha y te escribe el resultado; entonces narra la consecuencia sin cambiarlo. Si actúa todo el grupo, pide una tirada por personaje. Ten en cuenta su velocidad, sus conjuros y los espacios que le quedan: no le dejes lanzar un conjuro que no tiene o para el que no le quedan espacios.";
+    if(tAct)t+="\n\nEl último mensaje es de "+tAct+": resuelve su acción con sus estadísticas, no con las de otro."+(tNext?" RONDA POR TURNOS: los jugadores hablan de uno en uno. Responde en 80 palabras como máximo y termina preguntando por su nombre a "+tNext+" qué hace.":"");
     t+="\n\nPara ambientar la escena puedes cambiar el sonido de fondo con una línea exactamente así: [AMBIENTE: nombre], con uno de estos nombres: lluvia, mazmorra, bosque, taberna, misterio, silencio.";
     var sq=story(),cn=sq?chapNpcs(sq):[];if(cn.length)t+="\n\nLos PNJ de este capítulo son: "+cn.map(function(n){return n.name}).join(", ")+". Ya tienen figura en el mapa: inclúyelos en la marca [COLOCAR] cuando entren en escena o cambien de sitio.";
     var cm=curMap();if(cm.src||cm.desc)t+="\n\nLa escena actual transcurre en el mapa en pantalla, descrito más abajo: ambienta la narración en ese lugar concreto y ten en cuenta dónde está cada figura."}
-  if(helpOn)t+=m==="copiloto"?"\n\nEl máster es novato: explica en pocas palabras cada regla que menciones.":"\n\nMODO EXPLICACIÓN: los jugadores no han jugado nunca. Después de narrar añade una línea que empiece por «Opciones:» con tres o cuatro cosas concretas que podrían hacer sus personajes ahora, y explica entre paréntesis, en pocas palabras, cada término de reglas que uses.";
+  if(helpOn)t+=m==="copiloto"?"\n\nEl máster es novato: explica en pocas palabras cada regla que menciones.":"\n\nMODO EXPLICACIÓN: los jugadores no han jugado nunca. Después de narrar añade una línea que empiece por «Opciones:» con tres o cuatro cosas concretas que podrían hacer sus personajes ahora, y explica entre paréntesis, en pocas palabras, cada término de reglas que uses. Cuando el panel te dé el resultado de una tirada, di primero en una frase qué se sumó al dado y por qué, y luego narra la consecuencia.";
   return t+"\n\nESTADO DE LA MESA\n\n"+iaCtx()}
 function turns(m){var out=[{role:"user",content:lead(m)}];
   S.ia.log.slice(-30).forEach(function(x){out.push({role:x.r==="a"?"assistant":"user",content:x.t})});return out}
@@ -1965,7 +2246,7 @@ function drawIA(){var m=S.ia.mode,chat=m!=="copiloto",hide=players&&m!=="auto";
   $("#ia-start").hidden=S.ia.log.length>0;$("#ia-sum").hidden=S.ia.log.length<=24;$("#ia-clear").hidden=!S.ia.log.length;
   if(m!=="narrador")$("#ia-draft").hidden=true;
   $("#ia-send").textContent=m==="narrador"?"Pedir propuesta":"Enviar";
-  if(chat&&!busy)drawLog();iaButtons()}
+  if(chat&&!busy)drawLog();iaButtons();drawWho()}
 function propose(){var box=$("#ia-draft"),ta=$("#ia-draft-text");box.hidden=false;ta.value="";ta.readOnly=true;
   run(turns("narrador"),function(t){ta.value=t}).then(function(r){ta.readOnly=false;if(!r.text){box.hidden=true}else ta.value=r.text;drawIA()})}
 function autoReply(){var li=document.createElement("li");li.className="a";$("#ia-log").appendChild(li);$("#ia-empty").hidden=true;
@@ -1973,7 +2254,7 @@ function autoReply(){var li=document.createElement("li");li.className="a";$("#ia
 function say(text){liveStart(story());logPush("u",text);touch(false);drawLog();if(S.ia.mode==="narrador")propose();else autoReply()}
 $("#ia-modes").addEventListener("click",function(e){var b=e.target.closest("[data-ia]");if(!b||busy)return;S.ia.mode=b.dataset.ia;touch(false);drawIA();route()});
 $("#ia-form").addEventListener("submit",function(e){e.preventDefault();var i=$("#ia-input"),q=i.value.trim();if(!q||!ready())return;i.value="";
-  if(S.ia.mode==="copiloto")copilot(q);else say(q)});
+  if(S.ia.mode==="copiloto")copilot(q);else say(whoWrap(q))});
 $("#ia-input").addEventListener("keydown",function(e){if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)){e.preventDefault();$("#ia-send").click()}});
 function copilot(q){var hist=S.ia.log.slice(-6).map(function(x){return(x.r==="a"?"Máster: ":"Jugadores: ")+x.t}).join("\n");
   lastOut="";$("#ia-outbox").hidden=false;$("#ia-out").textContent="";
@@ -2008,7 +2289,7 @@ function mapMsg(t){$("#map-read").textContent=t}
 function setVal(s,v){var e=$(s);if(document.activeElement!==e)e.value=v}
 function tokRef(t){if(!t.ref)return null;var nn=npcOfTok(t);if(nn)return{name:nn.name,pc:false,npc:nn};if(String(t.ref).indexOf("npc:")===0)return null;var p=pc(t.ref);if(p)return{name:p.name||"Sin nombre",pc:true};var c=find(t.ref);if(c){var v=view(c);return{name:v.name,pc:v.pc}}return null}
 function tokName(t){var r=tokRef(t);return r?r.name:t.name||"Figura"}
-function tokKind(t){var r=tokRef(t);return r?(r.npc?"oth":r.pc?"pc":"mon"):t.kind||"oth"}
+function tokKind(t){var r=tokRef(t);return r?(r.npc?"oth":r.pc?"pc":"mon"):isChest(t)?"chest":"oth"}
 function tokGet(id){var L=curMap().tokens;for(var i=0;i<L.length;i++)if(L[i].id===id)return L[i];return null}
 function initials(n){var m=/(\d+)\s*$/.exec(n),w=n.replace(/\s*\(.*?\)|\s*\d+\s*$/g,"").trim();return(w.slice(0,m?1:2)+(m?m[1]:"")).slice(0,3)}
 function sizeStage(){var m=curMap(),st=$("#stage"),sv=$("#map-svg");st.style.width=m.w+"px";st.style.height=m.h+"px";sv.setAttribute("width",m.w);sv.setAttribute("height",m.h);sv.setAttribute("viewBox","0 0 "+m.w+" "+m.h)}
@@ -2036,7 +2317,7 @@ function fxText(m,f){var cells=fxCells(m,f),set={},hit=[];cells.forEach(function
   m.tokens.forEach(function(t){var s=t.size||1;for(var i=0;i<s;i++)for(var j=0;j<s;j++)if(set[(t.x+i)+","+(t.y+j)]){if(hit.indexOf(tokName(t))<0)hit.push(tokName(t));return}});
   return FXN[f.t]+" "+fmt(f.m)+" m: "+cells.length+" casillas. "+(hit.length?"Afecta a: "+hit.join(", ")+".":"No afecta a ninguna figura.")}
 function drawSvg(){var m=curMap(),c=m.cell,h=[],fs=14/V.z;
-  h.push('<defs><pattern id="grid" width="'+c+'" height="'+c+'" patternUnits="userSpaceOnUse" x="'+m.ox+'" y="'+m.oy+'"><path class="gl" d="M '+c+' 0 L 0 0 0 '+c+'"/></pattern></defs>');
+  h.push('<defs><pattern id="grid" width="'+c+'" height="'+c+'" patternUnits="userSpaceOnUse" x="'+m.ox+'" y="'+m.oy+'"><path class="gl" d="M '+c+' 0 L 0 0 0 '+c+'"/></pattern><clipPath id="tkc" clipPathUnits="objectBoundingBox"><circle cx=".5" cy=".5" r=".5"/></clipPath></defs>');
   if(!m.src)h.push('<rect class="blank" width="'+m.w+'" height="'+m.h+'"/>');
   h.push('<rect width="'+m.w+'" height="'+m.h+'" fill="url(#grid)"/>');
   m.fx.concat(drag&&drag.k==="fx"?[drag.fx]:[]).forEach(function(f){var s=fxShape(m,f);
@@ -2044,19 +2325,22 @@ function drawSvg(){var m=curMap(),c=m.cell,h=[],fs=14/V.z;
     h.push(s.c?'<circle class="fxo" cx="'+s.c[0]+'" cy="'+s.c[1]+'" r="'+s.c[2]+'"/>':'<polygon class="fxo" points="'+s.p.map(function(q){return q[0]+","+q[1]}).join(" ")+'"/>')});
   h.push(fogSvg(m));
   m.tokens.forEach(function(t){if((players||solo)&&(t.hidden||(!fogShow(m,t.x,t.y)&&!(t.ref&&pc(t.ref)))))return;var s=t.size||1,r=s*c/2,n=tokName(t);
-    h.push('<g class="tk '+tokKind(t)+(t.id===selTok?" sel":"")+(t.hidden?" hid":"")+'" data-tok="'+t.id+'" transform="translate('+(m.ox+t.x*c+r)+","+(m.oy+t.y*c+r)+')"><title>'+esc(n)+'</title><circle r="'+r*.86+'"/>'+tokBody(t,n,r*.86,c*.42*Math.min(s,2))+'</g>')});
+    h.push('<g class="tk '+tokKind(t)+(t.id===selTok?" sel":"")+(t.hidden?" hid":"")+'" data-tok="'+t.id+'" transform="translate('+(m.ox+t.x*c+r)+","+(m.oy+t.y*c+r)+')"><title>'+esc(n)+'</title>'+(isChest(t)?chestSvg(r*.86,t.open):'<circle r="'+r*.86+'"/>'+tokBody(t,n,r*.86,c*.42*Math.min(s,2)))+'</g>')});
   S.combat.list.forEach(function(cc){var tg=cc.tgt&&find(cc.tgt);if(!tg||!S.combat.round||S.combat.over||hpOf(cc)<=0||(!isPc(tg)&&hpOf(tg)<=0))return;var A=null,B=null;
     m.tokens.forEach(function(t){if(t.ref===(cc.pcId||cc.id))A=t;if(t.ref===(tg.pcId||tg.id))B=t});if(!A||!B||((players||solo)&&(A.hidden||B.hidden)))return;
     var pa=ctr(m,A.x,A.y,A.size||1),pb=ctr(m,B.x,B.y,B.size||1);h.push('<line class="dl'+(isPc(cc)?" pcl":"")+'" x1="'+pa.x+'" y1="'+pa.y+'" x2="'+pb.x+'" y2="'+pb.y+'"/>')});
   if(placing.length&&ghost)h.push('<circle class="ghost-tk" cx="'+(m.ox+(ghost.x+.5)*c)+'" cy="'+(m.oy+(ghost.y+.5)*c)+'" r="'+c*.43+'"/>');
   var ln=drag&&drag.line||lastRule;
   if(ln)h.push('<line class="rl0" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><line class="rl1'+(ln.bad?" bad":"")+'" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><text class="rt'+(ln.bad?" bad":"")+'" font-size="'+fs+'" x="'+(ln.x2+fs*.8)+'" y="'+(ln.y2-fs*.8)+'">'+esc(ln.label)+'</text>');
+  var st=selTok&&tokGet(selTok);if(st&&!((players||solo)&&st.hidden))h.push(tokLabel(m,st,c));
   var sv=$("#map-svg");sv.setAttribute("class",m.src?"onimg":"");sv.innerHTML=h.join("")}
-function tokPicUrl(t){var nq=npcOfTok(t);if(nq)return npcPic(nq);var cc=t.ref&&find(t.ref),P=t.ref&&(pc(t.ref)||(cc&&cc.pcId&&pc(cc.pcId)));if(P)return pcPic(P);return cc&&!cc.pcId&&cc.base?monPic(cc.base):""}
+function tokPicUrl(t){var nq=npcOfTok(t);if(nq)return npcPic(nq);var cc=t.ref&&find(t.ref),P=t.ref&&(pc(t.ref)||(cc&&cc.pcId&&pc(cc.pcId)));if(P)return pcPic(P);if(cc&&!cc.pcId&&cc.base)return monPic(cc.base);return t.ref?"":tokGuess(t)}
 function tokBody(t,n,R,fs){var u=tokPicUrl(t);if(!u)return'<text font-size="'+fs+'">'+esc(initials(n))+'</text>';var k=/(\d+)\s*$/.exec(n);
-  return'<image href="'+esc(u)+'" x="'+(-R)+'" y="'+(-R)+'" width="'+2*R+'" height="'+2*R+'" preserveAspectRatio="xMidYMid slice" style="clip-path:circle(50%)"/><circle class="ring" r="'+R+'"/>'+(k?'<text class="tn" font-size="'+fs*.8+'" x="'+R*.72+'" y="'+R*.72+'">'+k[1]+'</text>':"")}
+  return'<image href="'+esc(u)+'" x="'+(-R)+'" y="'+(-R)+'" width="'+2*R+'" height="'+2*R+'" preserveAspectRatio="xMidYMid slice" clip-path="url(#tkc)"/><circle class="ring" r="'+R+'"/>'+(k?'<text class="tn" font-size="'+fs*.8+'" x="'+R*.72+'" y="'+R*.72+'">'+k[1]+'</text>':"")}
 function tokBar(){var t=selTok&&tokGet(selTok),b=$("#tok-bar");b.hidden=!t;if(!t)return;
-  setVal("#tk-name",tokName(t));$("#tk-name").readOnly=!!tokRef(t);$("#tk-size").value=t.size||1;setVal("#tk-speed",t.speed==null?9:t.speed);$("#tk-hid").checked=!!t.hidden}
+  setVal("#tk-name",tokName(t));$("#tk-name").readOnly=!!tokRef(t);$("#tk-size").value=t.size||1;setVal("#tk-speed",t.speed==null?9:t.speed);$("#tk-hid").checked=!!t.hidden;
+  $("#tk-loose").hidden=!!t.ref;$("#tk-kind").value=isChest(t)?"chest":"fig";$("#tk-chest").hidden=!isChest(t);setVal("#tk-loot",t.loot||"");$("#tk-open").textContent=t.open?"Cerrar el cofre":"Abrir el cofre";
+  $("#tk-info").textContent=tokLines(t).slice(1).join(" | ")}
 function drawMapUI(){var m=curMap(),img=$("#map-img");
   var ms=story(),mo=function(o){return'<option value="'+o.id+'"'+(o.id===m.id?" selected":"")+'>'+esc(o.name)+'</option>'},mine=ms?S.maps.filter(function(o){return o.story===ms.id||ms.mapId===o.id||ms.chapters.some(function(c){return c.map===o.id})}):[],rest=S.maps.filter(function(o){return mine.indexOf(o)<0});
   $("#map-sel").innerHTML=mine.length?'<optgroup label="Mapas de '+esc(ms.title)+'">'+mine.map(mo).join("")+'</optgroup>'+(rest.length?'<optgroup label="Otros mapas">'+rest.map(mo).join("")+'</optgroup>':""):S.maps.map(mo).join("");

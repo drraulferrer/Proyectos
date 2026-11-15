@@ -54,6 +54,13 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
 - **Ayudas para la mesa**: en «Máster IA», «Dar contexto» y «¿Qué podemos hacer?» responden solo con lo que los personajes ya saben (`pubCtx`), con respuesta de reserva si no hay motor de IA.
 - **Lugares de la historia**: cada historia lleva una lista de lugares (`places`, con `title`, `mapHint` y `map`). El generador de historias la rellena y «Revisar qué mapas hacen falta» la completa con la IA. Si el máster IA lleva la escena a un lugar sin mapa, `needMap()` crea un tablero en blanco con las figuras y abre en «Máster IA» un panel para redactar el prompt y subir la imagen a ese mismo mapa.
 - **Generación con Kie.ai**: en la web de GitHub, con la clave del usuario guardada en su navegador (`kieGen()`), los botones «Generar con Kie.ai» crean y colocan la imagen en criaturas, personajes, PNJ y mapas. La API y el servidor de imágenes admiten llamadas desde el navegador. No existe en la copia de Claude.
+- **Figuras del mapa**: al pulsar una figura sale una etiqueta con su nombre y sus datos (`tokLines`); los jugadores ven solo lo público. Las figuras sueltas toman la imagen del personaje, PNJ o criatura con su mismo nombre. Los cofres (`isChest`) se dibujan como cofres, guardan un contenido y al abrirlos pasan al botín.
+- **Catálogo**: lista propia `CAT` de objetos mágicos, pociones, tesoros, trampas y hallazgos, en el detalle de la historia. Los objetos van al botín y las trampas a las notas del DM.
+- **Mis listados**: en «Reglas», el usuario carga sus hojas .xlsx o .csv (SheetJS desde cdnjs). Un glosario se busca por término; un índice de criaturas con nombre, tipo y VD permite añadirlas a la historia con cifras estimadas (`miEst`). Se guardan en IndexedDB, clave `lists`, y no van al repositorio.
+- **Ficha completa**: cada personaje tiene `ab` (seis características), `sv`, `sk`, `speed`, `cast`, `spells` y `full`. «Calcular desde la ficha» (`sheetCalc`) rellena iniciativa, percepción pasiva, ataque, conjuros y espacios según clase y nivel.
+- **Conjuros**: en combate salen los conjuros de la ficha (`spellPool`). Con espacios configurados, un nivel agotado bloquea sus conjuros hasta el descanso largo; el descanso corto recarga a los brujos. Los conjuros aplican estados (`setFx`, `CONDTXT`) que dan ventaja, desventaja o hacen perder turnos, con salvación al final de cada turno (`endSaves`). Los trucos escalan con el nivel.
+- **Paso a paso**: con «Explicaciones» activas, el combate automático se para tras cada acción (`C.wait`, `waitHtml`) y explica cada tirada (`why`).
+- **Tiradas guiadas**: el máster IA pide tiradas con `[TIRADA: personaje | prueba | CD]`; el panel las tira con el modificador de la ficha (`rollMod`) y le envía el resultado. «Quién actúa» antepone el nombre del personaje al mensaje y «Por turnos» hace hablar a los jugadores de uno en uno.
 - **Ambiente**: seis ambientes sonoros sintetizados con Web Audio, sin archivos de audio.
 - **Copia de seguridad**: en el Panel, descarga y restauración de toda la campaña.
 - **Reglas**: chuleta, estados y guía para la primera sesión.
@@ -67,6 +74,7 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
   - `[COMBATE: criatura x cantidad]` lanza el combate automático.
   - `[COLOCAR: Nombre=columna,fila; …]` coloca figuras.
   - `[AMBIENTE: nombre]` cambia el sonido de fondo.
+  - `[TIRADA: personaje | prueba | CD]` pide una tirada que resuelve el panel.
 - Cada capítulo puede tener un mapa asignado, que se carga al ponerlo «en curso».
 - Cada historia guarda su propia narración. `iaBind()` la intercambia al cambiar de historia.
 
@@ -101,7 +109,7 @@ Las preferencias de cada dispositivo van aparte en `localStorage`: motor de IA, 
 
 ## Límites conocidos
 
-- El combate automático cubre ataques y diecinueve conjuros comunes. Rasgos de clase, concentración, estados de los conjuros, movimiento y alcance se resuelven a mano. Las salvaciones de los monstruos son una aproximación a partir de su iniciativa y su VD.
+- El combate automático cubre ataques y veintisiete conjuros comunes, con sus estados. Rasgos de clase, concentración, movimiento y alcance se resuelven a mano. Los espacios de conjuro llegan a nivel 3. Las salvaciones de los monstruos son una aproximación a partir de su iniciativa y su VD.
 - La IA no ve los mapas salvo que el modelo tenga visión; trabaja con la descripción escrita de cada mapa.
 - Un modelo pequeño puede escribir mal las marcas o devolver un JSON ilegible. El panel lo avisa y basta con repetir.
 - La sincronía entre pestañas solo funciona en el mismo navegador.
@@ -114,9 +122,10 @@ Las claves quedaron guardadas en el entorno de la sesión, no en el repositorio:
 ## Ideas pendientes
 
 - Probar con un PDF real de D&D Beyond y ajustar los nombres de campo.
-- Rasgos de clase, concentración y estados en el combate automático.
+- Rasgos de clase y concentración en el combate automático.
 - Monstruos que lanzan conjuros.
-- Escalado de los trucos con el nivel.
 - Encuentros con varios tipos de criatura.
 - Que el combate tenga en cuenta distancias en el mapa.
 - Vista propia para cada jugador en su móvil.
+- Leer las características y competencias al importar de D&D Beyond.
+- Mejoras de combate propuestas: acciones de monstruo variadas, terreno y cobertura, moral y huida, objetivos distintos de matar, iniciativa visible para jugadores.
