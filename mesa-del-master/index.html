@@ -132,6 +132,19 @@ body:not(.help-on) .help{display:none!important}
 #lightbox figcaption{font-family:var(--display);font-size:1.5rem;letter-spacing:.03em;text-align:center}
 input[type=file]{max-width:100%;min-width:0;width:100%}
 .bar>label{min-width:0;max-width:100%}
+.solo-cb-only{display:none}
+body.solo-cb .solo-cb-only{display:inline-flex;position:fixed;right:max(16px,env(safe-area-inset-right,0px));top:calc(12px + env(safe-area-inset-top,0px));z-index:20}
+body.solo-cb .side,body.solo-cb .dicebox,body.solo-cb #tab-combate>.bar,body.solo-cb #diff,body.solo-cb #add-mon,body.solo-cb #help-combat,body.solo-cb #cb-auto,body.solo-cb #tab-combate .head .acts{display:none!important}
+body.solo-cb .app{display:block}
+body.solo-cb .content>main{max-width:1500px}
+body.solo-cb #tab-combate{font-size:1.12rem}
+@media (min-width:1000px){body.solo-cb #tab-combate{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);align-items:start}body.solo-cb #tab-combate>.head,body.solo-cb #cb-foes{grid-column:1/-1}body.solo-cb #order{grid-row:span 2}}
+.duel{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--divider);min-width:0;flex-wrap:wrap}
+.duel:last-child{border-bottom:0}
+.duel .side-a,.duel .side-b{display:flex;align-items:center;gap:8px;min-width:0;flex:1 1 9em;overflow-wrap:anywhere}
+.duel .vs{color:var(--brass);font-weight:700;flex:none}
+.dl{stroke:var(--fx);stroke-width:2.5;stroke-dasharray:7 6;vector-effect:non-scaling-stroke;opacity:.85;pointer-events:none}
+.dl.pcl{stroke:#8fbf9b}
 .solo-only{display:none}
 body.solo .solo-only{display:inline-flex}
 body.solo .side,body.solo .dicebox,body.solo #tab-mapa > :not(#board){display:none!important}
@@ -456,7 +469,7 @@ label{display:flex;flex-direction:column;gap:3px}
   <!-- COMBATE -->
   <section class="tab" id="tab-combate" hidden>
     <div class="head"><div class="ttl"><h1>Combate</h1><p class="sub">Ronda <b id="round" class="num">–</b></p></div>
-      <div class="acts dm"><div class="seg" id="cb-mode" role="group" aria-label="Modo de combate"><button type="button" data-cb="manual">Manual</button><button type="button" data-cb="auto">Automático</button></div></div></div>
+      <div class="acts"><button type="button" id="cb-full">Pantalla completa</button><a id="cb-tab" class="btn" href="#combate-completo" target="_blank" rel="noopener">Abrir en otra pestaña</a><div class="seg dm" id="cb-mode" role="group" aria-label="Modo de combate"><button type="button" data-cb="manual">Manual</button><button type="button" data-cb="auto">Automático</button></div></div></div>
     <div id="cb-auto" class="card" hidden></div>
     <div class="card help" id="help-combat"></div>
     <div class="bar">
@@ -470,7 +483,9 @@ label{display:flex;flex-direction:column;gap:3px}
     <div id="diff" class="diff dm"></div>
     <div id="cb-foes" class="foes" hidden></div>
     <div id="order"></div>
+    <div id="cb-duels" class="card" hidden></div>
     <div id="cb-log" class="card" hidden></div>
+    <button type="button" id="cb-exit" class="solo-cb-only">Salir</button>
     <form id="add-mon" class="panel dm" autocomplete="off">
       <h3>Añadir criatura</h3>
       <div class="bar">
@@ -824,14 +839,14 @@ function drawOrder(){var L=S.combat.list,el=$("#order");
   var opts='<option value="">+ estado</option>'+CONDS.map(function(c){return'<option>'+c[0]+'</option>'}).join("");
   el.innerHTML='<ol class="order">'+L.map(function(c){var v=view(c),cur=c.id===S.combat.turnId&&S.combat.round>0,dead=!v.pc&&v.hp<=0,r=v.max?v.hp/v.max:0;
     var hp;
-    if(players&&!v.pc){var b=band(v);hp='<span class="band '+b[1]+'">'+b[0]+'</span>'}
+    if((players||soloCb)&&!v.pc){var b=band(v);hp='<span class="band '+b[1]+'">'+b[0]+'</span>'}
     else hp='<div class="hp"><span class="n">'+v.hp+' / '+v.max+' PG</span><div class="hpbar"><i class="'+(r<=.25?"low":r<=.5?"half":"")+'" style="width:'+Math.round(r*100)+'%"></i></div></div>'+
       '<span class="dm bar"><input type="number" min="0" max="999" aria-label="Cantidad de daño o curación para '+esc(v.name)+'" data-amt="'+c.id+'" id="amt-'+c.id+'" placeholder="0"><button type="button" class="hurt" data-act="dmg" data-id="'+c.id+'">Daño</button><button type="button" class="heal" data-act="heal" data-id="'+c.id+'">Curar</button></span>';
     return'<li class="'+(cur?"cur ":"")+(dead||(v.pc&&v.hp<=0)?"down":"")+'">'+
-     '<input class="ini" type="number" id="ini-'+c.id+'" data-ini="'+c.id+'" value="'+(c.init==null?"":c.init)+'" placeholder="–" aria-label="Iniciativa de '+esc(v.name)+'"'+(players?" readonly":"")+'>'+
+     '<input class="ini" type="number" id="ini-'+c.id+'" data-ini="'+c.id+'" value="'+(c.init==null?"":c.init)+'" placeholder="–" aria-label="Iniciativa de '+esc(v.name)+'"'+((players||soloCb)?" readonly":"")+'>'+
      '<div class="who"><span>'+(v.pc||!c.base?"":picTag(c.base,34)+" ")+'<b>'+esc(v.name)+'</b> '+(cur?'<span class="tag turn">Su turno</span>':'')+' <span class="tag">'+(v.pc?"PJ":"Monstruo")+'</span></span>'+
-     '<span class="sub">'+((!players||v.pc)?'CA '+esc(v.ac):'')+(v.sub&&(!players||v.pc)?' · '+esc(v.sub):'')+'</span>'+
-     '<span class="chips">'+(c.conds||[]).map(function(k){return'<button type="button" class="chip" data-act="uncond" data-id="'+c.id+'" data-k="'+esc(k)+'" title="Quitar">'+esc(k)+' ×</button>'}).join("")+
+     '<span class="sub">'+((!(players||soloCb)||v.pc)?'CA '+esc(v.ac):'')+(v.sub&&(!(players||soloCb)||v.pc)?' · '+esc(v.sub):'')+'</span>'+
+     duelTxt(c)+'<span class="chips">'+(c.conds||[]).map(function(k){return'<button type="button" class="chip" data-act="uncond" data-id="'+c.id+'" data-k="'+esc(k)+'" title="Quitar">'+esc(k)+' ×</button>'}).join("")+
      '<select class="dm" data-cond="'+c.id+'" id="cond-'+c.id+'" aria-label="Añadir estado a '+esc(v.name)+'">'+opts+'</select></span></div>'+
      '<div class="hpbox">'+hp+'</div>'+
      '<button type="button" class="ghost dm" data-act="rm" data-id="'+c.id+'" aria-label="Quitar a '+esc(v.name)+' del combate">✕</button></li>'}).join("")+'</ol>'}
@@ -1038,7 +1053,7 @@ function advance(){var C=S.combat,L=C.list;if(!L.length)return;sortList();var i=
   for(var n=0;n<L.length;n++){i++;if(i>=L.length){i=0;C.round++}if(alive(L[i]))break}
   C.turnId=L[i].id;if(C.auto&&C.round!==r0)clog("— Ronda "+C.round+" —")}
 function monsterTurn(c){var v=view(c),n=Math.max(1,int(c.n,1)),atk=int(c.atk,4),an=c.an||"ataque";
-  for(var i=0;i<n;i++){var T=heroes(true);if(!T.length)return;var t=T[Math.floor(Math.random()*T.length)],tv=view(t),r=d(20),tot=r+atk,ac=int(tv.ac,10);
+  for(var i=0;i<n;i++){var T=heroes(true);if(!T.length)return;var pv=find(c.tgt),t=pv&&isPc(pv)&&hpOf(pv)>0&&Math.random()<.7?pv:T[Math.floor(Math.random()*T.length)],tv=view(t),r=d(20),tot=r+atk,ac=int(tv.ac,10);c.tgt=t.id;
     if(r===1||(r!==20&&tot<ac))clog(v.name+" ataca a "+tv.name+" con "+an+": saca "+tot+" contra CA "+ac+" y falla.");
     else{var dm=rollF(c.dmg||"1d6+2",r===20);hurt(t,dm.total);clog(v.name+" ataca a "+tv.name+" con "+an+": saca "+tot+" contra CA "+ac+(r===20?", crítico":", impacta")+" y hace "+dm.total+" de daño ("+dm.text+")."+(hpOf(t)<=0?" "+tv.name+" cae inconsciente.":" Le quedan "+hpOf(t)+" PG."))}}}
 function deathSave(c){var n=view(c).name,r=d(20);c.ds=c.ds||{s:0,f:0};
@@ -1075,7 +1090,7 @@ function drawAuto(){var C=S.combat,el=$("#cb-auto"),lg=$("#cb-log"),c=find(C.tur
     else if(C.over)h.push('<h2>'+(C.over==="win"?"Victoria":"El grupo ha caído")+'</h2><p class="sub">'+esc((C.log||[]).slice(-1)[0]||"")+'</p><div class="bar">'+(C.byIA?'<button type="button" class="pri" data-au="back">Volver a la historia</button>':"")+'<button type="button" '+(C.byIA?"":'class="pri" ')+'data-au="end">Terminar el combate</button></div>');
     else if(c&&isPc(c)){var v=view(c),p=pc(c.pcId),F=foes(),A=heroes(false);
       h.push('<span class="eyebrow">Ronda '+C.round+'</span><h2 style="font-size:1.2rem">Turno de '+esc(v.name)+'</h2><p class="sub">'+v.hp+" de "+v.max+' PG. Elige qué hace.</p>');
-      h.push('<div class="fgrid"><label>Objetivo<select id="au-target">'+F.map(function(x){var y=view(x);return'<option value="'+x.id+'">'+esc(y.name)+'</option>'}).join("")+'</select></label>'+
+      h.push('<div class="fgrid"><label>Objetivo<select id="au-target">'+F.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x.id===c.tgt?" selected":"")+'>'+esc(y.name)+" ("+band(y)[0].toLowerCase()+')</option>'}).join("")+'</select></label>'+
         '<label>Bono de ataque<input id="au-atk" type="number" value="'+esc(p.atk==null?5:p.atk)+'"></label><label>Daño<input id="au-dmg" value="'+esc(p.dmg||"1d8+3")+'"></label></div>'+
         '<div class="bar"><button type="button" class="pri" data-au="atk">Atacar, que tire el panel</button></div>'+
         '<div class="bar"><label>Si tiráis con dados: ataque total<input id="au-roll" type="number" placeholder="17"></label><label>Daño<input id="au-rdmg" type="number" placeholder="8"></label><button type="button" data-au="own">Aplicar mi tirada</button></div>'+
@@ -1094,10 +1109,10 @@ $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data
   else if(a==="end"){S.combat={round:0,turnId:null,list:[],auto:true,log:[],over:null};touch()}
   else if(a==="back")backToStory();
   else if(a==="pass"){var cc=find(S.combat.turnId);if(cc&&isPc(cc))pcAct(function(c,v){clog(v.name+" hace otra cosa o pasa su turno.")});else next()}
-  else if(a==="atk")pcAct(function(c,v){var t=find($("#au-target").value);if(!t)return false;var tv=view(t),atk=int($("#au-atk").value,5),r=d(20),tot=r+atk,ac=int(tv.ac,10);
+  else if(a==="atk")pcAct(function(c,v){var t=find($("#au-target").value);if(!t)return false;c.tgt=t.id;var tv=view(t),atk=int($("#au-atk").value,5),r=d(20),tot=r+atk,ac=int(tv.ac,10);
     if(r===1||(r!==20&&tot<ac))clog(v.name+" ataca a "+tv.name+": saca "+tot+" contra CA "+ac+" y falla.");
     else{var dm=rollF($("#au-dmg").value||"1d8+3",r===20);hurt(t,dm.total);clog(v.name+" ataca a "+tv.name+": saca "+tot+" contra CA "+ac+(r===20?", crítico":", impacta")+" y hace "+dm.total+" de daño ("+dm.text+")."+(hpOf(t)<=0?" "+tv.name+" cae.":" Le quedan "+hpOf(t)+" PG."))}})
-  else if(a==="own")pcAct(function(c,v){var t=find($("#au-target").value),tot=int($("#au-roll").value,NaN),dm=int($("#au-rdmg").value,0);if(!t||isNaN(tot))return false;var tv=view(t),ac=int(tv.ac,10);
+  else if(a==="own")pcAct(function(c,v){var t=find($("#au-target").value),tot=int($("#au-roll").value,NaN),dm=int($("#au-rdmg").value,0);if(!t||isNaN(tot))return false;c.tgt=t.id;var tv=view(t),ac=int(tv.ac,10);
     if(tot<ac)clog(v.name+" ataca a "+tv.name+": "+tot+" contra CA "+ac+", falla.");
     else{if(dm<=0)return false;hurt(t,dm);clog(v.name+" ataca a "+tv.name+": "+tot+" contra CA "+ac+", impacta y hace "+dm+" de daño."+(hpOf(t)<=0?" "+tv.name+" cae.":" Le quedan "+hpOf(t)+" PG."))}})
   else if(a==="heal")pcAct(function(c,v){var t=find($("#au-heal-t").value),n=int($("#au-heal-n").value,0);if(!t||n<=0)return false;mend(t,n);clog(v.name+" cura "+n+" PG a "+view(t).name+", que queda con "+hpOf(t)+" PG.")})});
@@ -1333,6 +1348,21 @@ function recap(){var s=story(),el=$("#ia-recap"),tx=$("#ia-recap-text");if(!s)re
   run("Escribe un «En episodios anteriores» de 70 palabras como máximo, para leer en voz alta al empezar la sesión, en español, en texto plano y con tono de narrador. Cuenta solo lo que ya vivieron los personajes, sin desvelar secretos.\n\nHISTORIA: "+s.title+"\nRESUMEN GENERAL: "+(S.ia.summary||"ninguno")+"\nÚLTIMAS SESIONES:\n"+last.join("\n"),function(t){tx.textContent=t}).then(function(r){drawIA();show(r.text&&!r.err?r.text.trim():"En episodios anteriores: "+last.slice(-1)[0])})}
 $("#ia-recap-btn").onclick=recap;
 $("#ia-recap-read").onclick=function(){speak($("#ia-recap-text").textContent,this)};
+
+/* ---- combate en pantalla aparte y enfrentamientos ---- */
+var soloCb=false;
+function who(c){var v=view(c),p=!isPc(c)&&c.base?picTag(c.base,36):"";return(p||ava(v.name,1))+'<b>'+esc(v.name)+'</b>'}
+function duelTxt(c){var t=c.tgt&&find(c.tgt);if(!t||!S.combat.round||S.combat.over||hpOf(c)<=0||(!isPc(t)&&hpOf(t)<=0))return"";return'<span class="sub" style="color:var(--brass)">⚔ contra '+esc(view(t).name)+'</span>'}
+function drawDuels(){var C=S.combat,el=$("#cb-duels"),L=[];
+  if(C.round&&!C.over)C.list.forEach(function(c){var t=c.tgt&&find(c.tgt);if(!t||hpOf(c)<=0||(isPc(c)&&has(c,"Muerto"))||(!isPc(t)&&hpOf(t)<=0))return;L.push([c,t])});
+  el.hidden=!L.length;if(!L.length){el.innerHTML="";return}
+  L.sort(function(a,b){return(isPc(a[0])?1:0)-(isPc(b[0])?1:0)});
+  el.innerHTML='<h2>Quién lucha contra quién</h2><div>'+L.map(function(q){return'<div class="duel"><span class="side-a">'+who(q[0])+'</span><span class="vs">⚔ ataca a</span><span class="side-b">'+who(q[1])+'</span></div>'}).join("")+'</div>'}
+function setSoloCb(on){if(on){location.hash="combate-completo";var d=document.documentElement;if(d.requestFullscreen)d.requestFullscreen().catch(function(){})}
+  else{if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(function(){});location.hash="combate"}}
+$("#cb-full").onclick=function(){setSoloCb(true)};$("#cb-exit").onclick=function(){setSoloCb(false)};
+$("#cb-tab").hidden=!!(window.claude&&window.claude.use);
+if(window.claude&&window.claude.use){$("#bk-save").hidden=true;$("#bk-msg").textContent="En esta página tu campaña ya se guarda en tu cuenta de Claude. La descarga de la copia está en la web de GitHub."}
 
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
@@ -1644,6 +1674,9 @@ function drawSvg(){var m=curMap(),c=m.cell,h=[],fs=14/V.z;
     h.push(s.c?'<circle class="fxo" cx="'+s.c[0]+'" cy="'+s.c[1]+'" r="'+s.c[2]+'"/>':'<polygon class="fxo" points="'+s.p.map(function(q){return q[0]+","+q[1]}).join(" ")+'"/>')});
   m.tokens.forEach(function(t){if((players||solo)&&t.hidden)return;var s=t.size||1,r=s*c/2,n=tokName(t);
     h.push('<g class="tk '+tokKind(t)+(t.id===selTok?" sel":"")+(t.hidden?" hid":"")+'" data-tok="'+t.id+'" transform="translate('+(m.ox+t.x*c+r)+","+(m.oy+t.y*c+r)+')"><title>'+esc(n)+'</title><circle r="'+r*.86+'"/>'+tokBody(t,n,r*.86,c*.42*Math.min(s,2))+'</g>')});
+  S.combat.list.forEach(function(cc){var tg=cc.tgt&&find(cc.tgt);if(!tg||!S.combat.round||S.combat.over||hpOf(cc)<=0||(!isPc(tg)&&hpOf(tg)<=0))return;var A=null,B=null;
+    m.tokens.forEach(function(t){if(t.ref===(cc.pcId||cc.id))A=t;if(t.ref===(tg.pcId||tg.id))B=t});if(!A||!B||((players||solo)&&(A.hidden||B.hidden)))return;
+    var pa=ctr(m,A.x,A.y,A.size||1),pb=ctr(m,B.x,B.y,B.size||1);h.push('<line class="dl'+(isPc(cc)?" pcl":"")+'" x1="'+pa.x+'" y1="'+pa.y+'" x2="'+pb.x+'" y2="'+pb.y+'"/>')});
   if(placing.length&&ghost)h.push('<circle class="ghost-tk" cx="'+(m.ox+(ghost.x+.5)*c)+'" cy="'+(m.oy+(ghost.y+.5)*c)+'" r="'+c*.43+'"/>');
   var ln=drag&&drag.line||lastRule;
   if(ln)h.push('<line class="rl0" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><line class="rl1'+(ln.bad?" bad":"")+'" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><text class="rt'+(ln.bad?" bad":"")+'" font-size="'+fs+'" x="'+(ln.x2+fs*.8)+'" y="'+(ln.y2-fs*.8)+'">'+esc(ln.label)+'</text>');
@@ -1791,7 +1824,7 @@ function mapFromText(t){var g=/\[MAPA:\s*([^\]]+)\]/i.exec(t||"");if(!g)return;v
 /* ---- pestañas y modo jugadores ---- */
 var TABS=["panel","historias","historia","personajes","combate","mapa","ia","chuleta"],diceOn=false;
 try{var dv=localStorage.getItem(LS+"-dados");diceOn=dv?dv==="1":window.innerWidth>=1280}catch(e){}
-function route(){var h=location.hash.replace("#","");solo=h==="mapa-completo";if(solo)h="mapa";document.body.classList.toggle("solo",solo);V.fit=false;if(TABS.indexOf(h)<0)h="panel";
+function route(){var h=location.hash.replace("#","");solo=h==="mapa-completo";if(solo)h="mapa";soloCb=h==="combate-completo";if(soloCb)h="combate";document.body.classList.toggle("solo",solo);document.body.classList.toggle("solo-cb",soloCb);V.fit=false;if(TABS.indexOf(h)<0)h="panel";
   TABS.forEach(function(t){$("#tab-"+t).hidden=t!==h});if(h==="mapa")drawMapUI();
   [].forEach.call(document.querySelectorAll(".side nav a"),function(a){if(a.getAttribute("href")==="#"+h||a.dataset.also===h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")})}
 window.addEventListener("hashchange",function(){route();draw();window.scrollTo(0,0)});
@@ -1799,8 +1832,8 @@ $("#btn-players").onclick=function(){players=!players;try{localStorage.setItem(L
 $("#btn-dice").onclick=function(){diceOn=!diceOn;try{localStorage.setItem(LS+"-dados",diceOn?"1":"0")}catch(e){}V.fit=false;draw()};
 function draw(){iaBind();document.body.classList.toggle("help-on",helpOn);$("#btn-help").setAttribute("aria-pressed",helpOn);document.body.classList.toggle("players",players);$("#btn-players").setAttribute("aria-pressed",players);
   $("#app").classList.toggle("dice-on",diceOn);$("#btn-dice").setAttribute("aria-pressed",diceOn);
-  drawPanel();drawStories();drawStory();drawChars();drawPick();drawDiff();drawOrder();drawFoes();drawAuto();drawNotes();drawIA();if(!$("#tab-mapa").hidden)drawMapUI()}
-draw();route();
+  drawPanel();drawStories();drawStory();drawChars();drawPick();drawDiff();drawOrder();drawFoes();drawDuels();drawAuto();drawNotes();drawIA();if(!$("#tab-mapa").hidden)drawMapUI()}
+route();draw();
 })();
 </script>
 
