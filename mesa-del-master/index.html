@@ -415,7 +415,9 @@ label{display:flex;flex-direction:column;gap:3px}
 
   <!-- COMBATE -->
   <section class="tab" id="tab-combate" hidden>
-    <div class="head"><div class="ttl"><h1>Combate</h1><p class="sub">Ronda <b id="round" class="num">–</b></p></div></div>
+    <div class="head"><div class="ttl"><h1>Combate</h1><p class="sub">Ronda <b id="round" class="num">–</b></p></div>
+      <div class="acts dm"><div class="seg" id="cb-mode" role="group" aria-label="Modo de combate"><button type="button" data-cb="manual">Manual</button><button type="button" data-cb="auto">Automático</button></div></div></div>
+    <div id="cb-auto" class="card" hidden></div>
     <div class="bar">
       <button class="pri" id="btn-next" type="button">Siguiente turno</button>
       <button id="btn-rollmon" type="button" class="dm">Tirar iniciativa de monstruos</button>
@@ -426,6 +428,7 @@ label{display:flex;flex-direction:column;gap:3px}
     </div>
     <div id="diff" class="diff dm"></div>
     <div id="order"></div>
+    <div id="cb-log" class="card" hidden></div>
     <form id="add-mon" class="panel dm" autocomplete="off">
       <h3>Añadir criatura</h3>
       <div class="bar">
@@ -434,6 +437,8 @@ label{display:flex;flex-direction:column;gap:3px}
         <label>CA<input id="m-ac" type="number" min="1" max="30" value="12"></label>
         <label>PG<input id="m-hp" type="number" min="1" max="999" value="10"></label>
         <label>Inic.<input id="m-init" type="number" min="-5" max="15" value="0"></label>
+        <label>Ataque<input id="m-atk" type="number" min="-2" max="20" value="4"></label>
+        <label>Daño<input id="m-dmg" value="1d6+2" style="width:6em"></label>
         <label>VD<select id="m-cr"></select></label>
         <label>Cantidad<input id="m-qty" type="number" min="1" max="20" value="1"></label>
         <button class="pri" type="submit">Añadir</button>
@@ -673,7 +678,7 @@ var XP={"0":10,"1/8":25,"1/4":50,"1/2":100,"1":200,"2":450,"3":700,"4":1100,"5":
 // Presupuesto de PX por personaje (baja, moderada, alta), Guía del Dungeon Master 2024
 var BUD=[[50,75,100],[100,150,200],[150,225,400],[250,375,500],[500,750,1100],[600,1000,1400],[750,1300,1700],[1000,1700,2100],[1300,2000,2600],[1600,2300,3100],[1900,2900,4100],[2200,3700,4700],[2600,4200,5400],[2900,4900,6200],[3300,5400,7800],[3800,6100,9800],[4500,7200,11700],[5000,8700,14200],[5500,10700,17200],[6400,13200,22000]];
 // nombre, CA, PG, mod. iniciativa, VD
-var BEST=[["Rata gigante",13,7,3,"1/8"],["Bandido",12,11,1,"1/8"],["Sectario",12,9,1,"1/8"],["Kóbold guerrero",14,7,2,"1/8"],["Estirge",13,5,3,"1/8"],["Goblin guerrero",15,10,2,"1/4"],["Esqueleto",14,13,3,"1/4"],["Zombi",8,15,-2,"1/4"],["Lobo",12,11,2,"1/4"],["Hobgoblin guerrero",18,11,1,"1/2"],["Matón",12,32,1,"1/2"],["Osgo guerrero",14,33,2,"1"],["Araña gigante",14,26,3,"1"],["Lobo terrible",14,22,2,"1"],["Necrófago",12,22,2,"1"],["Oso pardo",11,22,1,"1"],["Ogro",11,68,-1,"2"],["Capitán bandido",15,52,3,"2"],["Cubo gelatinoso",6,63,-4,"2"],["Mímico",12,58,1,"2"],["Oso lechuza",13,59,1,"3"],["Trol",15,94,1,"5"]];
+var BEST=[["Rata gigante",13,7,3,"1/8",5,"1d4+3",1,"un mordisco"],["Bandido",12,11,1,"1/8",3,"1d6+1",1,"su cimitarra"],["Sectario",12,9,1,"1/8",3,"1d6+1",1,"su hoz"],["Kóbold guerrero",14,7,2,"1/8",4,"1d4+2",1,"su daga"],["Estirge",13,5,3,"1/8",5,"1d4+3",1,"su probóscide"],["Goblin guerrero",15,10,2,"1/4",4,"1d6+2",1,"su cimitarra"],["Esqueleto",14,13,3,"1/4",5,"1d6+3",1,"su espada corta"],["Zombi",8,15,-2,"1/4",3,"1d8+1",1,"un golpe"],["Lobo",12,11,2,"1/4",4,"1d6+2",1,"un mordisco"],["Hobgoblin guerrero",18,11,1,"1/2",3,"2d10+1",1,"su espada larga"],["Matón",12,32,1,"1/2",4,"1d6+2",1,"su maza"],["Osgo guerrero",14,33,2,"1",4,"2d8+2",1,"su lucero del alba"],["Araña gigante",14,26,3,"1",5,"1d8+3",1,"un mordisco"],["Lobo terrible",14,22,2,"1",5,"1d10+3",1,"un mordisco"],["Necrófago",12,22,2,"1",4,"1d6+2",2,"sus garras"],["Oso pardo",11,22,1,"1",5,"1d8+3",2,"sus zarpas"],["Ogro",11,68,-1,"2",6,"2d8+4",1,"su garrote"],["Capitán bandido",15,52,3,"2",5,"1d6+3",3,"su cimitarra"],["Cubo gelatinoso",6,63,-4,"2",4,"3d6",1,"un pseudópodo"],["Mímico",12,58,1,"2",5,"2d8+3",1,"un pseudópodo"],["Oso lechuza",13,59,1,"3",7,"2d8+5",2,"sus garras"],["Trol",15,94,1,"5",7,"1d10+4",3,"sus garras"]];
 var CONDS=[["Agarrado","Velocidad 0. Desventaja al atacar a quien no sea su agarrador."],["Agotamiento","Por nivel: −2 a toda prueba con d20 y −1,5 m de velocidad. Muere al nivel 6."],["Apresado","Velocidad 0. Ataca con desventaja, le atacan con ventaja, desventaja en salvaciones de DES."],["Asustado","Desventaja en pruebas y ataques mientras vea la fuente. No puede acercarse a ella."],["Aturdido","Incapacitado. Falla salvaciones de FUE y DES. Le atacan con ventaja."],["Cegado","Falla lo que requiera vista. Ataca con desventaja, le atacan con ventaja."],["Derribado","Solo se arrastra; levantarse cuesta media velocidad. Ataca con desventaja. Ventaja contra él a 1,5 m, desventaja desde más lejos."],["Ensordecido","Falla lo que requiera oído."],["Envenenado","Desventaja en ataques y pruebas de característica."],["Hechizado","No puede atacar a quien lo hechizó, que tiene ventaja en pruebas sociales con él."],["Incapacitado","Sin acciones, acciones adicionales ni reacciones. Pierde la concentración."],["Inconsciente","Incapacitado y derribado. Falla FUE y DES. Ventaja contra él; a 1,5 m todo impacto es crítico."],["Invisible","Ataca con ventaja y le atacan con desventaja, salvo que puedan verlo."],["Paralizado","Incapacitado, velocidad 0. Falla FUE y DES. Ventaja contra él; a 1,5 m todo impacto es crítico."],["Petrificado","Incapacitado, convertido en piedra. Resistencia a todo el daño. Falla FUE y DES."]];
 var CHECK=[["c1","Leer el capítulo «Cómo jugar» del Manual del Jugador. El resto se consulta."],["c2","Sesión cero: qué tono queréis, qué temas no, cada cuánto se juega."],["c3","Cada jugador tiene su hoja hecha y sabe su CA, PG y ataque principal."],["c4","Una aventura corta preparada: un gancho, tres escenas, un final."],["c5","Dos combates montados aquí, de dificultad baja o moderada."],["c6","Cinco nombres de PNJ apuntados para improvisar."],["c7","Figuras, dados y algo donde dibujar el mapa."]];
 
@@ -684,7 +689,7 @@ function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   b.maps=Array.isArray(o.maps)?o.maps.filter(function(m){return m&&m.id&&m.cell>0&&m.w>0&&m.h>0}).map(function(m){m.tokens=Array.isArray(m.tokens)?m.tokens:[];m.fx=Array.isArray(m.fx)?m.fx:[];return m}):[];b.mapId=o.mapId||null;
   var a=o.ia||{};b.ia={mode:["copiloto","narrador","auto"].indexOf(a.mode)>=0?a.mode:"copiloto",premise:typeof a.premise==="string"?a.premise:"",summary:typeof a.summary==="string"?a.summary:"",log:Array.isArray(a.log)?a.log.filter(function(x){return x&&typeof x.t==="string"&&x.t}):[]};if("sid" in a)b.ia.sid=a.sid;
   b.rev=o.rev||"";b.party=Array.isArray(o.party)?o.party:[];b.notes=typeof o.notes==="string"?o.notes:"";b.checks=o.checks&&typeof o.checks==="object"?o.checks:{};
-  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[]};
+  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null};
   function arr(v){return Array.isArray(v)?v:[]}
   b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.npcs=arr(x.npcs);x.quests=arr(x.quests);x.next=x.next||{date:"",time:""};return x});
   b.storyId=o.storyId||null;b.activity=arr(o.activity);
@@ -732,11 +737,6 @@ function view(c){ // datos efectivos de un combatiente
 function setHp(c,v){var o=c.pcId&&pc(c.pcId)||c;o.hp=Math.max(0,Math.min(o.max,v))}
 function sortList(){S.combat.list.sort(function(a,b){var x=a.init==null?-99:a.init,y=b.init==null?-99:b.init;return y-x})}
 function alive(c){var v=view(c);return v.pc||v.hp>0}
-function next(){var L=S.combat.list;if(!L.length)return;
-  sortList();var i=-1;for(var k=0;k<L.length;k++)if(L[k].id===S.combat.turnId)i=k;
-  if(i<0||!S.combat.round){S.combat.round=1;i=-1}
-  for(var n=0;n<L.length;n++){i++;if(i>=L.length){i=0;S.combat.round++}if(alive(L[i]))break}
-  S.combat.turnId=L[i].id;touch()}
 function band(v){if(v.hp<=0)return["Caído","b4"];var r=v.hp/v.max;if(r<=.5)return["Malherido","b3"];if(r<1)return["Herido","b2"];return["Ileso","b1"]}
 
 function drawDiff(){var el=$("#diff"),xp=0,bud=[0,0,0];
@@ -789,14 +789,14 @@ $("#btn-addparty").onclick=addParty;
 $("#btn-rollmon").onclick=function(){S.combat.list.forEach(function(c){if(!c.pcId)c.init=d(20)+int(c.mod,0)});sortList();touch()};
 $("#btn-end").onclick=function(){$("#end-confirm").hidden=false;$("#btn-end").hidden=true};
 $("#btn-end-no").onclick=function(){$("#end-confirm").hidden=true;$("#btn-end").hidden=false};
-$("#btn-end-yes").onclick=function(){S.combat={round:0,turnId:null,list:[]};$("#btn-end-no").onclick();touch()};
+$("#btn-end-yes").onclick=function(){S.combat={round:0,turnId:null,list:[],auto:!!S.combat.auto,log:[],over:null};$("#btn-end-no").onclick();touch()};
 
 $("#m-pick").innerHTML='<option value="">Personalizada</option>'+BEST.map(function(m,i){return'<option value="'+i+'">'+esc(m[0])+' (VD '+m[4]+')</option>'}).join("");
 $("#m-cr").innerHTML=Object.keys(XP).sort(function(a,b){return XP[a]-XP[b]}).map(function(k){return'<option>'+k+'</option>'}).join("");
-$("#m-pick").onchange=function(){var m=BEST[this.value];if(!m)return;$("#m-name").value=m[0];$("#m-ac").value=m[1];$("#m-hp").value=m[2];$("#m-init").value=m[3];$("#m-cr").value=m[4]};
+$("#m-pick").onchange=function(){var m=BEST[this.value];if(!m)return;$("#m-name").value=m[0];$("#m-ac").value=m[1];$("#m-hp").value=m[2];$("#m-init").value=m[3];$("#m-cr").value=m[4];$("#m-atk").value=m[5];$("#m-dmg").value=m[6]};
 $("#add-mon").addEventListener("submit",function(e){e.preventDefault();var name=$("#m-name").value.trim();if(!name)return;
-  var q=Math.max(1,Math.min(20,int($("#m-qty").value,1))),hp=Math.max(1,int($("#m-hp").value,1)),same=S.combat.list.filter(function(c){return!c.pcId&&c.base===name}).length;
-  for(var i=0;i<q;i++){S.combat.list.push({id:uid(),base:name,name:(q>1||same)?name+" "+(same+i+1):name,ac:int($("#m-ac").value,10),hp:hp,max:hp,mod:int($("#m-init").value,0),cr:$("#m-cr").value,init:null,conds:[]})}
+  var bm=BEST[$("#m-pick").value],q=Math.max(1,Math.min(20,int($("#m-qty").value,1))),hp=Math.max(1,int($("#m-hp").value,1)),same=S.combat.list.filter(function(c){return!c.pcId&&c.base===name}).length;
+  for(var i=0;i<q;i++){S.combat.list.push({id:uid(),base:name,name:(q>1||same)?name+" "+(same+i+1):name,ac:int($("#m-ac").value,10),hp:hp,max:hp,mod:int($("#m-init").value,0),cr:$("#m-cr").value,atk:int($("#m-atk").value,4),dmg:$("#m-dmg").value.trim()||"1d6+2",n:bm&&bm[0]===name?bm[7]:1,an:bm&&bm[0]===name?bm[8]:"un ataque",init:null,conds:[]})}
   $("#m-qty").value=1;touch()});
 
 /* ---- historias, panel y personajes ---- */
@@ -943,6 +943,98 @@ function demoStory(){var s=mkStory("La campana hundida (ejemplo)",S.stories.leng
   s.notes=[{id:uid(),title:"Cómo usar este ejemplo",text:"Cambia los estados de capítulos, misiones y PNJ pulsando sus etiquetas. Cuando tengas tu propia historia, elimina esta en «Editar historia».",t:Date.now()}];
   S.stories.push(s);logAct("Historia de ejemplo cargada");openStory(s.id);draw()}
 document.addEventListener("click",function(e){if(e.target.closest("[data-demo-story]"))demoStory()});
+
+/* ---- combate automático ---- */
+function clog(t){var C=S.combat;if(!Array.isArray(C.log))C.log=[];C.log.push(t);if(C.log.length>80)C.log.splice(0,C.log.length-80)}
+function rollF(f,crit){var m=/(\d*)\s*d\s*(\d+)\s*([+-]\s*\d+)?/i.exec(String(f||"")),n,sd,k,r=[],t=0;
+  if(!m){t=Math.max(1,int(f,1));return{total:t,text:String(t)}}
+  n=Math.max(1,int(m[1],1))*(crit?2:1);sd=Math.max(2,int(m[2],6));k=m[3]?int(m[3].replace(/\s/g,""),0):0;
+  for(var i=0;i<n;i++){var x=d(sd);r.push(x);t+=x}t=Math.max(1,t+k);return{total:t,text:r.join("+")+(k?(k>0?"+":"−")+Math.abs(k):"")}}
+function sgn(n){return(n>=0?"+":"−")+Math.abs(n)}
+function isPc(c){return!!(c.pcId&&pc(c.pcId))}
+function hpOf(c){return view(c).hp}
+function has(c,k){return(c.conds||[]).indexOf(k)>=0}
+function addCond(c,k){c.conds=c.conds||[];if(c.conds.indexOf(k)<0)c.conds.push(k)}
+function delCond(c,k){c.conds=(c.conds||[]).filter(function(x){return x!==k})}
+function foes(){return S.combat.list.filter(function(c){return!isPc(c)&&hpOf(c)>0})}
+function heroes(up){return S.combat.list.filter(function(c){return isPc(c)&&!has(c,"Muerto")&&(!up||hpOf(c)>0)})}
+function hurt(c,n){var v=view(c);setHp(c,v.hp-n);if(isPc(c)&&hpOf(c)<=0){addCond(c,"Inconsciente");c.ds={s:0,f:0};delCond(c,"Estable")}}
+function mend(c,n){setHp(c,hpOf(c)+n);if(hpOf(c)>0){delCond(c,"Inconsciente");delCond(c,"Estable");c.ds=null}}
+function checkOver(){var C=S.combat;if(C.over||!C.round)return!!C.over;
+  if(!foes().length&&C.list.some(function(c){return!isPc(c)})){var xp=0,n=C.list.filter(isPc).length||1;C.list.forEach(function(c){if(!isPc(c))xp+=XP[c.cr]||0});
+    C.over="win";clog("Victoria. No quedan enemigos en pie. Cada personaje gana "+Math.floor(xp/n)+" PX.");logAct("Combate ganado: "+Math.floor(xp/n)+" PX por personaje")}
+  else if(!heroes(true).length&&C.list.some(isPc)){C.over="lose";clog("Todos los personajes han caído. El combate termina.");logAct("El grupo ha caído en combate")}
+  return!!C.over}
+function advance(){var C=S.combat,L=C.list;if(!L.length)return;sortList();var i=-1,r0=C.round;for(var k=0;k<L.length;k++)if(L[k].id===C.turnId)i=k;
+  if(i<0||!C.round){C.round=1;i=-1}
+  for(var n=0;n<L.length;n++){i++;if(i>=L.length){i=0;C.round++}if(alive(L[i]))break}
+  C.turnId=L[i].id;if(C.auto&&C.round!==r0)clog("— Ronda "+C.round+" —")}
+function monsterTurn(c){var v=view(c),n=Math.max(1,int(c.n,1)),atk=int(c.atk,4),an=c.an||"ataque";
+  for(var i=0;i<n;i++){var T=heroes(true);if(!T.length)return;var t=T[Math.floor(Math.random()*T.length)],tv=view(t),r=d(20),tot=r+atk,ac=int(tv.ac,10);
+    if(r===1||(r!==20&&tot<ac))clog(v.name+" ataca a "+tv.name+" con "+an+": saca "+tot+" contra CA "+ac+" y falla.");
+    else{var dm=rollF(c.dmg||"1d6+2",r===20);hurt(t,dm.total);clog(v.name+" ataca a "+tv.name+" con "+an+": saca "+tot+" contra CA "+ac+(r===20?", crítico":", impacta")+" y hace "+dm.total+" de daño ("+dm.text+")."+(hpOf(t)<=0?" "+tv.name+" cae inconsciente.":" Le quedan "+hpOf(t)+" PG."))}}}
+function deathSave(c){var n=view(c).name,r=d(20);c.ds=c.ds||{s:0,f:0};
+  if(r===20){mend(c,1);clog(n+" saca un 20 en su salvación contra muerte y se levanta con 1 PG.");return}
+  if(r===1)c.ds.f+=2;else if(r>=10)c.ds.s++;else c.ds.f++;
+  if(c.ds.f>=3){addCond(c,"Muerto");delCond(c,"Inconsciente");clog(n+" saca "+r+" en su salvación contra muerte: tercer fallo. Muere.")}
+  else if(c.ds.s>=3){addCond(c,"Estable");clog(n+" saca "+r+" en su salvación contra muerte: tercer éxito. Queda estable, inconsciente.")}
+  else clog(n+" saca "+r+" en su salvación contra muerte: "+(r>=10?"éxito":"fallo")+" ("+c.ds.s+" éxitos, "+c.ds.f+" fallos).")}
+function autoStep(){var C=S.combat;for(var g=0;g<60;g++){if(checkOver())return;var c=find(C.turnId);if(!c)return;
+    if(!isPc(c)){if(hpOf(c)>0)monsterTurn(c)}
+    else if(has(c,"Muerto")||has(c,"Estable")){}
+    else if(hpOf(c)<=0)deathSave(c);
+    else return;
+    if(checkOver())return;advance()}}
+function autoStart(){var C=S.combat;C.over=null;C.log=[];C.list.forEach(function(c){if(c.init==null)c.init=d(20)+int(isPc(c)?pc(c.pcId).init:c.mod,0)});
+  sortList();C.round=1;C.turnId=C.list[0].id;clog("— Ronda 1 —");autoStep()}
+function next(){var C=S.combat;if(!C.list.length)return;if(C.auto&&!C.round)autoStart();else{if(C.auto&&C.over)return;advance();if(C.auto)autoStep()}touch()}
+function autoEncounter(){var R=roster(),k=int($("#au-diff").value,1),bud=0,C=S.combat;if(!R.length)return;
+  R.forEach(function(p){bud+=BUD[Math.max(1,Math.min(20,int(p.level,1)))-1][k]});
+  var maxQ=R.length+(k===2?1:0),all=BEST.filter(function(m){return XP[m[4]]<=bud}),ok=all.filter(function(m){return Math.floor(bud/XP[m[4]])<=maxQ});
+  if(!ok.length){all.sort(function(x,y){return XP[y[4]]-XP[x[4]]});ok=all.length?all.slice(0,3):[BEST[0]]}
+  var m=ok[Math.floor(Math.random()*ok.length)],q=Math.max(1,Math.min(Math.max(maxQ,2),Math.floor(bud/XP[m[4]])));
+  C.list=[];C.round=0;C.turnId=null;C.over=null;C.log=[];
+  R.forEach(function(p){p.hp=Math.max(p.hp,1);C.list.push({id:uid(),pcId:p.id,init:null,conds:[]})});
+  for(var i=0;i<q;i++)C.list.push(mkMon(m,q>1?m[0]+" "+(i+1):m[0]));
+  autoStart();C.log.splice(0,0,(q>1?"Aparecen "+q+" enemigos: "+m[0].toLowerCase():"Aparece un enemigo: "+m[0].toLowerCase())+". Se tira iniciativa.");
+  logAct("Combate automático contra "+q+" × "+m[0]);touch()}
+function mkMon(m,name){return{id:uid(),base:m[0],name:name,ac:m[1],hp:m[2],max:m[2],mod:m[3],cr:m[4],atk:m[5],dmg:m[6],n:m[7],an:m[8],init:null,conds:[]}}
+function pcAct(fn){var c=find(S.combat.turnId);if(!c||!isPc(c)||S.combat.over)return;if(fn(c,view(c))===false)return;if(!checkOver()){advance();autoStep()}touch()}
+function drawAuto(){var C=S.combat,el=$("#cb-auto"),lg=$("#cb-log"),c=find(C.turnId),h=[];
+  [].forEach.call($("#cb-mode").children,function(b){b.setAttribute("aria-pressed",(b.dataset.cb==="auto")===!!C.auto)});
+  el.hidden=!C.auto||players;lg.hidden=!C.auto||!(C.log||[]).length;$("#btn-next").hidden=!!C.auto;$("#btn-rollmon").hidden=!!C.auto;
+  if(C.auto){
+    if(!C.list.length){h.push('<h2>Combate automático</h2>');
+      if(!roster().length)h.push('<p class="sub">Hacen falta personajes. Añádelos en «Personajes» o carga el grupo de ejemplo de abajo.</p>');
+      else h.push('<p class="sub">El panel elige enemigos a la medida del grupo, tira la iniciativa de todos y resuelve los turnos de los monstruos. Vosotros solo decidís qué hacen vuestros personajes.</p><div class="bar"><label>Dificultad<select id="au-diff"><option value="0">Fácil</option><option value="1" selected>Normal</option><option value="2">Difícil</option></select></label><button type="button" class="pri" data-au="enc">Empezar un combate</button></div>')}
+    else if(!C.round)h.push('<h2>Combate automático</h2><p class="sub">Ya hay criaturas en la lista. El panel tirará la iniciativa que falte y resolverá los turnos de los monstruos.</p><div class="bar"><button type="button" class="pri" data-au="start">Empezar este combate</button></div>');
+    else if(C.over)h.push('<h2>'+(C.over==="win"?"Victoria":"El grupo ha caído")+'</h2><p class="sub">'+esc((C.log||[]).slice(-1)[0]||"")+'</p><div class="bar"><button type="button" class="pri" data-au="end">Terminar el combate</button></div>');
+    else if(c&&isPc(c)){var v=view(c),p=pc(c.pcId),F=foes(),A=heroes(false);
+      h.push('<span class="eyebrow">Ronda '+C.round+'</span><h2 style="font-size:1.2rem">Turno de '+esc(v.name)+'</h2><p class="sub">'+v.hp+" de "+v.max+' PG. Elige qué hace.</p>');
+      h.push('<div class="fgrid"><label>Objetivo<select id="au-target">'+F.map(function(x){var y=view(x);return'<option value="'+x.id+'">'+esc(y.name)+'</option>'}).join("")+'</select></label>'+
+        '<label>Bono de ataque<input id="au-atk" type="number" value="'+esc(p.atk==null?5:p.atk)+'"></label><label>Daño<input id="au-dmg" value="'+esc(p.dmg||"1d8+3")+'"></label></div>'+
+        '<div class="bar"><button type="button" class="pri" data-au="atk">Atacar, que tire el panel</button></div>'+
+        '<div class="bar"><label>Si tiráis con dados: ataque total<input id="au-roll" type="number" placeholder="17"></label><label>Daño<input id="au-rdmg" type="number" placeholder="8"></label><button type="button" data-au="own">Aplicar mi tirada</button></div>'+
+        '<div class="bar"><label>Curar a<select id="au-heal-t">'+A.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x===c?" selected":"")+'>'+esc(y.name)+" ("+y.hp+"/"+y.max+')</option>'}).join("")+'</select></label><label>PG<input id="au-heal-n" type="number" min="1" placeholder="6"></label><button type="button" class="heal" data-au="heal">Curar</button>'+
+        '<span style="flex:1"></span><button type="button" data-au="pass">Otra acción o pasar turno</button></div>')}
+    else h.push('<p class="sub">Resolviendo turnos…</p><div class="bar"><button type="button" data-au="pass">Continuar</button></div>');
+    el.innerHTML=h.join("")}
+  lg.innerHTML='<h2>Registro del combate</h2><ul class="list">'+(C.log||[]).slice().reverse().slice(0,30).map(function(t){return'<li><span class="t'+(/^— /.test(t)?" sub":"")+'">'+esc(t)+'</span></li>'}).join("")+'</ul>'}
+$("#cb-mode").addEventListener("click",function(e){var b=e.target.closest("[data-cb]");if(!b)return;S.combat.auto=b.dataset.cb==="auto";touch()});
+$("#cb-auto").addEventListener("change",function(e){var c=find(S.combat.turnId),p=c&&pc(c.pcId);if(!p)return;
+  if(e.target.id==="au-atk"){p.atk=int(e.target.value,5);touch(false)}else if(e.target.id==="au-dmg"){p.dmg=e.target.value.trim()||"1d8+3";touch(false)}});
+$("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data-au]");if(!b)return;var a=b.dataset.au;
+  if(a==="enc")autoEncounter();
+  else if(a==="start")next();
+  else if(a==="end"){S.combat={round:0,turnId:null,list:[],auto:true,log:[],over:null};touch()}
+  else if(a==="pass"){var cc=find(S.combat.turnId);if(cc&&isPc(cc))pcAct(function(c,v){clog(v.name+" hace otra cosa o pasa su turno.")});else next()}
+  else if(a==="atk")pcAct(function(c,v){var t=find($("#au-target").value);if(!t)return false;var tv=view(t),atk=int($("#au-atk").value,5),r=d(20),tot=r+atk,ac=int(tv.ac,10);
+    if(r===1||(r!==20&&tot<ac))clog(v.name+" ataca a "+tv.name+": saca "+tot+" contra CA "+ac+" y falla.");
+    else{var dm=rollF($("#au-dmg").value||"1d8+3",r===20);hurt(t,dm.total);clog(v.name+" ataca a "+tv.name+": saca "+tot+" contra CA "+ac+(r===20?", crítico":", impacta")+" y hace "+dm.total+" de daño ("+dm.text+")."+(hpOf(t)<=0?" "+tv.name+" cae.":" Le quedan "+hpOf(t)+" PG."))}})
+  else if(a==="own")pcAct(function(c,v){var t=find($("#au-target").value),tot=int($("#au-roll").value,NaN),dm=int($("#au-rdmg").value,0);if(!t||isNaN(tot))return false;var tv=view(t),ac=int(tv.ac,10);
+    if(tot<ac)clog(v.name+" ataca a "+tv.name+": "+tot+" contra CA "+ac+", falla.");
+    else{if(dm<=0)return false;hurt(t,dm);clog(v.name+" ataca a "+tv.name+": "+tot+" contra CA "+ac+", impacta y hace "+dm+" de daño."+(hpOf(t)<=0?" "+tv.name+" cae.":" Le quedan "+hpOf(t)+" PG."))}})
+  else if(a==="heal")pcAct(function(c,v){var t=find($("#au-heal-t").value),n=int($("#au-heal-n").value,0);if(!t||n<=0)return false;mend(t,n);clog(v.name+" cura "+n+" PG a "+view(t).name+", que queda con "+hpOf(t)+" PG.")})});
 
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
@@ -1140,6 +1232,7 @@ function iaCtx(){var L=[];
   if(roster().length)L.push("PERSONAJES:\n"+roster().map(function(p){return"- "+(p.name||"Sin nombre")+", "+([p.race,p.cls].filter(Boolean).join(" ")||"clase sin apuntar")+" de nivel "+p.level+", CA "+p.ac+", PG "+p.hp+"/"+p.max+", Percepción pasiva "+p.pp}).join("\n"));
   if(S.combat.list.length)L.push("COMBATE EN MARCHA, ronda "+(S.combat.round||0)+(turnName()?", turno de "+turnName():"")+":\n"+S.combat.list.map(function(c){var v=view(c);
     return"- "+v.name+(v.pc?" (personaje)":" (monstruo, VD "+c.cr+")")+", iniciativa "+(c.init==null?"sin tirar":c.init)+", CA "+v.ac+", PG "+v.hp+"/"+v.max+((c.conds||[]).length?", estados: "+c.conds.join(", "):"")}).join("\n"));
+  if(S.combat.auto&&(S.combat.log||[]).length)L.push("REGISTRO DEL COMBATE, con resultados ya tirados que no debes cambiar:\n"+S.combat.log.slice(-10).join("\n"));
   var mc2=mapCtx();if(mc2)L.push(mc2);
   if(hs&&hs.notes.length)L.push("NOTAS DEL MÁSTER:\n"+hs.notes.map(function(n){return"- "+n.title+": "+n.text}).join("\n").slice(-2500));
   return L.join("\n\n")||"Todavía no hay datos de la partida apuntados en el panel."}
@@ -1401,7 +1494,7 @@ $("#btn-players").onclick=function(){players=!players;try{localStorage.setItem(L
 $("#btn-dice").onclick=function(){diceOn=!diceOn;try{localStorage.setItem(LS+"-dados",diceOn?"1":"0")}catch(e){}V.fit=false;draw()};
 function draw(){iaBind();document.body.classList.toggle("players",players);$("#btn-players").setAttribute("aria-pressed",players);
   $("#app").classList.toggle("dice-on",diceOn);$("#btn-dice").setAttribute("aria-pressed",diceOn);
-  drawPanel();drawStories();drawStory();drawChars();drawDiff();drawOrder();drawNotes();drawIA();if(!$("#tab-mapa").hidden)drawMapUI()}
+  drawPanel();drawStories();drawStory();drawChars();drawDiff();drawOrder();drawAuto();drawNotes();drawIA();if(!$("#tab-mapa").hidden)drawMapUI()}
 draw();route();
 })();
 </script>
