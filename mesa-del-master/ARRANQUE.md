@@ -61,6 +61,12 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
 - **Conjuros**: en combate salen los conjuros de la ficha (`spellPool`). Con espacios configurados, un nivel agotado bloquea sus conjuros hasta el descanso largo; el descanso corto recarga a los brujos. Los conjuros aplican estados (`setFx`, `CONDTXT`) que dan ventaja, desventaja o hacen perder turnos, con salvación al final de cada turno (`endSaves`). Los trucos escalan con el nivel.
 - **Paso a paso**: con «Explicaciones» activas, el combate automático se para tras cada acción (`C.wait`, `waitHtml`) y explica cada tirada (`why`).
 - **Tiradas guiadas**: el máster IA pide tiradas con `[TIRADA: personaje | prueba | CD]`; el panel las tira con el modificador de la ficha (`rollMod`) y le envía el resultado. «Quién actúa» antepone el nombre del personaje al mensaje y «Por turnos» hace hablar a los jugadores de uno en uno.
+- **Monstruos con rasgo**: `monKit()` asigna a cada criatura, por su nombre, un rasgo propio del panel: aliento, agarre, veneno, derribo, regeneración, esconderse, frenesí, manada o aguantar al caer. `KITTXT` lo describe.
+- **Moral**: `moraleCheck()` hace que un enemigo malherido, o que pierde a la mitad del grupo, tire una vez para no huir o rendirse (`c.fled`). Se apaga al montar el combate.
+- **Objetivos**: `S.combat.goal` con `all`, `hold`, `task`, `guard` (añade un aliado `c.ally`) o `boss`. Se elige al montar el combate o lo pide la IA con `[OBJETIVO: …]`. `checkOver()` decide victoria y derrota.
+- **Distancias**: con figuras en el mapa (`tokOf`), los monstruos avanzan hacia su objetivo (`reach`, `stepToward`) y el cuerpo a cuerpo exige estar al lado (`pcReach`). «Acercarse al objetivo» mueve la figura del personaje. `m.ter` guarda casillas de terreno difícil (`d`, cuesta el doble) y de cobertura (`c`, +2 a la CA contra ataques a distancia).
+- **Concentración**: los conjuros de `CONC` se guardan en `c.conc`; recibir daño obliga a salvar CON (`concHit`) y lanzar otro termina el anterior.
+- **Rasgos de clase**: `featList()` da los rasgos con usos (`p.feat`): furia, tomar aliento, acción súbita, imposición de manos, inspiración bárdica, expulsar muertos vivientes y ráfaga de golpes. Automáticos: ataque furtivo, ataque adicional a nivel 5 y castigo divino (`pcStrike`).
 - **Ambiente**: seis ambientes sonoros sintetizados con Web Audio, sin archivos de audio.
 - **Copia de seguridad**: en el Panel, descarga y restauración de toda la campaña.
 - **Reglas**: chuleta, estados y guía para la primera sesión.
@@ -75,6 +81,7 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
   - `[COLOCAR: Nombre=columna,fila; …]` coloca figuras.
   - `[AMBIENTE: nombre]` cambia el sonido de fondo.
   - `[TIRADA: personaje | prueba | CD]` pide una tirada que resuelve el panel.
+  - `[OBJETIVO: aguantar 4 rondas | proteger a nombre | jefe | tarea]` fija el objetivo del combate siguiente.
 - Cada capítulo puede tener un mapa asignado, que se carga al ponerlo «en curso».
 - Cada historia guarda su propia narración. `iaBind()` la intercambia al cambiar de historia.
 
@@ -109,7 +116,7 @@ Las preferencias de cada dispositivo van aparte en `localStorage`: motor de IA, 
 
 ## Límites conocidos
 
-- El combate automático cubre ataques y veintisiete conjuros comunes, con sus estados. Rasgos de clase, concentración, movimiento y alcance se resuelven a mano. Los espacios de conjuro llegan a nivel 3. Las salvaciones de los monstruos son una aproximación a partir de su iniciativa y su VD.
+- El combate automático cubre ataques y veintisiete conjuros comunes, con sus estados. Los rasgos de clase cubiertos son los más comunes de cada clase, no todos. El alcance de los conjuros, los ataques de oportunidad y las paredes no se cuentan. Los espacios de conjuro llegan a nivel 3. Los rasgos de los monstruos son reglas simplificadas del panel, no las del manual. Las salvaciones de los monstruos son una aproximación a partir de su iniciativa y su VD.
 - La IA no ve los mapas salvo que el modelo tenga visión; trabaja con la descripción escrita de cada mapa.
 - Un modelo pequeño puede escribir mal las marcas o devolver un JSON ilegible. El panel lo avisa y basta con repetir.
 - La sincronía entre pestañas solo funciona en el mismo navegador.
@@ -122,10 +129,7 @@ Las claves quedaron guardadas en el entorno de la sesión, no en el repositorio:
 ## Ideas pendientes
 
 - Probar con un PDF real de D&D Beyond y ajustar los nombres de campo.
-- Rasgos de clase y concentración en el combate automático.
-- Monstruos que lanzan conjuros.
-- Encuentros con varios tipos de criatura.
-- Que el combate tenga en cuenta distancias en el mapa.
 - Vista propia para cada jugador en su móvil.
 - Leer las características y competencias al importar de D&D Beyond.
-- Mejoras de combate propuestas: acciones de monstruo variadas, terreno y cobertura, moral y huida, objetivos distintos de matar, iniciativa visible para jugadores.
+- Monstruos que lanzan conjuros y encuentros con varios tipos de criatura.
+- Ataques de oportunidad, alcance de los conjuros y paredes que bloqueen el paso y la visión.

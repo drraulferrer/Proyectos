@@ -1164,12 +1164,12 @@ function addCond(c,k){c.conds=c.conds||[];if(c.conds.indexOf(k)<0)c.conds.push(k
 function delCond(c,k){c.conds=(c.conds||[]).filter(function(x){return x!==k})}
 function foes(){return S.combat.list.filter(function(c){return!isPc(c)&&hpOf(c)>0&&!c.fled&&!c.ally})}
 function heroes(up){return S.combat.list.filter(function(c){return c.ally?hpOf(c)>0:isPc(c)&&!has(c,"Muerto")&&(!up||hpOf(c)>0)})}
-function hurt(c,n){var v=view(c);setHp(c,v.hp-n);delCond(c,"Dormido");if(!isPc(c)&&hpOf(c)<=0&&!c.ally){var uk=monKit(c);if(uk&&uk.k==="undying"){var ur=d(20)+saveMod(c,"CON");if(ur>=5+n){c.hp=1;clog("  "+v.name+" debería caer, pero tira "+ur+" contra CD "+(5+n)+" y se mantiene en pie con 1 PG.")}}}if(isPc(c)&&hpOf(c)<=0){addCond(c,"Inconsciente");c.ds={s:0,f:0};delCond(c,"Estable")}}
+function hurt0(c,n){var v=view(c);setHp(c,v.hp-n);delCond(c,"Dormido");if(!isPc(c)&&hpOf(c)<=0&&!c.ally){var uk=monKit(c);if(uk&&uk.k==="undying"){var ur=d(20)+saveMod(c,"CON");if(ur>=5+n){c.hp=1;clog("  "+v.name+" debería caer, pero tira "+ur+" contra CD "+(5+n)+" y se mantiene en pie con 1 PG.")}}}if(isPc(c)&&hpOf(c)<=0){addCond(c,"Inconsciente");c.ds={s:0,f:0};delCond(c,"Estable")}}
 function mend(c,n){setHp(c,hpOf(c)+n);if(hpOf(c)>0){delCond(c,"Inconsciente");delCond(c,"Estable");c.ds=null}}
 function advance(){var C=S.combat,L=C.list;if(!L.length)return;sortList();var i=-1,r0=C.round;for(var k=0;k<L.length;k++)if(L[k].id===C.turnId)i=k;
   if(i<0||!C.round){C.round=1;i=-1}
   for(var n=0;n<L.length;n++){i++;if(i>=L.length){i=0;C.round++}if(alive(L[i]))break}
-  C.turnId=L[i].id;if(C.auto&&C.round!==r0)clog("— Ronda "+C.round+" —")}
+  C.turnId=L[i].id;L[i].moved=0;if(C.auto&&C.round!==r0)clog("— Ronda "+C.round+" —")}
 function deathSave(c){var n=view(c).name,r=d(20);c.ds=c.ds||{s:0,f:0};
   if(r===20){mend(c,1);clog(n+" saca un 20 en su salvación contra muerte y se levanta con 1 PG.");return}
   if(r===1)c.ds.f+=2;else if(r>=10)c.ds.s++;else c.ds.f++;
@@ -1201,10 +1201,10 @@ function drawAuto(){var C=S.combat,el=$("#cb-auto"),lg=$("#cb-log"),c=find(C.tur
       h.push('<div class="fgrid"><label>Objetivo<select id="au-target">'+F.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x.id===c.tgt?" selected":"")+'>'+esc(y.name)+" ("+band(y)[0].toLowerCase()+((x.conds||[]).length?", "+x.conds.join(", ").toLowerCase():"")+distLabel(c,x)+')</option>'}).join("")+'</select></label>'+
         '<label>Bono de ataque<input id="au-atk" type="number" value="'+esc(p.atk==null?5:p.atk)+'"></label><label>Daño<input id="au-dmg" value="'+esc(p.dmg||"1d8+3")+'"></label></div>'+
         '<div class="bar"><button type="button" class="pri" data-au="atk">Atacar, que tire el panel</button><label class="ck"><input type="checkbox" id="au-rng"'+(p.rng?" checked":"")+'> Ataque a distancia</label></div>'+
-        '<div class="bar"><label>Si tiráis con dados: ataque total<input id="au-roll" type="number" placeholder="17"></label><label>Daño<input id="au-rdmg" type="number" placeholder="8"></label><button type="button" data-au="own">Aplicar mi tirada</button></div>'+
+        ''+moveHtml(c)+'<div class="bar"><label>Si tiráis con dados: ataque total<input id="au-roll" type="number" placeholder="17"></label><label>Daño<input id="au-rdmg" type="number" placeholder="8"></label><button type="button" data-au="own">Aplicar mi tirada</button></div>'+
         '<div class="bar"><label>Curar a<select id="au-heal-t">'+A.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x===c?" selected":"")+'>'+esc(y.name)+" ("+y.hp+"/"+y.max+')</option>'}).join("")+'</select></label><label>PG<input id="au-heal-n" type="number" min="1" placeholder="6"></label><button type="button" class="heal" data-au="heal">Curar</button>'+
         '<span style="flex:1"></span><button type="button" data-au="pass">Otra acción o pasar turno</button></div>'+
-        spellHtml(p)+'<p class="sub help">«Atacar, que tire el panel» lanza el d20 por ti y aplica el daño. Si preferís vuestros dados, escribid el total y pulsad «Aplicar mi tirada». Para un conjuro que no esté en la lista, moverse o cualquier otra cosa, resolvedlo hablando, apuntad el daño o la cura a mano y pulsad «Otra acción o pasar turno».</p>')}
+        featHtml(c,p)+(p.full&&!p.cast?"":spellHtml(p))+'<p class="sub help">«Atacar, que tire el panel» lanza el d20 por ti y aplica el daño. Si preferís vuestros dados, escribid el total y pulsad «Aplicar mi tirada». Para un conjuro que no esté en la lista, moverse o cualquier otra cosa, resolvedlo hablando, apuntad el daño o la cura a mano y pulsad «Otra acción o pasar turno».</p>')}
     else h.push('<p class="sub">Resolviendo turnos…</p><div class="bar"><button type="button" data-au="pass">Continuar</button></div>');
     el.innerHTML=h.join("")}
   lg.innerHTML='<h2>Registro del combate</h2><ul class="list">'+(C.log||[]).slice().reverse().slice(0,30).map(function(t){return'<li><span class="t'+(/^— /.test(t)?" sub":"")+'">'+esc(t)+'</span></li>'}).join("")+'</ul>'}
@@ -1217,10 +1217,10 @@ $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data
   else if(a==="end"){S.combat={round:0,turnId:null,list:[],auto:true,log:[],over:null};touch()}
   else if(a==="back")backToStory();
   else if(a==="pass"){var cc=find(S.combat.turnId);if(cc&&isPc(cc))pcAct(function(c,v){clog(v.name+" hace otra cosa o pasa su turno.")});else next()}
-  else if(a==="atk")pcAct(function(c,v){var t=find($("#au-target").value);if(!t)return false;var G=pcReach(c,t,!!($("#au-rng")&&$("#au-rng").checked));if(G&&G.no)return false;c.tgt=t.id;var tv=view(t),atk=int($("#au-atk").value,5),R=atkRoll(c,atk,t,G||{});
-    if(!R.hit)clog(v.name+" ataca a "+tv.name+". "+R.txt+": falla.");
-    else{var dm=rollF($("#au-dmg").value||"1d8+3",R.crit);hurt(t,dm.total);clog(v.name+" ataca a "+tv.name+". "+R.txt+": "+(R.crit?"crítico":"impacta")+" y hace "+dm.total+" de daño ("+dm.text+")."+fall(t))}
-    why(atkWhy(pc(c.pcId),atk)+(R.adv?" Tira con ventaja por el estado del enemigo.":""))})
+  else if(a==="atk")pcAct(function(c,v){var t=find($("#au-target").value);if(!t)return false;var rng=!!($("#au-rng")&&$("#au-rng").checked),G=pcReach(c,t,rng);if(G&&G.no)return false;c.tgt=t.id;
+    var p=pc(c.pcId),atk=int($("#au-atk").value,5),f=$("#au-dmg").value||"1d8+3",n=extraAtk(p)?2:1,sm=!!($("#au-smite")&&$("#au-smite").checked),R=null;c.snk=0;
+    for(var i=0;i<n&&hpOf(t)>0;i++)R=pcStrike(c,p,t,atk,f,G||{},rng,sm&&i===0);
+    why(atkWhy(p,atk)+(n>1?" Desde el nivel 5 esta clase ataca dos veces con la acción de atacar.":"")+(R&&R.adv?" Tira con ventaja por el estado del enemigo.":"")+(R&&R.dis?" Tira con desventaja.":""))})
   else if(a==="own")pcAct(function(c,v){var t=find($("#au-target").value),tot=int($("#au-roll").value,NaN),dm=int($("#au-rdmg").value,0);if(!t||isNaN(tot))return false;c.tgt=t.id;var tv=view(t),ac=int(tv.ac,10);
     if(tot<ac)clog(v.name+" ataca a "+tv.name+": "+tot+" contra CA "+ac+", falla.");
     else{if(dm<=0)return false;hurt(t,dm);clog(v.name+" ataca a "+tv.name+": "+tot+" contra CA "+ac+", impacta y hace "+dm+" de daño."+(hpOf(t)<=0?" "+tv.name+" cae.":" Le quedan "+hpOf(t)+" PG."))}})
@@ -1886,7 +1886,7 @@ $("#ch-cards").addEventListener("change",function(e){var t=e.target,p=t.dataset.
 $("#ch-cards").addEventListener("focusout",function(e){var g=e.target.closest&&e.target.closest(".abg");if(g&&!(e.relatedTarget&&g.contains(e.relatedTarget)))shRedraw()});
 $("#ch-cards").addEventListener("toggle",function(e){var b=e.target;if(b.dataset&&b.dataset.shBox)shOpen=b.open?b.dataset.shBox:null},true);
 $("#ch-cards").addEventListener("click",function(e){var b=e.target.closest("[data-sh-calc]"),p=b&&pc(b.dataset.shCalc);if(!p)return;sheetCalc(p);touch();$("#ch-msg").textContent="Ficha de "+(p.name||"personaje")+" calculada: iniciativa "+sgn(p.init)+", percepción pasiva "+p.pp+", ataque "+sgn(p.atk)+(p.cast?", conjuros "+sgn(p.satk)+" y CD "+p.sdc:"")+"."});
-$("#btn-srest").onclick=function(){var n=0;S.party.forEach(function(p){if(/bruj/i.test(p.cls||"")&&Array.isArray(p.used)){p.used=[0,0,0];n++}});logAct("Descanso corto");touch();$("#ch-msg").textContent="Descanso corto, una hora. "+(n?"Los brujos recuperan sus espacios de conjuro. ":"")+"Quien quiera gasta dados de golpe para curarse: tira el dado de su clase, suma Constitución y apunta los PG en su tarjeta."};
+$("#btn-srest").onclick=function(){var n=0;S.party.forEach(function(p){if(p.feat)featList(p).forEach(function(f){if(f.rest==="s")delete p.feat[f.k]});if(/bruj/i.test(p.cls||"")&&Array.isArray(p.used)){p.used=[0,0,0];n++}});logAct("Descanso corto");touch();$("#ch-msg").textContent="Descanso corto, una hora. "+(n?"Los brujos recuperan sus espacios de conjuro. ":"")+"Vuelven los rasgos que se recargan con descanso corto. Quien quiera gasta dados de golpe para curarse: tira el dado de su clase, suma Constitución y apunta los PG en su tarjeta."};
 
 /* ---- combate: ventaja, estados y explicación paso a paso ---- */
 var SKIP=["Paralizado","Dormido","Incapacitado","Aturdido"],ADVV=["Paralizado","Dormido","Apresado","Iluminado","Marcado","Aturdido"],DISA=["Asustado","Apresado","Distraído","Cegado"];
@@ -1894,10 +1894,10 @@ var CONDTXT={Marcado:"el siguiente ataque contra él tiene ventaja",Distraído:"
 function anyOf(c,L){return L.some(function(k){return has(c,k)})}
 function acOf(c){return int(view(c).ac,10)+(has(c,"Escudo de fe")?2:0)}
 function why(t){if(helpOn)clog("   ↳ "+t)}
-function atkRoll(a,bonus,t,o){o=o||{};var adv=anyOf(t,ADVV)||!!o.adv,dis=anyOf(a,DISA)||anyOf(t,DISV)||!!o.dis,r1=d(20),r2=d(20),A=adv&&!dis,D=dis&&!adv,r=A?Math.max(r1,r2):D?Math.min(r1,r2):r1,bl=isPc(a)&&has(a,"Bendecido")?d(4):0,tot=r+bonus+bl,ac=acOf(t)+(o.cover?2:0),
+function atkRoll(a,bonus,t,o){o=o||{};var adv=anyOf(t,ADVV)||!!o.adv,dis=anyOf(a,DISA)||anyOf(t,DISV)||!!o.dis,r1=d(20),r2=d(20),A=adv&&!dis,D=dis&&!adv,r=A?Math.max(r1,r2):D?Math.min(r1,r2):r1,bl=(isPc(a)&&has(a,"Bendecido")?d(4):0)+(isPc(a)&&has(a,"Inspirado")?d(6):0),tot=r+bonus+bl,ac=acOf(t)+(o.cover?2:0),
     hit=r!==1&&(r===20||tot>=ac),crit=hit&&(r===20||anyOf(t,["Paralizado","Dormido"]));
-  delCond(t,"Marcado");delCond(t,"Escondido");delCond(a,"Distraído");
-  return{r:r,tot:tot,hit:hit,crit:crit,adv:A,dis:D,txt:"Tira d20: "+r+(A?" (ventaja, el mejor de "+r1+" y "+r2+")":D?" (desventaja, el peor de "+r1+" y "+r2+")":"")+" "+sgn(bonus)+(bl?" +"+bl+" por Bendición":"")+" = "+tot+" contra CA "+ac+(o.cover?", con cobertura":"")}}
+  delCond(t,"Marcado");delCond(t,"Escondido");delCond(a,"Distraído");delCond(a,"Inspirado");
+  return{r:r,tot:tot,hit:hit,crit:crit,adv:A,dis:D,txt:"Tira d20: "+r+(A?" (ventaja, el mejor de "+r1+" y "+r2+")":D?" (desventaja, el peor de "+r1+" y "+r2+")":"")+" "+sgn(bonus)+(bl?" +"+bl+" de bonificación":"")+" = "+tot+" contra CA "+ac+(o.cover?", con cobertura":"")}}
 function setFx(t,cond,ab,dc){addCond(t,cond);if(ab){t.fx=t.fx||{};t.fx[cond]={ab:ab,dc:dc}}}
 function endSaves(c){if(!c.fx)return;Object.keys(c.fx).forEach(function(k){if(!has(c,k)){delete c.fx[k];return}var f=c.fx[k];if(f.esc)return;var r=d(20),m=saveOf(c,f.ab),ok=r+m>=f.dc;
   clog("  "+view(c).name+" repite la salvación de "+f.ab+" contra «"+k+"»: "+r+" "+sgn(m)+" = "+(r+m)+" contra CD "+f.dc+": "+(ok?"se libra.":"sigue "+k.toLowerCase()+"."));if(ok){delCond(c,k);delete c.fx[k]}})}
@@ -1936,7 +1936,7 @@ function spellHtml(p){sheet(p);slotsOf(p);var P=spellPool(p),own=p.spells.length
     (dry?'<p class="sub warn">No quedan espacios de conjuro. Hasta un descanso largo solo puede lanzar trucos, atacar o hacer otra acción.</p>':"")+
     '<div class="bar">'+[1,2,3].map(function(l){return'<label>Espacios de nivel '+l+'<input type="number" min="0" max="9" data-slot="'+(l-1)+'" id="au-sl'+l+'" value="'+p.slots[l-1]+'"></label>'}).join("")+'<button type="button" class="pri" data-au="cast"'+(cur&&canCast(p,cur)?"":" disabled")+'>Lanzar conjuro</button></div>'+
     '<p class="sub help">'+(own?"Salen los conjuros marcados en la ficha de este personaje.":"Este personaje no tiene conjuros marcados en su ficha, así que sale la lista general. Márcalos en «Personajes», «Editar», «Ficha completa».")+' Los de daño y los de estado van contra el «Objetivo» de arriba y, si alcanzan a varios, a los enemigos siguientes. Los de curación y refuerzo van a quien elijas en «Curar a». '+(on?"Cada conjuro de nivel gasta un espacio y los espacios vuelven con un descanso largo.":"Si los espacios están a 0, el panel no los cuenta.")+'</p></div>'}
-function castSpell(c,v){var p=pc(c.pcId),nm=$("#au-spell").value,sp=spellByName(nm);if(!sp||!p)return false;slotsOf(p);
+function castSpell0(c,v){var p=pc(c.pcId),nm=$("#au-spell").value,sp=spellByName(nm);if(!sp||!p)return false;slotsOf(p);
   var lv=sp[1],atk=int($("#au-satk").value,5),dc=int($("#au-sdc").value,13),ef=sp[8],f=lv===0?cantripDice(p,sp[3]):sp[3],ally=sp[2]==="heal"||sp[2]==="buff";p.lastSpell=nm;
   if(!canCast(p,sp)){clog(v.name+" no tiene espacios de nivel "+lv+" para lanzar "+nm+". Hasta un descanso largo solo puede usar trucos u otra acción.");touch();return false}
   var first=find($("#au-target").value),ch=find($("#au-heal-t").value),T;
@@ -1962,7 +1962,7 @@ $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data
   if(b.dataset.au==="cont"){S.combat.wait=0;autoStep();touch()}
   else if(b.dataset.au==="lrest"){$("#btn-rest").click()}});
 /* ---- máster IA: fichas, tiradas guiadas y turnos ---- */
-function pcCtx(p){var b="- "+(p.name||"Sin nombre")+", "+([p.race,p.cls].filter(Boolean).join(" ")||"clase sin apuntar")+" de nivel "+p.level+", CA "+p.ac+", PG "+p.hp+"/"+p.max+", Percepción pasiva "+p.pp;if(!p.full)return b+" (sin ficha completa: no conoces sus modificadores)";sheet(p);slotsOf(p);
+function pcCtx0(p){var b="- "+(p.name||"Sin nombre")+", "+([p.race,p.cls].filter(Boolean).join(" ")||"clase sin apuntar")+" de nivel "+p.level+", CA "+p.ac+", PG "+p.hp+"/"+p.max+", Percepción pasiva "+p.pp;if(!p.full)return b+" (sin ficha completa: no conoces sus modificadores)";sheet(p);slotsOf(p);
   var sk=SKL.map(function(x,i){return p.sk.indexOf(x[0])>=0?x[0]+" "+sgn(skillBonus(p,i)):""}).filter(Boolean);
   b+=", velocidad "+fmt(p.speed)+" m, competencia "+sgn(prof(p))+". Características: "+ABK.map(function(k){return ABN[k]+" "+sgn(abMod(p,k))}).join(", ")+". Salvaciones: "+ABK.map(function(k){return ABN[k]+" "+sgn(saveBonus(p,k))}).join(", ")+"."+(sk.length?" Habilidades con competencia: "+sk.join(", ")+".":"")+" Ataque "+sgn(p.atk==null?prof(p):p.atk)+(p.dmg?", daño "+p.dmg:"")+".";
   if(p.cast)b+=" Conjuros ("+ABL[p.cast]+", ataque "+sgn(p.satk==null?prof(p)+abMod(p,p.cast):p.satk)+", CD "+(p.sdc==null?8+prof(p)+abMod(p,p.cast):p.sdc)+"): "+(p.spells.length?p.spells.join(", "):"sin apuntar")+"."+(slotsOn(p)?" Espacios que le quedan: "+[1,2,3].map(function(l){return p.slots[l-1]?"nivel "+l+": "+slotLeft(p,l)+" de "+p.slots[l-1]:""}).filter(Boolean).join(", ")+".":"");
@@ -2049,12 +2049,13 @@ function dmgTo(t,n){return has(t,"En furia")?Math.floor(n/2):n}
 function pcAct(fn){var C=S.combat,c=find(C.turnId);if(!c||!isPc(c)||C.over||C.wait)return;capt=[];
   if(has(c,"Derribado")){delCond(c,"Derribado");clog(view(c).name+" se levanta, y gasta en ello la mitad de su movimiento.")}
   var r=fn(c,view(c));if(r===false){var g0=capt;capt=null;if(g0.length)touch();return}
+  if(r!=="again"&&c.extra){c.extra=0;clog("  Usa ahora la acción extra de Acción súbita.");r="again"}
   if(r==="again"){capt=null;touch();return}
   endSaves(c);var got=capt;capt=null;
   if(!checkOver()){advance();if(helpOn){C.last=got;C.wait=1}else autoStep()}touch()}
 function foeNotes(){var seen={},L=[];foes().forEach(function(c){var k=monKit(c),b=c.base||c.name;if(k&&!seen[b]){seen[b]=1;L.push(b+" "+KITTXT[k.k])}});return L.length?'<p class="sub">Ojo: '+esc(L.join("; "))+'.</p>':""}
-function pcStates(c){var L=(c.conds||[]).filter(function(k){return CONDTXT[k]});if(!L.length)return"";
-  return'<p class="sub warn">'+L.map(function(k){return"«"+esc(k)+"»: "+esc(CONDTXT[k])}).join(". ")+'.</p>'+(has(c,"Agarrado")?'<div class="bar"><button type="button" data-au="escape">Gastar la acción en soltarse</button></div>':"")}
+function pcStates(c){var L=(c.conds||[]).filter(function(k){return CONDTXT[k]}),cz=c.conc?'<p class="sub">Se concentra en '+esc(c.conc.sp)+'. Si lanza otro conjuro de concentración, este termina.</p>':"";if(!L.length)return cz;
+  return cz+'<p class="sub warn">'+L.map(function(k){return"«"+esc(k)+"»: "+esc(CONDTXT[k])}).join(". ")+'.</p>'+(has(c,"Agarrado")?'<div class="bar"><button type="button" data-au="escape">Gastar la acción en soltarse</button></div>':"")}
 $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest('[data-au="escape"]');if(!b)return;
   pcAct(function(c,v){var p=pc(c.pcId),f=c.fx&&c.fx.Agarrado,dc=f?f.dc:12,m=p.full?Math.max(skillBonus(p,0),skillBonus(p,1)):2,r=d(20),ok=r+m>=dc;
     clog(v.name+" intenta soltarse: tira "+r+" "+sgn(m)+" = "+(r+m)+" contra CD "+dc+": "+(ok?"se libera.":"sigue agarrado."));if(ok){delCond(c,"Agarrado");if(c.fx)delete c.fx.Agarrado}
@@ -2108,7 +2109,7 @@ function pathCost(m,x0,y0,x1,y1){var x=x0,y=y0,n=0,g=0;while((x!==x1||y!==y1)&&g
 function coverBetween(m,a,b){var x0=a.x+(a.size||1)/2,y0=a.y+(a.size||1)/2,x1=b.x+(b.size||1)/2,y1=b.y+(b.size||1)/2,n=Math.ceil(Math.max(Math.abs(x1-x0),Math.abs(y1-y0))*2);
   for(var i=1;i<=n;i++){var cx=Math.floor(x0+(x1-x0)*i/n),cy=Math.floor(y0+(y1-y0)*i/n);if(cx===a.x&&cy===a.y)continue;if(terOf(m,cx,cy)==="c")return true}return false}
 function isRanged(c){return/arco|ballesta|honda|jabalina|dardo|flecha|escupit|rayo|piedra/.test(flat(c.an||""))}
-function stepToward(m,t,g){var bud=6,mv=0,cols=Math.ceil(m.w/m.cell),rows=Math.ceil(m.h/m.cell),s=t.size||1;
+function stepToward(m,t,g,bud){var mv=0;bud=bud||6;var cols=Math.ceil(m.w/m.cell),rows=Math.ceil(m.h/m.cell),s=t.size||1;
   while(bud>0&&cellDist(t,g)>1){var best=null,bd=cellDist(t,g)+Math.abs(g.x-t.x)*.001+Math.abs(g.y-t.y)*.001;
     for(var dx=-1;dx<=1;dx++)for(var dy=-1;dy<=1;dy++){if(!dx&&!dy)continue;var nx=t.x+dx,ny=t.y+dy;if(nx<0||ny<0||nx+s>cols||ny+s>rows)continue;
       if(m.tokens.some(function(o){return o!==t&&!isChest(o)&&o.x===nx&&o.y===ny}))continue;var cost=terOf(m,nx,ny)==="d"?2:1;if(cost>bud)continue;
@@ -2123,9 +2124,67 @@ function reach(c){if(!distOn)return null;var m=curMap(),mt=tokOf(c);if(!mt)retur
   if(cellDist(mt,g.t)>1){clog(v.name+" no llega a nadie este turno: le faltan "+fmt((cellDist(mt,g.t)-1)*1.5)+" m.");why("Un ataque cuerpo a cuerpo exige estar en una casilla contigua. Cada criatura mueve 9 m por turno, seis casillas, y el terreno difícil cuesta el doble.");return{no:1}}
   return{t:g.c}}
 function pcReach(c,t,rng){if(!distOn)return null;var m=curMap(),a=tokOf(c),b=tokOf(t);if(!a||!b)return null;var dd=cellDist(a,b);
-  if(!rng){if(dd>1){clog(view(c).name+" está a "+fmt(dd*1.5)+" m de "+view(t).name+" y no llega cuerpo a cuerpo. Mueve su figura en el mapa hasta dejarla al lado, o marca «Ataque a distancia».");return{no:1}}return{}}
+  if(!rng){if(dd>1){clog(view(c).name+" está a "+fmt(dd*1.5)+" m de "+view(t).name+" y no llega cuerpo a cuerpo. Pulsa «Acercarse al objetivo», mueve su figura en el mapa, o marca «Ataque a distancia».");return{no:1}}return{}}
   var near=foes().some(function(f){var ft=tokOf(f);return ft&&cellDist(a,ft)<=1}),cv=coverBetween(m,a,b);return{dis:near,cover:cv}}
 function distLabel(c,x){if(!distOn)return"";var a=tokOf(c),b=tokOf(x);return a&&b?", a "+fmt(Math.max(1,cellDist(a,b))*1.5)+" m":""}
+function moveHtml(c){if(!distOn)return"";var a=tokOf(c),t=find(($("#au-target")||{}).value)||find(c.tgt)||foes()[0],b=t&&tokOf(t);if(!a||!b||cellDist(a,b)<=1)return"";
+  return'<div class="bar"><button type="button" data-au="move"'+(c.moved?" disabled":"")+'>Acercarse al objetivo</button><span class="sub">'+(c.moved?"Ya se ha movido este turno.":"Los enemigos con figura en el mapa tienen la distancia junto a su nombre. Para pegar cuerpo a cuerpo hay que estar al lado.")+'</span></div>'}
+$("#cb-auto").addEventListener("click",function(e){if(!e.target.closest('[data-au="move"]'))return;
+  pcAct(function(c,v){var t=find($("#au-target").value),a=tokOf(c),b=t&&tokOf(t),p=pc(c.pcId),m=curMap();if(!a||!b||c.moved)return false;c.tgt=t.id;var mv=stepToward(m,a,b,Math.max(1,Math.floor((p.speed||9)/1.5)));fogAuto(m,a);c.moved=1;
+    clog(v.name+" se mueve "+fmt(mv*1.5)+" m hacia "+view(t).name+(cellDist(a,b)<=1?" y queda a su lado.":": aún le faltan "+fmt((cellDist(a,b)-1)*1.5)+" m."));why("Moverse no gasta la acción: después de acercarse todavía puede atacar. El terreno difícil cuesta el doble.");return"again"})});
+/* ---- concentración ---- */
+var CONC=["Bendición","Escudo de fe","Fuego feérico","Inmovilizar persona","Telaraña","Risa horrible","Miedo","Sueño"];
+function concEnd(c,why0){var k=c.conc;if(!k)return;c.conc=null;S.combat.list.forEach(function(x){if(k.ids.indexOf(x.id)>=0){delCond(x,k.cond);if(x.fx)delete x.fx[k.cond]}});
+  clog("  "+view(c).name+" pierde la concentración en "+k.sp+" porque "+why0+": el efecto «"+k.cond+"» termina.")}
+function concHit(c,n){if(!isPc(c)||!c.conc||n<=0)return;if(hpOf(c)<=0){concEnd(c,"cae inconsciente");return}var dc=Math.max(10,Math.floor(n/2)),r=d(20),m=saveOf(c,"CON"),ok=r+m>=dc;
+  clog("  "+view(c).name+" recibe daño mientras se concentra en "+c.conc.sp+": salvación de CON, "+r+" "+sgn(m)+" = "+(r+m)+" contra CD "+dc+": "+(ok?"mantiene el conjuro.":"falla."));if(!ok)concEnd(c,"ha fallado la salvación")}
+function hurt(c,n){hurt0(c,n);concHit(c,n)}
+function castSpell(c,v){var nm=$("#au-spell").value,sp=spellByName(nm),p=pc(c.pcId),isC=!!(sp&&sp[8]&&CONC.indexOf(nm)>=0),had=[];
+  if(isC){if(p&&canCast(p,sp)&&c.conc)concEnd(c,"empieza a concentrarse en otro conjuro");S.combat.list.forEach(function(x){if(has(x,sp[8].c))had.push(x.id)})}
+  var r=castSpell0(c,v);if(r===false)return false;
+  if(isC){var ids=S.combat.list.filter(function(x){return has(x,sp[8].c)&&had.indexOf(x.id)<0}).map(function(x){return x.id});
+    if(ids.length){c.conc={sp:nm,cond:sp[8].c,ids:ids};clog("  "+v.name+" se concentra en "+nm+".");why("Este conjuro exige concentración: dura mientras quien lo lanza no lance otro de concentración y no la pierda. Cada vez que reciba daño tira salvación de Constitución contra CD 10 o la mitad del daño, lo que sea mayor.")}}
+  return r}
+
+/* ---- rasgos de clase ---- */
+function clsOf(p){return flat(p.cls)}
+function featList(p){var c=clsOf(p),l=int(p.level,1),F=[];
+  if(/barbar/.test(c))F.push({k:"rage",n:"Furia",max:l>=6?4:l>=3?3:2,t:"acción adicional; +2 al daño cuerpo a cuerpo y mitad del daño de los ataques hasta el final del combate",rest:"l"});
+  if(/guerrer|luchador/.test(c)){F.push({k:"wind",n:"Tomar aliento",max:l>=4?3:2,t:"acción adicional; recupera 1d10 + nivel PG",rest:"s"});if(l>=2)F.push({k:"surge",n:"Acción súbita",max:1,t:"te da una acción más este turno",rest:"s"})}
+  if(/palad/.test(c))F.push({k:"lay",n:"Imposición de manos",max:1,t:"acción; cura 5 PG por nivel a quien elijas en «Curar a»",rest:"l"});
+  if(/bard/.test(c))F.push({k:"insp",n:"Inspiración bárdica",max:Math.max(1,p.full?abMod(p,"car"):2),t:"acción adicional; el aliado de «Curar a» suma 1d6 a su próximo ataque",rest:"l"});
+  if(/clerig/.test(c)&&l>=2)F.push({k:"turn",n:"Expulsar muertos vivientes",max:l>=6?3:2,t:"acción; cada no muerto tira SAB o huye",rest:"s"});
+  if(/monje/.test(c)&&l>=2)F.push({k:"flurry",n:"Ráfaga de golpes",max:l,t:"acción adicional; dos golpes sin arma contra el objetivo",rest:"s"});
+  return F}
+function featUsed(p,k){return(p.feat&&p.feat[k])||0}
+function extraAtk(p){return int(p.level,1)>=5&&/guerrer|luchador|barbar|palad|explorador|monje/.test(clsOf(p))}
+function passives(p){var c=clsOf(p),L=[];if(/picar|ladron/.test(c))L.push("Ataque furtivo: una vez por turno, +"+Math.ceil(int(p.level,1)/2)+"d6 si atacas con ventaja o con un aliado en pie");if(extraAtk(p))L.push("Ataque adicional: la acción de atacar da dos ataques");if(/palad/.test(c)&&int(p.level,1)>=2)L.push("Castigo divino: gasta un espacio de nivel 1 al impactar para sumar 2d8");return L}
+function featLine(p){var F=featList(p),P=passives(p);if(!F.length&&!P.length)return"";return'<p class="sub sheetl">Rasgos: '+esc(F.map(function(f){return f.n+" ("+Math.max(0,f.max-featUsed(p,f.k))+" de "+f.max+")"}).concat(P.map(function(x){return x.split(":")[0]})).join(", "))+'</p>'}
+function featHtml(c,p){var F=featList(p),P=passives(p);if(!F.length&&!P.length)return"";
+  return'<div class="stack" style="gap:8px;border-top:1px solid var(--divider);padding-top:12px"><span class="eyebrow">Rasgos de '+esc(p.cls||"clase")+'</span>'+
+    (F.length?'<div class="bar">'+F.map(function(f){var left=f.max-featUsed(p,f.k),off=left<=0||(f.k==="rage"&&has(c,"En furia"))||(f.k==="surge"&&c.extra);return'<button type="button" data-feat="'+f.k+'" title="'+esc(f.t)+'"'+(off?" disabled":"")+'>'+esc(f.n)+' ('+Math.max(0,left)+')</button>'}).join("")+'</div><p class="sub">'+esc(F.map(function(f){return f.n+": "+f.t}).join(". "))+'.</p>':"")+
+    (/palad/.test(clsOf(p))&&int(p.level,1)>=2?'<label class="ck"><input type="checkbox" id="au-smite"'+(slotLeft(p,1)>0?"":" disabled")+'> Castigo divino en el próximo impacto (quedan '+slotLeft(p,1)+' espacios de nivel 1)</label>':"")+
+    (P.length?'<p class="sub">'+esc(P.join(". "))+'.</p>':"")+'</div>'}
+function pcStrike(c,p,t,atk,f,G,rng,smite){var v=view(c),tv=view(t),R=atkRoll(c,atk,t,G);
+  if(!R.hit){clog(v.name+" ataca a "+tv.name+". "+R.txt+": falla.");return R}
+  var dm=rollF(f,R.crit),tot=dm.total,ex="";
+  if(has(c,"En furia")&&!rng){tot+=2;ex+=" +2 por la furia."}
+  if(/picar|ladron/.test(clsOf(p))&&!c.snk&&(R.adv||heroes(true).some(function(h){return h!==c}))){var s=rollF(Math.ceil(int(p.level,1)/2)+"d6",R.crit);tot+=s.total;c.snk=1;ex+=" Ataque furtivo: +"+s.total+" ("+s.text+")."}
+  if(smite&&slotLeft(p,1)>0){slotsOf(p);p.used[0]++;var s2=rollF("2d8",R.crit);tot+=s2.total;ex+=" Castigo divino: +"+s2.total+" ("+s2.text+"), gasta un espacio de nivel 1."}
+  hurt(t,tot);clog(v.name+" ataca a "+tv.name+". "+R.txt+": "+(R.crit?"crítico":"impacta")+" y hace "+tot+" de daño ("+dm.text+")."+ex+fall(t));return R}
+function pcCtx(p){var F=featList(p),P=passives(p);return pcCtx0(p)+(F.length||P.length?" Rasgos de clase: "+F.map(function(f){return f.n+", le quedan "+Math.max(0,f.max-featUsed(p,f.k))+" usos"}).concat(P.map(function(x){return x.split(":")[0]})).join("; ")+".":"")}
+$("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data-feat]");if(!b)return;var k=b.dataset.feat;
+  pcAct(function(c,v){var p=pc(c.pcId),f=null,l=int(p.level,1);featList(p).forEach(function(x){if(x.k===k)f=x});if(!f||featUsed(p,k)>=f.max)return false;
+    function use(){p.feat=p.feat||{};p.feat[k]=featUsed(p,k)+1}
+    if(k==="rage"){use();addCond(c,"En furia");clog(v.name+" entra en furia: +2 al daño cuerpo a cuerpo y recibe la mitad del daño de los ataques hasta el final del combate.");why("La furia es una acción adicional: no gasta la acción, así que todavía puede atacar este turno.");return"again"}
+    if(k==="wind"){use();var h=d(10)+l;mend(c,h);clog(v.name+" toma aliento y recupera "+h+" PG. Queda con "+hpOf(c)+".");why("Tomar aliento es una acción adicional: todavía puede actuar este turno.");return"again"}
+    if(k==="surge"){use();c.extra=1;clog(v.name+" usa Acción súbita: este turno tiene una acción más.");return"again"}
+    if(k==="lay"){var t=find($("#au-heal-t").value);if(!t)return false;use();mend(t,5*l);clog(v.name+" impone las manos sobre "+view(t).name+" y le cura "+5*l+" PG. Queda con "+hpOf(t)+".");return}
+    if(k==="insp"){var t2=find($("#au-heal-t").value);if(!t2||t2===c){clog("La inspiración bárdica es para un aliado: elígelo en «Curar a».");return false}use();addCond(t2,"Inspirado");clog(v.name+" inspira a "+view(t2).name+": sumará 1d6 a su próximo ataque.");return"again"}
+    if(k==="turn"){var U=foes().filter(function(x){return/esqueleto|zombi|necrofago|espectro|momia|vampir|fantasma|no muerto/.test(flat(x.base||x.name))});if(!U.length){clog("No hay muertos vivientes que expulsar en este combate.");return false}use();var dc=p.sdc==null?13:p.sdc;
+      clog(v.name+" alza su símbolo sagrado: cada muerto viviente tira salvación de SAB contra CD "+dc+".");U.forEach(function(x){var r=d(20),m=saveMod(x,"SAB"),ok=r+m>=dc;if(!ok){x.fled="huye";addCond(x,"Huido")}clog("  "+view(x).name+" tira "+r+" "+sgn(m)+" = "+(r+m)+": "+(ok?"resiste.":"huye expulsado."))});return}
+    if(k==="flurry"){var t3=find($("#au-target").value);if(!t3)return false;var G=pcReach(c,t3,false);if(G&&G.no)return false;use();var dx=p.full?abMod(p,"des"):2;for(var i=0;i<2&&hpOf(t3)>0;i++)pcStrike(c,p,t3,int($("#au-atk").value,5),"1d6"+(dx>=0?"+"+dx:dx),G||{},false,false);return"again"}
+    return false})});
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -2216,7 +2275,7 @@ function drawChars(){var camps={},n=0;S.party.forEach(function(p){if(p.story&&st
     return'<article class="pcard"><div class="pc-top">'+pcAva(p)+'<span class="t"><b>'+esc(p.name||"Sin nombre")+'</b><span class="sub">'+esc(pcSub(p))+'</span></span>'+(p.status==="pausa"?'<span class="badge pause">En pausa</span>':'<span class="badge ok">Activo</span>')+'</div>'+
     '<div class="tiles"><div><span>CA</span><b>'+esc(p.ac)+'</b></div><div><span>PG máx</span><b>'+esc(p.max)+'</b></div><div><span>Nivel</span><b>'+esc(p.level)+'</b></div></div>'+
     '<div><div class="rowb"><span>Puntos de golpe</span><b>'+esc(p.hp)+"/"+esc(p.max)+'</b></div><div class="bar2 hp"><i class="'+(r<=.25?"low":r<=.6?"half":"")+'" style="width:'+Math.round(r*100)+'%"></i></div></div>'+
-    sheetLine(p)+xpHtml(p)+'<div class="pc-foot"><span>'+esc([p.player,s?s.title:"Sin historia"].filter(Boolean).join(" | "))+'</span><button type="button" class="ghost dm" data-ch-edit="'+p.id+'">'+(ed?"Listo":"Editar")+'</button></div>'+
+    sheetLine(p)+featLine(p)+xpHtml(p)+'<div class="pc-foot"><span>'+esc([p.player,s?s.title:"Sin historia"].filter(Boolean).join(" | "))+'</span><button type="button" class="ghost dm" data-ch-edit="'+p.id+'">'+(ed?"Listo":"Editar")+'</button></div>'+
     (ed?'<div class="fgrid">'+PF.map(function(c){return'<label>'+c[1]+'<input id="c-'+p.id+'-'+c[0]+'" data-pc="'+p.id+'" data-f="'+c[0]+'" '+(c[2]==="n"?'type="number"':"")+' value="'+esc(p[c[0]]==null?"":p[c[0]])+'"></label>'}).join("")+
       '<label>Historia<select id="c-'+p.id+'-story" data-pc="'+p.id+'" data-f="story"><option value="">Sin historia</option>'+S.stories.map(function(x){return'<option value="'+x.id+'"'+(p.story===x.id?" selected":"")+'>'+esc(x.title)+'</option>'}).join("")+'</select></label>'+
       '<label>Estado<select id="c-'+p.id+'-status" data-pc="'+p.id+'" data-f="status"><option value="activo">Activo</option><option value="pausa"'+(p.status==="pausa"?" selected":"")+'>En pausa</option></select></label></div>'+
@@ -2233,7 +2292,7 @@ $("#ch-cards").addEventListener("click",function(e){var b=e.target.closest("[dat
   if(b){p=pc(b.dataset.chEdit);if(chEdit===b.dataset.chEdit){chEdit=null;if(p&&p.isNew){delete p.isNew;logAct("Nuevo personaje: "+(p.name||"sin nombre")+(p.cls?", "+p.cls.toLowerCase():""));touch(false)}}else chEdit=b.dataset.chEdit;draw()}
   else if(r){var id=r.dataset.rmpc;S.party=S.party.filter(function(x){return x.id!==id});S.combat.list=S.combat.list.filter(function(c){return c.pcId!==id});chEdit=null;touch()}});
 $("#btn-addpc").onclick=function(){var s=story(),p={id:uid(),name:"",race:"",cls:"",player:"",level:1,ac:10,hp:10,max:10,pp:10,init:0,story:chFilter||(s?s.id:""),status:"activo",isNew:true};S.party.push(p);chEdit=p.id;chQ="";$("#ch-q").value="";touch();var i=$("#c-"+p.id+"-name");if(i)i.focus()};
-$("#btn-rest").onclick=function(){S.party.forEach(function(p){p.hp=p.max;if(Array.isArray(p.used))p.used=[0,0,0]});S.combat.list.forEach(function(c){if(c.pcId)c.conds=[]});logAct("Descanso largo: el grupo recupera sus PG y sus espacios de conjuro");touch();$("#ch-msg").textContent="Descanso largo, ocho horas: todos recuperan sus PG y sus espacios de conjuro."};
+$("#btn-rest").onclick=function(){S.party.forEach(function(p){p.hp=p.max;p.feat={};if(Array.isArray(p.used))p.used=[0,0,0]});S.combat.list.forEach(function(c){if(c.pcId){c.conds=[];c.conc=null}});logAct("Descanso largo: el grupo recupera sus PG y sus espacios de conjuro");touch();$("#ch-msg").textContent="Descanso largo, ocho horas: todos recuperan sus PG y sus espacios de conjuro."};
 
 /* ---- guía y lista de preparación ---- */
 $("#conds").innerHTML=CONDS.map(function(c){return'<dt>'+c[0]+'</dt><dd>'+c[1]+'</dd>'}).join("");
