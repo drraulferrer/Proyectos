@@ -113,6 +113,16 @@ summary{cursor:pointer}
 #map-tools{flex-wrap:wrap}
 #map-tools button{flex:0 0 auto}
 #map-desc{min-height:4.6em}
+a.btn{display:inline-flex;align-items:center;min-height:38px;padding:6px 14px;border-radius:var(--r);border:1px solid var(--line);background:var(--raised);color:var(--ink);text-decoration:none;font-weight:600}
+a.btn:hover{border-color:var(--brass)}
+.solo-only{display:none}
+body.solo .solo-only{display:inline-flex}
+body.solo .side,body.solo .dicebox,body.solo #tab-mapa > :not(#board){display:none!important}
+body.solo .app{display:block}
+body.solo .content{padding:0}
+body.solo .content > main{max-width:none;padding:0}
+body.solo #board{height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));min-height:0;border:0;border-radius:0}
+.ghost-tk{fill:var(--fx);fill-opacity:.45;stroke:#fff;stroke-width:2;vector-effect:non-scaling-stroke;pointer-events:none}
 #drv-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
 #drv-list button{display:flex;flex-direction:column;gap:6px;align-items:stretch;padding:6px;text-align:left;font-size:.85rem;line-height:1.2;overflow-wrap:anywhere;min-width:0}
 #drv-list img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;background:var(--sunk)}
@@ -419,7 +429,7 @@ label{display:flex;flex-direction:column;gap:3px}
 
   <!-- MAPA -->
   <section class="tab" id="tab-mapa" hidden>
-    <div class="head"><div class="ttl"><h1>Mapa</h1><p class="sub">Cada casilla mide 1,5 m</p></div></div>
+    <div class="head"><div class="ttl"><h1>Mapa</h1><p class="sub">Cada casilla mide 1,5 m</p></div><div class="acts"><button type="button" id="map-full">Pantalla completa</button><a id="map-tab" class="btn" href="#mapa-completo" target="_blank" rel="noopener">Abrir en otra pestaña</a></div></div>
     <div class="bar">
       <label>Mapa<select id="map-sel" style="max-width:16em"></select></label>
       <button type="button" id="map-new" class="dm">Nuevo mapa</button>
@@ -438,7 +448,7 @@ label{display:flex;flex-direction:column;gap:3px}
     </div>
     <div id="board">
       <div id="stage"><img id="map-img" alt="" draggable="false" hidden><svg id="map-svg" xmlns="http://www.w3.org/2000/svg"></svg></div>
-      <div id="zoom"><button type="button" data-z="in" aria-label="Acercar">+</button><button type="button" data-z="out" aria-label="Alejar">−</button><button type="button" data-z="fit">Ajustar</button></div>
+      <div id="zoom"><button type="button" data-z="in" aria-label="Acercar">+</button><button type="button" data-z="out" aria-label="Alejar">−</button><button type="button" data-z="fit">Ajustar</button><button type="button" data-z="exit" class="solo-only">Salir</button></div>
     </div>
     <p id="map-read" role="status">Cada casilla mide 1,5 m. Arrastra una figura para ver cuánto se mueve.</p>
     <div id="tok-bar" class="panel dm" hidden>
@@ -454,6 +464,7 @@ label{display:flex;flex-direction:column;gap:3px}
       <button type="button" class="pri" id="tok-auto">Colocar al grupo y al combate</button>
       <label>Figura suelta<input id="tok-name" placeholder="Cofre, PNJ…" style="width:11em"></label>
       <button type="button" id="tok-add">Añadir figura</button>
+      <button type="button" id="tok-cancel" class="ghost" hidden>Cancelar colocación</button>
     </div>
     <details id="drv" class="panel dm">
       <summary>Explorar mi carpeta de Drive</summary>
@@ -1135,8 +1146,9 @@ function drawSvg(){var m=curMap(),c=m.cell,h=[],fs=14/V.z;
   m.fx.concat(drag&&drag.k==="fx"?[drag.fx]:[]).forEach(function(f){var s=fxShape(m,f);
     fxCells(m,f).forEach(function(q){h.push('<rect class="fxc" x="'+(m.ox+q[0]*c)+'" y="'+(m.oy+q[1]*c)+'" width="'+c+'" height="'+c+'"/>')});
     h.push(s.c?'<circle class="fxo" cx="'+s.c[0]+'" cy="'+s.c[1]+'" r="'+s.c[2]+'"/>':'<polygon class="fxo" points="'+s.p.map(function(q){return q[0]+","+q[1]}).join(" ")+'"/>')});
-  m.tokens.forEach(function(t){if(players&&t.hidden)return;var s=t.size||1,r=s*c/2,n=tokName(t);
+  m.tokens.forEach(function(t){if((players||solo)&&t.hidden)return;var s=t.size||1,r=s*c/2,n=tokName(t);
     h.push('<g class="tk '+tokKind(t)+(t.id===selTok?" sel":"")+(t.hidden?" hid":"")+'" data-tok="'+t.id+'" transform="translate('+(m.ox+t.x*c+r)+","+(m.oy+t.y*c+r)+')"><title>'+esc(n)+'</title><circle r="'+r*.86+'"/><text font-size="'+c*.42*Math.min(s,2)+'">'+esc(initials(n))+'</text></g>')});
+  if(placing.length&&ghost)h.push('<circle class="ghost-tk" cx="'+(m.ox+(ghost.x+.5)*c)+'" cy="'+(m.oy+(ghost.y+.5)*c)+'" r="'+c*.43+'"/>');
   var ln=drag&&drag.line||lastRule;
   if(ln)h.push('<line class="rl0" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><line class="rl1'+(ln.bad?" bad":"")+'" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><text class="rt'+(ln.bad?" bad":"")+'" font-size="'+fs+'" x="'+(ln.x2+fs*.8)+'" y="'+(ln.y2-fs*.8)+'">'+esc(ln.label)+'</text>');
   var sv=$("#map-svg");sv.setAttribute("class",m.src?"onimg":"");sv.innerHTML=h.join("")}
@@ -1147,7 +1159,7 @@ function drawMapUI(){var m=curMap(),img=$("#map-img");
   setVal("#map-name",m.name);setVal("#map-desc",m.desc||"");setVal("#map-cols",Math.round(m.w/m.cell*100)/100);setVal("#map-rows",Math.round(m.h/m.cell));setVal("#map-ox",m.ox);setVal("#map-oy",m.oy);
   $("#map-rows-l").hidden=!!m.src;$("#drv").hidden=inArtifact;$("#map-url-l").hidden=$("#map-url-go").hidden=inArtifact;
   [].forEach.call($("#map-tools").children,function(b){b.setAttribute("aria-pressed",b.dataset.tool===TOOL)});
-  $("#board").className=TOOL==="mover"?"":"t-fx";
+  $("#board").className=TOOL==="mover"&&!placing.length?"":"t-fx";$("#tok-cancel").hidden=!placing.length;$("#map-tab").hidden=inArtifact;
   var key=m.id+"|"+(m.src?m.src.t+"|"+(m.src.v||""):"");
   if(img.dataset.k!==key){img.dataset.k=key;img.hidden=true;img.removeAttribute("src");V.fit=false;
     if(m.src)mapSrc(m,function(u){if(img.dataset.k!==key)return;if(u)img.src=u;else mapMsg("La imagen de este mapa no está guardada en este dispositivo. Vuelve a elegir el archivo en «Ajustes de este mapa».")})}
@@ -1161,13 +1173,15 @@ function ctr(m,cx,cy,s){return{x:m.ox+(cx+(s||1)/2)*m.cell,y:m.oy+(cy+(s||1)/2)*
 var board=$("#board");
 board.addEventListener("pointerdown",function(e){if(e.target.closest("#zoom")||e.button>0)return;var m=curMap(),p=pt(e);try{board.setPointerCapture(e.pointerId)}catch(x){}
   lastRule=null;
+  if(placing.length){var pc0=cellOf(m,p),nx=placing.shift();nx.id=uid();nx.size=1;nx.x=Math.max(0,Math.min(Math.ceil(m.w/m.cell)-1,pc0.x));nx.y=Math.max(0,Math.min(Math.ceil(m.h/m.cell)-1,pc0.y));
+    m.tokens.push(nx);selTok=nx.id;ghost=null;touch(false);placeMsg();drawMapUI();return}
   if(TOOL==="mover"){var g=e.target.closest("[data-tok]"),t=g&&tokGet(g.getAttribute("data-tok"));
     if(t){var c0=cellOf(m,p);selTok=t.id;drag={k:"tok",t:t,sx:t.x,sy:t.y,dx:c0.x-t.x,dy:c0.y-t.y}}
     else{selTok=null;drag={k:"pan",cx:e.clientX,cy:e.clientY,vx:V.x,vy:V.y}}
     tokBar();drawSvg()}
   else if(TOOL==="regla"){drag={k:"rule",a:cellOf(m,p)}}
   else{drag={k:"fx",fx:{id:uid(),t:TOOL,x:Math.round((p.x-m.ox)/m.cell),y:Math.round((p.y-m.oy)/m.cell),a:0,m:Math.max(1.5,parseFloat($("#fx-m").value)||6)}};mapMsg(fxText(m,drag.fx));drawSvg()}});
-board.addEventListener("pointermove",function(e){if(!drag)return;var m=curMap(),p=pt(e),c=cellOf(m,p),a,b,n;
+board.addEventListener("pointermove",function(e){if(!drag){if(placing.length){var hc=cellOf(curMap(),pt(e));if(!ghost||ghost.x!==hc.x||ghost.y!==hc.y){ghost=hc;drawSvg()}}return}var m=curMap(),p=pt(e),c=cellOf(m,p),a,b,n;
   if(drag.k==="pan"){V.x=drag.vx+e.clientX-drag.cx;V.y=drag.vy+e.clientY-drag.cy;applyV();return}
   if(drag.k==="tok"){var t=drag.t,s=t.size||1;t.x=Math.max(0,Math.min(Math.ceil(m.w/m.cell)-s,c.x-drag.dx));t.y=Math.max(0,Math.min(Math.ceil(m.h/m.cell)-s,c.y-drag.dy));
     n=Math.max(Math.abs(t.x-drag.sx),Math.abs(t.y-drag.sy))*1.5;var sp=t.speed==null?9:t.speed,bad=n>sp;a=ctr(m,drag.sx,drag.sy,s);b=ctr(m,t.x,t.y,s);
@@ -1185,7 +1199,7 @@ function endDrag(){if(!drag)return;var m=curMap(),d=drag;drag=null;
 board.addEventListener("pointerup",endDrag);board.addEventListener("pointercancel",endDrag);
 board.addEventListener("wheel",function(e){e.preventDefault();zoomAt(e.clientX,e.clientY,e.deltaY<0?1.15:1/1.15)},{passive:false});
 $("#zoom").addEventListener("click",function(e){var b=e.target.closest("[data-z]");if(!b)return;var r=board.getBoundingClientRect();
-  if(b.dataset.z==="fit"){fit();drawSvg()}else zoomAt(r.left+r.width/2,r.top+r.height/2,b.dataset.z==="in"?1.3:1/1.3)});
+  if(b.dataset.z==="exit")setSolo(false);else if(b.dataset.z==="fit"){fit();drawSvg()}else zoomAt(r.left+r.width/2,r.top+r.height/2,b.dataset.z==="in"?1.3:1/1.3)});
 $("#map-tools").addEventListener("click",function(e){var b=e.target.closest("[data-tool]");if(!b)return;TOOL=b.dataset.tool;
   var def={circulo:6,cono:4.5,linea:9,cubo:4.5}[TOOL];if(def)$("#fx-m").value=def;drawMapUI()});
 $("#fx-undo").onclick=function(){var m=curMap();if(m.fx.length){m.fx.pop();touch(false);drawSvg()}};
@@ -1193,10 +1207,21 @@ $("#fx-clear").onclick=function(){var m=curMap();lastRule=null;if(m.fx.length){m
 $("#map-sel").onchange=function(){S.mapId=this.value;selTok=null;lastRule=null;V.fit=false;touch(false);drawMapUI()};
 $("#map-new").onclick=function(){var m=newMap("Mapa "+(S.maps.length+1));S.maps.push(m);S.mapId=m.id;selTok=null;V.fit=false;touch(false);drawMapUI();$("#map-cfg").open=true;$("#map-name").focus();$("#map-name").select()};
 function freeCell(m,x,y){while(m.tokens.some(function(t){return t.x===x&&t.y===y}))x++;return x}
-$("#tok-auto").onclick=function(){var m=curMap(),src=S.combat.list.length?S.combat.list.map(function(c){return{ref:c.pcId||c.id,pc:!!c.pcId}}):roster().map(function(p){return{ref:p.id,pc:true}}),n=0;
-  src.forEach(function(s){if(m.tokens.some(function(t){return t.ref===s.ref}))return;var y=s.pc?1:3;m.tokens.push({id:uid(),ref:s.ref,name:"",x:freeCell(m,1,y),y:y,size:1});n++});
-  mapMsg(n?"Colocadas "+n+" figuras arriba a la izquierda. Arrástralas a su sitio.":src.length?"Todas las figuras ya están en el mapa.":"No hay personajes ni combate. Añádelos en «Personajes» o «Combate».");if(n){touch(false);drawSvg()}};
-$("#tok-add").onclick=function(){var m=curMap(),i=$("#tok-name"),n=i.value.trim()||"Figura";var t={id:uid(),ref:null,name:n,kind:"oth",x:freeCell(m,1,5),y:5,size:1};m.tokens.push(t);selTok=t.id;i.value="";touch(false);drawSvg();tokBar()};
+var placing=[],ghost=null,solo=false;
+function placeMsg(){if(placing.length)mapMsg("Pulsa en el mapa donde quieras colocar a "+tokName(placing[0])+(placing.length>1?". Quedan "+placing.length+" figuras.":"."));else mapMsg("Figuras colocadas. Arrástralas para moverlas.")}
+function startPlacing(list){placing=list;ghost=null;selTok=null;TOOL="mover";placeMsg();drawMapUI();if(list.length)board.scrollIntoView({block:"nearest"})}
+$("#tok-auto").onclick=function(){var m=curMap(),src=S.combat.list.length?S.combat.list.map(function(c){return{ref:c.pcId||c.id}}):roster().map(function(p){return{ref:p.id}}),
+  todo=src.filter(function(s){return!m.tokens.some(function(t){return t.ref===s.ref})}).map(function(s){return{ref:s.ref,name:""}});
+  if(!todo.length){placing=[];drawMapUI();mapMsg(src.length?"Todas las figuras ya están en el mapa.":"No hay personajes ni combate. Añádelos en «Personajes» o «Combate».");return}
+  startPlacing(todo)};
+$("#tok-add").onclick=function(){var i=$("#tok-name"),n=i.value.trim()||"Figura";i.value="";startPlacing(placing.concat([{ref:null,name:n,kind:"oth"}]))};
+$("#tok-cancel").onclick=function(){placing=[];ghost=null;drawMapUI();mapMsg("Colocación cancelada.")};
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&placing.length)$("#tok-cancel").click()});
+function setSolo(on){if(on){location.hash="mapa-completo";var d=document.documentElement;if(d.requestFullscreen)d.requestFullscreen().catch(function(){})}
+  else{if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(function(){});location.hash="mapa"}}
+$("#map-full").onclick=function(){setSolo(true)};
+window.addEventListener("resize",function(){if(!$("#tab-mapa").hidden){V.fit=false;drawMapUI()}});
+window.addEventListener("storage",function(e){if(e.key!==LS||!e.newValue||drag||busy)return;try{S=norm(JSON.parse(e.newValue))}catch(x){return}if(typing())pendingDraw=true;else draw()});
 function tkEdit(fn){var t=selTok&&tokGet(selTok);if(!t)return;fn(t);touch(false);drawSvg()}
 $("#tk-name").onchange=function(){var v=this.value.trim();tkEdit(function(t){if(!tokRef(t))t.name=v||"Figura"})};
 $("#tk-size").onchange=function(){var v=int(this.value,1);tkEdit(function(t){t.size=v})};
@@ -1266,7 +1291,7 @@ function mapFromText(t){var g=/\[MAPA:\s*([^\]]+)\]/i.exec(t||"");if(!g)return;v
 /* ---- pestañas y modo jugadores ---- */
 var TABS=["panel","historias","historia","personajes","combate","mapa","ia","chuleta"],diceOn=false;
 try{var dv=localStorage.getItem(LS+"-dados");diceOn=dv?dv==="1":window.innerWidth>=1280}catch(e){}
-function route(){var h=location.hash.replace("#","");if(TABS.indexOf(h)<0)h="panel";
+function route(){var h=location.hash.replace("#","");solo=h==="mapa-completo";if(solo)h="mapa";document.body.classList.toggle("solo",solo);V.fit=false;if(TABS.indexOf(h)<0)h="panel";
   TABS.forEach(function(t){$("#tab-"+t).hidden=t!==h});if(h==="mapa")drawMapUI();
   [].forEach.call(document.querySelectorAll(".side nav a"),function(a){if(a.getAttribute("href")==="#"+h||a.dataset.also===h)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")})}
 window.addEventListener("hashchange",function(){route();window.scrollTo(0,0)});
