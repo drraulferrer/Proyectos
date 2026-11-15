@@ -47,6 +47,8 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
 - **Mapa**: selector, imagen desde archivo o Drive, cuadrícula, figuras con retrato, regla, plantillas de efectos, niebla de guerra, líneas de enfrentamiento, pantalla completa y pestaña aparte.
 - **Máster IA**: copiloto, narrador y autónomo; lectura en voz alta; motor y voz configurables.
 - **Retratos a medida**: criaturas propias y personajes tienen un campo de aspecto y un botón «Generar imagen», que redacta un prompt en el estilo del bestiario para pegarlo en un generador externo y subir el resultado. Los retratos de personajes se ven en tarjetas, Panel, combate y mapa.
+- **Mapas a medida**: cada capítulo tiene «Generar mapa», que redacta un prompt de mapa cenital horizontal con el contexto de la historia; al subir el resultado se crea el mapa (`story` en el mapa), se asigna al capítulo y se carga al iniciar. El selector de mapas agrupa los de la historia en mesa.
+- **Niebla con visión**: `fog.mode` vale `vision` (solo se ilumina lo que ven los personajes ahora y lo ya explorado queda en penumbra) o `memo` (todo lo descubierto queda iluminado).
 - **Ambiente**: seis ambientes sonoros sintetizados con Web Audio, sin archivos de audio.
 - **Copia de seguridad**: en el Panel, descarga y restauración de toda la campaña.
 - **Reglas**: chuleta, estados y guía para la primera sesión.
