@@ -105,6 +105,9 @@ summary{cursor:pointer}
 .tk.sel circle{stroke:var(--fx);stroke-width:5} .tk.hid{opacity:.45}
 .tk image{pointer-events:none}
 .tk .ring{fill:none}
+.tk.chest{cursor:grab} .tk.chest.sel .cb{stroke:var(--fx);stroke-width:4}
+.tlab rect{fill:#000;fill-opacity:.8;stroke:#f3d9a0;stroke-opacity:.6;stroke-width:1;vector-effect:non-scaling-stroke}
+.tlab text{fill:#fff;text-anchor:middle;font-family:var(--body)} .tlab .tl0{font-weight:700;fill:#f3d9a0}
 .tk .tn{font-size:11px;paint-order:stroke;stroke:#000;stroke-width:3px}
 .tk text{fill:var(--tok-ink);font-family:var(--body);font-weight:700;text-anchor:middle;dominant-baseline:central;pointer-events:none}
 .rl0{stroke:#000;stroke-opacity:.7;stroke-width:6;vector-effect:non-scaling-stroke;stroke-linecap:round}
@@ -441,6 +444,10 @@ label{display:flex;flex-direction:column;gap:3px}
             </div>
             <p id="mon-msg" class="sub dm" role="status"></p><p id="mon-out" class="sub dm"></p>
             <div class="bar dm"><button type="button" id="mon-add" class="pri" hidden>Añadir a la historia</button><button type="button" id="mon-no" class="ghost" hidden>Descartar</button></div>
+            <details class="dm" id="mi" hidden><summary>Buscar en mi índice de criaturas</summary>
+              <div class="bar" style="margin-top:8px"><label style="flex:1 1 10em">Nombre o tipo<input id="mi-q" placeholder="dragón, undead…" style="width:100%"></label><label>VD<select id="mi-cr"></select></label></div>
+              <div id="mi-out"></div><p class="small muted">El índice solo trae nombre, tipo y VD. El panel estima CA, PG y ataque a partir del VD; corrígelos con tu manual.</p>
+            </details>
             <details class="dm"><summary>Añadir una criatura a mano</summary>
               <form id="mon-form" class="stack" style="gap:8px;margin-top:8px" autocomplete="off">
                 <div class="fgrid"><label>Nombre<input id="mo-n"></label><label>CA<input id="mo-ca" type="number" value="13"></label><label>PG<input id="mo-pg" type="number" value="20"></label><label>Mod. iniciativa<input id="mo-in" type="number" value="1"></label>
@@ -479,6 +486,11 @@ label{display:flex;flex-direction:column;gap:3px}
           <div class="card"><h2>Resumen</h2><div id="sd-sum" class="stack" style="gap:10px"></div></div>
           <div class="card"><h2>Botín del grupo</h2><div id="sd-loot"></div>
             <form id="loot-form" class="bar dm" autocomplete="off"><label style="flex:1 1 12em">Añadir al botín<input id="loot-x" placeholder="Llave de plata, 30 po…" style="width:100%"></label><button type="submit">Añadir</button></form></div>
+          <details class="panel dm" id="cat"><summary>Catálogo: objetos mágicos, tesoros y trampas</summary>
+            <p class="small muted">Ideas listas para meter en la historia. Los objetos y tesoros van al botín del grupo; las trampas y los hallazgos, a las notas del DM.</p>
+            <div class="bar"><label style="flex:1 1 9em">Buscar<input id="cat-q" placeholder="poción, fuego…" style="width:100%"></label><label>Tipo<select id="cat-k"></select></label><button type="button" id="cat-rnd">Uno al azar</button></div>
+            <div id="cat-list"></div><p id="cat-msg" class="sub" role="status"></p>
+          </details>
           <div class="card dm"><h2>Notas del DM</h2><div id="sd-notes"></div>
             <form id="note-form" class="stack" style="gap:8px" autocomplete="off">
               <label class="wide">Título de la nota<input id="note-title" placeholder="El vidente de Vallaki"></label>
@@ -586,6 +598,11 @@ label{display:flex;flex-direction:column;gap:3px}
         <label style="flex-direction:row;align-items:center;gap:6px;text-transform:none;letter-spacing:0;font-size:1rem;color:var(--ink)"><input id="tk-hid" type="checkbox" style="min-height:0"> Oculta a los jugadores</label>
         <button type="button" id="tk-rm" class="hurt">Quitar del mapa</button>
       </div>
+      <p id="tk-info" class="sub" style="color:var(--ink)"></p>
+      <div id="tk-loose" class="bar">
+        <label>Se dibuja como<select id="tk-kind"><option value="fig">Figura</option><option value="chest">Cofre</option></select></label>
+        <span id="tk-chest" class="bar" style="flex:1 1 20em"><label style="flex:1 1 12em">Contiene<input id="tk-loot" list="cat-dl" placeholder="40 po; Poción de curación" style="width:100%"></label><button type="button" id="tk-open">Abrir el cofre</button></span>
+      </div><datalist id="cat-dl"></datalist>
     </div>
     <div class="bar dm">
       <button type="button" class="pri" id="tok-auto">Colocar al grupo y al combate</button>
@@ -780,6 +797,14 @@ label{display:flex;flex-direction:column;gap:3px}
       </div>
     </div>
     <p class="small muted">Resumen para decidir rápido en mesa. El texto completo está en el glosario del Manual del Jugador.</p>
+    <div class="card" id="lists">
+        <h3>Mis listados: glosario e índice de criaturas</h3>
+        <p class="small muted dm">Carga tus hojas de cálculo (.xlsx o .csv): un glosario inglés-español o un índice de criaturas con columnas de nombre, tipo y VD. Se leen y se guardan solo en este navegador; no se suben a ningún sitio.</p>
+        <div class="bar dm"><label style="flex:1 1 14em">Añadir listados<input id="ls-file" type="file" accept=".xlsx,.xls,.csv" multiple></label><button type="button" id="ls-clear" class="ghost">Borrar mis listados</button></div>
+        <p id="ls-msg" class="sub" role="status"></p>
+        <div class="bar"><label style="flex:1 1 14em">Buscar un término en mi glosario<input id="gl-q" placeholder="grappled, cegado, fireball…" style="width:100%"></label></div>
+        <div id="gl-out"></div>
+    </div>
     <div class="card dm">
         <h3>Cómo se dirige, en tres pasos</h3>
         <div class="prose">
@@ -1729,6 +1754,108 @@ $("#sd-npcs").addEventListener("click",function(e){var b=e.target.closest("[data
   kieRun(b,$("#npc-msg"),PCSTYLE+[n.name,n.role,n.where?"found at "+n.where:""].filter(Boolean).join(", ")+", fantasy non-player character","1:1",function(bl){return setNpcPic(n.id,bl)})});
 kieDraw();
 
+/* ---- figuras: etiqueta con datos, cofres ---- */
+function isChest(t){return!t.ref&&(t.kind==="chest"||(t.kind!=="fig"&&/cofre|ba[uú]l|arc[oó]n|tesoro/i.test(t.name||"")))}
+function baseOfName(n){var k=String(n||"").replace(/\s*\d+\s*$/,"").trim().toLowerCase(),r=null;if(!k)return null;BL().forEach(function(m){if(!r&&String(m[0]).toLowerCase()===k)r=m});return r}
+function tokGuess(t){var n=tokName(t).trim().toLowerCase(),u="",s=story();if(!n)return"";
+  S.party.forEach(function(p){if(!u&&p.pic&&(p.name||"").trim().toLowerCase()===n)u=pcPic(p)});if(u)return u;
+  if(s)s.npcs.forEach(function(x){if(!u&&(x.name||"").trim().toLowerCase()===n)u=npcPic(x)});if(u)return u;
+  var b=baseOfName(n);return b?monPic(b[0]):""}
+function chestSvg(R,open){var w=R*1.8,h=R*1.3,x=-w/2,y=-h/2+R*.14,b=y+h*.42,sw=' stroke="#2a1708" stroke-width="1.5" vector-effect="non-scaling-stroke"',g=[];
+  g.push('<rect class="cb" x="'+x+'" y="'+b+'" width="'+w+'" height="'+h*.58+'" rx="'+R*.08+'" fill="#7a4a21"'+sw+'/>');
+  if(open){g.push('<ellipse cx="0" cy="'+b+'" rx="'+w*.42+'" ry="'+h*.16+'" fill="#f5d04a"'+sw+'/>');
+    g.push('<path class="cb" d="M'+x+','+(b-h*.3)+' L'+x+','+(b-h*.5)+' Q0,'+(b-h*.86)+' '+(x+w)+','+(b-h*.5)+' L'+(x+w)+','+(b-h*.3)+' Z" fill="#8f5a2a"'+sw+'/>')}
+  else g.push('<path class="cb" d="M'+x+','+b+' L'+x+','+(y+h*.2)+' Q0,'+(y-h*.16)+' '+(x+w)+','+(y+h*.2)+' L'+(x+w)+','+b+' Z" fill="#8f5a2a"'+sw+'/>');
+  [.16,.76].forEach(function(f){g.push('<rect x="'+(x+w*f)+'" y="'+b+'" width="'+w*.08+'" height="'+h*.58+'" fill="#d9a93b"/>')});
+  g.push('<rect x="'+(-w*.07)+'" y="'+(b-h*.06)+'" width="'+w*.14+'" height="'+h*.24+'" rx="'+R*.04+'" fill="#f0c64b"'+sw+'/>');
+  return'<rect x="'+(-R)+'" y="'+(-R)+'" width="'+2*R+'" height="'+2*R+'" fill="transparent"/>'+g.join("")}
+function tokLines(t){var pub=players||solo,L=[tokName(t)],nn=npcOfTok(t),cc=t.ref&&find(t.ref),P=t.ref&&(pc(t.ref)||(cc&&cc.pcId&&pc(cc.pcId)));
+  if(P){L.push([[P.race,P.cls].filter(Boolean).join(" "),"nivel "+P.level].filter(Boolean).join(", "));L.push("CA "+P.ac+" · PG "+P.hp+"/"+P.max+" · Perc. pasiva "+P.pp);if(cc&&(cc.conds||[]).length)L.push(cc.conds.join(", "))}
+  else if(nn){L.push([nn.role,nn.where].filter(Boolean).join(", ")||"PNJ");if(!pub&&nn.wants)L.push("Quiere: "+String(nn.wants).slice(0,60))}
+  else if(cc){var v=view(cc);if(pub)L.push(band(v)[0]);else{L.push("CA "+v.ac+" · PG "+v.hp+"/"+v.max+" · VD "+cc.cr);L.push("Ataque "+sgn(int(cc.atk,4))+", daño "+(cc.dmg||"")+(cc.n>1?", "+cc.n+" ataques":""))}if((cc.conds||[]).length)L.push(cc.conds.join(", "))}
+  else if(isChest(t)){L.push(t.open?"Cofre abierto":"Cofre cerrado");if(!pub&&t.loot)L.push("Contiene: "+String(t.loot).slice(0,60))}
+  else{var bm=baseOfName(tokName(t));if(bm&&!pub)L.push("CA "+bm[1]+" · PG "+bm[2]+" · VD "+bm[4])}
+  return L.filter(Boolean)}
+function tokLabel(m,t,c){var L=tokLines(t),lf=13/V.z,sz=t.size||1,w=Math.max.apply(null,L.map(function(x){return x.length}))*lf*.56+lf*1.4,hh=L.length*lf*1.35+lf*.6,
+    cx=Math.max(w/2,Math.min(m.w-w/2,m.ox+(t.x+sz/2)*c)),cy=m.oy+(t.y+sz)*c+lf*.3;if(cy+hh>m.h)cy=Math.max(0,m.oy+t.y*c-hh-lf*.3);
+  return'<g class="tlab" pointer-events="none"><rect x="'+(cx-w/2)+'" y="'+cy+'" width="'+w+'" height="'+hh+'" rx="'+lf*.4+'"/>'+L.map(function(x,i){return'<text'+(i?"":' class="tl0"')+' font-size="'+lf+'" x="'+cx+'" y="'+(cy+lf*(1.1+i*1.35))+'">'+esc(x)+'</text>'}).join("")+'</g>'}
+
+/* ---- catálogo propio: objetos, tesoros, trampas y hallazgos ---- */
+var CATK={magico:"Objeto mágico",consumible:"Poción o pergamino",tesoro:"Tesoro",trampa:"Trampa",hallazgo:"Hallazgo"};
+var CAT=[
+["consumible","Poción de curación","Al beberla recuperas 2d4+2 PG.",0],["consumible","Poción de curación mayor","Al beberla recuperas 4d4+4 PG.",1],["consumible","Poción de escalada","Durante una hora trepas con la soltura de una araña.",0],
+["consumible","Poción de respirar bajo el agua","Durante una hora respiras bajo el agua.",0],["consumible","Poción de fuerza de gigante","Durante una hora tu Fuerza sube a 21.",1],["consumible","Poción de invisibilidad","Eres invisible una hora o hasta que ataques.",2],
+["consumible","Pergamino de conjuro de nivel 1","Un conjuro de un solo uso que elige quien dirige.",0],["consumible","Pergamino de conjuro de nivel 2","Un conjuro de nivel 2 de un solo uso.",1],["consumible","Aceite de afilado","Un arma untada suma 1 al ataque y al daño durante una hora.",0],
+["consumible","Antídoto del boticario","Termina un veneno y da ventaja contra venenos durante una hora.",0],["consumible","Vela de la vigilia","Mientras arde, nadie en 3 m puede ser sorprendido mientras duerme.",0],
+["magico","Arma +1","Suma 1 a las tiradas de ataque y de daño.",1],["magico","Escudo +1","Suma 1 más a la CA mientras lo empuñas.",1],["magico","Armadura +1","Suma 1 a la CA que da la armadura.",2],
+["magico","Capa del caminante gris","Ventaja en las pruebas de Sigilo con la capucha puesta.",1],["magico","Botas de paso callado","Tus pasos no hacen ruido.",1],["magico","Bolsa sin fondo","Por dentro es mucho más grande que por fuera.",1],
+["magico","Varita de dardos de luz","7 cargas. Cada carga lanza un dardo que no falla y hace 1d4+1.",1],["magico","Anillo de protección","Suma 1 a la CA y a las tiradas de salvación.",2],["magico","Amuleto de la buena salud","Tu Constitución pasa a ser 19 mientras lo llevas.",2],
+["magico","Farol del sendero","Su luz muestra las huellas de quien pasó por allí en el último día.",0],["magico","Cuerda obediente","18 m de cuerda que se ata y desata sola cuando se lo ordenas.",0],["magico","Brújula del deseo","Señala hacia lo que más quiere quien la sostiene, no hacia el norte.",1],
+["magico","Guantes del herrero","Resistencia al daño de fuego en las manos: puedes sostener brasas.",0],["magico","Espada de la marea","Arma +1. Una vez al día empuja 3 m a quien golpea, como una ola.",2],["magico","Cuerno del último aviso","Una vez al día, su toque despierta y pone en pie a todos los aliados en 18 m.",1],
+["magico","Máscara del otro rostro","Una vez al día cambia tu cara por la de alguien que hayas visto, durante una hora.",1],["magico","Piedra de mensaje","Dos piedras gemelas: lo que se susurra a una se oye en la otra, una vez al día.",1],["magico","Yelmo del que no duerme","No necesitas dormir y no pueden dormirte con magia.",2],
+["tesoro","Bolsa de monedas","2d6 × 10 po en monedas mezcladas.",0],["tesoro","Gemas talladas","Tres gemas que valen 50 po cada una.",0],["tesoro","Cáliz de plata","Vale 75 po. Lleva grabado el escudo de una familia noble.",0],["tesoro","Collar de perlas","Vale 250 po. Alguien lo estará buscando.",1],
+["tesoro","Mapa incompleto","Media ruta hacia un lugar marcado con una cruz. Falta la otra mitad.",0],["tesoro","Escritura de una propiedad","El título de una casa o una torre en ruinas, a nombre del portador.",1],["tesoro","Estatuilla de jade","Vale 150 po. Representa a un dios olvidado.",0],["tesoro","Cofre de especias raras","Vale 100 po para el mercader adecuado.",0],
+["trampa","Foso oculto","Percepción CD 13 para verlo. Quien cae recibe 1d6 por cada 3 m y queda dentro.",0],["trampa","Dardos envenenados","Una losa dispara dardos: ataque +6, 1d4 de daño y salvación de CON CD 12 o envenenado una hora.",0],["trampa","Techo que baja","El techo desciende en cuatro rondas. Fuerza CD 15 para frenarlo, o encontrar la palanca.",1],
+["trampa","Runa explosiva","Al tocarla estalla: salvación de DES CD 13, 3d6 de fuego, la mitad si la supera.",1],["trampa","Red y campanas","Una red cae y suena una alarma. Fuerza CD 12 para soltarse; los guardias llegan en dos rondas.",0],["trampa","Estatua que escupe fuego","Cono de 4,5 m: salvación de DES CD 14, 4d6 de fuego, la mitad si la supera.",2],["trampa","Puerta falsa","Parece la salida. Al abrirla, un péndulo: ataque +7, 2d10 de daño.",1],
+["hallazgo","Diario mojado","Las últimas páginas hablan de un socio que traicionó al autor.",0],["hallazgo","Llave sin cerradura","Una llave de hierro negro. Vibra al acercarse a cierta puerta.",0],["hallazgo","Carta sellada","Va dirigida a un PNJ de la historia. Abrirla tiene consecuencias.",0],["hallazgo","Altar apagado","Una ofrenda lo enciende y concede a uno del grupo inspiración.",0],
+["hallazgo","Prisionero","Alguien encerrado que promete una recompensa. Quizá miente.",0],["hallazgo","Marcas en la pared","Un código de ladrones: indica una ruta segura o una trampa cercana.",0],["hallazgo","Fuente extraña","Quien bebe tira un d6: con 1 queda envenenado una hora, con 6 recupera 2d6 PG.",0],["hallazgo","Campamento abandonado","Aún hay brasas. Quien lo dejó se fue con prisa y dejó algo atrás.",0]];
+function catRare(n){return["común","poco común","raro"][n]||"común"}
+function catHtml(L){return L.length?'<ul class="list">'+L.map(function(x){var loot=x[0]!=="trampa"&&x[0]!=="hallazgo";return'<li><span class="t"><b>'+esc(x[1])+'</b> <span class="badge">'+CATK[x[0]]+(loot?", "+catRare(x[3]):"")+'</span><time>'+esc(x[2])+'</time></span><button type="button" data-cat="'+CAT.indexOf(x)+'" style="min-height:28px;padding:0 8px;font-size:.8rem">'+(loot?"Al botín":"A las notas")+'</button></li>'}).join("")+'</ul>':'<p class="sub">Nada coincide.</p>'}
+function drawCat(){var el=$("#cat-list");if(!el)return;var q=$("#cat-q").value.trim().toLowerCase(),k=$("#cat-k").value;
+  el.innerHTML=catHtml(CAT.filter(function(x){return(!k||x[0]===k)&&(!q||(x[1]+" "+x[2]).toLowerCase().indexOf(q)>=0)}))}
+function catUse(x){var s=story();if(!s)return;if(x[0]==="trampa"||x[0]==="hallazgo")stEdit(function(s){s.notes.push({id:uid(),title:CATK[x[0]]+": "+x[1],text:x[2],t:Date.now()})});
+  else stEdit(function(s){s.loot=(s.loot||[]).concat([{id:uid(),x:x[1]+" ("+x[2]+")",t:Date.now()}])});
+  $("#cat-msg").textContent="«"+x[1]+"» añadido a"+(x[0]==="trampa"||x[0]==="hallazgo"?" las notas del DM.":"l botín del grupo.")}
+$("#cat-k").innerHTML='<option value="">Todo</option>'+Object.keys(CATK).map(function(k){return'<option value="'+k+'">'+CATK[k]+'</option>'}).join("");
+$("#cat-dl").innerHTML=CAT.filter(function(x){return x[0]!=="trampa"&&x[0]!=="hallazgo"}).map(function(x){return'<option value="'+esc(x[1])+'">'}).join("");
+$("#cat-q").addEventListener("input",drawCat);$("#cat-k").addEventListener("change",drawCat);
+$("#cat-rnd").onclick=function(){var k=$("#cat-k").value,L=CAT.filter(function(x){return!k||x[0]===k});$("#cat-list").innerHTML=catHtml([L[Math.floor(Math.random()*L.length)]])};
+$("#cat-list").addEventListener("click",function(e){var b=e.target.closest("[data-cat]");if(b&&CAT[+b.dataset.cat])catUse(CAT[+b.dataset.cat])});
+drawCat();
+function chestRoll(){var out=[d(6)*10+" po"],L=CAT.filter(function(x){return(x[0]==="magico"||x[0]==="consumible")&&x[3]<=1});if(Math.random()<.6)out.push(L[Math.floor(Math.random()*L.length)][1]);return out.join("; ")}
+$("#tk-kind").onchange=function(){var v=this.value;tkEdit(function(t){if(!t.ref)t.kind=v});tokBar()};
+$("#tk-loot").onchange=function(){var v=this.value.trim();tkEdit(function(t){t.loot=v})};
+$("#tk-open").onclick=function(){var t=selTok&&tokGet(selTok),s=story();if(!t||!isChest(t))return;
+  if(t.open){t.open=false;touch(false);drawSvg();tokBar();return}
+  if(!t.loot)t.loot=chestRoll();t.open=true;var P=String(t.loot).split(";").map(function(x){return x.trim()}).filter(Boolean);
+  if(s){s.loot=s.loot||[];P.forEach(function(x){s.loot.push({id:uid(),x:x,t:Date.now()})})}
+  logAct("Cofre abierto: "+P.join("; "));touch();mapMsg("El cofre contiene: "+P.join("; ")+"."+(s?" Apuntado en el botín del grupo.":""))};
+
+/* ---- listados del usuario: glosario e índice de criaturas ---- */
+var LISTS={glos:[],mons:[]},xlsP=null,glMap={};
+var MTYPE={aberration:"Aberración",beast:"Bestia",celestial:"Celestial",construct:"Autómata",dragon:"Dragón",elemental:"Elemental",fey:"Feérico",fiend:"Infernal",giant:"Gigante",humanoid:"Humanoide",monstrosity:"Monstruosidad",ooze:"Cieno",plant:"Planta",undead:"No muerto"};
+function loadXls(){if(!xlsP)xlsP=new Promise(function(res,rej){var sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js";sc.onload=function(){window.XLSX?res(window.XLSX):rej()};sc.onerror=function(){xlsP=null;rej()};document.head.appendChild(sc)});return xlsP}
+function cellTxt(v){return v==null?"":String(v).trim()}
+function listParse(name,rows){var H=(rows[0]||[]).map(function(x){return cellTxt(x).toLowerCase()}),ni=-1,ci=-1,ti=-1,n=0;
+  H.forEach(function(h,i){if(ni<0&&(h==="name"||h==="nombre"))ni=i;if(ci<0&&(h==="cr"||h==="vd"))ci=i;if(ti<0&&(h==="type"||h==="tipo"))ti=i});
+  if(ni>=0&&ci>=0){rows.slice(1).forEach(function(r){var nm=cellTxt(r[ni]);if(!nm)return;var v=parseFloat(String(r[ci]).replace(",","."));if(isNaN(v))v=crNum(cellTxt(r[ci]));
+      LISTS.mons.push([nm.slice(0,60),ti>=0?cellTxt(r[ti]).slice(0,30):"",v>10?String(Math.round(v)):crKey(v)]);n++});return n}
+  var st=[];(rows[0]||[]).forEach(function(x,i){if(cellTxt(x))st.push(i)});if(!st.length||st[0]!==0)st.unshift(0);
+  rows.slice(1).forEach(function(r){st.forEach(function(a,k){var b=k+1<st.length?st[k+1]:r.length,P=[];for(var i=a;i<b;i++){var t=cellTxt(r[i]);if(t)P.push(t.slice(0,80))}
+      if(P.length>=2){LISTS.glos.push([cellTxt((rows[0]||[])[a]).slice(0,60)||name,P.join(" · ")]);n++}})});return n}
+function listIndex(){glMap={};LISTS.glos.forEach(function(g){var P=g[1].split(" · ");if(P.length===2)glMap[P[0].toLowerCase()]=P[1]});
+  $("#ls-msg").textContent=LISTS.glos.length||LISTS.mons.length?"Cargado en este navegador: "+LISTS.glos.length+" términos de glosario y "+LISTS.mons.length+" criaturas.":"Todavía no has cargado ningún listado.";
+  $("#mi").hidden=!LISTS.mons.length;drawGlos();drawMi()}
+function drawGlos(){var q=$("#gl-q").value.trim().toLowerCase(),el=$("#gl-out");if(q.length<2){el.innerHTML="";return}
+  var L=LISTS.glos.filter(function(g){return g[1].toLowerCase().indexOf(q)>=0}).slice(0,40);
+  el.innerHTML=L.length?'<ul class="list">'+L.map(function(g){return'<li><span class="t">'+esc(g[1])+'<time>'+esc(g[0])+'</time></span></li>'}).join("")+'</ul>':'<p class="sub">'+(LISTS.glos.length?"Ningún término coincide.":"Carga primero tu glosario.")+'</p>'}
+function miName(m){var k=m[0].toLowerCase(),q=k.split(/,\s*/),es=glMap[k]||(q.length===2?glMap[q[0]+" "+q[1]]||glMap[q[1]+" "+q[0]]:"");return es?es.charAt(0).toUpperCase()+es.slice(1):m[0]}
+function miEst(cr){var n=crNum(cr),k=Math.max(0,Math.min(10,n));return{ca:Math.min(19,12+Math.round(k/2.5)),pg:Math.round(k<1?6+k*30:14*k+16),ini:Math.min(4,1+Math.floor(k/4)),at:3+Math.round(k/2),dm:k<1?(k<.25?"1d4+1":"1d6+2"):(1+Math.floor(k/3))+"d8+"+(2+Math.floor(k/3)),na:k>=3?2:1}}
+function drawMi(){var el=$("#mi-out");if(!el)return;var q=$("#mi-q").value.trim().toLowerCase(),cr=$("#mi-cr").value;if(!q&&!cr){el.innerHTML='<p class="sub">Escribe un nombre o elige un VD.</p>';return}
+  var L=LISTS.mons.filter(function(m){return(!cr||m[2]===cr)&&(!q||(m[0]+" "+miName(m)+" "+m[1]+" "+(MTYPE[m[1].toLowerCase()]||"")).toLowerCase().indexOf(q)>=0)});
+  el.innerHTML=(L.length?'<ul class="list">'+L.slice(0,40).map(function(m){var es=miName(m);return'<li><span class="t"><b>'+esc(es)+'</b>'+(es!==m[0]?" ("+esc(m[0])+")":"")+'<time>'+esc([MTYPE[m[1].toLowerCase()]||m[1],"VD "+m[2]].filter(Boolean).join(", "))+'</time></span><button type="button" data-mi="'+LISTS.mons.indexOf(m)+'" style="min-height:28px;padding:0 8px;font-size:.8rem">Añadir a la historia</button></li>'}).join("")+'</ul>':'<p class="sub">Ninguna criatura coincide.</p>')+(L.length>40?'<p class="sub">Hay '+L.length+' resultados; afina la búsqueda.</p>':"")}
+$("#mi-cr").innerHTML='<option value="">Cualquiera</option>'+Object.keys(XP).map(function(k){return'<option>'+k+'</option>'}).join("");
+$("#mi-q").addEventListener("input",drawMi);$("#mi-cr").addEventListener("change",drawMi);$("#gl-q").addEventListener("input",drawGlos);
+$("#mi-out").addEventListener("click",function(e){var b=e.target.closest("[data-mi]"),m=b&&LISTS.mons[+b.dataset.mi];if(!m||!story())return;var z=miEst(m[2]),nm=miName(m);
+  stEdit(function(s){s.mons.push(monArr({nombre:nm,ca:z.ca,pg:z.pg,iniciativa:z.ini,vd:m[2],ataque:z.at,dano:z.dm,ataques:z.na,nombre_ataque:"su ataque",descripcion:""}))});
+  $("#mon-msg").textContent="«"+nm+"» añadida con cifras estimadas a partir de su VD"+(crNum(m[2])>10?" (el panel solo calcula hasta VD 10)":"")+". Revísalas con tu manual."});
+$("#ls-file").addEventListener("change",function(){var F=[].slice.call(this.files||[]),inp=this,el=$("#ls-msg");if(!F.length)return;el.textContent="Leyendo…";
+  loadXls().then(function(X){return Promise.all(F.map(function(f){return f.arrayBuffer().then(function(buf){var wb=X.read(buf,{type:"array"}),n=0;
+      wb.SheetNames.forEach(function(sn){n+=listParse(sn,X.utils.sheet_to_json(wb.Sheets[sn],{header:1,defval:null}))});return n})}))})
+  .then(function(N){inp.value="";return idbPut("lists",LISTS).catch(function(){}).then(function(){listIndex();el.textContent+=" Añadidas "+N.reduce(function(a,b){return a+b},0)+" filas."})},
+    function(){inp.value="";el.textContent="No se ha podido leer el archivo. Tiene que ser .xlsx o .csv."})});
+$("#ls-clear").onclick=function(){LISTS={glos:[],mons:[]};idbDel("lists");listIndex()};
+idbGet("lists").then(function(v){if(v&&Array.isArray(v.glos)&&Array.isArray(v.mons))LISTS=v;listIndex()},function(){listIndex()});
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -2008,7 +2135,7 @@ function mapMsg(t){$("#map-read").textContent=t}
 function setVal(s,v){var e=$(s);if(document.activeElement!==e)e.value=v}
 function tokRef(t){if(!t.ref)return null;var nn=npcOfTok(t);if(nn)return{name:nn.name,pc:false,npc:nn};if(String(t.ref).indexOf("npc:")===0)return null;var p=pc(t.ref);if(p)return{name:p.name||"Sin nombre",pc:true};var c=find(t.ref);if(c){var v=view(c);return{name:v.name,pc:v.pc}}return null}
 function tokName(t){var r=tokRef(t);return r?r.name:t.name||"Figura"}
-function tokKind(t){var r=tokRef(t);return r?(r.npc?"oth":r.pc?"pc":"mon"):t.kind||"oth"}
+function tokKind(t){var r=tokRef(t);return r?(r.npc?"oth":r.pc?"pc":"mon"):isChest(t)?"chest":"oth"}
 function tokGet(id){var L=curMap().tokens;for(var i=0;i<L.length;i++)if(L[i].id===id)return L[i];return null}
 function initials(n){var m=/(\d+)\s*$/.exec(n),w=n.replace(/\s*\(.*?\)|\s*\d+\s*$/g,"").trim();return(w.slice(0,m?1:2)+(m?m[1]:"")).slice(0,3)}
 function sizeStage(){var m=curMap(),st=$("#stage"),sv=$("#map-svg");st.style.width=m.w+"px";st.style.height=m.h+"px";sv.setAttribute("width",m.w);sv.setAttribute("height",m.h);sv.setAttribute("viewBox","0 0 "+m.w+" "+m.h)}
@@ -2036,7 +2163,7 @@ function fxText(m,f){var cells=fxCells(m,f),set={},hit=[];cells.forEach(function
   m.tokens.forEach(function(t){var s=t.size||1;for(var i=0;i<s;i++)for(var j=0;j<s;j++)if(set[(t.x+i)+","+(t.y+j)]){if(hit.indexOf(tokName(t))<0)hit.push(tokName(t));return}});
   return FXN[f.t]+" "+fmt(f.m)+" m: "+cells.length+" casillas. "+(hit.length?"Afecta a: "+hit.join(", ")+".":"No afecta a ninguna figura.")}
 function drawSvg(){var m=curMap(),c=m.cell,h=[],fs=14/V.z;
-  h.push('<defs><pattern id="grid" width="'+c+'" height="'+c+'" patternUnits="userSpaceOnUse" x="'+m.ox+'" y="'+m.oy+'"><path class="gl" d="M '+c+' 0 L 0 0 0 '+c+'"/></pattern></defs>');
+  h.push('<defs><pattern id="grid" width="'+c+'" height="'+c+'" patternUnits="userSpaceOnUse" x="'+m.ox+'" y="'+m.oy+'"><path class="gl" d="M '+c+' 0 L 0 0 0 '+c+'"/></pattern><clipPath id="tkc" clipPathUnits="objectBoundingBox"><circle cx=".5" cy=".5" r=".5"/></clipPath></defs>');
   if(!m.src)h.push('<rect class="blank" width="'+m.w+'" height="'+m.h+'"/>');
   h.push('<rect width="'+m.w+'" height="'+m.h+'" fill="url(#grid)"/>');
   m.fx.concat(drag&&drag.k==="fx"?[drag.fx]:[]).forEach(function(f){var s=fxShape(m,f);
@@ -2044,19 +2171,22 @@ function drawSvg(){var m=curMap(),c=m.cell,h=[],fs=14/V.z;
     h.push(s.c?'<circle class="fxo" cx="'+s.c[0]+'" cy="'+s.c[1]+'" r="'+s.c[2]+'"/>':'<polygon class="fxo" points="'+s.p.map(function(q){return q[0]+","+q[1]}).join(" ")+'"/>')});
   h.push(fogSvg(m));
   m.tokens.forEach(function(t){if((players||solo)&&(t.hidden||(!fogShow(m,t.x,t.y)&&!(t.ref&&pc(t.ref)))))return;var s=t.size||1,r=s*c/2,n=tokName(t);
-    h.push('<g class="tk '+tokKind(t)+(t.id===selTok?" sel":"")+(t.hidden?" hid":"")+'" data-tok="'+t.id+'" transform="translate('+(m.ox+t.x*c+r)+","+(m.oy+t.y*c+r)+')"><title>'+esc(n)+'</title><circle r="'+r*.86+'"/>'+tokBody(t,n,r*.86,c*.42*Math.min(s,2))+'</g>')});
+    h.push('<g class="tk '+tokKind(t)+(t.id===selTok?" sel":"")+(t.hidden?" hid":"")+'" data-tok="'+t.id+'" transform="translate('+(m.ox+t.x*c+r)+","+(m.oy+t.y*c+r)+')"><title>'+esc(n)+'</title>'+(isChest(t)?chestSvg(r*.86,t.open):'<circle r="'+r*.86+'"/>'+tokBody(t,n,r*.86,c*.42*Math.min(s,2)))+'</g>')});
   S.combat.list.forEach(function(cc){var tg=cc.tgt&&find(cc.tgt);if(!tg||!S.combat.round||S.combat.over||hpOf(cc)<=0||(!isPc(tg)&&hpOf(tg)<=0))return;var A=null,B=null;
     m.tokens.forEach(function(t){if(t.ref===(cc.pcId||cc.id))A=t;if(t.ref===(tg.pcId||tg.id))B=t});if(!A||!B||((players||solo)&&(A.hidden||B.hidden)))return;
     var pa=ctr(m,A.x,A.y,A.size||1),pb=ctr(m,B.x,B.y,B.size||1);h.push('<line class="dl'+(isPc(cc)?" pcl":"")+'" x1="'+pa.x+'" y1="'+pa.y+'" x2="'+pb.x+'" y2="'+pb.y+'"/>')});
   if(placing.length&&ghost)h.push('<circle class="ghost-tk" cx="'+(m.ox+(ghost.x+.5)*c)+'" cy="'+(m.oy+(ghost.y+.5)*c)+'" r="'+c*.43+'"/>');
   var ln=drag&&drag.line||lastRule;
   if(ln)h.push('<line class="rl0" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><line class="rl1'+(ln.bad?" bad":"")+'" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><text class="rt'+(ln.bad?" bad":"")+'" font-size="'+fs+'" x="'+(ln.x2+fs*.8)+'" y="'+(ln.y2-fs*.8)+'">'+esc(ln.label)+'</text>');
+  var st=selTok&&tokGet(selTok);if(st&&!((players||solo)&&st.hidden))h.push(tokLabel(m,st,c));
   var sv=$("#map-svg");sv.setAttribute("class",m.src?"onimg":"");sv.innerHTML=h.join("")}
-function tokPicUrl(t){var nq=npcOfTok(t);if(nq)return npcPic(nq);var cc=t.ref&&find(t.ref),P=t.ref&&(pc(t.ref)||(cc&&cc.pcId&&pc(cc.pcId)));if(P)return pcPic(P);return cc&&!cc.pcId&&cc.base?monPic(cc.base):""}
+function tokPicUrl(t){var nq=npcOfTok(t);if(nq)return npcPic(nq);var cc=t.ref&&find(t.ref),P=t.ref&&(pc(t.ref)||(cc&&cc.pcId&&pc(cc.pcId)));if(P)return pcPic(P);if(cc&&!cc.pcId&&cc.base)return monPic(cc.base);return t.ref?"":tokGuess(t)}
 function tokBody(t,n,R,fs){var u=tokPicUrl(t);if(!u)return'<text font-size="'+fs+'">'+esc(initials(n))+'</text>';var k=/(\d+)\s*$/.exec(n);
-  return'<image href="'+esc(u)+'" x="'+(-R)+'" y="'+(-R)+'" width="'+2*R+'" height="'+2*R+'" preserveAspectRatio="xMidYMid slice" style="clip-path:circle(50%)"/><circle class="ring" r="'+R+'"/>'+(k?'<text class="tn" font-size="'+fs*.8+'" x="'+R*.72+'" y="'+R*.72+'">'+k[1]+'</text>':"")}
+  return'<image href="'+esc(u)+'" x="'+(-R)+'" y="'+(-R)+'" width="'+2*R+'" height="'+2*R+'" preserveAspectRatio="xMidYMid slice" clip-path="url(#tkc)"/><circle class="ring" r="'+R+'"/>'+(k?'<text class="tn" font-size="'+fs*.8+'" x="'+R*.72+'" y="'+R*.72+'">'+k[1]+'</text>':"")}
 function tokBar(){var t=selTok&&tokGet(selTok),b=$("#tok-bar");b.hidden=!t;if(!t)return;
-  setVal("#tk-name",tokName(t));$("#tk-name").readOnly=!!tokRef(t);$("#tk-size").value=t.size||1;setVal("#tk-speed",t.speed==null?9:t.speed);$("#tk-hid").checked=!!t.hidden}
+  setVal("#tk-name",tokName(t));$("#tk-name").readOnly=!!tokRef(t);$("#tk-size").value=t.size||1;setVal("#tk-speed",t.speed==null?9:t.speed);$("#tk-hid").checked=!!t.hidden;
+  $("#tk-loose").hidden=!!t.ref;$("#tk-kind").value=isChest(t)?"chest":"fig";$("#tk-chest").hidden=!isChest(t);setVal("#tk-loot",t.loot||"");$("#tk-open").textContent=t.open?"Cerrar el cofre":"Abrir el cofre";
+  $("#tk-info").textContent=tokLines(t).slice(1).join(" | ")}
 function drawMapUI(){var m=curMap(),img=$("#map-img");
   var ms=story(),mo=function(o){return'<option value="'+o.id+'"'+(o.id===m.id?" selected":"")+'>'+esc(o.name)+'</option>'},mine=ms?S.maps.filter(function(o){return o.story===ms.id||ms.mapId===o.id||ms.chapters.some(function(c){return c.map===o.id})}):[],rest=S.maps.filter(function(o){return mine.indexOf(o)<0});
   $("#map-sel").innerHTML=mine.length?'<optgroup label="Mapas de '+esc(ms.title)+'">'+mine.map(mo).join("")+'</optgroup>'+(rest.length?'<optgroup label="Otros mapas">'+rest.map(mo).join("")+'</optgroup>':""):S.maps.map(mo).join("");
