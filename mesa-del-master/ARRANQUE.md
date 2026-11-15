@@ -46,6 +46,7 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
 - **Criaturas**: retratos del bestiario base, foto propia por criatura, y alta desde una foto de un manual leída por una IA con visión. Se muestran en «Combate» y se amplían al pulsarlas.
 - **Mapa**: selector, imagen desde archivo o Drive, cuadrícula, figuras con retrato, regla, plantillas de efectos, niebla de guerra, líneas de enfrentamiento, pantalla completa y pestaña aparte.
 - **Máster IA**: copiloto, narrador y autónomo; lectura en voz alta; motor y voz configurables.
+- **Retratos a medida**: criaturas propias y personajes tienen un campo de aspecto y un botón «Generar imagen», que redacta un prompt en el estilo del bestiario para pegarlo en un generador externo y subir el resultado. Los retratos de personajes se ven en tarjetas, Panel, combate y mapa.
 - **Ambiente**: seis ambientes sonoros sintetizados con Web Audio, sin archivos de audio.
 - **Copia de seguridad**: en el Panel, descarga y restauración de toda la campaña.
 - **Reglas**: chuleta, estados y guía para la primera sesión.
