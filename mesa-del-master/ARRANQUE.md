@@ -67,6 +67,8 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
 - **Distancias**: con figuras en el mapa (`tokOf`), los monstruos avanzan hacia su objetivo (`reach`, `stepToward`) y el cuerpo a cuerpo exige estar al lado (`pcReach`). «Acercarse al objetivo» mueve la figura del personaje. `m.ter` guarda casillas de terreno difícil (`d`, cuesta el doble) y de cobertura (`c`, +2 a la CA contra ataques a distancia).
 - **Concentración**: los conjuros de `CONC` se guardan en `c.conc`; recibir daño obliga a salvar CON (`concHit`) y lanzar otro termina el anterior.
 - **Rasgos de clase**: `featList()` da los rasgos con usos (`p.feat`): furia, tomar aliento, acción súbita, imposición de manos, inspiración bárdica, expulsar muertos vivientes y ráfaga de golpes. Automáticos: ataque furtivo, ataque adicional a nivel 5 y castigo divino (`pcStrike`).
+- **Monstruos que lanzan conjuros**: `casterOf()` reconoce por el nombre a lanzadores arcanos y divinos; `monCast()` decide entre curar a un aliado, inmovilizar, un conjuro de área, uno de daño o un truco, con un número de conjuros según su VD. Un personaje paralizado pierde el turno y repite la salvación. El bestiario base suma «Acólito oscuro», «Chamán goblin» y «Mago renegado», sin retrato.
+- **Encuentros mixtos**: `buildEncounter()` acepta varios grupos. El combate automático mezcla un líder con secuaces (`mixPick`, se apaga con «Mezclar tipos de criatura») y la IA puede pedir varios tipos separados por comas en `[COMBATE: …]`.
 - **Ambiente**: seis ambientes sonoros sintetizados con Web Audio, sin archivos de audio.
 - **Copia de seguridad**: en el Panel, descarga y restauración de toda la campaña.
 - **Reglas**: chuleta, estados y guía para la primera sesión.
@@ -131,5 +133,4 @@ Las claves quedaron guardadas en el entorno de la sesión, no en el repositorio:
 - Probar con un PDF real de D&D Beyond y ajustar los nombres de campo.
 - Vista propia para cada jugador en su móvil.
 - Leer las características y competencias al importar de D&D Beyond.
-- Monstruos que lanzan conjuros y encuentros con varios tipos de criatura.
 - Ataques de oportunidad, alcance de los conjuros y paredes que bloqueen el paso y la visión.
