@@ -111,6 +111,7 @@ label.ck{flex-direction:row;align-items:center;gap:6px;text-transform:none;lette
 .slots{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0} .slots b{letter-spacing:3px;color:var(--fx)}
 .guide{border:1px solid var(--divider);border-radius:10px;padding:10px 14px} .guide ol{margin:6px 0 0;padding-left:20px;display:grid;gap:4px}
 .sub.warn{color:var(--fx)}
+.rollc{border-top:1px solid var(--divider);padding-top:10px;margin-top:10px} .rollc p{margin:0 0 6px}
 .tk .ring{fill:none}
 .tk.chest{cursor:grab} .tk.chest.sel .cb{stroke:var(--fx);stroke-width:4}
 .tlab rect{fill:#000;fill-opacity:.8;stroke:#f3d9a0;stroke-opacity:.6;stroke-width:1;vector-effect:non-scaling-stroke}
@@ -750,7 +751,11 @@ label{display:flex;flex-direction:column;gap:3px}
           <textarea id="ia-draft-text" aria-label="Propuesta del narrador"></textarea>
           <div class="bar"><button type="button" class="pri" id="ia-accept">Aceptar</button><button type="button" id="ia-regen">Otra versión</button><button type="button" id="ia-draft-read" class="tts">Leer en voz alta</button><button type="button" class="ghost" id="ia-discard">Descartar</button></div>
         </div>
+        <div id="ia-rolls" class="card" hidden></div>
         <p id="ia-note" class="small muted" role="status"></p>
+        <div id="ia-whobar" class="bar" hidden><label>Quién actúa<select id="ia-who"></select></label>
+          <label class="ck"><input type="checkbox" id="ia-turns"> Por turnos, de uno en uno</label>
+          <span class="small muted" style="flex:1 1 14em">Elige al personaje que habla para que el máster use sus estadísticas.</span></div>
         <form id="ia-form" class="bar" autocomplete="off">
           <label><span id="ia-label"></span><textarea id="ia-input"></textarea></label>
           <button type="submit" class="pri" id="ia-send">Enviar</button>
@@ -1223,7 +1228,7 @@ $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data
 /* ---- voz, explicaciones y enlace entre historia, mapa y combate ---- */
 var helpOn=true,autoRead=false,ttsCap=null,speaking=null;
 try{helpOn=localStorage.getItem(LS+"-ayuda")!=="0";autoRead=localStorage.getItem(LS+"-leer")==="1"}catch(e){}
-function clean(t){return String(t||"").replace(/\[(MAPA|COMBATE|COLOCAR|AMBIENTE)[^\]]*\]/gi,"").replace(/[ \t]+\n/g,"\n").trim()}
+function clean(t){return String(t||"").replace(/\[(MAPA|COMBATE|COLOCAR|AMBIENTE|TIRADA)[^\]]*\]/gi,"").replace(/[ \t]+\n/g,"\n").trim()}
 var vc={eng:"nav",key:"",voice:"",name:"",model:"eleven_flash_v2_5"},vAudio=null,vAbort=null;
 try{var vz0=JSON.parse(localStorage.getItem(LS+"-voz")||"{}");["eng","key","voice","name","model","rate"].forEach(function(k){if(typeof vz0[k]==="string"&&vz0[k])vc[k]=vz0[k]})}catch(e){}
 function eleven(){return!(window.claude&&window.claude.use)&&vc.eng==="eleven"&&vc.key&&vc.voice}
@@ -1270,7 +1275,7 @@ $("#ia-read").onclick=function(){speak(lastOut,this)};
 $("#ia-draft-read").onclick=function(){speak($("#ia-draft-text").value,this)};
 $("#ia-autoread").checked=autoRead;
 $("#ia-autoread").onchange=function(){autoRead=this.checked;try{localStorage.setItem(LS+"-leer",autoRead?"1":"0")}catch(e){}if(!autoRead)stopSpeak()};
-function afterReply(t){ambFromText(t);var cb=combatFromText(t);placeFromText(t);if(cb)return;if(autoRead)speak(t,null)}
+function afterReply(t){rollsFromText(t);ambFromText(t);var cb=combatFromText(t);placeFromText(t);if(cb)return;if(autoRead)speak(t,null)}
 
 /* el máster IA lanza un combate */
 function buildEncounter(m,q,byIA){var R=roster(),C=S.combat;if(!R.length)return false;
@@ -1963,6 +1968,46 @@ $("#cb-auto").addEventListener("change",function(e){if(e.target.id!=="au-spell")
 $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data-au]");if(!b)return;
   if(b.dataset.au==="cont"){S.combat.wait=0;autoStep();touch()}
   else if(b.dataset.au==="lrest"){$("#btn-rest").click()}});
+/* ---- máster IA: fichas, tiradas guiadas y turnos ---- */
+function pcCtx(p){var b="- "+(p.name||"Sin nombre")+", "+([p.race,p.cls].filter(Boolean).join(" ")||"clase sin apuntar")+" de nivel "+p.level+", CA "+p.ac+", PG "+p.hp+"/"+p.max+", Percepción pasiva "+p.pp;if(!p.full)return b+" (sin ficha completa: no conoces sus modificadores)";sheet(p);slotsOf(p);
+  var sk=SKL.map(function(x,i){return p.sk.indexOf(x[0])>=0?x[0]+" "+sgn(skillBonus(p,i)):""}).filter(Boolean);
+  b+=", velocidad "+fmt(p.speed)+" m, competencia "+sgn(prof(p))+". Características: "+ABK.map(function(k){return ABN[k]+" "+sgn(abMod(p,k))}).join(", ")+". Salvaciones: "+ABK.map(function(k){return ABN[k]+" "+sgn(saveBonus(p,k))}).join(", ")+"."+(sk.length?" Habilidades con competencia: "+sk.join(", ")+".":"")+" Ataque "+sgn(p.atk==null?prof(p):p.atk)+(p.dmg?", daño "+p.dmg:"")+".";
+  if(p.cast)b+=" Conjuros ("+ABL[p.cast]+", ataque "+sgn(p.satk==null?prof(p)+abMod(p,p.cast):p.satk)+", CD "+(p.sdc==null?8+prof(p)+abMod(p,p.cast):p.sdc)+"): "+(p.spells.length?p.spells.join(", "):"sin apuntar")+"."+(slotsOn(p)?" Espacios que le quedan: "+[1,2,3].map(function(l){return p.slots[l-1]?"nivel "+l+": "+slotLeft(p,l)+" de "+p.slots[l-1]:""}).filter(Boolean).join(", ")+".":"");
+  return b}
+function flat(t){return String(t||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").trim()}
+function pcByName(n){var k=flat(n),R=roster(),r=null;if(!k)return null;R.forEach(function(p){if(!r&&flat(p.name)===k)r=p});
+  if(!r)R.forEach(function(p){var f=flat(p.name);if(!r&&f&&(f.indexOf(k)===0||k.indexOf(f.split(" ")[0])===0))r=p});return r}
+function rollMod(p,what){var w=flat(what),ab=null,i;if(!p.full)return{m:0,txt:"sin ficha completa, sin modificador"};sheet(p);
+  function abOf(){var r=null;ABK.forEach(function(k){if(!r&&(w.indexOf(flat(ABL[k]))>=0||new RegExp("\\b"+k+"\\b").test(w)))r=k});return r}
+  if(/salvaci/.test(w)&&(ab=abOf()))return{m:saveBonus(p,ab),txt:ABL[ab]+" "+sgn(abMod(p,ab))+(p.sv.indexOf(ab)>=0?", competencia "+sgn(prof(p)):", sin competencia")};
+  for(i=0;i<SKL.length;i++)if(w.indexOf(flat(SKL[i][0]))>=0){var on=p.sk.indexOf(SKL[i][0])>=0;return{m:skillBonus(p,i),txt:ABL[SKL[i][1]]+" "+sgn(abMod(p,SKL[i][1]))+(on?", competencia "+sgn(prof(p)):", sin competencia")}}
+  if(/iniciativa/.test(w))return{m:int(p.init,0),txt:"iniciativa"};
+  if(/ataque/.test(w))return{m:int(p.atk,prof(p)),txt:"bono de ataque"};
+  if((ab=abOf()))return{m:abMod(p,ab),txt:ABL[ab]+" "+sgn(abMod(p,ab))};
+  return{m:0,txt:"el panel no reconoce esa prueba: ajusta el modificador a mano"}}
+var pend=[],tAct="",tNext="",turnsOn=false;
+try{turnsOn=localStorage.getItem(LS+"-turnos")==="1"}catch(e){}
+function rollsFromText(t){var re=/\[TIRADA:\s*([^\]|]+)\|([^\]|]+)\|[^\]\d]*(\d+)[^\]]*\]/gi,m,n=0;pend=pend.filter(function(x){return x.res==null});
+  while((m=re.exec(String(t||"")))){var who=m[1].trim(),P=pcByName(who),L=P?[P]:/todos|grupo|cada/i.test(who)?roster():[];
+    L.forEach(function(p){var z=rollMod(p,m[2]);pend.push({id:uid(),pc:p.id,what:m[2].trim().slice(0,50),dc:int(m[3],10),m:z.m,txt:z.txt,res:null});n++})}
+  drawRolls();return n}
+function rollLine(x){var p=pc(x.pc);return(p?p.name||"Sin nombre":"Alguien")+" saca "+x.res.tot+" en "+x.what+" (d20: "+x.res.r+" "+sgn(x.m)+") contra CD "+x.dc+": "+(x.res.tot>=x.dc?"éxito":"fallo")+(x.res.r===20?", con un 20 natural":x.res.r===1?", con un 1 natural":"")+"."}
+function drawRolls(){var el=$("#ia-rolls");if(!el)return;var L=pend.filter(function(x){return pc(x.pc)});el.hidden=!L.length||S.ia.mode==="copiloto";if(el.hidden)return;
+  el.innerHTML='<span class="eyebrow">Tiradas que pide el máster</span>'+L.map(function(x){var p=pc(x.pc);
+    return'<div class="rollc"><p><b>'+esc(p.name||"Sin nombre")+'</b>: '+esc(x.what)+', CD '+x.dc+'</p>'+(x.res?'<p class="sub" style="color:var(--ink)">'+esc(rollLine(x))+(helpOn?' Se suma al d20 el modificador de la ficha ('+esc(x.txt)+'); si el total iguala o supera la CD, lo consigue.':"")+'</p>':
+      '<p class="sub">Tira 1d20 y suma '+sgn(x.m)+' ('+esc(x.txt)+').</p><div class="bar"><button type="button" class="pri" data-roll="'+x.id+'">Que tire el panel</button><label>Modificador<input type="number" id="rm-'+x.id+'" value="'+x.m+'" style="width:5em"></label><label>Si tiráis con dados, el d20<input type="number" min="1" max="20" id="rd-'+x.id+'" placeholder="14" style="width:5em"></label><button type="button" data-roll-own="'+x.id+'">Aplicar mi dado</button></div>')+'</div>'}).join("")+
+    (L.some(function(x){return x.res==null})?'<div class="bar"><button type="button" class="ghost" id="rolls-skip">Descartar estas tiradas</button></div>':"")}
+function rollDone(){drawRolls();var L=pend.filter(function(x){return pc(x.pc)});if(!L.length||L.some(function(x){return x.res==null}))return;
+  var t="Resultados de las tiradas, hechas con los modificadores de cada ficha: "+L.map(rollLine).join(" ");setTimeout(function(){if(busy||!ready())return;pend=[];say(t);drawRolls()},700)}
+$("#ia-rolls").addEventListener("click",function(e){var a=e.target.closest("[data-roll]"),o=e.target.closest("[data-roll-own]"),id=a?a.dataset.roll:o?o.dataset.rollOwn:null,x=null;
+  if(e.target.id==="rolls-skip"){pend=[];drawRolls();return}if(!id)return;pend.forEach(function(q){if(q.id===id)x=q});if(!x)return;
+  x.m=int($("#rm-"+id).value,x.m);var r=a?d(20):int($("#rd-"+id).value,0);if(r<1||r>20)return;x.res={r:r,tot:r+x.m};rollDone()});
+function drawWho(){var b=$("#ia-whobar");if(!b)return;var R=roster();b.hidden=S.ia.mode==="copiloto"||!R.length;var s=$("#ia-who"),cur=s.value;
+  s.innerHTML='<option value="">Todo el grupo</option>'+R.map(function(p){return'<option value="'+p.id+'">'+esc(p.name||"Sin nombre")+'</option>'}).join("");s.value=cur;if(s.selectedIndex<0)s.selectedIndex=0;
+  $("#ia-turns").checked=turnsOn;if(turnsOn&&!s.value&&R.length)s.value=R[0].id;drawRolls()}
+$("#ia-turns").addEventListener("change",function(){turnsOn=this.checked;try{localStorage.setItem(LS+"-turnos",turnsOn?"1":"0")}catch(e){}drawWho()});
+function whoWrap(q){var R=roster(),p=pc($("#ia-who").value);tAct=tNext="";if(!p)return q;var i=R.indexOf(p),nx=R[(i+1)%R.length];tAct=p.name||"";
+  if(turnsOn&&nx&&nx!==p){tNext=nx.name||"";$("#ia-who").value=nx.id}return(p.name||"Personaje")+": "+q}
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -2160,7 +2205,7 @@ function iaCtx(){var L=[];
     if(hs.chapters.length)L.push("CAPÍTULOS:\n"+hs.chapters.map(function(c,i){return"- "+(i+1)+". "+c.title+" ("+(c.st==="hecho"?"completado":c.st==="curso"?"en curso":"pendiente")+")"+(c.note?": "+c.note:"")+(mapName(c.map)?" [mapa: "+mapName(c.map)+"]":c.mapHint?" [mapa que conviene: "+c.mapHint+"]":"")}).join("\n"));
     var ls=hs.sessions[hs.sessions.length-1];if(ls&&ls.x)L.push("ÚLTIMA SESIÓN JUGADA:\n"+ls.x.slice(0,800))}
   if(S.ia.summary)L.push("RESUMEN DE LO OCURRIDO HASTA AHORA:\n"+S.ia.summary);
-  if(roster().length)L.push("PERSONAJES:\n"+roster().map(function(p){return"- "+(p.name||"Sin nombre")+", "+([p.race,p.cls].filter(Boolean).join(" ")||"clase sin apuntar")+" de nivel "+p.level+", CA "+p.ac+", PG "+p.hp+"/"+p.max+", Percepción pasiva "+p.pp}).join("\n"));
+  if(roster().length)L.push("PERSONAJES:\n"+roster().map(pcCtx).join("\n"));
   if(S.combat.list.length)L.push("COMBATE EN MARCHA, ronda "+(S.combat.round||0)+(turnName()?", turno de "+turnName():"")+":\n"+S.combat.list.map(function(c){var v=view(c);
     return"- "+v.name+(v.pc?" (personaje)":" (monstruo, VD "+c.cr+")")+", iniciativa "+(c.init==null?"sin tirar":c.init)+", CA "+v.ac+", PG "+v.hp+"/"+v.max+((c.conds||[]).length?", estados: "+c.conds.join(", "):"")}).join("\n"));
   if(S.combat.auto&&(S.combat.log||[]).length)L.push("REGISTRO DEL COMBATE, con resultados ya tirados que no debes cambiar:\n"+S.combat.log.slice(-10).join("\n"));
@@ -2171,10 +2216,12 @@ function lead(m){var t=BASE+"\n\n"+MODES[m].rules;
   if(m==="auto"){var p=[];for(var i=0;i<8;i++)p.push(d(20));t+="\n\nPara las tiradas de d20 de monstruos y PNJ usa, en este orden, estos resultados que ya se han tirado con dados reales: "+p.join(", ")+"."}
   if(m!=="copiloto"){t+="\n\nCuando estalle un combate no lo resuelvas tú: termina tu respuesta con una línea exactamente así: [COMBATE: nombre de la criatura x cantidad], usando solo criaturas de esta lista: "+BL().map(function(x){return x[0]}).join(", ")+". El panel tirará los dados y después te contará cómo acabó.";
     t+="\n\nCuando la escena cambie de lugar, carga el mapa que encaje con una línea exactamente así: [MAPA: nombre del mapa], usando el nombre de uno de los lugares de la historia o de los mapas disponibles. Hazlo en tu primera respuesta y cada vez que la escena cambie de sitio. Prefiere los lugares que ya tienen mapa; si la escena exige un lugar nuevo, usa igualmente la marca con su nombre y el panel preparará un tablero en blanco y pedirá su imagen."+(story()&&placesCtx(story())?" "+placesCtx(story()):"")+" Al empezar una escena nueva o un combate añade una línea que empiece por «Colocación:» explicando a quien dirige en qué zona del mapa poner a los personajes, a las criaturas y los objetos importantes, y después una marca exactamente así: [COLOCAR: Nombre=columna,fila; Nombre=columna,fila], con casillas dentro del tamaño del mapa.";
+    t+="\n\nTIRADAS DE LOS PERSONAJES: conoces la ficha de cada uno, más abajo. Cuando una acción sea incierta, decide qué personaje concreto la hace según lo que haya dicho y no la resuelvas ni pidas cifras: termina con una línea exactamente así por cada personaje implicado: [TIRADA: nombre del personaje | habilidad, característica o salvación | CD]. El panel tira el d20, suma el modificador exacto de su ficha y te escribe el resultado; entonces narra la consecuencia sin cambiarlo. Si actúa todo el grupo, pide una tirada por personaje. Ten en cuenta su velocidad, sus conjuros y los espacios que le quedan: no le dejes lanzar un conjuro que no tiene o para el que no le quedan espacios.";
+    if(tAct)t+="\n\nEl último mensaje es de "+tAct+": resuelve su acción con sus estadísticas, no con las de otro."+(tNext?" RONDA POR TURNOS: los jugadores hablan de uno en uno. Responde en 80 palabras como máximo y termina preguntando por su nombre a "+tNext+" qué hace.":"");
     t+="\n\nPara ambientar la escena puedes cambiar el sonido de fondo con una línea exactamente así: [AMBIENTE: nombre], con uno de estos nombres: lluvia, mazmorra, bosque, taberna, misterio, silencio.";
     var sq=story(),cn=sq?chapNpcs(sq):[];if(cn.length)t+="\n\nLos PNJ de este capítulo son: "+cn.map(function(n){return n.name}).join(", ")+". Ya tienen figura en el mapa: inclúyelos en la marca [COLOCAR] cuando entren en escena o cambien de sitio.";
     var cm=curMap();if(cm.src||cm.desc)t+="\n\nLa escena actual transcurre en el mapa en pantalla, descrito más abajo: ambienta la narración en ese lugar concreto y ten en cuenta dónde está cada figura."}
-  if(helpOn)t+=m==="copiloto"?"\n\nEl máster es novato: explica en pocas palabras cada regla que menciones.":"\n\nMODO EXPLICACIÓN: los jugadores no han jugado nunca. Después de narrar añade una línea que empiece por «Opciones:» con tres o cuatro cosas concretas que podrían hacer sus personajes ahora, y explica entre paréntesis, en pocas palabras, cada término de reglas que uses.";
+  if(helpOn)t+=m==="copiloto"?"\n\nEl máster es novato: explica en pocas palabras cada regla que menciones.":"\n\nMODO EXPLICACIÓN: los jugadores no han jugado nunca. Después de narrar añade una línea que empiece por «Opciones:» con tres o cuatro cosas concretas que podrían hacer sus personajes ahora, y explica entre paréntesis, en pocas palabras, cada término de reglas que uses. Cuando el panel te dé el resultado de una tirada, di primero en una frase qué se sumó al dado y por qué, y luego narra la consecuencia.";
   return t+"\n\nESTADO DE LA MESA\n\n"+iaCtx()}
 function turns(m){var out=[{role:"user",content:lead(m)}];
   S.ia.log.slice(-30).forEach(function(x){out.push({role:x.r==="a"?"assistant":"user",content:x.t})});return out}
@@ -2199,7 +2246,7 @@ function drawIA(){var m=S.ia.mode,chat=m!=="copiloto",hide=players&&m!=="auto";
   $("#ia-start").hidden=S.ia.log.length>0;$("#ia-sum").hidden=S.ia.log.length<=24;$("#ia-clear").hidden=!S.ia.log.length;
   if(m!=="narrador")$("#ia-draft").hidden=true;
   $("#ia-send").textContent=m==="narrador"?"Pedir propuesta":"Enviar";
-  if(chat&&!busy)drawLog();iaButtons()}
+  if(chat&&!busy)drawLog();iaButtons();drawWho()}
 function propose(){var box=$("#ia-draft"),ta=$("#ia-draft-text");box.hidden=false;ta.value="";ta.readOnly=true;
   run(turns("narrador"),function(t){ta.value=t}).then(function(r){ta.readOnly=false;if(!r.text){box.hidden=true}else ta.value=r.text;drawIA()})}
 function autoReply(){var li=document.createElement("li");li.className="a";$("#ia-log").appendChild(li);$("#ia-empty").hidden=true;
@@ -2207,7 +2254,7 @@ function autoReply(){var li=document.createElement("li");li.className="a";$("#ia
 function say(text){liveStart(story());logPush("u",text);touch(false);drawLog();if(S.ia.mode==="narrador")propose();else autoReply()}
 $("#ia-modes").addEventListener("click",function(e){var b=e.target.closest("[data-ia]");if(!b||busy)return;S.ia.mode=b.dataset.ia;touch(false);drawIA();route()});
 $("#ia-form").addEventListener("submit",function(e){e.preventDefault();var i=$("#ia-input"),q=i.value.trim();if(!q||!ready())return;i.value="";
-  if(S.ia.mode==="copiloto")copilot(q);else say(q)});
+  if(S.ia.mode==="copiloto")copilot(q);else say(whoWrap(q))});
 $("#ia-input").addEventListener("keydown",function(e){if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)){e.preventDefault();$("#ia-send").click()}});
 function copilot(q){var hist=S.ia.log.slice(-6).map(function(x){return(x.r==="a"?"Máster: ":"Jugadores: ")+x.t}).join("\n");
   lastOut="";$("#ia-outbox").hidden=false;$("#ia-out").textContent="";
