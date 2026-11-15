@@ -52,6 +52,7 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
 - **Sesión 0**: cada historia guarda una introducción para jugadores (`zero`, `zeroDone`). «Iniciar historia» la muestra la primera vez, antes de empezar a jugar.
 - **PNJ en el mapa**: cada PNJ puede tener un capítulo (`chap`). Al iniciar la historia o poner un capítulo en curso se colocan en el mapa el grupo y los PNJ de ese capítulo, como figuras con referencia `npc:<id>`.
 - **Ayudas para la mesa**: en «Máster IA», «Dar contexto» y «¿Qué podemos hacer?» responden solo con lo que los personajes ya saben (`pubCtx`), con respuesta de reserva si no hay motor de IA.
+- **Lugares de la historia**: cada historia lleva una lista de lugares (`places`, con `title`, `mapHint` y `map`). El generador de historias la rellena y «Revisar qué mapas hacen falta» la completa con la IA. Si el máster IA lleva la escena a un lugar sin mapa, `needMap()` crea un tablero en blanco con las figuras y abre en «Máster IA» un panel para redactar el prompt y subir la imagen a ese mismo mapa.
 - **Ambiente**: seis ambientes sonoros sintetizados con Web Audio, sin archivos de audio.
 - **Copia de seguridad**: en el Panel, descarga y restauración de toda la campaña.
 - **Reglas**: chuleta, estados y guía para la primera sesión.
