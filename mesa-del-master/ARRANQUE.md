@@ -12,6 +12,7 @@ Un gestor de campañas de D&D 5.5 para un máster novato, en una sola página we
 |---|---|
 | Código | `mesa-del-master/index.html` en `drraulferrer/Proyectos`, rama `main` |
 | Imágenes de portada | `mesa-del-master/img/*.jpg` |
+| Retratos de criaturas | `mesa-del-master/img/mon/*.jpg`, uno por criatura del bestiario base |
 | Web pública | https://drraulferrer.github.io/Proyectos/mesa-del-master/ |
 | Copia dentro de Claude | https://claude.ai/artifact/LV8tHg1fo16eHC65Rf19rd |
 | Despliegue | `.github/workflows/pages.yml`, publica al fusionar en `main` |
@@ -41,6 +42,7 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
 - **Historias**: tarjetas, generador de historia completa con IA y detalle con capítulos, misiones, PNJ, criaturas propias, sesiones y notas del máster.
 - **Personajes**: tarjetas editables e importador desde el PDF o una captura de D&D Beyond.
 - **Combate**: modo manual y modo automático, que monta el encuentro, tira iniciativa, resuelve los monstruos y las salvaciones contra muerte, y lleva un registro.
+- **Criaturas**: retratos del bestiario base, foto propia por criatura, y alta desde una foto de un manual leída por una IA con visión. Se muestran en «Combate» y se amplían al pulsarlas.
 - **Mapa**: selector, imagen desde archivo o Drive, cuadrícula, figuras, regla, plantillas de efectos, pantalla completa y pestaña aparte.
 - **Máster IA**: copiloto, narrador y autónomo; lectura en voz alta; motor y voz configurables.
 - **Reglas**: chuleta, estados y guía para la primera sesión.
