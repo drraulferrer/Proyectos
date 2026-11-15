@@ -930,7 +930,7 @@ function view(c){ // datos efectivos de un combatiente
   return{name:c.name,ac:c.ac,hp:c.hp,max:c.max,pc:false,sub:c.cr!=null?"VD "+c.cr:""}}
 function setHp(c,v){var o=c.pcId&&pc(c.pcId)||c;o.hp=Math.max(0,Math.min(o.max,v))}
 function sortList(){S.combat.list.sort(function(a,b){var x=a.init==null?-99:a.init,y=b.init==null?-99:b.init;return y-x})}
-function alive(c){var v=view(c);return v.pc||v.hp>0}
+function alive(c){var v=view(c);return v.pc||(v.hp>0&&!c.fled)}
 function band(v){if(v.hp<=0)return["Caído","b4"];var r=v.hp/v.max;if(r<=.5)return["Malherido","b3"];if(r<1)return["Herido","b2"];return["Ileso","b1"]}
 
 function drawDiff(){var el=$("#diff"),xp=0,bud=[0,0,0];
@@ -1156,13 +1156,13 @@ function hpOf(c){return view(c).hp}
 function has(c,k){return(c.conds||[]).indexOf(k)>=0}
 function addCond(c,k){c.conds=c.conds||[];if(c.conds.indexOf(k)<0)c.conds.push(k)}
 function delCond(c,k){c.conds=(c.conds||[]).filter(function(x){return x!==k})}
-function foes(){return S.combat.list.filter(function(c){return!isPc(c)&&hpOf(c)>0})}
+function foes(){return S.combat.list.filter(function(c){return!isPc(c)&&hpOf(c)>0&&!c.fled&&!c.ally})}
 function heroes(up){return S.combat.list.filter(function(c){return isPc(c)&&!has(c,"Muerto")&&(!up||hpOf(c)>0)})}
-function hurt(c,n){var v=view(c);setHp(c,v.hp-n);delCond(c,"Dormido");if(isPc(c)&&hpOf(c)<=0){addCond(c,"Inconsciente");c.ds={s:0,f:0};delCond(c,"Estable")}}
+function hurt(c,n){var v=view(c);setHp(c,v.hp-n);delCond(c,"Dormido");if(!isPc(c)&&hpOf(c)<=0&&!c.ally){var uk=monKit(c);if(uk&&uk.k==="undying"){var ur=d(20)+saveMod(c,"CON");if(ur>=5+n){c.hp=1;clog("  "+v.name+" debería caer, pero tira "+ur+" contra CD "+(5+n)+" y se mantiene en pie con 1 PG.")}}}if(isPc(c)&&hpOf(c)<=0){addCond(c,"Inconsciente");c.ds={s:0,f:0};delCond(c,"Estable")}}
 function mend(c,n){setHp(c,hpOf(c)+n);if(hpOf(c)>0){delCond(c,"Inconsciente");delCond(c,"Estable");c.ds=null}}
 function checkOver(){var C=S.combat;if(C.over||!C.round)return!!C.over;
   if(!foes().length&&C.list.some(function(c){return!isPc(c)})){var xp=0,n=C.list.filter(isPc).length||1;C.list.forEach(function(c){if(!isPc(c))xp+=XP[c.cr]||0});
-    C.over="win";var lt=genLoot(xp);giveXp(Math.floor(xp/n));ambCombat(false);clog("Victoria. No quedan enemigos en pie. Cada personaje gana "+Math.floor(xp/n)+" PX. Botín: "+lt.join("; ")+".");logAct("Combate ganado: "+Math.floor(xp/n)+" PX por personaje")}
+    C.over="win";var lt=genLoot(xp);giveXp(Math.floor(xp/n));ambCombat(false);clog("Victoria. "+winTxt()+" Cada personaje gana "+Math.floor(xp/n)+" PX. Botín: "+lt.join("; ")+".");logAct("Combate ganado: "+Math.floor(xp/n)+" PX por personaje")}
   else if(!heroes(true).length&&C.list.some(isPc)){C.over="lose";ambCombat(false);clog("Todos los personajes han caído. El combate termina.");logAct("El grupo ha caído en combate")}
   return!!C.over}
 function advance(){var C=S.combat,L=C.list;if(!L.length)return;sortList();var i=-1,r0=C.round;for(var k=0;k<L.length;k++)if(L[k].id===C.turnId)i=k;
@@ -1191,12 +1191,12 @@ function drawAuto(){var C=S.combat,el=$("#cb-auto"),lg=$("#cb-log"),c=find(C.tur
   if(C.auto){
     if(!C.list.length){h.push('<h2>Combate automático</h2>');
       if(!roster().length)h.push('<p class="sub">Hacen falta personajes. Añádelos en «Personajes» o carga el grupo de ejemplo de abajo.</p>');
-      else h.push('<p class="sub">El panel elige enemigos a la medida del grupo, tira la iniciativa de todos y resuelve los turnos de los monstruos. Vosotros solo decidís qué hacen vuestros personajes.</p><div class="bar"><label>Dificultad<select id="au-diff"><option value="0">Fácil</option><option value="1" selected>Normal</option><option value="2">Difícil</option></select></label><button type="button" class="pri" data-au="enc">Empezar un combate</button></div>')}
+      else h.push('<p class="sub">El panel elige enemigos a la medida del grupo, tira la iniciativa de todos y resuelve los turnos de los monstruos. Vosotros solo decidís qué hacen vuestros personajes.</p><div class="bar"><label>Dificultad<select id="au-diff"><option value="0">Fácil</option><option value="1" selected>Normal</option><option value="2">Difícil</option></select></label><label class="ck"><input type="checkbox" id="au-moral"'+(moralOn?" checked":"")+'> Los enemigos pueden huir o rendirse</label><button type="button" class="pri" data-au="enc">Empezar un combate</button></div>')}
     else if(!C.round)h.push('<h2>Combate automático</h2><p class="sub">Ya hay criaturas en la lista. El panel tirará la iniciativa que falte y resolverá los turnos de los monstruos.</p><div class="bar"><button type="button" class="pri" data-au="start">Empezar este combate</button></div>');
     else if(C.over)h.push('<h2>'+(C.over==="win"?"Victoria":"El grupo ha caído")+'</h2><p class="sub">'+esc((C.log||[]).slice(-1)[0]||"")+'</p><div class="bar">'+(C.byIA?'<button type="button" class="pri" data-au="back">Volver a la historia</button>':"")+'<button type="button" '+(C.byIA?"":'class="pri" ')+'data-au="end">Terminar el combate</button><button type="button" data-au="lrest" title="Recupera los PG y los espacios de conjuro de todos">Descanso largo</button></div>');
     else if(C.wait)h.push(waitHtml());
     else if(c&&isPc(c)){var v=view(c),p=pc(c.pcId),F=foes(),A=heroes(false);
-      h.push('<span class="eyebrow">Ronda '+C.round+'</span><h2 style="font-size:1.2rem">Turno de '+esc(v.name)+'</h2><p class="sub">'+v.hp+" de "+v.max+' PG. Elige qué hace.</p>');if(helpOn)h.push(turnGuide(p));
+      h.push('<span class="eyebrow">Ronda '+C.round+'</span><h2 style="font-size:1.2rem">Turno de '+esc(v.name)+'</h2><p class="sub">'+v.hp+" de "+v.max+' PG. Elige qué hace.</p>');h.push(pcStates(c));if(helpOn)h.push(turnGuide(p));h.push(foeNotes());
       h.push('<div class="fgrid"><label>Objetivo<select id="au-target">'+F.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x.id===c.tgt?" selected":"")+'>'+esc(y.name)+" ("+band(y)[0].toLowerCase()+((x.conds||[]).length?", "+x.conds.join(", ").toLowerCase():"")+')</option>'}).join("")+'</select></label>'+
         '<label>Bono de ataque<input id="au-atk" type="number" value="'+esc(p.atk==null?5:p.atk)+'"></label><label>Daño<input id="au-dmg" value="'+esc(p.dmg||"1d8+3")+'"></label></div>'+
         '<div class="bar"><button type="button" class="pri" data-au="atk">Atacar, que tire el panel</button></div>'+
@@ -1760,7 +1760,8 @@ function tokLines(t){var pub=players||solo,L=[tokName(t)],nn=npcOfTok(t),cc=t.re
   else if(nn){L.push([nn.role,nn.where].filter(Boolean).join(", ")||"PNJ");if(!pub&&nn.wants)L.push("Quiere: "+String(nn.wants).slice(0,60))}
   else if(cc){var v=view(cc);if(pub)L.push(band(v)[0]);else{L.push("CA "+v.ac+" · PG "+v.hp+"/"+v.max+" · VD "+cc.cr);L.push("Ataque "+sgn(int(cc.atk,4))+", daño "+(cc.dmg||"")+(cc.n>1?", "+cc.n+" ataques":""))}if((cc.conds||[]).length)L.push(cc.conds.join(", "))}
   else if(isChest(t)){L.push(t.open?"Cofre abierto":"Cofre cerrado");if(!pub&&t.loot)L.push("Contiene: "+String(t.loot).slice(0,60))}
-  else{var bm=baseOfName(tokName(t));if(bm&&!pub)L.push("CA "+bm[1]+" · PG "+bm[2]+" · VD "+bm[4])}
+  if(cc&&!cc.pcId&&!pub){var kk=monKit(cc);if(kk)L.push("Especial: "+KITTXT[kk.k])}
+  if(P||nn||cc||isChest(t)){}else{var bm=baseOfName(tokName(t));if(bm&&!pub)L.push("CA "+bm[1]+" · PG "+bm[2]+" · VD "+bm[4])}
   return L.filter(Boolean)}
 function tokLabel(m,t,c){var L=tokLines(t),lf=13/V.z,sz=t.size||1,w=Math.max.apply(null,L.map(function(x){return x.length}))*lf*.56+lf*1.4,hh=L.length*lf*1.35+lf*.6,
     cx=Math.max(w/2,Math.min(m.w-w/2,m.ox+(t.x+sz/2)*c)),cy=m.oy+(t.y+sz)*c+lf*.3;if(cy+hh>m.h)cy=Math.max(0,m.oy+t.y*c-hh-lf*.3);
@@ -1892,30 +1893,21 @@ var CONDTXT={Marcado:"el siguiente ataque contra él tiene ventaja",Distraído:"
 function anyOf(c,L){return L.some(function(k){return has(c,k)})}
 function acOf(c){return int(view(c).ac,10)+(has(c,"Escudo de fe")?2:0)}
 function why(t){if(helpOn)clog("   ↳ "+t)}
-function atkRoll(a,bonus,t){var adv=anyOf(t,ADVV),dis=anyOf(a,DISA),r1=d(20),r2=d(20),A=adv&&!dis,D=dis&&!adv,r=A?Math.max(r1,r2):D?Math.min(r1,r2):r1,bl=isPc(a)&&has(a,"Bendecido")?d(4):0,tot=r+bonus+bl,ac=acOf(t),
+function atkRoll(a,bonus,t,o){o=o||{};var adv=anyOf(t,ADVV)||!!o.adv,dis=anyOf(a,DISA)||anyOf(t,DISV)||!!o.dis,r1=d(20),r2=d(20),A=adv&&!dis,D=dis&&!adv,r=A?Math.max(r1,r2):D?Math.min(r1,r2):r1,bl=isPc(a)&&has(a,"Bendecido")?d(4):0,tot=r+bonus+bl,ac=acOf(t),
     hit=r!==1&&(r===20||tot>=ac),crit=hit&&(r===20||anyOf(t,["Paralizado","Dormido"]));
-  delCond(t,"Marcado");delCond(a,"Distraído");
+  delCond(t,"Marcado");delCond(t,"Escondido");delCond(a,"Distraído");
   return{r:r,tot:tot,hit:hit,crit:crit,adv:A,dis:D,txt:"Tira d20: "+r+(A?" (ventaja, el mejor de "+r1+" y "+r2+")":D?" (desventaja, el peor de "+r1+" y "+r2+")":"")+" "+sgn(bonus)+(bl?" +"+bl+" por Bendición":"")+" = "+tot+" contra CA "+ac}}
 function setFx(t,cond,ab,dc){addCond(t,cond);if(ab){t.fx=t.fx||{};t.fx[cond]={ab:ab,dc:dc}}}
-function endSaves(c){if(!c.fx)return;Object.keys(c.fx).forEach(function(k){if(!has(c,k)){delete c.fx[k];return}var f=c.fx[k],r=d(20),m=saveMod(c,f.ab),ok=r+m>=f.dc;
+function endSaves(c){if(!c.fx)return;Object.keys(c.fx).forEach(function(k){if(!has(c,k)){delete c.fx[k];return}var f=c.fx[k];if(f.esc)return;var r=d(20),m=saveOf(c,f.ab),ok=r+m>=f.dc;
   clog("  "+view(c).name+" repite la salvación de "+f.ab+" contra «"+k+"»: "+r+" "+sgn(m)+" = "+(r+m)+" contra CD "+f.dc+": "+(ok?"se libra.":"sigue "+k.toLowerCase()+"."));if(ok){delCond(c,k);delete c.fx[k]}})}
 function fall(t,pcw){return hpOf(t)<=0?" "+view(t).name+(pcw?" cae inconsciente.":" cae."):" Le quedan "+hpOf(t)+" PG."}
-function monsterTurn(c){var v=view(c),n=Math.max(1,int(c.n,1)),atk=int(c.atk,4),an=c.an||"ataque";
-  if(anyOf(c,SKIP)){clog(v.name+" está "+c.conds.filter(function(k){return SKIP.indexOf(k)>=0})[0].toLowerCase()+" y pierde su turno.");why("Una criatura incapacitada no puede actuar. Al final de su turno repite la salvación para librarse.");endSaves(c);return}
-  for(var i=0;i<n;i++){var T=heroes(true);if(!T.length)return;var pv=find(c.tgt),t=pv&&isPc(pv)&&hpOf(pv)>0&&Math.random()<.7?pv:T[Math.floor(Math.random()*T.length)],tv=view(t);c.tgt=t.id;var R=atkRoll(c,atk,t);
-    if(!R.hit)clog(v.name+" ataca a "+tv.name+" con "+an+". "+R.txt+": falla.");
-    else{var dm=rollF(c.dmg||"1d6+2",R.crit);hurt(t,dm.total);clog(v.name+" ataca a "+tv.name+" con "+an+". "+R.txt+": "+(R.crit?"crítico":"impacta")+" y hace "+dm.total+" de daño ("+dm.text+")."+fall(t,true))}
-    if(!i)why("El monstruo tira 1d20 y suma su bono de ataque, "+sgn(atk)+". Si el total iguala o supera la CA del personaje, impacta y tira el daño. Un 20 natural es crítico y dobla los dados de daño; un 1 natural siempre falla."+(R.dis?" Tira con desventaja por su estado.":""))}
-  endSaves(c)}
 function atkWhy(p,atk){return"Se tira 1d20 y se suma el bono de ataque de "+(p.name||"el personaje")+", "+sgn(atk)+(p.full?" (competencia "+sgn(prof(p))+" y característica "+sgn(atk-prof(p))+")":"")+". Si el total iguala o supera la CA del enemigo, impacta y se tira el daño."}
 function autoStep(){var C=S.combat;for(var g=0;g<60;g++){if(checkOver())return;var c=find(C.turnId);if(!c)return;var acted=false;capt=[];
-    if(!isPc(c)){if(hpOf(c)>0){monsterTurn(c);acted=true}}
+    if(!isPc(c)){if(hpOf(c)>0&&!c.fled&&!c.ally){monsterTurn(c);acted=true}}
     else if(has(c,"Muerto")||has(c,"Estable")){}
     else if(hpOf(c)<=0){deathSave(c);why("Un personaje a 0 PG tira 1d20 al empezar su turno: 10 o más es un éxito, menos es un fallo. Tres éxitos lo estabilizan, tres fallos lo matan, un 20 lo levanta con 1 PG.");acted=true}
     else{capt=null;return}
     var got=capt;capt=null;if(checkOver())return;advance();if(acted&&helpOn){C.last=got;C.wait=1;return}}}
-function pcAct(fn){var C=S.combat,c=find(C.turnId);if(!c||!isPc(c)||C.over||C.wait)return;capt=[];var r=fn(c,view(c)),got=capt;capt=null;if(r===false)return;
-  if(!checkOver()){advance();if(helpOn){C.last=got;C.wait=1}else autoStep()}touch()}
 function waitHtml(){var C=S.combat,n=find(C.turnId);return'<span class="eyebrow">Ronda '+C.round+' · paso a paso</span><h2 style="font-size:1.2rem">Qué acaba de pasar</h2><ul class="list">'+(C.last||[]).map(function(t){return'<li><span class="t'+(/^\s+↳/.test(t)?" sub":"")+'">'+esc(t)+'</span></li>'}).join("")+'</ul>'+
   '<div class="bar"><button type="button" class="pri" data-au="cont">Continuar'+(n?": turno de "+esc(view(n).name):"")+'</button></div><p class="sub help">El panel se para tras cada acción para explicarla. Si preferís que corra sin pausas, apagad «Explicaciones» en el menú.</p>'}
 function turnGuide(p){sheet(p);var sp=p.speed||9;return'<div class="guide"><b>Tu turno, paso a paso</b><ol><li><b>Muévete</b> hasta '+fmt(sp)+' m, que son '+Math.floor(sp/1.5)+' casillas. Puedes repartir el movimiento antes y después de actuar.</li><li><b>Haz una acción</b>: atacar (el panel tira d20 '+sgn(p.atk==null?5:p.atk)+' y, si impacta, '+esc(p.dmg||"1d8+3")+' de daño)'+(p.cast?", lanzar un conjuro":"")+', o cualquier otra cosa: esquivar, ayudar, esconderte, usar un objeto.</li><li><b>Acción adicional</b>, solo si un rasgo o un conjuro te la da.</li><li>Pulsa abajo el botón de lo que hagas. El panel tira, aplica el resultado y te explica el porqué.</li></ol></div>'}
@@ -2008,6 +2000,64 @@ function drawWho(){var b=$("#ia-whobar");if(!b)return;var R=roster();b.hidden=S.
 $("#ia-turns").addEventListener("change",function(){turnsOn=this.checked;try{localStorage.setItem(LS+"-turnos",turnsOn?"1":"0")}catch(e){}drawWho()});
 function whoWrap(q){var R=roster(),p=pc($("#ia-who").value);tAct=tNext="";if(!p)return q;var i=R.indexOf(p),nx=R[(i+1)%R.length];tAct=p.name||"";
   if(turnsOn&&nx&&nx!==p){tNext=nx.name||"";$("#ia-who").value=nx.id}return(p.name||"Personaje")+": "+q}
+/* ---- monstruos con acciones propias y moral ---- */
+var DISV=["Escondido"],moralOn=true;
+try{moralOn=localStorage.getItem(LS+"-moral")!=="0"}catch(e){}
+ADVV.push("Agarrado","Derribado");DISA.push("Envenenado","Agarrado","Derribado");
+CONDTXT.Envenenado="ataca con desventaja";CONDTXT.Agarrado="no puede alejarse, ataca con desventaja y le atacan con ventaja";CONDTXT.Derribado="le atacan con ventaja hasta que se levante";
+var KITTXT={breath:"tiene un aliento de área que recarga con 5 o 6 en 1d6",poison:"su ataque puede envenenar",grab:"agarra a quien golpea",knock:"puede derribar a quien golpea",regen:"regenera 10 PG al empezar su turno",nimble:"se esconde después de atacar",undying:"puede seguir en pie al caer a 0 PG",frenzy:"gana un ataque más cuando queda malherido",pack:"ataca con ventaja mientras tenga un aliado en pie"};
+function monKit(c){var n=flat(c.base||c.name),cr=crNum(c.cr),k=null;
+  if(/drag|draco|sierpe/.test(n))k="breath";else if(/trol/.test(n))k="regen";else if(/zombi/.test(n))k="undying";
+  else if(/oso|mimico|cubo|tentac|constrictor|pulpo|cangrejo/.test(n))k="grab";else if(/arana|serpiente|escorpi|estirge|necrofago|ciempies|avispa/.test(n))k="poison";
+  else if(/ogro|gigante|toro|jabali|minotauro/.test(n))k="knock";else if(/goblin|bandido|picaro|ladron|espia/.test(n)&&!/capitan/.test(n))k="nimble";
+  else if(/lobo|kobold|rata|hiena|chacal|hobgoblin|sectario|guardia|soldado/.test(n))k="pack";else if(/esqueleto/.test(n))k=null;
+  else if(/osgo|orco|maton|capitan|berserk|gnoll/.test(n)||cr>=3)k="frenzy";
+  return k?{k:k,dc:Math.min(16,11+Math.floor(cr/2)),f:Math.max(2,Math.round(cr)+2)+"d6"}:null}
+function saveOf(c,ab){if(isPc(c)){var p=pc(c.pcId);return p.full?saveBonus(p,String(ab).toLowerCase()):1}return saveMod(c,ab)}
+function fearless(c){return!!c.boss||/esqueleto|zombi|necrofago|cubo|mimico|golem|automata|elemental|espectro|momia|limo|cieno/.test(flat(c.base||c.name))}
+function moraleCheck(c){if(!moralOn||fearless(c)||c.mor)return false;var all=S.combat.list.filter(function(x){return!isPc(x)&&!x.ally}),up=foes().length,v=view(c),low=hpOf(c)<=v.max/4,half=all.length>=2&&up<=all.length/2;
+  if(!low&&!half)return false;c.mor=1;var r=d(20),m=Math.min(5,Math.round(crNum(c.cr))),dc=low&&half?13:10,ok=r+m>=dc;
+  clog("Moral de "+v.name+": "+[low?"está malherido":"",half?"ha visto caer a la mitad de los suyos":""].filter(Boolean).join(" y ")+". Tira "+r+" "+sgn(m)+" = "+(r+m)+" contra CD "+dc+": "+(ok?"aguanta y sigue luchando.":"se viene abajo."));
+  if(!ok){if(up===1||Math.random()<.35){c.fled="rinde";addCond(c,"Rendido");clog(v.name+" suelta el arma y se rinde. Podéis interrogarlo, atarlo o dejarlo ir.")}else{c.fled="huye";addCond(c,"Huido");clog(v.name+" da media vuelta y huye del combate.")}}
+  why("La moral es una regla de este panel: un enemigo malherido, o que ve caer a la mitad de su grupo, tira una vez para no huir. Los no muertos y las criaturas sin mente no huyen nunca. Se apaga al montar el combate.");return!ok}
+function winTxt(){var R=[],H=[];S.combat.list.forEach(function(c){if(c.fled==="rinde")R.push(view(c).name);else if(c.fled==="huye")H.push(view(c).name)});
+  return"No quedan enemigos en pie."+(R.length?" Se han rendido: "+R.join(", ")+".":"")+(H.length?" Han huido y podrían volver: "+H.join(", ")+".":"")}
+function monsterTurn(c){var v=view(c),kit=monKit(c),n=Math.max(1,int(c.n,1)),atk=int(c.atk,4),an=c.an||"ataque";
+  if(anyOf(c,SKIP)){clog(v.name+" está "+c.conds.filter(function(k){return SKIP.indexOf(k)>=0})[0].toLowerCase()+" y pierde su turno.");why("Una criatura incapacitada no puede actuar. Al final de su turno repite la salvación para librarse.");endSaves(c);return}
+  if(kit&&kit.k==="regen"&&hpOf(c)<v.max){var g=Math.min(10,v.max-hpOf(c));setHp(c,hpOf(c)+g);clog(v.name+" regenera "+g+" PG y queda con "+hpOf(c)+".")}
+  if(moraleCheck(c))return;
+  if(kit&&kit.k==="breath"){if(c.brOff&&d(6)>=5){c.brOff=0;clog(v.name+" toma aire: su aliento vuelve a estar listo.")}
+    if(!c.brOff&&heroes(true).length>=2){var T=heroes(true).slice(0,3),b=rollF(kit.f);c.brOff=1;clog(v.name+" lanza su aliento sobre "+T.map(function(t){return view(t).name}).join(", ")+": salvación de DES contra CD "+kit.dc+", "+b.total+" de daño ("+b.text+").");
+      T.forEach(function(t){var r=d(20),m=saveOf(t,"DES"),ok=r+m>=kit.dc,dn=ok?Math.floor(b.total/2):b.total;hurt(t,dn);clog("  "+view(t).name+" tira "+r+" "+sgn(m)+" = "+(r+m)+": "+(ok?"supera la salvación y recibe la mitad, "+dn:"falla y recibe "+dn)+"."+fall(t,true))});
+      why("El aliento no usa tirada de ataque: cada personaje alcanzado tira salvación de Destreza. Tras usarlo, el monstruo tira 1d6 al empezar cada turno y lo recupera con 5 o 6.");endSaves(c);return}}
+  if(kit&&kit.k==="frenzy"&&hpOf(c)<=v.max/2){n++;if(!c.frz){c.frz=1;clog(v.name+" entra en frenesí al verse malherido: gana un ataque más por turno.")}}
+  var pack=!!(kit&&kit.k==="pack"&&foes().length>=2);
+  for(var i=0;i<n;i++){var H=heroes(true);if(!H.length)return;var pv=find(c.tgt),t=pv&&(isPc(pv)||pv.ally)&&hpOf(pv)>0&&Math.random()<.7?pv:H[Math.floor(Math.random()*H.length)],tv=view(t);c.tgt=t.id;var R=atkRoll(c,atk,t,{adv:pack});
+    if(!R.hit)clog(v.name+" ataca a "+tv.name+" con "+an+". "+R.txt+": falla.");
+    else{var dm=rollF(c.dmg||"1d6+2",R.crit),dn2=dmgTo(t,dm.total);hurt(t,dn2);var ex="";
+      if(kit&&hpOf(t)>0&&isPc(t)){if(kit.k==="grab"&&!has(t,"Agarrado")){addCond(t,"Agarrado");t.fx=t.fx||{};t.fx.Agarrado={dc:kit.dc,esc:1};ex=" Lo agarra: "+CONDTXT.Agarrado+". Puede gastar su acción en soltarse."}
+        else if(kit.k==="poison"||kit.k==="knock"){var ab=kit.k==="poison"?"CON":"FUE",cd=kit.k==="poison"?"Envenenado":"Derribado",r2=d(20),m2=saveOf(t,ab);
+          if(r2+m2<kit.dc){if(kit.k==="poison")setFx(t,cd,ab,kit.dc);else addCond(t,cd);ex=" Salvación de "+ab+": "+r2+" "+sgn(m2)+" = "+(r2+m2)+" contra CD "+kit.dc+", falla y queda «"+cd+"»: "+CONDTXT[cd]+"."}
+          else ex=" Salvación de "+ab+": "+(r2+m2)+" contra CD "+kit.dc+", aguanta."}}
+      clog(v.name+" ataca a "+tv.name+" con "+an+". "+R.txt+": "+(R.crit?"crítico":"impacta")+" y hace "+dn2+" de daño ("+dm.text+(dn2!==dm.total?", reducido a la mitad":"")+")."+fall(t,true)+ex)}
+    if(!i)why("El monstruo tira 1d20 y suma su bono de ataque, "+sgn(atk)+". Si el total iguala o supera la CA del personaje, impacta y tira el daño. Un 20 natural es crítico y dobla los dados."+(R.adv?" Tira con ventaja"+(pack?" porque tiene un aliado en pie.":" por el estado del personaje."):"")+(R.dis?" Tira con desventaja por su estado.":""))}
+  if(kit&&kit.k==="nimble"&&hpOf(c)>0){addCond(c,"Escondido");clog(v.name+" se escabulle y se esconde: el próximo ataque contra él tiene desventaja.")}
+  endSaves(c)}
+function dmgTo(t,n){return has(t,"En furia")?Math.floor(n/2):n}
+function pcAct(fn){var C=S.combat,c=find(C.turnId);if(!c||!isPc(c)||C.over||C.wait)return;capt=[];
+  if(has(c,"Derribado")){delCond(c,"Derribado");clog(view(c).name+" se levanta, y gasta en ello la mitad de su movimiento.")}
+  var r=fn(c,view(c));if(r===false){var g0=capt;capt=null;if(g0.length)touch();return}
+  if(r==="again"){capt=null;touch();return}
+  endSaves(c);var got=capt;capt=null;
+  if(!checkOver()){advance();if(helpOn){C.last=got;C.wait=1}else autoStep()}touch()}
+function foeNotes(){var seen={},L=[];foes().forEach(function(c){var k=monKit(c),b=c.base||c.name;if(k&&!seen[b]){seen[b]=1;L.push(b+" "+KITTXT[k.k])}});return L.length?'<p class="sub">Ojo: '+esc(L.join("; "))+'.</p>':""}
+function pcStates(c){var L=(c.conds||[]).filter(function(k){return CONDTXT[k]});if(!L.length)return"";
+  return'<p class="sub warn">'+L.map(function(k){return"«"+esc(k)+"»: "+esc(CONDTXT[k])}).join(". ")+'.</p>'+(has(c,"Agarrado")?'<div class="bar"><button type="button" data-au="escape">Gastar la acción en soltarse</button></div>':"")}
+$("#cb-auto").addEventListener("click",function(e){var b=e.target.closest('[data-au="escape"]');if(!b)return;
+  pcAct(function(c,v){var p=pc(c.pcId),f=c.fx&&c.fx.Agarrado,dc=f?f.dc:12,m=p.full?Math.max(skillBonus(p,0),skillBonus(p,1)):2,r=d(20),ok=r+m>=dc;
+    clog(v.name+" intenta soltarse: tira "+r+" "+sgn(m)+" = "+(r+m)+" contra CD "+dc+": "+(ok?"se libera.":"sigue agarrado."));if(ok){delCond(c,"Agarrado");if(c.fx)delete c.fx.Agarrado}
+    why("Soltarse cuesta la acción: se tira Atletismo o Acrobacias, lo que sea mejor, contra la CD del agarre.")})});
+$("#cb-auto").addEventListener("change",function(e){if(e.target.id!=="au-moral")return;moralOn=e.target.checked;try{localStorage.setItem(LS+"-moral",moralOn?"1":"0")}catch(x){}});
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
