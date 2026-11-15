@@ -406,10 +406,14 @@ label{display:flex;flex-direction:column;gap:3px}
               <div class="bar"><button type="button" id="mg-go">Crear el prompt</button></div>
               <label class="wide">Prompt para el generador de imágenes<textarea id="mg-text" style="min-height:8em" readonly></textarea></label>
               <div class="bar"><button type="button" class="pri" id="mg-copy">Copiar el prompt</button><button type="button" id="mg-up">Subir el mapa generado</button><button type="button" id="mg-x" class="ghost">Cerrar</button><input id="mg-file" type="file" accept="image/*" hidden></div>
-              <p class="sub">Pega el prompt en tu generador de imágenes y pide formato horizontal, 16:9. Al subir el resultado se crea el mapa, se asigna a este capítulo y se cargará solo cuando el capítulo esté en curso. La cuadrícula la pone el panel: ajústala después en «Mapa».</p>
+              <p class="sub">Pega el prompt en tu generador de imágenes y pide formato horizontal, 16:9. Al subir el resultado se crea el mapa, queda asignado y se cargará solo cuando la historia llegue allí. La cuadrícula la pone el panel: ajústala después en «Mapa».</p>
               <p id="mg-msg" class="sub" role="status"></p>
             </div>
             <form id="chap-form" class="bar dm" autocomplete="off"><label style="flex:1 1 14em">Nuevo capítulo<input id="chap-title" placeholder="Las criptas del rey" style="width:100%"></label><button type="submit">Añadir</button></form></div>
+          <div class="card"><h2>Lugares y mapas</h2><div id="sd-places"></div>
+            <form id="place-form" class="bar dm" autocomplete="off"><label style="flex:1 1 10em">Nuevo lugar<input id="pl-name" placeholder="Taberna del puerto" style="width:100%"></label><label style="flex:2 1 14em">Cómo es<input id="pl-hint" placeholder="Sala con chimenea, barra y escalera al piso de arriba" style="width:100%"></label><button type="submit">Añadir</button></form>
+            <div class="bar dm"><button type="button" id="place-review" class="pri">Revisar qué mapas hacen falta</button></div>
+            <p id="place-msg" class="sub dm" role="status"></p></div>
           <div class="card"><h2>Misiones</h2><div id="sd-quests"></div>
             <form id="quest-form" class="stack dm" style="gap:8px" autocomplete="off">
               <div class="fgrid"><label>Nueva misión<input id="q-title" placeholder="Recuperar la campana del templo"></label><label>Quién la encarga<input id="q-giver" placeholder="La alcaldesa"></label><label>Recompensa<input id="q-reward" placeholder="50 po y un favor"></label></div>
@@ -690,6 +694,16 @@ label{display:flex;flex-direction:column;gap:3px}
           <div id="ia-out" class="out"></div>
           <div class="bar"><button type="button" id="ia-tonotes">Guardar en mis notas</button><button type="button" id="ia-read" class="tts">Leer en voz alta</button></div>
         </div>
+        <div id="ia-map" class="card dm" hidden>
+          <span class="eyebrow">Mapa para «<span id="img-name"></span>»</span>
+          <p id="img-why" class="out" style="color:var(--ink)"></p>
+          <label class="wide">Qué debe verse en el mapa<input id="img-desc" placeholder="Sala común con chimenea, barra larga y una escalera"></label>
+          <div class="bar"><button type="button" id="img-go">Crear el prompt</button></div>
+          <label class="wide">Prompt para el generador de imágenes<textarea id="img-text" style="min-height:8em" readonly></textarea></label>
+          <div class="bar"><button type="button" class="pri" id="img-copy">Copiar el prompt</button><button type="button" id="img-up">Subir el mapa generado</button><button type="button" id="img-x" class="ghost">Cerrar</button><input id="img-file" type="file" accept="image/*" hidden></div>
+          <p class="sub">Mientras tanto podéis seguir jugando sobre el tablero en blanco. Al subir la imagen se pone en este mismo mapa, con las figuras donde estén.</p>
+          <p id="img-msg" class="sub" role="status"></p>
+        </div>
         <div id="ia-recap" class="card" hidden><span class="eyebrow" id="ia-recap-title">En episodios anteriores</span><p id="ia-recap-text" class="out" style="font-size:1.05rem"></p>
           <div class="bar"><button type="button" id="ia-recap-read" class="tts">Leer en voz alta</button></div></div>
         <ol id="ia-log" class="chat"></ol>
@@ -711,6 +725,7 @@ label{display:flex;flex-direction:column;gap:3px}
           <label class="tts" style="flex-direction:row;align-items:center;gap:6px;font-size:.95rem;color:var(--ink)"><input id="ia-autoread" type="checkbox" style="min-height:0"> Leer cada respuesta en voz alta</label>
           <label class="tts">Velocidad<select id="vz-rate"><option value="0.75">× 0,75</option><option value="1">× 1</option><option value="1.25">× 1,25</option><option value="1.5">× 1,5</option><option value="1.75">× 1,75</option><option value="2">× 2</option></select></label>
           <button type="button" id="vz-again" class="tts">Repetir la última lectura</button>
+          <button type="button" id="img-open" class="dm">Mapa para esta escena</button>
           <button type="button" id="ia-recap-btn">En episodios anteriores</button>
           <button type="button" id="ia-ctx-btn">Dar contexto</button>
           <button type="button" id="ia-opt-btn">¿Qué podemos hacer?</button>
@@ -814,14 +829,14 @@ var CHECK=[["c1","Leer el capítulo «Cómo jugar» del Manual del Jugador. El r
 
 /* ---- estado ---- */
 function blank(){return{rev:"",party:[],combat:{round:0,turnId:null,list:[]},notes:"",checks:{},stories:[],storyId:null,activity:[],maps:[],mapId:null,ia:{mode:"copiloto",premise:"",summary:"",log:[]}}}
-function mkStory(t,i){return{id:uid(),title:t,system:"D&D 5.5",status:"activa",desc:"",cover:["castillo","dragon","bosque","cripta","puerto","montana","desierto","pantano","taberna","ciudad","barco","volcan"][i%12],chapters:[],sessions:[],notes:[],npcs:[],quests:[],mons:[],next:{date:"",time:""}}}
+function mkStory(t,i){return{id:uid(),title:t,system:"D&D 5.5",status:"activa",desc:"",cover:["castillo","dragon","bosque","cripta","puerto","montana","desierto","pantano","taberna","ciudad","barco","volcan"][i%12],chapters:[],sessions:[],notes:[],npcs:[],quests:[],mons:[],places:[],next:{date:"",time:""}}}
 function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   b.maps=Array.isArray(o.maps)?o.maps.filter(function(m){return m&&m.id&&m.cell>0&&m.w>0&&m.h>0}).map(function(m){m.tokens=Array.isArray(m.tokens)?m.tokens:[];m.fx=Array.isArray(m.fx)?m.fx:[];return m}):[];b.mapId=o.mapId||null;
   var a=o.ia||{};b.ia={mode:["copiloto","narrador","auto"].indexOf(a.mode)>=0?a.mode:"copiloto",premise:typeof a.premise==="string"?a.premise:"",summary:typeof a.summary==="string"?a.summary:"",log:Array.isArray(a.log)?a.log.filter(function(x){return x&&typeof x.t==="string"&&x.t}):[]};if("sid" in a)b.ia.sid=a.sid;
   b.rev=o.rev||"";b.party=Array.isArray(o.party)?o.party:[];b.notes=typeof o.notes==="string"?o.notes:"";b.checks=o.checks&&typeof o.checks==="object"?o.checks:{};
   var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null,byIA:!!c.byIA};
   function arr(v){return Array.isArray(v)?v:[]}
-  b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.npcs=arr(x.npcs);x.loot=arr(x.loot);x.mons=arr(x.mons).filter(function(m){return Array.isArray(m)&&m.length>=9});x.quests=arr(x.quests);x.next=x.next||{date:"",time:""};return x});
+  b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.npcs=arr(x.npcs);x.loot=arr(x.loot);x.places=arr(x.places).filter(function(p){return p&&p.id&&p.title});x.mons=arr(x.mons).filter(function(m){return Array.isArray(m)&&m.length>=9});x.quests=arr(x.quests);x.next=x.next||{date:"",time:""};return x});
   b.storyId=o.storyId||null;b.activity=arr(o.activity);
   b.party.forEach(function(p){if(!p.status)p.status="activo"});
   if(!b.stories.length&&(b.party.length||b.notes||b.ia.premise)){var st=mkStory("Mi campaña",0);st.desc=b.ia.premise;
@@ -999,7 +1014,7 @@ function drawStory(){var s=story();$("#sd-none").hidden=!!s;$("#sd").hidden=!s;i
     ((q.giver||q.reward)?'<p>'+esc([q.giver?"Encargo de "+q.giver:"",q.reward?"Recompensa: "+q.reward:""].filter(Boolean).join(" | "))+'</p>':"")+'</div>'}).join(""):'<p class="sub">Lo que el grupo tiene pendiente. Pulsa el estado para marcarla como completada o fallida.</p>';
   $("#sd-npcs").innerHTML=s.npcs.length?s.npcs.map(function(n){var b=NST[n.st]||NST.neutral;return'<div class="note"><div class="rowb"><span style="display:flex;gap:10px;align-items:center;min-width:0">'+npcTag(n)+'<span style="min-width:0"><b style="overflow-wrap:anywhere">'+esc(n.name)+'</b>'+npcCtl(n)+'</span></span><span><button type="button" class="badge '+b[1]+'" data-npc="'+n.id+'" title="Cambiar actitud">'+b[0]+'</button> <button type="button" class="ghost dm" data-npc-rm="'+n.id+'" aria-label="Quitar PNJ" style="min-height:24px;padding:0 6px">✕</button></span></div>'+
     ((n.role||n.where)?'<p>'+esc([n.role,n.where].filter(Boolean).join(" | "))+'</p>':"")+(n.wants?'<p>Quiere: '+esc(n.wants)+'</p>':"")+(n.secret?'<p class="dm" style="color:var(--warn)">Secreto: '+esc(n.secret)+'</p>':"")+'</div>'}).join(""):'<p class="sub">La gente que el grupo conoce: quién es, qué quiere y qué esconde.</p>';
-  drawMons();drawLoot();
+  drawMons();drawLoot();drawPlaces();
   $("#st-cover").innerHTML=Object.keys(COVERS).map(function(k){return'<option value="'+k+'">'+COVERS[k]+'</option>'}).join("")+(s.cover==="propia"?'<option value="propia">Imagen propia</option>':"");
   setVal("#st-title",s.title);setVal("#st-system",s.system||"");$("#st-status").value=s.status;$("#st-cover").value=COVERS[s.cover]||s.cover==="propia"?s.cover:"castillo";setVal("#st-date",s.next.date||"");setVal("#st-time",s.next.time||"");setVal("#st-desc",s.desc||"");
   $("#st-map").innerHTML='<option value="">Sin mapa fijo</option>'+S.maps.map(function(m){return'<option value="'+m.id+'"'+(s.mapId===m.id?" selected":"")+'>'+esc(m.name)+'</option>'}).join("")}
@@ -1072,6 +1087,7 @@ function demoStory(){var s=mkStory("La campana hundida (ejemplo)",S.stories.leng
   s.chapters=[["Llegada a Brumaverde","hecho"],["El faro viejo","curso"],["Lo que guarda la cripta inundada","pend"]].map(function(c){return{id:uid(),title:c[0],st:c[1]}});
   s.npcs=[["Maese Ordul","Farero retirado","El faro viejo","Que nadie baje a la cripta","Cortó las amarras de la barca la noche del hundimiento","neutral"],["Alcaldesa Yeva Torrent","Autoridad del pueblo","La casa consistorial","Acabar con las desapariciones sin escándalo","Paga al farero por su silencio","aliado"],["Hermana Calia","Sacerdotisa joven","El templo sin campana","Recuperar la campana","Oye la campana en sueños desde hace un mes","aliado"]].map(function(n){return{id:uid(),name:n[0],role:n[1],where:n[2],wants:n[3],secret:n[4],st:n[5]}});
   s.quests=[["Averiguar por qué suena la campana","Alcaldesa Yeva Torrent","100 po","abierta"],["Encontrar al pescador desaparecido","Su hija Mirel","Un mapa de la costa","abierta"],["Escoltar a la Hermana Calia al faro","Hermana Calia","Una bendición","hecha"]].map(function(q){return{id:uid(),title:q[0],giver:q[1],reward:q[2],st:q[3]}});
+  addPlaces(s,[{nombre:"Muelle de Brumaverde",descripcion:"Muelle de madera con barcas amarradas, redes tendidas y una lonja de piedra"},{nombre:"Taberna El Arenque Ahumado",descripcion:"Sala común con chimenea, barra larga, mesas y una escalera al piso de arriba"},{nombre:"El faro viejo",descripcion:"Torre redonda de piedra con escalera de caracol, almacén en la planta baja y una trampilla"},{nombre:"Cripta inundada",descripcion:"Cripta con columnas rotas, agua hasta la rodilla, sarcófagos y un altar al fondo"}]);
   s.npcs[0].chap=s.chapters[1].id;s.npcs[1].chap=s.chapters[0].id;s.npcs[2].chap=s.chapters[1].id;
   s.zero="Brumaverde es un pueblo de pescadores apretado contra un acantilado, donde la niebla entra cada tarde y no se va hasta el alba. Vive del arenque, de la sal y de lo poco que traen los barcos que se atreven con sus bajíos. Hace un año la campana nueva del templo se hundió con la barca que la traía, y desde entonces los viejos dicen que el mar se la quedó a cambio de algo. Nadie habla mucho del faro viejo, y menos aún de noche. Habéis llegado por el camino de la costa, cada uno con sus motivos, y la alcaldesa busca gente de fuera para un trabajo que los del pueblo no quieren hacer.\n\n¿Qué te ha traído a un pueblo tan apartado?\n¿Qué es lo que más te inquieta del mar?\n¿A quién del grupo conocías ya, y de qué?";
   s.notes=[{id:uid(),title:"Cómo usar este ejemplo",text:"Cambia los estados de capítulos, misiones y PNJ pulsando sus etiquetas. Cuando tengas tu propia historia, elimina esta en «Editar historia».",t:Date.now()}];
@@ -1556,26 +1572,57 @@ $("#ch-cards").addEventListener("click",function(e){var a=e.target.closest("[dat
 $("#pc-pic-file").onchange=function(){var f=this.files&&this.files[0],p=pc(pcPicTarget);this.value="";if(!f||!p)return;
   imgPrep(f,900).then(function(r){return idbPut("pc-"+p.id,r.blob).then(function(){delete picCache["pc-"+p.id];p.pic=Date.now();touch()})}).catch(function(){$("#ch-msg").textContent="No se ha podido guardar esa imagen en este navegador."})};
 
-/* ---- prompt de mapa por capítulo ---- */
-var mgChap=null,MAPSTYLE="Top-down tabletop RPG battle map, bird's-eye orthographic view straight from above, hand-painted digital art, dark fantasy mood, rich detailed textures, clear walkable floor areas, consistent scale, landscape 16:9 format, no grid lines, no text, no labels, no characters, no creatures: ";
-function mgC(){var s=story(),c=null;if(s)s.chapters.forEach(function(x){if(x.id===mgChap)c=x});return c}
-function mgOpen(id){mgChap=id;var c=mgC();if(!c)return;$("#map-gen").hidden=false;$("#mg-name").textContent=c.title;$("#mg-desc").value=c.mapHint||"";$("#mg-text").value="";mgMake();$("#map-gen").scrollIntoView({block:"nearest"})}
-function mgMake(){var s=story(),c=mgC(),el=$("#mg-msg"),tx=$("#mg-text");if(!s||!c)return;var ds=$("#mg-desc").value.trim();if(ds!==(c.mapHint||"")){c.mapHint=ds;touch(false)}
+/* ---- lugares de la historia y prompts de mapa ---- */
+var MAPSTYLE="Top-down tabletop RPG battle map, bird's-eye orthographic view straight from above, hand-painted digital art, dark fantasy mood, rich detailed textures, clear walkable floor areas, consistent scale, landscape 16:9 format, no grid lines, no text, no labels, no characters, no creatures: ";
+var mgT={mg:null,img:null};
+function mapHasImg(id){for(var i=0;i<S.maps.length;i++)if(S.maps[i].id===id)return!!S.maps[i].src;return false}
+function placeFind(s,name){var n=String(name||"").trim().toLowerCase(),hit=null;if(!n)return null;(s.places||[]).forEach(function(p){var k=p.title.toLowerCase();if(!hit&&(k===n||k.indexOf(n)>=0||n.indexOf(k)>=0))hit=p});return hit}
+function mgC(P){var s=story(),c=null,id=mgT[P];if(s){s.chapters.forEach(function(x){if(x.id===id)c=x});(s.places||[]).forEach(function(x){if(x.id===id)c=x})}return c}
+function mgBox(P){return P==="mg"?$("#map-gen"):$("#ia-map")}
+function mgOpen(P,id){mgT[P]=id;var c=mgC(P);if(!c)return;mgBox(P).hidden=false;$("#"+P+"-name").textContent=c.title;$("#"+P+"-desc").value=c.mapHint||"";$("#"+P+"-text").value="";mgMake(P);mgBox(P).scrollIntoView({block:"nearest"})}
+function mgMake(P){var s=story(),c=mgC(P),el=$("#"+P+"-msg"),tx=$("#"+P+"-text");if(!s||!c)return;var ds=$("#"+P+"-desc").value.trim();if(ds!==(c.mapHint||"")){c.mapHint=ds;touch(false)}
   tx.value=MAPSTYLE+(ds||c.title+(c.note?". "+c.note:""));
   if(!canAsk()||busy){el.textContent=ds?"Prompt listo. Con un motor de IA configurado saldría más detallado y en inglés.":"Escribe qué debe verse para que el prompt sea útil.";return}
-  el.textContent="Redactando el prompt…";
-  run("Escribe en inglés, en dos frases y 70 palabras como máximo, la descripción de un mapa de batalla visto desde arriba para un generador de imágenes. Describe el lugar concreto de esta escena: tipo de sitio, distribución de salas o zonas, entradas y salidas, obstáculos, mobiliario, iluminación y materiales. No menciones personajes ni criaturas. Devuelve solo la descripción, sin comillas.\n\nHISTORIA: "+s.title+"\n"+(s.desc||"").slice(0,700)+"\nCAPÍTULO: "+c.title+"\nQUÉ OCURRE: "+(c.note||"sin detalle")+"\nQUÉ DEBE VERSE: "+(ds||"decídelo tú a partir de la historia y del capítulo"),function(){}).then(function(r){drawIA();
+  el.textContent="Redactando el prompt…";var scene=P==="img"?S.ia.log.filter(function(x){return x.r==="a"}).slice(-2).map(function(x){return clean(x.t).slice(0,700)}).join("\n"):"";
+  run("Escribe en inglés, en dos frases y 70 palabras como máximo, la descripción de un mapa de batalla visto desde arriba para un generador de imágenes. Describe el lugar concreto de esta escena: tipo de sitio, distribución de salas o zonas, entradas y salidas, obstáculos, mobiliario, iluminación y materiales. No menciones personajes ni criaturas. Devuelve solo la descripción, sin comillas.\n\nHISTORIA: "+s.title+"\n"+(s.desc||"").slice(0,700)+"\nLUGAR: "+c.title+(c.note?"\nQUÉ OCURRE ALLÍ: "+c.note:"")+(scene?"\nCÓMO LO HA DESCRITO EL MÁSTER:\n"+scene:"")+"\nQUÉ DEBE VERSE: "+(ds||"decídelo tú a partir de la historia y del lugar"),function(){}).then(function(r){drawIA();
     if(r.text&&!r.err){tx.value=MAPSTYLE+r.text.trim().replace(/^["«]|["»]$/g,"");el.textContent="Prompt listo. Cópialo y pégalo en tu generador de imágenes."}else el.textContent="No se pudo usar la IA; el prompt es el básico."})}
-$("#sd-chaps").addEventListener("click",function(e){var b=e.target.closest("[data-chap-gen]");if(b)mgOpen(b.dataset.chapGen)});
-$("#mg-go").onclick=mgMake;$("#mg-x").onclick=function(){$("#map-gen").hidden=true;mgChap=null};
-$("#mg-copy").onclick=function(){var tx=$("#mg-text"),el=$("#mg-msg");if(!tx.value)return;function fb(){tx.focus();tx.select();el.textContent="Texto seleccionado: cópialo con Ctrl+C."}
-  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(tx.value).then(function(){el.textContent="Prompt copiado."},fb);else fb()};
-$("#mg-up").onclick=function(){$("#mg-file").click()};
-$("#mg-file").onchange=function(){var f=this.files&&this.files[0],s=story(),c=mgC(),el=$("#mg-msg");this.value="";if(!f||!s||!c)return;
-  var m=newMap(c.title.slice(0,60));m.story=s.id;m.desc=(c.mapHint||c.note||"").slice(0,400);S.maps.push(m);c.map=m.id;imgCache[m.id]=URL.createObjectURL(f);
-  idbPut(m.id,f).then(function(){el.textContent="Mapa «"+m.name+"» creado y asignado al capítulo. Ajusta su cuadrícula en «Mapa»."},function(){el.textContent="Mapa creado solo para esta sesión: este navegador no deja guardarlo."});
-  if(curChap(s)>=0&&s.chapters[curChap(s)]===c){S.mapId=m.id;selTok=null}
-  m.src={t:"idb",v:String(Date.now())};V.fit=false;touch(false);drawStory();if(!$("#tab-mapa").hidden)drawMapUI()};
+function mgUpload(P,f){var s=story(),c=mgC(P),el=$("#"+P+"-msg");if(!f||!s||!c)return;var m=null;S.maps.forEach(function(o){if(o.id===c.map&&!o.src)m=o});
+  if(!m){m=newMap(c.title.slice(0,60));S.maps.push(m);c.map=m.id}m.story=s.id;if(!m.desc)m.desc=(c.mapHint||c.note||"").slice(0,400);
+  if(imgCache[m.id])URL.revokeObjectURL(imgCache[m.id]);imgCache[m.id]=URL.createObjectURL(f);
+  idbPut(m.id,f).then(function(){el.textContent="Mapa «"+m.name+"» listo. Ajusta su cuadrícula en «Mapa»."},function(){el.textContent="Mapa cargado solo para esta sesión: este navegador no deja guardarlo."});
+  var ci=curChap(s);if(P==="img"||(ci>=0&&s.chapters[ci]===c)){S.mapId=m.id;selTok=null}
+  m.src={t:"idb",v:String(Date.now())};V.fit=false;touch(false);drawStory();if(!$("#tab-mapa").hidden)drawMapUI()}
+["mg","img"].forEach(function(P){$("#"+P+"-go").onclick=function(){mgMake(P)};$("#"+P+"-x").onclick=function(){mgBox(P).hidden=true;mgT[P]=null};
+  $("#"+P+"-up").onclick=function(){$("#"+P+"-file").click()};$("#"+P+"-file").onchange=function(){var f=this.files&&this.files[0];this.value="";mgUpload(P,f)};
+  $("#"+P+"-copy").onclick=function(){var tx=$("#"+P+"-text"),el=$("#"+P+"-msg");if(!tx.value)return;function fb(){tx.focus();tx.select();el.textContent="Texto seleccionado: cópialo con Ctrl+C."}
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(tx.value).then(function(){el.textContent="Prompt copiado."},fb);else fb()}});
+$("#sd-chaps").addEventListener("click",function(e){var b=e.target.closest("[data-chap-gen]");if(b)mgOpen("mg",b.dataset.chapGen)});
+$("#img-open").onclick=function(){var s=story(),m=curMap();if(!s){note("No hay ninguna historia en mesa.");return}var pl=null;(s.places||[]).forEach(function(p){if(p.map===m.id)pl=p});
+  if(!pl){pl={id:uid(),title:m.name,note:"",mapHint:m.desc||"",map:m.id};s.places=(s.places||[]).concat([pl]);touch(false)}mgOpen("img",pl.id);$("#img-why").textContent="Mapa para el lugar que está ahora en pantalla, según lo último que ha narrado el máster."};
+function needMap(name){var s=story();if(!s)return false;var pl=placeFind(s,name);if(!pl){pl={id:uid(),title:String(name).trim().slice(0,60),note:"",mapHint:"",map:null};s.places=(s.places||[]).concat([pl])}
+  if(!pl.map||!mapName(pl.map)){var m=newMap(pl.title);m.story=s.id;S.maps.push(m);pl.map=m.id}
+  S.mapId=pl.map;selTok=null;V.fit=false;placeParty();placeNpcs(s,true);
+  if(!mapHasImg(pl.map)){mgOpen("img",pl.id);$("#img-why").textContent="El máster os lleva a «"+pl.title+"». Todavía no hay imagen de ese lugar, así que he puesto un tablero en blanco con vuestras figuras para que podáis seguir jugando. Crea aquí su mapa cuando quieras."}
+  else note("El máster ha cargado el mapa «"+pl.title+"». Está en la pestaña «Mapa».");return true}
+function mapFromText(t){var g=/\[MAPA:\s*([^\]]+)\]/i.exec(t||"");if(!g)return;var s=story(),name=g[1].trim(),pl=s?placeFind(s,name):null,hit=pl&&pl.map&&mapName(pl.map)?{id:pl.map,name:mapName(pl.map)}:mapByName(name);
+  if(hit&&!(pl&&!pl.map)){if(hit.id!==S.mapId){S.mapId=hit.id;selTok=null;V.fit=false;placeParty();if(s)placeNpcs(s,true)}
+    if(s&&!mapHasImg(hit.id)){if(!pl){pl={id:uid(),title:hit.name,note:"",mapHint:"",map:hit.id};s.places=(s.places||[]).concat([pl])}mgOpen("img",pl.id);$("#img-why").textContent="El máster os lleva a «"+hit.name+"», que todavía no tiene imagen. Podéis jugar sobre el tablero en blanco y crear aquí su mapa."}
+    else note("El máster ha cargado el mapa «"+hit.name+"». Está en la pestaña «Mapa».")}
+  else needMap(name)}
+function placesCtx(s){var L=s.places||[];return L.length?"LUGARES DE LA HISTORIA: "+L.map(function(p){return p.title+(p.map&&mapHasImg(p.map)?" (con mapa)":" (sin imagen todavía)")}).join("; ")+".":""}
+function drawPlaces(){var s=story(),el=$("#sd-places");if(!s)return;var L=s.places||[];
+  el.innerHTML=L.length?L.map(function(p){var ok=p.map&&mapHasImg(p.map);return'<div class="note"><div class="rowb"><b style="overflow-wrap:anywhere">'+esc(p.title)+'</b><span><span class="badge '+(ok?"ok":"pause")+'">'+(ok?"Con mapa":"Falta el mapa")+'</span> <button type="button" class="ghost dm" data-place-rm="'+p.id+'" aria-label="Quitar lugar" style="min-height:24px;padding:0 6px">✕</button></span></div>'+
+    (p.mapHint?'<p>'+esc(p.mapHint)+'</p>':"")+'<span class="bar dm" style="gap:6px"><button type="button" class="ghost" data-place-gen="'+p.id+'" style="min-height:28px;padding:0 8px;font-size:.8rem">Generar mapa</button>'+
+    (S.maps.length?'<select data-place-map="'+p.id+'" id="pm-'+p.id+'" aria-label="Mapa del lugar" style="min-height:28px;padding:0 6px;font-size:.8rem;max-width:16em"><option value="">Sin mapa asignado</option>'+S.maps.map(function(m){return'<option value="'+m.id+'"'+(p.map===m.id?" selected":"")+'>Mapa: '+esc(m.name)+'</option>'}).join("")+'</select>':"")+'</span></div>'}).join("")
+    :'<p class="sub">Los sitios donde ocurre la historia: posadas, calles, guaridas. Cada uno necesita su mapa para poder mover las figuras.</p>'}
+$("#sd-places").addEventListener("click",function(e){var g=e.target.closest("[data-place-gen]"),r=e.target.closest("[data-place-rm]");
+  if(g)mgOpen("mg",g.dataset.placeGen);else if(r)stEdit(function(s){s.places=s.places.filter(function(p){return p.id!==r.dataset.placeRm})})});
+$("#sd-places").addEventListener("change",function(e){var id=e.target.dataset.placeMap;if(!id)return;var v=e.target.value;stEdit(function(s){s.places.forEach(function(p){if(p.id===id)p.map=v||null})})});
+$("#place-form").addEventListener("submit",function(e){e.preventDefault();var n=val("#pl-name");if(!n)return;var h=val("#pl-hint");stEdit(function(s){var mm=mapByName(n);s.places=(s.places||[]).concat([{id:uid(),title:n,note:"",mapHint:h,map:mm?mm.id:null}])})});
+function addPlaces(s,arr2){var n=0;(arr2||[]).forEach(function(o){o=o||{};var name=str(o.nombre,60);if(!name||placeFind(s,name))return;var mm=mapByName(name);s.places=(s.places||[]).concat([{id:uid(),title:name,note:"",mapHint:str(o.descripcion,300),map:mm?mm.id:null}]);n++});return n}
+$("#place-review").onclick=function(){var s=story(),el=$("#place-msg");if(!s)return;
+  askJSON(BASE+"\n\nRevisa esta historia y haz la lista de todos los lugares donde puede ocurrir una escena y que necesitarían un mapa de batalla: donde empieza, posadas, calles, caminos, guaridas, salas del final. Entre 4 y 10 lugares, sin repetir los que ya están. Responde solo con JSON, sin más texto, con esta forma: {\"lugares\":[{\"nombre\":\"\",\"descripcion\":\"cómo es el sitio, en una frase, para dibujar su mapa\"}]}.\n\n"+placesCtx(s)+"\n\nESTADO DE LA MESA\n\n"+iaCtx(),el).then(function(j){if(!j)return;var n=addPlaces(s,j.lugares);touch(false);drawStory();
+    el.textContent=n?"Añadidos "+n+" lugares. Los que dicen «Falta el mapa» necesitan imagen: pulsa «Generar mapa» en cada uno.":"La IA no ha encontrado lugares nuevos."})};
 
 /* ---- PNJ en el mapa, contexto, opciones y sesión 0 ---- */
 function npcById(id){var s=story(),r=null;if(s)s.npcs.forEach(function(n){if(n.id===id)r=n});return r}
@@ -1667,18 +1714,18 @@ $("#gen-go").onclick=function(){var el=$("#gen-msg"),R=roster(),n=R.length||4,lv
   var p=BASE+"\n\nInventa una aventura original y completa para "+n+" personajes de nivel "+lvl+", de tono "+$("#gen-tone").value+", dividida en "+len+" capítulos."+
     (idea?" Parte de esta idea: "+idea:"")+(R.length?"\nPersonajes del grupo: "+R.map(function(x){return(x.name||"sin nombre")+" ("+([x.race,x.cls].filter(Boolean).join(" ")||"sin clase")+")"}).join(", ")+".":"")+
     "\nNo uses nombres, lugares ni tramas de aventuras publicadas. Responde solo con JSON, sin más texto, con esta forma: "+
-    "{\"titulo\":\"\",\"descripcion\":\"sinopsis para el máster en unas 120 palabras, con el conflicto, el villano y su secreto\",\"escena_inicial\":\"unas 80 palabras para leer en voz alta al empezar\",\"introduccion_jugadores\":\"unas 150 palabras para la sesión cero: el mundo, el lugar, el ambiente y lo que cualquiera sabe, sin secretos ni villano, y al final tres preguntas para conectar a los personajes con la historia\",\"portada\":\"\",\"capitulos\":[{\"titulo\":\"\",\"resumen\":\"qué ocurre y cómo termina, en dos frases\",\"mapa\":\"\",\"mapa_sugerido\":\"\"}],\"pnj\":[{\"nombre\":\"\",\"papel\":\"\",\"donde\":\"\",\"quiere\":\"\",\"secreto\":\"\",\"capitulo\":1}],\"misiones\":[{\"titulo\":\"\",\"encargo\":\"\",\"recompensa\":\"\"}]}. En «capitulo» de cada PNJ pon el número del capítulo en el que aparece. "+
+    "{\"titulo\":\"\",\"descripcion\":\"sinopsis para el máster en unas 120 palabras, con el conflicto, el villano y su secreto\",\"escena_inicial\":\"unas 80 palabras para leer en voz alta al empezar\",\"introduccion_jugadores\":\"unas 150 palabras para la sesión cero: el mundo, el lugar, el ambiente y lo que cualquiera sabe, sin secretos ni villano, y al final tres preguntas para conectar a los personajes con la historia\",\"portada\":\"\",\"capitulos\":[{\"titulo\":\"\",\"resumen\":\"qué ocurre y cómo termina, en dos frases\",\"mapa\":\"\",\"mapa_sugerido\":\"\"}],\"pnj\":[{\"nombre\":\"\",\"papel\":\"\",\"donde\":\"\",\"quiere\":\"\",\"secreto\":\"\",\"capitulo\":1}],\"misiones\":[{\"titulo\":\"\",\"encargo\":\"\",\"recompensa\":\"\"}],\"lugares\":[{\"nombre\":\"\",\"descripcion\":\"cómo es el sitio, en una frase, para dibujar su mapa\"}]}. En «lugares» pon todos los sitios donde ocurre alguna escena, empezando por donde arranca la historia: entre 4 y 8. En «capitulo» de cada PNJ pon el número del capítulo en el que aparece. "+
     "Incluye entre 4 y 6 PNJ y entre 3 y 5 misiones. "+(S.maps.filter(function(m){return m.src||m.desc}).length?"En «mapa» de cada capítulo pon el nombre exacto del mapa disponible que mejor encaje, o déjalo vacío si ninguno sirve. Mapas disponibles: "+S.maps.filter(function(m){return m.src||m.desc}).map(function(m){return m.name+(m.desc?" ("+m.desc.slice(0,120)+")":"")}).join("; ")+". ":"")+"En «mapa_sugerido» describe en pocas palabras qué mapa de batalla conviene para ese capítulo. En «portada» pon la clave que mejor encaje de esta lista: "+Object.keys(COVERS).map(function(k){return k+" ("+COVERS[k].toLowerCase()+")"}).join(", ")+".";
   askJSON(p,el).then(function(j){if(!j)return;var A=function(v){return Array.isArray(v)?v:[]};
     genData={title:str(j.titulo,90)||"Historia sin título",zero:str(j.introduccion_jugadores,1800),desc:str(j.descripcion,1500),hook:str(j.escena_inicial,900),cover:COVERS[str(j.portada,20)]?str(j.portada,20):"",
       c:A(j.capitulos).map(function(x){x=typeof x==="string"?{titulo:x}:x||{};var mm=mapByName(str(x.mapa,80));return{title:str(x.titulo,90),note:str(x.resumen,400),map:mm?mm.id:null,mapHint:str(x.mapa_sugerido,160)}}).filter(function(x){return x.title}).slice(0,10),
       n:A(j.pnj).map(function(x){x=x||{};return{name:str(x.nombre,60),role:str(x.papel,80),where:str(x.donde,80),wants:str(x.quiere),secret:str(x.secreto),cn:num(x.capitulo)}}).filter(function(x){return x.name}).slice(0,8),
-      q:A(j.misiones).map(function(x){x=x||{};return{title:str(x.titulo,90),giver:str(x.encargo,80),reward:str(x.recompensa,80)}}).filter(function(x){return x.title}).slice(0,8)};
+      q:A(j.misiones).map(function(x){x=x||{};return{title:str(x.titulo,90),giver:str(x.encargo,80),reward:str(x.recompensa,80)}}).filter(function(x){return x.title}).slice(0,8),pl:A(j.lugares).slice(0,10)};
     el.textContent=genData.c.length?"Revisa la propuesta. Si no te convence, pulsa otra vez «Generar historia».":"La IA ha devuelto una historia sin capítulos. Prueba otra vez o con otro modelo.";genShow()})};
 $("#gen-no").onclick=function(){genData=null;genShow();$("#gen-msg").textContent=""};
 $("#gen-ok").onclick=function(){var d=genData;if(!d)return;genData=null;var s=mkStory(d.title,S.stories.length);s.desc=d.desc;if(d.cover)s.cover=d.cover;
   s.chapters=d.c.map(function(x,i){return{id:uid(),title:x.title,note:x.note,map:x.map,mapHint:x.mapHint,st:i?"pend":"curso"}});
-  s.npcs=d.n.map(function(x){x.id=uid();x.st="neutral";var ch=s.chapters[x.cn-1];x.chap=ch?ch.id:null;delete x.cn;return x});if(d.zero)s.zero=d.zero;s.quests=d.q.map(function(x){x.id=uid();x.st="abierta";return x});
+  s.npcs=d.n.map(function(x){x.id=uid();x.st="neutral";var ch=s.chapters[x.cn-1];x.chap=ch?ch.id:null;delete x.cn;return x});if(d.zero)s.zero=d.zero;addPlaces(s,d.pl);s.quests=d.q.map(function(x){x.id=uid();x.st="abierta";return x});
   if(d.hook)s.notes.push({id:uid(),title:"Escena inicial",text:d.hook,t:Date.now()});
   S.stories.push(s);logAct("Historia generada con IA: "+s.title);genShow();$("#gen-msg").textContent="";$("#gen").open=false;openStory(s.id);draw()};
 
@@ -1843,7 +1890,7 @@ function iaCtx(){var L=[];
 function lead(m){var t=BASE+"\n\n"+MODES[m].rules;
   if(m==="auto"){var p=[];for(var i=0;i<8;i++)p.push(d(20));t+="\n\nPara las tiradas de d20 de monstruos y PNJ usa, en este orden, estos resultados que ya se han tirado con dados reales: "+p.join(", ")+"."}
   if(m!=="copiloto"){t+="\n\nCuando estalle un combate no lo resuelvas tú: termina tu respuesta con una línea exactamente así: [COMBATE: nombre de la criatura x cantidad], usando solo criaturas de esta lista: "+BL().map(function(x){return x[0]}).join(", ")+". El panel tirará los dados y después te contará cómo acabó.";
-    t+="\n\nCuando la escena cambie de lugar, carga el mapa que encaje con una línea exactamente así: [MAPA: nombre del mapa], usando solo nombres de la lista de mapas disponibles. Si ninguno encaja, escribe una línea que empiece por «Mapa:» diciendo qué tipo de mapa conviene cargar. Al empezar una escena nueva o un combate añade una línea que empiece por «Colocación:» explicando a quien dirige en qué zona del mapa poner a los personajes, a las criaturas y los objetos importantes, y después una marca exactamente así: [COLOCAR: Nombre=columna,fila; Nombre=columna,fila], con casillas dentro del tamaño del mapa.";
+    t+="\n\nCuando la escena cambie de lugar, carga el mapa que encaje con una línea exactamente así: [MAPA: nombre del mapa], usando el nombre de uno de los lugares de la historia o de los mapas disponibles. Hazlo en tu primera respuesta y cada vez que la escena cambie de sitio. Prefiere los lugares que ya tienen mapa; si la escena exige un lugar nuevo, usa igualmente la marca con su nombre y el panel preparará un tablero en blanco y pedirá su imagen."+(story()&&placesCtx(story())?" "+placesCtx(story()):"")+" Al empezar una escena nueva o un combate añade una línea que empiece por «Colocación:» explicando a quien dirige en qué zona del mapa poner a los personajes, a las criaturas y los objetos importantes, y después una marca exactamente así: [COLOCAR: Nombre=columna,fila; Nombre=columna,fila], con casillas dentro del tamaño del mapa.";
     t+="\n\nPara ambientar la escena puedes cambiar el sonido de fondo con una línea exactamente así: [AMBIENTE: nombre], con uno de estos nombres: lluvia, mazmorra, bosque, taberna, misterio, silencio.";
     var sq=story(),cn=sq?chapNpcs(sq):[];if(cn.length)t+="\n\nLos PNJ de este capítulo son: "+cn.map(function(n){return n.name}).join(", ")+". Ya tienen figura en el mapa: inclúyelos en la marca [COLOCAR] cuando entren en escena o cambien de sitio.";
     var cm=curMap();if(cm.src||cm.desc)t+="\n\nLa escena actual transcurre en el mapa en pantalla, descrito más abajo: ambienta la narración en ese lugar concreto y ten en cuenta dónde está cada figura."}
@@ -2098,11 +2145,6 @@ function mapCtx(){var m=curMap(),L=[];if(!m.src&&!m.tokens.length&&!m.desc&&S.ma
   if(m.tokens.length)L.push("Figuras, como (columna, fila) desde la esquina superior izquierda:\n"+m.tokens.map(function(t){return"- "+tokName(t)+" en ("+(t.x+1)+", "+(t.y+1)+")"+(t.hidden?", oculta a los jugadores":"")}).join("\n"));
   if(S.maps.length>1)L.push("OTROS MAPAS DISPONIBLES:\n"+S.maps.filter(function(o){return o!==m}).slice(0,40).map(function(o){return"- "+o.name+(o.desc?": "+o.desc.slice(0,160):"")}).join("\n")+"\nSi la acción se traslada a uno de ellos, termina tu respuesta con una línea exactamente así: [MAPA: nombre del mapa]");
   return L.join("\n")}
-function mapFromText(t){var g=/\[MAPA:\s*([^\]]+)\]/i.exec(t||"");if(!g)return;var n=g[1].trim().toLowerCase(),hit=null;
-  S.maps.forEach(function(o){var k=o.name.toLowerCase();if(!hit&&(k===n||k.indexOf(n)>=0||n.indexOf(k)>=0))hit=o});
-  if(hit&&hit.id!==S.mapId){S.mapId=hit.id;selTok=null;V.fit=false;note("El máster ha cargado el mapa «"+hit.name+"». Está en la pestaña «Mapa».")}
-  else if(!hit)note("El máster pide el mapa «"+g[1].trim()+"», que no está cargado. Añádelo en «Mapa».")}
-
 /* ---- pestañas y modo jugadores ---- */
 var TABS=["panel","historias","historia","personajes","combate","mapa","ia","chuleta"],diceOn=false;
 try{var dv=localStorage.getItem(LS+"-dados");diceOn=dv?dv==="1":window.innerWidth>=1280}catch(e){}
