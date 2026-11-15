@@ -387,6 +387,16 @@ label{display:flex;flex-direction:column;gap:3px}
     <div id="sd-none" class="empty" hidden><p><b>No hay ninguna historia abierta.</b></p><p>Vuelve a «Historias» y elige una, o crea la primera.</p></div>
     <div id="sd" class="stack">
       <div class="banner" id="sd-banner"></div>
+      <div class="card" id="sd-zero" hidden>
+        <span class="eyebrow">Sesión 0</span><h2 style="font-size:1.15rem">Antes de empezar a jugar</h2>
+        <p class="sub">La sesión 0 es para poneros de acuerdo y entrar en la historia, sin tirar dados todavía. Leed la introducción, contestad las preguntas y hablad de qué tono queréis y qué temas preferís dejar fuera.</p>
+        <p class="sub" id="z-who" style="color:var(--ink)"></p>
+        <p class="sub" style="color:var(--ink)"><b>Cómo se juega:</b> quien dirige describe la escena; vosotros decís qué hacen vuestros personajes; si el resultado es incierto se tira un dado de veinte caras y se suma un número de la hoja.</p>
+        <p id="z-text" class="out" style="font-size:1.05rem"></p>
+        <textarea id="z-area" class="dm" style="min-height:14em" hidden aria-label="Introducción de la sesión 0"></textarea>
+        <div class="bar"><button type="button" class="pri" id="z-start">Empezar a jugar</button><button type="button" id="z-read" class="tts">Leer en voz alta</button><button type="button" id="z-gen" class="dm">Escribirla con la IA</button><button type="button" id="z-edit" class="dm">Editar</button><button type="button" id="z-x" class="ghost">Cerrar</button></div>
+        <p id="z-msg" class="sub" role="status"></p>
+      </div>
       <div class="grid2">
         <div class="stack">
           <div class="card"><h2>Capítulos</h2><div id="sd-chaps"></div>
@@ -576,6 +586,7 @@ label{display:flex;flex-direction:column;gap:3px}
       <button type="button" class="pri" id="tok-auto">Colocar al grupo y al combate</button>
       <label>Figura suelta<input id="tok-name" placeholder="Cofre, PNJ…" style="width:11em"></label>
       <button type="button" id="tok-add">Añadir figura</button>
+      <button type="button" id="tok-npcs">Colocar a los PNJ del capítulo</button>
       <button type="button" id="tok-cancel" class="ghost" hidden>Cancelar colocación</button>
     </div>
     <details id="drv" class="panel dm">
@@ -679,7 +690,7 @@ label{display:flex;flex-direction:column;gap:3px}
           <div id="ia-out" class="out"></div>
           <div class="bar"><button type="button" id="ia-tonotes">Guardar en mis notas</button><button type="button" id="ia-read" class="tts">Leer en voz alta</button></div>
         </div>
-        <div id="ia-recap" class="card" hidden><span class="eyebrow">En episodios anteriores</span><p id="ia-recap-text" class="out" style="font-size:1.05rem"></p>
+        <div id="ia-recap" class="card" hidden><span class="eyebrow" id="ia-recap-title">En episodios anteriores</span><p id="ia-recap-text" class="out" style="font-size:1.05rem"></p>
           <div class="bar"><button type="button" id="ia-recap-read" class="tts">Leer en voz alta</button></div></div>
         <ol id="ia-log" class="chat"></ol>
         <div id="ia-empty" class="empty" hidden><p><b>La historia todavía no ha empezado.</b></p><p>Describe la historia en «Historias», apunta a los personajes y pulsa «Empezar la aventura». Lo que se narre aquí se guarda con la partida.</p></div>
@@ -701,6 +712,8 @@ label{display:flex;flex-direction:column;gap:3px}
           <label class="tts">Velocidad<select id="vz-rate"><option value="0.75">× 0,75</option><option value="1">× 1</option><option value="1.25">× 1,25</option><option value="1.5">× 1,5</option><option value="1.75">× 1,75</option><option value="2">× 2</option></select></label>
           <button type="button" id="vz-again" class="tts">Repetir la última lectura</button>
           <button type="button" id="ia-recap-btn">En episodios anteriores</button>
+          <button type="button" id="ia-ctx-btn">Dar contexto</button>
+          <button type="button" id="ia-opt-btn">¿Qué podemos hacer?</button>
           <button type="button" id="ia-endses" class="dm" title="Resume lo jugado y lo guarda como sesión de la historia">Terminar y registrar la sesión</button>
           <button type="button" id="ia-sum" class="dm" title="Condensa los turnos antiguos para que no se olviden">Resumir la historia antigua</button>
           <button type="button" id="ia-clear" class="ghost dm">Borrar la historia</button>
@@ -974,7 +987,8 @@ function drawStories(){var act=S.stories.filter(function(x){return x.status==="a
 $("#st-filters").addEventListener("click",function(e){var b=e.target.closest("[data-stf]");if(b){stFilter=b.dataset.stf;drawStories()}});
 
 function drawStory(){var s=story();$("#sd-none").hidden=!!s;$("#sd").hidden=!s;if(!s)return;
-  $("#sd-banner").innerHTML='<img src="'+coverOf(s,1)+'" alt=""><a class="back" href="#historias">← Volver</a><div>'+badge(s.status)+'</div><h1>'+esc(s.title)+'</h1><p class="sub" style="color:var(--ink)">'+meta(s)+(roster().length?" | Nivel medio "+Math.round(roster().reduce(function(a,p){return a+int(p.level,1)},0)/roster().length):"")+'</p><div>'+startBtn(s)+'</div>';
+  $("#sd-banner").innerHTML='<img src="'+coverOf(s,1)+'" alt=""><a class="back" href="#historias">← Volver</a><div>'+badge(s.status)+'</div><h1>'+esc(s.title)+'</h1><p class="sub" style="color:var(--ink)">'+meta(s)+(roster().length?" | Nivel medio "+Math.round(roster().reduce(function(a,p){return a+int(p.level,1)},0)/roster().length):"")+'</p><div class="bar">'+startBtn(s)+'<button type="button" data-zero="1">Sesión 0</button></div>';
+  drawZero();
   $("#sd-chaps").innerHTML=s.chapters.length?s.chapters.map(function(c,i){var b=CST[c.st]||CST.pend;return'<div class="chap '+(CST[c.st]?c.st:"pend")+'"><span class="n">'+(c.st==="hecho"?"✓":i+1)+'</span><span class="t"><b>'+(i+1)+". "+esc(c.title)+'</b>'+(c.note?'<small>'+esc(c.note)+'</small>':"")+chapHtml(c)+'</span>'+
     '<button type="button" class="badge '+b[1]+'" data-chap="'+c.id+'" title="Cambiar estado">'+b[0]+'</button><button type="button" class="ghost dm" data-chap-rm="'+c.id+'" aria-label="Quitar capítulo">✕</button></div>'}).join(""):'<p class="sub">Divide la historia en capítulos para ver el progreso. Pulsa el estado de cada uno para avanzarlo.</p>';
   $("#sd-ses").innerHTML=s.sessions.length?s.sessions.slice().reverse().map(function(x,i){return'<li><span class="n ava sm adm">'+(s.sessions.length-i)+'</span><span class="t"><b>'+esc(fdate(x.d))+'</b> · '+fmt(+x.h||0)+' h<small>'+esc(x.x||"Sin resumen")+'</small></span><button type="button" class="ghost dm" data-ses-rm="'+x.id+'" aria-label="Quitar sesión">✕</button></li>'}).join(""):'<li><span class="t sub">Aún no hay sesiones registradas.</span></li>';
@@ -1004,7 +1018,7 @@ $("#st-del").onclick=function(){var b=this,s=story();if(!s)return;if(Date.now()-
   else{stDelArm=Date.now();b.textContent="Pulsa otra vez para eliminarla";setTimeout(function(){b.textContent="Eliminar esta historia"},4000)}};
 $("#chap-form").addEventListener("submit",function(e){e.preventDefault();var i=$("#chap-title"),v=i.value.trim();if(!v)return;i.value="";stEdit(function(s){s.chapters.push({id:uid(),title:v,st:s.chapters.some(function(c){return c.st==="curso"})||s.chapters.length?"pend":"curso"})})});
 $("#tab-historia").addEventListener("click",function(e){var b;
-  if(b=e.target.closest("[data-chap]"))stEdit(function(s){s.chapters.forEach(function(c){if(c.id===b.dataset.chap){c.st=c.st==="pend"?"curso":c.st==="curso"?"hecho":"pend";if(c.st==="hecho")logAct("Capítulo completado: "+c.title)}});chapterMap(s)});
+  if(b=e.target.closest("[data-chap]"))stEdit(function(s){s.chapters.forEach(function(c){if(c.id===b.dataset.chap){c.st=c.st==="pend"?"curso":c.st==="curso"?"hecho":"pend";if(c.st==="hecho")logAct("Capítulo completado: "+c.title)}});chapterMap(s);placeNpcs(s,true)});
   else if(b=e.target.closest("[data-chap-rm]"))stEdit(function(s){s.chapters=s.chapters.filter(function(c){return c.id!==b.dataset.chapRm})});
   else if(b=e.target.closest("[data-note-rm]"))stEdit(function(s){s.notes=s.notes.filter(function(n){return n.id!==b.dataset.noteRm})});
   else if(b=e.target.closest("[data-ses-rm]"))stEdit(function(s){s.sessions=s.sessions.filter(function(x){return x.id!==b.dataset.sesRm})})});
@@ -1058,6 +1072,8 @@ function demoStory(){var s=mkStory("La campana hundida (ejemplo)",S.stories.leng
   s.chapters=[["Llegada a Brumaverde","hecho"],["El faro viejo","curso"],["Lo que guarda la cripta inundada","pend"]].map(function(c){return{id:uid(),title:c[0],st:c[1]}});
   s.npcs=[["Maese Ordul","Farero retirado","El faro viejo","Que nadie baje a la cripta","Cortó las amarras de la barca la noche del hundimiento","neutral"],["Alcaldesa Yeva Torrent","Autoridad del pueblo","La casa consistorial","Acabar con las desapariciones sin escándalo","Paga al farero por su silencio","aliado"],["Hermana Calia","Sacerdotisa joven","El templo sin campana","Recuperar la campana","Oye la campana en sueños desde hace un mes","aliado"]].map(function(n){return{id:uid(),name:n[0],role:n[1],where:n[2],wants:n[3],secret:n[4],st:n[5]}});
   s.quests=[["Averiguar por qué suena la campana","Alcaldesa Yeva Torrent","100 po","abierta"],["Encontrar al pescador desaparecido","Su hija Mirel","Un mapa de la costa","abierta"],["Escoltar a la Hermana Calia al faro","Hermana Calia","Una bendición","hecha"]].map(function(q){return{id:uid(),title:q[0],giver:q[1],reward:q[2],st:q[3]}});
+  s.npcs[0].chap=s.chapters[1].id;s.npcs[1].chap=s.chapters[0].id;s.npcs[2].chap=s.chapters[1].id;
+  s.zero="Brumaverde es un pueblo de pescadores apretado contra un acantilado, donde la niebla entra cada tarde y no se va hasta el alba. Vive del arenque, de la sal y de lo poco que traen los barcos que se atreven con sus bajíos. Hace un año la campana nueva del templo se hundió con la barca que la traía, y desde entonces los viejos dicen que el mar se la quedó a cambio de algo. Nadie habla mucho del faro viejo, y menos aún de noche. Habéis llegado por el camino de la costa, cada uno con sus motivos, y la alcaldesa busca gente de fuera para un trabajo que los del pueblo no quieren hacer.\n\n¿Qué te ha traído a un pueblo tan apartado?\n¿Qué es lo que más te inquieta del mar?\n¿A quién del grupo conocías ya, y de qué?";
   s.notes=[{id:uid(),title:"Cómo usar este ejemplo",text:"Cambia los estados de capítulos, misiones y PNJ pulsando sus etiquetas. Cuando tengas tu propia historia, elimina esta en «Editar historia».",t:Date.now()}];
   S.stories.push(s);logAct("Historia de ejemplo cargada");openStory(s.id);draw()}
 document.addEventListener("click",function(e){if(e.target.closest("[data-demo-story]"))demoStory()});
@@ -1212,7 +1228,7 @@ function buildEncounter(m,q,byIA){var R=roster(),C=S.combat;if(!R.length)return 
   autoStart();C.log.splice(0,0,(q>1?"Aparecen "+q+" enemigos: "+m[0].toLowerCase():"Aparece un enemigo: "+m[0].toLowerCase())+". Se tira iniciativa.");
   autoPlace();logAct("Combate contra "+q+" × "+m[0]);touch();return true}
 function autoPlace(){var m=curMap(),cols=Math.max(4,Math.floor(m.w/m.cell)),rows=Math.max(4,Math.floor(m.h/m.cell)),P=[],M=[];
-  m.tokens=m.tokens.filter(function(t){return!t.ref||pc(t.ref)||find(t.ref)});
+  m.tokens=m.tokens.filter(function(t){return!t.ref||String(t.ref).indexOf("npc:")===0||pc(t.ref)||find(t.ref)});
   S.combat.list.forEach(function(c){var ref=c.pcId||c.id;if(m.tokens.some(function(t){return t.ref===ref}))return;(c.pcId?P:M).push(ref)});
   function col(L,x){var y0=Math.max(0,Math.floor(rows/2-L.length));L.forEach(function(ref,i){m.tokens.push({id:uid(),ref:ref,name:"",x:Math.min(cols-1,x+(i%2)),y:Math.min(rows-1,y0+i*2-(i%2)),size:1})})}
   col(P,Math.max(1,Math.floor(cols*.2)));col(M,Math.max(2,Math.floor(cols*.7)))}
@@ -1270,6 +1286,7 @@ function placeFromText(t){var g=/\[COLOCAR:\s*([^\]]+)\]/i.exec(t||"");if(!g)ret
     m.tokens.forEach(function(o){if(!tk&&tokName(o).toLowerCase().replace(/\s*\(.*?\)/g,"")===k.replace(/\s*\(.*?\)/g,""))tk=o});
     if(!tk){var ref=null;S.combat.list.forEach(function(c){if(!ref&&view(c).name.toLowerCase().indexOf(k)>=0)ref=c.pcId||c.id});
       if(!ref)roster().forEach(function(p){if(!ref&&(p.name||"").toLowerCase().indexOf(k)>=0)ref=p.id});
+      if(!ref){var sx=story();if(sx)sx.npcs.forEach(function(n){if(!ref&&(n.name||"").toLowerCase().indexOf(k)>=0)ref="npc:"+n.id})}
       tk={id:uid(),ref:ref,name:ref?"":name.slice(0,40),kind:"oth",x:0,y:0,size:1};m.tokens.push(tk)}
     tk.x=x;tk.y=y;n++});
   if(n){touch(false);note("El máster ha colocado "+n+(n===1?" figura":" figuras")+" en el mapa «"+m.name+"».")}}
@@ -1375,7 +1392,7 @@ function npcGuess(n){var t=((n.role||"")+" "+(n.name||"")).toLowerCase();for(var
 function npcPic(n){if(n.pic==="propia"){var id="npc-"+n.id;if(picCache[id])return picCache[id];if(picCache[id]===undefined){picCache[id]=null;idbGet(id).then(function(b){if(b){picCache[id]=URL.createObjectURL(b);if(typing())pendingDraw=true;else draw()}},function(){})}return""}
   return"img/npc/"+(n.pic&&NPCA.some(function(a){return a[0]===n.pic})?n.pic:npcGuess(n))+".jpg"}
 function npcTag(n){var u=npcPic(n);return u?'<img class="mpic" src="'+esc(u)+'" data-full="'+esc(u)+'" data-cap="'+esc(n.name)+'" alt="" style="width:44px;height:44px" loading="lazy">':ava(n.name||"?",1)}
-function npcCtl(n){var cur=n.pic==="propia"?"propia":n.pic||"";return'<span class="bar dm" style="gap:6px;margin-top:4px"><select data-npc-pic="'+n.id+'" id="np-'+n.id+'" aria-label="Retrato" style="min-height:28px;padding:0 6px;font-size:.8rem"><option value="">Retrato automático</option>'+NPCA.map(function(a){return'<option value="'+a[0]+'"'+(cur===a[0]?" selected":"")+'>'+a[1]+'</option>'}).join("")+(cur==="propia"?'<option value="propia" selected>Foto propia</option>':"")+'</select><button type="button" class="ghost" data-npc-foto="'+n.id+'" style="min-height:28px;padding:0 8px;font-size:.8rem">Subir foto</button></span>'}
+function npcCtl(n){var cur=n.pic==="propia"?"propia":n.pic||"";return'<span class="bar dm" style="gap:6px;margin-top:4px">'+npcChapSel(n)+'<select data-npc-pic="'+n.id+'" id="np-'+n.id+'" aria-label="Retrato" style="min-height:28px;padding:0 6px;font-size:.8rem"><option value="">Retrato automático</option>'+NPCA.map(function(a){return'<option value="'+a[0]+'"'+(cur===a[0]?" selected":"")+'>'+a[1]+'</option>'}).join("")+(cur==="propia"?'<option value="propia" selected>Foto propia</option>':"")+'</select><button type="button" class="ghost" data-npc-foto="'+n.id+'" style="min-height:28px;padding:0 8px;font-size:.8rem">Subir foto</button></span>'}
 var npcTarget=null;
 $("#sd-npcs").addEventListener("change",function(e){var id=e.target.dataset.npcPic;if(!id)return;var v=e.target.value;stEdit(function(s){s.npcs.forEach(function(n){if(n.id===id)n.pic=v||null})})});
 $("#sd-npcs").addEventListener("click",function(e){var b=e.target.closest("[data-npc-foto]");if(b){npcTarget=b.dataset.npcFoto;$("#npc-pic-file").click()}});
@@ -1393,7 +1410,7 @@ $("#tab-historia").addEventListener("click",function(e){var b=e.target.closest("
 
 function recap(){var s=story(),el=$("#ia-recap"),tx=$("#ia-recap-text");if(!s)return;var last=s.sessions.slice(-3).map(function(x){return x.x}).filter(Boolean),base=last.join(" ")||S.ia.summary;
   if(!base){note("Todavía no hay sesiones registradas que resumir.");return}
-  function show(t){el.hidden=false;tx.textContent=t;speak(t,$("#ia-recap-read"))}
+  function show(t){$("#ia-recap-title").textContent="En episodios anteriores";el.hidden=false;tx.textContent=t;speak(t,$("#ia-recap-read"))}
   if(!canAsk()||busy){show("En episodios anteriores: "+last.slice(-1)[0]);return}
   el.hidden=false;tx.textContent="Preparando el resumen…";
   run("Escribe un «En episodios anteriores» de 70 palabras como máximo, para leer en voz alta al empezar la sesión, en español, en texto plano y con tono de narrador. Cuenta solo lo que ya vivieron los personajes, sin desvelar secretos.\n\nHISTORIA: "+s.title+"\nRESUMEN GENERAL: "+(S.ia.summary||"ninguno")+"\nÚLTIMAS SESIONES:\n"+last.join("\n"),function(t){tx.textContent=t}).then(function(r){drawIA();show(r.text&&!r.err?r.text.trim():"En episodios anteriores: "+last.slice(-1)[0])})}
@@ -1560,6 +1577,65 @@ $("#mg-file").onchange=function(){var f=this.files&&this.files[0],s=story(),c=mg
   if(curChap(s)>=0&&s.chapters[curChap(s)]===c){S.mapId=m.id;selTok=null}
   m.src={t:"idb",v:String(Date.now())};V.fit=false;touch(false);drawStory();if(!$("#tab-mapa").hidden)drawMapUI()};
 
+/* ---- PNJ en el mapa, contexto, opciones y sesión 0 ---- */
+function npcById(id){var s=story(),r=null;if(s)s.npcs.forEach(function(n){if(n.id===id)r=n});return r}
+function npcOfTok(t){return t&&typeof t.ref==="string"&&t.ref.indexOf("npc:")===0?npcById(t.ref.slice(4)):null}
+function chapNpcs(s){var i=curChap(s),c=i>=0?s.chapters[i]:null,open={};s.quests.forEach(function(q){if(q.st==="abierta"&&q.giver)open[q.giver.toLowerCase()]=1});
+  return s.npcs.filter(function(n){if(n.st==="muerto")return false;if(n.chap)return!!c&&n.chap===c.id;var k=(n.name||"").toLowerCase();return Object.keys(open).some(function(g){return g.indexOf(k)>=0||k.indexOf(g)>=0})})}
+function placeParty(){var m=curMap(),cols=Math.max(4,Math.floor(m.w/m.cell)),rows=Math.max(4,Math.floor(m.h/m.cell)),L=roster().filter(function(p){return!m.tokens.some(function(t){return t.ref===p.id})}),x0=Math.max(1,Math.floor(cols*.2)),y0=Math.max(0,Math.floor(rows/2-L.length/2));
+  L.forEach(function(p,i){var t={id:uid(),ref:p.id,name:"",x:x0+(i%2),y:Math.min(rows-1,y0+i),size:1};m.tokens.push(t);fogAuto(m,t)});return L.length}
+function placeNpcs(s,quiet){if(!s)return 0;var m=curMap(),cols=Math.max(4,Math.floor(m.w/m.cell)),rows=Math.max(4,Math.floor(m.h/m.cell)),L=chapNpcs(s).filter(function(n){return!m.tokens.some(function(t){return t.ref==="npc:"+n.id})}),x0=Math.floor(cols*.55),y0=Math.max(0,Math.floor(rows/2-L.length/2));
+  L.forEach(function(n,i){var x=x0+(i%2),y=Math.min(rows-1,y0+i);while(m.tokens.some(function(t){return t.x===x&&t.y===y})&&x<cols-1)x++;m.tokens.push({id:uid(),ref:"npc:"+n.id,name:n.name,kind:"oth",x:x,y:y,size:1})});
+  if(L.length){touch(false);if(!quiet)mapMsg("Colocados "+L.length+" PNJ del capítulo: "+L.map(function(n){return n.name}).join(", ")+". Arrástralos a su sitio.")}
+  else if(!quiet)mapMsg(chapNpcs(s).length?"Los PNJ de este capítulo ya están en el mapa.":"Ningún PNJ está asignado a este capítulo. Asígnalos en el detalle de la historia, en «Aparece en».");return L.length}
+$("#tok-npcs").onclick=function(){var s=story();if(!s){mapMsg("No hay ninguna historia en mesa.");return}placeNpcs(s,false);drawSvg()};
+$("#sd-npcs").addEventListener("change",function(e){var id=e.target.dataset.npcChap;if(!id)return;var v=e.target.value;stEdit(function(s){s.npcs.forEach(function(n){if(n.id===id)n.chap=v||null})},false)});
+function npcChapSel(n){var s=story();if(!s||!s.chapters.length)return"";return'<select data-npc-chap="'+n.id+'" id="nc-'+n.id+'" aria-label="Capítulo en el que aparece" style="min-height:28px;padding:0 6px;font-size:.8rem;max-width:14em"><option value="">Aparece en: sin fijar</option>'+s.chapters.map(function(c,i){return'<option value="'+c.id+'"'+(n.chap===c.id?" selected":"")+'>Aparece en: '+(i+1)+". "+esc(c.title)+'</option>'}).join("")+'</select>'}
+
+function pubCtx(s){var L=[],i=curChap(s),m=curMap(),R=roster();L.push("HISTORIA: "+s.title);
+  if(i>=0)L.push("CAPÍTULO EN CURSO: "+s.chapters[i].title);
+  if(R.length)L.push("PERSONAJES: "+R.map(function(p){return(p.name||"sin nombre")+" ("+([p.race,p.cls].filter(Boolean).join(" ")||"sin clase")+", nivel "+p.level+")"}).join("; "));
+  var q=s.quests.filter(function(x){return x.st==="abierta"});if(q.length)L.push("MISIONES ABIERTAS:\n"+q.map(function(x){return"- "+x.title+(x.giver?", encargo de "+x.giver:"")+(x.reward?", recompensa: "+x.reward:"")}).join("\n"));
+  var n=s.npcs.filter(function(x){return x.st!=="muerto"});if(n.length)L.push("GENTE QUE CONOCEN:\n"+n.slice(0,15).map(function(x){return"- "+x.name+([x.role,x.where].filter(Boolean).length?" ("+[x.role,x.where].filter(Boolean).join(", ")+")":"")}).join("\n"));
+  if((s.loot||[]).length)L.push("LO QUE LLEVAN: "+s.loot.slice(-10).map(function(o){return o.x}).join("; "));
+  if(m.src||m.desc)L.push("DÓNDE ESTÁN: "+m.name+(m.desc?". "+m.desc.slice(0,300):""));
+  var ls=s.sessions[s.sessions.length-1];if(ls&&ls.x)L.push("ÚLTIMA SESIÓN: "+ls.x.slice(0,500));
+  var lg=S.ia.log.slice(-6).map(function(x){return(x.r==="a"?"Máster: ":"Jugadores: ")+clean(x.t).slice(0,400)}).join("\n");if(lg)L.push("LO ÚLTIMO QUE HA PASADO:\n"+lg);return L.join("\n\n")}
+function info(title,text,read){$("#ia-recap").hidden=false;$("#ia-recap-title").textContent=title;$("#ia-recap-text").textContent=text;if(read)speak(text,$("#ia-recap-read"));$("#ia-recap").scrollIntoView({block:"nearest"})}
+function askPlayers(title,instr,fallback){var s=story();if(!s){note("No hay ninguna historia en mesa.");return}
+  if(!canAsk()||busy){info(title,fallback(s),true);return}info(title,"Pensando…",false);
+  run(BASE+"\n\n"+instr+" Habla a los jugadores en segunda persona del plural, en texto plano. No desveles secretos, ni al villano, ni lo que va a ocurrir; cuenta solo lo que sus personajes ya saben."+(helpOn?" Son novatos: explica entre paréntesis cualquier término de reglas.":"")+"\n\nLO QUE SABEN LOS JUGADORES\n\n"+pubCtx(s),function(t){$("#ia-recap-text").textContent=t}).then(function(r){drawIA();info(title,r.text&&!r.err?r.text.trim():fallback(s),true)})}
+$("#ia-ctx-btn").onclick=function(){askPlayers("Dónde estáis y qué tenéis entre manos","Explica a los jugadores, en 130 palabras como máximo, su situación: dónde están, qué misiones tienen y quién se las encargó, a quién conocen, qué llevan encima y cuál es su objetivo ahora mismo.",function(s){var i=curChap(s),q=s.quests.filter(function(x){return x.st==="abierta"}),T=[];
+  T.push("Estáis en «"+s.title+"»"+(i>=0?", en el capítulo «"+s.chapters[i].title+"».":"."));
+  T.push(q.length?"Tenéis pendiente: "+q.map(function(x){return x.title+(x.giver?" (os lo encargó "+x.giver+")":"")}).join("; ")+".":"No tenéis ninguna misión abierta.");
+  if(s.npcs.length)T.push("Conocéis a: "+s.npcs.filter(function(x){return x.st!=="muerto"}).map(function(x){return x.name+(x.role?", "+x.role.toLowerCase():"")}).join("; ")+".");
+  if((s.loot||[]).length)T.push("Lleváis: "+s.loot.slice(-8).map(function(o){return o.x}).join("; ")+".");return T.join(" ")})};
+$("#ia-opt-btn").onclick=function(){askPlayers("Qué podéis hacer ahora","Los jugadores no saben por dónde seguir. Propón cuatro opciones concretas y distintas entre sí que sus personajes podrían hacer ahora, numeradas del 1 al 4, cada una en una frase. No resuelvas nada ni digas cuál es la buena.",function(s){var q=s.quests.filter(function(x){return x.st==="abierta"}),n=chapNpcs(s),T=[];
+  if(q[0])T.push("Seguir la misión «"+q[0].title+"»"+(q[0].giver?" y volver a hablar con "+q[0].giver:"")+".");
+  if(n[0])T.push("Hablar con "+n[0].name+(n[0].where?", en "+n[0].where:"")+", y preguntarle qué sabe.");
+  T.push("Explorar el lugar: buscar huellas, puertas, objetos fuera de sitio.");T.push("Preguntar a la gente de la zona qué ha visto u oído.");if(q[1])T.push("Ocuparse de «"+q[1].title+"».");
+  return T.slice(0,4).map(function(x,i){return(i+1)+". "+x}).join("\n")})};
+
+/* sesión 0 */
+var zeroOpen=null,zeroEdit=false,zeroGo=false;
+function drawZero(){var s=story(),el=$("#sd-zero");if(!s||zeroOpen!==s.id){el.hidden=true;return}el.hidden=false;var R=roster(),has=!!(s.zero&&s.zero.trim());
+  $("#z-who").innerHTML=R.length?"<b>Quién juega:</b> "+R.map(function(p){return esc(p.name||"sin nombre")+" ("+esc([p.race,p.cls].filter(Boolean).join(" ")||"sin clase")+")"}).join("; ")+".":"<b>Quién juega:</b> todavía no hay personajes asignados a esta historia.";
+  $("#z-text").hidden=zeroEdit;$("#z-text").textContent=has?s.zero:"Aún no hay introducción. Pulsa «Escribirla con la IA» o «Editar» para redactarla tú.";
+  $("#z-area").hidden=!zeroEdit;if(zeroEdit&&document.activeElement!==$("#z-area"))$("#z-area").value=s.zero||"";
+  $("#z-edit").textContent=zeroEdit?"Guardar":"Editar";$("#z-gen").textContent=has?"Escribirla de nuevo con la IA":"Escribirla con la IA";$("#z-start").textContent=started(s)?"Continuar la historia":"Empezar a jugar";ttsMark()}
+function openZero(s,go){zeroOpen=s.id;zeroEdit=false;zeroGo=!!go;if(location.hash!=="#historia")location.hash="historia";route();draw();$("#sd-zero").scrollIntoView({block:"start"});if(!(s.zero&&s.zero.trim())&&canAsk()&&!busy)zeroGen()}
+function zeroGen(){var s=story(),el=$("#z-msg");if(!s)return;if(busy){el.textContent="La IA está ocupada.";return}
+  if(!canAsk()){el.textContent=inArtifact?"Claude no está disponible en esta vista. Escríbela tú con «Editar».":"Configura el motor de IA en «Máster IA», o escríbela tú con «Editar».";return}
+  el.textContent="Escribiendo la introducción…";zeroEdit=false;drawZero();
+  run(BASE+"\n\nEscribe la introducción de la sesión cero de esta historia, para leerla en voz alta a los jugadores antes de empezar a jugar. En 190 palabras como máximo cuenta el mundo y el lugar donde arranca, el ambiente, lo que cualquiera de por allí sabe, un par de rumores y por qué sus personajes podrían estar juntos. No desveles al villano, ni los secretos, ni lo que va a ocurrir. Termina con tres preguntas, una por línea, para que cada jugador conecte a su personaje con la historia. Texto plano, en segunda persona del plural.\n\nESTADO DE LA MESA\n\n"+iaCtx(),function(t){$("#z-text").textContent=t}).then(function(r){drawIA();
+    if(r.text&&!r.err){s.zero=r.text.trim();touch(false);el.textContent="Introducción lista. Léela a la mesa y, cuando acabéis, pulsad «Empezar a jugar»."}else el.textContent=($("#ia-note").textContent||"No se pudo escribir.")+" Puedes redactarla tú con «Editar».";drawZero()})}
+$("#z-gen").onclick=zeroGen;
+$("#z-edit").onclick=function(){var s=story();if(!s)return;if(zeroEdit){s.zero=$("#z-area").value.trim();touch(false)}zeroEdit=!zeroEdit;drawZero();if(zeroEdit)$("#z-area").focus()};
+$("#z-read").onclick=function(){var s=story();if(s&&s.zero)speak(s.zero,this)};
+$("#z-x").onclick=function(){zeroOpen=null;drawZero()};
+$("#z-start").onclick=function(){var s=story();if(!s)return;if(zeroEdit){s.zero=$("#z-area").value.trim();zeroEdit=false}s.zeroDone=true;zeroOpen=null;stopSpeak();logAct("Sesión 0 de "+s.title);touch(false);startStory(s.id)};
+document.addEventListener("click",function(e){if(e.target.closest("[data-zero]")){var s=story();if(s)openZero(s,false)}});
+
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -1567,10 +1643,10 @@ function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===unde
   S.ia.log=s&&Array.isArray(s.log)?s.log:[];S.ia.summary=s&&s.sum||"";S.ia.sid=id;if(s){delete s.log;delete s.sum}}
 function started(s){return(S.ia.sid===s.id?S.ia.log:s.log||[]).length>0}
 function startBtn(s){return'<button type="button" class="pri" data-start-story="'+s.id+'">'+(started(s)?"Continuar historia":"Iniciar historia")+'</button>'}
-function startStory(id){var s=storyById(id);if(!s||busy)return;S.storyId=id;iaBind();useStoryMap();chapterMap(s);liveStart(s);S.ia.mode="auto";
+function startStory(id){var s=storyById(id);if(!s||busy)return;if(!s.zeroDone&&!started(s)){S.storyId=id;iaBind();openZero(s,true);return}S.storyId=id;iaBind();useStoryMap();chapterMap(s);liveStart(s);S.ia.mode="auto";
   if(!s.chapters.some(function(c){return c.st==="curso"})){var f=s.chapters.filter(function(c){return c.st!=="hecho"})[0];if(f)f.st="curso"}
   if(s.status==="borrador")s.status="activa";
-  touch(false);if(location.hash!=="#ia")location.hash="ia";route();draw();window.scrollTo(0,0);
+  placeParty();placeNpcs(s,true);touch(false);if(location.hash!=="#ia")location.hash="ia";route();draw();window.scrollTo(0,0);
   if(S.ia.log.length){note("La historia sigue donde la dejasteis. Escribid qué hacéis.");if(s.sessions.length)recap();return}
   if(!canAsk()){if(inArtifact)note(iaKnown?"Claude no está disponible en esta vista.":"Conectando con Claude. Pulsa «Empezar la aventura» en unos segundos.");
     else{note("Falta un paso: elige aquí arriba el motor de IA y pulsa «Empezar la aventura».");$("#motor").open=true}return}
@@ -1591,18 +1667,18 @@ $("#gen-go").onclick=function(){var el=$("#gen-msg"),R=roster(),n=R.length||4,lv
   var p=BASE+"\n\nInventa una aventura original y completa para "+n+" personajes de nivel "+lvl+", de tono "+$("#gen-tone").value+", dividida en "+len+" capítulos."+
     (idea?" Parte de esta idea: "+idea:"")+(R.length?"\nPersonajes del grupo: "+R.map(function(x){return(x.name||"sin nombre")+" ("+([x.race,x.cls].filter(Boolean).join(" ")||"sin clase")+")"}).join(", ")+".":"")+
     "\nNo uses nombres, lugares ni tramas de aventuras publicadas. Responde solo con JSON, sin más texto, con esta forma: "+
-    "{\"titulo\":\"\",\"descripcion\":\"sinopsis para el máster en unas 120 palabras, con el conflicto, el villano y su secreto\",\"escena_inicial\":\"unas 80 palabras para leer en voz alta al empezar\",\"portada\":\"\",\"capitulos\":[{\"titulo\":\"\",\"resumen\":\"qué ocurre y cómo termina, en dos frases\",\"mapa\":\"\",\"mapa_sugerido\":\"\"}],\"pnj\":[{\"nombre\":\"\",\"papel\":\"\",\"donde\":\"\",\"quiere\":\"\",\"secreto\":\"\"}],\"misiones\":[{\"titulo\":\"\",\"encargo\":\"\",\"recompensa\":\"\"}]}. "+
+    "{\"titulo\":\"\",\"descripcion\":\"sinopsis para el máster en unas 120 palabras, con el conflicto, el villano y su secreto\",\"escena_inicial\":\"unas 80 palabras para leer en voz alta al empezar\",\"introduccion_jugadores\":\"unas 150 palabras para la sesión cero: el mundo, el lugar, el ambiente y lo que cualquiera sabe, sin secretos ni villano, y al final tres preguntas para conectar a los personajes con la historia\",\"portada\":\"\",\"capitulos\":[{\"titulo\":\"\",\"resumen\":\"qué ocurre y cómo termina, en dos frases\",\"mapa\":\"\",\"mapa_sugerido\":\"\"}],\"pnj\":[{\"nombre\":\"\",\"papel\":\"\",\"donde\":\"\",\"quiere\":\"\",\"secreto\":\"\",\"capitulo\":1}],\"misiones\":[{\"titulo\":\"\",\"encargo\":\"\",\"recompensa\":\"\"}]}. En «capitulo» de cada PNJ pon el número del capítulo en el que aparece. "+
     "Incluye entre 4 y 6 PNJ y entre 3 y 5 misiones. "+(S.maps.filter(function(m){return m.src||m.desc}).length?"En «mapa» de cada capítulo pon el nombre exacto del mapa disponible que mejor encaje, o déjalo vacío si ninguno sirve. Mapas disponibles: "+S.maps.filter(function(m){return m.src||m.desc}).map(function(m){return m.name+(m.desc?" ("+m.desc.slice(0,120)+")":"")}).join("; ")+". ":"")+"En «mapa_sugerido» describe en pocas palabras qué mapa de batalla conviene para ese capítulo. En «portada» pon la clave que mejor encaje de esta lista: "+Object.keys(COVERS).map(function(k){return k+" ("+COVERS[k].toLowerCase()+")"}).join(", ")+".";
   askJSON(p,el).then(function(j){if(!j)return;var A=function(v){return Array.isArray(v)?v:[]};
-    genData={title:str(j.titulo,90)||"Historia sin título",desc:str(j.descripcion,1500),hook:str(j.escena_inicial,900),cover:COVERS[str(j.portada,20)]?str(j.portada,20):"",
+    genData={title:str(j.titulo,90)||"Historia sin título",zero:str(j.introduccion_jugadores,1800),desc:str(j.descripcion,1500),hook:str(j.escena_inicial,900),cover:COVERS[str(j.portada,20)]?str(j.portada,20):"",
       c:A(j.capitulos).map(function(x){x=typeof x==="string"?{titulo:x}:x||{};var mm=mapByName(str(x.mapa,80));return{title:str(x.titulo,90),note:str(x.resumen,400),map:mm?mm.id:null,mapHint:str(x.mapa_sugerido,160)}}).filter(function(x){return x.title}).slice(0,10),
-      n:A(j.pnj).map(function(x){x=x||{};return{name:str(x.nombre,60),role:str(x.papel,80),where:str(x.donde,80),wants:str(x.quiere),secret:str(x.secreto)}}).filter(function(x){return x.name}).slice(0,8),
+      n:A(j.pnj).map(function(x){x=x||{};return{name:str(x.nombre,60),role:str(x.papel,80),where:str(x.donde,80),wants:str(x.quiere),secret:str(x.secreto),cn:num(x.capitulo)}}).filter(function(x){return x.name}).slice(0,8),
       q:A(j.misiones).map(function(x){x=x||{};return{title:str(x.titulo,90),giver:str(x.encargo,80),reward:str(x.recompensa,80)}}).filter(function(x){return x.title}).slice(0,8)};
     el.textContent=genData.c.length?"Revisa la propuesta. Si no te convence, pulsa otra vez «Generar historia».":"La IA ha devuelto una historia sin capítulos. Prueba otra vez o con otro modelo.";genShow()})};
 $("#gen-no").onclick=function(){genData=null;genShow();$("#gen-msg").textContent=""};
 $("#gen-ok").onclick=function(){var d=genData;if(!d)return;genData=null;var s=mkStory(d.title,S.stories.length);s.desc=d.desc;if(d.cover)s.cover=d.cover;
   s.chapters=d.c.map(function(x,i){return{id:uid(),title:x.title,note:x.note,map:x.map,mapHint:x.mapHint,st:i?"pend":"curso"}});
-  s.npcs=d.n.map(function(x){x.id=uid();x.st="neutral";return x});s.quests=d.q.map(function(x){x.id=uid();x.st="abierta";return x});
+  s.npcs=d.n.map(function(x){x.id=uid();x.st="neutral";var ch=s.chapters[x.cn-1];x.chap=ch?ch.id:null;delete x.cn;return x});if(d.zero)s.zero=d.zero;s.quests=d.q.map(function(x){x.id=uid();x.st="abierta";return x});
   if(d.hook)s.notes.push({id:uid(),title:"Escena inicial",text:d.hook,t:Date.now()});
   S.stories.push(s);logAct("Historia generada con IA: "+s.title);genShow();$("#gen-msg").textContent="";$("#gen").open=false;openStory(s.id);draw()};
 
@@ -1769,6 +1845,7 @@ function lead(m){var t=BASE+"\n\n"+MODES[m].rules;
   if(m!=="copiloto"){t+="\n\nCuando estalle un combate no lo resuelvas tú: termina tu respuesta con una línea exactamente así: [COMBATE: nombre de la criatura x cantidad], usando solo criaturas de esta lista: "+BL().map(function(x){return x[0]}).join(", ")+". El panel tirará los dados y después te contará cómo acabó.";
     t+="\n\nCuando la escena cambie de lugar, carga el mapa que encaje con una línea exactamente así: [MAPA: nombre del mapa], usando solo nombres de la lista de mapas disponibles. Si ninguno encaja, escribe una línea que empiece por «Mapa:» diciendo qué tipo de mapa conviene cargar. Al empezar una escena nueva o un combate añade una línea que empiece por «Colocación:» explicando a quien dirige en qué zona del mapa poner a los personajes, a las criaturas y los objetos importantes, y después una marca exactamente así: [COLOCAR: Nombre=columna,fila; Nombre=columna,fila], con casillas dentro del tamaño del mapa.";
     t+="\n\nPara ambientar la escena puedes cambiar el sonido de fondo con una línea exactamente así: [AMBIENTE: nombre], con uno de estos nombres: lluvia, mazmorra, bosque, taberna, misterio, silencio.";
+    var sq=story(),cn=sq?chapNpcs(sq):[];if(cn.length)t+="\n\nLos PNJ de este capítulo son: "+cn.map(function(n){return n.name}).join(", ")+". Ya tienen figura en el mapa: inclúyelos en la marca [COLOCAR] cuando entren en escena o cambien de sitio.";
     var cm=curMap();if(cm.src||cm.desc)t+="\n\nLa escena actual transcurre en el mapa en pantalla, descrito más abajo: ambienta la narración en ese lugar concreto y ten en cuenta dónde está cada figura."}
   if(helpOn)t+=m==="copiloto"?"\n\nEl máster es novato: explica en pocas palabras cada regla que menciones.":"\n\nMODO EXPLICACIÓN: los jugadores no han jugado nunca. Después de narrar añade una línea que empiece por «Opciones:» con tres o cuatro cosas concretas que podrían hacer sus personajes ahora, y explica entre paréntesis, en pocas palabras, cada término de reglas que uses.";
   return t+"\n\nESTADO DE LA MESA\n\n"+iaCtx()}
@@ -1836,9 +1913,9 @@ function mapSrc(m,cb){if(m.src.t==="url"){cb(m.src.v);return}if(imgCache[m.id]){
   idbGet(m.id).then(function(b){if(b){imgCache[m.id]=URL.createObjectURL(b);cb(imgCache[m.id])}else cb(null)},function(){cb(null)})}
 function mapMsg(t){$("#map-read").textContent=t}
 function setVal(s,v){var e=$(s);if(document.activeElement!==e)e.value=v}
-function tokRef(t){if(!t.ref)return null;var p=pc(t.ref);if(p)return{name:p.name||"Sin nombre",pc:true};var c=find(t.ref);if(c){var v=view(c);return{name:v.name,pc:v.pc}}return null}
+function tokRef(t){if(!t.ref)return null;var nn=npcOfTok(t);if(nn)return{name:nn.name,pc:false,npc:nn};if(String(t.ref).indexOf("npc:")===0)return null;var p=pc(t.ref);if(p)return{name:p.name||"Sin nombre",pc:true};var c=find(t.ref);if(c){var v=view(c);return{name:v.name,pc:v.pc}}return null}
 function tokName(t){var r=tokRef(t);return r?r.name:t.name||"Figura"}
-function tokKind(t){var r=tokRef(t);return r?(r.pc?"pc":"mon"):t.kind||"oth"}
+function tokKind(t){var r=tokRef(t);return r?(r.npc?"oth":r.pc?"pc":"mon"):t.kind||"oth"}
 function tokGet(id){var L=curMap().tokens;for(var i=0;i<L.length;i++)if(L[i].id===id)return L[i];return null}
 function initials(n){var m=/(\d+)\s*$/.exec(n),w=n.replace(/\s*\(.*?\)|\s*\d+\s*$/g,"").trim();return(w.slice(0,m?1:2)+(m?m[1]:"")).slice(0,3)}
 function sizeStage(){var m=curMap(),st=$("#stage"),sv=$("#map-svg");st.style.width=m.w+"px";st.style.height=m.h+"px";sv.setAttribute("width",m.w);sv.setAttribute("height",m.h);sv.setAttribute("viewBox","0 0 "+m.w+" "+m.h)}
@@ -1882,7 +1959,7 @@ function drawSvg(){var m=curMap(),c=m.cell,h=[],fs=14/V.z;
   var ln=drag&&drag.line||lastRule;
   if(ln)h.push('<line class="rl0" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><line class="rl1'+(ln.bad?" bad":"")+'" x1="'+ln.x1+'" y1="'+ln.y1+'" x2="'+ln.x2+'" y2="'+ln.y2+'"/><text class="rt'+(ln.bad?" bad":"")+'" font-size="'+fs+'" x="'+(ln.x2+fs*.8)+'" y="'+(ln.y2-fs*.8)+'">'+esc(ln.label)+'</text>');
   var sv=$("#map-svg");sv.setAttribute("class",m.src?"onimg":"");sv.innerHTML=h.join("")}
-function tokPicUrl(t){var cc=t.ref&&find(t.ref),P=t.ref&&(pc(t.ref)||(cc&&cc.pcId&&pc(cc.pcId)));if(P)return pcPic(P);return cc&&!cc.pcId&&cc.base?monPic(cc.base):""}
+function tokPicUrl(t){var nq=npcOfTok(t);if(nq)return npcPic(nq);var cc=t.ref&&find(t.ref),P=t.ref&&(pc(t.ref)||(cc&&cc.pcId&&pc(cc.pcId)));if(P)return pcPic(P);return cc&&!cc.pcId&&cc.base?monPic(cc.base):""}
 function tokBody(t,n,R,fs){var u=tokPicUrl(t);if(!u)return'<text font-size="'+fs+'">'+esc(initials(n))+'</text>';var k=/(\d+)\s*$/.exec(n);
   return'<image href="'+esc(u)+'" x="'+(-R)+'" y="'+(-R)+'" width="'+2*R+'" height="'+2*R+'" preserveAspectRatio="xMidYMid slice" style="clip-path:circle(50%)"/><circle class="ring" r="'+R+'"/>'+(k?'<text class="tn" font-size="'+fs*.8+'" x="'+R*.72+'" y="'+R*.72+'">'+k[1]+'</text>':"")}
 function tokBar(){var t=selTok&&tokGet(selTok),b=$("#tok-bar");b.hidden=!t;if(!t)return;
