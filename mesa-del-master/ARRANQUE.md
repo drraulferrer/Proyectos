@@ -49,6 +49,9 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
 - **Retratos a medida**: criaturas propias y personajes tienen un campo de aspecto y un botón «Generar imagen», que redacta un prompt en el estilo del bestiario para pegarlo en un generador externo y subir el resultado. Los retratos de personajes se ven en tarjetas, Panel, combate y mapa.
 - **Mapas a medida**: cada capítulo tiene «Generar mapa», que redacta un prompt de mapa cenital horizontal con el contexto de la historia; al subir el resultado se crea el mapa (`story` en el mapa), se asigna al capítulo y se carga al iniciar. El selector de mapas agrupa los de la historia en mesa.
 - **Niebla con visión**: `fog.mode` vale `vision` (solo se ilumina lo que ven los personajes ahora y lo ya explorado queda en penumbra) o `memo` (todo lo descubierto queda iluminado).
+- **Sesión 0**: cada historia guarda una introducción para jugadores (`zero`, `zeroDone`). «Iniciar historia» la muestra la primera vez, antes de empezar a jugar.
+- **PNJ en el mapa**: cada PNJ puede tener un capítulo (`chap`). Al iniciar la historia o poner un capítulo en curso se colocan en el mapa el grupo y los PNJ de ese capítulo, como figuras con referencia `npc:<id>`.
+- **Ayudas para la mesa**: en «Máster IA», «Dar contexto» y «¿Qué podemos hacer?» responden solo con lo que los personajes ya saben (`pubCtx`), con respuesta de reserva si no hay motor de IA.
 - **Ambiente**: seis ambientes sonoros sintetizados con Web Audio, sin archivos de audio.
 - **Copia de seguridad**: en el Panel, descarga y restauración de toda la campaña.
 - **Reglas**: chuleta, estados y guía para la primera sesión.
