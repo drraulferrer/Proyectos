@@ -12,6 +12,7 @@ Un gestor de campañas de D&D 5.5 para un máster novato, en una sola página we
 |---|---|
 | Código | `mesa-del-master/index.html` en `drraulferrer/Proyectos`, rama `main` |
 | Imágenes de portada | `mesa-del-master/img/*.jpg` |
+| Retratos de PNJ | `mesa-del-master/img/npc/*.jpg`, dieciséis arquetipos |
 | Retratos de criaturas | `mesa-del-master/img/mon/*.jpg`, uno por criatura del bestiario base |
 | Web pública | https://drraulferrer.github.io/Proyectos/mesa-del-master/ |
 | Copia dentro de Claude | https://claude.ai/artifact/LV8tHg1fo16eHC65Rf19rd |
@@ -40,11 +41,13 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
 
 - **Panel**: indicadores, historia en marcha, próxima sesión, actividad y personajes en mesa.
 - **Historias**: tarjetas, generador de historia completa con IA y detalle con capítulos, misiones, PNJ, criaturas propias, sesiones y notas del máster.
-- **Personajes**: tarjetas editables e importador desde el PDF o una captura de D&D Beyond.
-- **Combate**: modo manual y modo automático, que monta el encuentro, tira iniciativa, resuelve los monstruos y las salvaciones contra muerte, y lleva un registro.
+- **Personajes**: tarjetas editables, experiencia, guía de subida de nivel e importador desde el PDF o una captura de D&D Beyond.
+- **Combate**: modo manual y modo automático, que monta el encuentro, tira iniciativa, resuelve los monstruos y las salvaciones contra muerte, y lleva un registro. Incluye conjuros (lista `SPELLS`), espacios de conjuro, enfrentamientos visibles, botín y experiencia al ganar, y vista a pantalla completa o en otra pestaña.
 - **Criaturas**: retratos del bestiario base, foto propia por criatura, y alta desde una foto de un manual leída por una IA con visión. Se muestran en «Combate» y se amplían al pulsarlas.
-- **Mapa**: selector, imagen desde archivo o Drive, cuadrícula, figuras, regla, plantillas de efectos, pantalla completa y pestaña aparte.
+- **Mapa**: selector, imagen desde archivo o Drive, cuadrícula, figuras con retrato, regla, plantillas de efectos, niebla de guerra, líneas de enfrentamiento, pantalla completa y pestaña aparte.
 - **Máster IA**: copiloto, narrador y autónomo; lectura en voz alta; motor y voz configurables.
+- **Ambiente**: seis ambientes sonoros sintetizados con Web Audio, sin archivos de audio.
+- **Copia de seguridad**: en el Panel, descarga y restauración de toda la campaña.
 - **Reglas**: chuleta, estados y guía para la primera sesión.
 
 ## Cómo se conectan las piezas
@@ -55,6 +58,7 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
   - `[MAPA: nombre]` carga un mapa.
   - `[COMBATE: criatura x cantidad]` lanza el combate automático.
   - `[COLOCAR: Nombre=columna,fila; …]` coloca figuras.
+  - `[AMBIENTE: nombre]` cambia el sonido de fondo.
 - Cada capítulo puede tener un mapa asignado, que se carga al ponerlo «en curso».
 - Cada historia guarda su propia narración. `iaBind()` la intercambia al cambiar de historia.
 
@@ -89,7 +93,7 @@ Las preferencias de cada dispositivo van aparte en `localStorage`: motor de IA, 
 
 ## Límites conocidos
 
-- El combate automático cubre ataques sencillos. Conjuros, rasgos de clase, movimiento y alcance se resuelven a mano.
+- El combate automático cubre ataques y diecinueve conjuros comunes. Rasgos de clase, concentración, estados de los conjuros, movimiento y alcance se resuelven a mano. Las salvaciones de los monstruos son una aproximación a partir de su iniciativa y su VD.
 - La IA no ve los mapas salvo que el modelo tenga visión; trabaja con la descripción escrita de cada mapa.
 - Un modelo pequeño puede escribir mal las marcas o devolver un JSON ilegible. El panel lo avisa y basta con repetir.
 - La sincronía entre pestañas solo funciona en el mismo navegador.
@@ -97,12 +101,14 @@ Las preferencias de cada dispositivo van aparte en `localStorage`: motor de IA, 
 
 ## Servicios usados en las sesiones
 
-Las claves quedaron guardadas en el entorno de la sesión, no en el repositorio: Kie.ai para generar portadas con el modelo `seedream/4.5-text-to-image`, y ElevenLabs para probar la voz.
+Las claves quedaron guardadas en el entorno de la sesión, no en el repositorio: Kie.ai para generar portadas y retratos con el modelo `seedream/4.5-text-to-image`, y ElevenLabs para probar la voz.
 
 ## Ideas pendientes
 
 - Probar con un PDF real de D&D Beyond y ajustar los nombres de campo.
-- Conjuros y rasgos en el combate automático.
+- Rasgos de clase, concentración y estados en el combate automático.
+- Monstruos que lanzan conjuros.
+- Escalado de los trucos con el nivel.
 - Encuentros con varios tipos de criatura.
 - Que el combate tenga en cuenta distancias en el mapa.
 - Vista propia para cada jugador en su móvil.

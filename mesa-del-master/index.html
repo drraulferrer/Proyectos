@@ -1108,7 +1108,7 @@ function drawAuto(){var C=S.combat,el=$("#cb-auto"),lg=$("#cb-log"),c=find(C.tur
         '<div class="bar"><label>Si tiráis con dados: ataque total<input id="au-roll" type="number" placeholder="17"></label><label>Daño<input id="au-rdmg" type="number" placeholder="8"></label><button type="button" data-au="own">Aplicar mi tirada</button></div>'+
         '<div class="bar"><label>Curar a<select id="au-heal-t">'+A.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x===c?" selected":"")+'>'+esc(y.name)+" ("+y.hp+"/"+y.max+')</option>'}).join("")+'</select></label><label>PG<input id="au-heal-n" type="number" min="1" placeholder="6"></label><button type="button" class="heal" data-au="heal">Curar</button>'+
         '<span style="flex:1"></span><button type="button" data-au="pass">Otra acción o pasar turno</button></div>'+
-        '<p class="sub help">«Atacar, que tire el panel» lanza el d20 por ti y aplica el daño. Si preferís vuestros dados, escribid el total y pulsad «Aplicar mi tirada». Para un conjuro, moverse o cualquier otra cosa, resolvedlo hablando, apuntad el daño o la cura a mano y pulsad «Otra acción o pasar turno».</p>')}
+        spellHtml(p)+'<p class="sub help">«Atacar, que tire el panel» lanza el d20 por ti y aplica el daño. Si preferís vuestros dados, escribid el total y pulsad «Aplicar mi tirada». Para un conjuro que no esté en la lista, moverse o cualquier otra cosa, resolvedlo hablando, apuntad el daño o la cura a mano y pulsad «Otra acción o pasar turno».</p>')}
     else h.push('<p class="sub">Resolviendo turnos…</p><div class="bar"><button type="button" data-au="pass">Continuar</button></div>');
     el.innerHTML=h.join("")}
   lg.innerHTML='<h2>Registro del combate</h2><ul class="list">'+(C.log||[]).slice().reverse().slice(0,30).map(function(t){return'<li><span class="t'+(/^— /.test(t)?" sub":"")+'">'+esc(t)+'</span></li>'}).join("")+'</ul>'}
@@ -1443,6 +1443,39 @@ $("#fog-tools").addEventListener("click",function(e){var b=e.target.closest("[da
   if(b){TOOL=TOOL===b.dataset.fog?"mover":b.dataset.fog;placing=[];drawMapUI()}
   else if(a){fogAll(m,a.dataset.foga==="1");if(a.dataset.foga==="0")m.tokens.forEach(function(t){fogAuto(m,t)});touch(false);drawMapUI()}});
 
+/* ---- conjuros en el combate automático ---- */
+// nombre, nivel, tipo (atk ataque de conjuro, save salvación, auto impacta siempre, heal cura), fórmula, característica de la salvación, mitad de daño si la supera, objetivos, rayos
+var SPELLS=[["Descarga de fuego",0,"atk","1d10","",0,1,1],["Rayo de escarcha",0,"atk","1d8","",0,1,1],["Toque gélido",0,"atk","1d10","",0,1,1],["Descarga sobrenatural",0,"atk","1d10","",0,1,1],["Llama sagrada",0,"save","1d8","DES",0,1,1],["Burla dañina",0,"save","1d6","SAB",0,1,1],
+  ["Proyectil mágico",1,"auto","3d4+3","",0,1,1],["Rayo guía",1,"atk","4d6","",0,1,1],["Orbe cromático",1,"atk","3d8","",0,1,1],["Manos ardientes",1,"save","3d6","DES",1,3,1],["Onda atronadora",1,"save","2d8","CON",1,3,1],["Curar heridas",1,"heal","2d8","",0,1,1],["Palabra de curación",1,"heal","2d4","",0,1,1],
+  ["Rayo abrasador",2,"atk","2d6","",0,1,3],["Estallar",2,"save","3d8","CON",1,3,1],["Arma espiritual",2,"atk","1d8+3","",0,1,1],
+  ["Bola de fuego",3,"save","8d6","DES",1,99,1],["Relámpago",3,"save","8d6","DES",1,3,1],["Palabra de curación en masa",3,"heal","2d4","",0,99,1]];
+function crNum(v){v=String(v||"0");if(v.indexOf("/")>0){var q=v.split("/");return(+q[0]||0)/(+q[1]||1)}return parseFloat(v)||0}
+function saveMod(c,ab){return ab==="DES"?int(c.mod,0):Math.min(6,Math.round(crNum(c.cr)))}
+function slotsOf(p){if(!Array.isArray(p.slots))p.slots=[0,0,0];if(!Array.isArray(p.used))p.used=[0,0,0];return p}
+function spellHtml(p){slotsOf(p);var last=p.lastSpell||"";
+  return'<div class="stack" style="gap:8px;border-top:1px solid var(--divider);padding-top:12px"><div class="fgrid"><label>Conjuro<select id="au-spell">'+[0,1,2,3].map(function(l){return'<optgroup label="'+(l?"Nivel "+l:"Trucos")+'">'+SPELLS.filter(function(x){return x[1]===l}).map(function(x){return'<option'+(x[0]===last?" selected":"")+'>'+x[0]+'</option>'}).join("")+'</optgroup>'}).join("")+'</select></label>'+
+    '<label>Bono de ataque de conjuro<input id="au-satk" type="number" value="'+esc(p.satk==null?5:p.satk)+'"></label><label>CD de tus conjuros<input id="au-sdc" type="number" value="'+esc(p.sdc==null?13:p.sdc)+'"></label></div>'+
+    '<div class="bar">'+[1,2,3].map(function(l){return'<label>Espacios de nivel '+l+' (quedan '+Math.max(0,p.slots[l-1]-p.used[l-1])+')<input type="number" min="0" max="9" data-slot="'+(l-1)+'" id="au-sl'+l+'" value="'+p.slots[l-1]+'"></label>'}).join("")+'<button type="button" class="pri" data-au="cast">Lanzar conjuro</button></div>'+
+    '<p class="sub help">Los conjuros de daño van contra el «Objetivo» de arriba; los de zona alcanzan también a los enemigos siguientes. Los de curación van a quien elijas en «Curar a». Si pones los espacios a 0, el panel no los cuenta.</p></div>'}
+function castSpell(c,v){var p=pc(c.pcId),sp=null,nm=$("#au-spell").value;SPELLS.forEach(function(x){if(x[0]===nm)sp=x});if(!sp||!p)return false;slotsOf(p);
+  var lv=sp[1],atk=int($("#au-satk").value,5),dc=int($("#au-sdc").value,13);p.lastSpell=nm;
+  if(lv>0&&p.slots[lv-1]>0){if(p.used[lv-1]>=p.slots[lv-1]){clog(v.name+" no tiene espacios de nivel "+lv+" para lanzar "+nm+". Elige otra cosa.");touch();return false}p.used[lv-1]++}
+  if(sp[2]==="heal"){var T=sp[6]>1?heroes(false):[find($("#au-heal-t").value)].filter(Boolean);if(!T.length)return false;
+    T.forEach(function(t){var h=rollF(sp[3]).total+3;mend(t,h);clog(v.name+" lanza "+nm+" y cura "+h+" PG a "+view(t).name+", que queda con "+hpOf(t)+" PG.")});return}
+  var first=find($("#au-target").value),F=foes();if(!first||!F.length)return false;c.tgt=first.id;
+  var targets=[first].concat(F.filter(function(x){return x!==first})).slice(0,sp[6]);
+  if(sp[2]==="auto"){var dm=rollF(sp[3]);hurt(first,dm.total);clog(v.name+" lanza "+nm+" contra "+view(first).name+": impacta sin tirada y hace "+dm.total+" de daño ("+dm.text+")."+(hpOf(first)<=0?" "+view(first).name+" cae.":" Le quedan "+hpOf(first)+" PG."))}
+  else if(sp[2]==="atk"){for(var i=0;i<sp[7];i++){var t=hpOf(first)>0?first:foes()[0];if(!t)break;var tv=view(t),r=d(20),tot=r+atk,ac=int(tv.ac,10);
+      if(r===1||(r!==20&&tot<ac))clog(v.name+" lanza "+nm+" contra "+tv.name+": saca "+tot+" contra CA "+ac+" y falla.");
+      else{var d2=rollF(sp[3],r===20);hurt(t,d2.total);clog(v.name+" lanza "+nm+" contra "+tv.name+": saca "+tot+" contra CA "+ac+(r===20?", crítico":", impacta")+" y hace "+d2.total+" de daño ("+d2.text+")."+(hpOf(t)<=0?" "+tv.name+" cae.":" Le quedan "+hpOf(t)+" PG."))}}}
+  else{var base=rollF(sp[3]);clog(v.name+" lanza "+nm+" (salvación de "+sp[4]+", CD "+dc+"): "+base.total+" de daño ("+base.text+")"+(targets.length>1?" a "+targets.length+" enemigos.":"."));
+    targets.forEach(function(t){var tv=view(t),r=d(20)+saveMod(t,sp[4]),ok=r>=dc,n=ok?(sp[5]?Math.floor(base.total/2):0):base.total;if(n>0)hurt(t,n);
+      clog("  "+tv.name+" saca "+r+": "+(ok?"supera la salvación"+(n?" y recibe la mitad, "+n:" y no recibe daño"):"falla y recibe "+n)+"."+(n>0?(hpOf(t)<=0?" Cae.":" Le quedan "+hpOf(t)+" PG."):""))})}}
+$("#cb-auto").addEventListener("change",function(e){var c=find(S.combat.turnId),p=c&&pc(c.pcId),t=e.target;if(!p)return;slotsOf(p);
+  if(t.id==="au-satk"){p.satk=int(t.value,5);touch(false)}else if(t.id==="au-sdc"){p.sdc=int(t.value,13);touch(false)}else if(t.id==="au-spell"){p.lastSpell=t.value;touch(false)}
+  else if(t.dataset.slot!=null){p.slots[+t.dataset.slot]=Math.max(0,Math.min(9,int(t.value,0)));touch()}});
+$("#cb-auto").addEventListener("click",function(e){if(e.target.closest('[data-au="cast"]'))pcAct(castSpell)});
+
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -1547,7 +1580,7 @@ $("#ch-cards").addEventListener("click",function(e){var b=e.target.closest("[dat
   if(b){p=pc(b.dataset.chEdit);if(chEdit===b.dataset.chEdit){chEdit=null;if(p&&p.isNew){delete p.isNew;logAct("Nuevo personaje: "+(p.name||"sin nombre")+(p.cls?", "+p.cls.toLowerCase():""));touch(false)}}else chEdit=b.dataset.chEdit;draw()}
   else if(r){var id=r.dataset.rmpc;S.party=S.party.filter(function(x){return x.id!==id});S.combat.list=S.combat.list.filter(function(c){return c.pcId!==id});chEdit=null;touch()}});
 $("#btn-addpc").onclick=function(){var s=story(),p={id:uid(),name:"",race:"",cls:"",player:"",level:1,ac:10,hp:10,max:10,pp:10,init:0,story:chFilter||(s?s.id:""),status:"activo",isNew:true};S.party.push(p);chEdit=p.id;chQ="";$("#ch-q").value="";touch();var i=$("#c-"+p.id+"-name");if(i)i.focus()};
-$("#btn-rest").onclick=function(){S.party.forEach(function(p){p.hp=p.max});S.combat.list.forEach(function(c){if(c.pcId)c.conds=[]});logAct("Descanso largo: el grupo recupera sus PG");touch()};
+$("#btn-rest").onclick=function(){S.party.forEach(function(p){p.hp=p.max;if(Array.isArray(p.used))p.used=[0,0,0]});S.combat.list.forEach(function(c){if(c.pcId)c.conds=[]});logAct("Descanso largo: el grupo recupera sus PG");touch()};
 
 /* ---- guía y lista de preparación ---- */
 $("#conds").innerHTML=CONDS.map(function(c){return'<dt>'+c[0]+'</dt><dd>'+c[1]+'</dd>'}).join("");
