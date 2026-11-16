@@ -898,7 +898,7 @@ function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   b.maps=Array.isArray(o.maps)?o.maps.filter(function(m){return m&&m.id&&m.cell>0&&m.w>0&&m.h>0}).map(function(m){m.tokens=Array.isArray(m.tokens)?m.tokens:[];m.fx=Array.isArray(m.fx)?m.fx:[];return m}):[];b.mapId=o.mapId||null;
   var a=o.ia||{};b.ia={mode:["copiloto","narrador","auto"].indexOf(a.mode)>=0?a.mode:"copiloto",premise:typeof a.premise==="string"?a.premise:"",summary:typeof a.summary==="string"?a.summary:"",log:Array.isArray(a.log)?a.log.filter(function(x){return x&&typeof x.t==="string"&&x.t}):[]};if("sid" in a)b.ia.sid=a.sid;
   b.rev=o.rev||"";b.party=Array.isArray(o.party)?o.party:[];b.notes=typeof o.notes==="string"?o.notes:"";b.checks=o.checks&&typeof o.checks==="object"?o.checks:{};
-  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null,byIA:!!c.byIA,goal:c.goal&&typeof c.goal==="object"?c.goal:null};
+  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null,byIA:!!c.byIA,simTxt:typeof c.simTxt==="string"?c.simTxt:"",goal:c.goal&&typeof c.goal==="object"?c.goal:null};
   function arr(v){return Array.isArray(v)?v:[]}
   b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.npcs=arr(x.npcs);x.loot=arr(x.loot);x.places=arr(x.places).filter(function(p){return p&&p.id&&p.title});x.mons=arr(x.mons).filter(function(m){return Array.isArray(m)&&m.length>=9});x.quests=arr(x.quests);x.next=x.next||{date:"",time:""};return x});
   b.storyId=o.storyId||null;b.activity=arr(o.activity);
@@ -1160,7 +1160,7 @@ document.addEventListener("click",function(e){if(e.target.closest("[data-demo-st
 
 /* ---- combate automático ---- */
 var capt=null;
-function clog(t){var C=S.combat;if(capt)capt.push(t);if(!Array.isArray(C.log))C.log=[];C.log.push(t);if(C.log.length>80)C.log.splice(0,C.log.length-80)}
+function clog(t){if(SIM)return;var C=S.combat;if(capt)capt.push(t);if(!Array.isArray(C.log))C.log=[];C.log.push(t);if(C.log.length>80)C.log.splice(0,C.log.length-80)}
 function rollF(f,crit){var q=String(f||"").replace(/−/g,"-").replace(/\s+/g,""),re=/([+-]?)(?:(\d*)d(\d+)|(\d+))/gi,m,t=0,P=[];
   while((m=re.exec(q))){var sg=m[1]==="-"?-1:1;if(m[3]){var n=Math.max(1,int(m[2],1))*(crit?2:1),sd=Math.max(2,int(m[3],6));for(var i=0;i<n;i++){var x=d(sd);t+=sg*x;P.push((sg<0?"−":"+")+x)}}else{var k=int(m[4],0);t+=sg*k;if(k)P.push((sg<0?"−":"+")+k)}}
   if(!P.length){t=Math.max(1,int(f,1));return{total:t,text:String(t)}}
@@ -1178,7 +1178,7 @@ function mend(c,n){setHp(c,hpOf(c)+n);if(hpOf(c)>0){delCond(c,"Inconsciente");de
 function advance(){var C=S.combat,L=C.list;if(!L.length)return;sortList();var i=-1,r0=C.round;for(var k=0;k<L.length;k++)if(L[k].id===C.turnId)i=k;
   if(i<0||!C.round){C.round=1;i=-1}
   for(var n=0;n<L.length;n++){i++;if(i>=L.length){i=0;C.round++}if(alive(L[i]))break}
-  C.turnId=L[i].id;L[i].moved=0;if(C.auto&&C.round!==r0)clog("— Ronda "+C.round+" —")}
+  C.turnId=L[i].id;L[i].moved=0;L[i].react=0;if(C.auto&&C.round!==r0)clog("— Ronda "+C.round+" —")}
 function deathSave(c){var n=view(c).name,r=d(20);c.ds=c.ds||{s:0,f:0};
   if(r===20){mend(c,1);clog(n+" saca un 20 en su salvación contra muerte y se levanta con 1 PG.");return}
   if(r===1)c.ds.f+=2;else if(r>=10)c.ds.s++;else c.ds.f++;
@@ -1202,11 +1202,11 @@ function drawAuto(){var C=S.combat,el=$("#cb-auto"),lg=$("#cb-log"),c=find(C.tur
     if(!C.list.length){h.push('<h2>Combate automático</h2>');
       if(!roster().length)h.push('<p class="sub">Hacen falta personajes. Añádelos en «Personajes» o carga el grupo de ejemplo de abajo.</p>');
       else h.push('<p class="sub">El panel elige enemigos a la medida del grupo, tira la iniciativa de todos y resuelve los turnos de los monstruos. Vosotros solo decidís qué hacen vuestros personajes.</p><div class="bar"><label>Dificultad<select id="au-diff"><option value="0">Fácil</option><option value="1" selected>Normal</option><option value="2">Difícil</option></select></label><label>Objetivo<select id="au-goal">'+Object.keys(GOALS).map(function(k){return'<option value="'+k+'"'+(goalPick.k===k?" selected":"")+'>'+GOALS[k]+'</option>'}).join("")+'</select></label><label class="ck"><input type="checkbox" id="au-mix"'+(mixOn?" checked":"")+'> Mezclar tipos de criatura</label><label class="ck"><input type="checkbox" id="au-dist"'+(distOn?" checked":"")+'> Contar las distancias del mapa</label><label class="ck"><input type="checkbox" id="au-moral"'+(moralOn?" checked":"")+'> Los enemigos pueden huir o rendirse</label><button type="button" class="pri" data-au="enc">Empezar un combate</button></div>')}
-    else if(!C.round)h.push('<h2>Combate automático</h2><p class="sub">Ya hay criaturas en la lista. El panel tirará la iniciativa que falte y resolverá los turnos de los monstruos.</p><div class="bar"><button type="button" class="pri" data-au="start">Empezar este combate</button></div>');
+    else if(!C.round)h.push('<h2>Combate automático</h2><p class="sub">Ya hay criaturas en la lista. El panel tirará la iniciativa que falte y resolverá los turnos de los monstruos.</p><div class="bar"><button type="button" class="pri" data-au="start">Empezar este combate</button></div>'+simHtml());
     else if(C.over)h.push('<h2>'+(C.over==="win"?"Victoria":"El grupo ha caído")+'</h2><p class="sub">'+esc((C.log||[]).slice(-1)[0]||"")+'</p><div class="bar">'+(C.byIA?'<button type="button" class="pri" data-au="back">Volver a la historia</button>':"")+'<button type="button" '+(C.byIA?"":'class="pri" ')+'data-au="end">Terminar el combate</button><button type="button" data-au="lrest" title="Recupera los PG y los espacios de conjuro de todos">Descanso largo</button></div>');
     else if(C.wait)h.push(waitHtml());
     else if(c&&isPc(c)){var v=view(c),p=pc(c.pcId),F=foes(),A=heroes(false);
-      h.push('<span class="eyebrow">Ronda '+C.round+'</span><h2 style="font-size:1.2rem">Turno de '+esc(v.name)+'</h2><p class="sub">'+v.hp+" de "+v.max+' PG. Elige qué hace.</p>');h.push(goalHtml());h.push(pcStates(c));if(helpOn)h.push(turnGuide(p));h.push(foeNotes());
+      h.push('<span class="eyebrow">Ronda '+C.round+'</span><h2 style="font-size:1.2rem">Turno de '+esc(v.name)+'</h2><p class="sub">'+v.hp+" de "+v.max+' PG. Elige qué hace.</p>');h.push(goalHtml());h.push(simHtml());h.push(pcStates(c));if(helpOn)h.push(turnGuide(p));h.push(foeNotes());
       h.push('<div class="fgrid"><label>Objetivo<select id="au-target">'+F.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x.id===c.tgt?" selected":"")+'>'+esc(y.name)+" ("+band(y)[0].toLowerCase()+((x.conds||[]).length?", "+x.conds.join(", ").toLowerCase():"")+distLabel(c,x)+')</option>'}).join("")+'</select></label>'+
         '<label>Bono de ataque<input id="au-atk" type="number" value="'+esc(p.atk==null?5:p.atk)+'"></label><label>Daño<input id="au-dmg" value="'+esc(p.dmg||"1d8+3")+'"></label></div>'+
         '<div class="bar"><button type="button" class="pri" data-au="atk">Atacar, que tire el panel</button><label class="ck"><input type="checkbox" id="au-rng"'+(p.rng?" checked":"")+'> Ataque a distancia</label></div>'+
@@ -1293,7 +1293,7 @@ function buildEncounter(m,q,byIA){var R=roster(),C=S.combat,G=Array.isArray(m[0]
   R.forEach(function(p){p.hp=Math.max(p.hp,1);C.list.push({id:uid(),pcId:p.id,init:null,conds:[]})});
   G.forEach(function(g){for(var i=0;i<g[1];i++)C.list.push(mkMon(g[0],g[1]>1?g[0][0]+" "+(i+1):g[0][0]))});var gn=G.map(function(g){return g[1]+" × "+g[0][0].toLowerCase()}).join(", ");
   setGoal();autoStart();if(C.goal&&C.goal.k!=="all")C.log.splice(1,0,"Objetivo del combate: "+goalTxt(C.goal)+".");C.log.splice(0,0,(tot>1?"Aparecen "+tot+" enemigos: "+gn:"Aparece un enemigo: "+G[0][0][0].toLowerCase())+". Se tira iniciativa.");
-  autoPlace();logAct("Combate contra "+gn);touch();return true}
+  autoPlace();logAct("Combate contra "+gn);if(!C.over){var fx=simTxt(simRun(150));S.combat.simTxt=fx;clog(fx)}touch();return true}
 function autoPlace(){var m=curMap(),cols=Math.max(4,Math.floor(m.w/m.cell)),rows=Math.max(4,Math.floor(m.h/m.cell)),P=[],M=[];
   m.tokens=m.tokens.filter(function(t){return!t.ref||String(t.ref).indexOf("npc:")===0||pc(t.ref)||find(t.ref)});
   S.combat.list.forEach(function(c){var ref=c.pcId||c.id;if(m.tokens.some(function(t){return t.ref===ref}))return;(c.pcId?P:M).push(ref)});
@@ -1933,6 +1933,7 @@ function cantripDice(p,f){var L=int(p.level,1),k=1+(L>=5?1:0)+(L>=11?1:0)+(L>=17
 function spellInfo(p,sp){if(!sp)return"";var ef=sp[8],f=sp[1]===0?cantripDice(p,sp[3]):sp[3],T=[sp[1]?"Nivel "+sp[1]+", gasta un espacio":"Truco, no gasta nada"];
   T.push({atk:"tirada de ataque de conjuro contra la CA",save:"el enemigo tira salvación de "+sp[4]+(sp[5]?"; si la supera recibe la mitad":"; si la supera no le afecta"),auto:"impacta sin tirada",heal:"cura a un aliado",cond:"el enemigo tira salvación de "+sp[4]+"; si falla sufre el efecto",buff:"refuerza a tus aliados"}[sp[2]]);
   if(f)T.push((sp[2]==="heal"?"cura ":"daño ")+f+(sp[7]>1?" por rayo, "+sp[7]+" rayos":""));if(sp[6]>1&&sp[2]!=="heal")T.push(sp[6]>9?"a todos":"hasta "+sp[6]+" objetivos");
+  T.push("alcance "+fmt(SPRNG[sp[0]]||18)+" m");
   if(ef)T.push("efecto «"+ef.c+"»: "+CONDTXT[ef.c]+(ef.ab?"; repite la salvación al final de cada turno suyo":""));return T.join(" · ")}
 function spellHtml(p){sheet(p);slotsOf(p);var P=spellPool(p),own=p.spells.length>0,on=slotsOn(p),last=spellByName(p.lastSpell),cur=last&&P.indexOf(last)>=0&&canCast(p,last)?last:P.filter(function(x){return canCast(p,x)})[0]||P[0],
     dry=on&&!P.some(function(x){return x[1]>0&&canCast(p,x)})&&P.some(function(x){return x[1]>0}),sa=p.satk==null?(p.full&&p.cast?prof(p)+abMod(p,p.cast):5):p.satk,sd=p.sdc==null?(p.full&&p.cast?8+prof(p)+abMod(p,p.cast):13):p.sdc;
@@ -2092,6 +2093,7 @@ function checkOver(){var C=S.combat,G=C.goal||{k:"all"};if(C.over||!C.round)retu
   var ward=null;C.list.forEach(function(c){if(c.ally)ward=c});
   if(!won){if(ward&&hpOf(ward)<=0)lost=view(ward).name+" ha caído: el grupo no ha podido protegerlo. El combate termina.";
     else if(C.list.some(isPc)&&!C.list.some(function(c){return isPc(c)&&!has(c,"Muerto")&&hpOf(c)>0}))lost="Todos los personajes han caído. El combate termina."}
+  if(SIM){if(won)C.over="win";else if(lost)C.over="lose";return!!C.over}
   if(won){var xp=0,n=C.list.filter(isPc).length||1;E.forEach(function(c){xp+=XP[c.cr]||0});C.over="win";var lt=genLoot(xp);giveXp(Math.floor(xp/n));ambCombat(false);
     clog("Victoria. "+won+" Cada personaje gana "+Math.floor(xp/n)+" PX. Botín: "+lt.join("; ")+".");logAct("Combate ganado: "+Math.floor(xp/n)+" PX por personaje")}
   else if(lost){C.over="lose";ambCombat(false);clog(lost);logAct(ward&&hpOf(ward)<=0?"Combate perdido: no se pudo proteger a "+view(ward).name:"El grupo ha caído en combate")}
@@ -2128,7 +2130,7 @@ function reach(c){if(!distOn)return null;var m=curMap(),mt=tokOf(c);if(!mt)retur
   H.sort(function(a,b){return cellDist(mt,a.t)-cellDist(mt,b.t)});var v=view(c);
   if(isRanged(c)){var pv=find(c.tgt),pk=null;H.forEach(function(x){if(x.c===pv)pk=x});pk=pk&&Math.random()<.7?pk:H[Math.floor(Math.random()*H.length)];var near=cellDist(mt,H[0].t)<=1,cv=coverBetween(m,mt,pk.t);
     return{t:pk.c,dis:near,cover:cv,note:(near?" Dispara con un enemigo pegado: desventaja.":"")+(cv?" El objetivo tiene cobertura: +2 a su CA.":"")}}
-  var g=H[0],d0=cellDist(mt,g.t);if(d0>1){var mv=stepToward(m,mt,g.t);fogAuto(m,mt);if(mv)clog(v.name+" avanza "+fmt(mv*1.5)+" m hacia "+view(g.c).name+".")}
+  var g=H[0],d0=cellDist(mt,g.t);if(d0>1){var adj0=H.filter(function(x){return x!==g&&cellDist(mt,x.t)<=1}),mv=stepToward(m,mt,g.t);fogAuto(m,mt);if(mv){clog(v.name+" avanza "+fmt(mv*1.5)+" m hacia "+view(g.c).name+".");oppByHeroes(c,mt,adj0);if(hpOf(c)<=0)return{no:1}}}
   if(cellDist(mt,g.t)>1){clog(v.name+" no llega a nadie este turno: le faltan "+fmt((cellDist(mt,g.t)-1)*1.5)+" m.");why("Un ataque cuerpo a cuerpo exige estar en una casilla contigua. Cada criatura mueve 9 m por turno, seis casillas, y el terreno difícil cuesta el doble.");return{no:1}}
   return{t:g.c}}
 function pcReach(c,t,rng){if(!distOn)return null;var m=curMap(),a=tokOf(c),b=tokOf(t);if(!a||!b)return null;var dd=cellDist(a,b);
@@ -2138,8 +2140,8 @@ function distLabel(c,x){if(!distOn)return"";var a=tokOf(c),b=tokOf(x);return a&&
 function moveHtml(c){if(!distOn)return"";var a=tokOf(c),t=find(($("#au-target")||{}).value)||find(c.tgt)||foes()[0],b=t&&tokOf(t);if(!a||!b||cellDist(a,b)<=1)return"";
   return'<div class="bar"><button type="button" data-au="move"'+(c.moved?" disabled":"")+'>Acercarse al objetivo</button><span class="sub">'+(c.moved?"Ya se ha movido este turno.":"Los enemigos con figura en el mapa tienen la distancia junto a su nombre. Para pegar cuerpo a cuerpo hay que estar al lado.")+'</span></div>'}
 $("#cb-auto").addEventListener("click",function(e){if(!e.target.closest('[data-au="move"]'))return;
-  pcAct(function(c,v){var t=find($("#au-target").value),a=tokOf(c),b=t&&tokOf(t),p=pc(c.pcId),m=curMap();if(!a||!b||c.moved)return false;c.tgt=t.id;var mv=stepToward(m,a,b,Math.max(1,Math.floor((p.speed||9)/1.5)));fogAuto(m,a);c.moved=1;
-    clog(v.name+" se mueve "+fmt(mv*1.5)+" m hacia "+view(t).name+(cellDist(a,b)<=1?" y queda a su lado.":": aún le faltan "+fmt((cellDist(a,b)-1)*1.5)+" m."));why("Moverse no gasta la acción: después de acercarse todavía puede atacar. El terreno difícil cuesta el doble.");return"again"})});
+  pcAct(function(c,v){var t=find($("#au-target").value),a=tokOf(c),b=t&&tokOf(t),p=pc(c.pcId),m=curMap();if(!a||!b||c.moved)return false;c.tgt=t.id;var adj1=foes().map(function(f){return{c:f,t:tokOf(f)}}).filter(function(x){return x.t&&x.c!==t&&cellDist(a,x.t)<=1}),mv=stepToward(m,a,b,Math.max(1,Math.floor((p.speed||9)/1.5)));fogAuto(m,a);c.moved=1;
+    clog(v.name+" se mueve "+fmt(mv*1.5)+" m hacia "+view(t).name+(cellDist(a,b)<=1?" y queda a su lado.":": aún le faltan "+fmt((cellDist(a,b)-1)*1.5)+" m."));why("Moverse no gasta la acción: después de acercarse todavía puede atacar. El terreno difícil cuesta el doble.");oppByFoes(c,a,adj1);return hpOf(c)>0?"again":undefined})});
 /* ---- concentración ---- */
 var CONC=["Bendición","Escudo de fe","Fuego feérico","Inmovilizar persona","Telaraña","Risa horrible","Miedo","Sueño"];
 function concEnd(c,why0){var k=c.conc;if(!k)return;c.conc=null;S.combat.list.forEach(function(x){if(k.ids.indexOf(x.id)>=0){delCond(x,k.cond);if(x.fx)delete x.fx[k.cond]}});
@@ -2147,7 +2149,7 @@ function concEnd(c,why0){var k=c.conc;if(!k)return;c.conc=null;S.combat.list.for
 function concHit(c,n){if(!isPc(c)||!c.conc||n<=0)return;if(hpOf(c)<=0){concEnd(c,"cae inconsciente");return}var dc=Math.max(10,Math.floor(n/2)),r=d(20),m=saveOf(c,"CON"),ok=r+m>=dc;
   clog("  "+view(c).name+" recibe daño mientras se concentra en "+c.conc.sp+": salvación de CON, "+r+" "+sgn(m)+" = "+(r+m)+" contra CD "+dc+": "+(ok?"mantiene el conjuro.":"falla."));if(!ok)concEnd(c,"ha fallado la salvación")}
 function hurt(c,n){hurt0(c,n);concHit(c,n)}
-function castSpell(c,v){var nm=$("#au-spell").value,sp=spellByName(nm),p=pc(c.pcId),isC=!!(sp&&sp[8]&&CONC.indexOf(nm)>=0),had=[];
+function castSpell1(c,v){var nm=$("#au-spell").value,sp=spellByName(nm),p=pc(c.pcId),isC=!!(sp&&sp[8]&&CONC.indexOf(nm)>=0),had=[];
   if(isC){if(p&&canCast(p,sp)&&c.conc)concEnd(c,"empieza a concentrarse en otro conjuro");S.combat.list.forEach(function(x){if(has(x,sp[8].c))had.push(x.id)})}
   var r=castSpell0(c,v);if(r===false)return false;
   if(isC){var ids=S.combat.list.filter(function(x){return has(x,sp[8].c)&&had.indexOf(x.id)<0}).map(function(x){return x.id});
@@ -2320,6 +2322,53 @@ function sheetApply(p,j){var n=0,c=j.caracteristicas;sheet(p);
   if(j.ataque!=null&&sgnNum(j.ataque)!=null&&sgnNum(j.ataque)!==0)p.atk=sgnNum(j.ataque);if(j.dano&&/\d+d\d+/.test(j.dano))p.dmg=String(j.dano).replace(/\s/g,"").slice(0,20);
   if(num(j.cd_conjuros)>0)p.sdc=num(j.cd_conjuros);if(j.ataque_conjuros!=null&&sgnNum(j.ataque_conjuros))p.satk=sgnNum(j.ataque_conjuros);
   return n>=3?"Ficha completa rellenada: características, "+p.sv.length+" salvaciones, "+p.sk.length+" habilidades"+(p.cast?" y "+p.spells.length+" conjuros que el panel conoce":"")+".":"No he encontrado las características: rellena la ficha completa a mano."}
+/* ---- ataques de oportunidad y alcance de los conjuros ---- */
+var SPRNG={"Curar heridas":1.5,"Manos ardientes":4.5,"Onda atronadora":4.5,"Miedo":9,"Risa horrible":9,"Bendición":9,"Bola de fuego":45,"Relámpago":30,"Sueño":27,"Orbe cromático":27,"Proyectil mágico":36,"Rayo guía":36,"Rayo abrasador":36,"Descarga de fuego":36,"Descarga sobrenatural":36,"Toque gélido":36};
+function oppByHeroes(c,mt,L){L.forEach(function(x){var h=x.c,p=isPc(h)&&pc(h.pcId);if(!p||hpOf(c)<=0||hpOf(h)<=0||h.react||anyOf(h,SKIP)||cellDist(mt,x.t)<=1)return;h.react=1;
+    clog("Ataque de oportunidad: "+view(c).name+" se aleja de "+view(h).name+", que gasta su reacción en un golpe.");pcStrike(h,p,c,p.atk==null?5:int(p.atk,5),p.dmg||"1d8+3",{},false,false);
+    why("Cuando un enemigo sale del alcance de un personaje sin destrabarse, este puede gastar su reacción, una por ronda, en un ataque cuerpo a cuerpo.")})}
+function oppByFoes(c,a,L){L.forEach(function(x){var f=x.c;if(hpOf(c)<=0||hpOf(f)<=0||f.react||f.fled||anyOf(f,SKIP)||isRanged(f)||cellDist(a,x.t)<=1)return;f.react=1;var R=atkRoll(f,int(f.atk,4),c);
+    if(!R.hit)clog("Ataque de oportunidad: "+view(f).name+" golpea a "+view(c).name+" cuando se aleja. "+R.txt+": falla.");
+    else{var dm=rollF(f.dmg||"1d6+2",R.crit),n=dmgTo(c,dm.total);hurt(c,n);clog("Ataque de oportunidad: "+view(f).name+" golpea a "+view(c).name+" cuando se aleja. "+R.txt+": "+(R.crit?"crítico":"impacta")+" y hace "+n+" de daño ("+dm.text+")."+fall(c,true))}
+    why("Alejarse de un enemigo que está al lado le da un ataque gratis, salvo que gastes la acción en destrabarte. Rodearlo sin separarte de él no lo provoca.")})}
+function castSpell(c,v){var sp=spellByName(($("#au-spell")||{}).value);
+  if(sp&&distOn){var ally=sp[2]==="heal"||sp[2]==="buff",t=find(($(ally?"#au-heal-t":"#au-target")||{}).value),a=tokOf(c),b=t&&tokOf(t),rg=SPRNG[sp[0]]||18;
+    if(a&&b&&t!==c){var dd=Math.max(1,cellDist(a,b))*1.5;if(dd>rg){clog(v.name+" no puede lanzar "+sp[0]+" sobre "+view(t).name+": está a "+fmt(dd)+" m y el conjuro alcanza "+fmt(rg)+" m. Acércate o elige otro objetivo.");return false}}}
+  return castSpell1(c,v)}
+
+/* ---- calibrador de dificultad ---- */
+var SIM=false;
+function simSpell(c,p){var F=foes(),K=p.spells.map(spellByName).filter(function(x){return x&&x[3]&&x[2]!=="heal"&&canCast(p,x)});if(!K.length||!F.length)return false;
+  K.sort(function(a,b){return b[1]-a[1]});var sp=K[0];if(sp[1]>0&&S.combat.round>3&&K[K.length-1][1]===0)sp=K[K.length-1];
+  var f=sp[1]===0?cantripDice(p,sp[3]):sp[3],atk=p.satk==null?5:p.satk,dc=p.sdc==null?13:p.sdc,T=F.slice().sort(function(a,b){return hpOf(a)-hpOf(b)}).slice(0,Math.min(sp[6],3));if(sp[1]>0&&slotsOn(p))p.used[sp[1]-1]++;
+  if(sp[2]==="auto")hurt(T[0],rollF(f).total);
+  else if(sp[2]==="atk"){for(var i=0;i<sp[7];i++){var t=hpOf(T[0])>0?T[0]:foes()[0];if(!t)break;var R=atkRoll(c,atk,t);if(R.hit)hurt(t,rollF(f,R.crit).total)}}
+  else{var b=rollF(f).total;T.forEach(function(t){var ok=d(20)+saveMod(t,sp[4])>=dc;hurt(t,ok?(sp[5]?Math.floor(b/2):0):b)})}
+  return true}
+function simPc(c){var p=pc(c.pcId),F=foes(),G=S.combat.goal;if(!F.length)return;delCond(c,"Derribado");
+  if(has(c,"Agarrado")&&Math.random()<.5){if(d(20)+2>=((c.fx&&c.fx.Agarrado)||{dc:12}).dc){delCond(c,"Agarrado")}endSaves(c);return}
+  if(G&&G.k==="task"&&Math.random()<.5){if(d(20)+3>=12)G.prog++;endSaves(c);return}
+  if(/barbar/.test(clsOf(p))&&!has(c,"En furia")&&featUsed(p,"rage")<2){p.feat=p.feat||{};p.feat.rage=featUsed(p,"rage")+1;addCond(c,"En furia")}
+  var dn=null;heroes(false).forEach(function(h){if(isPc(h)&&hpOf(h)<=0&&!has(h,"Muerto"))dn=h});
+  if(dn&&p.cast&&p.spells.some(function(n){var x=spellByName(n);return x&&x[2]==="heal"&&canCast(p,x)})){var hs=p.spells.map(spellByName).filter(function(x){return x&&x[2]==="heal"&&canCast(p,x)})[0];if(hs[1]>0&&slotsOn(p))p.used[hs[1]-1]++;mend(dn,rollF(hs[3]).total+3);endSaves(c);return}
+  if(!(p.cast&&p.spells.length&&simSpell(c,p))){var t=F.slice().sort(function(a,b){return hpOf(a)-hpOf(b)})[0];c.snk=0;for(var i=0;i<(extraAtk(p)?2:1)&&hpOf(t)>0;i++)pcStrike(c,p,t,p.atk==null?5:int(p.atk,5),p.dmg||"1d8+3",{},false,false)}
+  endSaves(c)}
+function simRun(N){var C0=JSON.stringify(S.combat),P0=JSON.stringify(S.party),d0=distOn,h0=helpOn,R={n:0,win:0,rounds:0,down:0,death:0};SIM=true;distOn=false;helpOn=false;
+  try{for(var k=0;k<N;k++){S.combat=JSON.parse(C0);S.party=JSON.parse(P0);var C=S.combat,g=0;C.over=null;C.wait=0;C.list.forEach(function(c){if(c.init==null)c.init=d(20)+int(isPc(c)?pc(c.pcId).init:c.mod,0)});
+      if(!C.round){sortList();C.round=1;C.turnId=C.list[0].id}var r0=C.round;
+      while(g++<500){if(checkOver())break;var c=find(C.turnId);if(!c)break;
+        if(!isPc(c)){if(hpOf(c)>0&&!c.fled&&!c.ally)monsterTurn(c)}else if(has(c,"Muerto")||has(c,"Estable")){}else if(hpOf(c)<=0)deathSave(c);else if(anyOf(c,SKIP))endSaves(c);else simPc(c);
+        if(checkOver())break;advance()}
+      R.n++;if(C.over==="win")R.win++;R.rounds+=C.round-r0+1;var dw=0,dd=0;C.list.forEach(function(x){if(isPc(x)){if(has(x,"Muerto"))dd++;else if(hpOf(x)<=0)dw++}});R.down+=dw+dd;if(dd)R.death++}}
+  finally{S.combat=JSON.parse(C0);S.party=JSON.parse(P0);SIM=false;distOn=d0;helpOn=h0}
+  return R}
+function simTxt(R){var w=Math.round(R.win/R.n*100),dp=Math.round(R.death/R.n*100),lab=w>=90&&dp<=5?"asequible":w>=75?"equilibrado":w>=50?"arriesgado":"muy peligroso";
+  return"Pronóstico tras "+R.n+" simulaciones desde la situación actual: el grupo gana el "+w+" % de las veces. De media quedan "+fmt(R.rounds/R.n)+" rondas, caen "+fmt(R.down/R.n)+" personajes y en el "+dp+" % muere alguien. Valoración: "+lab+"."}
+function simHtml(){var C=S.combat;return'<div class="bar"><button type="button" data-au="sim">Calcular la dificultad</button>'+(C.round&&!C.over&&foes().length>1?'<button type="button" class="ghost" data-au="ease">Quitar un enemigo</button>':"")+'</div>'+(C.simTxt?'<p class="sub" style="color:var(--ink)">'+esc(C.simTxt)+'</p><p class="sub">Es una estimación: el panel juega por vosotros de forma sencilla, sin vuestras ideas ni el terreno.</p>':"")}
+$("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data-au]");if(!b)return;var C=S.combat;
+  if(b.dataset.au==="sim"){if(!C.list.some(isPc)||!C.list.some(function(c){return!isPc(c)&&!c.ally})){C.simTxt="Hacen falta personajes y enemigos en la lista.";touch();return}var tx=simTxt(simRun(200));S.combat.simTxt=tx;touch()}
+  else if(b.dataset.au==="ease"){var F=foes().filter(function(c){return!c.boss});if(F.length<1||foes().length<2)return;var x=F.slice().sort(function(a,b2){return hpOf(b2)-hpOf(a)})[F.length-1];x.fled="huye";addCond(x,"Huido");clog(view(x).name+" se retira del combate: quien dirige ha aligerado el encuentro.");C.simTxt="";if(C.turnId===x.id){advance();autoStep()}touch()}});
+$("#cb-auto").addEventListener("change",function(e){if(e.target.id!=="au-target")return;var c=find(S.combat.turnId);if(c&&isPc(c)){c.tgt=e.target.value;touch()}});
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
