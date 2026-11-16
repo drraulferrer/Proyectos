@@ -70,6 +70,10 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
 - **Monstruos que lanzan conjuros**: `casterOf()` reconoce por el nombre a lanzadores arcanos y divinos; `monCast()` decide entre curar a un aliado, inmovilizar, un conjuro de área, uno de daño o un truco, con un número de conjuros según su VD. Un personaje paralizado pierde el turno y repite la salvación. El bestiario base suma «Acólito oscuro», «Chamán goblin» y «Mago renegado», sin retrato.
 - **Encuentros mixtos**: `buildEncounter()` acepta varios grupos. El combate automático mezcla un líder con secuaces (`mixPick`, se apaga con «Mezclar tipos de criatura») y la IA puede pedir varios tipos separados por comas en `[COMBATE: …]`.
 - **Criatura personalizada**: en «Combate», «Añadir criatura», y en la historia, un cuadro de texto acepta las estadísticas pegadas de un creador externo; `monParse()` saca VD, PG, CA, iniciativa, ataque, daño y número de ataques sin IA. `rollF()` admite daño con varias partes, como `1d6+2+1d4`. Desde ese formulario se sube o genera la imagen; para guardarla, `mEnsure()` mete la criatura en `mons` de la historia en mesa.
+- **Importador completo**: `sheetFromFields()` lee del PDF de D&D Beyond características, salvaciones y habilidades con competencia (las deduce comparando el bono con el modificador), velocidad, ataque, daño y conjuros; `sheetApply()` las vuelca en la ficha, también desde el JSON que devuelve la IA al leer una captura. Los nombres de campo siguen sin contrastarse con un PDF real.
+- **Ataques de oportunidad y alcance**: `oppByFoes()` y `oppByHeroes()` resuelven el ataque gratis al alejarse de un enemigo contiguo con «Acercarse al objetivo»; arrastrar la figura a mano no lo provoca. `SPRNG` da el alcance de cada conjuro, 18 m si no figura.
+- **Calibrador de dificultad**: `simRun(N)` juega el combate N veces sobre una copia del estado (`SIM`), con una táctica sencilla para los personajes (`simPc`), y `simTxt()` da el pronóstico. Se calcula al montar un encuentro automático y con «Calcular la dificultad»; «Quitar un enemigo» aligera el combate.
+- **Muros**: casillas `w` en `m.ter`, pintadas con la herramienta «Muro» y ocultas a los jugadores. Bloquean el paso (`pathTo`, búsqueda de camino), la visión de la niebla (`losClear`, `fogLos`) y los disparos y conjuros.
 - **Ambiente**: seis ambientes sonoros sintetizados con Web Audio, sin archivos de audio.
 - **Copia de seguridad**: en el Panel, descarga y restauración de toda la campaña.
 - **Reglas**: chuleta, estados y guía para la primera sesión.
@@ -119,7 +123,7 @@ Las preferencias de cada dispositivo van aparte en `localStorage`: motor de IA, 
 
 ## Límites conocidos
 
-- El combate automático cubre ataques y veintisiete conjuros comunes, con sus estados. Los rasgos de clase cubiertos son los más comunes de cada clase, no todos. El alcance de los conjuros, los ataques de oportunidad y las paredes no se cuentan. Los espacios de conjuro llegan a nivel 3. Los rasgos de los monstruos son reglas simplificadas del panel, no las del manual. Las salvaciones de los monstruos son una aproximación a partir de su iniciativa y su VD.
+- El combate automático cubre ataques y veintisiete conjuros comunes, con sus estados. Los rasgos de clase cubiertos son los más comunes de cada clase, no todos. Los muros son casillas enteras, no líneas finas, y el ataque de oportunidad solo salta al moverse con el botón del panel. Los espacios de conjuro llegan a nivel 3. Los rasgos de los monstruos son reglas simplificadas del panel, no las del manual. Las salvaciones de los monstruos son una aproximación a partir de su iniciativa y su VD.
 - La IA no ve los mapas salvo que el modelo tenga visión; trabaja con la descripción escrita de cada mapa.
 - Un modelo pequeño puede escribir mal las marcas o devolver un JSON ilegible. El panel lo avisa y basta con repetir.
 - La sincronía entre pestañas solo funciona en el mismo navegador.
@@ -133,5 +137,4 @@ Las claves quedaron guardadas en el entorno de la sesión, no en el repositorio:
 
 - Probar con un PDF real de D&D Beyond y ajustar los nombres de campo.
 - Vista propia para cada jugador en su móvil.
-- Leer las características y competencias al importar de D&D Beyond.
-- Ataques de oportunidad, alcance de los conjuros y paredes que bloqueen el paso y la visión.
+- Muros finos entre casillas y puertas que se abren.

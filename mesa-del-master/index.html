@@ -114,6 +114,7 @@ label.ck{flex-direction:row;align-items:center;gap:6px;text-transform:none;lette
 .rollc{border-top:1px solid var(--divider);padding-top:10px;margin-top:10px} .rollc p{margin:0 0 6px}
 .terd{fill:#b7791f;fill-opacity:.3;stroke:#b7791f;stroke-opacity:.8;stroke-dasharray:4 3;vector-effect:non-scaling-stroke;pointer-events:none}
 .terc{fill:#4a90d9;fill-opacity:.28;stroke:#4a90d9;stroke-opacity:.9;stroke-width:2;vector-effect:non-scaling-stroke;pointer-events:none}
+.terw{fill:#111;fill-opacity:.55;stroke:#e5484d;stroke-opacity:.9;stroke-width:2;vector-effect:non-scaling-stroke;pointer-events:none}
 .goal{border-left:3px solid var(--fx);padding:4px 10px;margin:0}
 .tk circle.ring{fill:none!important;pointer-events:none}
 .tk.chest{cursor:grab} .tk.chest.sel .cb{stroke:var(--fx);stroke-width:4}
@@ -600,6 +601,7 @@ label{display:flex;flex-direction:column;gap:3px}
       <button type="button" data-tool="cubo">Cubo</button>
       <button type="button" class="dm" data-tool="terd" title="Moverse por estas casillas cuesta el doble">Terreno difícil</button>
       <button type="button" class="dm" data-tool="terc" title="Un ataque a distancia que cruce estas casillas tiene +2 a la CA del objetivo">Cobertura</button>
+      <button type="button" class="dm" data-tool="terw" title="Bloquea el paso, la vista y los disparos. Los jugadores no ven esta marca">Muro</button>
       <button type="button" class="dm" data-tool="terx">Borrar terreno</button>
     </div>
     <div class="bar dm"><label style="flex-direction:row;align-items:center;gap:6px;font-size:.95rem;color:var(--ink)"><input id="fog-on" type="checkbox" style="min-height:0"> Niebla de guerra</label>
@@ -1554,9 +1556,9 @@ function fogSet(m,x,y,v){var f=fogOf(m),z=fogSize(m);if(x<0||y<0||x>=z.c||y>=z.r
   f.r[y]=row.slice(0,x)+(v?"1":"0")+row.slice(x+1);return true}
 function fogBrush(m,x,y,rad,v){var ch=false;for(var i=-rad;i<=rad;i++)for(var j=-rad;j<=rad;j++)if(i*i+j*j<=rad*rad+rad)ch=fogSet(m,x+i,y+j,v)||ch;return ch}
 function fogAll(m,v){var f=fogOf(m),z=fogSize(m),row=new Array(z.c+1).join(v?"1":"0");f.r=[];for(var y=0;y<z.r;y++)f.r.push(row)}
-function fogAuto(m,t){var f=m.fog;if(!f||!f.on||!f.auto)return false;var c=t.ref&&(pc(t.ref)||(find(t.ref)&&find(t.ref).pcId));if(!c)return false;return fogBrush(m,t.x,t.y,Math.max(1,int(f.rad,4)),true)}
+function fogAuto(m,t){var f=m.fog;if(!f||!f.on||!f.auto)return false;var c=t.ref&&(pc(t.ref)||(find(t.ref)&&find(t.ref).pcId));if(!c)return false;return fogLos(m,t,Math.max(1,int(f.rad,4)))}
 function fogVisSet(m){var f=m.fog,V={},r=Math.max(1,int(f.rad,4));m.tokens.forEach(function(t){if(!(t.ref&&pc(t.ref)))return;var sz=t.size||1;
-    for(var a=-r;a<=r+sz-1;a++)for(var b=-r;b<=r+sz-1;b++){var dx=a<0?a:a>=sz?a-sz+1:0,dy=b<0?b:b>=sz?b-sz+1:0;if(dx*dx+dy*dy<=r*r+r)V[(t.x+a)+","+(t.y+b)]=1}});return V}
+    for(var a=-r;a<=r+sz-1;a++)for(var b=-r;b<=r+sz-1;b++){var dx=a<0?a:a>=sz?a-sz+1:0,dy=b<0?b:b>=sz?b-sz+1:0;if(dx*dx+dy*dy<=r*r+r&&losClear(m,t.x,t.y,t.x+a,t.y+b))V[(t.x+a)+","+(t.y+b)]=1}});return V}
 function fogShow(m,x,y){var f=m.fog;if(!f||!f.on)return true;if(!fogSeen(m,x,y))return false;return f.mode==="memo"||!!fogVisSet(m)[x+","+y]}
 function fogSvg(m){var f=m.fog;if(!f||!f.on)return"";var z=fogSize(m),c=m.cell,dark=[],dim=[],vis=f.mode==="memo"?null:fogVisSet(m);
   function run(out,y,x0,x1){out.push("M"+(m.ox+x0*c)+" "+(m.oy+y*c)+"h"+(x1-x0)*c+"v"+c+"h"+(-(x1-x0)*c)+"z")}
@@ -2113,28 +2115,23 @@ try{distOn=localStorage.getItem(LS+"-dist")!=="0"}catch(e){}
 function tokOf(c){var ref=c.pcId||c.id,r=null;curMap().tokens.forEach(function(t){if(t.ref===ref)r=t});return r}
 function cellDist(a,b){var sa=a.size||1,sb=b.size||1;return Math.max(Math.max(0,b.x-(a.x+sa-1),a.x-(b.x+sb-1)),Math.max(0,b.y-(a.y+sa-1),a.y-(b.y+sb-1)))}
 function terOf(m,x,y){return(m.ter||{})[x+","+y]||""}
-function terPaint(m,c){if(c.x<0||c.y<0||c.x>=Math.ceil(m.w/m.cell)||c.y>=Math.ceil(m.h/m.cell))return;m.ter=m.ter||{};var k=c.x+","+c.y;if(TOOL==="terx")delete m.ter[k];else m.ter[k]=TOOL==="terd"?"d":"c"}
-function terSvg(m){var c=m.cell,h=[];Object.keys(m.ter||{}).forEach(function(k){var q=k.split(","),d0=m.ter[k]==="d";h.push('<rect class="'+(d0?"terd":"terc")+'" x="'+(m.ox+q[0]*c)+'" y="'+(m.oy+q[1]*c)+'" width="'+c+'" height="'+c+'"/>')});return h.join("")}
+function terPaint(m,c){if(c.x<0||c.y<0||c.x>=Math.ceil(m.w/m.cell)||c.y>=Math.ceil(m.h/m.cell))return;m.ter=m.ter||{};var k=c.x+","+c.y;if(TOOL==="terx")delete m.ter[k];else m.ter[k]=TOOL==="terd"?"d":TOOL==="terw"?"w":"c"}
+function terSvg(m){var c=m.cell,h=[];Object.keys(m.ter||{}).forEach(function(k){var q=k.split(","),d0=m.ter[k]==="d",w0=m.ter[k]==="w";if(w0&&(players||solo))return;h.push('<rect class="'+(w0?"terw":d0?"terd":"terc")+'" x="'+(m.ox+q[0]*c)+'" y="'+(m.oy+q[1]*c)+'" width="'+c+'" height="'+c+'"/>')});return h.join("")}
 function pathCost(m,x0,y0,x1,y1){var x=x0,y=y0,n=0,g=0;while((x!==x1||y!==y1)&&g++<400){x+=Math.sign(x1-x);y+=Math.sign(y1-y);n+=terOf(m,x,y)==="d"?2:1}return n}
 function coverBetween(m,a,b){var x0=a.x+(a.size||1)/2,y0=a.y+(a.size||1)/2,x1=b.x+(b.size||1)/2,y1=b.y+(b.size||1)/2,n=Math.ceil(Math.max(Math.abs(x1-x0),Math.abs(y1-y0))*2);
   for(var i=1;i<=n;i++){var cx=Math.floor(x0+(x1-x0)*i/n),cy=Math.floor(y0+(y1-y0)*i/n);if(cx===a.x&&cy===a.y)continue;if(terOf(m,cx,cy)==="c")return true}return false}
 function isRanged(c){return/arco|ballesta|honda|jabalina|dardo|flecha|escupit|rayo|piedra/.test(flat(c.an||""))}
-function stepToward(m,t,g,bud){var mv=0;bud=bud||6;var cols=Math.ceil(m.w/m.cell),rows=Math.ceil(m.h/m.cell),s=t.size||1;
-  while(bud>0&&cellDist(t,g)>1){var best=null,bd=cellDist(t,g)+Math.abs(g.x-t.x)*.001+Math.abs(g.y-t.y)*.001;
-    for(var dx=-1;dx<=1;dx++)for(var dy=-1;dy<=1;dy++){if(!dx&&!dy)continue;var nx=t.x+dx,ny=t.y+dy;if(nx<0||ny<0||nx+s>cols||ny+s>rows)continue;
-      if(m.tokens.some(function(o){return o!==t&&!isChest(o)&&o.x===nx&&o.y===ny}))continue;var cost=terOf(m,nx,ny)==="d"?2:1;if(cost>bud)continue;
-      var dd=cellDist({x:nx,y:ny,size:s},g)+Math.abs(g.x-nx)*.001+Math.abs(g.y-ny)*.001;if(dd<bd){bd=dd;best={x:nx,y:ny,c:cost}}}
-    if(!best)break;t.x=best.x;t.y=best.y;bud-=best.c;mv++}
-  return mv}
 function reach(c){if(!distOn)return null;var m=curMap(),mt=tokOf(c);if(!mt)return null;var H=heroes(true).map(function(h){return{c:h,t:tokOf(h)}}).filter(function(x){return x.t});if(!H.length)return null;
   H.sort(function(a,b){return cellDist(mt,a.t)-cellDist(mt,b.t)});var v=view(c);
-  if(isRanged(c)){var pv=find(c.tgt),pk=null;H.forEach(function(x){if(x.c===pv)pk=x});pk=pk&&Math.random()<.7?pk:H[Math.floor(Math.random()*H.length)];var near=cellDist(mt,H[0].t)<=1,cv=coverBetween(m,mt,pk.t);
+  if(isRanged(c)){var HL=H.filter(function(x){return tokLos(m,mt,x.t)});if(HL.length)H=HL}
+  if(isRanged(c)&&tokLos(m,mt,H[0].t)){var pv=find(c.tgt),pk=null;H.forEach(function(x){if(x.c===pv)pk=x});pk=pk&&Math.random()<.7?pk:H[Math.floor(Math.random()*H.length)];var near=cellDist(mt,H[0].t)<=1,cv=coverBetween(m,mt,pk.t);
     return{t:pk.c,dis:near,cover:cv,note:(near?" Dispara con un enemigo pegado: desventaja.":"")+(cv?" El objetivo tiene cobertura: +2 a su CA.":"")}}
   var g=H[0],d0=cellDist(mt,g.t);if(d0>1){var adj0=H.filter(function(x){return x!==g&&cellDist(mt,x.t)<=1}),mv=stepToward(m,mt,g.t);fogAuto(m,mt);if(mv){clog(v.name+" avanza "+fmt(mv*1.5)+" m hacia "+view(g.c).name+".");oppByHeroes(c,mt,adj0);if(hpOf(c)<=0)return{no:1}}}
   if(cellDist(mt,g.t)>1){clog(v.name+" no llega a nadie este turno: le faltan "+fmt((cellDist(mt,g.t)-1)*1.5)+" m.");why("Un ataque cuerpo a cuerpo exige estar en una casilla contigua. Cada criatura mueve 9 m por turno, seis casillas, y el terreno difícil cuesta el doble.");return{no:1}}
   return{t:g.c}}
 function pcReach(c,t,rng){if(!distOn)return null;var m=curMap(),a=tokOf(c),b=tokOf(t);if(!a||!b)return null;var dd=cellDist(a,b);
   if(!rng){if(dd>1){clog(view(c).name+" está a "+fmt(dd*1.5)+" m de "+view(t).name+" y no llega cuerpo a cuerpo. Pulsa «Acercarse al objetivo», mueve su figura en el mapa, o marca «Ataque a distancia».");return{no:1}}return{}}
+  if(!tokLos(m,a,b)){clog(view(c).name+" no ve a "+view(t).name+": hay un muro en medio. Muévete hasta tener línea de visión.");return{no:1}}
   var near=foes().some(function(f){var ft=tokOf(f);return ft&&cellDist(a,ft)<=1}),cv=coverBetween(m,a,b);return{dis:near,cover:cv}}
 function distLabel(c,x){if(!distOn)return"";var a=tokOf(c),b=tokOf(x);return a&&b?", a "+fmt(Math.max(1,cellDist(a,b))*1.5)+" m":""}
 function moveHtml(c){if(!distOn)return"";var a=tokOf(c),t=find(($("#au-target")||{}).value)||find(c.tgt)||foes()[0],b=t&&tokOf(t);if(!a||!b||cellDist(a,b)<=1)return"";
@@ -2333,6 +2330,7 @@ function oppByFoes(c,a,L){L.forEach(function(x){var f=x.c;if(hpOf(c)<=0||hpOf(f)
     why("Alejarse de un enemigo que está al lado le da un ataque gratis, salvo que gastes la acción en destrabarte. Rodearlo sin separarte de él no lo provoca.")})}
 function castSpell(c,v){var sp=spellByName(($("#au-spell")||{}).value);
   if(sp&&distOn){var ally=sp[2]==="heal"||sp[2]==="buff",t=find(($(ally?"#au-heal-t":"#au-target")||{}).value),a=tokOf(c),b=t&&tokOf(t),rg=SPRNG[sp[0]]||18;
+    if(a&&b&&t!==c&&!tokLos(curMap(),a,b)){clog(v.name+" no ve a "+view(t).name+": hay un muro en medio y no puede lanzarle "+sp[0]+".");return false}
     if(a&&b&&t!==c){var dd=Math.max(1,cellDist(a,b))*1.5;if(dd>rg){clog(v.name+" no puede lanzar "+sp[0]+" sobre "+view(t).name+": está a "+fmt(dd)+" m y el conjuro alcanza "+fmt(rg)+" m. Acércate o elige otro objetivo.");return false}}}
   return castSpell1(c,v)}
 
@@ -2369,6 +2367,19 @@ $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data
   if(b.dataset.au==="sim"){if(!C.list.some(isPc)||!C.list.some(function(c){return!isPc(c)&&!c.ally})){C.simTxt="Hacen falta personajes y enemigos en la lista.";touch();return}var tx=simTxt(simRun(200));S.combat.simTxt=tx;touch()}
   else if(b.dataset.au==="ease"){var F=foes().filter(function(c){return!c.boss});if(F.length<1||foes().length<2)return;var x=F.slice().sort(function(a,b2){return hpOf(b2)-hpOf(a)})[F.length-1];x.fled="huye";addCond(x,"Huido");clog(view(x).name+" se retira del combate: quien dirige ha aligerado el encuentro.");C.simTxt="";if(C.turnId===x.id){advance();autoStep()}touch()}});
 $("#cb-auto").addEventListener("change",function(e){if(e.target.id!=="au-target")return;var c=find(S.combat.turnId);if(c&&isPc(c)){c.tgt=e.target.value;touch()}});
+/* ---- muros: bloquean el paso, la vista y los disparos ---- */
+function losClear(m,x0,y0,x1,y1){if(!m.ter)return true;var n=Math.max(Math.abs(x1-x0),Math.abs(y1-y0))*2;
+  for(var i=1;i<n;i++){var cx=Math.floor(x0+.5+(x1-x0)*i/n),cy=Math.floor(y0+.5+(y1-y0)*i/n);if((cx===x0&&cy===y0)||(cx===x1&&cy===y1))continue;if(terOf(m,cx,cy)==="w")return false}return true}
+function tokLos(m,a,b){return losClear(m,a.x,a.y,b.x,b.y)}
+function fogLos(m,t,rad){var ch=false;for(var i=-rad;i<=rad;i++)for(var j=-rad;j<=rad;j++)if(i*i+j*j<=rad*rad+rad&&losClear(m,t.x,t.y,t.x+i,t.y+j))ch=fogSet(m,t.x+i,t.y+j,true)||ch;return ch}
+function pathTo(m,t,g){var cols=Math.ceil(m.w/m.cell),rows=Math.ceil(m.h/m.cell),s=t.size||1,occ={},D={},prev={},k0=t.x+","+t.y,Q=[[0,t.x,t.y]],best=null;
+  m.tokens.forEach(function(o){if(o!==t&&!isChest(o))occ[o.x+","+o.y]=1});D[k0]=0;
+  while(Q.length){Q.sort(function(a,b){return a[0]-b[0]});var q=Q.shift(),k=q[1]+","+q[2];if(q[0]>D[k])continue;if(cellDist({x:q[1],y:q[2],size:s},g)<=1){best=k;break}if(q[0]>45)break;
+    for(var dx=-1;dx<=1;dx++)for(var dy=-1;dy<=1;dy++){if(!dx&&!dy)continue;var nx=q[1]+dx,ny=q[2]+dy,nk=nx+","+ny;if(nx<0||ny<0||nx+s>cols||ny+s>rows||occ[nk]||terOf(m,nx,ny)==="w")continue;
+      if(dx&&dy&&(terOf(m,q[1]+dx,q[2])==="w"||terOf(m,q[1],q[2]+dy)==="w"))continue;
+      var nd=q[0]+(terOf(m,nx,ny)==="d"?2:1)+(dx&&dy?.001:0);if(D[nk]==null||nd<D[nk]){D[nk]=nd;prev[nk]=k;Q.push([nd,nx,ny])}}}
+  if(!best)return null;var P=[];while(best!==k0){P.unshift(best.split(",").map(Number));best=prev[best]}return P}
+function stepToward(m,t,g,bud){bud=bud||6;var P=pathTo(m,t,g),mv=0;if(!P)return 0;for(var i=0;i<P.length;i++){var c=terOf(m,P[i][0],P[i][1])==="d"?2:1;if(c>bud)break;t.x=P[i][0];t.y=P[i][1];bud-=c;mv++}return mv}
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -2738,7 +2749,7 @@ board.addEventListener("pointermove",function(e){if(!drag){if(placing.length){va
   if(drag.k==="fog"){if(fogBrush(m,c.x,c.y,int($("#fog-brush").value,1),drag.v)){drag.ch=true;drawSvg()}return}
   if(drag.k==="pan"){V.x=drag.vx+e.clientX-drag.cx;V.y=drag.vy+e.clientY-drag.cy;applyV();return}
   if(drag.k==="tok"){var t=drag.t,s=t.size||1;t.x=Math.max(0,Math.min(Math.ceil(m.w/m.cell)-s,c.x-drag.dx));t.y=Math.max(0,Math.min(Math.ceil(m.h/m.cell)-s,c.y-drag.dy));
-    n=pathCost(m,drag.sx,drag.sy,t.x,t.y)*1.5;var sp=t.speed==null?9:t.speed,bad=n>sp;a=ctr(m,drag.sx,drag.sy,s);b=ctr(m,t.x,t.y,s);
+    n=pathCost(m,drag.sx,drag.sy,t.x,t.y)*1.5;var sp=t.speed==null?9:t.speed,bad=n>sp||!losClear(m,drag.sx,drag.sy,t.x,t.y)||terOf(m,t.x,t.y)==="w";a=ctr(m,drag.sx,drag.sy,s);b=ctr(m,t.x,t.y,s);
     drag.line=n?{x1:a.x,y1:a.y,x2:b.x,y2:b.y,bad:bad,label:fmt(n)+" m"}:null;
     mapMsg(tokName(t)+" se mueve "+fmt(n)+" m"+(bad?", más que su velocidad de "+fmt(sp)+" m.":" de "+fmt(sp)+" m."))}
   else if(drag.k==="rule"){n=Math.max(Math.abs(c.x-drag.a.x),Math.abs(c.y-drag.a.y));a=ctr(m,drag.a.x,drag.a.y);b=ctr(m,c.x,c.y);
