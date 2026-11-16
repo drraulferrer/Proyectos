@@ -461,6 +461,8 @@ label{display:flex;flex-direction:column;gap:3px}
             </details>
             <details class="dm"><summary>Añadir una criatura a mano</summary>
               <form id="mon-form" class="stack" style="gap:8px;margin-top:8px" autocomplete="off">
+                <label class="wide">Pega aquí las estadísticas de tu creador de criaturas<textarea id="mo-paste" style="min-height:4.5em" placeholder="Hombre lagarto. CR ½, 30 PV, CA 12, ataque cuerpo a cuerpo +4, 1d6 + 2 daño perforante + 1d4 veneno"></textarea></label>
+                <div class="bar"><button type="button" id="mo-parse">Rellenar los campos</button></div>
                 <div class="fgrid"><label>Nombre<input id="mo-n"></label><label>CA<input id="mo-ca" type="number" value="13"></label><label>PG<input id="mo-pg" type="number" value="20"></label><label>Mod. iniciativa<input id="mo-in" type="number" value="1"></label>
                   <label>VD<input id="mo-vd" value="1/2"></label><label>Bono de ataque<input id="mo-at" type="number" value="4"></label><label>Daño<input id="mo-dm" value="1d8+2"></label><label>Ataques por turno<input id="mo-na" type="number" value="1" min="1" max="5"></label></div>
                 <label class="wide">Aspecto, para generar su imagen<input id="mo-ds" placeholder="Reptil bípedo de escamas verdes, con cresta y un garrote de hueso"></label>
@@ -555,6 +557,8 @@ label{display:flex;flex-direction:column;gap:3px}
     <button type="button" id="cb-exit" class="solo-cb-only">Salir</button>
     <form id="add-mon" class="panel dm" autocomplete="off">
       <h3>Añadir criatura</h3>
+      <label class="wide">Pega aquí las estadísticas de tu creador de criaturas<textarea id="m-paste" style="min-height:4.5em" placeholder="Hombre lagarto. CR ½, 30 PV, CA 12, ataque cuerpo a cuerpo +4, 1d6 + 2 daño perforante + 1d4 veneno"></textarea></label>
+      <div class="bar"><button type="button" id="m-parse">Rellenar los campos</button><span id="m-msg" class="sub" role="status" style="flex:1 1 14em"></span></div>
       <div class="bar">
         <label>Del bestiario<select id="m-pick"></select></label>
         <label>Nombre<input id="m-name" required style="width:11em"></label>
@@ -562,12 +566,17 @@ label{display:flex;flex-direction:column;gap:3px}
         <label>PG<input id="m-hp" type="number" min="1" max="999" value="10"></label>
         <label>Inic.<input id="m-init" type="number" min="-5" max="15" value="0"></label>
         <label>Ataque<input id="m-atk" type="number" min="-2" max="20" value="4"></label>
-        <label>Daño<input id="m-dmg" value="1d6+2" style="width:6em"></label>
+        <label>Daño<input id="m-dmg" value="1d6+2" style="width:10em" placeholder="1d6+2+1d4"></label>
+        <label>Ataques<input id="m-na" type="number" min="1" max="5" value="1"></label>
         <label>VD<select id="m-cr"></select></label>
         <label>Cantidad<input id="m-qty" type="number" min="1" max="20" value="1"></label>
         <button class="pri" type="submit">Añadir</button>
       </div>
-      <p class="small muted">Las cifras del bestiario son orientativas y editables. Confírmalas con tu Manual de Monstruos antes de usarlas.</p>
+      <div class="bar"><span id="m-pic"></span><label style="flex:1 1 14em">Aspecto, para su imagen<input id="m-look" placeholder="Reptil bípedo de escamas verdes, con cresta y un garrote de hueso" style="width:100%"></label>
+        <button type="button" id="m-up">Subir imagen</button><button type="button" id="m-gen">Generar imagen</button><button type="button" class="kie-only" id="m-kie">Generar con Kie.ai</button></div>
+      <div id="m-genbox" class="stack" style="gap:8px" hidden><label class="wide">Prompt para el generador de imágenes<textarea id="m-gen-text" style="min-height:6em" readonly></textarea></label>
+        <div class="bar"><button type="button" class="pri" id="m-gen-copy">Copiar el prompt</button></div><p class="sub">Pégalo en tu generador de imágenes, pide formato cuadrado, descarga el resultado y súbelo con «Subir imagen».</p></div>
+      <p class="small muted">El daño admite varias partes, como 1d6+2+1d4. Para ponerle imagen, la criatura se guarda en la historia en mesa. Las cifras del bestiario son orientativas y editables.</p>
     </form>
   </section>
 
@@ -992,10 +1001,10 @@ $("#btn-end-no").onclick=function(){$("#end-confirm").hidden=true;$("#btn-end").
 $("#btn-end-yes").onclick=function(){S.combat={round:0,turnId:null,list:[],auto:!!S.combat.auto,log:[],over:null};$("#btn-end-no").onclick();touch()};
 
 $("#m-cr").innerHTML=Object.keys(XP).sort(function(a,b){return XP[a]-XP[b]}).map(function(k){return'<option>'+k+'</option>'}).join("");
-$("#m-pick").onchange=function(){var m=BL()[this.value];if(!m)return;$("#m-name").value=m[0];$("#m-ac").value=m[1];$("#m-hp").value=m[2];$("#m-init").value=m[3];$("#m-cr").value=m[4];$("#m-atk").value=m[5];$("#m-dmg").value=m[6]};
+$("#m-pick").onchange=function(){var m=BL()[this.value];if(!m)return;$("#m-name").value=m[0];$("#m-ac").value=m[1];$("#m-hp").value=m[2];$("#m-init").value=m[3];$("#m-cr").value=m[4];$("#m-atk").value=m[5];$("#m-dmg").value=m[6];$("#m-na").value=m[7];mAn=m[8];$("#m-look").value=m[10]||"";mPicDraw()};
 $("#add-mon").addEventListener("submit",function(e){e.preventDefault();var name=$("#m-name").value.trim();if(!name)return;
   var bm=BL()[$("#m-pick").value],q=Math.max(1,Math.min(20,int($("#m-qty").value,1))),hp=Math.max(1,int($("#m-hp").value,1)),same=S.combat.list.filter(function(c){return!c.pcId&&c.base===name}).length;
-  for(var i=0;i<q;i++){S.combat.list.push({id:uid(),base:name,name:(q>1||same)?name+" "+(same+i+1):name,ac:int($("#m-ac").value,10),hp:hp,max:hp,mod:int($("#m-init").value,0),cr:$("#m-cr").value,atk:int($("#m-atk").value,4),dmg:$("#m-dmg").value.trim()||"1d6+2",n:bm&&bm[0]===name?bm[7]:1,an:bm&&bm[0]===name?bm[8]:"un ataque",init:null,conds:[]})}
+  for(var i=0;i<q;i++){S.combat.list.push({id:uid(),base:name,name:(q>1||same)?name+" "+(same+i+1):name,ac:int($("#m-ac").value,10),hp:hp,max:hp,mod:int($("#m-init").value,0),cr:$("#m-cr").value,atk:int($("#m-atk").value,4),dmg:$("#m-dmg").value.trim()||"1d6+2",n:Math.max(1,Math.min(5,int($("#m-na").value,1))),an:bm&&bm[0]===name?bm[8]:mAn||"un ataque",init:null,conds:[]})}
   $("#m-qty").value=1;touch()});
 
 /* ---- historias, panel y personajes ---- */
@@ -1152,10 +1161,10 @@ document.addEventListener("click",function(e){if(e.target.closest("[data-demo-st
 /* ---- combate automático ---- */
 var capt=null;
 function clog(t){var C=S.combat;if(capt)capt.push(t);if(!Array.isArray(C.log))C.log=[];C.log.push(t);if(C.log.length>80)C.log.splice(0,C.log.length-80)}
-function rollF(f,crit){var m=/(\d*)\s*d\s*(\d+)\s*([+-]\s*\d+)?/i.exec(String(f||"")),n,sd,k,r=[],t=0;
-  if(!m){t=Math.max(1,int(f,1));return{total:t,text:String(t)}}
-  n=Math.max(1,int(m[1],1))*(crit?2:1);sd=Math.max(2,int(m[2],6));k=m[3]?int(m[3].replace(/\s/g,""),0):0;
-  for(var i=0;i<n;i++){var x=d(sd);r.push(x);t+=x}t=Math.max(1,t+k);return{total:t,text:r.join("+")+(k?(k>0?"+":"−")+Math.abs(k):"")}}
+function rollF(f,crit){var q=String(f||"").replace(/−/g,"-").replace(/\s+/g,""),re=/([+-]?)(?:(\d*)d(\d+)|(\d+))/gi,m,t=0,P=[];
+  while((m=re.exec(q))){var sg=m[1]==="-"?-1:1;if(m[3]){var n=Math.max(1,int(m[2],1))*(crit?2:1),sd=Math.max(2,int(m[3],6));for(var i=0;i<n;i++){var x=d(sd);t+=sg*x;P.push((sg<0?"−":"+")+x)}}else{var k=int(m[4],0);t+=sg*k;if(k)P.push((sg<0?"−":"+")+k)}}
+  if(!P.length){t=Math.max(1,int(f,1));return{total:t,text:String(t)}}
+  return{total:Math.max(1,t),text:P.join("").replace(/^\+/,"")}}
 function sgn(n){return(n>=0?"+":"−")+Math.abs(n)}
 function isPc(c){return!!(c.pcId&&pc(c.pcId))}
 function hpOf(c){return view(c).hp}
@@ -2241,6 +2250,46 @@ function placeNpcs(s,quiet){if(!s)return 0;var m=curMap(),cols=Math.max(4,Math.f
   else if(!quiet)mapMsg(C.length?"Los PNJ de este capítulo ya están en el mapa.":"Ningún PNJ está asignado a este capítulo. Asígnalos en el detalle de la historia, en «Aparece en».");return L.length}
 function npcWhere(s){var L=[];s.npcs.forEach(function(n){var m=npcTokMap(n);if(m)L.push(n.name+": "+(m===curMap()?"aquí, en el mapa en pantalla":"se quedó en «"+m.name+"»")+(n.follow?", acompaña al grupo":""))});return L.length?"DÓNDE ESTÁ CADA PNJ CON FIGURA: "+L.join("; ")+". Un PNJ que se quedó en otro mapa no está en esta escena: no habla ni actúa aquí salvo que la historia lo traiga, y entonces inclúyelo en la marca [COLOCAR].":""}
 $("#sd-npcs").addEventListener("change",function(e){var id=e.target.dataset.npcFollow;if(!id)return;var v=e.target.checked;stEdit(function(s){s.npcs.forEach(function(n){if(n.id===id)n.follow=v})},false);var s=story();if(s&&v){placeNpcs(s,true);touch(false)}});
+/* ---- criatura personalizada: pegar estadísticas e imagen ---- */
+function monParse(txt){var t=String(txt||"").replace(/−|–/g,"-").replace(/½/g,"1/2").replace(/¼/g,"1/4").replace(/⅛/g,"1/8"),o={},m,f=flat(t);
+  var first=t.split(/[\n.;,:]/)[0].trim();if(first&&first.length<=50&&!/\d/.test(first)&&!/^(cr|vd|ca|ac|pv|pg|hp|ataque|attack)\b/i.test(first))o.nombre=first;
+  if((m=/(?:nombre|name)\s*[:=]\s*([^\n,;.]{2,50})/i.exec(t)))o.nombre=m[1].trim();
+  if((m=/(?:\bcr\b|\bvd\b|desafio|challenge)\s*[:=]?\s*(\d+\s*\/\s*\d+|\d+(?:[.,]\d+)?)/i.exec(f)))o.vd=m[1].replace(/\s/g,"");
+  if((m=/(\d+)\s*(?:pv|pg|hp)\b/i.exec(f))||(m=/(?:\bpv\b|\bpg\b|\bhp\b|puntos de (?:vida|golpe)|hit points)\s*[:=]?\s*(\d+)/i.exec(f)))o.pg=+m[1];
+  if((m=/(?:\bca\b|\bac\b|clase de armadura|armor class)\s*[:=]?\s*(\d+)/i.exec(f))||(m=/(\d+)\s*(?:ca|ac)\b/i.exec(f)))o.ca=+m[1];
+  if((m=/(?:iniciativa|initiative|\binit\b)\s*[:=]?\s*([+-]?\s*\d+)/i.exec(f)))o.iniciativa=+m[1].replace(/\s/g,"");
+  else if((m=/(?:\bdes\b|\bdex\b|destreza|dexterity)\s*[:=]?\s*(\d+)/i.exec(f)))o.iniciativa=Math.floor((+m[1]-10)/2);
+  var WP=/mordisco|garras?|cola|aguijon|espada|lanza|arco|hacha|maza|garrote|daga|tentaculos?|cuernos?|punos?|cimitarra|ballesta|bite|claws?|sword|spear/,ai=f.search(/ataque|attack|impactar|to hit|golpe/);if(ai<0)ai=f.search(WP);
+  var seg=ai>=0?f.slice(ai):f.replace(/\([^)]*\)/g," ");
+  if(ai>=0){if((m=/([+-]\s*\d+)(?!\s*d\d)/.exec(seg)))o.ataque=+m[1].replace(/\s/g,"")}
+  else if((m=/([+-]\s*\d+)[^+\-\d]{0,25}\d+d\d+/.exec(seg)))o.ataque=+m[1].replace(/\s/g,"");
+  var D=[],re=/(\d+d\d+)(?:\s*([+-])\s*(\d+)(?!\s*d\d)(?!\d))?/g;while((m=re.exec(seg))&&D.length<4)D.push(m[1]+(m[3]?m[2]+m[3]:""));if(D.length)o.dano=D.join("+");
+  if((m=/(\d+)\s*ataques/.exec(f))||(m=/multiata\w*\s*[:(]?\s*(\d+)/.exec(f)))o.ataques=Math.max(1,Math.min(5,+m[1]));else o.ataques=/multiata|multiatt/.test(f)?2:1;
+  if((m=/(mordisco|garras?|cola|aguijon|espada|lanza|arco|hacha|maza|garrote|daga|tentaculos?|cuernos?|punos?|cimitarra|ballesta|bite|claws?|sword|spear)/.exec(seg)))o.nombre_ataque="su "+m[1];
+  return o}
+function monFill(o,P){var n=0;mAn="";function put(id,v){if(v==null||v==="")return;var e=$(id);if(e){e.value=v;n++}}
+  put(P+"n"+(P==="#m-"?"ame":""),o.nombre);put(P==="#m-"?"#m-ac":"#mo-ca",o.ca);put(P==="#m-"?"#m-hp":"#mo-pg",o.pg);put(P==="#m-"?"#m-init":"#mo-in",o.iniciativa);put(P==="#m-"?"#m-atk":"#mo-at",o.ataque);put(P==="#m-"?"#m-dmg":"#mo-dm",o.dano);put(P==="#m-"?"#m-na":"#mo-na",o.ataques);
+  if(o.vd!=null){if(P==="#m-")$("#m-cr").value=crKey(o.vd);else $("#mo-vd").value=crKey(o.vd);n++}
+  if(o.nombre_ataque)mAn=o.nombre_ataque;return n}
+var mAn="";
+function parseBtn(src,P,msg){var o=monParse($(src).value),n=monFill(o,P);$(msg).textContent=n?"Rellenados "+n+" campos"+(o.dano?", daño "+o.dano:"")+". Revisa el resultado"+(o.nombre?"":" y escribe el nombre")+".":"No he reconocido ninguna cifra. Escribe algo como: VD 1/2, 30 PG, CA 12, ataque +4, 1d6+2."}
+$("#m-parse").onclick=function(){$("#m-pick").value="";parseBtn("#m-paste","#m-","#m-msg");mPicDraw()};
+$("#mo-parse").onclick=function(){parseBtn("#mo-paste","#mo-","#mon-msg")};
+function mPicDraw(){var n=$("#m-name").value.trim();$("#m-pic").innerHTML=n?picTag(n,56):""}
+function mEnsure(){var s=story(),el=$("#m-msg"),name=$("#m-name").value.trim();if(!s){el.textContent="Para guardar su imagen hace falta una historia en mesa. Crea o abre una en «Historias».";return-1}
+  if(!name){el.textContent="Escribe primero el nombre de la criatura.";return-1}
+  var o={nombre:name,ca:$("#m-ac").value,pg:$("#m-hp").value,iniciativa:$("#m-init").value,vd:$("#m-cr").value,ataque:$("#m-atk").value,dano:$("#m-dmg").value,ataques:$("#m-na").value,nombre_ataque:mAn||"un ataque",descripcion:$("#m-look").value.trim()},A=monArr(o),idx=-1;
+  s.mons.forEach(function(m,i){if(m[0]===name)idx=i});if(idx>=0){A[9]=s.mons[idx][9];if(!A[10])A[10]=s.mons[idx][10]||"";s.mons[idx]=A}else{s.mons.push(A);idx=s.mons.length-1}
+  touch(false);drawPick();return idx}
+$("#m-name").addEventListener("change",mPicDraw);
+$("#m-up").onclick=function(){var i=mEnsure();if(i<0)return;picTarget=i;$("#mon-pic-file").click()};
+$("#mon-pic-file").addEventListener("change",function(){setTimeout(mPicDraw,900);setTimeout(mPicDraw,2500)});
+$("#m-gen").onclick=function(){var i=mEnsure();if(i<0)return;var ds=$("#m-look").value.trim(),n=$("#m-name").value.trim();$("#m-genbox").hidden=false;$("#m-gen-text").value=GENSTYLE+(ds?n+", "+ds:n+", a fantasy monster");
+  $("#m-msg").textContent=ds?"Prompt listo. La criatura queda guardada en la historia para poder ponerle la imagen.":"Escribe el aspecto de la criatura para que el prompt sea útil."};
+$("#m-gen-copy").onclick=function(){var tx=$("#m-gen-text"),el=$("#m-msg"),fb=function(){tx.focus();tx.select();el.textContent="Texto seleccionado: cópialo con Ctrl+C."};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(tx.value).then(function(){el.textContent="Prompt copiado."},fb);else fb()};
+$("#m-kie").onclick=function(){var i=mEnsure();if(i<0)return;var ds=$("#m-look").value.trim(),n=$("#m-name").value.trim();
+  kieRun(this,$("#m-msg"),GENSTYLE+(ds?n+", "+ds:n+", a fantasy monster"),"1:1",function(b){return setMonPic(i,b).then(function(){setTimeout(mPicDraw,300)})})};
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
