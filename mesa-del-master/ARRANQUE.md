@@ -74,7 +74,10 @@ Para republicar la copia de Claude hay que quitar al archivo la primera línea, 
 - **Ataques de oportunidad y alcance**: `oppByFoes()` y `oppByHeroes()` resuelven el ataque gratis al alejarse de un enemigo contiguo con «Acercarse al objetivo»; arrastrar la figura a mano no lo provoca. `SPRNG` da el alcance de cada conjuro, 18 m si no figura.
 - **Calibrador de dificultad**: `simRun(N)` juega el combate N veces sobre una copia del estado (`SIM`), con una táctica sencilla para los personajes (`simPc`), y `simTxt()` da el pronóstico. Se calcula al montar un encuentro automático y con «Calcular la dificultad»; «Quitar un enemigo» aligera el combate.
 - **Muros**: casillas `w` en `m.ter`, pintadas con la herramienta «Muro» y ocultas a los jugadores. Bloquean el paso (`pathTo`, búsqueda de camino), la visión de la niebla (`losClear`, `fogLos`) y los disparos y conjuros.
-- **Ambiente**: seis ambientes sonoros sintetizados con Web Audio, sin archivos de audio.
+- **Ambiente y efectos**: diez ambientes grabados en `snd/amb-*.mp3` y doce efectos en `snd/sfx-*.mp3`, todos CC0 de OpenGameArt (fuentes en `snd/CREDITOS.md`). `ambPlay()` los carga con Web Audio y los repite en bucle; si un archivo no carga, `ambSynth()` sintetiza el ambiente como antes. `sfx(nombre)` suena en dados, golpes, fallos, críticos, conjuros, curas, caídas y cofres; se apaga con «Efectos» en el menú.
+- **Dado animado**: `diceFx()` muestra el dado rodando a pantalla completa con cualquier tirada. El mapa tiene un módulo «Dados» (`#map-dice`) que se ve también a pantalla completa, y cada tirada se transmite a las otras pestañas por `localStorage` (clave `-dado`).
+- **Pronóstico visual**: `simObj()` guarda el resultado de la simulación en `S.combat.sim` y `simCard()` lo dibuja con anillo de victorias, escala de dificultad y tres cifras.
+- **Escenario del combate**: en «Combate» a pantalla completa o en otra pestaña, `#cb-stage` enseña en grande al atacante y al objetivo con animación de impacto, fallo, crítico, conjuro o cura y la barra de PG cambiando. Los eventos (`S.combat.fx`, `fxn`) salen de `atkRoll`, `hurt` y `mend`. Las barras de PG de la lista también se animan.
 - **Copia de seguridad**: en el Panel, descarga y restauración de toda la campaña.
 - **Reglas**: chuleta, estados y guía para la primera sesión.
 
