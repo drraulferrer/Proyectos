@@ -170,6 +170,107 @@ select{max-width:100%}
 #fog-tools label{min-width:0;max-width:100%}
 @media (max-width:820px){.amb{flex-direction:row;align-items:center;padding:0 6px}.amb label{flex-direction:row;align-items:center;gap:6px;white-space:nowrap}.amb input{width:70px}}
 body:not(.kie-on) .kie-only{display:none!important}
+.hpbar i{transition:width .7s cubic-bezier(.3,.7,.3,1),background-color .4s}
+label.ck.sfxck{flex-direction:row;align-items:center;gap:6px;font-size:.85rem;color:var(--muted)}
+/* dado animado */
+#dfx{position:fixed;inset:0;z-index:90;display:grid;place-items:center;pointer-events:none;align-content:center;gap:12px}
+#dfx[hidden]{display:none}
+#dfx .dfx-die{position:relative;width:min(34vmin,240px);aspect-ratio:1;display:grid;place-items:center;filter:drop-shadow(0 18px 30px rgba(0,0,0,.65))}
+#dfx svg{position:absolute;inset:0;width:100%;height:100%}
+#dfx polygon{fill:#2a2140;stroke:var(--fx);stroke-width:3;stroke-linejoin:round}
+#dfx polygon.in{fill:none;stroke-width:1.5;opacity:.6}
+#dfx b{position:relative;font-family:var(--display);font-weight:800;font-size:min(13vmin,92px);color:#fff;text-shadow:0 2px 8px #000;font-variant-numeric:tabular-nums}
+#dfx .dfx-die span{position:absolute;bottom:14%;font-size:min(3vmin,15px);color:var(--fx);letter-spacing:.1em}
+#dfx p{margin:0;padding:6px 14px;border-radius:999px;background:rgba(0,0,0,.72);color:#fff;font-size:min(3.4vmin,1.1rem);max-width:90vw;text-align:center;opacity:0;transition:opacity .3s}
+#dfx.roll .dfx-die{animation:dfx-roll .85s cubic-bezier(.2,.7,.3,1)}
+#dfx.done p{opacity:1}
+#dfx.done .dfx-die{animation:dfx-land .35s ease-out}
+#dfx.crit polygon{fill:#1d3a2a;stroke:var(--heal);stroke-width:5} #dfx.crit b{color:#cfeed8}
+#dfx.fumble polygon{fill:#3a1d1d;stroke:var(--hurt);stroke-width:5} #dfx.fumble b{color:#f6c3bd}
+#dfx.crit .dfx-die,#dfx.fumble .dfx-die{animation:dfx-land .35s ease-out,dfx-glow 1.2s .35s ease-in-out 2}
+#dfx.out{opacity:0;transition:opacity .4s}
+@keyframes dfx-roll{0%{transform:translate(-60vw,30vh) rotate(-540deg) scale(.4)}55%{transform:translate(6vw,-6vh) rotate(40deg) scale(1.08)}75%{transform:translate(-2vw,1vh) rotate(-12deg) scale(.98)}100%{transform:none}}
+@keyframes dfx-land{0%{transform:scale(1.18)}100%{transform:scale(1)}}
+@keyframes dfx-glow{50%{filter:drop-shadow(0 0 28px var(--fx))}}
+/* dados en el mapa */
+#map-dice{position:absolute;left:8px;bottom:8px;z-index:5;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:6px;max-width:calc(100% - 16px)}
+#map-dice .md-tog{display:inline-flex;align-items:center;gap:6px;background:rgba(14,11,22,.86);backdrop-filter:blur(4px)}
+#map-dice .md-box{background:rgba(14,11,22,.9);border:1px solid var(--line);border-radius:var(--r);padding:8px;backdrop-filter:blur(4px)}
+#map-dice .md-btns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+#map-dice .md-btns button{font-family:var(--display);font-weight:700;min-width:3.2em;padding:6px 4px}
+#map-dice .md-last{margin:6px 0 0;font-size:.85rem;color:var(--muted)}
+body.solo #map-dice .md-tog{min-height:44px;padding:0 14px}
+/* pronóstico */
+.simc{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;padding:14px;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(135deg,rgba(255,255,255,.03),transparent);--c:var(--heal)}
+.simc.k1{--c:var(--fx)} .simc.k2{--c:var(--warn)} .simc.k3{--c:var(--hurt)}
+.sim-ring{width:112px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--c) calc(var(--p)*1%),var(--sunk) 0);animation:sim-in .9s ease-out}
+.sim-ring>div{width:80%;aspect-ratio:1;border-radius:50%;background:var(--surface,#16121f);display:grid;place-items:center;align-content:center;text-align:center}
+.sim-ring b{font-family:var(--display);font-size:1.7rem;line-height:1;color:var(--c)} .sim-ring span{font-size:.72rem;color:var(--muted)}
+.sim-body{display:flex;flex-direction:column;gap:8px;min-width:0}
+.sim-lab{font-family:var(--display);font-weight:800;font-size:1.25rem;color:var(--c);letter-spacing:.04em}
+.sim-scale{position:relative;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--heal),var(--fx) 40%,var(--warn) 65%,var(--hurt))}
+.sim-scale i{position:absolute;top:-4px;width:4px;height:18px;margin-left:-2px;border-radius:2px;background:#fff;box-shadow:0 0 0 2px #000;animation:sim-slide 1s ease-out}
+.sim-ticks{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);gap:4px}
+.sim-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.sim-tiles div{border:1px solid var(--line);border-radius:var(--r);padding:8px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.sim-tiles b{font-family:var(--display);font-size:1.3rem} .sim-tiles span{font-size:.75rem;color:var(--muted)}
+@keyframes sim-in{from{transform:scale(.6) rotate(-90deg);opacity:0}}
+@keyframes sim-slide{from{left:0}}
+@media (max-width:560px){.simc{grid-template-columns:1fr;justify-items:center}.sim-body{width:100%}}
+/* escenario del combate */
+#cb-stage{display:none}
+body.solo-cb #cb-stage{display:block;grid-column:1/-1;margin-bottom:12px}
+.stage .st-turn{margin:0 0 8px;text-align:center;color:var(--muted);font-family:var(--display);letter-spacing:.08em}
+.st-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:clamp(8px,3vw,40px);align-items:center}
+.st-row.solo1{grid-template-columns:minmax(0,1fr) auto;max-width:640px;margin:0 auto}
+.st-card{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+.st-card.gone{visibility:hidden}
+.st-pic{position:relative;width:min(100%,clamp(140px,28vw,380px));aspect-ratio:1;border-radius:18px;overflow:hidden;background:var(--sunk);border:3px solid var(--line);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.st-card.att .st-pic{border-color:var(--fx)}
+.st-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.st-ini{display:grid;place-items:center;width:100%;height:100%;font-family:var(--display);font-size:clamp(2rem,7vw,5rem);color:var(--muted)}
+.st-pic::after{content:"";position:absolute;inset:0;background:var(--hurt);opacity:0;pointer-events:none}
+.st-name{font-family:var(--display);font-size:clamp(1rem,2.2vw,1.6rem);text-align:center;overflow-wrap:anywhere}
+.st-hp{width:min(100%,clamp(140px,28vw,380px));height:14px;border-radius:7px;background:var(--sunk);overflow:hidden;border:1px solid var(--line)}
+.st-hp i{display:block;height:100%;background:var(--heal);transition:width .9s cubic-bezier(.3,.7,.3,1),background-color .4s}
+.st-hp i.half{background:var(--warn)} .st-hp i.low{background:var(--hurt)}
+.st-n{font-variant-numeric:tabular-nums;color:var(--muted)}
+.st-mid{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;min-width:0;max-width:22vw}
+.st-verb{color:var(--muted);font-size:clamp(.85rem,1.6vw,1.1rem)}
+.st-d20{display:grid;place-items:center;width:clamp(56px,7vw,92px);aspect-ratio:1;clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);background:var(--fx);color:#1a1424;font-family:var(--display);font-weight:800;font-size:clamp(1.4rem,3vw,2.4rem)}
+.st-d20.nat20{background:var(--heal)} .st-d20.nat1{background:var(--hurt)}
+.st-vs{font-size:clamp(.8rem,1.4vw,1rem);color:var(--muted)}
+.st-res{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,3.2vw,2.6rem);display:flex;flex-direction:column;align-items:center}
+.st-res small{font-size:.5em;color:var(--hurt)}
+.stage.k-hit .st-res,.stage.k-dmg .st-res{color:var(--hurt)} .stage.k-crit .st-res{color:var(--fx)} .stage.k-miss .st-res{color:var(--muted)} .stage.k-heal .st-res{color:var(--heal)}
+.st-dmg{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,6vw,5rem);color:#fff;text-shadow:0 0 12px var(--hurt),0 3px 0 #000;opacity:0;z-index:2}
+.st-dmg.heal{text-shadow:0 0 12px var(--heal),0 3px 0 #000}
+.stage.still .st-dmg{display:none}
+.stage.go .st-card.att{animation:st-lunge .55s ease-in-out}
+.stage.go .st-card.def .st-dmg{animation:st-float 1.2s .35s ease-out forwards}
+.stage.go.k-hit .st-card.def,.stage.go.k-crit .st-card.def,.stage.go.k-dmg .st-card.def{animation:st-shake .5s .35s}
+.stage.go.k-hit .st-card.def .st-pic::after,.stage.go.k-crit .st-card.def .st-pic::after,.stage.go.k-dmg .st-card.def .st-pic::after{animation:st-flash .6s .35s}
+.stage.go.k-crit .st-res{animation:st-pop .6s .3s both}
+.stage.go.k-crit .st-card.def .st-pic{animation:st-crit .9s .3s}
+.stage.go.k-miss .st-card.def{animation:st-dodge .7s .3s}
+.stage.go.k-miss .st-res{animation:st-fade .6s .35s both}
+.stage.go.spell .st-card.att .st-pic{animation:st-cast 1s}
+.stage.go.k-heal .st-card.def .st-pic{animation:st-heal 1.1s .3s}
+.stage.down .st-card.def .st-pic{filter:grayscale(1) brightness(.55);transform:rotate(-4deg);transition:filter .6s,transform .6s}
+.stage.fast.go .st-card.att{animation-duration:.35s}
+@keyframes st-lunge{45%{transform:translateX(22%) scale(1.05)}}
+@keyframes st-shake{15%,55%{transform:translateX(-5%)}35%,75%{transform:translateX(5%)}}
+@keyframes st-flash{0%{opacity:.7}100%{opacity:0}}
+@keyframes st-float{0%{opacity:0;transform:translate(-50%,-30%) scale(.6)}20%{opacity:1;transform:translate(-50%,-55%) scale(1.15)}100%{opacity:0;transform:translate(-50%,-120%) scale(1)}}
+@keyframes st-dodge{45%{transform:translateX(16%) rotate(7deg)}}
+@keyframes st-fade{from{opacity:0;transform:scale(.7)}}
+@keyframes st-pop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.35)}100%{transform:scale(1);opacity:1}}
+@keyframes st-crit{30%{box-shadow:0 0 0 6px var(--fx),0 0 60px var(--fx)}}
+@keyframes st-cast{40%{box-shadow:0 0 0 5px #9b7bff,0 0 60px #9b7bff}}
+@keyframes st-heal{40%{box-shadow:0 0 0 5px var(--heal),0 0 60px var(--heal)}}
+@media (prefers-reduced-motion:reduce){.stage .st-card,.stage .st-pic,.stage .st-res,#dfx .dfx-die{animation:none!important}}
+@media (max-width:640px){.st-mid{max-width:none}.st-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.st-row .st-mid{grid-column:1/-1;grid-row:1}}
+
 .solo-only{display:none}
 body.solo .solo-only{display:inline-flex}
 body.solo .side,body.solo .dicebox,body.solo #tab-mapa > :not(#board){display:none!important}
@@ -551,6 +652,7 @@ label{display:flex;flex-direction:column;gap:3px}
       <span id="end-confirm" hidden class="dm"><button id="btn-end-yes" type="button" class="hurt">Sí, vaciar</button> <button id="btn-end-no" type="button">No</button></span>
     </div>
     <div id="diff" class="diff dm"></div>
+    <div id="cb-stage" class="stage" aria-live="polite"></div>
     <div id="cb-foes" class="foes" hidden></div>
     <div id="order"></div>
     <div id="cb-duels" class="card" hidden></div>
@@ -900,7 +1002,7 @@ function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   b.maps=Array.isArray(o.maps)?o.maps.filter(function(m){return m&&m.id&&m.cell>0&&m.w>0&&m.h>0}).map(function(m){m.tokens=Array.isArray(m.tokens)?m.tokens:[];m.fx=Array.isArray(m.fx)?m.fx:[];return m}):[];b.mapId=o.mapId||null;
   var a=o.ia||{};b.ia={mode:["copiloto","narrador","auto"].indexOf(a.mode)>=0?a.mode:"copiloto",premise:typeof a.premise==="string"?a.premise:"",summary:typeof a.summary==="string"?a.summary:"",log:Array.isArray(a.log)?a.log.filter(function(x){return x&&typeof x.t==="string"&&x.t}):[]};if("sid" in a)b.ia.sid=a.sid;
   b.rev=o.rev||"";b.party=Array.isArray(o.party)?o.party:[];b.notes=typeof o.notes==="string"?o.notes:"";b.checks=o.checks&&typeof o.checks==="object"?o.checks:{};
-  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null,byIA:!!c.byIA,simTxt:typeof c.simTxt==="string"?c.simTxt:"",goal:c.goal&&typeof c.goal==="object"?c.goal:null};
+  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null,byIA:!!c.byIA,simTxt:typeof c.simTxt==="string"?c.simTxt:"",sim:c.sim&&typeof c.sim==="object"?c.sim:null,fx:Array.isArray(c.fx)?c.fx.slice(-12):[],fxn:int(c.fxn,0),goal:c.goal&&typeof c.goal==="object"?c.goal:null};
   function arr(v){return Array.isArray(v)?v:[]}
   b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.npcs=arr(x.npcs);x.loot=arr(x.loot);x.places=arr(x.places).filter(function(p){return p&&p.id&&p.title});x.mons=arr(x.mons).filter(function(m){return Array.isArray(m)&&m.length>=9});x.quests=arr(x.quests);x.next=x.next||{date:"",time:""};return x});
   b.storyId=o.storyId||null;b.activity=arr(o.activity);
@@ -968,8 +1070,8 @@ function drawOrder(){var L=S.combat.list,el=$("#order");
   var opts='<option value="">+ estado</option>'+CONDS.map(function(c){return'<option>'+c[0]+'</option>'}).join("");
   el.innerHTML='<ol class="order">'+L.map(function(c){var v=view(c),cur=c.id===S.combat.turnId&&S.combat.round>0,dead=!v.pc&&v.hp<=0,r=v.max?v.hp/v.max:0;
     var hp;
-    if((players||soloCb)&&!v.pc){var b=band(v);hp='<span class="band '+b[1]+'">'+b[0]+'</span>'}
-    else hp='<div class="hp"><span class="n">'+v.hp+' / '+v.max+' PG</span><div class="hpbar"><i class="'+(r<=.25?"low":r<=.5?"half":"")+'" style="width:'+Math.round(r*100)+'%"></i></div></div>'+
+    if((players||soloCb)&&!v.pc){var b=band(v);hp='<div class="hp"><span class="band '+b[1]+'">'+b[0]+'</span><div class="hpbar"><i data-hp="'+c.id+'" class="'+(r<=.25?"low":r<=.5?"half":"")+'" style="width:'+Math.round(Math.max(0,r)*100)+'%"></i></div></div>'}
+    else hp='<div class="hp"><span class="n">'+v.hp+' / '+v.max+' PG</span><div class="hpbar"><i data-hp="'+c.id+'" class="'+(r<=.25?"low":r<=.5?"half":"")+'" style="width:'+Math.round(r*100)+'%"></i></div></div>'+
       '<span class="dm bar"><input type="number" min="0" max="999" aria-label="Cantidad de daño o curación para '+esc(v.name)+'" data-amt="'+c.id+'" id="amt-'+c.id+'" placeholder="0"><button type="button" class="hurt" data-act="dmg" data-id="'+c.id+'">Daño</button><button type="button" class="heal" data-act="heal" data-id="'+c.id+'">Curar</button></span>';
     return'<li class="'+(cur?"cur ":"")+(dead||(v.pc&&v.hp<=0)?"down":"")+'">'+
      '<input class="ini" type="number" id="ini-'+c.id+'" data-ini="'+c.id+'" value="'+(c.init==null?"":c.init)+'" placeholder="–" aria-label="Iniciativa de '+esc(v.name)+'"'+((players||soloCb)?" readonly":"")+'>'+
@@ -1176,7 +1278,8 @@ function delCond(c,k){c.conds=(c.conds||[]).filter(function(x){return x!==k})}
 function foes(){return S.combat.list.filter(function(c){return!isPc(c)&&hpOf(c)>0&&!c.fled&&!c.ally})}
 function heroes(up){return S.combat.list.filter(function(c){return c.ally?hpOf(c)>0:isPc(c)&&!has(c,"Muerto")&&(!up||hpOf(c)>0)})}
 function hurt0(c,n){var v=view(c);setHp(c,v.hp-n);delCond(c,"Dormido");if(!isPc(c)&&hpOf(c)<=0&&!c.ally){var uk=monKit(c);if(uk&&uk.k==="undying"){var ur=d(20)+saveMod(c,"CON");if(ur>=5+n){c.hp=1;clog("  "+v.name+" debería caer, pero tira "+ur+" contra CD "+(5+n)+" y se mantiene en pie con 1 PG.")}}}if(isPc(c)&&hpOf(c)<=0){addCond(c,"Inconsciente");c.ds={s:0,f:0};delCond(c,"Estable")}}
-function mend(c,n){setHp(c,hpOf(c)+n);if(hpOf(c)>0){delCond(c,"Inconsciente");delCond(c,"Estable");c.ds=null}}
+function mend(c,n){var h0=hpOf(c);mend0(c,n);fxHeal(c,n,h0)}
+function mend0(c,n){setHp(c,hpOf(c)+n);if(hpOf(c)>0){delCond(c,"Inconsciente");delCond(c,"Estable");c.ds=null}}
 function advance(){var C=S.combat,L=C.list;if(!L.length)return;sortList();var i=-1,r0=C.round;for(var k=0;k<L.length;k++)if(L[k].id===C.turnId)i=k;
   if(i<0||!C.round){C.round=1;i=-1}
   for(var n=0;n<L.length;n++){i++;if(i>=L.length){i=0;C.round++}if(alive(L[i]))break}
@@ -1187,7 +1290,7 @@ function deathSave(c){var n=view(c).name,r=d(20);c.ds=c.ds||{s:0,f:0};
   if(c.ds.f>=3){addCond(c,"Muerto");delCond(c,"Inconsciente");clog(n+" saca "+r+" en su salvación contra muerte: tercer fallo. Muere.")}
   else if(c.ds.s>=3){addCond(c,"Estable");clog(n+" saca "+r+" en su salvación contra muerte: tercer éxito. Queda estable, inconsciente.")}
   else clog(n+" saca "+r+" en su salvación contra muerte: "+(r>=10?"éxito":"fallo")+" ("+c.ds.s+" éxitos, "+c.ds.f+" fallos).")}
-function autoStart(){var C=S.combat;C.over=null;C.log=[];ambCombat(true);C.list.forEach(function(c){if(c.init==null)c.init=d(20)+int(isPc(c)?pc(c.pcId).init:c.mod,0)});
+function autoStart(){var C=S.combat;C.over=null;C.log=[];C.fx=[];C.sim=C.sim||null;ambCombat(true);C.list.forEach(function(c){if(c.init==null)c.init=d(20)+int(isPc(c)?pc(c.pcId).init:c.mod,0)});
   sortList();C.round=1;C.turnId=C.list[0].id;clog("— Ronda 1 —");autoStep()}
 function next(){var C=S.combat;if(!C.list.length)return;if(C.auto&&!C.round)autoStart();else{if(C.auto&&C.over)return;advance();if(C.auto)autoStep()}touch()}
 function autoEncounter(){var R=roster(),k=int($("#au-diff").value,1),bud=0,C=S.combat;if(!R.length)return;
@@ -1295,7 +1398,7 @@ function buildEncounter(m,q,byIA){var R=roster(),C=S.combat,G=Array.isArray(m[0]
   R.forEach(function(p){p.hp=Math.max(p.hp,1);C.list.push({id:uid(),pcId:p.id,init:null,conds:[]})});
   G.forEach(function(g){for(var i=0;i<g[1];i++)C.list.push(mkMon(g[0],g[1]>1?g[0][0]+" "+(i+1):g[0][0]))});var gn=G.map(function(g){return g[1]+" × "+g[0][0].toLowerCase()}).join(", ");
   setGoal();autoStart();if(C.goal&&C.goal.k!=="all")C.log.splice(1,0,"Objetivo del combate: "+goalTxt(C.goal)+".");C.log.splice(0,0,(tot>1?"Aparecen "+tot+" enemigos: "+gn:"Aparece un enemigo: "+G[0][0][0].toLowerCase())+". Se tira iniciativa.");
-  autoPlace();logAct("Combate contra "+gn);if(!C.over){var fx=simTxt(simRun(150));S.combat.simTxt=fx;clog(fx)}touch();return true}
+  autoPlace();logAct("Combate contra "+gn);if(!C.over){var R0=simRun(150),fx=simTxt(R0);S.combat.simTxt=fx;S.combat.sim=simObj(R0);clog(fx)}touch();return true}
 function autoPlace(){var m=curMap(),cols=Math.max(4,Math.floor(m.w/m.cell)),rows=Math.max(4,Math.floor(m.h/m.cell)),P=[],M=[];
   m.tokens=m.tokens.filter(function(t){return!t.ref||String(t.ref).indexOf("npc:")===0||pc(t.ref)||find(t.ref)});
   S.combat.list.forEach(function(c){var ref=c.pcId||c.id;if(m.tokens.some(function(t){return t.ref===ref}))return;(c.pcId?P:M).push(ref)});
@@ -1523,7 +1626,7 @@ function giveXp(each){roster().forEach(function(p){if(S.combat.list.some(functio
   var up=roster().filter(canLevel).map(function(p){return p.name||"sin nombre"});if(up.length)clog("Pueden subir de nivel: "+up.join(", ")+". La guía está en «Personajes».")}
 
 /* ---- música de ambiente, sintetizada en el navegador ---- */
-var AMB={silencio:"Silencio",lluvia:"Lluvia",mazmorra:"Mazmorra",bosque:"Bosque",taberna:"Taberna",misterio:"Misterio",combate:"Combate"},ac=null,ambG=null,ambNodes=[],ambTimers=[],ambCur="silencio",ambPrev=null,ambVol=.5;
+var AMB={silencio:"Silencio",lluvia:"Lluvia",tormenta:"Tormenta",mazmorra:"Mazmorra",bosque:"Bosque",taberna:"Taberna",hoguera:"Hoguera",viento:"Viento",puerto:"Puerto y mar",misterio:"Misterio",combate:"Combate"},ac=null,ambG=null,ambNodes=[],ambTimers=[],ambCur="silencio",ambPrev=null,ambVol=.5;
 try{var av=parseFloat(localStorage.getItem(LS+"-amb-vol"));if(av>=0&&av<=1)ambVol=av}catch(e){}
 function noiseBuf(kind){var n=ac.sampleRate*4,b=ac.createBuffer(1,n,ac.sampleRate),d0=b.getChannelData(0),l=0;for(var i=0;i<n;i++){var w=Math.random()*2-1;if(kind==="brown"){l=(l+.02*w)/1.02;d0[i]=l*3.5}else d0[i]=w}return b}
 function noise(kind,type,freq,q,gain){var s=ac.createBufferSource(),f=ac.createBiquadFilter(),g=ac.createGain();s.buffer=noiseBuf(kind);s.loop=true;f.type=type;f.frequency.value=freq;f.Q.value=q;g.gain.value=gain;s.connect(f);f.connect(g);g.connect(ambG);s.start();ambNodes.push(s);return{f:f,g:g}}
@@ -1533,7 +1636,7 @@ function blip(freq,to,dur,gain,type){var o=ac.createOscillator(),g=ac.createGain
   g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(gain,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g);g.connect(ambG);o.start(t);o.stop(t+dur+.05)}
 function every(min,max,fn){var on=true;(function loop(){var id=setTimeout(function(){if(!on)return;fn();loop()},(min+Math.random()*(max-min))*1000);ambTimers.push(id)})();ambTimers.push({stop:function(){on=false}})}
 function ambStop(){ambNodes.forEach(function(n){try{n.stop()}catch(e){}});ambNodes=[];ambTimers.forEach(function(t){if(t&&t.stop)t.stop();else clearTimeout(t)});ambTimers=[]}
-function ambPlay(k){if(!AMB[k])k="silencio";ambCur=k;$("#amb-sel").value=k;ambStop();if(k==="silencio")return;
+function ambSynth(k){k={tormenta:"lluvia",puerto:"lluvia",hoguera:"taberna",viento:"misterio"}[k]||k;
   try{if(!ac){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ac=new AC();ambG=ac.createGain();ambG.connect(ac.destination)}if(ac.state==="suspended")ac.resume();ambG.gain.value=ambVol*.6}catch(e){return}
   if(k==="lluvia"){noise("white","highpass",1400,.3,.16);var r=noise("white","bandpass",520,.5,.1);lfo(r.g.gain,.13,.04);every(9,22,function(){blip(70,38,1.6,.22)})}
   else if(k==="mazmorra"){tone(55,"sine",.2);tone(55.6,"sine",.16);var w=noise("brown","lowpass",260,.4,.3);lfo(w.f.frequency,.07,120);every(2.5,8,function(){blip(1500+Math.random()*900,700,.28,.07)})}
@@ -1544,7 +1647,7 @@ function ambPlay(k){if(!AMB[k])k="silencio";ambCur=k;$("#amb-sel").value=k;ambSt
 $("#amb-sel").innerHTML=Object.keys(AMB).map(function(k){return'<option value="'+k+'">'+AMB[k]+'</option>'}).join("");
 $("#amb-sel").onchange=function(){ambPrev=null;ambPlay(this.value)};
 $("#amb-vol").value=ambVol;
-$("#amb-vol").oninput=function(){ambVol=parseFloat(this.value)||0;try{localStorage.setItem(LS+"-amb-vol",String(ambVol))}catch(e){}if(ambG)ambG.gain.value=ambVol*.6};
+$("#amb-vol").oninput=function(){ambVol=parseFloat(this.value)||0;try{localStorage.setItem(LS+"-amb-vol",String(ambVol))}catch(e){}if(ambG)ambG.gain.value=ambVol*.6;if(sfxG)sfxG.gain.value=.9*Math.max(.3,ambVol)};
 function ambCombat(on){if(on){if(ambCur!=="silencio"&&ambCur!=="combate"){ambPrev=ambCur;ambPlay("combate")}}else if(ambPrev){var k=ambPrev;ambPrev=null;ambPlay(k)}}
 function ambFromText(t){var g=/\[AMBIENTE:\s*([^\]]+)\]/i.exec(t||"");if(!g)return;var k=slug(g[1]);if(AMB[k]&&k!==ambCur){ambPrev=null;ambPlay(k)}}
 
@@ -1815,7 +1918,7 @@ $("#tk-open").onclick=function(){var t=selTok&&tokGet(selTok),s=story();if(!t||!
   if(t.open){t.open=false;touch(false);drawSvg();tokBar();return}
   if(!t.loot)t.loot=chestRoll();t.open=true;var P=String(t.loot).split(";").map(function(x){return x.trim()}).filter(Boolean);
   if(s){s.loot=s.loot||[];P.forEach(function(x){s.loot.push({id:uid(),x:x,t:Date.now()})})}
-  logAct("Cofre abierto: "+P.join("; "));touch();mapMsg("El cofre contiene: "+P.join("; ")+"."+(s?" Apuntado en el botín del grupo.":""))};
+  sfx("monedas");logAct("Cofre abierto: "+P.join("; "));touch();mapMsg("El cofre contiene: "+P.join("; ")+"."+(s?" Apuntado en el botín del grupo.":""))};
 
 /* ---- listados del usuario: glosario e índice de criaturas ---- */
 var LISTS={glos:[],mons:[]},xlsP=null,glMap={};
@@ -1902,7 +2005,7 @@ var CONDTXT={Marcado:"el siguiente ataque contra él tiene ventaja",Distraído:"
 function anyOf(c,L){return L.some(function(k){return has(c,k)})}
 function acOf(c){return int(view(c).ac,10)+(has(c,"Escudo de fe")?2:0)}
 function why(t){if(helpOn)clog("   ↳ "+t)}
-function atkRoll(a,bonus,t,o){o=o||{};var adv=anyOf(t,ADVV)||!!o.adv,dis=anyOf(a,DISA)||anyOf(t,DISV)||!!o.dis,r1=d(20),r2=d(20),A=adv&&!dis,D=dis&&!adv,r=A?Math.max(r1,r2):D?Math.min(r1,r2):r1,bl=(isPc(a)&&has(a,"Bendecido")?d(4):0)+(isPc(a)&&has(a,"Inspirado")?d(6):0),tot=r+bonus+bl,ac=acOf(t)+(o.cover?2:0),
+function atkRoll0(a,bonus,t,o){o=o||{};var adv=anyOf(t,ADVV)||!!o.adv,dis=anyOf(a,DISA)||anyOf(t,DISV)||!!o.dis,r1=d(20),r2=d(20),A=adv&&!dis,D=dis&&!adv,r=A?Math.max(r1,r2):D?Math.min(r1,r2):r1,bl=(isPc(a)&&has(a,"Bendecido")?d(4):0)+(isPc(a)&&has(a,"Inspirado")?d(6):0),tot=r+bonus+bl,ac=acOf(t)+(o.cover?2:0),
     hit=r!==1&&(r===20||tot>=ac),crit=hit&&(r===20||anyOf(t,["Paralizado","Dormido"]));
   delCond(t,"Marcado");delCond(t,"Escondido");delCond(a,"Distraído");delCond(a,"Inspirado");
   return{r:r,tot:tot,hit:hit,crit:crit,adv:A,dis:D,txt:"Tira d20: "+r+(A?" (ventaja, el mejor de "+r1+" y "+r2+")":D?" (desventaja, el peor de "+r1+" y "+r2+")":"")+" "+sgn(bonus)+(bl?" +"+bl+" de bonificación":"")+" = "+tot+" contra CA "+ac+(o.cover?", con cobertura":"")}}
@@ -2145,7 +2248,7 @@ function concEnd(c,why0){var k=c.conc;if(!k)return;c.conc=null;S.combat.list.for
   clog("  "+view(c).name+" pierde la concentración en "+k.sp+" porque "+why0+": el efecto «"+k.cond+"» termina.")}
 function concHit(c,n){if(!isPc(c)||!c.conc||n<=0)return;if(hpOf(c)<=0){concEnd(c,"cae inconsciente");return}var dc=Math.max(10,Math.floor(n/2)),r=d(20),m=saveOf(c,"CON"),ok=r+m>=dc;
   clog("  "+view(c).name+" recibe daño mientras se concentra en "+c.conc.sp+": salvación de CON, "+r+" "+sgn(m)+" = "+(r+m)+" contra CD "+dc+": "+(ok?"mantiene el conjuro.":"falla."));if(!ok)concEnd(c,"ha fallado la salvación")}
-function hurt(c,n){hurt0(c,n);concHit(c,n)}
+function hurt(c,n){var h0=hpOf(c);hurt0(c,n);fxDmg(c,n,h0);concHit(c,n)}
 function castSpell1(c,v){var nm=$("#au-spell").value,sp=spellByName(nm),p=pc(c.pcId),isC=!!(sp&&sp[8]&&CONC.indexOf(nm)>=0),had=[];
   if(isC){if(p&&canCast(p,sp)&&c.conc)concEnd(c,"empieza a concentrarse en otro conjuro");S.combat.list.forEach(function(x){if(has(x,sp[8].c))had.push(x.id)})}
   var r=castSpell0(c,v);if(r===false)return false;
@@ -2198,7 +2301,7 @@ var mixOn=true;
 try{mixOn=localStorage.getItem(LS+"-mezcla")!=="0"}catch(e){}
 function casterOf(c){var n=flat(c.base||c.name),cr=crNum(c.cr),t=/mago|hechicer|brujo|nigromant|chaman|arcan|liche|ilusionista|adivino/.test(n)?"arc":/sectario|cultista|acolito|sacerdot|clerig|druida|fanatico/.test(n)?"div":"";
   return t?{t:t,dc:Math.min(17,12+Math.floor(cr/2)),max:Math.max(1,Math.round(cr)+1)}:null}
-function monCast(c){var K=casterOf(c);if(!K)return false;var v=view(c),cr=crNum(c.cr),H=heroes(true),atk=int(c.atk,4)+1;if(!H.length)return false;
+function monCast0(c){var K=casterOf(c);if(!K)return false;var v=view(c),cr=crNum(c.cr),H=heroes(true),atk=int(c.atk,4)+1;if(!H.length)return false;
   function left(){return K.max-(c.mu||0)}function spend(){c.mu=(c.mu||0)+1;return" Le quedan "+left()+" conjuros de nivel."}
   function pick(){return H[Math.floor(Math.random()*H.length)]}
   function sv(t,ab){var r=d(20),m=saveOf(t,ab);return{ok:r+m>=K.dc,txt:view(t).name+" tira "+r+" "+sgn(m)+" = "+(r+m)}}
@@ -2328,7 +2431,7 @@ function oppByFoes(c,a,L){L.forEach(function(x){var f=x.c;if(hpOf(c)<=0||hpOf(f)
     if(!R.hit)clog("Ataque de oportunidad: "+view(f).name+" golpea a "+view(c).name+" cuando se aleja. "+R.txt+": falla.");
     else{var dm=rollF(f.dmg||"1d6+2",R.crit),n=dmgTo(c,dm.total);hurt(c,n);clog("Ataque de oportunidad: "+view(f).name+" golpea a "+view(c).name+" cuando se aleja. "+R.txt+": "+(R.crit?"crítico":"impacta")+" y hace "+n+" de daño ("+dm.text+")."+fall(c,true))}
     why("Alejarse de un enemigo que está al lado le da un ataque gratis, salvo que gastes la acción en destrabarte. Rodearlo sin separarte de él no lo provoca.")})}
-function castSpell(c,v){var sp=spellByName(($("#au-spell")||{}).value);
+function castSpell2(c,v){var sp=spellByName(($("#au-spell")||{}).value);
   if(sp&&distOn){var ally=sp[2]==="heal"||sp[2]==="buff",t=find(($(ally?"#au-heal-t":"#au-target")||{}).value),a=tokOf(c),b=t&&tokOf(t),rg=SPRNG[sp[0]]||18;
     if(a&&b&&t!==c&&!tokLos(curMap(),a,b)){clog(v.name+" no ve a "+view(t).name+": hay un muro en medio y no puede lanzarle "+sp[0]+".");return false}
     if(a&&b&&t!==c){var dd=Math.max(1,cellDist(a,b))*1.5;if(dd>rg){clog(v.name+" no puede lanzar "+sp[0]+" sobre "+view(t).name+": está a "+fmt(dd)+" m y el conjuro alcanza "+fmt(rg)+" m. Acércate o elige otro objetivo.");return false}}}
@@ -2362,10 +2465,9 @@ function simRun(N){var C0=JSON.stringify(S.combat),P0=JSON.stringify(S.party),d0
   return R}
 function simTxt(R){var w=Math.round(R.win/R.n*100),dp=Math.round(R.death/R.n*100),lab=w>=90&&dp<=5?"asequible":w>=75?"equilibrado":w>=50?"arriesgado":"muy peligroso";
   return"Pronóstico tras "+R.n+" simulaciones desde la situación actual: el grupo gana el "+w+" % de las veces. De media quedan "+fmt(R.rounds/R.n)+" rondas, caen "+fmt(R.down/R.n)+" personajes y en el "+dp+" % muere alguien. Valoración: "+lab+"."}
-function simHtml(){var C=S.combat;return'<div class="bar"><button type="button" data-au="sim">Calcular la dificultad</button>'+(C.round&&!C.over&&foes().length>1?'<button type="button" class="ghost" data-au="ease">Quitar un enemigo</button>':"")+'</div>'+(C.simTxt?'<p class="sub" style="color:var(--ink)">'+esc(C.simTxt)+'</p><p class="sub">Es una estimación: el panel juega por vosotros de forma sencilla, sin vuestras ideas ni el terreno.</p>':"")}
 $("#cb-auto").addEventListener("click",function(e){var b=e.target.closest("[data-au]");if(!b)return;var C=S.combat;
-  if(b.dataset.au==="sim"){if(!C.list.some(isPc)||!C.list.some(function(c){return!isPc(c)&&!c.ally})){C.simTxt="Hacen falta personajes y enemigos en la lista.";touch();return}var tx=simTxt(simRun(200));S.combat.simTxt=tx;touch()}
-  else if(b.dataset.au==="ease"){var F=foes().filter(function(c){return!c.boss});if(F.length<1||foes().length<2)return;var x=F.slice().sort(function(a,b2){return hpOf(b2)-hpOf(a)})[F.length-1];x.fled="huye";addCond(x,"Huido");clog(view(x).name+" se retira del combate: quien dirige ha aligerado el encuentro.");C.simTxt="";if(C.turnId===x.id){advance();autoStep()}touch()}});
+  if(b.dataset.au==="sim"){if(!C.list.some(isPc)||!C.list.some(function(c){return!isPc(c)&&!c.ally})){C.simTxt="Hacen falta personajes y enemigos en la lista.";touch();return}var R1=simRun(200),tx=simTxt(R1);S.combat.simTxt=tx;S.combat.sim=simObj(R1);touch()}
+  else if(b.dataset.au==="ease"){var F=foes().filter(function(c){return!c.boss});if(F.length<1||foes().length<2)return;var x=F.slice().sort(function(a,b2){return hpOf(b2)-hpOf(a)})[F.length-1];x.fled="huye";addCond(x,"Huido");clog(view(x).name+" se retira del combate: quien dirige ha aligerado el encuentro.");C.simTxt="";C.sim=null;if(C.turnId===x.id){advance();autoStep()}touch()}});
 $("#cb-auto").addEventListener("change",function(e){if(e.target.id!=="au-target")return;var c=find(S.combat.turnId);if(c&&isPc(c)){c.tgt=e.target.value;touch()}});
 /* ---- muros: bloquean el paso, la vista y los disparos ---- */
 function losClear(m,x0,y0,x1,y1){if(!m.ter)return true;var n=Math.max(Math.abs(x1-x0),Math.abs(y1-y0))*2;
@@ -2380,6 +2482,90 @@ function pathTo(m,t,g){var cols=Math.ceil(m.w/m.cell),rows=Math.ceil(m.h/m.cell)
       var nd=q[0]+(terOf(m,nx,ny)==="d"?2:1)+(dx&&dy?.001:0);if(D[nk]==null||nd<D[nk]){D[nk]=nd;prev[nk]=k;Q.push([nd,nx,ny])}}}
   if(!best)return null;var P=[];while(best!==k0){P.unshift(best.split(",").map(Number));best=prev[best]}return P}
 function stepToward(m,t,g,bud){bud=bud||6;var P=pathTo(m,t,g),mv=0;if(!P)return 0;for(var i=0;i<P.length;i++){var c=terOf(m,P[i][0],P[i][1])==="d"?2:1;if(c>bud)break;t.x=P[i][0];t.y=P[i][1];bud-=c;mv++}return mv}
+/* ---- sonido: ambientes grabados y efectos ---- */
+var ambBuf={},sfxBuf={},ambTok=0,sfxG=null,sfxOn=true;
+try{sfxOn=localStorage.getItem(LS+"-sfx")!=="0"}catch(e){}
+function acInit(){try{if(!ac){var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return false;ac=new AC();ambG=ac.createGain();ambG.connect(ac.destination)}
+    if(!sfxG){sfxG=ac.createGain();sfxG.connect(ac.destination)}if(ac.state==="suspended")ac.resume();ambG.gain.value=ambVol*.6;sfxG.gain.value=.9*Math.max(.3,ambVol);return true}catch(e){return false}}
+function sndLoad(name,cache){if(!cache[name]){cache[name]=fetch("snd/"+name+".mp3").then(function(r){if(!r.ok)throw 0;return r.arrayBuffer()}).then(function(b){return new Promise(function(res,rej){ac.decodeAudioData(b,res,rej)})});cache[name].catch(function(){delete cache[name]})}return cache[name]}
+function ambPlay(k){if(!AMB[k])k="silencio";ambCur=k;$("#amb-sel").value=k;ambStop();var tok=++ambTok;if(k==="silencio"||!acInit())return;
+  sndLoad("amb-"+k,ambBuf).then(function(b){if(tok!==ambTok)return;var s=ac.createBufferSource(),g=ac.createGain(),t=ac.currentTime;s.buffer=b;s.loop=true;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(1,t+1.5);s.connect(g);g.connect(ambG);s.start();ambNodes.push(s)},
+    function(){if(tok===ambTok)ambSynth(k)})}
+var SFXV={golpe:3,dado:2};
+function sfx(name){if(!sfxOn||SIM||!acInit())return;var n=SFXV[name]?name+(1+Math.floor(Math.random()*SFXV[name])):name;
+  sndLoad("sfx-"+n,sfxBuf).then(function(b){var s=ac.createBufferSource();s.buffer=b;s.playbackRate.value=.94+Math.random()*.12;s.connect(sfxG);s.start()},function(){})}
+(function(){var l=document.createElement("label");l.className="ck sfxck";l.innerHTML='<input type="checkbox" id="sfx-on"'+(sfxOn?" checked":"")+'> Efectos';$(".amb").appendChild(l);
+  $("#sfx-on").onchange=function(){sfxOn=this.checked;try{localStorage.setItem(LS+"-sfx",sfxOn?"1":"0")}catch(e){}if(sfxOn)sfx("dado")}})();
+
+/* ---- dado animado ---- */
+var dSides=20,dfxT=null,dfxI=null,DSH={4:"50,8 94,88 6,88",6:"14,14 86,14 86,86 14,86",8:"50,4 94,50 50,96 6,50",10:"50,4 93,42 50,96 7,42",12:"50,4 95,37 78,93 22,93 5,37",20:"50,3 93,27 93,73 50,97 7,73 7,27"};
+(function(){var o=document.createElement("div");o.id="dfx";o.hidden=true;o.setAttribute("aria-hidden","true");document.body.appendChild(o)})();
+function diceFx(sides,total,detail,cls,quiet){var o=$("#dfx"),k=sides===100?10:DSH[sides]?sides:20,still=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  clearTimeout(dfxT);clearInterval(dfxI);
+  o.innerHTML='<div class="dfx-die s'+k+'"><svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="'+DSH[k]+'"/>'+(k===20?'<polygon class="in" points="50,24 75,66 25,66"/>':"")+'</svg><b>'+(still?esc(total):"?")+'</b><span>d'+esc(sides)+'</span></div><p>'+esc(detail)+'</p>';
+  o.className=still?"done "+(cls||""):"roll";var ml=document.querySelector("#map-dice .md-last");if(ml)ml.textContent=detail+" = "+total;o.hidden=false;void o.offsetWidth;var b=o.querySelector("b");if(!quiet)sfx("dado");
+  if(!still){var t0=Date.now();dfxI=setInterval(function(){b.textContent=1+Math.floor(Math.random()*Math.min(sides,99))},60);
+    setTimeout(function(){clearInterval(dfxI);b.textContent=total;o.className="done "+(cls||"");if(!quiet&&cls)sfx(cls==="crit"?"critico":"fallo")},850)}
+  dfxT=setTimeout(function(){o.className+=" out";dfxT=setTimeout(function(){o.hidden=true},400)},still?1800:2700)}
+function diceCast(sides,total,detail,cls){try{localStorage.setItem(LS+"-dado",JSON.stringify({k:uid(),s:sides,t:total,d:detail,c:cls||""}))}catch(e){}}
+window.addEventListener("storage",function(e){if(e.key!==LS+"-dado"||!e.newValue)return;try{var x=JSON.parse(e.newValue);diceFx(int(x.s,20),x.t,x.d||"",x.c||"",true)}catch(z){}});
+(function(){var m=document.createElement("div");m.id="map-dice";
+  m.innerHTML='<button type="button" class="md-tog" aria-expanded="false" title="Dados"><svg viewBox="0 0 100 100" width="22" height="22" aria-hidden="true"><polygon points="'+DSH[20]+'" fill="none" stroke="currentColor" stroke-width="7"/><polygon points="50,24 75,66 25,66" fill="none" stroke="currentColor" stroke-width="5"/></svg><span>Dados</span></button>'+
+    '<div class="md-box" hidden><div class="md-btns">'+[4,6,8,10,12,20,100].map(function(n){return'<button type="button" data-md="'+n+'">d'+n+'</button>'}).join("")+'</div><p class="md-last"></p></div>';
+  $("#board").appendChild(m);
+  m.querySelector(".md-tog").onclick=function(){var bx=m.querySelector(".md-box");bx.hidden=!bx.hidden;this.setAttribute("aria-expanded",String(!bx.hidden))};
+  m.addEventListener("click",function(e){var b=e.target.closest("[data-md]");if(b)roll(1,+b.dataset.md,0)})})();
+
+/* ---- pronóstico visual ---- */
+function simObj(R){var w=Math.round(R.win/R.n*100),dp=Math.round(R.death/R.n*100),k=w>=90&&dp<=5?0:w>=75?1:w>=50?2:3;
+  return{w:w,dp:dp,r:Math.round(R.rounds/R.n*10)/10,dn:Math.round(R.down/R.n*10)/10,n:R.n,k:k,lab:["Asequible","Equilibrado","Arriesgado","Muy peligroso"][k]}}
+function simCard(m){var tip=["El grupo debería ganar sin apuros.","Combate justo: habrá tensión, pero el grupo suele ganar.","Puede salir mal. Pensad en una retirada o en aliados.","Lo más probable es que el grupo pierda. Aligera el encuentro."][m.k];
+  return'<div class="simc k'+m.k+'"><div class="sim-ring" style="--p:'+m.w+'"><div><b>'+m.w+'%</b><span>victorias</span></div></div>'+
+    '<div class="sim-body"><div class="rowb"><span class="sim-lab">'+esc(m.lab)+'</span><span class="sub">'+m.n+' simulaciones</span></div>'+
+    '<div class="sim-scale"><i style="left:'+(100-m.w)+'%"></i></div><div class="sim-ticks"><span>Asequible</span><span>Equilibrado</span><span>Arriesgado</span><span>Mortal</span></div>'+
+    '<div class="sim-tiles"><div><b>'+fmt(m.r)+'</b><span>rondas de media</span></div><div><b>'+fmt(m.dn)+'</b><span>personajes caídos</span></div><div><b>'+m.dp+'%</b><span>riesgo de que muera alguien</span></div></div>'+
+    '<p class="sub">'+esc(tip)+' Es una estimación: el panel juega por vosotros con una táctica simple.</p></div></div>'}
+function simHtml(){var C=S.combat;return(C.sim?simCard(C.sim):C.simTxt?'<p class="sub" style="color:var(--ink)">'+esc(C.simTxt)+'</p>':"")+
+  '<div class="bar"><button type="button" data-au="sim">'+(C.sim?"Recalcular la dificultad":"Calcular la dificultad")+'</button>'+(C.round&&!C.over&&foes().length>1?'<button type="button" class="ghost" data-au="ease">Quitar un enemigo</button>':"")+'</div>'}
+
+/* ---- escenario del combate a pantalla completa ---- */
+var fxTag="";
+function fxPush(e){if(SIM)return null;var C=S.combat;e.s=(C.fxn||0)+1;C.fxn=e.s;C.fx=(C.fx||[]).concat([e]).slice(-12);return e}
+function fxHp(c){var v=view(c);return{h:hpOf(c),m:v.max||1}}
+function atkRoll(a,bonus,t,o){var R=atkRoll0(a,bonus,t,o);if(!SIM){var z=fxHp(t);fxPush({a:a.id,t:t.id,k:R.hit?(R.crit?"crit":"hit"):"miss",r:R.r,tot:R.tot,ac:acOf(t)+(o&&o.cover?2:0),h0:z.h,h1:z.h,mx:z.m,sp:fxTag})}return R}
+function fxDmg(c,n,h0){if(SIM)return;var C=S.combat,L=C.fx||[],e=L[L.length-1],z=fxHp(c);
+  if(e&&e.t===c.id&&(e.k==="hit"||e.k==="crit")&&e.n==null){e.n=n;e.h0=h0;e.h1=z.h}else fxPush({a:C.turnId,t:c.id,k:"dmg",n:n,h0:h0,h1:z.h,mx:z.m,sp:fxTag});
+  if(z.h<=0){L=C.fx;L[L.length-1].down=1}}
+function fxHeal(c,n,h0){if(SIM||n<=0)return;var z=fxHp(c);fxPush({a:S.combat.turnId,t:c.id,k:"heal",n:z.h-h0,h0:h0,h1:z.h,mx:z.m,sp:fxTag})}
+function castSpell(c,v){fxTag=($("#au-spell")||{}).value||"un conjuro";try{return castSpell2(c,v)}finally{fxTag=""}}
+function monCast(c){fxTag="un conjuro";try{return monCast0(c)}finally{fxTag=""}}
+function stPic(c){if(!c)return"";if(isPc(c))return pcPic(pc(c.pcId));return c.base?monPic(c.base):""}
+function stCard(c,side,h,mx,e){if(!c)return'<div class="st-card '+side+' gone"></div>';var v=view(c),u=stPic(c),r=Math.max(0,Math.min(1,h/(mx||1))),pub=!isPc(c)&&!c.ally;
+  return'<div class="st-card '+side+'"><div class="st-pic">'+(u?'<img src="'+esc(u)+'" alt="">':'<span class="st-ini">'+esc(initials(v.name))+'</span>')+
+    (e&&side==="def"&&e.n?'<span class="st-dmg'+(e.k==="heal"?" heal":"")+'">'+(e.k==="heal"?"+":"−")+e.n+'</span>':"")+'</div><b class="st-name">'+esc(v.name)+'</b>'+
+    '<div class="st-hp"><i class="'+(r<=.25?"low":r<=.5?"half":"")+'" style="width:'+Math.round(r*100)+'%"></i></div><span class="st-n">'+(pub?band({hp:h,max:mx})[0]:Math.max(0,h)+" / "+mx+" PG")+'</span></div>'}
+function stMid(e){var A=find(e.a),verb=e.k==="heal"?"cura a":e.sp?"lanza "+e.sp+" a":"ataca a",res={hit:"¡Impacta!",crit:"¡Crítico!",miss:"Falla",dmg:e.n?"Daño":"Resiste",heal:"Cura"}[e.k]||"";
+  return'<div class="st-mid"><span class="st-verb">'+esc(verb)+'</span>'+(e.r?'<span class="st-d20 '+(e.r===20?"nat20":e.r===1?"nat1":"")+'">'+e.r+'</span><span class="st-vs">'+e.tot+' contra CA '+e.ac+'</span>':"")+'<span class="st-res">'+esc(res)+(e.down?'<small>'+esc(view(find(e.t)||{name:""}).name||"")+' cae</small>':"")+'</span></div>'}
+var stSeen=-1,stBusy=false,stQ=[],stT=null;
+function stageHtml(e,start){var A=find(e.a),T=find(e.t),az=A?fxHp(A):{h:0,m:1};
+  return'<p class="st-turn">Ronda '+(S.combat.round||1)+(turnName()?" · ahora le toca a "+esc(turnName()):"")+'</p><div class="st-row">'+stCard(A,"att",az.h,az.m)+stMid(e)+stCard(T,"def",start?e.h0:T?fxHp(T).h:0,e.mx,e)+'</div>'}
+function stageIdle(){var el=$("#cb-stage"),C=S.combat,L=C.fx||[],e=L[L.length-1];
+  if(e&&find(e.a)&&find(e.t)){el.className="stage still k-"+e.k+(e.sp?" spell":"")+(e.down?" down":"");el.innerHTML=stageHtml(e,false);return}
+  var c=find(C.turnId);if(!c){el.innerHTML="";return}var z=fxHp(c);el.className="stage still";el.innerHTML='<p class="st-turn">Ronda '+(C.round||1)+'</p><div class="st-row solo1">'+stCard(c,"att",z.h,z.m)+'<div class="st-mid"><span class="st-res">Su turno</span></div></div>'}
+function stagePlay(){var el=$("#cb-stage"),e=stQ.shift();if(!e){stBusy=false;stageIdle();return}if(!find(e.t)){stagePlay();return}stBusy=true;var fast=stQ.length>2,dur=fast?800:1700;
+  el.className="stage k-"+e.k+(e.sp?" spell":"")+(fast?" fast":"");el.innerHTML=stageHtml(e,true);void el.offsetWidth;el.classList.add("go");
+  sfx(e.k==="miss"?"fallo":e.k==="heal"?"magia":e.sp?"conjuro":e.k==="crit"?"critico":"golpe");if(e.k==="crit")setTimeout(function(){sfx("golpe")},120);
+  setTimeout(function(){var i=el.querySelector(".st-card.def .st-hp i"),r=Math.max(0,Math.min(1,e.h1/(e.mx||1)));if(i){i.style.width=Math.round(r*100)+"%";i.className=r<=.25?"low":r<=.5?"half":""}
+    var n=el.querySelector(".st-card.def .st-n"),T=find(e.t);if(n&&T)n.textContent=!isPc(T)&&!T.ally?band({hp:e.h1,max:e.mx})[0]:Math.max(0,e.h1)+" / "+e.mx+" PG";if(e.down){el.classList.add("down");sfx("cae")}},fast?250:450);
+  clearTimeout(stT);stT=setTimeout(stagePlay,dur)}
+function stageTick(){var el=$("#cb-stage"),C=S.combat;if(!el)return;if(!soloCb||!C.list.length){el.innerHTML="";el.className="stage";stSeen=C.fxn||0;stQ=[];return}
+  if(stSeen<0)stSeen=C.fxn||0;(C.fx||[]).forEach(function(e){if(e.s>stSeen){stQ.push(e);stSeen=e.s}});if(stSeen>(C.fxn||0))stSeen=C.fxn||0;
+  if(!stBusy){if(stQ.length)stagePlay();else stageIdle()}}
+var drawAuto0=drawAuto;drawAuto=function(){drawAuto0();stageTick()};
+var hpPrev={};
+function hpAnim(){[].forEach.call(document.querySelectorAll("#order .hpbar i[data-hp]"),function(i){var id=i.dataset.hp,w=i.style.width,p=hpPrev[id];hpPrev[id]=w;if(p==null||p===w)return;
+  i.style.transition="none";i.style.width=p;void i.offsetWidth;i.style.transition="";i.style.width=w})}
+var drawOrder0=drawOrder;drawOrder=function(){drawOrder0();hpAnim()};
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -2497,9 +2683,9 @@ $("#checklist").addEventListener("change",function(e){var k=e.target.dataset.chk
 /* ---- dados ---- */
 var log=[];
 $("#dice-btns").innerHTML=[4,6,8,10,12,20,100].map(function(n){return'<button type="button" data-d="'+n+'">d'+n+'</button>'}).join("");
-function show(total,detail,cls){var o=$("#dice-out");o.textContent=total;o.className=cls||"";$("#dice-detail").textContent=detail;
+function show(total,detail,cls){diceFx(dSides,total,detail,cls);diceCast(dSides,total,detail,cls);var o=$("#dice-out");o.textContent=total;o.className=cls||"";$("#dice-detail").textContent=detail;
   log.unshift(detail+" = "+total);log=log.slice(0,6);$("#dice-log").innerHTML=log.slice(1).map(function(l){return"<li>"+esc(l)+"</li>"}).join("")}
-function roll(n,sides,mod){var r=[],t=0,cls="";
+function roll(n,sides,mod){dSides=sides;var r=[],t=0,cls="";
   if(n===1&&sides===20&&mode!=="norm"){var a=d(20),b=d(20),k=mode==="adv"?Math.max(a,b):Math.min(a,b);t=k;cls=k===20?"crit":k===1?"fumble":"";
     show(t+mod,"d20 con "+(mode==="adv"?"ventaja":"desventaja")+" ("+a+", "+b+")"+(mod?(mod>0?" +":" −")+Math.abs(mod):""),cls);return}
   for(var i=0;i<n;i++){var x=d(sides);r.push(x);t+=x}
@@ -2591,7 +2777,7 @@ function lead(m){var t=BASE+"\n\n"+MODES[m].rules;
     t+="\n\nCuando la escena cambie de lugar, carga el mapa que encaje con una línea exactamente así: [MAPA: nombre del mapa], usando el nombre de uno de los lugares de la historia o de los mapas disponibles. Hazlo en tu primera respuesta y cada vez que la escena cambie de sitio. Prefiere los lugares que ya tienen mapa; si la escena exige un lugar nuevo, usa igualmente la marca con su nombre y el panel preparará un tablero en blanco y pedirá su imagen."+(story()&&placesCtx(story())?" "+placesCtx(story()):"")+" Al empezar una escena nueva o un combate añade una línea que empiece por «Colocación:» explicando a quien dirige en qué zona del mapa poner a los personajes, a las criaturas y los objetos importantes, y después una marca exactamente así: [COLOCAR: Nombre=columna,fila; Nombre=columna,fila], con casillas dentro del tamaño del mapa.";
     t+="\n\nTIRADAS DE LOS PERSONAJES: conoces la ficha de cada uno, más abajo. Cuando una acción sea incierta, decide qué personaje concreto la hace según lo que haya dicho y no la resuelvas ni pidas cifras: termina con una línea exactamente así por cada personaje implicado: [TIRADA: nombre del personaje | habilidad, característica o salvación | CD]. El panel tira el d20, suma el modificador exacto de su ficha y te escribe el resultado; entonces narra la consecuencia sin cambiarlo. Si actúa todo el grupo, pide una tirada por personaje. Ten en cuenta su velocidad, sus conjuros y los espacios que le quedan: no le dejes lanzar un conjuro que no tiene o para el que no le quedan espacios.";
     if(tAct)t+="\n\nEl último mensaje es de "+tAct+": resuelve su acción con sus estadísticas, no con las de otro."+(tNext?" RONDA POR TURNOS: los jugadores hablan de uno en uno. Responde en 80 palabras como máximo y termina preguntando por su nombre a "+tNext+" qué hace.":"");
-    t+="\n\nPara ambientar la escena puedes cambiar el sonido de fondo con una línea exactamente así: [AMBIENTE: nombre], con uno de estos nombres: lluvia, mazmorra, bosque, taberna, misterio, silencio.";
+    t+="\n\nPara ambientar la escena puedes cambiar el sonido de fondo con una línea exactamente así: [AMBIENTE: nombre], con uno de estos nombres: lluvia, tormenta, mazmorra, bosque, taberna, hoguera, viento, puerto, misterio, silencio.";
     var sq=story(),cn=sq?chapNpcs(sq):[];if(cn.length)t+="\n\nLos PNJ de este capítulo son: "+cn.map(function(n){return n.name}).join(", ")+". Cada PNJ se queda en el mapa donde estaba: al cambiar de mapa solo aparecen los que pertenecen a ese lugar o acompañan al grupo. Si un PNJ viaja con los personajes o entra en la escena nueva, inclúyelo en la marca [COLOCAR]; si no, no lo des por presente.";
     var cm=curMap();if(cm.src||cm.desc)t+="\n\nLa escena actual transcurre en el mapa en pantalla, descrito más abajo: ambienta la narración en ese lugar concreto y ten en cuenta dónde está cada figura."}
   if(helpOn)t+=m==="copiloto"?"\n\nEl máster es novato: explica en pocas palabras cada regla que menciones.":"\n\nMODO EXPLICACIÓN: los jugadores no han jugado nunca. Después de narrar añade una línea que empiece por «Opciones:» con tres o cuatro cosas concretas que podrían hacer sus personajes ahora, y explica entre paréntesis, en pocas palabras, cada término de reglas que uses. Cuando el panel te dé el resultado de una tirada, di primero en una frase qué se sumó al dado y por qué, y luego narra la consecuencia.";
@@ -2732,7 +2918,7 @@ function pt(e){var r=$("#board").getBoundingClientRect();return{x:(e.clientX-r.l
 function cellOf(m,p){return{x:Math.floor((p.x-m.ox)/m.cell),y:Math.floor((p.y-m.oy)/m.cell)}}
 function ctr(m,cx,cy,s){return{x:m.ox+(cx+(s||1)/2)*m.cell,y:m.oy+(cy+(s||1)/2)*m.cell}}
 var board=$("#board");
-board.addEventListener("pointerdown",function(e){if(e.target.closest("#zoom")||e.button>0)return;var m=curMap(),p=pt(e);try{board.setPointerCapture(e.pointerId)}catch(x){}
+board.addEventListener("pointerdown",function(e){if(e.target.closest("#zoom")||e.target.closest("#map-dice")||e.button>0)return;var m=curMap(),p=pt(e);try{board.setPointerCapture(e.pointerId)}catch(x){}
   lastRule=null;
   if(placing.length){var pc0=cellOf(m,p),nx=placing.shift();nx.id=uid();nx.size=1;nx.x=Math.max(0,Math.min(Math.ceil(m.w/m.cell)-1,pc0.x));nx.y=Math.max(0,Math.min(Math.ceil(m.h/m.cell)-1,pc0.y));
     m.tokens.push(nx);fogAuto(m,nx);selTok=nx.id;ghost=null;touch(false);placeMsg();drawMapUI();return}
