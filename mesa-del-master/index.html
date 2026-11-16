@@ -204,6 +204,49 @@ body.more-open #dice-fab{display:none}
 }
 @media (min-width:821px){.sheet-link{display:none!important}}
 
+
+/* guía de la partida */
+.coach{display:flex;flex-direction:column;gap:12px;padding:18px 20px;border:1px solid var(--brass);border-radius:var(--rc);background:linear-gradient(135deg,rgba(240,168,28,.10),rgba(240,168,28,.02));min-width:0}
+.coach h3{margin:0;font-family:var(--display);font-size:1.3rem;letter-spacing:.02em}
+.coach p{margin:0;max-width:70ch}
+.coach-b{display:flex;flex-direction:column;gap:4px;min-width:0}
+.coach-ph{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;counter-reset:cp}
+.coach-ph li{counter-increment:cp;font-size:.78rem;color:var(--muted);padding:3px 10px;border-radius:999px;border:1px solid var(--line)}
+.coach-ph li::before{content:counter(cp) ". "}
+.coach-ph li.done{color:var(--heal);border-color:var(--heal)}
+.coach-ph li.done::before{content:"✓ "}
+.coach-ph li.now{color:var(--brass-ink);background:var(--brass);border-color:var(--brass);font-weight:700}
+.coach.compact{padding:12px 14px;gap:8px}
+.coach.compact h3{font-size:1.05rem}
+.coach-x{font-size:.9rem;color:var(--muted)}
+#coach-panel:empty,#coach-ia:empty{display:none}
+.mb-coach{flex:1 1 100%;min-width:0}
+.mb-steps{display:none!important}
+.mb-spot{flex:1 1 100%;min-width:0}
+.ho-on{display:inline-flex;align-items:center;gap:6px}
+/* protagonismo */
+.spot{display:flex;flex-direction:column;gap:6px}
+.spot-c{display:flex;flex-wrap:wrap;gap:6px}
+.spot-b{min-height:32px;padding:2px 12px;border-radius:999px;font-weight:600;font-size:.88rem}
+.spot-b b{color:var(--brass);margin-left:4px}
+.spot-b.low{border-color:var(--warn);color:var(--warn)}
+/* objetos para jugadores */
+.dlg{position:fixed;inset:0;z-index:92;background:rgba(5,4,9,.72);display:grid;place-items:center;padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+.dlg[hidden]{display:none}
+.dlg-in{width:min(640px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--rc);padding:20px;display:flex;flex-direction:column;gap:12px}
+.dlg-in h2{margin:0;font-family:var(--display)} .dlg-in h3{margin:6px 0 0}
+.ho-cur{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 12px;border-radius:var(--r);background:rgba(240,168,28,.1);border:1px solid rgba(240,168,28,.35)}
+#ho-view{position:fixed;inset:0;z-index:91;background:rgba(5,4,9,.88);display:grid;place-items:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));animation:ho-in .5s ease-out}
+#ho-view[hidden]{display:none}
+.ho-card{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:min(900px,100%);max-height:100%;text-align:center}
+.ho-card img{max-height:70dvh;max-width:100%;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.7);border:3px solid var(--brass)}
+.ho-card h2{font-family:var(--display);font-size:clamp(1.6rem,4vw,3rem);margin:0;color:#f3e6c4}
+.ho-card.paper .ho-tx{background:#efe2c2;color:#2a1d0c;padding:clamp(20px,5vw,48px);border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.7);max-width:70ch;text-align:left}
+.ho-card.paper h2{color:#2a1d0c}
+.ho-body{white-space:pre-wrap;font-size:clamp(1.05rem,2.2vw,1.4rem);line-height:1.55;margin:10px 0 0}
+.ho-card.pic .ho-body{color:#e8e0f0}
+@keyframes ho-in{from{opacity:0;transform:scale(.97)}}
+
 /* deshacer */
 #undo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 32px)}
 #undo[hidden]{display:none}
@@ -1116,7 +1159,7 @@ function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null,byIA:!!c.byIA,simTxt:typeof c.simTxt==="string"?c.simTxt:"",sim:c.sim&&typeof c.sim==="object"?c.sim:null,fx:Array.isArray(c.fx)?c.fx.slice(-12):[],fxn:int(c.fxn,0),goal:c.goal&&typeof c.goal==="object"?c.goal:null};
   function arr(v){return Array.isArray(v)?v:[]}
   b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.npcs=arr(x.npcs);x.loot=arr(x.loot);x.places=arr(x.places).filter(function(p){return p&&p.id&&p.title});x.mons=arr(x.mons).filter(function(m){return Array.isArray(m)&&m.length>=9});x.quests=arr(x.quests);x.next=x.next||{date:"",time:""};return x});
-  b.storyId=o.storyId||null;b.activity=arr(o.activity);
+  b.storyId=o.storyId||null;b.show=o.show&&typeof o.show==="object"?o.show:null;b.spot=o.spot&&typeof o.spot==="object"&&o.spot.c?o.spot:{k:"",c:{}};b.activity=arr(o.activity);
   b.party.forEach(function(p){if(!p.status)p.status="activo"});
   if(!b.stories.length&&(b.party.length||b.notes||b.ia.premise)){var st=mkStory("Mi campaña",0);st.desc=b.ia.premise;
     if(b.notes)st.notes.push({id:uid(),title:"Notas de la partida",text:b.notes,t:Date.now()});
@@ -2803,6 +2846,113 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-mesa
 document.addEventListener("change",function(e){if(e.target.id==="mesa-scene"&&e.target.value){var v=e.target.value;e.target.blur();sceneGo(v)}});
 setInterval(function(){if(mesa&&document.activeElement&&document.activeElement.id!=="mesa-scene")mesaDraw()},30000);
 window.addEventListener("hashchange",function(){var sh=$("#more-sheet");if(sh)sh.hidden=true;document.querySelectorAll(".more-btn").forEach(function(m){m.classList.remove("on")})});
+/* ---- objetos para los jugadores ---- */
+var hoSeen="",hoUrl={};
+(function(){var d=document.createElement("div");d.id="ho-dlg";d.className="dlg";d.hidden=true;d.setAttribute("role","dialog");d.setAttribute("aria-label","Enseñar a los jugadores");
+  d.innerHTML='<div class="dlg-in"><div class="rowb"><h2>Enseñar a los jugadores</h2><button type="button" class="ghost" data-ho="close" aria-label="Cerrar">✕</button></div>'+
+    '<p class="sub">Lo que envíes aparece a pantalla completa en la pestaña de jugadores, encima de lo que estén viendo. Sirve para una carta, un mapa del tesoro, el retrato de un PNJ o un objeto.</p>'+
+    '<div id="ho-now"></div>'+
+    '<div class="fgrid"><label>Título<input id="ho-title" placeholder="La carta sellada"></label><label>Imagen, si quieres<input id="ho-file" type="file" accept="image/*"></label></div>'+
+    '<label class="wide">Texto<textarea id="ho-text" style="min-height:6em" placeholder="«Si leéis esto, ya es tarde. La campana no se hundió sola…»"></textarea></label>'+
+    '<div class="bar"><button type="button" class="pri" data-ho="send">Enseñar ahora</button><span id="ho-msg" class="sub" role="status"></span></div>'+
+    '<h3>Ya enseñado en esta historia</h3><ul class="list" id="ho-list"></ul></div>';document.body.appendChild(d);
+  var v=document.createElement("div");v.id="ho-view";v.hidden=true;v.setAttribute("role","dialog");v.setAttribute("aria-label","Objeto del máster");document.body.appendChild(v)})();
+function hoLabel(h){return h.title||(h.k==="npc"?"Retrato":h.k==="mon"?"Criatura":h.k==="img"?"Imagen":"Nota")}
+function hoShow(h){var s=story();h.id=uid();h.t=Date.now();S.show=h;if(s){s.hand=(s.hand||[]).filter(function(x){return!(x.k===h.k&&x.ref===h.ref&&x.title===h.title&&x.text===h.text)}).concat([h]).slice(-30)}
+  logAct("Enseñado a los jugadores: "+hoLabel(h));touch();var m=$("#ho-msg");if(m)m.textContent="Enviado a la pantalla de jugadores."+(players?"":" Si no la tienes abierta, ábrela con «Pantalla de jugadores».");}
+function hoPic(h,cb){if(h.k==="npc"){var n=npcById(h.ref);return n?npcPic(n):""}if(h.k==="mon")return monPic(h.ref);if(h.k==="img"){if(hoUrl[h.ref])return hoUrl[h.ref];if(hoUrl[h.ref]===undefined){hoUrl[h.ref]=null;idbGet("ho-"+h.ref).then(function(b){if(b){hoUrl[h.ref]=URL.createObjectURL(b);if(cb)cb()}},function(){})}return""}return""}
+function hoDraw(){var v=$("#ho-view"),h=S.show;if(!players||!h||h.id===hoSeen){v.hidden=true;return}var u=hoPic(h,hoDraw),n=h.k==="npc"?npcById(h.ref):null;
+  v.innerHTML='<div class="ho-card'+(u?" pic":" paper")+'">'+(u?'<img src="'+esc(u)+'" alt="">':"")+'<div class="ho-tx"><h2>'+esc(h.title||(n?n.name:h.ref)||"")+'</h2>'+(n&&n.role?'<p class="sub">'+esc(n.role)+'</p>':"")+(h.text&&!(n&&h.text===n.role)?'<p class="ho-body">'+esc(h.text)+'</p>':"")+'</div><button type="button" data-ho="seen">Cerrar</button></div>';v.hidden=false}
+function hoList(){var s=story(),L=s?(s.hand||[]).slice().reverse():[],n=$("#ho-now");if(!$("#ho-list"))return;
+  n.innerHTML=S.show?'<div class="ho-cur"><span>Ahora en la pantalla de jugadores: <b>'+esc(hoLabel(S.show))+'</b></span><button type="button" data-ho="clear">Retirar</button></div>':"";
+  $("#ho-list").innerHTML=L.length?L.map(function(h){return'<li><span class="t">'+esc(hoLabel(h))+'<time>'+ago(h.t)+'</time></span><button type="button" data-ho-again="'+h.id+'" style="min-height:28px;padding:0 10px">Volver a enseñar</button></li>'}).join(""):'<li><span class="t sub">Todavía nada.</span></li>'}
+function hoOpen(){$("#ho-dlg").hidden=false;hoList();$("#ho-title").focus()}
+document.addEventListener("click",function(e){var b=e.target.closest("[data-ho],[data-ho-again],[data-ho-npc],[data-ho-mon],[data-ho-loot],[data-ho-open]");if(!b)return;var s=story();
+  if(b.dataset.hoOpen!=null){hoOpen();return}
+  if(b.dataset.hoNpc){var n=npcById(b.dataset.hoNpc);if(n)hoShow({k:"npc",ref:n.id,title:n.name,text:n.role||""});undoShowMsg("Retrato de "+(n?n.name:"")+" enviado a los jugadores.");return}
+  if(b.dataset.hoMon!=null){var m=s&&s.mons[+b.dataset.hoMon];if(m)hoShow({k:"mon",ref:m[0],title:m[0],text:m[10]||""});undoShowMsg("«"+(m?m[0]:"")+"» enviado a los jugadores.");return}
+  if(b.dataset.hoLoot){var o=null;(s?s.loot||[]:[]).forEach(function(x){if(x.id===b.dataset.hoLoot)o=x});if(o)hoShow({k:"text",ref:"",title:"Objeto encontrado",text:o.x});undoShowMsg("Objeto enviado a los jugadores.");return}
+  if(b.dataset.hoAgain){var h=null;(s?s.hand||[]:[]).forEach(function(x){if(x.id===b.dataset.hoAgain)h=x});if(h)hoShow({k:h.k,ref:h.ref,title:h.title,text:h.text});hoList();return}
+  var k=b.dataset.ho;
+  if(k==="close")$("#ho-dlg").hidden=true;
+  else if(k==="seen"){hoSeen=S.show?S.show.id:"";$("#ho-view").hidden=true}
+  else if(k==="clear"){S.show=null;touch();hoList()}
+  else if(k==="send"){var t=$("#ho-title").value.trim(),x=$("#ho-text").value.trim(),f=$("#ho-file").files[0];if(!t&&!x&&!f){$("#ho-msg").textContent="Escribe un título, un texto o elige una imagen.";return}
+    if(f){var id=uid();imgPrep(f,1600).then(function(r){return idbPut("ho-"+id,r.blob)}).then(function(){hoShow({k:"img",ref:id,title:t,text:x});$("#ho-file").value="";hoList()},function(){$("#ho-msg").textContent="No se ha podido guardar la imagen en este navegador."})}
+    else{hoShow({k:"text",ref:"",title:t,text:x});hoList()}$("#ho-title").value="";$("#ho-text").value=""}});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){if(!$("#ho-dlg").hidden)$("#ho-dlg").hidden=true;else if(!$("#ho-view").hidden){hoSeen=S.show?S.show.id:"";$("#ho-view").hidden=true}}});
+function undoShowMsg(t){var u=$("#undo");u.querySelector("span").textContent=t;u.querySelector("button").hidden=true;u.hidden=false;clearTimeout(undoT);undoT=setTimeout(function(){u.hidden=true;u.querySelector("button").hidden=false},3500)}
+var npcCtlH=npcCtl;npcCtl=function(n){var h=npcCtlH(n),i=h.lastIndexOf("</span>");return h.slice(0,i)+'<button type="button" class="ghost" data-ho-npc="'+n.id+'" style="min-height:28px;padding:0 8px;font-size:.8rem">Enseñar a los jugadores</button>'+h.slice(i)};
+var drawMonsH=drawMons;drawMons=function(){drawMonsH();[].forEach.call(document.querySelectorAll("#sd-mons [data-mon-gen]"),function(g){var b=document.createElement("button");b.type="button";b.className="ghost dm";b.dataset.hoMon=g.dataset.monGen;b.textContent="Enseñar";b.style.cssText="min-height:24px;padding:0 6px";g.parentNode.insertBefore(b,g)})};
+var drawLootH=drawLoot;drawLoot=function(){drawLootH();[].forEach.call(document.querySelectorAll("#sd-loot [data-loot-rm]"),function(r){var b=document.createElement("button");b.type="button";b.className="ghost dm";b.dataset.hoLoot=r.dataset.lootRm;b.textContent="Enseñar";b.style.cssText="min-height:24px;padding:0 8px";r.parentNode.insertBefore(b,r)})};
+
+/* ---- protagonismo por escena ---- */
+function spot(){var k=S.mapId||"";if(!S.spot||S.spot.k!==k)S.spot={k:k,c:{}};return S.spot}
+function spotAdd(id){var sp=spot();sp.c[id]=(sp.c[id]||0)+1;touch(false)}
+function spotLow(){var R=roster();if(R.length<2)return null;var sp=spot(),lo=null;R.forEach(function(p){var n=sp.c[p.id]||0;if(!lo||n<(sp.c[lo.id]||0))lo=p});var mx=0;R.forEach(function(p){mx=Math.max(mx,sp.c[p.id]||0)});return mx-(sp.c[lo.id]||0)>=2||(mx>=2&&!(sp.c[lo.id]))?lo:null}
+function spotHtml(){var R=roster();if(R.length<2)return"";var sp=spot(),lo=spotLow();
+  return'<div class="spot"><span class="eyebrow">Protagonismo en esta escena</span><div class="spot-c">'+R.map(function(p){var n=sp.c[p.id]||0;return'<button type="button" class="spot-b'+(lo&&lo.id===p.id?" low":"")+'" data-spot="'+p.id+'" title="Pulsa si ha hecho algo fuera del máster IA">'+esc((p.name||"?").replace(/\s*\(.*?\)/,""))+' <b>'+n+'</b></button>'}).join("")+'</div>'+(lo?'<p class="sub warn">'+esc(lo.name)+' apenas ha actuado aquí: pregúntale qué hace.</p>':"")+'</div>'}
+document.addEventListener("click",function(e){var b=e.target.closest("[data-spot]");if(!b)return;spotAdd(b.dataset.spot);draw()});
+var whoWrapS=whoWrap;whoWrap=function(q){var id=$("#ia-who").value,r=whoWrapS(q);if(pc(id))spotAdd(id);return r};
+var iaCtxS=iaCtx;iaCtx=function(){var t=iaCtxS(),R=roster(),sp=spot();if(R.length<2||!S.ia.log.length)return t;var lo=spotLow();
+  return t+"\n\nPROTAGONISMO EN ESTA ESCENA, veces que ha actuado cada personaje: "+R.map(function(p){return(p.name||"?")+" "+(sp.c[p.id]||0)}).join(", ")+"."+(lo?" "+lo.name+" apenas ha actuado: dale una ocasión clara de intervenir y dirígete a él por su nombre.":"")};
+
+/* ---- qué hacer ahora: guía de la partida de principio a fin ---- */
+var coachManual=false;try{coachManual=localStorage.getItem(LS+"-manual")==="1"}catch(e){}
+function coach(){var s=story(),R=roster(),C=S.combat,eng=inArtifact?!!sample:canAsk(),phase=0;
+  if(!S.stories.length)return{ph:0,t:"Crea tu primera historia",x:"Una historia reúne los capítulos, los lugares y los PNJ de la aventura. Si es tu primera vez, carga la de ejemplo: viene preparada para jugar esta misma tarde.",b:[["demo","Cargar la historia de ejemplo",1],["new","Crear una historia vacía"]]};
+  if(!s)return{ph:0,t:"Elige la historia que vais a jugar",x:"Abre una historia para ponerla en mesa. Todo lo demás (mapa, combate, máster IA) trabajará sobre ella.",b:[["choose","Ver mis historias",1]]};
+  if(!R.length)return{ph:0,t:"Añade los personajes de tus jugadores",x:"Cada jugador necesita su ficha. Si la tiene en D&D Beyond, impórtala con el PDF o una captura; si no, créala aquí con lo básico. Para probar, carga el grupo de ejemplo.",b:[["import","Importar de D&D Beyond",1],["addpc","Crear un personaje"],["demoparty","Grupo de ejemplo"]]};
+  if(!eng&&!coachManual&&!inArtifact)return{ph:0,t:"Decide quién narra",x:"El máster IA narra, interpreta a los PNJ y pide tiradas. Para usarlo hay que configurar un motor (Ollama, Hermes u otro). Si prefieres narrar tú, el panel te ayuda igual con mapa, combate y dados.",b:[["motor","Configurar el máster IA",1],["manual","Narraré yo"]]};
+  phase=1;var live=!!s.live;
+  if(!live&&!s.zeroDone&&!started(s))return{ph:1,t:"Cuenta la Sesión 0",x:"Antes de jugar, presenta el mundo: dónde están, qué pasa y por qué los personajes están juntos. Léelo en voz alta con los jugadores delante. Es buen momento para abrir la pantalla de jugadores en la tele.",b:[["zero","Abrir la Sesión 0",1],["players","Abrir la pantalla de jugadores"]]};
+  if(!live)return{ph:1,t:s.sessions.length?"Empieza la sesión "+(s.sessions.length+1):"Empieza la aventura",x:(s.sessions.length?"Primero se recuerda lo que pasó la última vez y luego seguís donde lo dejasteis. ":"Se coloca al grupo en el mapa del primer lugar y el máster abre la escena. ")+"Juega desde la Mesa de juego: ahí tienes narración, combate y mapa juntos.",b:[["start","Empezar a jugar",1],["players","Abrir la pantalla de jugadores"]]};
+  phase=2;var mins=Math.round((Date.now()-s.live.t0)/6e4),late=mins>=150;
+  if(C.list.length&&C.round&&!C.over)return{ph:2,t:"Combate: resolved los turnos por orden",x:"Cuando le toque a un personaje, su jugador elige qué hace (Atacar, Conjuro, Moverse, Curar u Otra cosa) y el panel tira y explica. Los monstruos actúan solos. El combate termina cuando caen o huyen los enemigos.",b:[["combat","Ir al combate",1]]};
+  if(C.over&&C.byIA)return{ph:2,t:C.over==="win"?"Victoria: volved a la historia":"El grupo ha caído: volved a la historia",x:"El máster IA contará cómo sigue a partir del resultado. Los PX y el botín ya están apuntados.",b:[["back","Volver a la historia",1]]};
+  if(typeof pend!=="undefined"&&pend.some(function(x){return x.res==null&&pc(x.pc)}))return{ph:2,t:"Hay que tirar dados",x:"El máster ha pedido una tirada. Que tire el jugador con sus dados o pulsa «Que tire el panel»; el resultado se le cuenta al máster solo.",b:[["rolls","Ver las tiradas",1]]};
+  if(!eng)return{ph:2,t:"Narra la escena",x:"Describe dónde están en tres frases y pregunta «¿Qué hacéis?». Si algo es incierto, pide una tirada con los dados. Si hay pelea, monta el combate. Para cambiar de lugar usa «Cambiar de escena»."+(late?" Lleváis más de dos horas: piensa en cerrar.":""),b:[["combat","Montar un combate"],["end","Terminar la sesión"]]};
+  var L=S.ia.log,last=L[L.length-1],lo=spotLow();
+  if(busy)return{ph:2,t:"El máster está narrando…",x:"Escuchad o leed la respuesta. Cuando termine, toca decidir.",b:[]};
+  if(!L.length)return{ph:2,t:"Que el máster abra la escena",x:"Pulsa para que el máster IA describa dónde están y qué ocurre.",b:[["open","Empezar la aventura",1]]};
+  if(last&&last.r==="a")return{ph:2,t:"Turno de los jugadores: ¿qué hacéis?",x:"Pregunta a "+(lo?lo.name+", que apenas ha actuado,":"cada jugador")+" qué hace su personaje. Elige quién actúa, escribe su acción con sus palabras y pulsa «Enviar». Si no saben qué hacer, pide opciones."+(late?" Lleváis más de dos horas: cerrad en un buen momento.":""),b:[["act","Escribir lo que hacen",1],["options","¿Qué podemos hacer?"],["end","Terminar la sesión"]]};
+  return{ph:2,t:"Esperando al máster",x:"Si no responde, revisa el motor de IA o vuelve a enviar.",b:[["act","Escribir de nuevo",1]]}}
+function coachAfter(){var s=story();if(!s||s.live||!s.sessions.length)return null;var up=roster().filter(canLevel);
+  if(up.length)return{ph:3,t:"Sesión cerrada: hay subida de nivel",x:up.map(function(p){return p.name}).join(", ")+" "+(up.length>1?"pueden":"puede")+" subir de nivel. Hacedlo ahora o al empezar la próxima sesión.",b:[["level","Subir de nivel",1],["start","Seguir jugando"]]};
+  if(!s.next||!s.next.date)return{ph:3,t:"Sesión cerrada: fija la próxima",x:"Apunta cuándo volvéis a jugar. Al empezar la próxima sesión el panel recordará lo que pasó.",b:[["next","Fijar la próxima sesión",1],["start","Seguir jugando"]]};
+  return null}
+function coachNow(){var c=coach();if(c&&c.ph===1&&!story().live){var a=coachAfter();if(a&&story().sessions.length&&(story().zeroDone||started(story())))return a}return c}
+function coachHtml(compact){var c=coachNow(),ph=["Preparar","Sesión 0","Jugar","Cerrar"],s=story();if(!c)return"";var done=function(i){return i<c.ph||(i===1&&s&&(s.zeroDone||started(s))&&c.ph>=1)};
+  return'<div class="coach'+(compact?" compact":"")+'"><ol class="coach-ph">'+ph.map(function(t,i){return'<li class="'+(i===c.ph?"now":done(i)?"done":"")+'">'+t+'</li>'}).join("")+'</ol>'+
+    '<div class="coach-b"><span class="eyebrow">Qué hacer ahora</span><h3>'+esc(c.t)+'</h3>'+(compact?"":'<p>'+esc(c.x)+'</p>')+'</div>'+(compact?'<p class="coach-x">'+esc(c.x)+'</p>':"")+
+    (c.b.length?'<div class="bar">'+c.b.map(function(b){return'<button type="button" data-coach="'+b[0]+'"'+(b[2]?' class="pri"':"")+'>'+esc(b[1])+'</button>'}).join("")+'</div>':"")+'</div>'}
+function demoParty(){var ds=story();S.party=S.party.concat([["Brenna","Guerrera",16,12,10,2],["Tobías","Mago",12,8,13,2],["Sira","Pícara",14,9,14,3],["Hermano Odo","Clérigo",16,10,13,0]].map(function(x){return{id:uid(),name:x[0]+" (ejemplo)",player:"",cls:x[1],level:1,ac:x[2],hp:x[3],max:x[3],pp:x[4],init:x[5],race:"",story:ds?ds.id:"",status:"activo"}}));logAct("Grupo de ejemplo cargado");touch()}
+document.addEventListener("click",function(e){var b=e.target.closest("[data-coach]");if(!b)return;var k=b.dataset.coach,s=story();
+  if(k==="demo")demoStory();else if(k==="new")addStory();else if(k==="choose")location.hash="historias";
+  else if(k==="import"){$("#imp-btn").click();location.hash="personajes"}
+  else if(k==="addpc"){location.hash="personajes";setTimeout(function(){$("#btn-addpc").click()},60)}
+  else if(k==="demoparty")demoParty();
+  else if(k==="motor"){location.hash="ia";setTimeout(function(){var m=$("#motor");m.open=true;m.scrollIntoView({block:"center"})},80)}
+  else if(k==="manual"){coachManual=true;try{localStorage.setItem(LS+"-manual","1")}catch(x){}draw()}
+  else if(k==="zero"&&s)openZero(s,true);
+  else if(k==="players")playersBtn();
+  else if(k==="start"&&s){if(location.hash!=="#mesa")location.hash="mesa";setTimeout(function(){startStory(s.id)},30)}
+  else if(k==="combat"){mesaLeft="combate";if(location.hash!=="#mesa")location.hash="mesa";else{route();draw()}}
+  else if(k==="back")backToStory();
+  else if(k==="rolls"){var r=$("#ia-rolls");if(r)r.scrollIntoView({block:"center"})}
+  else if(k==="open")$("#ia-start").click();
+  else if(k==="act"){var lo=spotLow(),w=$("#ia-who");if(lo&&w)w.value=lo.id;var i=$("#ia-input");if(i){i.scrollIntoView({block:"center"});i.focus()}}
+  else if(k==="options")$("#ia-opt-btn").click();
+  else if(k==="end")$("#ia-endses").click();
+  else if(k==="level")location.hash="personajes";
+  else if(k==="next"&&s){sdTab="not";try{localStorage.setItem(LS+"-sdt","not")}catch(x){}openStory(s.id);setTimeout(function(){sdApply();var ed=$("#sd-edit");ed.open=true;var dt=$("#st-date");if(dt){dt.scrollIntoView({block:"center"});dt.focus()}},80)}});
+(function(){var k=document.createElement("div");k.id="coach-panel";$("#kpis").parentNode.insertBefore(k,$("#kpis"));var i=document.createElement("div");i.id="coach-ia";$("#ia-modes").parentNode.insertBefore(i,$("#ia-modes"))})();
+function coachDraw(){if(players){$("#coach-panel").innerHTML="";$("#coach-ia").innerHTML="";return}$("#coach-panel").innerHTML=coachHtml(false);$("#coach-ia").innerHTML=mesa?"":coachHtml(true);var sp=$("#spot-ia");if(sp)sp.innerHTML=mesa?"":spotHtml()}
+(function(){var w=$("#ia-whobar");if(w){var d=document.createElement("div");d.id="spot-ia";d.style.flex="1 1 100%";w.appendChild(d)}})();
+var mesaHtmlW=mesaHtml;mesaHtml=function(){var s=story();return mesaHtmlW()+(s?'<button type="button" data-ho-open>Enseñar a los jugadores</button>'+(S.show?'<span class="sub ho-on">En pantalla: '+esc(hoLabel(S.show))+' <button type="button" class="ghost" data-ho="clear" style="min-height:26px;padding:0 6px">Retirar</button></span>':""):"")+'<div class="mb-coach">'+coachHtml(true)+'</div>'+(s&&s.live?'<div class="mb-spot">'+spotHtml()+'</div>':"")};
+var drawW=draw;draw=function(){drawW();coachDraw();hoDraw();if(!$("#ho-dlg").hidden)hoList()};
+var drawIAC=drawIA;drawIA=function(){drawIAC();coachDraw();if(mesa)mesaDraw()};
+var drawRollsC=drawRolls;drawRolls=function(){drawRollsC();coachDraw();if(mesa)mesaDraw()};
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
