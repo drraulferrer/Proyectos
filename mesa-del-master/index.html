@@ -2290,6 +2290,36 @@ $("#m-gen-copy").onclick=function(){var tx=$("#m-gen-text"),el=$("#m-msg"),fb=fu
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(tx.value).then(function(){el.textContent="Prompt copiado."},fb);else fb()};
 $("#m-kie").onclick=function(){var i=mEnsure();if(i<0)return;var ds=$("#m-look").value.trim(),n=$("#m-name").value.trim();
   kieRun(this,$("#m-msg"),GENSTYLE+(ds?n+", "+ds:n+", a fantasy monster"),"1:1",function(b){return setMonPic(i,b).then(function(){setTimeout(mPicDraw,300)})})};
+/* ---- importar la ficha completa de D&D Beyond ---- */
+var ABEN={fue:["str","strength"],des:["dex","dexterity"],con:["con","constitution"],int:["int","intelligence"],sab:["wis","wisdom"],car:["cha","charisma"]};
+var SKEN=["acrobatics","athletics","arcana","deception","history","performance","intimidation","investigation","sleightofhand","medicine","nature","perception","insight","persuasion","religion","stealth","survival","animalhandling"];
+var SPEN={"fire bolt":"Descarga de fuego","ray of frost":"Rayo de escarcha","chill touch":"Toque gélido","eldritch blast":"Descarga sobrenatural","sacred flame":"Llama sagrada","vicious mockery":"Burla dañina","magic missile":"Proyectil mágico","guiding bolt":"Rayo guía","chromatic orb":"Orbe cromático","burning hands":"Manos ardientes","thunderwave":"Onda atronadora","cure wounds":"Curar heridas","mass healing word":"Palabra de curación en masa","healing word":"Palabra de curación","scorching ray":"Rayo abrasador","shatter":"Estallar","spiritual weapon":"Arma espiritual","fireball":"Bola de fuego","lightning bolt":"Relámpago","faerie fire":"Fuego feérico","hideous laughter":"Risa horrible","bless":"Bendición","shield of faith":"Escudo de fe","hold person":"Inmovilizar persona","fear":"Miedo"};
+function sgnNum(v){var m=/[+-]?\s*\d+/.exec(String(v==null?"":v).replace(/−/g,"-"));return m?parseInt(m[0].replace(/\s/g,""),10):null}
+function sheetFromFields(F,text){var o={},ab={},any=false,k;
+  ABK.forEach(function(a){var v=null,mod=null;ABEN[a].forEach(function(n){if(v==null&&F[n]!=null)v=String(F[n]).trim();if(mod==null&&F[n+"mod"]!=null)mod=sgnNum(F[n+"mod"])});
+    if(v!=null){var x=sgnNum(v);if(x!=null){if(/^[+-]/.test(v)||x<1){var sc=mod!=null&&mod>=1&&mod<=30&&!/^[+-]/.test(String(F[ABEN[a][0]+"mod"]))?mod:10+2*x;ab[a]=sc}else ab[a]=x;any=true}}});
+  if(any){o.caracteristicas=ab;var lv=classLevel(F.classlevel||F.classandlevel||F["class"]||"").level||num(F.level)||1,pb=sgnNum(F.profbonus)||2+Math.floor((Math.max(1,Math.min(20,lv))-1)/4),md=function(a){return Math.floor(((ab[a]==null?10:ab[a])-10)/2)};
+    o.salvaciones=ABK.filter(function(a){var v=null;ABEN[a].forEach(function(n){["st"+n,n+"save","savingthrow"+n,n+"savingthrow"].forEach(function(q){if(v==null&&F[q]!=null)v=sgnNum(F[q])})});return v!=null&&v-md(a)>=pb});
+    o.habilidades=SKL.filter(function(x,i){var v=F[SKEN[i]]!=null?sgnNum(F[SKEN[i]]):null;return v!=null&&v-md(x[1])>=pb}).map(function(x){return x[0]})}
+  if(F.speed!=null){var sp=parseFloat(String(F.speed).replace(",","."));if(sp>0)o.velocidad_m=/m\b/i.test(F.speed)&&!/ft/i.test(F.speed)?sp:Math.round(sp/5*1.5*10)/10}
+  for(k in F){if(/^spellcastingability/.test(k)&&!o.caracteristica_conjuros){var cv=flat(F[k]);ABK.forEach(function(a){if(ABEN[a].some(function(n){return cv.indexOf(n)===0})||cv.indexOf(flat(ABL[a]))===0)o.caracteristica_conjuros=a})}
+    else if(/^spellsavedc/.test(k)&&!o.cd_conjuros)o.cd_conjuros=num(F[k]);else if(/^spellatkbonus/.test(k)&&o.ataque_conjuros==null)o.ataque_conjuros=sgnNum(F[k]);
+    else if(/^wpn\d*atkbonus/.test(k)&&o.ataque==null&&sgnNum(F[k])!=null)o.ataque=sgnNum(F[k]);
+    else if(/^wpn\d*damage/.test(k)&&!o.dano){var dm=/\d+d\d+(\s*[+-]\s*\d+)?/.exec(String(F[k]).replace(/−/g,"-"));if(dm)o.dano=dm[0].replace(/\s/g,"")}}
+  var tl=" "+String(text||"").toLowerCase()+" ",sp2=[];Object.keys(SPEN).forEach(function(en){if(tl.indexOf(en)>=0&&sp2.indexOf(SPEN[en])<0)sp2.push(SPEN[en])});
+  SPELLS.forEach(function(x){if(tl.indexOf(x[0].toLowerCase())>=0&&sp2.indexOf(x[0])<0)sp2.push(x[0])});if(/\bsleep\b/.test(tl)&&sp2.indexOf("Sueño")<0)sp2.push("Sueño");if(/\bweb\b/.test(tl)&&sp2.indexOf("Telaraña")<0)sp2.push("Telaraña");
+  if(sp2.length)o.conjuros=sp2;return o}
+function sheetApply(p,j){var n=0,c=j.caracteristicas;sheet(p);
+  if(c&&typeof c==="object"){ABK.forEach(function(a){var v=num(c[a]!=null?c[a]:c[ABN[a]]!=null?c[ABN[a]]:c[ABEN[a][0]]);if(v>=1&&v<=30){p.ab[a]=v;n++}})}
+  if(Array.isArray(j.salvaciones))p.sv=ABK.filter(function(a){return j.salvaciones.some(function(x){var f=flat(x);return f===a||f.indexOf(flat(ABL[a]))===0||ABEN[a].some(function(q){return f.indexOf(q)===0})})});
+  if(Array.isArray(j.habilidades))p.sk=SKL.filter(function(x,i){return j.habilidades.some(function(h){var f=flat(h).replace(/[^a-z]/g,"");return f===flat(x[0]).replace(/[^a-z]/g,"")||f===SKEN[i]})}).map(function(x){return x[0]});
+  if(num(j.velocidad_m)>0)p.speed=parseFloat(String(j.velocidad_m).replace(",","."))||9;
+  if(typeof j.caracteristica_conjuros==="string"){var cf=flat(j.caracteristica_conjuros);ABK.forEach(function(a){if(cf===a||cf.indexOf(flat(ABL[a]))===0||ABEN[a].some(function(q){return cf.indexOf(q)===0}))p.cast=a})}
+  if(Array.isArray(j.conjuros))p.spells=SPELLS.map(function(x){return x[0]}).filter(function(nm){return j.conjuros.some(function(q){var f=flat(q);return f===flat(nm)||SPEN[String(q).toLowerCase().trim()]===nm})});
+  if(n>=3){p.full=true;var keep={init:p.init,pp:p.pp};sheetCalc(p);if(keep.init)p.init=keep.init;if(keep.pp&&keep.pp!==10)p.pp=keep.pp}
+  if(j.ataque!=null&&sgnNum(j.ataque)!=null&&sgnNum(j.ataque)!==0)p.atk=sgnNum(j.ataque);if(j.dano&&/\d+d\d+/.test(j.dano))p.dmg=String(j.dano).replace(/\s/g,"").slice(0,20);
+  if(num(j.cd_conjuros)>0)p.sdc=num(j.cd_conjuros);if(j.ataque_conjuros!=null&&sgnNum(j.ataque_conjuros))p.satk=sgnNum(j.ataque_conjuros);
+  return n>=3?"Ficha completa rellenada: características, "+p.sv.length+" salvaciones, "+p.sk.length+" habilidades"+(p.cast?" y "+p.spells.length+" conjuros que el panel conoce":"")+".":"No he encontrado las características: rellena la ficha completa a mano."}
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
@@ -2350,14 +2380,14 @@ function fromFields(F){function g(){for(var i=0;i<arguments.length;i++){var v=F[
 function addImported(j,how){var el=$("#ch-msg"),s=story(),mx=num(j.pg_max),hp=j.pg_actuales==null||j.pg_actuales===""?mx:num(j.pg_actuales);
   if(!str(j.nombre,60)){el.textContent="No he encontrado el nombre del personaje. Prueba con el PDF que exporta D&D Beyond.";return}
   var p={id:uid(),name:str(j.nombre,60),race:str(j.especie,60),cls:str(j.clase,60),player:str(j.jugador,40),level:Math.max(1,num(j.nivel)||1),ac:num(j.ca)||10,max:mx||10,hp:mx?Math.min(mx,hp||mx):10,pp:num(j.percepcion_pasiva)||10,init:num(j.iniciativa),story:chFilter||(s?s.id:""),status:"activo",isNew:true};
-  S.party.push(p);chEdit=p.id;chQ="";$("#ch-q").value="";touch();el.textContent="«"+p.name+"» importado "+how+". Revisa los datos y pulsa «Listo».";
+  var shm=sheetApply(p,j);S.party.push(p);chEdit=p.id;shOpen=p.id;chQ="";$("#ch-q").value="";touch();el.textContent="«"+p.name+"» importado "+how+". "+shm+" Revisa los datos y pulsa «Listo».";
   var c=$("#c-"+p.id+"-name");if(c)c.scrollIntoView({block:"center"})}
-var IMPQ="Extrae los datos de esta hoja de personaje de Dungeons & Dragons y responde solo con JSON, sin más texto, con esta forma: {\"nombre\":\"\",\"especie\":\"\",\"clase\":\"\",\"nivel\":0,\"ca\":0,\"pg_max\":0,\"pg_actuales\":0,\"percepcion_pasiva\":0,\"iniciativa\":0,\"jugador\":\"\"}. La CA es la clase de armadura. La iniciativa es el modificador, con su signo. Usa 0 o cadena vacía en lo que no aparezca.";
+var IMPQ="Extrae los datos de esta hoja de personaje de Dungeons & Dragons y responde solo con JSON, sin más texto, con esta forma: {\"nombre\":\"\",\"especie\":\"\",\"clase\":\"\",\"nivel\":0,\"ca\":0,\"pg_max\":0,\"pg_actuales\":0,\"percepcion_pasiva\":0,\"iniciativa\":0,\"jugador\":\"\",\"caracteristicas\":{\"fue\":10,\"des\":10,\"con\":10,\"int\":10,\"sab\":10,\"car\":10},\"salvaciones\":[\"fue\"],\"habilidades\":[\"Atletismo\"],\"velocidad_m\":9,\"ataque\":0,\"dano\":\"1d8+3\",\"caracteristica_conjuros\":\"\",\"cd_conjuros\":0,\"ataque_conjuros\":0,\"conjuros\":[]}. En caracteristicas van las puntuaciones, no los modificadores. En salvaciones y habilidades van solo aquellas en las que es competente, con los nombres en español. La velocidad va en metros: 30 pies son 9 metros. En conjuros van los nombres en español. La CA es la clase de armadura. La iniciativa es el modificador, con su signo. Usa 0 o cadena vacía en lo que no aparezca.";
 function importPdf(f){var el=$("#ch-msg");el.textContent="Leyendo el PDF…";
   f.arrayBuffer().then(function(buf){return loadPdf().then(function(lib){return lib.getDocument({data:buf}).promise})}).then(function(doc){var F={},T=[],ps=[];
-    for(var i=1;i<=Math.min(doc.numPages,3);i++)ps.push(doc.getPage(i).then(function(pg){return Promise.all([pg.getAnnotations().then(function(A){A.forEach(function(a){if(a.fieldName&&a.fieldValue!=null&&String(a.fieldValue).trim()!==""){F[nk(a.fieldName)]=a.fieldValue;T.push(a.fieldName+": "+a.fieldValue)}})}),
+    for(var i=1;i<=Math.min(doc.numPages,5);i++)ps.push(doc.getPage(i).then(function(pg){return Promise.all([pg.getAnnotations().then(function(A){A.forEach(function(a){if(a.fieldName&&a.fieldValue!=null&&String(a.fieldValue).trim()!==""){F[nk(a.fieldName)]=a.fieldValue;T.push(a.fieldName+": "+a.fieldValue)}})}),
       pg.getTextContent().then(function(tc){T.push(tc.items.map(function(x){return x.str}).join(" "))})])}));
-    return Promise.all(ps).then(function(){var j=fromFields(F);if(j){addImported(j,"desde el PDF");return}
+    return Promise.all(ps).then(function(){var j=fromFields(F);if(j){var ex=sheetFromFields(F,T.join("\n"));Object.keys(ex).forEach(function(k){j[k]=ex[k]});addImported(j,"desde el PDF");return}
       var txt=T.join("\n").replace(/\s+\n/g,"\n").slice(0,7000);if(txt.length<40){el.textContent="Este PDF no tiene datos legibles. Si es una imagen escaneada, importa una captura.";return}
       return askJSON(IMPQ+"\n\nCONTENIDO DEL PDF:\n"+txt,el).then(function(r){if(r)addImported(r,"con ayuda de la IA")})})
   }).catch(function(){el.textContent="No se ha podido leer ese PDF."})}
