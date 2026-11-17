@@ -1201,7 +1201,7 @@ function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null,byIA:!!c.byIA,simTxt:typeof c.simTxt==="string"?c.simTxt:"",sim:c.sim&&typeof c.sim==="object"?c.sim:null,fx:Array.isArray(c.fx)?c.fx.slice(-12):[],fxn:int(c.fxn,0),goal:c.goal&&typeof c.goal==="object"?c.goal:null};
   function arr(v){return Array.isArray(v)?v:[]}
   b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.npcs=arr(x.npcs);x.loot=arr(x.loot);x.places=arr(x.places).filter(function(p){return p&&p.id&&p.title});x.mons=arr(x.mons).filter(function(m){return Array.isArray(m)&&m.length>=9});x.quests=arr(x.quests);x.next=x.next||{date:"",time:""};return x});
-  b.storyId=o.storyId||null;b.show=o.show&&typeof o.show==="object"?o.show:null;b.spot=o.spot&&typeof o.spot==="object"&&o.spot.c?o.spot:{k:"",c:{}};b.activity=arr(o.activity);
+  b.storyId=o.storyId||null;b.thumbs=o.thumbs&&typeof o.thumbs==="object"?o.thumbs:{};b.show=o.show&&typeof o.show==="object"?o.show:null;b.spot=o.spot&&typeof o.spot==="object"&&o.spot.c?o.spot:{k:"",c:{}};b.activity=arr(o.activity);
   b.party.forEach(function(p){if(!p.status)p.status="activo"});
   if(!b.stories.length&&(b.party.length||b.notes||b.ia.premise)){var st=mkStory("Mi campaña",0);st.desc=b.ia.premise;
     if(b.notes)st.notes.push({id:uid(),title:"Notas de la partida",text:b.notes,t:Date.now()});
@@ -3259,6 +3259,19 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-reva
   else if(b.hasAttribute("data-cohauto")){var s=story();if(!s)return;var before=cohCount(s),K=[];[].forEach.call(document.querySelectorAll("#sd-coh-body [data-cohfix]"),function(x){var k=x.dataset.cohfix;if(AUTOFIX.test(k)&&K.indexOf(k)<0&&!(/^main:/.test(k)&&K.some(function(y){return/^main:/.test(y)})))K.push(k)});
     revUndo=JSON.stringify(S);revUndoData=revData?JSON.parse(JSON.stringify(revData)):null;K.forEach(cohFix);var after=cohCount(story());revMsg="Arreglado"+(K.length===1?" 1 aviso automático":"s "+K.length+" avisos automáticos")+" ("+before+" → "+after+").";cohDraw()}});
 document.addEventListener("change",function(e){if(e.target.id!=="rev-auto")return;revAuto=e.target.checked;try{localStorage.setItem(LS+"-revauto",revAuto?"1":"0")}catch(x){}});
+/* ---- retratos que viajan con la campaña ---- */
+var THK=/^(pc|npc|mon)-/;
+function thumbOf(blob){return new Promise(function(res,rej){var u=URL.createObjectURL(blob),im=new Image();im.onload=function(){var k=Math.min(1,200/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement("canvas");c.width=Math.max(1,Math.round(im.naturalWidth*k));c.height=Math.max(1,Math.round(im.naturalHeight*k));
+    c.getContext("2d").drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);try{res(c.toDataURL("image/jpeg",.72))}catch(e){rej(e)}};im.onerror=function(){URL.revokeObjectURL(u);rej()};im.src=u})}
+function thumbSet(k,blob){return thumbOf(blob).then(function(d){if(!S.thumbs||typeof S.thumbs!=="object")S.thumbs={};if(S.thumbs[k]===d)return;S.thumbs[k]=d;touch(false);if(!typing())draw()},function(){})}
+var idbPutT=idbPut;idbPut=function(k,v){var pr=idbPutT(k,v);if(THK.test(k)&&v&&typeof v.size==="number")pr.then(function(){thumbSet(k,v)},function(){thumbSet(k,v)});return pr};
+function thumb(k){return S.thumbs&&typeof S.thumbs[k]==="string"?S.thumbs[k]:""}
+var pcPicT=pcPic;pcPic=function(p){if(!p||!p.pic)return"";return pcPicT(p)||thumb("pc-"+p.id)};
+var npcPicT=npcPic;npcPic=function(n){var u=npcPicT(n);return u||(n&&n.pic==="propia"?thumb("npc-"+n.id):"")};
+var monPicT=monPic;monPic=function(name){var u=monPicT(name);if(u)return u;var s=story(),id=null;if(s)(s.mons||[]).forEach(function(m){if(m[0]===name&&m[9])id=m[9]});return id?thumb("mon-"+id):""};
+function thumbFill(){var K=[];S.party.forEach(function(p){if(p.pic)K.push("pc-"+p.id)});S.stories.forEach(function(s){s.npcs.forEach(function(n){if(n.pic==="propia")K.push("npc-"+n.id)});(s.mons||[]).forEach(function(m){if(m[9])K.push("mon-"+m[9])})});
+  K.filter(function(k){return!thumb(k)}).forEach(function(k){idbGet(k).then(function(b){if(b)thumbSet(k,b)},function(){})})}
+setTimeout(thumbFill,800);
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
