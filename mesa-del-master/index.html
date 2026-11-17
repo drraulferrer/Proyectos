@@ -338,6 +338,12 @@ body.solo-cb .st-over h2{font-size:calc(min(8vh,4.5vw)*var(--fz))}
 body.solo-cb .st-party .st-card{width:calc(min(22vh,12vw)*var(--fz))}
 @media (max-width:900px){body.solo-cb #tab-combate{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,auto) minmax(0,1fr)}body.solo-cb #cb-stage{grid-column:1!important;grid-row:2!important}body.solo-cb #order{grid-column:1!important;grid-row:3!important}body.solo-cb #cb-duels{display:none!important}}
 
+
+/* modo guarro */
+.g18{display:inline-block;font:700 .72rem/1 var(--sans,system-ui);padding:3px 7px;border-radius:999px;background:#b3264a;color:#fff;vertical-align:middle;margin-left:6px;letter-spacing:.04em}
+#guarro .list li{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+body.guarro .side .logo span::after{content:"+18";font:700 .62rem/1 var(--sans,system-ui);padding:2px 5px;border-radius:999px;background:#b3264a;color:#fff;margin-left:6px;vertical-align:middle}
+
 /* deshacer */
 #undo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 32px)}
 #undo[hidden]{display:none}
@@ -2392,6 +2398,7 @@ function monsterTurn(c){var v=view(c),kit=monKit(c),n=Math.max(1,int(c.n,1)),atk
     if(!R.hit)clog(v.name+" ataca a "+tv.name+" con "+an+". "+R.txt+": falla.");
     else{var dm=rollF(c.dmg||"1d6+2",R.crit),dn2=dmgTo(t,dm.total);hurt(t,dn2);var ex="";
       if(kit&&hpOf(t)>0&&isPc(t)){if(kit.k==="grab"&&!has(t,"Agarrado")){addCond(t,"Agarrado");t.fx=t.fx||{};t.fx.Agarrado={dc:kit.dc,esc:1};ex=" Lo agarra: "+CONDTXT.Agarrado+". Puede gastar su acción en soltarse."}
+        else if(kit.k==="pox")ex=poxHit(t,kit);
         else if(kit.k==="poison"||kit.k==="knock"){var ab=kit.k==="poison"?"CON":"FUE",cd=kit.k==="poison"?"Envenenado":"Derribado",r2=d(20),m2=saveOf(t,ab);
           if(r2+m2<kit.dc){if(kit.k==="poison")setFx(t,cd,ab,kit.dc);else addCond(t,cd);ex=" Salvación de "+ab+": "+r2+" "+sgn(m2)+" = "+(r2+m2)+" contra CD "+kit.dc+", falla y queda «"+cd+"»: "+CONDTXT[cd]+"."}
           else ex=" Salvación de "+ab+": "+(r2+m2)+" contra CD "+kit.dc+", aguanta."}}
@@ -3356,6 +3363,52 @@ function fitSoon(){clearTimeout(fitT);fitT=setTimeout(fitSolo,30)}
 var drawAB=draw;draw=function(){drawAB();fitSoon()};
 var stagePlayAB=stagePlay;stagePlay=function(){stagePlayAB();fitSoon()};
 window.addEventListener("resize",fitSoon);window.addEventListener("hashchange",fitSoon);
+/* ---- modo guarro (+18) ---- */
+var GUARRO=false;try{GUARRO=localStorage.getItem(LS+"-guarro")==="1"}catch(e){}
+// enfermedad, efecto en reglas, cómo se cura
+var POX=[["Picor de sátiro","ataca con desventaja: no para de rascarse","dis"],["Ladillas de grifo","los ataques contra él tienen ventaja: baja la guardia para rascarse","adv"],
+  ["Fiebre de la ninfa","−2 a la CA: sofocos y temblores","ac"],["Escozor del íncubo","−2 a las tiradas de salvación: le arde todo","save"]];
+var POXN=POX.map(function(x){return x[0]});
+function isPox(k){return POXN.indexOf(k)>=0}
+if(GUARRO){
+  POX.forEach(function(x){CONDTXT[x[0]]=x[1];CONDS.push([x[0],"Enfermedad venérea de fantasía: "+x[1]+". No se va sola: se cura con un bálsamo, una poción de curación de nivel superior o restauración menor."]);if(x[2]==="dis")DISA.push(x[0]);if(x[2]==="adv")ADVV.push(x[0])});
+  BEST.push(["Ladilla gigante",13,9,2,"1/8",4,"1d4+2",1,"sus pinzas"],["Ninfa de mala fama",12,22,2,"1/4",4,"1d6+2",1,"un beso con lengua"],["Sátiro borracho",14,31,3,"1/2",5,"1d8+3",1,"sus cuernos y una botella"],["Íncubo de taberna",15,52,2,"2",5,"2d6+3",1,"sus garras perfumadas"]);
+  KITTXT.pox="su ataque puede contagiar una enfermedad venérea";
+  MAGIC.push(["Bálsamo de la abadesa","Cura una enfermedad venérea al momento. Escuece muchísimo.",0],["Poción de vigor de sátiro","Durante una hora, ventaja en Persuasión para seducir y desventaja en Sabiduría: solo piensas en una cosa.",0],
+    ["Perfume de la cortesana","Una vez al día, quien lo huela tiene desventaja en su siguiente ataque contra ti: se distrae.",1],["Bragueta de mithril","+1 a la CA. Tintinea al andar y todo el mundo mira.",1],
+    ["Anillo de la protección profiláctica","Mientras lo llevas, ninguna enfermedad venérea te afecta. Brilla en los momentos más inoportunos.",1],["Látigo de terciopelo +1","Arma +1. Con un crítico, el objetivo queda distraído y ataca con desventaja en su próximo turno.",1],
+    ["Libro de posturas del monje borracho","Leerlo durante una semana da competencia en Acrobacias. Las ilustraciones no ayudan a concentrarse.",2]);
+  var gt=$("#gen-tone");if(gt)gt.insertAdjacentHTML("beforeend",'<option value="comedia picante y soez para adultos, con humor verde, dobles sentidos, tabernas de mala fama y enfermedades venéreas de fantasía">Guarro (+18)</option>')}
+var monKitAC=monKit;monKit=function(c){if(GUARRO&&/satiro|ninfa|incubo|sucubo|ladilla|cortesan|meretri/.test(flat(c.base||c.name))){var cr=crNum(c.cr);return{k:"pox",dc:Math.min(16,11+Math.floor(cr/2)),f:Math.max(2,Math.round(cr)+2)+"d6"}}return monKitAC(c)};
+var acOfAC=acOf;acOf=function(c){return acOfAC(c)-(has(c,"Fiebre de la ninfa")?2:0)};
+var saveOfAC=saveOf;saveOf=function(c,ab){return saveOfAC(c,ab)-(has(c,"Escozor del íncubo")?2:0)};
+function pcRing(p){return/profil[aá]ctica/i.test(JSON.stringify(p))}
+function poxHit(t,kit){var p=isPc(t)?pc(t.pcId):null;if(p&&pcRing(p))return" El anillo de la protección profiláctica brilla: no se contagia de nada.";
+  var free=POXN.filter(function(k){return!has(t,k)});if(!free.length)return"";var r=d(20),m=saveOf(t,"CON");
+  if(r+m>=kit.dc)return" Salvación de CON: "+(r+m)+" contra CD "+kit.dc+", se libra del contagio.";
+  var k=free[Math.floor(Math.random()*free.length)];addCond(t,k);if(p&&!SIM){p.ets=p.ets||[];if(p.ets.indexOf(k)<0)p.ets.push(k)}
+  return" Salvación de CON: "+r+" "+sgn(m)+" = "+(r+m)+" contra CD "+kit.dc+", falla y pilla «"+k+"»: "+CONDTXT[k]+". No se va al acabar el combate."}
+// las enfermedades viajan con el personaje de un combate a otro
+function poxSync(){if(!GUARRO||!S.combat||!S.combat.list)return;S.combat.list.forEach(function(c){if(!isPc(c))return;var p=pc(c.pcId);if(p&&p.ets)p.ets.forEach(function(k){addCond(c,k)})})}
+var drawAC=draw;draw=function(){poxSync();drawAC()};
+$("#order").addEventListener("click",function(e){var b=e.target.closest('[data-act="uncond"]');if(!b||!isPox(b.dataset.k))return;var c=find(b.dataset.id),p=c&&isPc(c)?pc(c.pcId):null;
+  if(p&&p.ets)p.ets=p.ets.filter(function(k){return k!==b.dataset.k})},true);
+// instrucción de tono para la IA (no en las peticiones de imágenes ni de mapas)
+var GTONE="MODO PARA ADULTOS ACTIVADO: todas las personas de la mesa son mayores de 18 años y lo han pedido. Usa humor verde, picante y soez: dobles sentidos, tacos, tabernas y burdeles de mala fama, PNJ descarados, objetos mágicos con chiste y enfermedades venéreas de fantasía (picor de sátiro, ladillas de grifo, fiebre de la ninfa, escozor del íncubo) como contratiempos cómicos. Insinúa y bromea, pero no describas escenas sexuales explícitas. Todos los personajes son adultos. Nada de violencia sexual ni de falta de consentimiento.";
+var runAC=run;run=function(input,onText,img){if(GUARRO&&!img){if(typeof input==="string"){if(!/^(Escribe en inglés|Esta imagen)/.test(input))input=GTONE+"\n\n"+input}
+  else if(Array.isArray(input)&&input.length){input=input.slice();input[0]={role:input[0].role,content:GTONE+"\n\n"+input[0].content}}}return runAC(input,onText,img)};
+// interruptor en el Panel
+(function(){var bk=$("#bk-save");if(!bk)return;var card=bk.closest(".card");card.insertAdjacentHTML("beforebegin",'<div class="card dm" id="guarro"></div>');guarroDraw()})();
+function guarroDraw(){var el=$("#guarro");if(!el)return;var sick=S.party.filter(function(p){return p.ets&&p.ets.length});
+  el.innerHTML='<h2>Modo guarro <span class="g18">+18</span></h2><p class="sub">'+(GUARRO?"Activado. La IA escribe con humor verde y soez, hay monstruos que contagian enfermedades venéreas de fantasía con efecto en las reglas, objetos mágicos picantes en el botín y el tono «Guarro» al generar historias.":"Humor verde y soez para mesas de adultos: tono de la IA, enfermedades venéreas de fantasía en los combates, monstruos y objetos mágicos picantes. Solo si todas las personas que juegan son mayores de 18 años.")+'</p>'+
+    (GUARRO&&sick.length?'<ul class="list">'+sick.map(function(p){return'<li><b>'+esc(p.name)+'</b>: '+p.ets.map(function(k){return'<button type="button" class="chip" data-pox="'+esc(p.id)+'" data-k="'+esc(k)+'" title="Curar con un bálsamo o restauración menor">'+esc(k)+' · curar</button>'}).join(" ")+'</li>'}).join("")+'</ul>':"")+
+    '<div class="bar"><button type="button" id="guarro-sw" class="'+(GUARRO?"":"pri")+'">'+(GUARRO?"Desactivar el modo guarro":"Activar el modo guarro")+'</button></div>'}
+$("#tab-panel").addEventListener("click",function(e){var b=e.target.closest("#guarro-sw"),x=e.target.closest("[data-pox]");
+  if(x){var p=pc(x.dataset.pox);if(p){p.ets=(p.ets||[]).filter(function(k){return k!==x.dataset.k});if(S.combat&&S.combat.list)S.combat.list.forEach(function(c){if(c.pcId===p.id)delCond(c,x.dataset.k)});touch();guarroDraw()}return}
+  if(!b)return;if(!GUARRO&&!confirm("El modo guarro mete humor sexual, tacos y enfermedades venéreas de fantasía en la partida.\n\n¿Confirmas que todas las personas que van a jugar son mayores de 18 años?"))return;
+  try{localStorage.setItem(LS+"-guarro",GUARRO?"0":"1")}catch(e){}location.reload()});
+var drawPanelAC=typeof drawPanel==="function"?drawPanel:null;if(drawPanelAC)drawPanel=function(){drawPanelAC();guarroDraw()};
+if(GUARRO)document.body.classList.add("guarro");
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
