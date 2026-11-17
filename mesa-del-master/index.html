@@ -288,6 +288,56 @@ ul.cohl small{color:var(--muted)}
 .dif ins{color:var(--heal);text-decoration:none}
 .dif ins.none{color:var(--muted);font-style:italic}
 
+
+/* pronóstico en el combate manual y a pantalla completa */
+#sim-man[hidden]{display:none}
+#sim-man{margin:4px 0 8px}
+.st-sim{display:flex;align-items:center;gap:12px;justify-content:center;padding:8px 14px;margin:0 auto 10px;max-width:520px;grid-template-columns:none!important}
+.st-sim b{font-family:var(--display);font-size:1.6rem;color:var(--c)}
+.st-sim span{color:var(--muted)}
+.st-simfull{max-width:900px;margin:0 auto 14px}
+
+
+/* combate a pantalla completa: todo en una pantalla */
+body.solo-cb{overflow:hidden}
+body.solo-cb .content{padding:0!important}
+body.solo-cb .content>main{max-width:none!important;padding:0 max(20px,env(safe-area-inset-right,0px)) 0 max(20px,env(safe-area-inset-left,0px))!important}
+body.solo-cb #tab-combate{--fz:1;--fl:1;display:grid!important;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;gap:calc(12px*var(--fz)) calc(22px*var(--fz));height:100dvh;overflow:hidden;box-sizing:border-box;padding:calc(10px*var(--fz)) 0;font-size:calc(1.05rem*var(--fz))}
+body.solo-cb #tab-combate>.head{grid-column:1/-1!important;grid-row:1!important;padding:0 0 calc(6px*var(--fz));border-bottom:1px solid var(--divider)}
+body.solo-cb #tab-combate>.head h1{font-size:calc(1.5rem*var(--fz));margin:0}
+body.solo-cb #cb-stage{grid-column:1!important;grid-row:2/4!important;min-width:0;overflow:hidden;margin:0!important;min-height:0;display:flex!important;flex-direction:column;justify-content:center;gap:calc(8px*var(--fz))}
+body.solo-cb #order{zoom:var(--fl);grid-column:2!important;grid-row:2/4!important;min-width:0;min-height:0;overflow:hidden;align-self:start}
+body.solo-cb #cb-duels{grid-column:2!important;grid-row:3!important;min-height:0;padding:calc(10px*var(--fz)) calc(14px*var(--fz))!important}
+body.solo-cb #cb-duels,body.solo-cb #cb-foes,body.solo-cb #cb-log,body.solo-cb #sim-man,body.solo-cb #diff,body.solo-cb #order .dm,body.solo-cb #cb-duels h2{display:none!important}
+body.solo-cb #cb-exit{position:fixed;top:calc(8px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));z-index:30}
+body.solo-cb ol.order li{padding:calc(6px) calc(10px)!important;gap:calc(4px) calc(10px)!important;grid-template-columns:calc(2.6em) minmax(0,1fr) minmax(0,auto)!important}
+body.solo-cb ol.order li>*:nth-child(n+3){grid-column:auto!important}
+body.solo-cb ol.order .ini{min-height:0;height:calc(2.2em);padding:0;font-size:calc(1rem)}
+body.solo-cb ol.order .who b{font-size:calc(1.02rem)} body.solo-cb ol.order .sub,body.solo-cb ol.order .tag{font-size:calc(.78rem)}
+body.solo-cb ol.order .who img.mpic,body.solo-cb ol.order .ava{width:calc(30px)!important;height:calc(30px)!important}
+body.solo-cb ol.order .chip{font-size:calc(.72rem)!important;padding:calc(1px) calc(7px)!important;min-height:0!important;line-height:1.3}
+body.solo-cb ol.order li>div:has(>.chip){gap:calc(4px)!important;margin:0!important}
+body.solo-cb .duel{padding:calc(4px*var(--fz)) 0;font-size:calc(.9rem*var(--fz))}
+body.solo-cb .duel img.mpic,body.solo-cb .duel .ava{width:calc(26px*var(--fz))!important;height:calc(26px*var(--fz))!important}
+body.solo-cb .stage .st-turn{margin:0;font-size:calc(1rem*var(--fz))}
+body.solo-cb .st-row{gap:calc(18px*var(--fz))}
+body.solo-cb .st-pic,body.solo-cb .st-hp{width:calc(min(34vh,15vw)*var(--fz))!important}
+body.solo-cb .st-ini{font-size:calc(min(10vh,6vw)*var(--fz))}
+body.solo-cb .st-name{font-size:calc(1.35rem*var(--fz))}
+body.solo-cb .st-hp{height:calc(12px*var(--fz))}
+body.solo-cb .st-mid{max-width:none;gap:calc(4px*var(--fz))}
+body.solo-cb .st-verb{font-size:calc(1rem*var(--fz))}
+body.solo-cb .st-d20{width:calc(min(11vh,6vw)*var(--fz))}
+body.solo-cb .st-res{font-size:calc(min(6vh,3.2vw)*var(--fz))}
+body.solo-cb .st-dmg{font-size:calc(min(10vh,5.5vw)*var(--fz))}
+body.solo-cb .st-sim{margin:0 auto;padding:calc(6px*var(--fz)) calc(14px*var(--fz));gap:calc(12px*var(--fz));display:flex!important;align-items:center;max-width:none;width:max-content;max-width:100%}
+body.solo-cb .st-sim .sim-ring{width:calc(54px*var(--fz));animation:none}
+body.solo-cb .st-sim .sim-ring b{font-size:calc(1rem*var(--fz))}
+.st-simt{display:flex;flex-direction:column;gap:2px;min-width:0} .st-simt b{font-family:var(--display);color:var(--c)} .st-simt span{font-size:.85em;color:var(--muted)}
+body.solo-cb .st-over h2{font-size:calc(min(8vh,4.5vw)*var(--fz))}
+body.solo-cb .st-party .st-card{width:calc(min(22vh,12vw)*var(--fz))}
+@media (max-width:900px){body.solo-cb #tab-combate{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,auto) minmax(0,1fr)}body.solo-cb #cb-stage{grid-column:1!important;grid-row:2!important}body.solo-cb #order{grid-column:1!important;grid-row:3!important}body.solo-cb #cb-duels{display:none!important}}
+
 /* deshacer */
 #undo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 32px)}
 #undo[hidden]{display:none}
@@ -3277,6 +3327,35 @@ var monPicT=monPic;monPic=function(name){var u=monPicT(name);if(u)return u;var s
 function thumbFill(){var K=[];S.party.forEach(function(p){if(p.pic)K.push("pc-"+p.id)});S.stories.forEach(function(s){s.npcs.forEach(function(n){if(n.pic==="propia")K.push("npc-"+n.id)});(s.mons||[]).forEach(function(m){if(m[9])K.push("mon-"+m[9])})});
   K.filter(function(k){return!thumb(k)}).forEach(function(k){idbGet(k).then(function(b){if(b)thumbSet(k,b)},function(){})})}
 setTimeout(thumbFill,800);
+/* ---- pronóstico en cualquier combate ---- */
+function simKey(){return S.combat.list.map(function(c){return c.pcId?"pc:"+c.pcId:c.ally?"al":(c.base||c.name)+":"+c.max}).sort().join("|")}
+function simAuto(){var C=S.combat;if(SIM||players||C.over)return;if(!C.list.some(isPc)||!C.list.some(function(c){return!isPc(c)&&!c.ally}))return;var k=simKey();
+  if(C.sim&&!C.simKey){C.simKey=k;return}if(C.sim&&C.simKey===k)return;var R=simRun(150);C=S.combat;C.sim=simObj(R);C.simTxt=simTxt(R);C.simKey=k}
+(function(){var d=document.createElement("div");d.id="sim-man";d.className="dm";var df=$("#diff");df.parentNode.insertBefore(d,df.nextSibling)})();
+function simManDraw(){var el=$("#sim-man"),C=S.combat;if(!el)return;el.hidden=!!C.auto||!C.sim||players;if(!el.hidden)el.innerHTML=simPill()}
+$("#sim-man").addEventListener("click",function(e){var b=e.target.closest("[data-au]");if(!b)return;var C=S.combat;
+  if(b.dataset.au==="sim"){var R=simRun(200);C=S.combat;C.sim=simObj(R);C.simTxt=simTxt(R);C.simKey=simKey();touch()}
+  else if(b.dataset.au==="ease"){var F=foes().filter(function(c){return!c.boss});if(foes().length<2||!F.length)return;var x=F.slice().sort(function(a,b2){return hpOf(b2)-hpOf(a)})[F.length-1];x.fled="huye";addCond(x,"Huido");C.sim=null;C.simKey="";touch()}});
+var drawAutoAA=drawAuto;drawAuto=function(){simAuto();drawAutoAA();simManDraw()};
+function simStrip(){var C=S.combat,m=C.sim;if(!m||C.over)return"";return'<div class="st-sim simc k'+m.k+'"><b>'+m.w+' %</b><span>Pronóstico de victoria · '+esc(m.lab)+'</span></div>'}
+var stageIdleAA=stageIdle;stageIdle=function(){stageIdleAA();var el=$("#cb-stage"),C=S.combat;if(!el||!C.sim||C.over||!el.innerHTML)return;
+  if((C.round||1)<=1&&!(C.fx||[]).length)el.insertAdjacentHTML("afterbegin",'<div class="st-simfull">'+simCard(C.sim)+'</div>');else el.insertAdjacentHTML("afterbegin",simStrip())};
+var stageHtmlAA=stageHtml;stageHtml=function(e,start){return simStrip()+stageHtmlAA(e,start)};
+var waitHtmlAA=waitHtml;waitHtml=function(){return simPill()+waitHtmlAA()};
+/* ---- pantallas completas sin desplazamiento ---- */
+function simStrip(){var C=S.combat,m=C.sim;if(!m||C.over)return"";
+  return'<div class="st-sim simc k'+m.k+'"><div class="sim-ring" style="--p:'+m.w+'"><div><b>'+m.w+'%</b></div></div><div class="st-simt"><b>'+esc(m.lab)+'</b><span>'+fmt(m.r)+' rondas · '+fmt(m.dn)+' caídos · '+m.dp+' % riesgo de muerte</span></div></div>'}
+stageIdle=function(){stageIdleAA();var el=$("#cb-stage"),C=S.combat;if(!el||!C.sim||C.over||!el.innerHTML||el.querySelector(".st-sim"))return;el.insertAdjacentHTML("afterbegin",simStrip())};
+var fitT=null;
+function fitSolo(){var root=$("#tab-combate");if(!root)return;if(!soloCb){root.style.removeProperty("--fz");root.style.removeProperty("--fl");return}var fz=1,fl=1;root.style.setProperty("--fz","1");root.style.setProperty("--fl","1");
+  var st=$("#cb-stage"),od=$("#order"),need=function(){if(!st)return 0;var h=0,k=st.children,g=parseFloat(getComputedStyle(st).rowGap)||0;for(var j=0;j<k.length;j++)if(k[j].offsetParent)h+=k[j].offsetHeight+g;return h-g},
+  odOver=function(){return od&&(od.scrollHeight>od.clientHeight+1||od.getBoundingClientRect().bottom>innerHeight-4)},stOver=function(){return st&&need()>st.clientHeight+1};
+  for(var i=0;i<12&&odOver();i++){fl=Math.round((fl-.05)*100)/100;root.style.setProperty("--fl",String(fl))}
+  for(i=0;i<10&&stOver();i++){fz=Math.round((fz-.05)*100)/100;root.style.setProperty("--fz",String(fz))}}
+function fitSoon(){clearTimeout(fitT);fitT=setTimeout(fitSolo,30)}
+var drawAB=draw;draw=function(){drawAB();fitSoon()};
+var stagePlayAB=stagePlay;stagePlay=function(){stagePlayAB();fitSoon()};
+window.addEventListener("resize",fitSoon);window.addEventListener("hashchange",fitSoon);
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
