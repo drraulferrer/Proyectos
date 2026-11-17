@@ -47,6 +47,28 @@
   .rejilla p { font-size: 25px; line-height: 1.42; color: #4A4238; }
   .remate { position: absolute; left: 80px; right: 80px; top: 1060px; font-weight: 800; font-size: 48px; line-height: 1.12; letter-spacing: -.03em; }
 
+  /* 3 · Comparativa entre convenios */
+  .sC .h { font-size: 84px; }
+  .sC .sub { position: absolute; left: 80px; right: 80px; top: 432px; font-size: 23px; line-height: 1.4; color: var(--mut); }
+  .sC .sub .leyenda { color: var(--nartxt); font-weight: 700; }
+  .comp { position: absolute; left: 80px; right: 80px; top: 548px; height: 528px; }
+  .comp .fila { position: absolute; left: 0; right: 0; height: 56px; }
+  .comp .nom { position: absolute; left: 0; top: 0; width: 214px; }
+  .comp .nom b { display: block; font-weight: 800; font-size: 25px; letter-spacing: -.01em; line-height: 1.1; }
+  .comp .nom small { display: block; font-size: 16px; color: var(--mut); margin-top: 2px; }
+  .comp .bar { position: absolute; left: 230px; top: 2px; height: 46px; background: #E3D8C5; border-radius: 0 12px 12px 0; overflow: hidden; display: flex; align-items: center; padding-left: 16px; }
+  .comp .bar .exc { position: absolute; right: 0; top: 0; bottom: 0; background: var(--nar); }
+  .comp .bar span { position: relative; font-weight: 800; font-size: 22px; letter-spacing: -.02em; color: var(--ink); }
+  .comp .bar.mad { background: var(--ink); }
+  .comp .bar.mad span { color: #fff; }
+  .comp .dif { position: absolute; top: 12px; font-style: normal; font-weight: 800; font-size: 21px; color: var(--nartxt); white-space: nowrap; }
+  .comp .dif.dentro { color: #fff; width: 118px; text-align: right; }
+  .comp .smi-l { position: absolute; top: -30px; bottom: -4px; border-left: 3px dashed var(--ink); z-index: 2; }
+  .comp .smi-l span { position: absolute; left: -110px; top: -14px; white-space: nowrap; font-weight: 800; font-size: 18px; color: var(--ink); background: #fff; padding: 0 6px; }
+  .sC .lect { position: absolute; left: 80px; right: 80px; top: 1086px; font-size: 26px; line-height: 1.4; color: #4A4238; }
+  .sC .lect b { color: var(--ink); }
+  .sC .nota { position: absolute; left: 80px; right: 80px; top: 1166px; font-size: 16px; line-height: 1.4; color: var(--mut); }
+
   /* 3 · Prosa */
   .prosa { position: absolute; left: 80px; right: 80px; top: 470px; display: flex; flex-direction: column; gap: 30px; }
   .prosa p { font-size: 36px; line-height: 1.5; color: #4A4238; }
@@ -110,9 +132,9 @@
 </head>
 <body>
 
-<!-- 1/8 · Portada -->
+<!-- 1/9 · Portada -->
 <section class="slide s1" id="s1">
-  <div class="cab"><span></span><span class="pag">1/8</span></div>
+  <div class="cab"><span></span><span class="pag">1/9</span></div>
   <div class="kick abs" style="left:80px">Fisioterapia · Clínicas privadas de Madrid</div>
   <h1 class="h abs" style="left:80px; right:60px"><span class="serif">138 €</span> más que el salario mínimo</h1>
   <div class="abs cifras">
@@ -123,9 +145,9 @@
   <div class="pie"><span></span><span class="pildora">Desliza →</span></div>
 </section>
 
-<!-- 2/8 · La distancia -->
+<!-- 2/9 · La distancia -->
 <section class="slide int s2" id="s2">
-  <div class="cab"><span></span><span class="pag">2/8</span></div>
+  <div class="cab"><span></span><span class="pag">2/9</span></div>
   <div class="num esq">02</div>
   <div class="kick">El dato</div>
   <h2 class="h">Las dos cifras, a escala</h2>
@@ -147,10 +169,33 @@
   <div class="pie"><span></span><span class="pildora clara">Desliza →</span></div>
 </section>
 
-<!-- 3/8 · Lo que la cifra no dice -->
-<section class="slide crema int s3" id="s3">
-  <div class="cab"><span></span><span class="pag">3/8</span></div>
+<!-- 3/9 · Comunidades -->
+<section class="slide int sC" id="sC">
+  <div class="cab"><span></span><span class="pag">3/9</span></div>
   <div class="num esq">03</div>
+  <div class="kick">Más allá de Madrid</div>
+  <h2 class="h">Madrid no es una excepción</h2>
+  <p class="sub">Fisioterapeuta sin antigüedad, 2026. Euros brutos al año según la tabla del convenio de sanidad privada. <b class="leyenda">En naranja, lo que supera al SMI.</b></p>
+  <div class="comp">
+    <div class="smi-l" style="left:618.2px"><span>SMI 2027 · 18.004 €</span></div>
+    <div class="fila" style="top:0px"><div class="nom"><b>Cataluña</b><small>autonómico</small></div><div class="bar" style="width:650.7px"><i class="exc" style="width:262.5px"></i><span>30.179 €</span></div><em class="dif dentro" style="left:750.7px">+12.175 €</em></div>
+    <div class="fila" style="top:66px"><div class="nom"><b>Cantabria</b><small>autonómico</small></div><div class="bar" style="width:506.6px"><i class="exc" style="width:118.4px"></i><span>23.493 €</span></div><em class="dif" style="left:748.6px">+5.489 €</em></div>
+    <div class="fila" style="top:132px"><div class="nom"><b>Jaén</b><small>provincial</small></div><div class="bar" style="width:463.6px"><i class="exc" style="width:75.4px"></i><span>21.500 €</span></div><em class="dif" style="left:705.6px">+3.496 €</em></div>
+    <div class="fila" style="top:198px"><div class="nom"><b>Aragón</b><small>autonómico</small></div><div class="bar" style="width:433.1px"><i class="exc" style="width:44.9px"></i><span>20.085 €</span></div><em class="dif" style="left:675.1px">+2.081 €</em></div>
+    <div class="fila" style="top:264px"><div class="nom"><b>Madrid</b><small>autonómico</small></div><div class="bar mad" style="width:429.9px"><i class="exc" style="width:41.7px"></i><span>19.940 €</span></div><em class="dif" style="left:671.9px">+1.936 €</em></div>
+    <div class="fila" style="top:330px"><div class="nom"><b>A Coruña</b><small>provincial</small></div><div class="bar" style="width:429.8px"><i class="exc" style="width:41.6px"></i><span>19.931 €</span></div><em class="dif" style="left:671.8px">+1.927 €</em></div>
+    <div class="fila" style="top:396px"><div class="nom"><b>Asturias</b><small>autonómico</small></div><div class="bar" style="width:423.3px"><i class="exc" style="width:35.1px"></i><span>19.632 €</span></div><em class="dif" style="left:665.3px">+1.628 €</em></div>
+    <div class="fila" style="top:462px"><div class="nom"><b>Huelva</b><small>provincial</small></div><div class="bar" style="width:415.7px"><i class="exc" style="width:27.5px"></i><span>19.280 €</span></div><em class="dif" style="left:657.7px">+1.276 €</em></div>
+  </div>
+  <p class="lect">En seis de los ocho convenios la diferencia con el SMI anunciado es de menos de 3.500 € al año. <b>Cataluña es la excepción.</b></p>
+  <p class="nota">Salario base y pluses fijos por número de pagas. Fuera quedan Valladolid, Sevilla y Comunidad Valenciana (sin tabla 2026 firmada), Cádiz (pagas condicionadas) y País Vasco (sin convenio sectorial).</p>
+  <div class="pie"><span></span><span class="pildora clara">Desliza →</span></div>
+</section>
+
+<!-- 4/9 · Lo que la cifra no dice -->
+<section class="slide crema int s3" id="s3">
+  <div class="cab"><span></span><span class="pag">4/9</span></div>
+  <div class="num esq">04</div>
   <div class="kick">Matices</div>
   <h2 class="h">Ojo con la comparación</h2>
   <div class="prosa">
@@ -161,10 +206,10 @@
   <div class="pie"><span></span><span class="pildora">Desliza →</span></div>
 </section>
 
-<!-- 4/8 · La pregunta -->
+<!-- 5/9 · La pregunta -->
 <section class="slide int s4" id="s4">
-  <div class="cab"><span></span><span class="pag">4/8</span></div>
-  <div class="num esq">04</div>
+  <div class="cab"><span></span><span class="pag">5/9</span></div>
+  <div class="num esq">05</div>
   <div class="kick">Contexto</div>
   <h2 class="h">Que suba el SMI me parece bien</h2>
   <p class="txt">Reponer en un supermercado, limpiar o repartir son trabajos duros y necesarios, y quien los hace tiene que cobrar un sueldo digno.</p>
@@ -172,10 +217,10 @@
   <div class="pie"><span></span><span class="pildora">Desliza →</span></div>
 </section>
 
-<!-- 5/8 · Lo que no se ve -->
+<!-- 6/9 · Lo que no se ve -->
 <section class="slide int s5" id="s5">
-  <div class="cab"><span></span><span class="pag">5/8</span></div>
-  <div class="num esq">05</div>
+  <div class="cab"><span></span><span class="pag">6/9</span></div>
+  <div class="num esq">06</div>
   <div class="kick">Qué se paga en una sesión</div>
   <h2 class="h" style="font-size:80px">Lo que hay detrás de cada sesión</h2>
   <div class="ice">
@@ -190,10 +235,10 @@
   <div class="pie"><span></span><span class="pildora">Desliza →</span></div>
 </section>
 
-<!-- 6/8 · Suelo, no techo -->
+<!-- 7/9 · Suelo, no techo -->
 <section class="slide crema int s6" id="s6">
-  <div class="cab"><span></span><span class="pag">6/8</span></div>
-  <div class="num esq">06</div>
+  <div class="cab"><span></span><span class="pag">7/9</span></div>
+  <div class="num esq">07</div>
   <div class="kick">El convenio</div>
   <h2 class="h">La tabla es el mínimo que te pueden pagar</h2>
   <div class="esc">
@@ -210,10 +255,10 @@
   <div class="pie"><span></span><span class="pildora">Desliza →</span></div>
 </section>
 
-<!-- 7/8 · Negociar es traducir -->
+<!-- 8/9 · Negociar es traducir -->
 <section class="slide int s7" id="s7">
-  <div class="cab"><span></span><span class="pag">7/8</span></div>
-  <div class="num esq">07</div>
+  <div class="cab"><span></span><span class="pag">8/9</span></div>
+  <div class="num esq">08</div>
   <div class="kick">Negociar</div>
   <h2 class="h">Antes de sentarte a hablar de sueldo</h2>
   <div class="pasos">
@@ -225,16 +270,16 @@
   <div class="pie"><span></span><span class="pildora">Desliza →</span></div>
 </section>
 
-<!-- 8/8 · Cierre -->
+<!-- 9/9 · Cierre -->
 <section class="slide tinta s8" id="s8">
-  <div class="cab"><span></span><span class="pag">8/8</span></div>
+  <div class="cab"><span></span><span class="pag">9/9</span></div>
   <div class="kick abs" style="left:80px; top:196px">Para terminar</div>
   <p class="pregunta h">Si la fisioterapia aporta tanto a los pacientes y a las clínicas, ¿por qué cuesta tanto que se note en la <span class="serif">nómina</span>?</p>
   <p class="reflex">El sueldo no lo dice todo de una profesión, pero algo dice de cómo la valoramos.</p>
   <p class="cta"><b>¿Has negociado alguna vez por encima de tabla?</b> Cuéntamelo en comentarios.</p>
   <div class="refs">
     <div class="kick">Fuentes</div>
-    <p>Convenio colectivo de clínicas privadas de la Comunidad de Madrid (establecimientos sanitarios de hospitalización, asistencia, consultas y laboratorios), anexo IV, tablas 2026 · Orden CIN/2135/2008, BOE, requisitos del título de Grado en Fisioterapia · SMI 2027: cifra anunciada el 17/11/2026, pendiente de publicación oficial.</p>
+    <p>Madrid: convenio 2023-2026, anexo IV (BOCM 23/11/2023) · Aragón: BOA 10/06/2025 · Asturias: BOPA 13/03/2026 · Jaén: BOP 13/04/2026 · Huelva: BOP 23/04/2026 · A Coruña: BOP 22/10/2024 · Cantabria: BOC 2026 · Cataluña: DOGC 30/07/2026 · Grado en Fisioterapia: Orden CIN/2135/2008 · SMI 2027: anunciado el 17/11/2026, pendiente de BOE.</p>
   </div>
   <div class="pie"><span class="usuario">@_raulferrer</span><img class="logo-pie" src="img/logo-rf-neg.png" alt="Logotipo RF"></div>
 </section>

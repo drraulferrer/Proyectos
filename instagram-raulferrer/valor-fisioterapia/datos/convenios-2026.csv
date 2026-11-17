@@ -1,0 +1,9 @@
+territorio,ambito,salario_base_mensual,pagas,plus_fijo_anual,retribucion_anual_tabla,fuente,verificacion
+Cataluña,autonómico,2155.65,14,0,30179.10,"Conveni establiments sanitaris de prestació privada de Catalunya, acord parcial taules 2026, DOGC 9719 (30/07/2026), grup 2 nivell 1",secundaria (resumen que cita el DOGC)
+Cantabria,autonómico,1678.07,14,0,23493.00,"Convenio establecimientos sanitarios privados de hospitalización de Cantabria 2025-2026, BOC, nivel 3A",secundaria (agregador que cita el BOC)
+Jaén,provincial,1433.33,15,0,21500.00,"Convenio sanidad privada de Jaén 2026-2028, BOP Jaén n.º 70 (13/04/2026), anexo I, grupo A1",tabla del BOP citada literalmente
+Aragón,autonómico,1370.19,14,902.80,20085.47,"VIII Convenio establecimientos sanitarios de hospitalización y asistencia privada de Aragón, BOA n.º 109 (10/06/2025), anexo 2",oficial (BOA leído)
+Madrid,autonómico,1424.25,14,0,19939.50,"Convenio sanidad privada Comunidad de Madrid 2023-2026, BOCM 23/11/2023, anexo IV, tabla A, grupo IV",oficial (texto del convenio leído)
+A Coruña,provincial,1328.76,15,0,19931.40,"Convenio establecimientos sanitarios de A Coruña 2023-2026, BOP A Coruña n.º 204 (22/10/2024)",secundaria coincidente en dos fuentes
+Asturias,autonómico,1308.77,15,0,19631.55,"Convenio establecimientos sanitarios de Asturias, tabla 2026, BOPA n.º 50 (13/03/2026)",oficial (BOPA leído; pagas según el convenio)
+Huelva,provincial,1377.14,14,0,19280.00,"I Convenio sanidad privada de Huelva, BOP Huelva n.º 77 (23/04/2026), grupo 1",secundaria (agregador que cita el BOP)
