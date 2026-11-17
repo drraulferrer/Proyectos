@@ -279,6 +279,15 @@ ul.cohl small{color:var(--muted)}
 .cohlive[hidden]{display:none}
 .cal p{margin:0 0 6px}
 
+
+/* correcciones propuestas */
+.diffs{display:flex;flex-direction:column;gap:6px;padding:8px 10px;border-radius:var(--r);background:var(--sunk)}
+.dif{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-size:.9rem}
+.dif .dl{flex:1 1 100%;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.dif del{color:var(--hurt);text-decoration:line-through;opacity:.85}
+.dif ins{color:var(--heal);text-decoration:none}
+.dif ins.none{color:var(--muted);font-style:italic}
+
 /* deshacer */
 #undo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 32px)}
 #undo[hidden]{display:none}
@@ -3175,6 +3184,81 @@ var demoStoryX=demoStory;demoStory=function(){demoStoryX();var s=story();if(!s||
   Q[0].main=true;Q[0].src="plan";Q[0].steps=["Hablar con la alcaldesa Yeva Torrent","Encontrar la barca del pescador desaparecido","Subir al faro viejo y descubrir qué esconde Maese Ordul","Bajar a la cripta inundada donde suena la campana"].map(function(x,i){return{id:uid(),x:x,done:i===0}});if(C[1])Q[0].chap=C[1].id;
   if(Q[1]){Q[1].parent=Q[0].id;Q[1].steps=["Hablar con Mirel, su hija","Seguir su rastro hasta el muelle"].map(function(x){return{id:uid(),x:x,done:false}});if(C[0])Q[1].chap=C[0].id}
   if(Q[2]&&C[1]){Q[2].chap=C[1].id;Q[2].parent=Q[0].id}touch()};
+/* ---- corrección automática de la coherencia ---- */
+var revUndo=null,revUndoData=null,revAuto=false;try{revAuto=localStorage.getItem(LS+"-revauto")==="1"}catch(e){}
+var PF2={papel:"role",donde:"where",quiere:"wants",secreto:"secret",estado:"st",nombre:"name"},MF2={titulo:"title",encargo:"giver",recompensa:"reward",estado:"st"},CF2={titulo:"title",resumen:"note"};
+var FLAB={role:"papel",where:"dónde está",wants:"qué quiere",secret:"secreto",st:"estado",name:"nombre",title:"título",giver:"quién la encarga",reward:"recompensa",note:"resumen"};
+function opN(v){var m=/(\d+)/.exec(String(v==null?"":v));return m?+m[1]:0}
+function npcSt(v){var f=flat(v);return/muert|fallec/.test(f)?"muerto":/hostil|enemig/.test(f)?"hostil":/alia|amig/.test(f)?"aliado":/neutr|viv/.test(f)?"neutral":""}
+function qSt(v){var f=flat(v);return/cumpl|hecha|complet/.test(f)?"hecha":/fall|fracas/.test(f)?"fallida":/abiert|pendient|activ/.test(f)?"abierta":""}
+function stLabel(k,v){return k==="st"?((NST[v]||QST[v]||[v])[0]):v}
+function opPlan(s,o){o=o||{};var op=flat(o.op).replace(/\s+/g,"_"),v=str(o.valor,600),P=s.npcs,Q=s.quests,C=s.chapters,F=s.facts||[];
+  function chg(lab,b,a,fn){return{ok:true,lab:lab,b:b==null?"":String(b),a:a==null?"":String(a),fn:fn}}
+  if(op==="pnj"){var n=P[opN(o.n)-1],k=PF2[flat(o.campo)];if(!n||!k||!v)return null;if(k==="st"){v=npcSt(v);if(!v)return null}if(String(n[k]||"")===v)return"same";
+    var id=n.id;return chg("PNJ «"+n.name+"» · "+FLAB[k],stLabel(k,n[k]||""),stLabel(k,v),function(s){s.npcs.forEach(function(x){if(x.id===id){var old=x.name;x[k]=v;if(k==="name")renameAll(s,old,v)}})})}
+  if(op==="unificar"){var a=P[opN(o.de)-1],b=P[opN(o.en)-1];if(!a||!b||a===b)return null;var ai=a.id,bi=b.id;
+    return chg("Unificar PNJ","«"+a.name+"» y «"+b.name+"»","«"+b.name+"»",function(s){var A=null,B=null;s.npcs.forEach(function(x){if(x.id===ai)A=x;if(x.id===bi)B=x});if(!A||!B)return;
+      ["role","where","wants","secret"].forEach(function(f){if(!B[f]&&A[f])B[f]=A[f]});if(!B.chap&&A.chap)B.chap=A.chap;renameAll(s,A.name,B.name);s.npcs=s.npcs.filter(function(x){return x.id!==ai});
+      S.maps.forEach(function(m){var has=m.tokens.some(function(t){return t.ref==="npc:"+bi});m.tokens=m.tokens.filter(function(t){return!(t.ref==="npc:"+ai&&has)}).map(function(t){if(t.ref==="npc:"+ai)t.ref="npc:"+bi;return t})})})}
+  if(op==="mision"){var q=Q[opN(o.n)-1],k2=MF2[flat(o.campo)];if(!q||!k2||!v)return null;if(k2==="st"){v=qSt(v);if(!v)return null}if(String(q[k2]||"")===v)return"same";var qi=q.id;
+    return chg("Misión «"+q.title+"» · "+FLAB[k2],stLabel(k2,q[k2]||""),stLabel(k2,v),function(s){s.quests.forEach(function(x){if(x.id===qi)x[k2]=v})})}
+  if(op==="mision_capitulo"){var q2=Q[opN(o.n)-1],c2=C[opN(o.capitulo||o.valor)-1];if(!q2||!c2)return null;if(q2.chap===c2.id)return"same";var qi2=q2.id,ci2=c2.id,cur=C.filter(function(c){return c.id===q2.chap})[0];
+    return chg("Misión «"+q2.title+"» · capítulo",cur?cur.title:"sin vincular",c2.title,function(s){s.quests.forEach(function(x){if(x.id===qi2)x.chap=ci2})})}
+  if(op==="hito"){var q3=Q[opN(o.n)-1];if(!q3||!v)return null;if(qSteps(q3).some(function(x){return nmz(x.x)===nmz(v)}))return"same";var qi3=q3.id;
+    return chg("Misión «"+q3.title+"» · nuevo hito","",v,function(s){s.quests.forEach(function(x){if(x.id===qi3)qSteps(x).push({id:uid(),x:str(v,160),done:false})})})}
+  if(op==="capitulo"){var c=C[opN(o.n)-1],k3=CF2[flat(o.campo)];if(!c||!k3||!v)return null;if(String(c[k3]||"")===v)return"same";var ci=c.id;
+    return chg("Capítulo «"+c.title+"» · "+FLAB[k3],c[k3]||"",v,function(s){s.chapters.forEach(function(x){if(x.id===ci)x[k3]=k3==="title"?str(v,90):str(v,400)})})}
+  if(op==="descripcion"){if(!v||v===s.desc)return null;return chg("Descripción de la historia",s.desc||"",v,function(s){s.desc=str(v,1500)})}
+  if(op==="hecho"){if(!v)return null;if(F.some(function(f){return nmz(f.x)===nmz(v)}))return"same";return chg("Libro de hechos · nuevo hecho","",v,function(s){factAdd(s,v,"dm")})}
+  if(op==="quitar_hecho"){var f=F[opN(o.n)-1];if(!f)return null;var fi=f.id;return chg("Libro de hechos · quitar",f.x,"",function(s){s.facts=(s.facts||[]).filter(function(x){return x.id!==fi})})}
+  if(op==="nota"){if(!v)return null;return chg("Nota de continuidad para el máster","",v,function(s){s.notes.push({id:uid(),title:"Continuidad",text:v,t:Date.now()});factAdd(s,"Continuidad: "+v,"dm")})}
+  return null}
+function renameAll(s,a,b){if(!a||!b||a===b)return;var re=new RegExp(a.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"g");
+  s.quests.forEach(function(q){if(q.giver&&sameName(q.giver,a))q.giver=b});(s.facts||[]).forEach(function(f){f.x=f.x.replace(re,b)});s.chapters.forEach(function(c){if(c.note)c.note=c.note.replace(re,b)})}
+function revPlans(p){var s=story(),ok=[],bad=0;if(!s)return{ok:ok,bad:0};(p.cambios||[]).forEach(function(o){var c=null;try{c=opPlan(s,o)}catch(e){}if(c==="same")return;if(c)ok.push(c);else bad++});return{ok:ok,bad:bad}}
+function cohCount(s){return storyCheck(s).filter(function(x){return x.l!=="info"}).length}
+function revApply(ids){var s=story();if(!s||!revData)return;var L=revData.filter(function(p){return ids.indexOf(p.id)>=0}),n=0,before=cohCount(s);
+  revUndo=JSON.stringify(S);revUndoData=JSON.parse(JSON.stringify(revData));
+  stEdit(function(s){L.forEach(function(p){var pl=revPlans(p);pl.ok.forEach(function(c){c.fn(s);n++})})});
+  revData=revData.filter(function(p){return ids.indexOf(p.id)<0});var after=cohCount(story());
+  revMsg=n?"Aplicados "+n+(n===1?" cambio":" cambios")+". Comprobaciones automáticas: "+(after<before?"de "+before+" a "+after+(after===1?" aviso.":" avisos."):after>before?"han aparecido "+(after-before)+" avisos nuevos, revísalos.":after+(after===1?" aviso":" avisos")+", sin cambios."):"No había cambios que aplicar.";
+  logAct("Coherencia corregida: "+n+" cambios");cohDraw()}
+function revUndoDo(){if(!revUndo)return;try{S=norm(JSON.parse(revUndo))}catch(e){return}revData=revUndoData;revUndo=null;revUndoData=null;revMsg="Corrección deshecha. La historia vuelve a estar como antes.";touch();draw()}
+function cohReview(){var s=story(),el=$("#coh-msg");if(!s)return;var swap=!inArtifact&&rmodel&&cfg.model!==rmodel?cfg.model:null;if(swap)cfg.model=rmodel;
+  var ses=s.sessions.slice(-2).map(function(x){return x.x}).join("\n"),log=(S.ia.sid===s.id?S.ia.log:s.log||[]).slice(-16).map(function(x){return(x.r==="a"?"Máster: ":"Jugadores: ")+x.t}).join("\n");
+  var txt="HISTORIA: "+s.title+"\nDESCRIPCIÓN: "+(s.desc||"")+"\n\nCAPÍTULOS:\n"+s.chapters.map(function(c,i){return"C"+(i+1)+". "+c.title+" ("+(CST[c.st]?CST[c.st][0]:c.st||"")+"): "+(c.note||"")}).join("\n")+
+    "\n\nMISIONES:\n"+s.quests.map(function(q,i){var ch=s.chapters.map(function(c){return c.id}).indexOf(q.chap);return"M"+(i+1)+". "+q.title+" ["+((QST[q.st]||QST.abierta)[0])+(q.main?", principal":"")+"]"+(q.giver?", encarga "+q.giver:"")+(q.reward?", recompensa "+q.reward:"")+(ch>=0?", capítulo C"+(ch+1):"")+(qSteps(q).length?". Hitos: "+q.steps.map(function(x){return(x.done?"(hecho) ":"")+x.x}).join(" / "):"")}).join("\n")+
+    "\n\nPNJ:\n"+s.npcs.map(function(n,i){return"P"+(i+1)+". "+n.name+" ("+[n.role,n.where,(NST[n.st]||NST.neutral)[0]].filter(Boolean).join(", ")+")"+(n.wants?". Quiere: "+n.wants:"")+(n.secret?". Secreto: "+n.secret:"")}).join("\n")+
+    "\n\nLUGARES: "+(s.places||[]).map(function(p){return p.title}).join(", ")+"\n\nHECHOS ESTABLECIDOS:\n"+(s.facts||[]).map(function(f,i){return"H"+(i+1)+". "+f.x}).slice(-60).join("\n")+(S.ia.summary?"\n\nRESUMEN DE LO JUGADO:\n"+S.ia.summary:"")+(ses?"\n\nÚLTIMAS SESIONES:\n"+ses:"")+(log?"\n\nÚLTIMOS TURNOS YA NARRADOS:\n"+log:"");
+  askJSON("Eres un editor exigente de aventuras de rol. Revisa la coherencia de esta historia de Dungeons & Dragons: contradicciones entre hechos, PNJ que actúan contra lo que quieren o saben, muertos que reaparecen, nombres que cambian o se repiten, misiones sin camino para cumplirlas, cabos sueltos y saltos de lógica. "+
+    "Para cada problema propón en «cambios» las operaciones mínimas que lo arreglan, citando los elementos por su número (P para PNJ, M para misiones, C para capítulos, H para hechos). Operaciones permitidas:\n"+
+    "{\"op\":\"pnj\",\"n\":1,\"campo\":\"papel|donde|quiere|secreto|estado|nombre\",\"valor\":\"\"} (estado: neutral, aliado, hostil o muerto)\n{\"op\":\"unificar\",\"de\":2,\"en\":1} (dos PNJ que son la misma persona)\n{\"op\":\"mision\",\"n\":1,\"campo\":\"titulo|encargo|recompensa|estado\",\"valor\":\"\"} (estado: abierta, cumplida o fallida)\n{\"op\":\"mision_capitulo\",\"n\":1,\"capitulo\":2}\n{\"op\":\"hito\",\"n\":1,\"valor\":\"\"}\n{\"op\":\"capitulo\",\"n\":1,\"campo\":\"titulo|resumen\",\"valor\":\"\"}\n{\"op\":\"descripcion\",\"valor\":\"\"}\n{\"op\":\"hecho\",\"valor\":\"\"}\n{\"op\":\"quitar_hecho\",\"n\":1}\n{\"op\":\"nota\",\"valor\":\"\"}\n"+
+    "Reglas: lo que aparece en ÚLTIMOS TURNOS YA NARRADOS lo han oído los jugadores y no se puede borrar; arréglalo dentro de la ficción con un hecho nuevo o una nota de continuidad que lo explique. No cambies nada que no esté mal y no reescribas la historia entera. Si no hay problemas, devuelve la lista vacía. "+
+    "Responde solo con JSON: {\"problemas\":[{\"gravedad\":\"alta|media|baja\",\"tipo\":\"contradicción|cabo suelto|incoherencia|ritmo\",\"que\":\"\",\"arreglo\":\"\",\"cambios\":[]}]}\n\n"+txt.slice(0,14000),el).then(function(j){
+    if(swap)cfg.model=swap;if(!j)return;revUndo=null;revData=(Array.isArray(j.problemas)?j.problemas:[]).map(function(p){p=p||{};return{g:/alta/i.test(p.gravedad)?"alta":/baja/i.test(p.gravedad)?"baja":"media",k:str(p.tipo,30),q:str(p.que,400),a:str(p.arreglo,400),cambios:Array.isArray(p.cambios)?p.cambios.slice(0,8):[],id:uid()}}).filter(function(p){return p.q}).slice(0,12);
+    var nv=0;revData.forEach(function(p){nv+=revPlans(p).ok.length});
+    revMsg=revData.length?"La IA ha encontrado "+revData.length+(revData.length===1?" problema":" problemas")+" y propone "+nv+(nv===1?" cambio aplicable.":" cambios aplicables.")+(rmodel&&!inArtifact?" Revisado con "+rmodel+".":""):"La IA no ha encontrado problemas.";
+    if(revAuto&&nv)revApply(revData.map(function(p){return p.id}));else cohDraw()},function(){if(swap)cfg.model=swap})}
+function revHtml(){var s=story(),tot=0;(revData||[]).forEach(function(p){tot+=revPlans(p).ok.length});
+  var h='<h3>Revisión con IA</h3><p class="sub">Busca contradicciones, cabos sueltos y saltos de lógica y propone cambios concretos. Revisa el antes y el después; puedes aplicar uno a uno, todos a la vez y deshacerlo. Funciona mejor con un modelo más grande que el que narra («Máster IA», «Motor de IA»).</p>'+
+    '<div class="bar"><button type="button" class="pri" id="coh-rev">Revisar con IA</button>'+(tot?'<button type="button" class="pri" data-revall>Corregir todo ('+tot+(tot===1?" cambio":" cambios")+')</button>':"")+(revUndo?'<button type="button" data-revundo>Deshacer la corrección</button>':"")+
+    '<label class="ck"><input type="checkbox" id="rev-auto"'+(revAuto?" checked":"")+'> Aplicar sin vista previa</label></div><p id="coh-msg" class="sub" role="status">'+esc(revMsg)+'</p>';
+  if(revData&&revData.length)h+='<ul class="cohl">'+revData.map(function(p){var pl=revPlans(p);return'<li class="'+(p.g==="alta"?"err":p.g==="media"?"warn":"info")+'"><span class="badge '+(p.g==="alta"?"bad":p.g==="media"?"pause":"done")+'">'+esc(p.k||p.g)+'</span><span class="t"><b>'+esc(p.q)+'</b>'+(p.a?'<small>Arreglo: '+esc(p.a)+'</small>':"")+
+    (pl.ok.length?'<div class="diffs">'+pl.ok.map(function(c){return'<div class="dif"><span class="dl">'+esc(c.lab)+'</span>'+(c.b?'<del>'+esc(c.b)+'</del>':"")+(c.a?'<ins>'+esc(c.a)+'</ins>':'<ins class="none">se quita</ins>')+'</div>'}).join("")+'</div>':'<small>No trae cambios que el panel pueda aplicar solo.</small>')+(pl.bad?'<small>'+pl.bad+(pl.bad===1?" cambio propuesto no encaja con la historia y se ha descartado.":" cambios propuestos no encajan con la historia y se han descartado.")+'</small>':"")+
+    '<span class="bar">'+(pl.ok.length?'<button type="button" class="pri" data-revapply="'+p.id+'" style="min-height:30px;padding:0 12px;font-size:.85rem">Aplicar estos cambios</button>':"")+'<button type="button" data-rev="fact:'+p.id+'" style="min-height:30px;padding:0 10px;font-size:.85rem">Fijar el arreglo como hecho</button><button type="button" data-rev="note:'+p.id+'" style="min-height:30px;padding:0 10px;font-size:.85rem">Guardar en notas</button><button type="button" class="ghost" data-rev="no:'+p.id+'" style="min-height:30px;padding:0 10px;font-size:.85rem">Descartar</button></span></span></li>'}).join("")+'</ul>';
+  else if(revData)h+='<p class="ok-line">La IA no ha encontrado más problemas.</p>';
+  return h}
+var AUTOFIX=/^(npcadd|qchap|npcdead|main):/;
+var cohDrawY=cohDraw;cohDraw=function(){cohDrawY();var s=story(),r=document.querySelector("#sd-coh-body .cohrev");if(!s||!r)return;r.innerHTML=revHtml();$("#coh-rev").onclick=cohReview;
+  var n=[].filter.call(document.querySelectorAll("#sd-coh-body [data-cohfix]"),function(b){return AUTOFIX.test(b.dataset.cohfix)}).length,ul=document.querySelector("#sd-coh-body ul.cohl");
+  if(n&&ul&&!document.querySelector("[data-cohauto]")){var d=document.createElement("div");d.className="bar";d.innerHTML='<button type="button" data-cohauto>Arreglar todo lo automático ('+n+')</button>'+(revUndo?'<button type="button" data-revundo>Deshacer</button>':"");ul.parentNode.insertBefore(d,ul)}};
+document.addEventListener("click",function(e){var b=e.target.closest("[data-revapply],[data-revall],[data-revundo],[data-cohauto]");if(!b)return;
+  if(b.dataset.revapply)revApply([b.dataset.revapply]);
+  else if(b.hasAttribute("data-revall"))revApply((revData||[]).map(function(p){return p.id}));
+  else if(b.hasAttribute("data-revundo"))revUndoDo();
+  else if(b.hasAttribute("data-cohauto")){var s=story();if(!s)return;var before=cohCount(s),K=[];[].forEach.call(document.querySelectorAll("#sd-coh-body [data-cohfix]"),function(x){var k=x.dataset.cohfix;if(AUTOFIX.test(k)&&K.indexOf(k)<0&&!(/^main:/.test(k)&&K.some(function(y){return/^main:/.test(y)})))K.push(k)});
+    revUndo=JSON.stringify(S);revUndoData=revData?JSON.parse(JSON.stringify(revData)):null;K.forEach(cohFix);var after=cohCount(story());revMsg="Arreglado"+(K.length===1?" 1 aviso automático":"s "+K.length+" avisos automáticos")+" ("+before+" → "+after+").";cohDraw()}});
+document.addEventListener("change",function(e){if(e.target.id!=="rev-auto")return;revAuto=e.target.checked;try{localStorage.setItem(LS+"-revauto",revAuto?"1":"0")}catch(x){}});
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
