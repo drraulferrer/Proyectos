@@ -348,6 +348,30 @@ body.guarro .side .logo span::after{content:"+18";font:700 .62rem/1 var(--sans,s
 #lance h3{margin:14px 0 6px;font-size:1rem}
 #lance .ln-res{margin-top:10px;border-left:3px solid #b3264a}#lance .ln-res.ok{border-left-color:var(--ok,#6fbf73)}#lance .ln-res p{margin:4px 0}
 
+
+/* modo guarro: marcas, lance y resaca */
+.sd18{margin:6px 0 0;padding:8px 12px;border-radius:10px;border:1px dashed var(--divider)}.sd18.on{border-color:#b3264a;color:var(--ink)}.sd18 button{margin-left:8px}
+.scard h2 .g18,.banner h1 .g18{font-size:.7rem;vertical-align:middle}
+#lfx-box{margin:0 0 14px}
+.lfx{display:flex;gap:16px;align-items:center;padding:16px;border-radius:16px;border:1px solid var(--divider);background:linear-gradient(135deg,rgba(179,38,74,.18),rgba(0,0,0,0));animation:lfin .4s ease-out}
+.lfx.ok{border-color:#b3264a}.lfx.no{background:linear-gradient(135deg,rgba(120,120,140,.15),rgba(0,0,0,0))}
+@keyframes lfin{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+.lf-pic{flex:0 0 auto;width:78px;height:78px;border-radius:14px;overflow:hidden;display:grid;place-items:center;background:var(--card2,#222);font-family:var(--display);font-size:1.6rem;border:2px solid var(--divider)}
+.lfx.ok .lf-pic{border-color:#b3264a}.lf-pic img{width:100%;height:100%;object-fit:cover}
+.lf-mid{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}.lf-h{font-family:var(--display);font-size:1.5rem;color:#e86a8e}.lfx.no .lf-h{color:var(--muted)}
+.rks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.rk-l{display:flex;justify-content:space-between;font-size:.85rem}.rk-t{position:relative;height:14px;border-radius:999px;background:rgba(111,191,115,.25);margin:4px 0;overflow:visible}
+.rk-t i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:linear-gradient(90deg,#b3264a,#e86a8e)}
+.rk-t em{position:absolute;top:-5px;transform:translateX(-50%);font-style:normal;font-size:.72rem;font-weight:700;background:var(--ink,#fff);color:var(--bg,#111);border-radius:6px;padding:1px 5px;animation:rkm .9s ease-out}
+@keyframes rkm{from{left:0}}
+.rk-res{font-size:.85rem;color:#6fbf73}.rk.hit .rk-res{color:#e86a8e;font-weight:700}
+.hang{padding:16px;border-radius:16px;border:1px solid #b3264a;background:linear-gradient(135deg,rgba(179,38,74,.15),rgba(0,0,0,0))}.hang h3{margin:0 0 8px;font-family:var(--display)}
+.hang li{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.hang li span:not(.chip){color:var(--muted)}.chip.pox{border-color:#b3264a;color:#e86a8e}.chip.ok{border-color:#6fbf73;color:#6fbf73}
+#sed-man h2{font-size:1.1rem}
+body.solo-cb #lfx-box,body.solo-cb #sed-man{display:none!important}
+body.solo-cb #cb-stage .lfx,body.solo-cb #cb-stage .hang{width:min(100%,900px);margin:0 auto;font-size:calc(1rem*var(--fz))}body.solo-cb #cb-stage .lf-pic{width:calc(110px*var(--fz));height:calc(110px*var(--fz))}body.solo-cb #cb-stage .lf-h{font-size:calc(2rem*var(--fz))}
+@media (max-width:640px){.rks{grid-template-columns:1fr}.lf-pic{width:54px;height:54px}}
+
 /* deshacer */
 #undo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 32px)}
 #undo[hidden]{display:none}
@@ -1260,7 +1284,7 @@ function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   b.maps=Array.isArray(o.maps)?o.maps.filter(function(m){return m&&m.id&&m.cell>0&&m.w>0&&m.h>0}).map(function(m){m.tokens=Array.isArray(m.tokens)?m.tokens:[];m.fx=Array.isArray(m.fx)?m.fx:[];return m}):[];b.mapId=o.mapId||null;
   var a=o.ia||{};b.ia={mode:["copiloto","narrador","auto"].indexOf(a.mode)>=0?a.mode:"copiloto",premise:typeof a.premise==="string"?a.premise:"",summary:typeof a.summary==="string"?a.summary:"",log:Array.isArray(a.log)?a.log.filter(function(x){return x&&typeof x.t==="string"&&x.t}):[]};if("sid" in a)b.ia.sid=a.sid;
   b.rev=o.rev||"";b.party=Array.isArray(o.party)?o.party:[];b.notes=typeof o.notes==="string"?o.notes:"";b.checks=o.checks&&typeof o.checks==="object"?o.checks:{};
-  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null,byIA:!!c.byIA,simTxt:typeof c.simTxt==="string"?c.simTxt:"",sim:c.sim&&typeof c.sim==="object"?c.sim:null,fx:Array.isArray(c.fx)?c.fx.slice(-12):[],fxn:int(c.fxn,0),goal:c.goal&&typeof c.goal==="object"?c.goal:null};
+  var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null,byIA:!!c.byIA,simTxt:typeof c.simTxt==="string"?c.simTxt:"",sim:c.sim&&typeof c.sim==="object"?c.sim:null,fx:Array.isArray(c.fx)?c.fx.slice(-12):[],fxn:int(c.fxn,0),goal:c.goal&&typeof c.goal==="object"?c.goal:null,lfx:Array.isArray(c.lfx)?c.lfx.slice(-30):[]};
   function arr(v){return Array.isArray(v)?v:[]}
   b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.npcs=arr(x.npcs);x.loot=arr(x.loot);x.places=arr(x.places).filter(function(p){return p&&p.id&&p.title});x.mons=arr(x.mons).filter(function(m){return Array.isArray(m)&&m.length>=9});x.quests=arr(x.quests);x.next=x.next||{date:"",time:""};return x});
   b.storyId=o.storyId||null;b.thumbs=o.thumbs&&typeof o.thumbs==="object"?o.thumbs:{};b.show=o.show&&typeof o.show==="object"?o.show:null;b.spot=o.spot&&typeof o.spot==="object"&&o.spot.c?o.spot:{k:"",c:{}};b.activity=arr(o.activity);
@@ -3401,7 +3425,7 @@ $("#order").addEventListener("click",function(e){var b=e.target.closest('[data-a
   if(p&&p.ets)p.ets=p.ets.filter(function(k){return k!==b.dataset.k})},true);
 // instrucción de tono para la IA (no en las peticiones de imágenes ni de mapas)
 var GTONE="MODO PARA ADULTOS ACTIVADO: todas las personas de la mesa son mayores de 18 años y lo han pedido. Usa humor verde, picante y soez: dobles sentidos, tacos, tabernas y burdeles de mala fama, PNJ descarados, objetos mágicos con chiste y enfermedades venéreas de fantasía (picor de sátiro, ladillas de grifo, fiebre de la ninfa, escozor del íncubo) como contratiempos cómicos. Insinúa y bromea, pero no describas escenas sexuales explícitas. Todos los personajes son adultos. Nada de violencia sexual ni de falta de consentimiento.";
-var runAC=run;run=function(input,onText,img){if(GUARRO&&!img){if(typeof input==="string"){if(!/^(Escribe en inglés|Esta imagen)/.test(input))input=GTONE+"\n\n"+input}
+var runAC=run;run=function(input,onText,img){if(adultNow()&&!img){if(typeof input==="string"){if(!/^(Escribe en inglés|Esta imagen)/.test(input))input=GTONE+"\n\n"+input}
   else if(Array.isArray(input)&&input.length){input=input.slice();input[0]={role:input[0].role,content:GTONE+"\n\n"+input[0].content}}}return runAC(input,onText,img)};
 // interruptor en el Panel
 (function(){var bk=$("#bk-save");if(!bk)return;var card=bk.closest(".card");card.insertAdjacentHTML("beforebegin",'<div class="card dm" id="guarro"></div>');guarroDraw()})();
@@ -3524,6 +3548,99 @@ var simPillAF=simPill;simPill=function(){return isLance()?"":simPillAF()};
 var simStripAF=simStrip;simStrip=function(){return isLance()?"":simStripAF()};
 var winTxtAF=winTxt;winTxt=function(){var L=S.combat.list.filter(function(c){return c.fled==="seducido"}).map(function(c){return view(c).name});
   return L.length?(isLance()?"Lance ganado: nadie ha tenido que desenvainar el acero.":winTxtAF())+" Se han ido detrás de la carreta: "+L.join(", ")+".":winTxtAF()};
+/* ---- modo guarro: historias +18, lance en modo manual y riesgos visibles ---- */
+S.stories.forEach(function(s){if(s.adult===undefined)s.adult=false});
+var genAdult=false;
+function adultStory(s){return!!(s&&s.adult)}
+function adultNow(){if(!GUARRO)return false;var s=story();return genAdult||!s||adultStory(s)}
+var openStoryAG=openStory;openStory=function(id){var s=storyById(id);if(s&&s.adult===undefined)s.adult=GUARRO;genAdult=false;openStoryAG(id)};
+document.addEventListener("click",function(e){if(e.target.closest("#gen-go"))genAdult=GUARRO;if(e.target.closest("#gen-no"))genAdult=false},true);
+if(GUARRO)GTONE+=" Si la historia es +18, sus misiones, encargos e hitos también pueden ser picantes y con chiste (conquistar a alguien difícil, recuperar un tomo del Kamasutra robado, curarse unas ladillas antes de la boda del duque, ganar un concurso de piropos), pero siempre ligados a la trama principal y con su marca [MISION] o [HITO] como siempre.";
+var g18='<span class="g18" title="Historia para mayores de 18 años">+18</span>';
+// marcas +18 en las tarjetas, la ficha de la historia y el panel
+var drawStoriesAG=drawStories;drawStories=function(){drawStoriesAG();[].forEach.call(document.querySelectorAll("#st-cards .scard[data-story]"),function(b){var s=storyById(b.dataset.story),h=b.querySelector("h2");if(adultStory(s)&&h&&!h.querySelector(".g18"))h.insertAdjacentHTML("beforeend",g18)})};
+var drawStoryAG=drawStory;drawStory=function(){drawStoryAG();var s=story(),bn=$("#sd-banner");if(!s||!bn)return;var h=bn.querySelector("h1");if(adultStory(s)&&h&&!h.querySelector(".g18"))h.insertAdjacentHTML("beforeend",g18);
+  var old=$("#sd-18");if(old)old.remove();var t=GUARRO?(adultStory(s)?'Historia para adultos: la IA usa el tono guarro, con misiones e hitos picantes. <button type="button" class="ghost" data-a18="0">Quitar la marca +18</button>':'Historia sin marca +18: la IA la narra con el tono normal aunque el modo guarro esté activo. <button type="button" class="ghost" data-a18="1">Marcar como +18</button>')
+    :adultStory(s)?'Historia para adultos (+18). Activa el modo guarro en el Panel para jugarla con su tono; mientras tanto la IA la narra con el tono normal.':"";
+  if(t)bn.insertAdjacentHTML("afterend",'<p class="sub sd18'+(adultStory(s)?" on":"")+'" id="sd-18">'+t+'</p>')};
+document.addEventListener("click",function(e){var b=e.target.closest("[data-a18]");if(!b)return;var s=story();if(!s)return;
+  if(b.dataset.a18==="1"&&!confirm("¿Marcar «"+s.title+"» como historia para mayores de 18 años?"))return;s.adult=b.dataset.a18==="1";touch();draw()});
+var drawPanelAG=drawPanel;drawPanel=function(){drawPanelAG();var s=story(),c=$("#p-cont");if(!c||!adultStory(s))return;var h=c.querySelector("h2,h3");if(h&&!h.querySelector(".g18"))h.insertAdjacentHTML("beforeend",g18)};
+// acciones rápidas del copiloto
+var Q18={ligar:"Uno de los personajes quiere ligar con alguien de la escena. Propón con quién, qué le dice con gracia y qué tirada de Persuasión pedir y con qué CD. Si sale bien, plantea un lance picante con humor, sin detalles explícitos.",
+burdel:"Describe con humor verde un local de mala fama cercano: nombre, quién lo regenta, tres clientes peculiares, qué se puede conseguir allí (información, un tomo del Kamasutra, una cura para las ladillas) y qué problema está a punto de estallar.",
+curar:"Alguien del grupo tiene una enfermedad venérea de fantasía. Propón dónde curarla, quién la cura, un precio embarazoso y una complicación cómica.",
+mision18:"Propón una misión secundaria picante y con chiste que sirva a la misión principal de la historia, con quién la encarga, la recompensa y un hito intermedio. Escríbela con su marca [MISION: título | encarga | recompensa | sirve a: misión]."};
+function quick18(){var q=$("#ia-quick");if(!q)return;if(typeof QUICK==="object"&&QUICK&&!QUICK.ligar)Object.keys(Q18).forEach(function(k){QUICK[k]=Q18[k]});var on=adultNow(),has18=!!q.querySelector(".q18");
+  if(on&&!has18)q.insertAdjacentHTML("beforeend",'<button type="button" class="q18" data-q="ligar">Ligar (+18)</button><button type="button" class="q18" data-q="burdel">Local de mala fama</button><button type="button" class="q18" data-q="curar">Curar una ETS</button><button type="button" class="q18" data-q="mision18">Misión picante</button>');
+  if(!on&&has18)[].forEach.call(q.querySelectorAll(".q18"),function(b){b.remove()})}
+var drawIAAG=drawIA;drawIA=function(){drawIAAG();quick18()};
+
+/* ---- resolver seducciones con resultado visible ---- */
+function lfxPush(R){var C=S.combat;if(SIM)return;R.fxn=C.fxn||0;C.lfx=(C.lfx||[]).concat([R]).slice(-30)}
+function riskTo(p,c,base,mult,L,R){var ets=Math.min(95,Math.round(base*mult)),re=d(100);R.ets={r:ets,n:re};
+  if(pcRing(p)){R.ets.ring=1;L.push("Riesgo de ETS: el anillo de la protección profiláctica brilla, no hay contagio.");return}
+  if(re<=ets){var free=POXN.filter(function(x){return(p.ets||[]).indexOf(x)<0});if(free.length){var e=free[Math.floor(Math.random()*free.length)];p.ets=(p.ets||[]).concat([e]);addCond(c,e);R.ets.got=e;L.push("Riesgo de ETS "+ets+" %: sale "+re+". Se lleva «"+e+"»: "+CONDTXT[e]+".")}else{R.ets.all=1;L.push("Riesgo de ETS "+ets+" %: sale "+re+", pero ya las tiene todas.")}}
+  else L.push("Riesgo de ETS "+ets+" %: sale "+re+", se libra.")}
+function sedCore(c,t,k){var p=pc(c.pcId),P=posRow(k),tv=view(t),v=view(c),dc=sedDC(t);lnSt.pos=k;
+  var r1=d(20),r2=d(20),r=P[5]==="ventaja"?Math.max(r1,r2):r1,m=persuade(p)+P[2],tot=r+m,ok=r===20||(r!==1&&tot>=dc),
+    R={k:"sed",a:c.id,pc:c.pcId,t:t.id,an:v.name,tn:tv.name,pos:k,r:r,m:m,dc:dc,ok:ok,crit:r===20,fum:r===1,rd:Date.now()},
+    txt=v.name+" deja la espada envainada e intenta seducir a "+tv.name+" con «"+k+"». Tira d20"+(P[5]==="ventaja"?" con ventaja ("+r1+" y "+r2+")":"")+": "+r+" "+sgn(m)+" = "+tot+" contra CD "+dc+": ";
+  if(!ok){t.tgt=c.id;addCond(c,"Marcado");if(r===1)addCond(c,"Derribado");lfxPush(R);
+    clog(txt+"calabazas. "+tv.name+" se ofende muchísimo y va a por "+v.name+": el siguiente ataque contra él tiene ventaja."+(r===1?" Pifia: tropieza con su propio cinturón y acaba en el suelo.":""));
+    why("Seducir es una prueba de Persuasión ("+sgn(persuade(p))+") más el bono de la postura ("+sgn(P[2])+"), contra 10 + el VD de la criatura, más difícil con los jefes y más fácil con los malheridos.");return R}
+  t.fled="seducido";addCond(t,"Seducido");var L=[txt+(r===20?"¡éxito legendario! ":"funciona. ")+tv.name+" suelta el arma y se va con "+v.name+" detrás de la carreta. Deja de luchar."];
+  riskTo(p,c,monKit(t)&&monKit(t).k==="pox"?35:20,P[4],L,R);
+  var pr=Math.round(15*P[3]),rp=d(100);R.preg={r:pr,n:rp,hit:rp<=pr};if(R.preg.hit){p.kids=(p.kids||0)+1;L.push("Riesgo de embarazo "+pr+" %: sale "+rp+". En nueve meses habrá un pequeño "+tv.name.toLowerCase()+" con la nariz de "+v.name+".")}else L.push("Riesgo de embarazo "+pr+" %: sale "+rp+", sin herederos.");
+  if(P[5]==="bendice"||r===20){addCond(c,"Bendecido");R.bless=1;L.push(v.name+" vuelve a la pelea Bendecido: suma 1d4 a sus ataques.")}
+  lfxPush(R);clog(L.join(" "));return R}
+sedDo=function(c,v){var t=find(($("#au-sed-t")||{}).value);if(!t||!canSeduce(t))return false;sedCore(c,t,($("#au-sed-p")||{}).value||"El misionero")};
+function flirtCore(m,t){var v=view(m),tv=view(t),p=pc(t.pcId),r=d(20),mo=int(m.atk,4),tot=r+mo,dc=10+(p?persuade(p):0)+(has(t,"Bendecido")?2:0),ok=r===20||(r!==1&&tot>=dc),
+    R={k:"flirt",a:m.id,pc:t.pcId,t:t.id,an:v.name,tn:tv.name,r:r,m:mo,dc:dc,ok:ok,rd:Date.now()},txt=v.name+" se arrima a "+tv.name+" con sus mejores artes. Tira "+r+" "+sgn(mo)+" = "+tot+" contra "+dc+" (10 + la Persuasión de "+tv.name+"): ";m.tgt=t.id;
+  if(!ok){lfxPush(R);clog(txt+tv.name+" se hace el interesante y no cae.");why("En un lance picante, los enemigos que pueden seducir no hacen daño: tiran 1d20 más su bono de ataque contra 10 más la Persuasión del personaje. Tres seducciones y el personaje cae rendido.");return R}
+  t.flirt=(t.flirt||0)+1;R.n=t.flirt;var L=[txt+"funciona. "+tv.name+" se queda con las piernas temblando ("+t.flirt+" de 3)."];addCond(t,"Distraído");
+  if(p)riskTo(p,t,monKit(m)&&monKit(m).k==="pox"?35:20,1,L,R);
+  if(t.flirt>=3){addCond(t,"Seducido");R.out=1;L.push(tv.name+" cae rendido y se va con "+v.name+": queda fuera del lance.")}
+  lfxPush(R);clog(L.join(" "));return R}
+monsterTurn=function(c){if(!isLance()||SIM||!canSeduce(c)||anyOf(c,SKIP))return monsterTurnAF(c);
+  var H=heroes(true).filter(function(h){return isPc(h)&&!has(h,"Seducido")});if(!H.length)return;var t=H.filter(function(h){return h.id===c.tgt})[0]||H[Math.floor(Math.random()*H.length)];c.tgt=t.id;if(moraleCheck(c))return;flirtCore(c,t)};
+
+/* ---- tarjeta visual del lance y resaca después del combate ---- */
+function riskBar(lab,o,bad){if(!o)return"";var hit=bad;return'<div class="rk'+(hit?" hit":"")+'"><div class="rk-l"><span>'+lab+'</span><b>'+o.r+' %</b></div><div class="rk-t"><i style="width:'+o.r+'%"></i><em style="left:'+Math.min(100,o.n)+'%">'+o.n+'</em></div><span class="rk-res">'+(o.ring?"El anillo profiláctico lo para todo":hit?(o.got?"¡Pillado! «"+esc(o.got)+"»":lab==="Embarazo"?"¡Heredero en camino!":"Ya las tenía todas"):"Se libra")+'</span></div>'}
+function lfxCard(R){var C=S.combat,a=find(R.a),t=find(R.t),pa=a?stPic(a):"",pt=t?stPic(t):"",pic=function(u,n){return'<span class="lf-pic">'+(u?'<img src="'+esc(u)+'" alt="">':esc(initials(n)))+'</span>'};
+  var head=R.k==="sed"?(R.ok?(R.crit?"¡Conquista legendaria!":"¡Conquista!"):(R.fum?"Pifia monumental":"Calabazas")):(R.ok?(R.out?"Cae rendido":"Le tiemblan las piernas"):"Ni caso");
+  return'<div class="lfx '+(R.ok?"ok":"no")+'">'+pic(pa,R.an)+'<div class="lf-mid"><span class="eyebrow">'+(R.k==="sed"?"Seducción":"Intento de seducción")+(R.pos?" · «"+esc(R.pos)+"»":"")+'</span><b class="lf-h">'+esc(head)+'</b><span class="sub">'+esc(R.an)+' → '+esc(R.tn)+' · d20 '+R.r+' '+esc(sgn(R.m))+' = '+(R.r+R.m)+' contra '+R.dc+(R.n?' · '+R.n+' de 3':"")+'</span>'+
+    (R.ok&&R.ets?'<div class="rks">'+riskBar("ETS",R.ets,!!R.ets.got||!!R.ets.all)+(R.preg?riskBar("Embarazo",R.preg,R.preg.hit):"")+'</div>':"")+'</div>'+pic(pt,R.tn)+'</div>'}
+function hangover(){var C=S.combat,L=C.lfx||[];if(!L.length)return"";var by={};
+  L.forEach(function(R){var k=R.pc;if(!k)return;var p=pc(k);if(!p)return;var o=by[k]=by[k]||{n:p.name,con:0,cal:0,got:[],kids:0,fall:0};
+    if(R.k==="sed"){if(R.ok)o.con++;else o.cal++;if(R.preg&&R.preg.hit)o.kids++}else if(R.ok)o.fall++;if(R.ets&&R.ets.got)o.got.push(R.ets.got)});
+  var K=Object.keys(by);if(!K.length)return"";
+  return'<div class="hang"><h3>La resaca del lance</h3><ul class="list">'+K.map(function(k){var o=by[k];return'<li><b>'+esc(o.n)+'</b><span>'+[o.con?o.con+(o.con>1?" conquistas":" conquista"):"",o.cal?o.cal+" calabazas":"",o.fall?"le sedujeron "+o.fall+(o.fall>1?" veces":" vez"):"",o.kids?"heredero en camino":""].filter(Boolean).join(" · ")+'</span>'+
+    (o.got.length?o.got.map(function(g){return'<span class="chip pox">'+esc(g)+'</span>'}).join(""):'<span class="chip ok">Sin contagios</span>')+'</li>'}).join("")+'</ul><p class="sub">Las enfermedades siguen en la ficha hasta que se curen en el Panel. Los herederos, también.</p></div>'}
+(function(){var a=$("#cb-auto");if(a)a.insertAdjacentHTML("beforebegin",'<div id="lfx-box" hidden></div>')})();
+function lfxDraw(){var el=$("#lfx-box");if(!el)return;var C=S.combat,L=C.lfx||[];if(!GUARRO||!L.length||players){el.hidden=true;return}el.hidden=false;
+  el.innerHTML=C.over?hangover():lfxCard(L[L.length-1])}
+
+/* ---- lance picante en modo manual ---- */
+(function(){var sm=$("#sim-man");if(sm)sm.insertAdjacentHTML("afterend",'<div id="sed-man" class="card dm" hidden></div>')})();
+var smSt={pc:"",t:"",m:"",v:""};
+function sedManDraw(){var el=$("#sed-man"),C=S.combat;if(!el)return;var P=C.list.filter(function(c){return isPc(c)&&!has(c,"Seducido")&&hpOf(c)>0}),F=foes().filter(canSeduce);
+  el.hidden=!GUARRO||!!C.auto||players||!C.list.length||!P.length;if(el.hidden)return;var pc0=P.filter(function(c){return c.id===smSt.pc})[0]||P[0],L=posOf(pc(pc0.pcId));
+  var opt=function(A,sel){return A.map(function(x){return'<option value="'+x.id+'"'+(x.id===sel?" selected":"")+'>'+esc(view(x).name)+(isPc(x)?"":" (CD "+sedDC(x)+")")+'</option>'}).join("")};
+  el.innerHTML='<h2>Lance picante <span class="g18">+18</span></h2><label class="ck"><input type="checkbox" id="sm-lance"'+(isLance()?" checked":"")+'> Este encuentro es un lance picante: se gana seduciendo y, si seducen tres veces a un personaje, cae rendido</label>'+
+    (F.length?'<div class="fgrid"><label>Quién seduce<select id="sm-pc">'+opt(P,pc0.id)+'</select></label><label>A quién<select id="sm-t">'+opt(F,smSt.t)+'</select></label><label>Postura<select id="sm-pos">'+L.map(function(k){return'<option'+(k===lnSt.pos?" selected":"")+'>'+esc(k)+'</option>'}).join("")+'</select></label></div><div class="bar"><button type="button" class="pri" data-sm="sed">Tirar la seducción</button></div>'+
+      '<div class="fgrid"><label>Enemigo que lo intenta<select id="sm-m">'+opt(F,smSt.m)+'</select></label><label>Con quién<select id="sm-v">'+opt(P,smSt.v)+'</select></label></div><div class="bar"><button type="button" data-sm="flirt">El enemigo intenta seducir</button></div>'
+     :'<p class="sub">No hay enemigos seducibles en este combate: animales, no muertos, autómatas y cienos no se dejan.</p>')}
+$("#sed-man").addEventListener("change",function(e){var t=e.target,C=S.combat;
+  if(t.id==="sm-lance"){if(t.checked){C.goal={k:"lance"};C.sim=null;clog("Esto no va a ser un combate cualquiera: es un lance picante.")}else C.goal={k:"all"};touch();return}
+  if(t.id==="sm-pc")smSt.pc=t.value;if(t.id==="sm-t")smSt.t=t.value;if(t.id==="sm-m")smSt.m=t.value;if(t.id==="sm-v")smSt.v=t.value;if(t.id==="sm-pos")lnSt.pos=t.value;if(t.id==="sm-pc")sedManDraw()});
+$("#sed-man").addEventListener("click",function(e){var b=e.target.closest("[data-sm]");if(!b)return;var C=S.combat;if(!C.round)C.round=1;
+  if(b.dataset.sm==="sed"){var c=find($("#sm-pc").value),t=find($("#sm-t").value);if(!c||!t)return;smSt.pc=c.id;sedCore(c,t,$("#sm-pos").value||"El misionero")}
+  else{var m=find($("#sm-m").value),v=find($("#sm-v").value);if(!m||!v)return;smSt.m=m.id;smSt.v=v.id;flirtCore(m,v)}
+  checkOver();touch()});
+function lfxStage(){var el=$("#cb-stage"),C=S.combat,L=C.lfx||[];if(!soloCb||!el||!GUARRO||!L.length||el.querySelector(".lfx,.hang"))return;var R=L[L.length-1];
+  if(C.over)el.insertAdjacentHTML("afterbegin",hangover());else if((R.fxn||0)===(C.fxn||0))el.insertAdjacentHTML("afterbegin",lfxCard(R))}
+var drawAG=draw;draw=function(){drawAG();sedManDraw();lfxDraw();lfxStage()};
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
