@@ -1,8 +1,8 @@
 # @_raulferrer · Reel de respuesta: facturación, margen y sueldos
 
-Reel vertical (1080 × 1920, 46 s) que responde a un comentario del carrusel sobre el valor de la fisioterapia. Misma identidad visual que el carrusel (`../valor-fisioterapia`).
+Reel vertical (1080 × 1920, 55 s) que responde a un comentario del carrusel sobre el valor de la fisioterapia. Misma identidad visual que el carrusel (`../valor-fisioterapia`).
 
-Guion por bloques: el comentario citado sin nombre, «veamos qué hay de cierto», dos clínicas con la misma facturación mensual por fisio, el reparto a final de mes, la fórmula del margen y la conclusión: superada la sostenibilidad, el salario es una decisión empresarial.
+Guion por bloques: el comentario citado sin nombre, «veamos qué hay de cierto», dos clínicas con la misma facturación mensual por fisio, el reparto a final de mes con el cálculo del convenio de Madrid, la fórmula del margen, Madrid frente a Cataluña (mínimo de convenio y precio por sesión) y la conclusión: superada la sostenibilidad, el salario es una decisión empresarial.
 
 - `index.html`: composición de HyperFrames.
 - `salida/reel-margen-y-sueldos.mp4`: vídeo final.
@@ -10,3 +10,5 @@ Guion por bloques: el comentario citado sin nombre, «veamos qué hay de cierto�
 - `textos.md`: texto del reel y respuesta para el hilo.
 
 Regenerar: `npx hyperframes check && npx hyperframes render -q delivery -f 30 -o salida/reel-margen-y-sueldos.mp4`
+
+- `datos/convenios-2026.csv`: tablas 2026 de ocho convenios de sanidad privada, con fuente y nivel de verificación.

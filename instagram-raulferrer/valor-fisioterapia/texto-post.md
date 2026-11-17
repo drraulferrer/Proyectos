@@ -2,8 +2,6 @@
 
 El salario base de un fisioterapeuta sin antigüedad en una clínica privada de Madrid es de 1.424,25 € brutos por paga en 2026, según una de las dos tablas del convenio. El salario mínimo que se ha anunciado hoy para 2027 es de 1.286 €. Hay 138,25 € de diferencia.
 
-No es algo de Madrid. He mirado otros convenios de sanidad privada con tabla de 2026 (Aragón, Asturias, A Coruña, Huelva, Jaén, Cantabria y Cataluña) y en seis de los ocho la diferencia con el SMI es de menos de 3.500 € al año. Solo Cataluña se despega, con unos 30.000 €.
-
 La comparación tiene sus trampas. Son años distintos, todavía no sabemos cuánto subirá el convenio en 2027 y hablo de salario base, sin complementos. Aun con eso, me parece muy poca diferencia.
 
 Que suba el SMI me parece bien. Reponer, limpiar o repartir son trabajos duros y necesarios, y tienen que estar bien pagados. Lo que me pregunto es por qué una profesión sanitaria con cuatro años de grado tiene un salario base tan cerca de ese mínimo.
@@ -20,6 +18,6 @@ Nada de esto quita que el convenio también tenga que mejorar, y eso se negocia 
 
 ¿Has negociado alguna vez por encima de tabla? Cuéntamelo en comentarios.
 
-Fuentes: tablas 2026 de cada convenio en su boletín oficial (BOCM, BOA, BOPA, BOC, DOGC y BOP de Jaén, Huelva y A Coruña). El SMI de 2027 es el anunciado hoy, pendiente de BOE.
+Fuentes: convenio de sanidad privada de Madrid, anexo IV · Orden CIN/2135/2008 (BOE), requisitos del Grado en Fisioterapia. El SMI de 2027 es el anunciado hoy, pendiente de BOE.
 
 #fisioterapia #fisioterapeuta #salariominimo #convenio #sanidadprivada
