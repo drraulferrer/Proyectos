@@ -2,13 +2,13 @@
 
 ## Texto del reel
 
-Me comentaban en el último post que los sueldos de los fisios son bajos porque las sesiones son baratas.
+En el último post me comentaban que los sueldos de los fisios son bajos porque las sesiones son baratas. Veamos qué hay de cierto.
 
-Algo de razón tiene: si una clínica factura poco, hay poco que repartir. Pero de ahí no se sigue que facturar más suba el sueldo. Dos clínicas que cobran 60 € por sesión pueden pagar muy distinto a sus fisioterapeutas, porque el reparto de esos 60 € lo decide cada empresa.
+Una clínica que no cubre sus costes no puede pagar más. Eso es sostenibilidad, y ahí no hay discusión.
 
-Y el margen sale de restar los costes a los ingresos. Los sueldos están dentro de esos costes, así que usar el margen para explicar por qué no suben los sueldos es dar una vuelta en círculo.
+Pero pongamos dos clínicas que cobran 60 € por sesión, con la misma agenda: 7.560 € facturados al mes por cada fisio. Con los mismos costes de alquiler, material y gestión, la que paga convenio se queda unos 700 € más de margen al mes por cada fisioterapeuta.
 
-Que haya clínicas con márgenes muy ajustados es verdad, y también que no todas pueden pagar lo mismo. Por eso la pregunta que me interesa es cómo se reparte lo que genera nuestro trabajo.
+Simplificando: margen = ingresos − costes, y el sueldo va en los costes. Superada la sostenibilidad, el salario no depende de la facturación. Es una decisión empresarial.
 
 Los datos de cada convenio están en el post anterior.
 
@@ -16,10 +16,11 @@ Los datos de cada convenio están en el post anterior.
 
 ## Respuesta en el hilo del comentario
 
-Te contesto con calma en un reel, que en un comentario no cabe. Tienes razón en que con precios bajos hay poco que repartir. Lo que discuto es que el precio decida por sí solo el sueldo: con los mismos 60 € por sesión, cada clínica reparte de forma distinta.
+Te contesto en un reel, que en un comentario no cabe. Veamos qué hay de cierto en eso de que los sueldos son bajos porque las sesiones son baratas.
 
 ## Notas de publicación
 
 - Duración 46 s, 1080 × 1920, sin audio. Añade una música suave desde la biblioteca de Instagram a volumen bajo; el reel se entiende sin sonido.
-- Portada sugerida: `salida/portada-reel.jpg` (las dos clínicas con el reparto).
+- Portada sugerida: `salida/portada-reel.jpg` (las dos clínicas a final de mes).
+- Ejemplo mensual: 6 sesiones al día × 21 días × 60 € = 7.560 €. Clínica B: convenio de Madrid 2026 (1.424,25 € × 14 / 12 = 1.661,63 € brutos al mes) con cotizaciones empresariales de en torno al 32 %, unos 2.200 €. Clínica A paga unos 700 € más de coste mensual. Los 3.000 € de otros costes son ilustrativos.
 - El comentario se cita sin nombre de usuario ni el insulto.

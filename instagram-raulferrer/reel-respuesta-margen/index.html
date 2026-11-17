@@ -56,6 +56,11 @@
   .formula .subr { position: absolute; left: 0; right: 0; bottom: -6px; height: 10px; background: var(--nar); transform-origin: left center; }
   .flecha-nota { font-weight: 800; font-size: 44px; color: var(--nartxt); }
 
+  .nota-ej { font-size: 26px; line-height: 1.4; color: var(--mut); }
+  .delta { position: absolute; font-weight: 900; font-size: 40px; color: var(--nartxt); white-space: nowrap; }
+  .umbral { position: absolute; left: 110px; right: 110px; border-top: 4px dashed var(--ink); }
+  .umbral span { position: absolute; left: 0; top: -44px; font-weight: 800; font-size: 28px; }
+
   /* 7 · Cierre */
   .logo { position: absolute; left: 100px; top: 420px; width: 300px; }
 </style>
@@ -64,83 +69,77 @@
 <div id="root" data-composition-id="main" data-start="0" data-duration="46" data-width="1080" data-height="1920">
   <div class="barra-prog" id="prog"></div>
 
-  <!-- 1 · El comentario (0-6) -->
-  <div class="escena clip" id="e1" data-start="0" data-duration="6" data-track-index="0">
-    <div class="a kick" style="top:300px">Respondiendo a un comentario</div>
-    <div class="a burbuja" id="bur" style="top:390px">
+  <!-- 1 · El comentario (0-5) -->
+  <div class="escena clip" id="e1" data-start="0" data-duration="5" data-track-index="0">
+    <div class="a kick" style="top:330px">Respondiendo a un comentario</div>
+    <div class="a burbuja" id="bur" style="top:420px">
       <div class="quien"><span class="avatar"></span>En mi último post</div>
       <p>«Los salarios de los fisios son bajos porque los precios de las sesiones son bajos.»</p>
     </div>
-    <div class="a h" id="e1t" style="top:1020px; font-size:118px">Vamos a hacer <span class="serif">cuentas</span>.</div>
-    <div class="a peq" id="e1s" style="top:1290px; font-size:38px">Tranquilos, son de primaria.</div>
+    <div class="a h" id="e1t" style="top:1050px; font-size:112px">Veamos qué hay de <span class="serif">cierto</span>.</div>
   </div>
 
-  <!-- 2 · Parte de razón (6-11.5) -->
-  <div class="escena clip crema" id="e2" data-start="6" data-duration="5.5" data-track-index="0">
-    <div class="a kick" style="top:560px">Primero, lo justo</div>
-    <div class="a h" id="e2t" style="top:630px; font-size:112px">Tiene parte de <span class="serif">razón</span>.</div>
-    <p class="a t" id="e2a" style="top:940px">Si una clínica factura poco, <b>hay poco que repartir.</b></p>
-    <p class="a t" id="e2b" style="top:1150px">Lo que no explica es esto: <b>facturar más no te sube el sueldo solo.</b></p>
+  <!-- 2 · Qué es cierto y qué no (5-12) -->
+  <div class="escena clip crema" id="e2" data-start="5" data-duration="7" data-track-index="0">
+    <div class="a kick" style="top:470px">Lo cierto</div>
+    <p class="a t" id="e2a" style="top:530px; font-size:56px">Una clínica que no cubre sus costes no puede pagar más. <b>Eso es sostenibilidad.</b></p>
+    <div class="a kick" id="e2k" style="top:900px">Lo que no se sostiene</div>
+    <p class="a t" id="e2b" style="top:960px; font-size:56px">Que, superado ese punto, <b>el sueldo dependa de lo que se factura.</b></p>
   </div>
 
-  <!-- 3 · Dos clínicas, misma facturación (11.5-17) -->
-  <div class="escena clip" id="e3" data-start="11.5" data-duration="5.5" data-track-index="0">
-    <div class="a kick" style="top:420px">Un ejemplo</div>
-    <div class="a h" style="top:470px; font-size:104px">Dos clínicas</div>
-    <div class="clinicas" style="top:680px; height:600px">
-      <div class="clinica" id="cA"><h3>Clínica A</h3><div class="precio">60 €<small>por sesión</small></div></div>
-      <div class="clinica" id="cB"><h3>Clínica B</h3><div class="precio">60 €<small>por sesión</small></div></div>
-    </div>
-    <p class="a t" id="e3a" style="top:1050px">Mismos pacientes, mismo alquiler, mismo material.</p>
-    <div class="sello" id="e3s" style="top:1300px">Misma facturación.</div>
+  <!-- 3 · Planteamiento mensual (12-18) -->
+  <div class="escena clip" id="e3" data-start="12" data-duration="6" data-track-index="0">
+    <div class="a kick" style="top:420px">Pongamos dos clínicas</div>
+    <div class="a h" style="top:470px; font-size:96px">Mismo precio, misma <span class="serif">agenda</span></div>
+    <p class="a t" id="e3a" style="top:760px">60 € por sesión, 6 sesiones al día, 21 días al mes.</p>
+    <div class="a" id="e3b" style="top:960px"><div class="h" style="font-size:150px; letter-spacing:-.05em">7.560 €</div><p class="t" style="margin-top:10px">facturados al mes por cada fisio, <b>en las dos.</b></p></div>
   </div>
 
-  <!-- 4 · El reparto (17-28) -->
-  <div class="escena clip" id="e4" data-start="17" data-duration="11" data-track-index="0">
-    <div class="a kick" style="top:300px">Qué pasa con esos 60 €</div>
-    <div class="a h" style="top:350px; font-size:88px">Lo que cambia es el <span class="serif">reparto</span></div>
-    <div class="clinicas" style="top:560px; height:860px">
+  <!-- 4 · Final de mes (18-31) -->
+  <div class="escena clip" id="e4" data-start="18" data-duration="13" data-track-index="0">
+    <div class="a kick" style="top:280px">A final de mes, por cada fisio</div>
+    <div class="a h" style="top:330px; font-size:86px">Lo que cambia es el <span class="serif">reparto</span></div>
+    <div class="clinicas" style="top:540px; height:880px">
       <div class="clinica"><h3>Clínica A</h3>
-        <div class="pila">
-          <div class="seg costes" id="a1" style="height:350px"><span>30 €<small>alquiler, material, gestión, impuestos…</small></span></div>
-          <div class="seg fisio" id="a2" style="height:233px"><span>20 €<small>sueldo del fisio</small></span></div>
-          <div class="seg margen" id="a3" style="height:117px"><span>10 €<small>margen</small></span></div>
+        <div class="pila" style="height:760px">
+          <div class="seg costes" id="a1" style="height:301px"><span>3.000 €<small>alquiler, material, gestión…</small></span></div>
+          <div class="seg fisio" id="a2" style="height:291px"><span>2.900 €<small>sueldo + Seg. Social</small></span></div>
+          <div class="seg margen" id="a3" style="height:168px"><span>1.660 €<small>margen</small></span></div>
         </div>
       </div>
       <div class="clinica"><h3>Clínica B</h3>
-        <div class="pila">
-          <div class="seg costes" id="b1" style="height:350px"><span>30 €<small>lo mismo</small></span></div>
-          <div class="seg fisio" id="b2" style="height:163px"><span>14 €<small>sueldo del fisio</small></span></div>
-          <div class="seg margen" id="b3" style="height:187px"><span>16 €<small>margen</small></span></div>
+        <div class="pila" style="height:760px">
+          <div class="seg costes" id="b1" style="height:301px"><span>3.000 €<small>lo mismo</small></span></div>
+          <div class="seg fisio" id="b2" style="height:221px"><span>2.200 €<small>convenio + Seg. Social</small></span></div>
+          <div class="seg margen" id="b3" style="height:238px"><span>2.360 €<small>margen</small></span></div>
         </div>
       </div>
     </div>
-    <p class="a t" id="e4a" style="top:1450px; font-size:44px">Los mismos 60 €. <b>La diferencia la decide la empresa.</b></p>
-    <p class="a peq" id="e4n" style="top:1600px; font-size:26px">Cifras inventadas para el ejemplo.</p>
+    <p class="a t" id="e4a" style="top:1450px; font-size:46px">Misma facturación. B gana <b>700 € más al mes por cada fisio</b> pagando el mínimo.</p>
+    <p class="a nota-ej" id="e4n" style="top:1600px">Ejemplo. El sueldo de B es el convenio de Madrid de 2026 con cotizaciones; el resto de cifras son ilustrativas.</p>
   </div>
 
-  <!-- 5 · La fórmula (28-37) -->
-  <div class="escena clip crema" id="e5" data-start="28" data-duration="9" data-track-index="0">
-    <div class="a kick" style="top:440px">La cuenta de primaria</div>
+  <!-- 5 · Simplificando (31-38) -->
+  <div class="escena clip crema" id="e5" data-start="31" data-duration="7" data-track-index="0">
+    <div class="a kick" style="top:440px">Simplificando</div>
     <div class="a formula" id="f1" style="top:510px">Margen =</div>
     <div class="a formula" id="f2" style="top:620px">Ingresos −</div>
     <div class="a formula" id="f3" style="top:730px"><span class="costes-w">Costes<i class="subr" id="subr"></i></span></div>
-    <div class="a flecha-nota" id="f4" style="top:880px">↑ y los sueldos están aquí dentro</div>
-    <p class="a t" id="f5" style="top:1060px">Si bajan los sueldos, sube el margen.</p>
-    <p class="a t" id="f6" style="top:1220px">Así que decir <b>«no hay margen para subir sueldos»</b> se parece bastante a un razonamiento circular.</p>
+    <div class="a flecha-nota" id="f4" style="top:880px">↑ el sueldo va aquí</div>
+    <p class="a t" id="f5" style="top:1060px">Con la misma facturación, <b>cada euro que no va al sueldo va al margen.</b></p>
   </div>
 
-  <!-- 6 · El mínimo (37-42) -->
-  <div class="escena clip" id="e6" data-start="37" data-duration="5" data-track-index="0">
-    <div class="a kick" style="top:580px">Y volviendo al post</div>
-    <div class="a h" id="e6t" style="top:650px; font-size:104px">El convenio marca el <span class="serif">mínimo</span>.</div>
-    <p class="a t" id="e6a" style="top:1020px">La pregunta que me interesa es otra: <b>cómo se reparte lo que genera nuestro trabajo.</b></p>
+  <!-- 6 · Conclusión (38-43) -->
+  <div class="escena clip" id="e6" data-start="38" data-duration="5" data-track-index="0">
+    <p class="a t" id="e6a" style="top:470px; font-size:56px">El salario va en los costes.</p>
+    <p class="a t" id="e6b" style="top:640px; font-size:56px">Superada la sostenibilidad, <b>no depende de la facturación.</b></p>
+    <div class="a h" id="e6t" style="top:920px; font-size:104px">Es una decisión <span class="serif">empresarial</span>.</div>
   </div>
 
-  <!-- 7 · Cierre (42-46) -->
-  <div class="escena clip tinta" id="e7" data-start="42" data-duration="4" data-track-index="0">
+  <!-- 7 · Cierre (43-46) -->
+  <div class="escena clip tinta" id="e7" data-start="43" data-duration="3" data-track-index="0">
     <img class="logo" id="logo" src="assets/logo-rf-neg.png" alt="Logotipo RF">
-    <div class="a h" id="e7t" style="top:720px; font-size:84px">El post con los datos de cada convenio, en mi <span class="serif">perfil</span>.</div>
+    <div class="a h" id="e7t" style="top:720px; font-size:84px">Los datos de cada convenio, en el post de mi <span class="serif">perfil</span>.</div>
     <div class="a" id="e7u" style="top:1080px; font-weight:700; font-size:40px">@_raulferrer</div>
   </div>
 </div>
@@ -153,54 +152,50 @@
   // 1
   tl.from("#e1 .kick", { opacity: 0, y: 20, duration: 0.5, ease: E }, 0.1);
   tl.from("#bur", { opacity: 0, y: 60, scale: 0.96, duration: 0.7, ease: "back.out(1.6)" }, 0.3);
-  tl.from("#e1t", { opacity: 0, y: 40, duration: 0.6, ease: E }, 2.6);
-  tl.from("#e1s", { opacity: 0, duration: 0.5 }, 3.8);
+  tl.from("#e1t", { opacity: 0, y: 40, duration: 0.6, ease: E }, 2.4);
 
   // 2
-  tl.from("#e2 .kick", { opacity: 0, y: 20, duration: 0.4, ease: E }, 6.1);
-  tl.from("#e2t", { opacity: 0, y: 40, duration: 0.6, ease: E }, 6.3);
-  tl.from("#e2a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 7.4);
-  tl.from("#e2b", { opacity: 0, y: 30, duration: 0.5, ease: E }, 9.0);
+  tl.from("#e2 .kick:not(#e2k)", { opacity: 0, y: 20, duration: 0.4, ease: E }, 5.1);
+  tl.from("#e2a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 5.3);
+  tl.from("#e2k", { opacity: 0, y: 20, duration: 0.4, ease: E }, 8.0);
+  tl.from("#e2b", { opacity: 0, y: 30, duration: 0.5, ease: E }, 8.2);
 
   // 3
-  tl.from("#e3 .kick, #e3 .h", { opacity: 0, y: 30, duration: 0.5, ease: E, stagger: 0.15 }, 11.6);
-  tl.from("#cA", { opacity: 0, x: -60, duration: 0.6, ease: E }, 12.2);
-  tl.from("#cB", { opacity: 0, x: 60, duration: 0.6, ease: E }, 12.5);
-  tl.from("#e3a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 13.6);
-  tl.from("#e3s", { opacity: 0, scale: 1.4, duration: 0.5, ease: "back.out(2)" }, 14.8);
+  tl.from("#e3 .kick, #e3 .h", { opacity: 0, y: 30, duration: 0.5, ease: E, stagger: 0.15 }, 12.1);
+  tl.from("#e3a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 13.0);
+  tl.from("#e3b", { opacity: 0, scale: 0.9, duration: 0.6, ease: "back.out(1.6)" }, 14.4);
 
   // 4
-  tl.from("#e4 .kick, #e4 .h", { opacity: 0, y: 30, duration: 0.5, ease: E, stagger: 0.15 }, 17.1);
-  tl.from("#e4 h3", { opacity: 0, duration: 0.4 }, 17.6);
-  tl.from("#a1, #b1", { scaleY: 0, duration: 0.8, ease: E }, 18.2);
-  tl.from("#a1 span, #b1 span", { opacity: 0, duration: 0.3 }, 18.8);
-  tl.from("#a2, #b2", { scaleY: 0, duration: 0.8, ease: E }, 19.8);
-  tl.from("#a2 span, #b2 span", { opacity: 0, duration: 0.3 }, 20.4);
-  tl.from("#a3, #b3", { scaleY: 0, duration: 0.8, ease: E }, 21.4);
-  tl.from("#a3 span, #b3 span", { opacity: 0, duration: 0.3 }, 22.0);
-  tl.from("#e4a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 23.2);
-  tl.from("#e4n", { opacity: 0, duration: 0.4 }, 23.6);
-  tl.to("#b2, #b3", { scale: 1.03, duration: 0.3, yoyo: true, repeat: 3, ease: "sine.inOut" }, 24.6);
+  tl.from("#e4 .kick, #e4 .h", { opacity: 0, y: 30, duration: 0.5, ease: E, stagger: 0.15 }, 18.1);
+  tl.from("#e4 h3", { opacity: 0, duration: 0.4 }, 18.6);
+  tl.from("#a1, #b1", { scaleY: 0, duration: 0.8, ease: E }, 19.2);
+  tl.from("#a1 span, #b1 span", { opacity: 0, duration: 0.3 }, 19.8);
+  tl.from("#a2, #b2", { scaleY: 0, duration: 0.8, ease: E }, 20.8);
+  tl.from("#a2 span, #b2 span", { opacity: 0, duration: 0.3 }, 21.4);
+  tl.from("#a3, #b3", { scaleY: 0, duration: 0.8, ease: E }, 22.4);
+  tl.from("#a3 span, #b3 span", { opacity: 0, duration: 0.3 }, 23.0);
+  tl.from("#e4a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 24.2);
+  tl.from("#e4n", { opacity: 0, duration: 0.4 }, 25.0);
+  tl.to("#b3", { scale: 1.04, duration: 0.3, yoyo: true, repeat: 3, ease: "sine.inOut" }, 25.6);
 
   // 5
-  tl.from("#e5 .kick", { opacity: 0, y: 20, duration: 0.4, ease: E }, 28.1);
-  tl.from("#f1", { opacity: 0, x: -40, duration: 0.5, ease: E }, 28.3);
-  tl.from("#f2", { opacity: 0, x: -40, duration: 0.5, ease: E }, 28.8);
-  tl.from("#f3", { opacity: 0, x: -40, duration: 0.5, ease: E }, 29.3);
-  tl.from("#subr", { scaleX: 0, duration: 0.6, ease: "power2.inOut" }, 30.2);
-  tl.from("#f4", { opacity: 0, y: -20, duration: 0.5, ease: E }, 30.6);
-  tl.from("#f5", { opacity: 0, y: 30, duration: 0.5, ease: E }, 31.8);
-  tl.from("#f6", { opacity: 0, y: 30, duration: 0.5, ease: E }, 33.4);
+  tl.from("#e5 .kick", { opacity: 0, y: 20, duration: 0.4, ease: E }, 31.1);
+  tl.from("#f1", { opacity: 0, x: -40, duration: 0.5, ease: E }, 31.3);
+  tl.from("#f2", { opacity: 0, x: -40, duration: 0.5, ease: E }, 31.8);
+  tl.from("#f3", { opacity: 0, x: -40, duration: 0.5, ease: E }, 32.3);
+  tl.from("#subr", { scaleX: 0, duration: 0.6, ease: "power2.inOut" }, 33.0);
+  tl.from("#f4", { opacity: 0, y: -20, duration: 0.5, ease: E }, 33.4);
+  tl.from("#f5", { opacity: 0, y: 30, duration: 0.5, ease: E }, 34.6);
 
   // 6
-  tl.from("#e6 .kick", { opacity: 0, y: 20, duration: 0.4, ease: E }, 37.1);
-  tl.from("#e6t", { opacity: 0, y: 40, duration: 0.6, ease: E }, 37.3);
-  tl.from("#e6a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 38.8);
+  tl.from("#e6a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 38.1);
+  tl.from("#e6b", { opacity: 0, y: 30, duration: 0.5, ease: E }, 39.0);
+  tl.from("#e6t", { opacity: 0, y: 40, duration: 0.6, ease: E }, 40.2);
 
   // 7
-  tl.from("#logo", { opacity: 0, scale: 0.85, duration: 0.6, ease: "back.out(1.6)" }, 42.1);
-  tl.from("#e7t", { opacity: 0, y: 30, duration: 0.5, ease: E }, 42.5);
-  tl.from("#e7u", { opacity: 0, duration: 0.4 }, 43.1);
+  tl.from("#logo", { opacity: 0, scale: 0.85, duration: 0.6, ease: "back.out(1.6)" }, 43.1);
+  tl.from("#e7t", { opacity: 0, y: 30, duration: 0.5, ease: E }, 43.4);
+  tl.from("#e7u", { opacity: 0, duration: 0.4 }, 43.9);
 
   window.__timelines = window.__timelines || {};
   window.__timelines["main"] = tl;
