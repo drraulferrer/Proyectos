@@ -344,6 +344,10 @@ body.solo-cb .st-party .st-card{width:calc(min(22vh,12vw)*var(--fz))}
 #guarro .list li{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 body.guarro .side .logo span::after{content:"+18";font:700 .62rem/1 var(--sans,system-ui);padding:2px 5px;border-radius:999px;background:#b3264a;color:#fff;margin-left:6px;vertical-align:middle}
 
+
+#lance h3{margin:14px 0 6px;font-size:1rem}
+#lance .ln-res{margin-top:10px;border-left:3px solid #b3264a}#lance .ln-res.ok{border-left-color:var(--ok,#6fbf73)}#lance .ln-res p{margin:4px 0}
+
 /* deshacer */
 #undo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 32px)}
 #undo[hidden]{display:none}
@@ -3409,6 +3413,63 @@ $("#tab-panel").addEventListener("click",function(e){var b=e.target.closest("#gu
   try{localStorage.setItem(LS+"-guarro",GUARRO?"0":"1")}catch(e){}location.reload()});
 var drawPanelAC=typeof drawPanel==="function"?drawPanel:null;if(drawPanelAC)drawPanel=function(){drawPanelAC();guarroDraw()};
 if(GUARRO)document.body.classList.add("guarro");
+/* ---- modo guarro: tomos, posturas y lances picantes ---- */
+// nombre, descripción, bono a la tirada, multiplicador de embarazo, multiplicador de ETS, extra
+var POS=[["El misionero","La de toda la vida. Sin sorpresas ni modificadores.",0,1,1,""],
+  ["Marcha atrás","El riesgo de embarazo baja un 70 %. Las ETS no entienden de retiradas: su riesgo sigue igual.",0,.3,1,""],
+  ["Funda de tripa de cordero","Riesgo de embarazo y de ETS un 80 % menor. Corta un poco el rollo: −1 a la tirada.",-1,.2,.2,""],
+  ["La carretilla enana","+2 a la tirada, impresiona mucho. Con un 1 natural acaba en el suelo y empieza el siguiente combate Derribado.",2,1,1,"tumbo"],
+  ["El dragón dormido","Tan relajada que todos los riesgos bajan a la mitad, pero −2 a la tirada: alguien se duerme.",-2,.5,.5,""],
+  ["El puente colgante","+3 a la tirada. Si sale mal, empieza el siguiente combate Distraído por las agujetas. El riesgo de ETS sube un 20 %.",3,1,1.2,"agujetas"],
+  ["El abrazo del oso lechuza","+1 a la tirada y, si sale bien, empieza el siguiente combate Bendecido de puro buen humor.",1,1,1,"bendice"],
+  ["El molinillo gnomo","+2 a la tirada, pero el riesgo de ETS sube un 50 %: demasiado entusiasmo.",2,1,1.5,""],
+  ["El loto élfico","Tira con ventaja: los elfos llevan siglos practicando. Sin otros efectos.",0,1,1,"ventaja"]];
+var POSN=POS.map(function(x){return x[0]});
+var RISK=[["De fiar",5],["De taberna",20],["Feérico o infernal",35]];
+if(GUARRO){MAGIC.push(["Tomo del Kamasutra, edición de bolsillo","Al leerlo, un personaje aprende una postura nueva. Tiene las esquinas dobladas.",0],
+  ["Tomo del Kamasutra, edición ilustrada","Al leerlo, un personaje aprende una postura nueva. Las láminas se pegan un poco.",1],
+  ["Tomo del Kamasutra, edición de lujo enana","Al leerlo, un personaje aprende una postura nueva. Pesa como un yunque.",2]);
+  GTONE+=" Entre los tesoros puede aparecer algún «Tomo del Kamasutra» (edición de bolsillo, ilustrada o de lujo enana): leerlo enseña una postura nueva. Cuando un personaje intente una conquista, propón un «lance picante» y cuéntalo con chiste, sin detalles explícitos."}
+function posOf(p){var L=Array.isArray(p.pos)?p.pos:[];return["El misionero"].concat(L.filter(function(k){return k!=="El misionero"}))}
+function posRow(k){return POS[POSN.indexOf(k)]||POS[0]}
+function tomes(){var s=story();return s?(s.loot||[]).filter(function(o){return/Tomo del Kamasutra/.test(o.x)&&!o.read}):[]}
+function persuade(p){var i=-1;SKL.forEach(function(x,j){if(/persuasi/i.test(x[0]))i=j});if(i>=0)try{return skillBonus(p,i)}catch(e){}try{return abMod(p,"car")}catch(e){return 0}}
+function lanceHtml(){if(!GUARRO||!S.party.length)return"";var s=story(),npcs=s&&Array.isArray(s.npcs)?s.npcs.filter(function(n){return n&&n.name}):[],T=tomes(),p0=pc(guarroSel)||S.party[0];
+  return'<h3>Lance picante</h3><p class="sub">Una tirada de Persuasión más la postura contra la resistencia de la otra parte. Si sale bien, se tiran el riesgo de ETS y el de embarazo.</p>'+
+    '<div class="fgrid"><label>Quién lo intenta<select id="ln-pc">'+S.party.map(function(p){return'<option value="'+esc(p.id)+'"'+(p===p0?" selected":"")+'>'+esc(p.name)+'</option>'}).join("")+'</select></label>'+
+    '<label>Con quién<select id="ln-who"><option value="">Alguien de la taberna</option>'+npcs.map(function(n){return'<option'+(lnSt.who===n.name?" selected":"")+'>'+esc(n.name)+'</option>'}).join("")+'</select></label>'+
+    '<label>Qué tal se lo pone<select id="ln-dc">'+[["10","Fácil (CD 10)"],["13","Normal (CD 13)"],["16","Difícil (CD 16)"]].map(function(o){return'<option value="'+o[0]+'"'+(lnSt.dc===o[0]?" selected":"")+'>'+o[1]+'</option>'}).join("")+'</select></label>'+
+    '<label>Fama de la otra parte<select id="ln-risk">'+RISK.map(function(r,i){return'<option value="'+i+'"'+(String(i)===lnSt.risk?" selected":"")+'>'+r[0]+' ('+r[1]+' % de ETS)</option>'}).join("")+'</select></label>'+
+    '<label>Postura<select id="ln-pos">'+posOf(p0).map(function(k){return'<option'+(lnSt.pos===k?" selected":"")+'>'+esc(k)+'</option>'}).join("")+'</select></label></div>'+
+    '<p class="sub" id="ln-desc">'+esc(posRow(posOf(p0).indexOf(lnSt.pos)>=0?lnSt.pos:posOf(p0)[0])[1])+'</p><div class="bar"><button type="button" class="pri" id="ln-go">Tirar el lance</button></div><div id="ln-out" role="status"></div>'+
+    '<h3>Posturas aprendidas</h3><ul class="list">'+S.party.map(function(p){var L=posOf(p);return'<li><b>'+esc(p.name)+'</b>: '+L.map(esc).join(", ")+(p.kids?' · herederos en camino: '+p.kids:"")+'</li>'}).join("")+'</ul>'+
+    (T.length?'<h3>Tomos sin leer</h3><ul class="list">'+T.map(function(o){return'<li>'+esc(o.x.replace(/ \(objeto mágico:.*$/,""))+' <button type="button" class="chip" data-tome="'+esc(o.id)+'">Lo lee '+esc(p0.name)+'</button></li>'}).join("")+'</ul>':'<p class="sub">Los tomos del Kamasutra salen en el botín. Cada uno enseña una postura nueva al personaje que lo lee.</p>')}
+var guarroSel="",lnSt={who:"",dc:"13",risk:"1",pos:""};function lnKeep(){["who","dc","risk","pos"].forEach(function(k){var e=$("#ln-"+k);if(e)lnSt[k]=e.value})}
+var guarroDrawAD=guarroDraw;guarroDraw=function(){guarroDrawAD();var el=$("#guarro");if(!el||!GUARRO)return;var bar=el.querySelector("#guarro-sw").parentNode;bar.insertAdjacentHTML("beforebegin",'<div id="lance">'+lanceHtml()+'</div>')};
+function lanceRun(){var p=pc($("#ln-pc").value);if(!p)return;var k=$("#ln-pos").value,P=posRow(k),dc=int($("#ln-dc").value,13),rk=RISK[int($("#ln-risk").value,1)],who=$("#ln-who").value||"alguien de la taberna";
+  var r1=d(20),r2=d(20),r=P[5]==="ventaja"?Math.max(r1,r2):r1,m=persuade(p)+P[2],tot=r+m,ok=r===20||(r!==1&&tot>=dc),L=[];
+  L.push(p.name+" lo intenta con "+who+" con «"+k+"». Tira d20"+(P[5]==="ventaja"?" con ventaja ("+r1+" y "+r2+")":"")+": "+r+" "+sgn(m)+" = "+tot+" contra CD "+dc+".");
+  if(!ok){L.push(r===1?"Pifia épica: se le engancha el cinturón, tira una vela y acaba la noche apagando un pequeño incendio.":"Calabazas. La otra parte bosteza, paga su cerveza y se va.");
+    if(P[5]==="agujetas"||(P[5]==="tumbo"&&r===1)){p.glow=P[5]==="tumbo"?"Derribado":"Distraído";L.push("Además, empieza el siguiente combate «"+p.glow+"».")}}
+  else{L.push(r===20?"¡Noche legendaria! Los bardos ya componen la canción.":"Noche memorable. Nadie va a mirar igual a "+p.name+" en el desayuno.");
+    if(P[5]==="bendice"||r===20){p.glow="Bendecido";L.push("Empieza el siguiente combate «Bendecido»: suma 1d4 a sus ataques.")}
+    var ets=Math.min(95,Math.round(rk[1]*P[4])),re=d(100);
+    if(pcRing(p))L.push("Riesgo de ETS: el anillo de la protección profiláctica brilla, no hay contagio posible.");
+    else if(re<=ets){var free=POXN.filter(function(x){return(p.ets||[]).indexOf(x)<0});if(free.length){var e=free[Math.floor(Math.random()*free.length)];p.ets=(p.ets||[]).concat([e]);L.push("Riesgo de ETS "+ets+" %: sale "+re+". Se lleva «"+e+"» de recuerdo: "+CONDTXT[e]+".")}else L.push("Riesgo de ETS "+ets+" %: sale "+re+", pero ya las tiene todas.")}
+    else L.push("Riesgo de ETS "+ets+" %: sale "+re+". Esta vez se libra.");
+    var pr=Math.round(15*P[3]),rp=d(100);
+    if(rp<=pr){p.kids=(p.kids||0)+1;L.push("Riesgo de embarazo "+pr+" %: sale "+rp+". Dentro de nueve meses alguien llamará a la puerta con un bebé que se parece sospechosamente a "+p.name+".")}
+    else L.push("Riesgo de embarazo "+pr+" %: sale "+rp+". Ni rastro de herederos.")}
+  var s=story();if(s){s.notes=s.notes||[];if(Array.isArray(s.notes))try{s.notes.push({id:uid(),title:"Lance picante de "+p.name,text:L.join(" "),t:Date.now()})}catch(e){}}
+  guarroSel=p.id;lnKeep();touch();guarroDraw();var o=$("#ln-out");if(o)o.innerHTML='<div class="card ln-res'+(ok?" ok":"")+'">'+L.map(function(x){return"<p>"+esc(x)+"</p>"}).join("")+'</div>'}
+function tomeRead(id){var s=story(),o=s&&(s.loot||[]).filter(function(x){return x.id===id})[0],p=pc(guarroSel)||S.party[0];if(!o||!p)return;
+  var free=POSN.filter(function(k){return posOf(p).indexOf(k)<0});if(!free.length){alert(p.name+" ya se sabe todas las posturas. Que le pase el tomo a otro.");return}
+  var k=free[Math.floor(Math.random()*free.length)];p.pos=posOf(p).concat([k]);o.read=1;o.x=o.x.replace(/ \(objeto mágico:.*$/,"")+" (leído por "+p.name+")";touch();guarroDraw();
+  var out=$("#ln-out");if(out)out.innerHTML='<div class="card ln-res ok"><p>'+esc(p.name)+' lee el tomo con mucha atención y aprende «'+esc(k)+'»: '+esc(posRow(k)[1])+'</p></div>'}
+$("#tab-panel").addEventListener("click",function(e){if(e.target.closest("#ln-go"))lanceRun();var t=e.target.closest("[data-tome]");if(t)tomeRead(t.dataset.tome)});
+$("#tab-panel").addEventListener("change",function(e){if(e.target.id==="ln-pc"){guarroSel=e.target.value;lnKeep();guarroDraw()}else if(e.target.id==="ln-pos"){var d0=$("#ln-desc");if(d0)d0.textContent=posRow(e.target.value)[1]}});
+// lo que deja el lance se nota en el siguiente combate
+var drawAD=draw;draw=function(){if(GUARRO&&S.combat&&S.combat.list&&!S.combat.over)S.combat.list.forEach(function(c){if(!isPc(c))return;var p=pc(c.pcId);if(p&&p.glow){addCond(c,p.glow);delete p.glow}});drawAD()};
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
