@@ -29,6 +29,7 @@ Proyectos/
 | Proyecto | Descripción | Estado |
 |----------|-------------|--------|
 | [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |
+| [motion-health-instagram](motion-health-instagram/) | Carruseles de Instagram de Motion Health con el kit de marca v2: páginas en HTML exportadas a PNG y animaciones con HyperFrames. | En uso |
 | [skillspector](skillspector/) | Escáner de seguridad de NVIDIA para revisar habilidades (*Skills*) de Claude Code antes de instalarlas: detecta instrucciones ocultas, fugas de datos y código malicioso. | En uso |
 
 ## Notas

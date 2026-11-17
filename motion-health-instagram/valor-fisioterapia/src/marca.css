@@ -1,0 +1,65 @@
+/* Motion Health · kit de marca v2 (guía en Canva, noviembre 2026) */
+@font-face { font-family: "Montserrat"; font-weight: 600; src: url(fonts/montserrat-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 700; src: url(fonts/montserrat-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 800; src: url(fonts/montserrat-latin-800-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 400; src: url(fonts/inter-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; src: url(fonts/inter-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; src: url(fonts/inter-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 700; src: url(fonts/inter-latin-700-normal.woff2) format("woff2"); }
+
+:root {
+  --marino: #091E3D;
+  --azul: #0A6DEF;
+  --menta: #18CBA3;
+  --violeta: #9362ED;
+  --coral: #EE6A6B;
+  --papel: #F4F2ED;
+  --tinta: #1A2740;
+  --gris: #4A5468;
+  --linea: #D9D6CE;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #777; font-family: "Inter", sans-serif; color: var(--tinta); -webkit-font-smoothing: antialiased; }
+
+.slide {
+  position: relative; width: 1080px; height: 1350px; overflow: hidden;
+  background: var(--papel); padding: 0 87px;
+  --acento: var(--azul);
+}
+.slide.oscura { background: var(--marino); color: #fff; }
+
+/* Cabecera */
+.cab {
+  position: absolute; left: 87px; right: 87px; top: 70px; height: 50px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  font-family: "Montserrat"; font-weight: 800; font-size: 22px; letter-spacing: .2em;
+  color: var(--marino); border-bottom: 3px solid var(--marino);
+}
+.cab .tema { color: var(--acento); }
+.oscura .cab { color: var(--menta); border-color: var(--menta); }
+
+/* Número de sección, título y barra */
+.num {
+  position: absolute; left: 82px; top: 160px;
+  font-family: "Montserrat"; font-weight: 800; font-size: 152px; line-height: 1;
+  color: transparent; -webkit-text-stroke: 3px var(--acento); letter-spacing: -.02em;
+}
+.tit {
+  position: absolute; left: 87px; right: 87px; top: 318px;
+  font-family: "Montserrat"; font-weight: 800; font-size: 76px; line-height: 1.08;
+  letter-spacing: -.02em; color: var(--marino);
+}
+.barra { display: block; width: 184px; height: 12px; background: var(--acento); margin-top: 30px; }
+
+.cuerpo { font-size: 40px; line-height: 1.58; color: var(--tinta); }
+.cuerpo b { font-weight: 700; color: var(--marino); }
+
+/* Pie */
+.pie {
+  position: absolute; left: 87px; right: 87px; bottom: 50px; height: 64px;
+  border-top: 2px solid var(--linea);
+  display: flex; justify-content: space-between; align-items: flex-end;
+  font-size: 22px; color: var(--gris);
+}
+.pie .desliza { font-family: "Montserrat"; font-weight: 800; font-size: 26px; color: var(--marino); }
