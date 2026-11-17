@@ -325,7 +325,9 @@ div#ia-story.ia-groups{flex-direction:column;align-items:stretch;gap:12px}
 .turn-head .ava,.turn-head img.mpic{width:52px!important;height:52px!important}
 .simd>summary{list-style:none;cursor:pointer}
 .simd>summary::-webkit-details-marker{display:none}
-.simd[open]{flex:1 1 100%}
+.simd[open]{flex:1 1 100%;order:5}
+.simd>summary .simp::after{content:" ▾";font-size:.8em}
+.simd[open]>summary .simp::after{content:" ▴"}
 .simp{display:inline-block;padding:4px 12px;border-radius:999px;font-weight:700;font-size:.85rem;border:1px solid currentColor}
 .simp.k0{color:var(--heal)} .simp.k1{color:var(--brass)} .simp.k2{color:var(--warn)} .simp.k3{color:var(--hurt)}
 .hint{margin:0;padding:10px 14px;border-radius:var(--r);background:rgba(240,168,28,.09);border:1px solid rgba(240,168,28,.35)}
@@ -1486,7 +1488,7 @@ function deathSave(c){var n=view(c).name,r=d(20);c.ds=c.ds||{s:0,f:0};
   if(c.ds.f>=3){addCond(c,"Muerto");delCond(c,"Inconsciente");clog(n+" saca "+r+" en su salvación contra muerte: tercer fallo. Muere.")}
   else if(c.ds.s>=3){addCond(c,"Estable");clog(n+" saca "+r+" en su salvación contra muerte: tercer éxito. Queda estable, inconsciente.")}
   else clog(n+" saca "+r+" en su salvación contra muerte: "+(r>=10?"éxito":"fallo")+" ("+c.ds.s+" éxitos, "+c.ds.f+" fallos).")}
-function autoStart(){var C=S.combat;C.over=null;C.log=[];C.fx=[];C.sim=C.sim||null;ambCombat(true);C.list.forEach(function(c){if(c.init==null)c.init=d(20)+int(isPc(c)?pc(c.pcId).init:c.mod,0)});
+function autoStart(){simUser=null;var C=S.combat;C.over=null;C.log=[];C.fx=[];C.sim=C.sim||null;ambCombat(true);C.list.forEach(function(c){if(c.init==null)c.init=d(20)+int(isPc(c)?pc(c.pcId).init:c.mod,0)});
   sortList();C.round=1;C.turnId=C.list[0].id;clog("— Ronda 1 —");autoStep()}
 function next(){var C=S.combat;if(!C.list.length)return;if(C.auto&&!C.round)autoStart();else{if(C.auto&&C.over)return;advance();if(C.auto)autoStep()}touch()}
 function autoEncounter(){var R=roster(),k=int($("#au-diff").value,1),bud=0,C=S.combat;if(!R.length)return;
@@ -2832,7 +2834,10 @@ function suggest(c,p){var F=foes();if(!F.length)return null;sheet(p);var t=find(
   if(low)return{tab:"atk",t:"A "+view(low).name+" le queda poco: remátalo."};
   return{tab:"atk",t:"Ataca a "+view(t).name+"."}}
 function auTab(c,p,sg){var k=c.id+":"+S.combat.round;if(auState.k!==k){auState={k:k,t:sg?sg.tab:"atk"}}if(auState.t==="spell"&&p.full&&!p.cast)auState.t="atk";return auState.t}
-function simPill(){var C=S.combat;if(!C.sim)return"";return'<details class="simd"><summary><span class="simp k'+C.sim.k+'">'+esc(C.sim.lab)+' · '+C.sim.w+' %</span></summary>'+simHtml()+'</details>'}
+var simUser=null;
+function simPill(){var C=S.combat;if(!C.sim)return"";var open=simUser===null?(C.round||1)<=1:simUser;
+  return'<details class="simd"'+(open?" open":"")+'><summary><span class="simp k'+C.sim.k+'">Pronóstico: '+esc(C.sim.lab)+' · '+C.sim.w+' % de victoria</span></summary>'+simHtml()+'</details>'}
+document.addEventListener("toggle",function(e){var d=e.target;if(d.classList&&d.classList.contains("simd"))simUser=d.open},true);
 function turnHtml(c){var C=S.combat,v=view(c),p=pc(c.pcId),F=foes(),A=heroes(false),sg=suggest(c,p),tab=auTab(c,p,sg),h=[];sheet(p);
   var tsel='<label>Objetivo<select id="au-target">'+F.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x.id===c.tgt?" selected":"")+'>'+esc(y.name)+" ("+band(y)[0].toLowerCase()+((x.conds||[]).length?", "+x.conds.join(", ").toLowerCase():"")+distLabel(c,x)+')</option>'}).join("")+'</select></label>',
     hsel=function(lab){return'<label>'+lab+'<select id="au-heal-t">'+A.map(function(x){var y=view(x);return'<option value="'+x.id+'"'+(x===c?" selected":"")+'>'+esc(y.name)+" ("+y.hp+"/"+y.max+')</option>'}).join("")+'</select></label>'},
