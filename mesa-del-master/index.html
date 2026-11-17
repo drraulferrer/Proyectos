@@ -1754,7 +1754,7 @@ $("#vz-rate").onchange=function(){vc.rate=this.value;try{localStorage.setItem(LS
 $("#vz-again").onclick=function(){if(lastSaid)speak(lastSaid,null);else note("Todavía no se ha leído nada.")};
 
 /* ---- imágenes de criaturas ---- */
-var MONIMG="acolito-oscuro,chaman-goblin,mago-renegado,arana-gigante,bandido,capitan-bandido,cubo-gelatinoso,esqueleto,estirge,goblin-guerrero,hobgoblin-guerrero,kobold-guerrero,lobo,lobo-terrible,maton,mimico,necrofago,ogro,osgo-guerrero,oso-lechuza,oso-pardo,rata-gigante,sectario,trol,zombi".split(","),picCache={},picTarget=-1;
+var MONIMG="acolito-oscuro,chaman-goblin,mago-renegado,arana-gigante,bandido,capitan-bandido,cubo-gelatinoso,esqueleto,estirge,goblin-guerrero,hobgoblin-guerrero,kobold-guerrero,lobo,lobo-terrible,maton,mimico,necrofago,ogro,osgo-guerrero,oso-lechuza,oso-pardo,rata-gigante,sectario,trol,zombi,ladilla-gigante,ninfa-de-mala-fama,satiro-borracho,incubo-de-taberna".split(","),picCache={},picTarget=-1;
 function slug(n){return String(n||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
 function imgPrep(f,max){return new Promise(function(res,rej){var u=URL.createObjectURL(f),im=new Image();
   im.onload=function(){var k=Math.min(1,max/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement("canvas");c.width=Math.round(im.naturalWidth*k);c.height=Math.round(im.naturalHeight*k);
@@ -2448,6 +2448,7 @@ function checkOver(){var C=S.combat,G=C.goal||{k:"all"};if(C.over||!C.round)retu
     else if(G.k==="boss"&&!foes().some(function(c){return c.boss}))won="El jefe ha caído y los suyos se dispersan."}
   var ward=null;C.list.forEach(function(c){if(c.ally)ward=c});
   if(!won){if(ward&&hpOf(ward)<=0)lost=view(ward).name+" ha caído: el grupo no ha podido protegerlo. El combate termina.";
+    else if(G.k==="lance"&&C.list.some(isPc)&&!C.list.some(function(c){return isPc(c)&&!has(c,"Muerto")&&!has(c,"Seducido")&&hpOf(c)>0}))lost="Todo el grupo ha caído rendido. Despertáis al día siguiente sin bolsas, sin botas y con mucho que explicar.";
     else if(C.list.some(isPc)&&!C.list.some(function(c){return isPc(c)&&!has(c,"Muerto")&&hpOf(c)>0}))lost="Todos los personajes han caído. El combate termina."}
   if(SIM){if(won)C.over="win";else if(lost)C.over="lose";return!!C.over}
   if(won){var xp=0,n=C.list.filter(isPc).length||1;E.forEach(function(c){xp+=XP[c.cr]||0});C.over="win";var lt=genLoot(xp);giveXp(Math.floor(xp/n));ambCombat(false);
@@ -3500,6 +3501,29 @@ function sedDo(c,v){var t=find(($("#au-sed-t")||{}).value),p=pc(c.pcId);if(!t||!
 document.addEventListener("click",function(e){var b=e.target.closest('[data-au="sed"]');if(b&&GUARRO)pcAct(sedDo)});
 document.addEventListener("change",function(e){if(e.target.id==="au-sed-p"){lnSt.pos=e.target.value;var d0=$("#au-sed-d");if(d0)d0.textContent=posRow(e.target.value)[1]}});
 CONDTXT.Seducido="se ha ido con quien lo sedujo y ya no lucha";
+/* ---- modo guarro: el encuentro entero como lance picante ---- */
+function isLance(){var G=S.combat&&S.combat.goal;return GUARRO&&!!G&&G.k==="lance"}
+if(GUARRO){GOALS.lance="Lance picante (+18): se resuelve seduciendo";SKIP.push("Seducido");
+  GTONE+=" Para plantear un encuentro entero como lance picante, escribe [OBJETIVO: lance picante]: el grupo intentará seducir en lugar de pelear y los enemigos intentarán lo mismo."}
+var goalTxtAF=goalTxt;goalTxt=function(G){return G&&G.k==="lance"?"conquistar a todos sin desenvainar la espada de verdad. Si os seducen tres veces, caéis rendidos":goalTxtAF(G)};
+var goalFromTextAF=goalFromText;goalFromText=function(t){goalFromTextAF(t);var g=/\[OBJETIVO:?\s*([^\]]*)\]/i.exec(t||"");if(GUARRO&&g&&/lance|picante|seduc|conquist/.test(flat(g[1])))goalPick={k:"lance"}};
+var auTabAF=auTab;auTab=function(c,p,sg){var fresh=auState.k!==c.id+":"+S.combat.round,r=auTabAF(c,p,sg);if(fresh&&isLance()){auState.t="sed";r="sed"}return r};
+var simAutoAF=simAuto;simAuto=function(){if(isLance()){S.combat.sim=null;return}simAutoAF()};
+var monsterTurnAF=monsterTurn;monsterTurn=function(c){if(!isLance()||SIM||!canSeduce(c)||anyOf(c,SKIP))return monsterTurnAF(c);
+  var v=view(c),H=heroes(true).filter(function(h){return isPc(h)&&!has(h,"Seducido")});if(!H.length)return;
+  var t=H.filter(function(h){return h.id===c.tgt})[0]||H[Math.floor(Math.random()*H.length)],tv=view(t),p=pc(t.pcId);c.tgt=t.id;if(moraleCheck(c))return;
+  var r=d(20),m=int(c.atk,4),tot=r+m,dc=10+(p?persuade(p):0)+(has(t,"Bendecido")?2:0),ok=r===20||(r!==1&&tot>=dc),txt=v.name+" se arrima a "+tv.name+" con sus mejores artes. Tira "+r+" "+sgn(m)+" = "+tot+" contra "+dc+" (10 + la Persuasión de "+tv.name+"): ";
+  if(!ok){clog(txt+tv.name+" se hace el interesante y no cae.");why("En un lance picante, los enemigos que pueden seducir no hacen daño: tiran 1d20 más su bono de ataque contra 10 más la Persuasión del personaje. Tres seducciones y el personaje cae rendido.");return}
+  t.flirt=(t.flirt||0)+1;var L=[txt+"funciona. "+tv.name+" se queda con las piernas temblando ("+t.flirt+" de 3)."];addCond(t,"Distraído");
+  if(p){var base=monKit(c)&&monKit(c).k==="pox"?35:20,re=d(100);if(pcRing(p))L.push("El anillo profiláctico brilla: nada de contagios.");
+    else if(re<=base){var free=POXN.filter(function(x){return(p.ets||[]).indexOf(x)<0});if(free.length){var e=free[Math.floor(Math.random()*free.length)];p.ets=(p.ets||[]).concat([e]);addCond(t,e);L.push("Riesgo de ETS "+base+" %: sale "+re+". Se lleva «"+e+"».")}}}
+  if(t.flirt>=3){addCond(t,"Seducido");L.push(tv.name+" cae rendido y se va con "+v.name+": queda fuera del lance.")}
+  clog(L.join(" "))};
+var setGoalAF=setGoal;setGoal=function(){var lance=GUARRO&&goalPick&&goalPick.k==="lance";setGoalAF();if(lance){S.combat.goal={k:"lance"};S.combat.sim=null;clog("Esto no va a ser un combate cualquiera: es un lance picante. Seducid en lugar de pelear; si os seducen tres veces, caéis rendidos.")}};
+var simPillAF=simPill;simPill=function(){return isLance()?"":simPillAF()};
+var simStripAF=simStrip;simStrip=function(){return isLance()?"":simStripAF()};
+var winTxtAF=winTxt;winTxt=function(){var L=S.combat.list.filter(function(c){return c.fled==="seducido"}).map(function(c){return view(c).name});
+  return L.length?(isLance()?"Lance ganado: nadie ha tenido que desenvainar el acero.":winTxtAF())+" Se han ido detrás de la carreta: "+L.join(", ")+".":winTxtAF()};
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
