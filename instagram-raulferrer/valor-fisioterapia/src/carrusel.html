@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Valor de la fisioterapia</title>
+<link rel="stylesheet" href="marca.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 40px; padding: 40px; align-items: center; }
+  .abs { position: absolute; }
+  .bloque { position: absolute; left: 80px; right: 80px; }
+  .num.esq { position: absolute; right: 80px; top: 150px; }
+
+  /* 1 · Portada */
+  .s1 .kick { top: 196px; }
+  .s1 .h { top: 246px; font-size: 124px; }
+  .s1 .marco { left: 552px; top: 560px; width: 448px; height: 600px; background: var(--nar); border-radius: 34px; }
+  .s1 .foto { left: 572px; top: 580px; width: 448px; height: 600px; border-radius: 30px; overflow: hidden; background: var(--cream); }
+  .s1 .foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+  .s1 .cifra { left: 80px; top: 600px; width: 440px; font-weight: 900; font-size: 92px; letter-spacing: -.04em; color: var(--nar); line-height: 1; }
+  .s1 .cifra small { display: block; font-weight: 700; font-size: 22px; letter-spacing: .24em; text-transform: uppercase; color: var(--nartxt); margin-top: 16px; }
+  .s1 .entrada { left: 80px; top: 790px; width: 440px; font-size: 31px; line-height: 1.45; color: #4A4238; }
+  .s1 .entrada b { color: var(--ink); }
+
+  /* Plantilla de páginas interiores */
+  .int .kick { position: absolute; left: 80px; top: 196px; }
+  .int .h { position: absolute; left: 80px; right: 80px; top: 244px; font-size: 92px; }
+
+  /* 2 · Gráfico */
+  .graf { position: absolute; left: 80px; right: 80px; top: 480px; height: 690px; }
+  .graf .base { position: absolute; left: 0; right: 0; top: 590px; height: 3px; background: var(--ink); }
+  .graf .bar { position: absolute; width: 290px; border-radius: 18px 18px 0 0; }
+  .graf .valor { position: absolute; font-weight: 800; font-size: 58px; letter-spacing: -.035em; color: var(--ink); white-space: nowrap; }
+  .graf .guia { position: absolute; left: 0; width: 630px; top: 155px; border-top: 3px dashed var(--nar); }
+  .graf .llave { position: absolute; left: 650px; top: 110px; width: 22px; height: 48px; border: 3px solid var(--nar); border-left: none; }
+  .graf .gap { position: absolute; left: 690px; top: 100px; color: var(--nar); font-weight: 900; font-size: 56px; line-height: 1; letter-spacing: -.035em; white-space: nowrap; }
+  .graf .gap small { display: block; font-weight: 600; font-size: 25px; letter-spacing: 0; color: var(--mut); margin-top: 12px; line-height: 1.35; }
+  .graf .etq { position: absolute; top: 610px; width: 340px; font-size: 24px; line-height: 1.35; color: var(--mut); }
+  .graf .etq b { display: block; color: var(--ink); font-weight: 800; font-size: 27px; }
+  .nota { position: absolute; left: 80px; right: 80px; top: 1196px; font-size: 21px; color: var(--mut); }
+
+  /* 3 · Límites */
+  .rejilla { position: absolute; left: 80px; right: 80px; top: 520px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .rejilla .tarjeta { padding: 34px 34px 30px; height: 282px; }
+  .rejilla .flecha { color: var(--nar); font-weight: 800; font-size: 34px; line-height: 1; }
+  .rejilla h4 { font-weight: 800; font-size: 32px; letter-spacing: -.02em; margin: 16px 0 10px; }
+  .rejilla p { font-size: 25px; line-height: 1.42; color: #4A4238; }
+  .remate { position: absolute; left: 80px; right: 80px; top: 1124px; font-weight: 800; font-size: 50px; letter-spacing: -.03em; }
+
+  /* 4 · Pregunta */
+  .s4 .txt { position: absolute; left: 80px; right: 80px; top: 500px; }
+  .cita { position: absolute; left: 80px; right: 80px; top: 800px; background: var(--cream); border-radius: 30px; padding: 50px 54px; }
+  .cita .comilla { position: absolute; left: 44px; top: -34px; font-family: "Instrument Serif"; font-style: italic; font-size: 160px; line-height: 1; color: var(--nar); }
+  .cita p { font-weight: 800; font-size: 54px; line-height: 1.12; letter-spacing: -.03em; }
+
+  /* 5 · Iceberg */
+  .ice { position: absolute; left: 80px; right: 80px; top: 470px; display: flex; flex-direction: column; align-items: center; }
+  .ice .visible { width: 400px; height: 88px; background: var(--ink); color: #fff; border-radius: 999px; display: grid; place-items: center; font-weight: 800; font-size: 30px; }
+  .ice .agua { position: relative; width: 100%; height: 46px; margin: 8px 0 14px; }
+  .ice .agua::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 3px dashed var(--nar); }
+  .ice .agua span { position: absolute; top: 50%; transform: translateY(-50%); background: #fff; padding: 0 14px; font-size: 18px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--nartxt); }
+  .ice .agua .a { left: 0; padding-left: 0; } .ice .agua .b { right: 0; padding-right: 0; }
+  .capa { height: 100px; margin-bottom: 10px; border-radius: 20px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 34px; color: var(--ink); font-size: 27px; line-height: 1.25; }
+  .capa b { font-weight: 800; }
+  .c1 { width: 540px; background: #FD6242; } .c2 { width: 670px; background: #FE927C; }
+  .c3 { width: 800px; background: #FEBFB2; } .c4 { width: 920px; background: #FFE2DA; }
+  .s5 .pie-txt { position: absolute; left: 80px; right: 80px; top: 1100px; font-size: 32px; line-height: 1.42; color: #4A4238; }
+  .s5 .pie-txt b { color: var(--ink); }
+
+  /* 6 · Suelo y techo */
+  .esc { position: absolute; left: 80px; right: 80px; top: 560px; height: 440px; }
+  .esc .zona { position: absolute; left: 0; right: 0; top: 0; height: 262px; border-radius: 26px 26px 0 0; background: #fff; border: 2px solid var(--line); border-bottom: none; padding: 30px 32px; }
+  .esc .zona .kick { position: static; font-size: 19px; }
+  .esc .zona .arriba { position: absolute; right: 32px; top: 18px; color: var(--nar); font-weight: 800; font-size: 54px; line-height: 1; }
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; padding-right: 50px; }
+  .chips span { background: var(--cream); border: 2px solid var(--line); border-radius: 999px; color: var(--ink); font-size: 23px; font-weight: 600; padding: 10px 20px; }
+  .esc .suelo { position: absolute; left: 0; right: 0; top: 262px; height: 14px; background: var(--ink); border-radius: 0 0 8px 8px; }
+  .esc .suelo-t { position: absolute; left: 0; top: 292px; font-weight: 800; font-size: 29px; }
+  .esc small { font-weight: 500; font-size: 23px; color: var(--mut); margin-left: 10px; }
+  .esc .smi { position: absolute; left: 0; right: 0; top: 368px; border-top: 3px dashed var(--nar); }
+  .esc .smi-t { position: absolute; left: 0; top: 384px; font-weight: 800; font-size: 29px; color: var(--nartxt); }
+  .esc .escala { position: absolute; right: 0; top: 392px; font-size: 18px; color: var(--mut); }
+  .s6 .txt { position: absolute; left: 80px; right: 80px; top: 1030px; font-size: 33px; }
+
+  /* 7 · Pasos */
+  .pasos { position: absolute; left: 80px; right: 80px; top: 470px; display: flex; flex-direction: column; gap: 20px; }
+  .paso { padding: 28px 34px; display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: start; }
+  .paso .num { font-size: 84px; -webkit-text-stroke: 2px #CFC3AE; }
+  .paso h4 { font-weight: 800; font-size: 32px; letter-spacing: -.02em; margin-bottom: 8px; }
+  .paso p { font-size: 26px; line-height: 1.42; color: #4A4238; }
+  .formula { display: inline-block; margin-top: 14px; background: var(--ink); color: #fff; border-radius: 999px; font-weight: 600; font-size: 21px; padding: 10px 20px; }
+  .formula em { font-style: normal; color: var(--nar); font-weight: 800; }
+  .s7 .colectivo { position: absolute; left: 80px; right: 80px; top: 1124px; font-size: 24px; line-height: 1.42; color: var(--mut); }
+  .s7 .colectivo b { color: var(--ink); }
+
+  /* 8 · Cierre */
+  .s8 .logo { position: absolute; left: 70px; top: 170px; width: 250px; }
+  .s8 .pregunta { position: absolute; left: 80px; right: 80px; top: 380px; font-weight: 800; font-size: 56px; line-height: 1.1; letter-spacing: -.035em; }
+  .s8 .reflex { position: absolute; left: 80px; right: 80px; top: 760px; font-size: 30px; line-height: 1.45; color: rgba(255,255,255,.78); }
+  .s8 .cta { position: absolute; left: 80px; right: 80px; top: 900px; border: 2px solid rgba(255,255,255,.22); border-radius: 26px; padding: 26px 32px; font-size: 27px; line-height: 1.45; color: #fff; }
+  .s8 .cta b { color: var(--nar); }
+  .s8 .refs { position: absolute; left: 80px; right: 80px; top: 1084px; }
+  .s8 .refs .kick { font-size: 17px; margin-bottom: 10px; }
+  .s8 .refs p { font-size: 18px; line-height: 1.5; color: rgba(255,255,255,.62); }
+</style>
+</head>
+<body>
+
+<!-- 1/8 · Portada -->
+<section class="slide s1" id="s1">
+  <div class="cab"><div class="marca"><img src="img/logo-rf.png" alt="RF"><div><b>Dr. Raúl Ferrer</b><small>Fisioterapia · Visión 360º</small></div></div><span class="pag">1/8</span></div>
+  <div class="kick abs" style="left:80px">Reflexión · Valor profesional</div>
+  <h1 class="h abs" style="left:80px; right:60px">¿Cuánto vale lo que <span class="serif">sabes</span>?</h1>
+  <div class="abs cifra">138,25 €<small>brutos por paga</small></div>
+  <p class="abs entrada">separan el salario base de un <b>fisioterapeuta</b> en clínicas privadas de Madrid del <b>SMI anunciado para 2027</b>.</p>
+  <div class="abs marco"></div>
+  <div class="abs foto"><img src="img/retrato.jpg" alt="Raúl Ferrer"></div>
+  <div class="pie"><span class="usuario">@_raulferrer</span><span class="pildora">Desliza →</span></div>
+</section>
+
+<!-- 2/8 · La distancia -->
+<section class="slide int s2" id="s2">
+  <div class="cab"><div class="marca"><img src="img/logo-rf.png" alt="RF"><div><b>Dr. Raúl Ferrer</b><small>Fisioterapia · Visión 360º</small></div></div><span class="pag">2/8</span></div>
+  <div class="num esq">02</div>
+  <div class="kick">SMI 2027 frente a convenio 2026</div>
+  <h2 class="h">La <span class="serif">distancia</span>.</h2>
+  <div class="graf" id="graf">
+    <!-- escala: 1.424,25 € = 480 px; 1.286 € = 433,4 px -->
+    <div class="bar" style="left:0; top:156.6px; height:433.4px; background:#E3D8C5"></div>
+    <div class="bar" style="left:330px; top:110px; height:46.6px; background:var(--nar)"></div>
+    <div class="bar" style="left:330px; top:156.6px; height:433.4px; background:var(--ink); border-radius:0"></div>
+    <div class="valor" style="left:0; top:82px">1.286 €</div>
+    <div class="valor" style="left:330px; top:36px">1.424,25 €</div>
+    <div class="guia"></div>
+    <div class="llave"></div>
+    <div class="gap">138,25 €<small>un 10,8 % más<br>que el mínimo</small></div>
+    <div class="base"></div>
+    <div class="etq" style="left:0"><b>SMI 2027</b>anunciado, 14 pagas</div>
+    <div class="etq" style="left:330px"><b>Fisioterapeuta</b>salario base 2026,<br>sin antigüedad</div>
+  </div>
+  <div class="nota">Euros brutos por paga. Convenio de clínicas privadas de Madrid, anexo IV.</div>
+  <div class="pie"><span class="usuario">@_raulferrer</span><span class="pildora clara">Desliza →</span></div>
+</section>
+
+<!-- 3/8 · Lo que la cifra no dice -->
+<section class="slide crema int s3" id="s3">
+  <div class="cab"><div class="marca"><img src="img/logo-rf.png" alt="RF"><div><b>Dr. Raúl Ferrer</b><small>Fisioterapia · Visión 360º</small></div></div><span class="pag">3/8</span></div>
+  <div class="num esq">03</div>
+  <div class="kick">Antes de sacar conclusiones</div>
+  <h2 class="h">Lo que la cifra<br><span class="serif">no dice</span>.</h2>
+  <div class="rejilla">
+    <div class="tarjeta"><div class="flecha">→</div><h4>Años distintos</h4><p>El SMI es de 2027 y la tabla de fisioterapia, de 2026. Falta saber qué pasará con el convenio el próximo año.</p></div>
+    <div class="tarjeta"><div class="flecha">→</div><h4>Solo salario base</h4><p>No incluye los complementos que correspondan.</p></div>
+    <div class="tarjeta"><div class="flecha">→</div><h4>Una de dos tablas</h4><p>El convenio tiene dos tablas salariales y esta es una de ellas.</p></div>
+    <div class="tarjeta"><div class="flecha">→</div><h4>SMI anunciado</h4><p>Queda pendiente comprobar su publicación oficial.</p></div>
+  </div>
+  <p class="remate">Aun así, la cifra invita a <span class="serif">detenerse</span>.</p>
+  <div class="pie"><span class="usuario">@_raulferrer</span><span class="pildora">Desliza →</span></div>
+</section>
+
+<!-- 4/8 · La pregunta -->
+<section class="slide int s4" id="s4">
+  <div class="cab"><div class="marca"><img src="img/logo-rf.png" alt="RF"><div><b>Dr. Raúl Ferrer</b><small>Fisioterapia · Visión 360º</small></div></div><span class="pag">4/8</span></div>
+  <div class="num esq">04</div>
+  <div class="kick">Sin quitarle nada a nadie</div>
+  <h2 class="h">La pregunta<br><span class="serif">incómoda</span>.</h2>
+  <p class="txt">Reponer, limpiar o repartir son trabajos necesarios y exigentes, que merecen salarios dignos. Que el salario mínimo suba es <b>una buena noticia</b>.</p>
+  <div class="cita"><span class="comilla">“</span><p>Entonces, ¿qué nos dice que el salario base de una profesión sanitaria titulada quede <span class="serif">tan cerca</span> de ese mínimo?</p></div>
+  <div class="pie"><span class="usuario">@_raulferrer</span><span class="pildora">Desliza →</span></div>
+</section>
+
+<!-- 5/8 · Lo que no se ve -->
+<section class="slide int s5" id="s5">
+  <div class="cab"><div class="marca"><img src="img/logo-rf.png" alt="RF"><div><b>Dr. Raúl Ferrer</b><small>Fisioterapia · Visión 360º</small></div></div><span class="pag">5/8</span></div>
+  <div class="num esq">05</div>
+  <div class="kick">Lo que aporta un fisioterapeuta</div>
+  <h2 class="h">Lo que <span class="serif">no se ve</span>.</h2>
+  <div class="ice">
+    <div class="visible">La sesión</div>
+    <div class="agua"><span class="a">Lo que se ve</span><span class="b">Lo que la sostiene</span></div>
+    <div class="capa c1"><span><b>4 años</b> de grado · 240 ECTS</span></div>
+    <div class="capa c2"><span><b>Valorar</b> y razonar clínicamente</span></div>
+    <div class="capa c3"><span><b>Decidir y adaptar</b> cada intervención</span></div>
+    <div class="capa c4"><span><b>Responsabilidad</b> cuando alguien recupera una actividad, convive con el dolor o vuelve a su vida cotidiana</span></div>
+  </div>
+  <p class="pie-txt">En una clínica, ese conocimiento forma parte <b>del valor del servicio que se ofrece.</b></p>
+  <div class="pie"><span class="usuario">@_raulferrer</span><span class="pildora">Desliza →</span></div>
+</section>
+
+<!-- 6/8 · Suelo, no techo -->
+<section class="slide crema int s6" id="s6">
+  <div class="cab"><div class="marca"><img src="img/logo-rf.png" alt="RF"><div><b>Dr. Raúl Ferrer</b><small>Fisioterapia · Visión 360º</small></div></div><span class="pag">6/8</span></div>
+  <div class="num esq">06</div>
+  <div class="kick">Lo que conviene recordar</div>
+  <h2 class="h">El convenio es un <span class="serif">suelo</span>, no un techo.</h2>
+  <div class="esc">
+    <div class="zona"><div class="kick">Lo que se negocia</div><div class="arriba">↑</div>
+      <div class="chips"><span>Salario por encima de tabla</span><span>Complementos</span><span>Formación pagada</span><span>Tiempo para valorar y coordinar</span><span>Revisión anual pactada</span></div>
+    </div>
+    <div class="suelo"></div>
+    <div class="suelo-t">Tabla del convenio <small>1.424,25 € · el mínimo obligatorio</small></div>
+    <div class="smi"></div>
+    <div class="smi-t">SMI 2027 <small>1.286 €</small></div>
+    <div class="escala">Esquema, no a escala</div>
+  </div>
+  <p class="txt">La tabla marca lo mínimo que debe pagarse, no lo máximo que puede pagarse. <b>Y lo que no se pide, rara vez se ofrece.</b></p>
+  <div class="pie"><span class="usuario">@_raulferrer</span><span class="pildora">Desliza →</span></div>
+</section>
+
+<!-- 7/8 · Negociar es traducir -->
+<section class="slide int s7" id="s7">
+  <div class="cab"><div class="marca"><img src="img/logo-rf.png" alt="RF"><div><b>Dr. Raúl Ferrer</b><small>Fisioterapia · Visión 360º</small></div></div><span class="pag">7/8</span></div>
+  <div class="num esq">07</div>
+  <div class="kick">Tres pasos antes de firmar</div>
+  <h2 class="h">Negociar es <span class="serif">traducir</span>.</h2>
+  <div class="pasos">
+    <div class="tarjeta paso"><div class="num">01</div><div><h4>Haz tu cuenta.</h4><p>Compara lo que factura la clínica con tu agenda y lo que cuesta tu puesto.</p><span class="formula">sesiones al mes × precio por sesión = <em>valor de tu agenda</em></span></div></div>
+    <div class="tarjeta paso"><div class="num">02</div><div><h4>Pon nombre a lo invisible.</h4><p>Valoraciones, coordinación, pacientes que continúan, programas que diseñas, formación que traes.</p></div></div>
+    <div class="tarjeta paso"><div class="num">03</div><div><h4>Pide algo concreto.</h4><p>Una cifra, un complemento o unas horas de formación. Y por escrito.</p></div></div>
+  </div>
+  <p class="colectivo">La tabla se negocia entre sindicatos y patronal. <b>Lo que se pide en cada clínica y lo que se pide en esa mesa suman.</b></p>
+  <div class="pie"><span class="usuario">@_raulferrer</span><span class="pildora">Desliza →</span></div>
+</section>
+
+<!-- 8/8 · Cierre -->
+<section class="slide tinta s8" id="s8">
+  <div class="cab"><div class="marca"><img src="img/logo-rf-neg.png" alt="RF"><div><b>Dr. Raúl Ferrer</b><small>Fisioterapia · Visión 360º</small></div></div><span class="pag">8/8</span></div>
+  <img class="logo" src="img/logo-rf-neg.png" alt="Logotipo RF">
+  <p class="pregunta h">Si la fisioterapia aporta valor a las personas, a las clínicas y a la sociedad, ¿por qué cuesta tanto que se <span class="serif">refleje</span> en las condiciones de quienes la ejercen?</p>
+  <p class="reflex">El salario no es la única medida del valor de una profesión. Pero sí dice algo sobre cómo decidimos reconocerla.</p>
+  <p class="cta"><b>¿Has negociado alguna vez por encima de tabla?</b> Cuéntalo en comentarios y guarda este post para tu próxima conversación salarial.</p>
+  <div class="refs">
+    <div class="kick">Fuentes</div>
+    <p>Convenio colectivo de clínicas privadas de la Comunidad de Madrid (establecimientos sanitarios de hospitalización, asistencia, consultas y laboratorios), anexo IV, tablas 2026 · Orden CIN/2135/2008, BOE, requisitos del título de Grado en Fisioterapia · SMI 2027: cifra anunciada el 17/11/2026, pendiente de publicación oficial.</p>
+  </div>
+  <div class="pie"><span class="usuario">@_raulferrer</span><span class="pildora clara">raulferrer.org</span></div>
+</section>
+
+</body>
+</html>
