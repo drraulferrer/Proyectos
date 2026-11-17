@@ -2912,6 +2912,7 @@ function turnHtml(c){var C=S.combat,v=view(c),p=pc(c.pcId),F=foes(),A=heroes(fal
   else if(tab==="spell")b+='<div class="fgrid">'+tsel+hsel("Aliado, para curar o reforzar")+'</div>'+spellHtml(p);
   else if(tab==="move")b+='<div class="fgrid">'+tsel+'</div>'+(moveHtml(c)||'<p class="sub">'+(distOn&&tokOf(c)?"Ya estás al lado de ese objetivo.":"Mueve la figura en «Mapa» arrastrándola, hasta "+fmt(p.speed||9)+" m.")+'</p>')+'<p class="sub">Moverse no gasta la acción: después puedes atacar o lanzar un conjuro.</p>';
   else if(tab==="heal")b+='<div class="bar">'+hsel("Curar a")+'<label>PG<input id="au-heal-n" type="number" min="1" placeholder="6"></label><button type="button" class="heal" data-au="heal">Curar</button></div><p class="sub">Para una poción o una cura que no sale en la lista, escribe los PG que recupera.</p>'+featHtml(c,p);
+  else if(tab==="sed")b+=sedHtml(c,p,F);
   else b+='<div class="fgrid">'+hsel("Aliado")+'</div>'+featHtml(c,p)+'<p class="sub">Esquivar, ayudar, esconderse, usar un objeto o hablar: resolvedlo en la mesa y pulsad «Terminar el turno».</p>';
   h.push(b+'</div>');
   h.push('<div class="bar endturn">'+(helpOn?'<details class="guide-d"><summary>¿Cómo funciona un turno?</summary>'+turnGuide(p)+'</details>':"")+'<span style="flex:1"></span><button type="button" data-au="pass">Terminar el turno</button></div>');
@@ -3470,6 +3471,35 @@ $("#tab-panel").addEventListener("click",function(e){if(e.target.closest("#ln-go
 $("#tab-panel").addEventListener("change",function(e){if(e.target.id==="ln-pc"){guarroSel=e.target.value;lnKeep();guarroDraw()}else if(e.target.id==="ln-pos"){var d0=$("#ln-desc");if(d0)d0.textContent=posRow(e.target.value)[1]}});
 // lo que deja el lance se nota en el siguiente combate
 var drawAD=draw;draw=function(){if(GUARRO&&S.combat&&S.combat.list&&!S.combat.over)S.combat.list.forEach(function(c){if(!isPc(c))return;var p=pc(c.pcId);if(p&&p.glow){addCond(c,p.glow);delete p.glow}});drawAD()};
+/* ---- modo guarro: el otro «combate de espadas» ---- */
+var NOSED=/rata|lobo|huargo|oso|estirge|arana|serpiente|escorpi|ciempies|avispa|jabali|toro|hiena|chacal|cangrejo|pulpo|ladilla|caballo|poni|perro|murcielago|cuervo|aguila|halcon|buitre|tiburon|cocodrilo|mula|cabra|gato|pantera|tigre|leon|mono|simio|enjambre|gusano|sapo|rana|lagarto|rinoceronte|elefante|mamut|alce|ciervo|tejon|comadreja|bestia|insecto|cria|nino|joven/;
+function canSeduce(t){var n=flat(t.base||t.name),ty=flat(String(t.type||""));return!t.ally&&!isPc(t)&&!fearless(t)&&!NOSED.test(n)&&!/beast|bestia/.test(ty)}
+function sedDC(t){var v=view(t);return Math.min(22,10+Math.round(crNum(t.cr))+(t.boss?3:0)-(hpOf(t)<=v.max/2?2:0)+(has(t,"Rendido")?-3:0))}
+if(GUARRO){ACTS.push(["sed","Seducir"]);GTONE+=" Si el grupo se cruza con PNJ o criaturas inteligentes adultas, recuerda que pueden resolver el encuentro con un lance picante en vez de pelear (pestaña «Seducir» del combate). Nunca con animales, no muertos, autómatas ni criaturas sin juicio."}
+function sedHtml(c,p,F){var T=F.filter(canSeduce),L=posOf(p);
+  if(!T.length)return'<p class="sub">Aquí no hay con quién: animales, no muertos, autómatas, cienos y demás criaturas sin juicio no se dejan seducir. Toca resolverlo a espadazos de los de verdad.</p>';
+  var t0=T.filter(function(x){return x.id===c.tgt})[0]||T[0],P=posRow(L.indexOf(lnSt.pos)>=0?lnSt.pos:L[0]),m=persuade(p)+P[2];
+  return'<div class="fgrid"><label>A quién<select id="au-sed-t">'+T.map(function(x){return'<option value="'+x.id+'"'+(x===t0?" selected":"")+'>'+esc(view(x).name)+' (CD '+sedDC(x)+')</option>'}).join("")+'</select></label>'+
+    '<label>Postura<select id="au-sed-p">'+L.map(function(k){return'<option'+(k===P[0]?" selected":"")+'>'+esc(k)+'</option>'}).join("")+'</select></label></div>'+
+    '<p class="sub" id="au-sed-d">'+esc(P[1])+'</p><div class="bar"><button type="button" class="pri big" data-au="sed">Seducir</button></div>'+
+    '<p class="sub">Si sale bien, deja de luchar y se va con '+esc(view(c).name)+' detrás de la carreta: cuenta como enemigo vencido. Luego se tiran el riesgo de ETS y el de embarazo. Si sale mal, se ofende y va a por quien lo intentó. Más fácil con los malheridos y los rendidos.</p>'}
+function sedDo(c,v){var t=find(($("#au-sed-t")||{}).value),p=pc(c.pcId);if(!t||!p||!canSeduce(t))return false;var k=($("#au-sed-p")||{}).value||"El misionero",P=posRow(k),tv=view(t),dc=sedDC(t);lnSt.pos=k;
+  var r1=d(20),r2=d(20),r=P[5]==="ventaja"?Math.max(r1,r2):r1,m=persuade(p)+P[2],tot=r+m,ok=r===20||(r!==1&&tot>=dc),
+    txt=v.name+" deja la espada envainada e intenta seducir a "+tv.name+" con «"+k+"». Tira d20"+(P[5]==="ventaja"?" con ventaja ("+r1+" y "+r2+")":"")+": "+r+" "+sgn(m)+" = "+tot+" contra CD "+dc+": ";
+  if(!ok){t.tgt=c.id;addCond(c,"Marcado");var ex=r===1?" Pifia: tropieza con su propio cinturón y acaba en el suelo.":"";if(r===1)addCond(c,"Derribado");
+    clog(txt+"calabazas. "+tv.name+" se ofende muchísimo y va a por "+v.name+": el siguiente ataque contra él tiene ventaja."+ex);
+    why("Seducir es una prueba de Persuasión ("+sgn(persuade(p))+") más el bono de la postura ("+sgn(P[2])+"), contra 10 + el VD de la criatura, más difícil con los jefes y más fácil con los malheridos.");return}
+  t.fled="seducido";addCond(t,"Seducido");var L=[txt+(r===20?"¡éxito legendario! ":"funciona. ")+tv.name+" suelta el arma y se va con "+v.name+" detrás de la carreta. Deja de luchar."];
+  var base=monKit(t)&&monKit(t).k==="pox"?35:20,ets=Math.min(95,Math.round(base*P[4])),re=d(100);
+  if(pcRing(p))L.push("Riesgo de ETS: el anillo de la protección profiláctica brilla, no hay contagio.");
+  else if(re<=ets){var free=POXN.filter(function(x){return(p.ets||[]).indexOf(x)<0});if(free.length){var e=free[Math.floor(Math.random()*free.length)];p.ets=(p.ets||[]).concat([e]);addCond(c,e);L.push("Riesgo de ETS "+ets+" %: sale "+re+". Se lleva «"+e+"»: "+CONDTXT[e]+".")}}
+  else L.push("Riesgo de ETS "+ets+" %: sale "+re+", se libra.");
+  var pr=Math.round(15*P[3]),rp=d(100);if(rp<=pr){p.kids=(p.kids||0)+1;L.push("Riesgo de embarazo "+pr+" %: sale "+rp+". En nueve meses habrá un pequeño "+tv.name.toLowerCase()+" con la nariz de "+v.name+".")}else L.push("Riesgo de embarazo "+pr+" %: sale "+rp+", sin herederos.");
+  if(P[5]==="bendice"||r===20){addCond(c,"Bendecido");L.push(v.name+" vuelve a la pelea Bendecido: suma 1d4 a sus ataques.")}
+  clog(L.join(" "))}
+document.addEventListener("click",function(e){var b=e.target.closest('[data-au="sed"]');if(b&&GUARRO)pcAct(sedDo)});
+document.addEventListener("change",function(e){if(e.target.id==="au-sed-p"){lnSt.pos=e.target.value;var d0=$("#au-sed-d");if(d0)d0.textContent=posRow(e.target.value)[1]}});
+CONDTXT.Seducido="se ha ido con quien lo sedujo y ya no lucha";
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
