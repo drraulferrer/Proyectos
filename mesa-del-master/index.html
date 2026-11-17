@@ -372,6 +372,16 @@ body.solo-cb #lfx-box,body.solo-cb #sed-man{display:none!important}
 body.solo-cb #cb-stage .lfx,body.solo-cb #cb-stage .hang{width:min(100%,900px);margin:0 auto;font-size:calc(1rem*var(--fz))}body.solo-cb #cb-stage .lf-pic{width:calc(110px*var(--fz));height:calc(110px*var(--fz))}body.solo-cb #cb-stage .lf-h{font-size:calc(2rem*var(--fz))}
 @media (max-width:640px){.rks{grid-template-columns:1fr}.lf-pic{width:54px;height:54px}}
 
+
+/* editor +18 y reparto de personajes */
+.g18ed{margin:12px 0;border-top:1px solid var(--divider);padding-top:10px}.g18ed summary{cursor:pointer;font-weight:600}.g18ed h3{margin:14px 0 6px;font-size:1rem}
+.g18mine li{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.g18mine li span{flex:1;color:var(--muted);font-size:.9rem;min-width:180px}
+#cast summary{cursor:pointer;font-weight:600}.cast-t{display:flex;flex-direction:column;gap:6px;margin:10px 0}
+.cast-r{display:grid;grid-template-columns:auto auto minmax(0,1fr) minmax(140px,240px);gap:10px;align-items:center;padding:6px 8px;border-radius:10px;background:var(--card2,rgba(255,255,255,.03))}
+.cast-n{display:flex;flex-direction:column;min-width:0}.cast-n b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cast-r .ava.sm{width:34px;height:34px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font-size:.8rem;background:var(--card2,#222)}.cast-r .ava.sm img{width:100%;height:100%;object-fit:cover}
+@media (max-width:640px){.cast-r{grid-template-columns:auto auto minmax(0,1fr)}.cast-r select{grid-column:1/-1}}
+
 /* deshacer */
 #undo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 32px)}
 #undo[hidden]{display:none}
@@ -1287,7 +1297,7 @@ function norm(o){var b=blank();if(!o||typeof o!=="object")return b;
   var c=o.combat||{};b.combat={round:int(c.round,0),turnId:c.turnId||null,list:Array.isArray(c.list)?c.list:[],auto:!!c.auto,log:Array.isArray(c.log)?c.log:[],over:c.over||null,byIA:!!c.byIA,simTxt:typeof c.simTxt==="string"?c.simTxt:"",sim:c.sim&&typeof c.sim==="object"?c.sim:null,fx:Array.isArray(c.fx)?c.fx.slice(-12):[],fxn:int(c.fxn,0),goal:c.goal&&typeof c.goal==="object"?c.goal:null,lfx:Array.isArray(c.lfx)?c.lfx.slice(-30):[]};
   function arr(v){return Array.isArray(v)?v:[]}
   b.stories=arr(o.stories).filter(function(x){return x&&x.id}).map(function(x){x.chapters=arr(x.chapters);x.sessions=arr(x.sessions);x.notes=arr(x.notes);x.npcs=arr(x.npcs);x.loot=arr(x.loot);x.places=arr(x.places).filter(function(p){return p&&p.id&&p.title});x.mons=arr(x.mons).filter(function(m){return Array.isArray(m)&&m.length>=9});x.quests=arr(x.quests);x.next=x.next||{date:"",time:""};return x});
-  b.storyId=o.storyId||null;b.thumbs=o.thumbs&&typeof o.thumbs==="object"?o.thumbs:{};b.show=o.show&&typeof o.show==="object"?o.show:null;b.spot=o.spot&&typeof o.spot==="object"&&o.spot.c?o.spot:{k:"",c:{}};b.activity=arr(o.activity);
+  b.storyId=o.storyId||null;b.thumbs=o.thumbs&&typeof o.thumbs==="object"?o.thumbs:{};b.g18=o.g18&&typeof o.g18==="object"?{pos:arr(o.g18.pos).filter(function(x){return Array.isArray(x)&&x.length>=6}),pox:arr(o.g18.pox).filter(function(x){return Array.isArray(x)&&x.length>=3})}:{pos:[],pox:[]};b.show=o.show&&typeof o.show==="object"?o.show:null;b.spot=o.spot&&typeof o.spot==="object"&&o.spot.c?o.spot:{k:"",c:{}};b.activity=arr(o.activity);
   b.party.forEach(function(p){if(!p.status)p.status="activo"});
   if(!b.stories.length&&(b.party.length||b.notes||b.ia.premise)){var st=mkStory("Mi campaña",0);st.desc=b.ia.premise;
     if(b.notes)st.notes.push({id:uid(),title:"Notas de la partida",text:b.notes,t:Date.now()});
@@ -3641,6 +3651,70 @@ $("#sed-man").addEventListener("click",function(e){var b=e.target.closest("[data
 function lfxStage(){var el=$("#cb-stage"),C=S.combat,L=C.lfx||[];if(!soloCb||!el||!GUARRO||!L.length||el.querySelector(".lfx,.hang"))return;var R=L[L.length-1];
   if(C.over)el.insertAdjacentHTML("afterbegin",hangover());else if((R.fxn||0)===(C.fxn||0))el.insertAdjacentHTML("afterbegin",lfxCard(R))}
 var drawAG=draw;draw=function(){drawAG();sedManDraw();lfxDraw();lfxStage()};
+/* ---- modo guarro: posturas y enfermedades propias ---- */
+if(!S.g18||typeof S.g18!=="object")S.g18={pos:[],pox:[]};
+var POXEF={dis:"ataca con desventaja",adv:"los ataques contra él tienen ventaja",ac:"−2 a la CA",save:"−2 a las tiradas de salvación"};
+var MULT=[["1","Igual"],["0.5","La mitad"],["0.2","Casi nada"],["0","Nada"],["1.5","Un 50 % más"],["2","El doble"]];
+var EXTRA=[["","Sin efecto extra"],["ventaja","Tira con ventaja"],["bendice","Si sale bien, Bendecido en el siguiente combate"],["agujetas","Si sale mal, Distraído en el siguiente combate"],["tumbo","Con un 1, Derribado en el siguiente combate"]];
+function posAuto(b,pr,et,ex){var L=[];if(b)L.push(sgn(b)+" a la tirada");if(pr!==1)L.push("riesgo de embarazo "+(pr===0?"cero":pr<1?"un "+Math.round((1-pr)*100)+" % menor":"un "+Math.round((pr-1)*100)+" % mayor"));
+  if(et!==1)L.push("riesgo de ETS "+(et===0?"cero":et<1?"un "+Math.round((1-et)*100)+" % menor":"un "+Math.round((et-1)*100)+" % mayor"));var e=EXTRA.filter(function(x){return x[0]===ex})[0];if(ex&&e)L.push(e[1].toLowerCase());
+  return L.length?cap(L.join(", "))+".":"Sin modificadores."}
+function posAdd(x){if(POSN.indexOf(x[0])>=0)return;POS.push(x);POSN.push(x[0])}
+function poxAdd(x){if(POXN.indexOf(x[0])>=0)return;POX.push(x);POXN.push(x[0]);CONDTXT[x[0]]=x[1];CONDS.push([x[0],"Enfermedad venérea de fantasía: "+x[1]+"."]);if(x[2]==="dis")DISA.push(x[0]);if(x[2]==="adv")ADVV.push(x[0])}
+function poxDel(n){[POX,CONDS].forEach(function(A){for(var i=A.length-1;i>=0;i--)if(A[i][0]===n)A.splice(i,1)});[POXN,DISA,ADVV].forEach(function(A){var i=A.indexOf(n);if(i>=0)A.splice(i,1)});delete CONDTXT[n]}
+function posDel(n){for(var i=POS.length-1;i>=0;i--)if(POS[i][0]===n)POS.splice(i,1);var j=POSN.indexOf(n);if(j>=0)POSN.splice(j,1)}
+if(GUARRO){S.g18.pos.forEach(posAdd);S.g18.pox.forEach(poxAdd)}
+function poxTyped(c,ty){return S.g18.pox.some(function(x){return x[2]===ty&&has(c,x[0])})}
+var acOfAH=acOf;acOf=function(c){return acOfAH(c)-(GUARRO&&poxTyped(c,"ac")?2:0)};
+var saveOfAH=saveOf;saveOf=function(c,ab){return saveOfAH(c,ab)-(GUARRO&&poxTyped(c,"save")?2:0)};
+function g18Html(){var o=function(A,sel){return A.map(function(x){return'<option value="'+esc(x[0])+'"'+(x[0]===sel?" selected":"")+'>'+esc(x[1])+'</option>'}).join("")},b=[];for(var i=-3;i<=3;i++)b.push([String(i),sgn(i)]);
+  var mine=S.g18.pos.map(function(x){return'<li><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span><button type="button" class="ghost" data-g18del="pos" data-n="'+esc(x[0])+'">Borrar</button></li>'}).join("")+
+    S.g18.pox.map(function(x){return'<li><b>'+esc(x[0])+'</b><span>Enfermedad: '+esc(x[1])+'</span><button type="button" class="ghost" data-g18del="pox" data-n="'+esc(x[0])+'">Borrar</button></li>'}).join("");
+  return'<details class="g18ed"><summary>Crear posturas y enfermedades propias</summary>'+(mine?'<ul class="list g18mine">'+mine+'</ul>':'<p class="sub">Todavía no habéis creado ninguna.</p>')+
+    '<h3>Nueva postura</h3><div class="fgrid"><label>Nombre<input id="np-n" maxlength="40" placeholder="El columpio del bardo"></label><label>Bono a la tirada<select id="np-b">'+o(b,"0")+'</select></label>'+
+    '<label>Riesgo de embarazo<select id="np-p">'+o(MULT,"1")+'</select></label><label>Riesgo de ETS<select id="np-e">'+o(MULT,"1")+'</select></label><label>Efecto extra<select id="np-x">'+o(EXTRA,"")+'</select></label></div>'+
+    '<label class="wide">Descripción con chiste, opcional<input id="np-d" maxlength="160" placeholder="Si no escribes nada, se resume con las cifras"></label><div class="bar"><button type="button" class="pri" data-g18add="pos">Añadir postura</button></div>'+
+    '<h3>Nueva enfermedad</h3><div class="fgrid"><label>Nombre<input id="nx-n" maxlength="40" placeholder="Sarpullido del trovador"></label><label>Efecto en combate<select id="nx-t">'+o([["dis",cap(POXEF.dis)],["adv",cap(POXEF.adv)],["ac",POXEF.ac],["save",POXEF.save]],"dis")+'</select></label></div>'+
+    '<label class="wide">Por qué pasa, opcional<input id="nx-d" maxlength="80" placeholder="no puede dejar de cantar baladas tristes"></label><div class="bar"><button type="button" class="pri" data-g18add="pox">Añadir enfermedad</button></div>'+
+    '<h3>Enseñar una postura</h3><div class="fgrid"><label>Personaje<select id="tp-pc">'+S.party.map(function(p){return'<option value="'+esc(p.id)+'">'+esc(p.name)+'</option>'}).join("")+'</select></label><label>Postura<select id="tp-pos">'+POSN.map(function(k){return'<option>'+esc(k)+'</option>'}).join("")+'</select></label></div><div class="bar"><button type="button" data-g18add="teach">Enseñar</button></div><p class="sub" id="g18-msg" role="status"></p></details>'}
+var guarroDrawAH=guarroDraw;guarroDraw=function(){var open=!!document.querySelector("#guarro .g18ed[open]");guarroDrawAH();var el=$("#guarro");if(!el||!GUARRO)return;var bar=el.querySelector("#guarro-sw").parentNode;bar.insertAdjacentHTML("beforebegin",g18Html());if(open)el.querySelector(".g18ed").open=true};
+function g18Msg(t){var m=$("#g18-msg");if(m)m.textContent=t}
+$("#tab-panel").addEventListener("click",function(e){var a=e.target.closest("[data-g18add]"),x=e.target.closest("[data-g18del]");
+  if(x){var n=x.dataset.n;if(x.dataset.g18del==="pos"){S.g18.pos=S.g18.pos.filter(function(y){return y[0]!==n});posDel(n);S.party.forEach(function(p){if(Array.isArray(p.pos))p.pos=p.pos.filter(function(k){return k!==n})})}
+    else{S.g18.pox=S.g18.pox.filter(function(y){return y[0]!==n});poxDel(n);S.party.forEach(function(p){if(Array.isArray(p.ets))p.ets=p.ets.filter(function(k){return k!==n})})}touch();guarroDraw();return}
+  if(!a)return;var k=a.dataset.g18add;
+  if(k==="pos"){var n2=($("#np-n").value||"").trim();if(!n2){g18Msg("Ponle un nombre a la postura.");return}if(POSN.indexOf(n2)>=0){g18Msg("Ya hay una postura con ese nombre.");return}
+    var b=int($("#np-b").value,0),pr=parseFloat($("#np-p").value),et=parseFloat($("#np-e").value),ex=$("#np-x").value,d=($("#np-d").value||"").trim(),auto=posAuto(b,pr,et,ex),row=[n2,d?d+" "+auto:auto,b,pr,et,ex];
+    S.g18.pos.push(row);posAdd(row);touch();guarroDraw();g18Msg("Postura «"+n2+"» creada. Ya puede salir en los tomos o enseñarse aquí.")}
+  else if(k==="pox"){var n3=($("#nx-n").value||"").trim();if(!n3){g18Msg("Ponle un nombre a la enfermedad.");return}if(POXN.indexOf(n3)>=0){g18Msg("Ya hay una enfermedad con ese nombre.");return}
+    var t=$("#nx-t").value,d2=($("#nx-d").value||"").trim(),row2=[n3,POXEF[t]+(d2?": "+d2:""),t];S.g18.pox.push(row2);poxAdd(row2);touch();guarroDraw();g18Msg("Enfermedad «"+n3+"» creada. Ya puede contagiarse en los combates y los lances.")}
+  else if(k==="teach"){var p=pc($("#tp-pc").value),ps=$("#tp-pos").value;if(!p||!ps)return;if(posOf(p).indexOf(ps)>=0){g18Msg(p.name+" ya sabe «"+ps+"».");return}p.pos=posOf(p).concat([ps]);touch();guarroDraw();g18Msg(p.name+" aprende «"+ps+"».")}});
+
+/* ---- repartir personajes entre historias ---- */
+function stOpts(sel,none){return(none?'<option value=""'+(!sel?" selected":"")+'>'+none+'</option>':"")+S.stories.map(function(s){return'<option value="'+esc(s.id)+'"'+(s.id===sel?" selected":"")+'>'+esc(s.title)+(adultStory(s)?" (+18)":"")+'</option>'}).join("")}
+function pcClone(p,sid){var q=JSON.parse(JSON.stringify(p)),o=p.id;q.id=uid();q.story=sid;S.party.push(q);
+  if(S.thumbs&&S.thumbs["pc-"+o])S.thumbs["pc-"+q.id]=S.thumbs["pc-"+o];if(p.pic)idbGet("pc-"+o).then(function(b){if(b)idbPut("pc-"+q.id,b)},function(){});return q}
+function castHtml(){if(!S.party.length||!S.stories.length)return"";
+  return'<summary>Repartir personajes entre historias</summary><p class="sub">Cada personaje juega en una historia. Cámbiala aquí sin entrar en su ficha, o marca varios y muévelos o cópialos de una vez. Copiar crea un personaje igual para la otra historia; cada copia sube de nivel por su cuenta.</p>'+
+    '<div class="cast-t">'+S.party.map(function(p){var u=pcPic(p);return'<div class="cast-r"><label class="ck"><input type="checkbox" data-cast-ck="'+esc(p.id)+'"></label><span class="ava sm">'+(u?'<img src="'+esc(u)+'" alt="">':esc(initials(p.name)))+'</span><span class="cast-n"><b>'+esc(p.name)+'</b><span class="sub">'+esc(pcSub(p))+' · nivel '+int(p.level,1)+'</span></span><select data-cast="'+esc(p.id)+'" aria-label="Historia de '+esc(p.name)+'">'+stOpts(p.story,"Sin historia")+'</select></div>'}).join("")+'</div>'+
+    '<div class="bar"><span class="sub">Con los marcados:</span><select id="cast-to" aria-label="Historia de destino">'+stOpts(story()?story().id:"")+'</select><button type="button" data-castdo="move">Mover</button><button type="button" data-castdo="copy">Copiar</button><button type="button" class="ghost" data-castdo="all">Marcar todos</button></div><p class="sub" id="cast-msg" role="status">'+esc(castMsg)+'</p>'}
+(function(){var f=$("#ch-filters");if(f)f.insertAdjacentHTML("beforebegin",'<details class="card dm" id="cast"></details>')})();
+var castOpen=false,castMsg="";
+function castDraw(){var el=$("#cast");if(!el)return;var h=castHtml();el.hidden=!h;if(!h)return;var ck=[].map.call(el.querySelectorAll("[data-cast-ck]:checked"),function(x){return x.dataset.castCk});el.innerHTML=h;el.open=castOpen;ck.forEach(function(id){var x=el.querySelector('[data-cast-ck="'+id+'"]');if(x)x.checked=true})}
+$("#cast").addEventListener("toggle",function(){castOpen=this.open});
+$("#cast").addEventListener("change",function(e){var t=e.target;if(!t.dataset.cast)return;var p=pc(t.dataset.cast);if(!p)return;p.story=t.value;var s=storyById(t.value);castMsg=p.name+(s?" juega ahora en «"+s.title+"».":" se queda sin historia: se unirá a la próxima que abras.");touch();castDraw()});
+$("#cast").addEventListener("click",function(e){var b=e.target.closest("[data-castdo]");if(!b)return;var el=$("#cast"),act=b.dataset.castdo;
+  if(act==="all"){[].forEach.call(el.querySelectorAll("[data-cast-ck]"),function(x){x.checked=true});return}
+  var ids=[].map.call(el.querySelectorAll("[data-cast-ck]:checked"),function(x){return x.dataset.castCk}),sid=$("#cast-to").value,s=storyById(sid);if(!ids.length){castMsg="Marca primero algún personaje.";castDraw();return}if(!s)return;
+  var n=0;ids.forEach(function(id){var p=pc(id);if(!p)return;if(act==="move"){p.story=sid;n++}else if(p.story!==sid){pcClone(p,sid);n++}});
+  [].forEach.call(el.querySelectorAll("[data-cast-ck]"),function(x){x.checked=false});touch();draw();
+  castMsg=n?(act==="move"?n+(n>1?" personajes movidos":" personaje movido"):n+(n>1?" personajes copiados":" personaje copiado"))+" a «"+s.title+"».":"Ya estaban en esa historia.";castDraw()});
+var drawCharsAH=drawChars;drawChars=function(){drawCharsAH();castDraw()};
+// en la ficha de la historia: quién juega en ella
+var drawStoryAH=drawStory;drawStory=function(){drawStoryAH();var s=story(),sum=$("#sd-sum");if(!s||!sum)return;var old=$("#sd-cast");if(old)old.remove();if(!S.party.length)return;
+  var host=sum.closest(".card")||sum;host.insertAdjacentHTML("afterend",'<div class="card dm" id="sd-cast"><h2>Personajes en esta historia</h2><p class="sub">Pulsa para meter o sacar a un personaje. Si estaba en otra historia, se mueve a esta.</p><div class="chips">'+
+    S.party.map(function(p){var on=p.story===s.id,o=!on&&storyById(p.story);return'<button type="button" class="fchip" data-sdcast="'+esc(p.id)+'" aria-pressed="'+on+'">'+esc(p.name)+(o?' <span class="sub">('+esc(o.title)+')</span>':"")+'</button>'}).join("")+'</div></div>')};
+document.addEventListener("click",function(e){var b=e.target.closest("[data-sdcast]");if(!b)return;var s=story(),p=pc(b.dataset.sdcast);if(!s||!p)return;p.story=p.story===s.id?"":s.id;touch();draw()});
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
