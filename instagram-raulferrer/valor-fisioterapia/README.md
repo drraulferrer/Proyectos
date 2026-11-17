@@ -6,7 +6,7 @@ Carrusel de Instagram de 8 páginas (1080 × 1350, 4:5) para la cuenta personal 
 - Archivo para todo el texto (800 en titulares, interletrado ajustado) e Instrument Serif en cursiva naranja para la palabra de acento, como «Fisioterapia con *visión 360º*».
 - Antetítulo en mayúsculas espaciadas, tarjetas blancas con borde fino y esquinas de 26 px, números en contorno y botones en píldora.
 - Sin foto ni cabecera de marca: la cuenta ya identifica al autor. El logotipo RF en negativo aparece solo en la última página, pequeño.
-- Redacción ajustada a la voz de los artículos del blog de raulferrer.org: concesión antes del giro («Técnicamente… Y, aun así…»), antítesis breves («es un suelo, no un techo») y pasos que se pueden dar sin esperar a nadie.
+- Redacción en llano y en primera persona, revisada contra la guía de Wikipedia «Signs of AI writing»: sin paralelismos negativos («no es X, es Y»), sin planteamiento y giro, sin listas con etiqueta en negrita, sin emojis numerados y con titulares que dicen algo concreto.
 
 ## Qué hay
 

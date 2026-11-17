@@ -1,31 +1,23 @@
-# Texto del post · ¿Cuánto vale lo que sabes?
+# Texto del post
 
-Quien empiece hoy como fisioterapeuta en una clínica privada de Madrid, sin antigüedad, tiene un salario base de 1.424,25 € brutos por paga, según una de las dos tablas del convenio. El salario mínimo anunciado para 2027 es de 1.286 €.
+El salario base de un fisioterapeuta sin antigüedad en una clínica privada de Madrid es de 1.424,25 € brutos por paga en 2026, según una de las dos tablas del convenio. El salario mínimo que se ha anunciado hoy para 2027 es de 1.286 €. Hay 138,25 € de diferencia.
 
-138,25 € de distancia. Un 10,8 %.
+La comparación tiene sus trampas. Son años distintos, todavía no sabemos cuánto subirá el convenio en 2027 y hablo de salario base, sin complementos. Aun con eso, me parece muy poca diferencia.
 
-Técnicamente, la comparación tiene límites. El SMI es de 2027 y la tabla, de 2026. Hablamos de salario base, sin complementos. Y el SMI está anunciado, no publicado. Aun así, la cifra invita a detenerse.
+Que suba el SMI me parece bien. Reponer, limpiar o repartir son trabajos duros y necesarios, y tienen que estar bien pagados. Lo que me pregunto es por qué una profesión sanitaria con cuatro años de grado tiene un salario base tan cerca de ese mínimo.
 
-Reponer, limpiar o repartir son trabajos necesarios y exigentes, y merecen salarios dignos. Que el salario mínimo suba es una buena noticia. No es eso lo que incomoda.
+Cuando una clínica cobra una sesión, en ese precio va la formación, la valoración, las decisiones que tomamos con cada paciente y la responsabilidad de cómo evoluciona. Eso también debería notarse en la nómina.
 
-Lo que incomoda es que el salario base de una profesión sanitaria con grado universitario quede tan cerca de ese mínimo.
+El convenio marca lo mínimo que te pueden pagar. Por encima se puede negociar, y lo normal es que haya que pedirlo. Antes de hacerlo yo haría tres cosas:
 
-Un fisioterapeuta no aporta solo tiempo. Aporta criterio: cuatro años de formación, capacidad para valorar, decidir y adaptar una intervención, y la responsabilidad de acompañar a alguien que quiere volver a su vida cotidiana. En una clínica, ese criterio es parte del valor del servicio que se ofrece.
+1. Calcular cuánto factura la clínica con tu agenda en un mes y compararlo con lo que le cuestas.
+2. Apuntar lo que haces y no se cobra aparte: valoraciones, coordinación, pacientes que siguen contigo, programas que has montado.
+3. Llevar una propuesta concreta, con una cifra o un complemento, y pedir que quede por escrito.
 
-Por eso conviene recordar algo sencillo: el convenio es un suelo, no un techo. Dice lo mínimo que debe pagarse. No dice lo máximo que puede pagarse.
+Nada de esto quita que el convenio también tenga que mejorar, y eso se negocia entre sindicatos y patronal.
 
-Negociar es traducir ese valor al idioma de quien paga:
+¿Has negociado alguna vez por encima de tabla? Cuéntamelo en comentarios.
 
-1️⃣ Haz la cuenta antes que ellos. Lo que factura la clínica con tu agenda, frente a lo que cuesta tu puesto.
-2️⃣ Pon nombre a lo que no se factura. Valoraciones, coordinación, pacientes que continúan, programas que diseñas. Lo que no se nombra, no se paga.
-3️⃣ Pide algo concreto, y por escrito. «Me gustaría cobrar más» no es una petición. Es un deseo.
+Fuentes: convenio de clínicas privadas de Madrid, anexo IV · Orden CIN/2135/2008 (BOE), requisitos del Grado en Fisioterapia. El SMI de 2027 es el anunciado hoy y está pendiente de publicarse en el BOE.
 
-Y una cosa no sustituye a la otra: lo que se pide en cada clínica y lo que se negocia en el convenio suman.
-
-El salario no es la única medida del valor de una profesión. Pero dice algo sobre cómo decidimos reconocerla.
-
-¿Has negociado alguna vez por encima de tabla? Te leo en comentarios.
-
-Fuentes: convenio de clínicas privadas de Madrid, anexo IV · Orden CIN/2135/2008, BOE, requisitos del Grado en Fisioterapia. El SMI de 2027 corresponde al anuncio de hoy y queda pendiente de su publicación oficial.
-
-#fisioterapia #fisioterapeuta #fisioterapiamadrid #salariominimo #SMI2027 #convenio #sanidadprivada #negociacionsalarial #valorprofesional #profesionsanitaria
+#fisioterapia #fisioterapeuta #salariominimo #convenio #sanidadprivada
