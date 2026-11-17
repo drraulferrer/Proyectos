@@ -4,7 +4,9 @@ Carrusel de Instagram de 8 páginas (1080 × 1350, 4:5) para la cuenta personal 
 
 - Tinta `#171310`, naranja del logotipo `#FD6242` (superficies y texto grande), naranja oscurecido `#BA4830` (texto pequeño, 5,18:1 sobre blanco), crema `#F6F1E7`, línea `#E3D8C5`, gris cálido `#786D5E`.
 - Archivo para todo el texto (800 en titulares, interletrado ajustado) e Instrument Serif en cursiva naranja para la palabra de acento, como «Fisioterapia con *visión 360º*».
-- Antetítulo en mayúsculas espaciadas, tarjetas blancas con borde fino y esquinas de 26 px, números en contorno, botones en píldora y retrato con marco naranja desplazado, igual que la portada de la web.
+- Antetítulo en mayúsculas espaciadas, tarjetas blancas con borde fino y esquinas de 26 px, números en contorno y botones en píldora.
+- Sin foto ni cabecera de marca: la cuenta ya identifica al autor. El logotipo RF en negativo aparece solo en la última página, pequeño.
+- Redacción ajustada a la voz de los artículos del blog de raulferrer.org: concesión antes del giro («Técnicamente… Y, aun así…»), antítesis breves («es un suelo, no un techo») y pasos que se pueden dar sin esperar a nadie.
 
 ## Qué hay
 
@@ -30,6 +32,6 @@ cd animacion && npx hyperframes check && npx hyperframes render -q delivery -f 3
 
 ## Notas de contenido
 
-- Retrato y logotipos (`logo-rf.png`, `logo-rf-neg.png`) descargados de raulferrer.org.
+- Logotipo `logo-rf-neg.png` descargado de raulferrer.org.
 - El gráfico de la página 2 empieza en cero a propósito: la cercanía visual entre ambas barras es el mensaje.
 - Cifras: SMI 2027 de 1.286 € (14 pagas), propuesta anunciada el 17/11/2026 y pendiente de publicación en el BOE. Grupo IV del convenio de establecimientos sanitarios de Madrid, anexo IV, tabla 2026: 1.424,25 €. Diferencia 138,25 € (10,75 %).

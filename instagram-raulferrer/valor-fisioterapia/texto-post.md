@@ -1,26 +1,30 @@
 # Texto del post · ¿Cuánto vale lo que sabes?
 
-1.286 € frente a 1.424,25 €.
+Quien empiece hoy como fisioterapeuta en una clínica privada de Madrid, sin antigüedad, tiene un salario base de 1.424,25 € brutos por paga, según una de las dos tablas del convenio. El salario mínimo anunciado para 2027 es de 1.286 €.
 
-Esa es la distancia entre el SMI anunciado hoy para 2027 y el salario base que el convenio de clínicas privadas de Madrid fija en 2026 para un fisioterapeuta sin antigüedad, en una de sus dos tablas.
+138,25 € de distancia. Un 10,8 %.
 
-138,25 € brutos por paga. Un 10,8 % por encima del mínimo.
+Técnicamente, la comparación tiene límites. El SMI es de 2027 y la tabla, de 2026. Hablamos de salario base, sin complementos. Y el SMI está anunciado, no publicado. Aun así, la cifra invita a detenerse.
 
-La comparación tiene límites: el SMI es de 2027 y la tabla, de 2026, y hablamos de salario base, sin los complementos que correspondan. Aun así, la cifra invita a detenerse.
+Reponer, limpiar o repartir son trabajos necesarios y exigentes, y merecen salarios dignos. Que el salario mínimo suba es una buena noticia. No es eso lo que incomoda.
 
-Reponer, limpiar o repartir son trabajos necesarios y exigentes, que merecen salarios dignos. Que el salario mínimo suba es una buena noticia. La pregunta es otra: ¿qué nos dice que el salario base de una profesión sanitaria titulada quede tan cerca de ese mínimo?
+Lo que incomoda es que el salario base de una profesión sanitaria con grado universitario quede tan cerca de ese mínimo.
 
-Un fisioterapeuta no aporta solo el tiempo que pasa con una persona. Aporta cuatro años de formación universitaria, la capacidad de valorar, decidir y adaptar una intervención, y la responsabilidad de acompañar a alguien que quiere recuperar su vida cotidiana. En una clínica, eso forma parte del valor del servicio que se ofrece.
+Un fisioterapeuta no aporta solo tiempo. Aporta criterio: cuatro años de formación, capacidad para valorar, decidir y adaptar una intervención, y la responsabilidad de acompañar a alguien que quiere volver a su vida cotidiana. En una clínica, ese criterio es parte del valor del servicio que se ofrece.
 
-Por eso conviene recordar algo: el convenio es un suelo, no un techo. Marca lo mínimo que debe pagarse, no lo máximo que puede pagarse. Y negociar es, sobre todo, traducir:
+Por eso conviene recordar algo sencillo: el convenio es un suelo, no un techo. Dice lo mínimo que debe pagarse. No dice lo máximo que puede pagarse.
 
-1️⃣ Haz tu cuenta. Lo que la clínica factura con tu agenda frente a lo que cuesta tu puesto.
-2️⃣ Pon nombre a lo invisible. Valoraciones, coordinación, pacientes que continúan, programas que diseñas, formación que traes.
-3️⃣ Pide algo concreto. Una cifra, un complemento o unas horas de formación. Y por escrito.
+Negociar es traducir ese valor al idioma de quien paga:
 
-El salario no es la única medida del valor de una profesión. Pero sí dice algo sobre cómo decidimos reconocerla.
+1️⃣ Haz la cuenta antes que ellos. Lo que factura la clínica con tu agenda, frente a lo que cuesta tu puesto.
+2️⃣ Pon nombre a lo que no se factura. Valoraciones, coordinación, pacientes que continúan, programas que diseñas. Lo que no se nombra, no se paga.
+3️⃣ Pide algo concreto, y por escrito. «Me gustaría cobrar más» no es una petición. Es un deseo.
 
-👉 ¿Has negociado alguna vez por encima de tabla? Cuéntalo en comentarios y guarda este post para tu próxima conversación salarial.
+Y una cosa no sustituye a la otra: lo que se pide en cada clínica y lo que se negocia en el convenio suman.
+
+El salario no es la única medida del valor de una profesión. Pero dice algo sobre cómo decidimos reconocerla.
+
+¿Has negociado alguna vez por encima de tabla? Te leo en comentarios.
 
 Fuentes: convenio de clínicas privadas de Madrid, anexo IV · Orden CIN/2135/2008, BOE, requisitos del Grado en Fisioterapia. El SMI de 2027 corresponde al anuncio de hoy y queda pendiente de su publicación oficial.
 
