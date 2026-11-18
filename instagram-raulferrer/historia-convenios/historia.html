@@ -1,0 +1,101 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Convenios de sanidad privada</title><link rel="stylesheet" href="../valor-fisioterapia/src/marca.css">
+<style>
+  body { display:flex; flex-direction:column; gap:40px; padding:40px; align-items:center; }
+  .hist { position:relative; width:1080px; height:1920px; background:#fff; overflow:hidden; }
+  .a { position:absolute; left:80px; right:80px; }
+  .pag { position:absolute; right:80px; top:200px; font-weight:700; font-size:22px; letter-spacing:.14em; color:var(--mut); }
+  .h2 { font-weight:800; font-size:92px; letter-spacing:-.035em; line-height:1; }
+  .sub { font-size:27px; line-height:1.4; color:var(--mut); }
+  .leyenda { display:flex; flex-wrap:wrap; gap:12px 30px; font-size:23px; color:#4A4238; }
+  .leyenda i { display:inline-block; width:24px; height:24px; border-radius:5px; vertical-align:-4px; margin-right:9px; }
+  .rayas { background: repeating-linear-gradient(135deg, rgba(23,19,16,.45) 0 4px, transparent 4px 10px), #E3D8C5; }
+  .cabe { display:flex; font-size:19px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--mut); }
+  .comp { position:absolute; left:80px; right:80px; }
+  .fila { position:absolute; left:0; right:0; height:70px; }
+  .nom { position:absolute; left:0; top:4px; width:314px; }
+  .nom b { display:block; font-weight:800; font-size:31px; letter-spacing:-.01em; line-height:1.1; }
+  .nom small { display:block; font-size:19px; color:var(--mut); margin-top:3px; }
+  .nom small.caduca { color:var(--nartxt); font-weight:700; }
+  .nom small.bajo { display:inline-block; margin-left:6px; color:#fff; background:var(--nartxt); border-radius:5px; padding:0 6px; font-size:16px; font-weight:700; }
+  .bar { position:absolute; left:330px; top:6px; height:50px; background:#E3D8C5; border-radius:0 10px 10px 0; overflow:hidden; display:flex; align-items:center; padding-left:14px; }
+  .bar .exc { position:absolute; right:0; top:0; bottom:0; background:var(--nar); }
+  .bar .ipc { position:absolute; right:0; top:0; bottom:0; background: repeating-linear-gradient(135deg, rgba(23,19,16,.45) 0 4px, transparent 4px 10px); }
+  .bar span { position:relative; font-weight:800; font-size:24px; letter-spacing:-.01em; color:var(--ink); background:rgba(255,255,255,.0); }
+  .bar.mad { background:var(--ink); }
+  .bar.mad span { color:#fff; }
+  .fmad .nom b { text-decoration: underline 4px var(--nar); text-underline-offset: 6px; }
+  .dif { position:absolute; right:0; top:16px; font-style:normal; font-weight:800; font-size:27px; white-space:nowrap; }
+  .dif.mas { color:var(--nartxt); }
+  .dif.menos { color:var(--mut); }
+  .dif.ref { color:var(--ink); font-size:18px; letter-spacing:.14em; text-transform:uppercase; top:22px; }
+  .linea { position:absolute; top:-14px; bottom:-6px; border-left:3px dashed var(--ink); z-index:2; }
+  .linea span { position:absolute; left:-46px; top:-34px; font-weight:800; font-size:18px; letter-spacing:.14em; background:#fff; padding:0 6px; }
+  .nota { font-size:22px; line-height:1.45; color:var(--mut); }
+  .bloque h3 { font-weight:800; font-size:34px; letter-spacing:-.01em; margin-bottom:12px; }
+  .bloque p { font-size:25px; line-height:1.45; color:#4A4238; }
+  .tabla-ipc { width:100%; border-collapse:collapse; font-size:27px; }
+  .tabla-ipc th { text-align:left; font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mut); padding:8px 0; border-bottom:2px solid var(--line); }
+  .tabla-ipc td { padding:13px 0; border-bottom:1px solid var(--line); }
+  .tabla-ipc td.n { text-align:right; font-weight:700; }
+  .usuario { font-weight:700; font-size:26px; }
+</style></head><body>
+<section class="hist" id="h1">
+  <div class="a kick" style="top:200px">Sanidad privada · fisioterapeuta</div><div class="pag">1/3</div>
+  <div class="a h2" style="top:250px">Madrid frente al <span class="serif">resto</span></div>
+  <p class="a sub" style="top:360px">Euros brutos al año sin antigüedad, por convenio. Las tablas caducadas se actualizan con el IPC hasta 2026 para poder compararlas.</p>
+  <div class="a leyenda" style="top:470px"><span><i style="background:var(--ink)"></i>Madrid</span><span><i style="background:var(--nar)"></i>Por encima de Madrid</span><span><i class="rayas"></i>Subida estimada con IPC</span></div>
+  <div class="a cabe" style="top:592px"><span style="width:330px">Convenio</span><span>Anual 2026</span><span style="margin-left:auto">vs Madrid</span></div>
+  <div class="comp" style="top:640px; height:984px">
+    <div class="linea" style="left:577.7px"></div>
+    <div class="fila" style="top:0px"><div class="nom"><b>Alicante</b><small class="caduca">⟳ tabla 2022 · 27.059 €</small></div><div class="bar" style="width:387.6px"><i class="exc" style="width:139.8px"></i><i class="ipc" style="width:51.4px"></i><span>≈ 31.193 €</span></div><em class="dif mas">+11.254 €</em></div>
+    <div class="fila" style="top:82px"><div class="nom"><b>Cataluña</b><small>autonómico</small></div><div class="bar" style="width:375.0px"><i class="exc" style="width:127.2px"></i><span>30.179 €</span></div><em class="dif mas">+10.240 €</em></div>
+    <div class="fila" style="top:164px"><div class="nom"><b>Valencia</b><small class="caduca">⟳ tabla 2015 · 19.629 €</small></div><div class="bar" style="width:313.7px"><i class="exc" style="width:66.0px"></i><i class="ipc" style="width:69.8px"></i><span>≈ 25.251 €</span></div><em class="dif mas">+5.312 €</em></div>
+    <div class="fila" style="top:246px"><div class="nom"><b>Granada</b><small>provincial</small></div><div class="bar" style="width:308.0px"><i class="exc" style="width:60.3px"></i><span>24.791 €</span></div><em class="dif mas">+4.851 €</em></div>
+    <div class="fila" style="top:328px"><div class="nom"><b>Palencia</b><small class="caduca">⟳ tabla 2025 · 22.852 €</small></div><div class="bar" style="width:292.2px"><i class="exc" style="width:44.4px"></i><i class="ipc" style="width:8.2px"></i><span>≈ 23.515 €</span></div><em class="dif mas">+3.576 €</em></div>
+    <div class="fila" style="top:410px"><div class="nom"><b>Cantabria</b><small>autonómico</small></div><div class="bar" style="width:291.9px"><i class="exc" style="width:44.1px"></i><span>23.493 €</span></div><em class="dif mas">+3.554 €</em></div>
+    <div class="fila" style="top:492px"><div class="nom"><b>Sevilla</b><small class="caduca">⟳ tabla 2025 · 22.676 €</small></div><div class="bar" style="width:289.9px"><i class="exc" style="width:42.2px"></i><i class="ipc" style="width:8.2px"></i><span>≈ 23.333 €</span></div><em class="dif mas">+3.394 €</em></div>
+    <div class="fila" style="top:574px"><div class="nom"><b>Baleares</b><small class="caduca">⟳ tabla 2025 · 22.566 €</small></div><div class="bar" style="width:288.5px"><i class="exc" style="width:40.8px"></i><i class="ipc" style="width:8.1px"></i><span>≈ 23.220 €</span></div><em class="dif mas">+3.281 €</em></div>
+    <div class="fila" style="top:656px"><div class="nom"><b>Valladolid</b><small class="caduca">⟳ tabla 2025 · 20.974 €</small></div><div class="bar" style="width:268.1px"><i class="exc" style="width:20.4px"></i><i class="ipc" style="width:7.6px"></i><span>≈ 21.582 €</span></div><em class="dif mas">+1.643 €</em></div>
+    <div class="fila" style="top:738px"><div class="nom"><b>Córdoba</b><small class="caduca">⟳ tabla 2025 · 20.968 €</small></div><div class="bar" style="width:268.1px"><i class="exc" style="width:20.3px"></i><i class="ipc" style="width:7.6px"></i><span>≈ 21.576 €</span></div><em class="dif mas">+1.637 €</em></div>
+    <div class="fila" style="top:820px"><div class="nom"><b>Jaén</b><small>provincial</small></div><div class="bar" style="width:267.1px"><i class="exc" style="width:19.4px"></i><span>21.500 €</span></div><em class="dif mas">+1.560 €</em></div>
+    <div class="fila" style="top:902px"><div class="nom"><b>Ourense</b><small>provincial</small></div><div class="bar" style="width:261.3px"><i class="exc" style="width:13.5px"></i><span>21.028 €</span></div><em class="dif mas">+1.088 €</em></div>
+  </div>
+  <div class="a usuario" style="top:1660px">@_raulferrer</div>
+</section>
+<section class="hist" id="h2">
+  <div class="a kick" style="top:200px">Sanidad privada · fisioterapeuta</div><div class="pag">2/3</div>
+  <div class="a h2" style="top:250px">Madrid frente al <span class="serif">resto</span></div>
+  <p class="a sub" style="top:360px">Continúa la lista. <b style="color:var(--nartxt)">⟳</b> marca las tablas caducadas, con su año y su importe sin actualizar.</p>
+  <div class="a cabe" style="top:592px"><span style="width:330px">Convenio</span><span>Anual 2026</span><span style="margin-left:auto">vs Madrid</span></div>
+  <div class="comp" style="top:640px; height:984px">
+    <div class="linea" style="left:577.7px"></div>
+    <div class="fila" style="top:0px"><div class="nom"><b>Burgos</b><small>provincial</small></div><div class="bar" style="width:260.9px"><i class="exc" style="width:13.2px"></i><span>21.000 €</span></div><em class="dif mas">+1.060 €</em></div>
+    <div class="fila" style="top:82px"><div class="nom"><b>Aragón</b><small>autonómico</small></div><div class="bar" style="width:249.5px"><i class="exc" style="width:1.8px"></i><span>20.085 €</span></div><em class="dif mas">+146 €</em></div>
+    <div class="fila fmad" style="top:164px"><div class="nom"><b>Madrid</b><small>autonómico</small></div><div class="bar mad" style="width:247.7px"><span>19.940 €</span></div><em class="dif ref">referencia</em></div>
+    <div class="fila" style="top:246px"><div class="nom"><b>A Coruña</b><small>provincial</small></div><div class="bar" style="width:247.6px"><span>19.931 €</span></div><em class="dif menos">−8 €</em></div>
+    <div class="fila" style="top:328px"><div class="nom"><b>Asturias</b><small>autonómico</small></div><div class="bar" style="width:243.9px"><span>19.632 €</span></div><em class="dif menos">−308 €</em></div>
+    <div class="fila" style="top:410px"><div class="nom"><b>Salamanca</b><small>provincial</small></div><div class="bar" style="width:243.7px"><span>19.611 €</span></div><em class="dif menos">−328 €</em></div>
+    <div class="fila" style="top:492px"><div class="nom"><b>Zamora</b><small>provincial</small></div><div class="bar" style="width:241.8px"><span>19.464 €</span></div><em class="dif menos">−475 €</em></div>
+    <div class="fila" style="top:574px"><div class="nom"><b>Huelva</b><small>provincial</small></div><div class="bar" style="width:239.5px"><span>19.280 €</span></div><em class="dif menos">−660 €</em></div>
+    <div class="fila" style="top:656px"><div class="nom"><b>Cádiz</b><small>provincial</small></div><div class="bar" style="width:237.2px"><span>19.093 €</span></div><em class="dif menos">−847 €</em></div>
+    <div class="fila" style="top:738px"><div class="nom"><b>Lugo</b><small>provincial</small></div><div class="bar" style="width:235.0px"><span>18.915 €</span></div><em class="dif menos">−1.025 €</em></div>
+    <div class="fila" style="top:820px"><div class="nom"><b>León</b><small class="caduca">⟳ tabla 2025 · 18.190 €</small></div><div class="bar" style="width:232.6px"><i class="ipc" style="width:6.6px"></i><span>≈ 18.718 €</span></div><em class="dif menos">−1.222 €</em></div>
+    <div class="fila" style="top:902px"><div class="nom"><b>Almería <small class="bajo">bajo el SMI</small></b><small class="caduca">⟳ tabla 2018 · 12.739 €</small></div><div class="bar" style="width:198.2px"><i class="ipc" style="width:39.9px"></i><span>≈ 15.954 €</span></div><em class="dif menos">−3.986 €</em></div>
+  </div>
+  <div class="a usuario" style="top:1660px">@_raulferrer</div>
+</section>
+<section class="hist" id="h3">
+  <div class="a kick" style="top:200px">Cómo está hecho</div><div class="pag">3/3</div>
+  <div class="a h2" style="top:250px; font-size:84px">Las cuentas, a la <span class="serif">vista</span></div>
+  <div class="a bloque" style="top:390px">
+    <h3>Qué se compara</h3>
+    <p>Salario base y pluses fijos de convenio por número de pagas, sin antigüedad ni pluses por turnos o puesto.</p>
+  </div>
+  <div class="a bloque" style="top:590px">
+    <h3>Tablas caducadas, actualizadas con IPC</h3>
+    <table class="tabla-ipc"><tr><th>Convenio</th><th>Tabla</th><th style="text-align:right">Importe</th><th style="text-align:right">IPC</th><th style="text-align:right">2026</th></tr><tr><td>Valencia</td><td>2015</td><td class="n">19.629 €</td><td class="n">×1.286</td><td class="n">25.251 €</td></tr><tr><td>Almería</td><td>2018</td><td class="n">12.739 €</td><td class="n">×1.252</td><td class="n">15.954 €</td></tr><tr><td>Alicante</td><td>2022</td><td class="n">27.059 €</td><td class="n">×1.153</td><td class="n">31.193 €</td></tr><tr><td>Palencia</td><td>2025</td><td class="n">22.852 €</td><td class="n">×1.029</td><td class="n">23.515 €</td></tr><tr><td>Sevilla</td><td>2025</td><td class="n">22.676 €</td><td class="n">×1.029</td><td class="n">23.333 €</td></tr><tr><td>Baleares</td><td>2025</td><td class="n">22.566 €</td><td class="n">×1.029</td><td class="n">23.220 €</td></tr><tr><td>Valladolid</td><td>2025</td><td class="n">20.974 €</td><td class="n">×1.029</td><td class="n">21.582 €</td></tr><tr><td>Córdoba</td><td>2025</td><td class="n">20.968 €</td><td class="n">×1.029</td><td class="n">21.576 €</td></tr><tr><td>León</td><td>2025</td><td class="n">18.190 €</td><td class="n">×1.029</td><td class="n">18.718 €</td></tr></table>
+  </div>
+  <p class="a nota" style="top:1300px; font-size:23px">IPC interanual de diciembre (INE) de cada año hasta 2025; 2020 cuenta como 0 %. Almería sigue por debajo del SMI incluso actualizada, así que allí se cobra el SMI (17.094 € en 2026). En Burgos, Valladolid, Córdoba y León el grupo del fisioterapeuta es deducido. Madrid, Aragón, Asturias y Jaén, leídos en el boletín; el resto, de webs que citan el boletín. Sin tabla comparable: Málaga, Murcia, Pontevedra, Las Palmas, Tenerife, Navarra, La Rioja, Castilla-La Mancha, Extremadura y País Vasco.</p>
+  <div class="a usuario" style="top:1660px">@_raulferrer</div>
+</section>
+</body></html>

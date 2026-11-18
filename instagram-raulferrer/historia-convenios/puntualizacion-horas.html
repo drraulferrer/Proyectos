@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Puntualización: las horas</title>
+<link rel="stylesheet" href="../valor-fisioterapia/src/marca.css">
+<style>
+  body { display:flex; padding:40px; justify-content:center; }
+  .hist { position:relative; width:1080px; height:1920px; background:#fff; overflow:hidden; }
+  .a { position:absolute; left:80px; right:80px; }
+  .h2 { font-weight:800; font-size:92px; letter-spacing:-.035em; line-height:1; }
+  .sub { font-size:30px; line-height:1.42; color:#4A4238; }
+  .sub b { color:var(--ink); }
+  .rango { display:flex; align-items:center; gap:22px; font-size:25px; line-height:1.35; color:#4A4238; }
+  .rango b { font-weight:900; font-size:44px; color:var(--nartxt); letter-spacing:-.02em; white-space:nowrap; }
+  .tarjetas { position:absolute; left:80px; right:80px; top:610px; display:flex; flex-direction:column; gap:16px; }
+  .tj { border:2px solid var(--line); border-radius:24px; padding:18px 28px 16px; background:#fff; }
+  .tj h3 { font-weight:800; font-size:30px; letter-spacing:-.01em; margin-bottom:10px; }
+  .tj h3 span { color:var(--mut); font-weight:600; font-size:23px; margin-left:8px; }
+  .cifras { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+  .cifras div { background:var(--cream); border-radius:14px; padding:10px 16px; }
+  .cifras small { display:block; font-size:16px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--mut); }
+  .cifras b { display:block; font-weight:900; font-size:34px; letter-spacing:-.02em; margin-top:2px; }
+  .cifras b.n { color:var(--nartxt); }
+  .cifras .clave { background:var(--ink); color:#fff; }
+  .cifras .clave small { color:rgba(255,255,255,.7); }
+  .tj p { font-size:23px; line-height:1.36; color:#4A4238; margin-top:9px; }
+  .tj p b { color:var(--ink); }
+  .nota { font-size:19px; line-height:1.45; color:var(--mut); }
+</style></head>
+<body>
+<section class="hist" id="historia">
+  <div class="a kick" style="top:200px">Puntualización</div>
+  <div class="a h2" style="top:246px">Ojo con las <span class="serif">horas</span></div>
+  <p class="a sub" style="top:350px">En las historias anteriores comparé sueldos al año. Pero cada convenio pide un número distinto de horas, y <b>un sueldo anual más alto puede ser solo más horas.</b></p>
+  <div class="a rango" style="top:500px"><b>191 horas</b><span>separan la jornada más corta (Cádiz, 1.635) de la más larga (Alicante, 1.826). Unas cinco semanas.</span></div>
+
+  <div class="tarjetas">
+    <div class="tj">
+      <h3>Madrid y Cataluña<span>1.680 h · 1.726 h</span></h3>
+      <div class="cifras"><div><small>Al año</small><b>+10.240 €</b></div><div><small>Horas</small><b>+46 h</b></div><div class="clave"><small>Por hora</small><b>+5,62 €</b></div></div>
+      <p>Cataluña trabaja algo más, pero <b>la diferencia se mantiene por hora: 17,48 € frente a 11,87 €.</b></p>
+    </div>
+    <div class="tj">
+      <h3>Madrid y Ourense<span>1.680 h · 1.815 h</span></h3>
+      <div class="cifras"><div><small>Al año</small><b>+1.088 €</b></div><div><small>Horas</small><b>+135 h</b></div><div class="clave"><small>Por hora</small><b>−0,28 €</b></div></div>
+      <p>Ourense cobra más al año porque trabaja más horas. <b>Por hora, cobra menos que Madrid.</b></p>
+    </div>
+    <div class="tj">
+      <h3>Madrid y Sevilla<span>1.680 h · 1.653 h</span></h3>
+      <div class="cifras"><div><small>Al año</small><b>+2.736 €</b></div><div><small>Horas</small><b class="n">−27 h</b></div><div class="clave"><small>Por hora</small><b>+1,85 €</b></div></div>
+      <p>Sevilla cobra más trabajando menos, así que <b>la ventaja por hora es aún mayor.</b> Su tabla es de 2025, sin subida.</p>
+    </div>
+    <div class="tj">
+      <h3>Madrid y el SMI 2027<span>1.680 h · unas 1.826 h</span></h3>
+      <div class="cifras"><div><small>Al año</small><b>+1.936 €</b></div><div><small>Horas</small><b class="n">−146 h</b></div><div class="clave"><small>Por hora</small><b>+2,01 €</b></div></div>
+      <p>Por paga, Madrid está un 10,8 % por encima del mínimo. <b>Por hora, un 20 %.</b></p>
+    </div>
+  </div>
+
+  <p class="a nota" style="top:1566px">Salario de tabla sin antigüedad dividido entre la jornada anual de cada convenio. Jornadas: Madrid, art. 12 del convenio; resto, fichas de convenioslaborales.com. SMI: 1.286 € × 14 pagas sobre unas 1.826 h (40 h semanales).</p>
+</section>
+</body></html>

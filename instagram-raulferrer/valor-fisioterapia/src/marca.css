@@ -1,0 +1,55 @@
+/* @_raulferrer · identidad de raulferrer.org (repo web-raulferrer, CSS .rfw y sitio.css) */
+@font-face { font-family: "Archivo"; font-weight: 400; src: url(fonts/archivo-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Archivo"; font-weight: 500; src: url(fonts/archivo-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Archivo"; font-weight: 600; src: url(fonts/archivo-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Archivo"; font-weight: 700; src: url(fonts/archivo-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "Archivo"; font-weight: 800; src: url(fonts/archivo-latin-800-normal.woff2) format("woff2"); }
+@font-face { font-family: "Archivo"; font-weight: 900; src: url(fonts/archivo-latin-900-normal.woff2) format("woff2"); }
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; src: url(fonts/instrument-serif-latin-400-italic.woff2) format("woff2"); }
+
+:root {
+  --ink: #171310;     /* tinta */
+  --nar: #FD6242;     /* naranja del logotipo: superficies y texto grande */
+  --nartxt: #BA4830;  /* mismo matiz oscurecido: texto pequeño (5,18:1 sobre blanco) */
+  --cream: #F6F1E7;
+  --line: #E3D8C5;
+  --mut: #786D5E;     /* gris cálido secundario (4,5:1 sobre crema) */
+  --blanco: #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #8a8378; font-family: "Archivo", sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+.slide { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: var(--blanco); }
+.slide.crema { background: var(--cream); }
+.slide.tinta { background: var(--ink); color: #fff; }
+
+/* Cabecera: logotipo + nombre, como la barra de la web */
+.cab { position: absolute; left: 80px; right: 80px; top: 64px; display: flex; align-items: center; justify-content: space-between; }
+.cab .marca { display: flex; align-items: center; gap: 18px; }
+.cab .marca img { width: 74px; }
+.cab .marca b { display: block; font-weight: 800; font-size: 25px; letter-spacing: -.01em; }
+.cab .marca small { display: block; font-weight: 700; font-size: 15px; letter-spacing: .24em; text-transform: uppercase; color: var(--mut); margin-top: 3px; }
+.cab .pag { font-weight: 700; font-size: 20px; letter-spacing: .14em; color: var(--mut); }
+.tinta .cab .marca small, .tinta .cab .pag { color: rgba(255,255,255,.62); }
+
+/* Antetítulo, titular con acento en cursiva serif, como «Fisioterapia con visión 360º» */
+.kick { font-weight: 700; font-size: 21px; letter-spacing: .28em; text-transform: uppercase; color: var(--nartxt); }
+.tinta .kick { color: var(--nar); }
+.h { font-weight: 800; letter-spacing: -.035em; line-height: 1.0; color: var(--ink); }
+.tinta .h { color: #fff; }
+.serif { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; letter-spacing: -.01em; color: var(--nar); }
+.num { font-weight: 900; font-size: 120px; line-height: 1; color: transparent; -webkit-text-stroke: 2px #D6CBB8; letter-spacing: -.02em; }
+
+.txt { font-size: 36px; line-height: 1.5; color: #4A4238; }
+.txt b { color: var(--ink); font-weight: 700; }
+
+.tarjeta { background: #fff; border: 2px solid var(--line); border-radius: 26px; }
+
+/* Pie */
+.pie { position: absolute; left: 80px; right: 80px; bottom: 60px; display: flex; align-items: center; justify-content: space-between; }
+.pie .usuario { font-weight: 700; font-size: 24px; color: var(--ink); }
+.tinta .pie .usuario { color: #fff; }
+.pildora { display: inline-flex; align-items: center; gap: 12px; background: var(--ink); color: #fff; border-radius: 999px; padding: 18px 30px;
+  font-weight: 700; font-size: 20px; letter-spacing: .1em; text-transform: uppercase; }
+.pildora.clara { background: #fff; color: var(--ink); border: 2px solid var(--line); }

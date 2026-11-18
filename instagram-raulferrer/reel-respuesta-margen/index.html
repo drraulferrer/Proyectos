@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<script src="assets/gsap.min.js"></script>
+<style>
+  @font-face { font-family: "Archivo"; font-weight: 400; src: url(assets/fonts/archivo-latin-400-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Archivo"; font-weight: 500; src: url(assets/fonts/archivo-latin-500-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Archivo"; font-weight: 600; src: url(assets/fonts/archivo-latin-600-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Archivo"; font-weight: 700; src: url(assets/fonts/archivo-latin-700-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Archivo"; font-weight: 800; src: url(assets/fonts/archivo-latin-800-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Archivo"; font-weight: 900; src: url(assets/fonts/archivo-latin-900-normal.woff2) format("woff2"); }
+  @font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; src: url(assets/fonts/instrument-serif-latin-400-italic.woff2) format("woff2"); }
+  :root { --ink: #171310; --nar: #FD6242; --nartxt: #BA4830; --cream: #F6F1E7; --line: #E3D8C5; --mut: #786D5E; --texto: #4A4238; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #fff; font-family: "Archivo", sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+  #root { position: relative; width: 1080px; height: 1920px; background: #fff; overflow: hidden; }
+  .escena { position: absolute; inset: 0; }
+  .crema { background: var(--cream); }
+  .tinta { background: var(--ink); color: #fff; }
+  .a { position: absolute; left: 110px; right: 110px; }
+  .kick { font-weight: 700; font-size: 28px; letter-spacing: .26em; text-transform: uppercase; color: var(--nartxt); }
+  .tinta .kick { color: var(--nar); }
+  .h { font-weight: 800; letter-spacing: -.035em; line-height: 1.02; }
+  .serif { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; letter-spacing: -.01em; color: var(--nar); }
+  .t { font-size: 50px; line-height: 1.32; color: var(--texto); }
+  .t b { color: var(--ink); font-weight: 800; }
+  .peq { font-size: 30px; color: var(--mut); }
+  .barra-prog { position: absolute; left: 0; top: 0; height: 8px; background: var(--nar); transform-origin: left center; width: 1080px; z-index: 10; }
+
+  /* 1 · Comentario */
+  .burbuja { background: var(--cream); border-radius: 36px; padding: 44px 48px; }
+  .burbuja .quien { display: flex; align-items: center; gap: 18px; font-size: 28px; color: var(--mut); margin-bottom: 22px; }
+  .burbuja .avatar { width: 56px; height: 56px; border-radius: 50%; background: #D6CBB8; }
+  .burbuja p { font-weight: 700; font-size: 52px; line-height: 1.22; letter-spacing: -.02em; }
+
+  /* 3-4 · Dos clínicas */
+  .clinicas { position: absolute; left: 110px; right: 110px; top: 560px; height: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .clinica { position: relative; }
+  .clinica h3 { font-weight: 800; font-size: 46px; letter-spacing: -.02em; }
+  .clinica .precio { font-weight: 900; font-size: 120px; letter-spacing: -.05em; line-height: 1; margin-top: 18px; }
+  .clinica .precio small { display: block; font-weight: 600; font-size: 28px; letter-spacing: 0; color: var(--mut); margin-top: 8px; }
+  .pila { position: absolute; left: 0; right: 40px; bottom: 0; height: 700px; display: flex; flex-direction: column-reverse; }
+  .seg { position: relative; display: flex; align-items: center; padding-left: 26px; transform-origin: center bottom; }
+  .seg span { font-weight: 800; font-size: 34px; letter-spacing: -.02em; line-height: 1.1; }
+  .seg span small { display: block; font-weight: 600; font-size: 25px; letter-spacing: 0; opacity: .8; }
+  .seg.costes { background: #E3D8C5; color: var(--ink); }
+  .seg.fisio { background: var(--ink); color: #fff; }
+  .seg.margen { background: var(--nar); color: var(--ink); border-radius: 22px 22px 0 0; }
+  .sello { position: absolute; left: 110px; right: 110px; top: 1260px; text-align: center; font-weight: 800; font-size: 64px; letter-spacing: -.03em; color: var(--nartxt); }
+
+  /* 5 · Fórmula */
+  .formula { font-weight: 900; font-size: 92px; letter-spacing: -.04em; line-height: 1.1; }
+  .formula .costes-w { position: relative; display: inline-block; }
+  .formula .subr { position: absolute; left: 0; right: 0; bottom: -6px; height: 10px; background: var(--nar); transform-origin: left center; }
+  .flecha-nota { font-weight: 800; font-size: 44px; color: var(--nartxt); }
+
+  .nota-ej { font-size: 26px; line-height: 1.4; color: var(--mut); }
+  .delta { position: absolute; font-weight: 900; font-size: 40px; color: var(--nartxt); white-space: nowrap; }
+  .umbral { position: absolute; left: 110px; right: 110px; border-top: 4px dashed var(--ink); }
+  .umbral span { position: absolute; left: 0; top: -44px; font-weight: 800; font-size: 28px; }
+
+  .calc { font-size: 25px; line-height: 1.4; color: var(--texto); margin-top: 10px; }
+  .calc b { color: var(--ink); }
+  .lbl-g { font-size: 30px; color: var(--mut); margin-bottom: 22px; }
+  .fila-g { display: flex; align-items: center; gap: 24px; margin-bottom: 18px; }
+  .nom-g { width: 170px; font-weight: 800; font-size: 34px; }
+  .bar-g { height: 76px; background: var(--ink); border-radius: 0 16px 16px 0; display: flex; align-items: center; padding-left: 22px; transform-origin: left center; }
+  .bar-g b { color: #fff; font-weight: 800; font-size: 34px; }
+  .bar-g.nar { background: var(--nar); }
+  .bar-g.nar b { color: var(--ink); }
+  .dif-g { font-weight: 900; font-size: 44px; color: var(--nartxt); margin-top: 6px; }
+  .rango { height: 76px; padding: 0 30px; border: 3px solid var(--ink); border-radius: 999px; display: flex; align-items: center; font-weight: 800; font-size: 36px; background: #fff; }
+
+  /* 7 · Cierre */
+  .logo { position: absolute; left: 100px; top: 420px; width: 300px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="55" data-width="1080" data-height="1920">
+  <div class="barra-prog" id="prog"></div>
+
+  <!-- 1 · El comentario (0-5) -->
+  <div class="escena clip" id="e1" data-start="0" data-duration="5" data-track-index="0">
+    <div class="a kick" style="top:330px">Respondiendo a un comentario</div>
+    <div class="a burbuja" id="bur" style="top:420px">
+      <div class="quien"><span class="avatar"></span>En mi último post</div>
+      <p>«Los salarios de los fisios son bajos porque los precios de las sesiones son bajos.»</p>
+    </div>
+    <div class="a h" id="e1t" style="top:1050px; font-size:112px">Veamos qué hay de <span class="serif">cierto</span>.</div>
+  </div>
+
+  <!-- 2 · Qué es cierto y qué no (5-12) -->
+  <div class="escena clip crema" id="e2" data-start="5" data-duration="7" data-track-index="0">
+    <div class="a kick" style="top:470px">Lo cierto</div>
+    <p class="a t" id="e2a" style="top:530px; font-size:56px">Una clínica que no cubre sus costes no puede pagar más. <b>Eso es sostenibilidad.</b></p>
+    <div class="a kick" id="e2k" style="top:900px">Lo que no se sostiene</div>
+    <p class="a t" id="e2b" style="top:960px; font-size:56px">Que, superado ese punto, <b>el sueldo dependa de lo que se factura.</b></p>
+  </div>
+
+  <!-- 3 · Planteamiento mensual (12-18) -->
+  <div class="escena clip" id="e3" data-start="12" data-duration="6" data-track-index="0">
+    <div class="a kick" style="top:420px">Pongamos dos clínicas</div>
+    <div class="a h" style="top:470px; font-size:96px">Mismo precio, misma <span class="serif">agenda</span></div>
+    <p class="a t" id="e3a" style="top:760px">60 € por sesión, 6 sesiones al día, 21 días al mes.</p>
+    <div class="a" id="e3b" style="top:960px"><div class="h" style="font-size:150px; letter-spacing:-.05em">7.560 €</div><p class="t" style="margin-top:10px">facturados al mes por cada fisio, <b>en las dos.</b></p></div>
+  </div>
+
+  <!-- 4 · Final de mes (18-31) -->
+  <div class="escena clip" id="e4" data-start="18" data-duration="13" data-track-index="0">
+    <div class="a kick" style="top:280px">A final de mes, por cada fisio</div>
+    <div class="a h" style="top:330px; font-size:86px">Lo que cambia es el <span class="serif">reparto</span></div>
+    <div class="clinicas" style="top:540px; height:880px">
+      <div class="clinica"><h3>Paga el convenio</h3>
+        <p class="calc" id="calcB">1.424,25 € × 14 pagas ÷ 12<br>= 1.662 € brutos al mes<br>+ Seg. Social ≈ <b>2.200 €</b></p>
+        <div class="pila" style="height:640px">
+          <div class="seg costes" id="b1" style="height:254px"><span>3.000 €<small>alquiler, material, gestión…</small></span></div>
+          <div class="seg fisio" id="b2" style="height:186px"><span>2.200 €<small>convenio de Madrid</small></span></div>
+          <div class="seg margen" id="b3" style="height:200px"><span>2.360 €<small>margen</small></span></div>
+        </div>
+      </div>
+      <div class="clinica"><h3>Paga 700 € más</h3>
+        <p class="calc" id="calcA">Mismos ingresos y costes.<br>Solo cambia el sueldo:<br><b>2.900 €</b> con Seg. Social</p>
+        <div class="pila" style="height:640px">
+          <div class="seg costes" id="a1" style="height:254px"><span>3.000 €<small>lo mismo</small></span></div>
+          <div class="seg fisio" id="a2" style="height:245px"><span>2.900 €<small>sueldo + Seg. Social</small></span></div>
+          <div class="seg margen" id="a3" style="height:141px"><span>1.660 €<small>margen</small></span></div>
+        </div>
+      </div>
+    </div>
+    <p class="a t" id="e4a" style="top:1450px; font-size:44px">Margen: <b>2.360 € frente a 1.660 €.</b> Pagar el mínimo deja 700 € más al mes.</p>
+    <p class="a nota-ej" id="e4n" style="top:1610px">Salvo el convenio, son cifras para hacer el ejercicio, no datos reales.</p>
+  </div>
+
+  <!-- 5 · Simplificando (31-38) -->
+  <div class="escena clip crema" id="e5" data-start="31" data-duration="7" data-track-index="0">
+    <div class="a kick" style="top:440px">Simplificando</div>
+    <div class="a formula" id="f1" style="top:510px">Margen =</div>
+    <div class="a formula" id="f2" style="top:620px">Ingresos −</div>
+    <div class="a formula" id="f3" style="top:730px"><span class="costes-w">Costes<i class="subr" id="subr"></i></span></div>
+    <div class="a flecha-nota" id="f4" style="top:880px">↑ el sueldo va aquí</div>
+    <p class="a t" id="f5" style="top:1060px">Con la misma facturación, <b>cada euro que no va al sueldo va al margen.</b></p>
+  </div>
+
+  <!-- C · Madrid y Cataluña (38-47) -->
+  <div class="escena clip" id="eC" data-start="38" data-duration="9" data-track-index="0">
+    <div class="a kick" style="top:300px">Depende de dónde trabajes</div>
+    <div class="a h" style="top:350px; font-size:92px">Madrid y <span class="serif">Cataluña</span></div>
+    <div class="a" style="top:620px">
+      <p class="lbl-g">Mínimo anual del convenio de sanidad privada, 2026</p>
+      <div class="fila-g"><span class="nom-g">Madrid</span><div class="bar-g" id="gM" style="width:448px"><b>19.940 €</b></div></div>
+      <div class="fila-g"><span class="nom-g">Cataluña</span><div class="bar-g nar" id="gC" style="width:678px"><b>30.179 €</b></div></div>
+      <p class="dif-g" id="gD">+51 % en Cataluña</p>
+    </div>
+    <div class="a" style="top:1080px">
+      <p class="lbl-g">Precio habitual de una sesión</p>
+      <div class="fila-g"><span class="nom-g">Madrid</span><div class="rango" id="pM">40–70 €</div></div>
+      <div class="fila-g"><span class="nom-g">Barcelona</span><div class="rango" id="pB">40–70 €</div></div>
+    </div>
+    <p class="a t" id="eCa" style="top:1420px; font-size:46px">La sesión cuesta parecido. <b>El mínimo, no.</b></p>
+    <p class="a nota-ej" id="eCn" style="top:1560px">Convenios de Madrid (BOCM) y Cataluña (DOGC), fisioterapeuta sin antigüedad. Precios: horquillas de guías de precios, orientativas.</p>
+  </div>
+
+  <!-- 6 · Conclusión (47-52) -->
+  <div class="escena clip" id="e6" data-start="47" data-duration="5" data-track-index="0">
+    <p class="a t" id="e6a" style="top:470px; font-size:56px">El salario va en los costes.</p>
+    <p class="a t" id="e6b" style="top:640px; font-size:56px">Superada la sostenibilidad, <b>no depende de la facturación.</b></p>
+    <div class="a h" id="e6t" style="top:920px; font-size:104px">Es una decisión <span class="serif">empresarial</span>.</div>
+  </div>
+
+  <!-- 7 · Cierre (52-55) -->
+  <div class="escena clip tinta" id="e7" data-start="52" data-duration="3" data-track-index="0">
+    <img class="logo" id="logo" src="assets/logo-rf-neg.png" alt="Logotipo RF">
+    <div class="a h" id="e7t" style="top:720px; font-size:84px">El post sobre el convenio de Madrid, en mi <span class="serif">perfil</span>.</div>
+    <div class="a" id="e7u" style="top:1080px; font-weight:700; font-size:40px">@_raulferrer</div>
+  </div>
+</div>
+
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const E = "power3.out";
+  tl.fromTo("#prog", { scaleX: 0 }, { scaleX: 1, duration: 55, ease: "none" }, 0);
+
+  // 1
+  tl.from("#e1 .kick", { opacity: 0, y: 20, duration: 0.5, ease: E }, 0.1);
+  tl.from("#bur", { opacity: 0, y: 60, scale: 0.96, duration: 0.7, ease: "back.out(1.6)" }, 0.3);
+  tl.from("#e1t", { opacity: 0, y: 40, duration: 0.6, ease: E }, 2.4);
+
+  // 2
+  tl.from("#e2 .kick:not(#e2k)", { opacity: 0, y: 20, duration: 0.4, ease: E }, 5.1);
+  tl.from("#e2a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 5.3);
+  tl.from("#e2k", { opacity: 0, y: 20, duration: 0.4, ease: E }, 8.0);
+  tl.from("#e2b", { opacity: 0, y: 30, duration: 0.5, ease: E }, 8.2);
+
+  // 3
+  tl.from("#e3 .kick, #e3 .h", { opacity: 0, y: 30, duration: 0.5, ease: E, stagger: 0.15 }, 12.1);
+  tl.from("#e3a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 13.0);
+  tl.from("#e3b", { opacity: 0, scale: 0.9, duration: 0.6, ease: "back.out(1.6)" }, 14.4);
+
+  // 4
+  tl.from("#e4 .kick, #e4 .h", { opacity: 0, y: 30, duration: 0.5, ease: E, stagger: 0.15 }, 18.1);
+  tl.from("#e4 h3, #calcB, #calcA", { opacity: 0, duration: 0.4, stagger: 0.15 }, 18.6);
+  tl.from("#a1, #b1", { scaleY: 0, duration: 0.8, ease: E }, 19.2);
+  tl.from("#a1 span, #b1 span", { opacity: 0, duration: 0.3 }, 19.8);
+  tl.from("#a2, #b2", { scaleY: 0, duration: 0.8, ease: E }, 20.8);
+  tl.from("#a2 span, #b2 span", { opacity: 0, duration: 0.3 }, 21.4);
+  tl.from("#a3, #b3", { scaleY: 0, duration: 0.8, ease: E }, 22.4);
+  tl.from("#a3 span, #b3 span", { opacity: 0, duration: 0.3 }, 23.0);
+  tl.from("#e4a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 24.2);
+  tl.from("#e4n", { opacity: 0, duration: 0.4 }, 25.0);
+  tl.to("#b3", { scale: 1.04, duration: 0.3, yoyo: true, repeat: 3, ease: "sine.inOut" }, 25.6);
+
+  // 5
+  tl.from("#e5 .kick", { opacity: 0, y: 20, duration: 0.4, ease: E }, 31.1);
+  tl.from("#f1", { opacity: 0, x: -40, duration: 0.5, ease: E }, 31.3);
+  tl.from("#f2", { opacity: 0, x: -40, duration: 0.5, ease: E }, 31.8);
+  tl.from("#f3", { opacity: 0, x: -40, duration: 0.5, ease: E }, 32.3);
+  tl.from("#subr", { scaleX: 0, duration: 0.6, ease: "power2.inOut" }, 33.0);
+  tl.from("#f4", { opacity: 0, y: -20, duration: 0.5, ease: E }, 33.4);
+  tl.from("#f5", { opacity: 0, y: 30, duration: 0.5, ease: E }, 34.6);
+
+  // C · Madrid y Cataluña
+  tl.from("#eC .kick, #eC .h", { opacity: 0, y: 30, duration: 0.5, ease: E, stagger: 0.15 }, 38.1);
+  tl.from("#eC .lbl-g", { opacity: 0, duration: 0.4, stagger: 1.8 }, 38.8);
+  tl.from("#gM", { scaleX: 0, duration: 0.8, ease: E }, 39.2);
+  tl.from("#gC", { scaleX: 0, duration: 0.9, ease: E }, 39.7);
+  tl.from("#gD", { opacity: 0, x: -20, duration: 0.4, ease: E }, 40.6);
+  tl.from("#pM, #pB", { opacity: 0, scale: 0.9, duration: 0.5, ease: "back.out(1.6)", stagger: 0.25 }, 41.4);
+  tl.from("#eCa", { opacity: 0, y: 30, duration: 0.5, ease: E }, 42.8);
+  tl.from("#eCn", { opacity: 0, duration: 0.4 }, 43.4);
+
+  // 6
+  tl.from("#e6a", { opacity: 0, y: 30, duration: 0.5, ease: E }, 47.1);
+  tl.from("#e6b", { opacity: 0, y: 30, duration: 0.5, ease: E }, 48.0);
+  tl.from("#e6t", { opacity: 0, y: 40, duration: 0.6, ease: E }, 49.2);
+
+  // 7
+  tl.from("#logo", { opacity: 0, scale: 0.85, duration: 0.6, ease: "back.out(1.6)" }, 52.1);
+  tl.from("#e7t", { opacity: 0, y: 30, duration: 0.5, ease: E }, 52.4);
+  tl.from("#e7u", { opacity: 0, duration: 0.4 }, 52.9);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines["main"] = tl;
+  tl.seek(0);
+</script>
+</body>
+</html>
