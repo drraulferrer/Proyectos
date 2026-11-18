@@ -18,3 +18,7 @@ Las tablas prorrogadas sin subida (de 2015, 2018, 2022 y 2025) llevan el símbol
 Madrid, Aragón y Asturias se leyeron en el boletín o en el convenio; Jaén, en la tabla del BOP citada literalmente. El resto procede de webs de convenios que citan el boletín oficial (columna `verificacion` del CSV). En Burgos, Valladolid, Córdoba y León el grupo del fisioterapeuta se ha deducido de la descripción de los grupos.
 
 Sin tabla comparable: Málaga, Murcia, Pontevedra, Las Palmas, Tenerife, Navarra, La Rioja, Castilla-La Mancha, Extremadura y País Vasco.
+
+## Puntualización: las horas
+
+`puntualizacion-horas.html` → `salida/historia-puntualizacion-horas.png`. Historia suelta que matiza la serie: compara sueldo anual, horas y euros por hora en cuatro casos (Madrid frente a Cataluña, Ourense, Sevilla y el SMI 2027). La jornada anual de cada convenio está en `../reel-respuesta-margen/datos/convenios-sanidad-privada-2026.csv`.
