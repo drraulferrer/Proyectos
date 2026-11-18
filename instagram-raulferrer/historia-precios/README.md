@@ -3,7 +3,7 @@
 Imagen de historia (1080 × 1920) con la mediana del precio de primera visita de fisioterapia que publican los profesionales en Doctoralia en 14 capitales, junto al salario anual de tabla del convenio de sanidad privada de esa zona.
 
 - `generar.py`: genera `historia.html` desde `../reel-respuesta-margen/datos/precios-primera-visita-doctoralia-2026-11.csv`.
-- `salida/historia-precio-primera-visita.png`: imagen final.
+- `salida/historia-precio-primera-visita.png`: imagen final, con el boletín oficial de cada convenio bajo su importe y la ruta de Doctoralia consultada al pie.
 
 ## Método
 

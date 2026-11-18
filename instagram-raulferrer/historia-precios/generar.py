@@ -10,7 +10,8 @@ for i,r in enumerate(rows):
     med=f"{p:g} €".replace('.',',')
     if r['anual_convenio']:
         vieja=r['tabla_convenio']!='2026'
-        conv=f'<em class="conv{" mad" if mad else ""}">{eur(float(r["anual_convenio"]))}{f"<small>⟳ tabla {r['tabla_convenio']}</small>" if vieja else "<small>"+r["convenio"]+"</small>"}</em>'
+        ref=("⟳ " + r['tabla_convenio'] + " · " if vieja else "") + r['boletin_convenio']
+        conv=f'<em class="conv"><span class="{"vmad" if mad else ""}">{eur(float(r["anual_convenio"]))}</span><small>{ref}</small></em>'
     else:
         conv='<em class="conv no">sin dato<small>de convenio</small></em>'
     filas.append(f'<div class="fila{" fmad" if mad else ""}" style="top:{i*ROW}px"><div class="nom"><b>{r["ciudad"]}</b><small>{r["n"]} precios</small></div>'
@@ -35,23 +36,24 @@ html=f'''<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Preci
   .bar.mad span {{ color:#fff; }}
   .fmad .nom b {{ text-decoration: underline 4px var(--nar); text-underline-offset: 6px; }}
   .conv {{ position:absolute; right:0; top:4px; font-style:normal; font-weight:800; font-size:27px; text-align:right; white-space:nowrap; }}
-  .conv small {{ display:block; font-size:17px; font-weight:600; color:var(--mut); margin-top:1px; }}
+  .conv small {{ display:block; font-size:16px; font-weight:600; color:var(--mut); margin-top:1px; }}
   .conv.no {{ color:#B9AD99; font-size:22px; }}
-  .conv.mad {{ text-decoration: underline 4px var(--nar); text-underline-offset: 6px; }}
+  .conv .vmad {{ text-decoration: underline 4px var(--nar); text-underline-offset: 6px; }}
   .lect {{ font-size:30px; line-height:1.4; color:#4A4238; }}
   .lect b {{ color:var(--ink); }}
   .nota {{ font-size:19px; line-height:1.45; color:var(--mut); }}
+  .nota b {{ color:var(--ink); }}
 </style></head><body>
 <section class="hist" id="historia">
   <div class="a kick" style="top:200px">Primera visita de fisioterapia · noviembre 2026</div>
   <div class="a h2" style="top:246px; font-size:84px">Lo que cuesta la <span class="serif">visita</span></div>
   <p class="a sub" style="top:360px">Precio mediano que publican los fisioterapeutas en Doctoralia, por capital. A la derecha, el salario anual de tabla del convenio de esa zona.</p>
-  <div class="a cabe" style="top:486px"><span style="width:{X0}px">Ciudad</span><span>Primera visita</span><span style="margin-left:auto">Convenio / año</span></div>
+  <div class="a cabe" style="top:486px"><span style="width:{X0}px">Ciudad</span><span>Primera visita</span><span style="margin-left:auto">Convenio · boletín</span></div>
   <div class="comp">
 {chr(10).join("    "+f for f in filas)}
   </div>
   <p class="a lect" style="top:{530+ROW*len(rows)+20}px">Madrid, Valencia, Sevilla y Zaragoza cobran lo mismo por la visita. <b>Sus convenios van de 19.629 € a 22.676 €.</b></p>
-  <p class="a nota" style="top:{530+ROW*len(rows)+126}px">Muestra: primera página de resultados de Doctoralia por ciudad (11 a 26 precios), consultada el 18/11/2026. Precio de primera visita, solo de quien lo publica; orientativo, no estadístico. Fuera por falta de muestra: Oviedo, Pamplona, Santander, Salamanca, Burgos, Córdoba, Jaén, Huelva, Almería y León. ⟳ tabla caducada sin actualizar.</p>
+  <p class="a nota" style="top:{530+ROW*len(rows)+118}px"><b>Fuentes.</b> Precios: doctoralia.es/tratamientos-servicios/primera-visita-fisioterapia/[ciudad], primera página de resultados, consultada el 18/11/2026 (mediana de 11 a 26 precios; solo de quien lo publica). Convenios: boletín oficial indicado bajo cada importe; ⟳ tabla caducada, con su año. Orientativo, no estadístico.</p>
 </section></body></html>'''
 open('historia.html','w').write(html)
 print('fin lista', 530+ROW*len(rows))
