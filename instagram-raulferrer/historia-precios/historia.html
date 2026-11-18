@@ -1,0 +1,51 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Precio de la primera visita</title>
+<link rel="stylesheet" href="../valor-fisioterapia/src/marca.css">
+<style>
+  body { display:flex; padding:40px; justify-content:center; }
+  .hist { position:relative; width:1080px; height:1920px; background:#fff; overflow:hidden; }
+  .a { position:absolute; left:80px; right:80px; }
+  .h2 { font-weight:800; font-size:96px; letter-spacing:-.035em; line-height:1; }
+  .sub { font-size:27px; line-height:1.4; color:var(--mut); }
+  .cabe { display:flex; font-size:19px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--mut); }
+  .comp { position:absolute; left:80px; right:80px; top:530px; height:924px; }
+  .fila { position:absolute; left:0; right:0; height:56px; }
+  .nom { position:absolute; left:0; top:2px; width:274px; }
+  .nom b { display:block; font-weight:800; font-size:30px; letter-spacing:-.01em; line-height:1.1; }
+  .nom small { display:block; font-size:18px; color:var(--mut); margin-top:2px; }
+  .bar { position:absolute; left:290px; top:6px; height:48px; background:var(--nar); border-radius:0 10px 10px 0; display:flex; align-items:center; justify-content:flex-end; padding-right:14px; }
+  .bar span { font-weight:800; font-size:25px; color:var(--ink); }
+  .bar.mad { background:var(--ink); }
+  .bar.mad span { color:#fff; }
+  .fmad .nom b { text-decoration: underline 4px var(--nar); text-underline-offset: 6px; }
+  .conv { position:absolute; right:0; top:4px; font-style:normal; font-weight:800; font-size:27px; text-align:right; white-space:nowrap; }
+  .conv small { display:block; font-size:17px; font-weight:600; color:var(--mut); margin-top:1px; }
+  .conv.no { color:#B9AD99; font-size:22px; }
+  .conv.mad { text-decoration: underline 4px var(--nar); text-underline-offset: 6px; }
+  .lect { font-size:30px; line-height:1.4; color:#4A4238; }
+  .lect b { color:var(--ink); }
+  .nota { font-size:19px; line-height:1.45; color:var(--mut); }
+</style></head><body>
+<section class="hist" id="historia">
+  <div class="a kick" style="top:200px">Primera visita de fisioterapia · noviembre 2026</div>
+  <div class="a h2" style="top:246px; font-size:84px">Lo que cuesta la <span class="serif">visita</span></div>
+  <p class="a sub" style="top:360px">Precio mediano que publican los fisioterapeutas en Doctoralia, por capital. A la derecha, el salario anual de tabla del convenio de esa zona.</p>
+  <div class="a cabe" style="top:486px"><span style="width:290px">Ciudad</span><span>Primera visita</span><span style="margin-left:auto">Convenio / año</span></div>
+  <div class="comp">
+    <div class="fila" style="top:0px"><div class="nom"><b>Palma</b><small>19 precios</small></div><div class="bar" style="width:278.6px"><span>65 €</span></div><em class="conv">22.566 €<small>⟳ tabla 2025</small></em></div>
+    <div class="fila" style="top:66px"><div class="nom"><b>Barcelona</b><small>26 precios</small></div><div class="bar" style="width:257.1px"><span>60 €</span></div><em class="conv">30.179 €<small>Cataluña</small></em></div>
+    <div class="fila" style="top:132px"><div class="nom"><b>Bilbao</b><small>20 precios</small></div><div class="bar" style="width:257.1px"><span>60 €</span></div><em class="conv no">sin dato<small>de convenio</small></em></div>
+    <div class="fila fmad" style="top:198px"><div class="nom"><b>Madrid</b><small>22 precios</small></div><div class="bar mad" style="width:214.3px"><span>50 €</span></div><em class="conv mad">19.940 €<small>Madrid</small></em></div>
+    <div class="fila" style="top:264px"><div class="nom"><b>Valencia</b><small>21 precios</small></div><div class="bar" style="width:214.3px"><span>50 €</span></div><em class="conv">19.629 €<small>⟳ tabla 2015</small></em></div>
+    <div class="fila" style="top:330px"><div class="nom"><b>Sevilla</b><small>20 precios</small></div><div class="bar" style="width:214.3px"><span>50 €</span></div><em class="conv">22.676 €<small>⟳ tabla 2025</small></em></div>
+    <div class="fila" style="top:396px"><div class="nom"><b>Zaragoza</b><small>20 precios</small></div><div class="bar" style="width:214.3px"><span>50 €</span></div><em class="conv">20.085 €<small>Aragón</small></em></div>
+    <div class="fila" style="top:462px"><div class="nom"><b>Málaga</b><small>16 precios</small></div><div class="bar" style="width:214.3px"><span>50 €</span></div><em class="conv no">sin dato<small>de convenio</small></em></div>
+    <div class="fila" style="top:528px"><div class="nom"><b>Granada</b><small>18 precios</small></div><div class="bar" style="width:192.9px"><span>45 €</span></div><em class="conv">24.791 €<small>Granada</small></em></div>
+    <div class="fila" style="top:594px"><div class="nom"><b>Valladolid</b><small>16 precios</small></div><div class="bar" style="width:192.9px"><span>45 €</span></div><em class="conv">20.974 €<small>⟳ tabla 2025</small></em></div>
+    <div class="fila" style="top:660px"><div class="nom"><b>Las Palmas</b><small>15 precios</small></div><div class="bar" style="width:192.9px"><span>45 €</span></div><em class="conv no">sin dato<small>de convenio</small></em></div>
+    <div class="fila" style="top:726px"><div class="nom"><b>Cádiz</b><small>12 precios</small></div><div class="bar" style="width:192.9px"><span>45 €</span></div><em class="conv">19.093 €<small>Cádiz</small></em></div>
+    <div class="fila" style="top:792px"><div class="nom"><b>A Coruña</b><small>11 precios</small></div><div class="bar" style="width:180.0px"><span>42 €</span></div><em class="conv">19.931 €<small>A Coruña</small></em></div>
+    <div class="fila" style="top:858px"><div class="nom"><b>Murcia</b><small>20 precios</small></div><div class="bar" style="width:171.4px"><span>40 €</span></div><em class="conv no">sin dato<small>de convenio</small></em></div>
+  </div>
+  <p class="a lect" style="top:1474px">Madrid, Valencia, Sevilla y Zaragoza cobran lo mismo por la visita. <b>Sus convenios van de 19.629 € a 22.676 €.</b></p>
+  <p class="a nota" style="top:1580px">Muestra: primera página de resultados de Doctoralia por ciudad (11 a 26 precios), consultada el 18/11/2026. Precio de primera visita, solo de quien lo publica; orientativo, no estadístico. Fuera por falta de muestra: Oviedo, Pamplona, Santander, Salamanca, Burgos, Córdoba, Jaén, Huelva, Almería y León. ⟳ tabla caducada sin actualizar.</p>
+</section></body></html>
