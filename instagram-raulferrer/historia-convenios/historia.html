@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Convenios 2026</title>
+<link rel="stylesheet" href="../valor-fisioterapia/src/marca.css">
+<style>
+  body { display:flex; padding:40px; justify-content:center; }
+  .hist { position:relative; width:1080px; height:1920px; background:#fff; overflow:hidden; }
+  .a { position:absolute; left:90px; right:90px; }
+  .h2 { font-weight:800; font-size:104px; letter-spacing:-.035em; line-height:1; }
+  .sub { font-size:30px; line-height:1.4; color:var(--mut); }
+  .comp { position:absolute; left:90px; right:90px; top:700px; height:768px; }
+  .fila { position:absolute; left:0; right:0; height:88px; }
+  .nom { position:absolute; left:0; top:8px; width:234px; }
+  .nom b { display:block; font-weight:800; font-size:34px; letter-spacing:-.01em; line-height:1.1; }
+  .nom small { display:block; font-size:21px; color:var(--mut); margin-top:4px; }
+  .bar { position:absolute; left:250px; top:4px; height:76px; background:#E3D8C5; border-radius:0 14px 14px 0; overflow:hidden; display:flex; align-items:center; padding-left:18px; }
+  .bar .exc { position:absolute; right:0; top:0; bottom:0; background:var(--nar); }
+  .bar span { position:relative; font-weight:800; font-size:30px; letter-spacing:-.02em; color:var(--ink); }
+  .bar.mad { background:var(--ink); }
+  .bar.mad span { color:#fff; }
+  .dif { position:absolute; right:0; top:22px; font-style:normal; font-weight:800; font-size:30px; white-space:nowrap; text-align:right; }
+  .dif.mas { color:var(--nartxt); }
+  .dif.menos { color:var(--mut); }
+  .dif.ref { color:var(--ink); font-size:22px; letter-spacing:.14em; text-transform:uppercase; top:28px; }
+  .linea { position:absolute; top:-46px; bottom:0; border-left:3px dashed var(--ink); }
+  .linea span { position:absolute; left:-70px; top:-12px; background:#fff; padding:0 8px; font-weight:800; font-size:22px; letter-spacing:.14em; text-transform:uppercase; white-space:nowrap; }
+  .leyenda { display:flex; gap:34px; font-size:26px; color:var(--texto,#4A4238); }
+  .leyenda i { display:inline-block; width:28px; height:28px; border-radius:6px; vertical-align:-5px; margin-right:10px; }
+  .nota { font-size:21px; line-height:1.45; color:var(--mut); }
+</style></head>
+<body>
+<section class="hist" id="historia">
+  <div class="a kick" style="top:250px">Sanidad privada · tablas 2026</div>
+  <div class="a h2" style="top:300px; font-size:100px">Madrid frente al <span class="serif">resto</span></div>
+  <p class="a sub" style="top:440px">Fisioterapeuta sin antigüedad. Euros brutos al año según la tabla de cada convenio, y diferencia con Madrid.</p>
+  <div class="a leyenda" style="top:565px"><span><i style="background:var(--ink)"></i>Madrid</span><span><i style="background:var(--nar)"></i>Lo que supera a Madrid</span></div>
+  <div class="comp">
+    <div class="linea" style="left:552.3px"><span>Madrid</span></div>
+    <div class="fila" style="top:0px"><div class="nom"><b>Cataluña°</b><small>autonómico</small></div><div class="bar" style="width:457.6px"><i class="exc" style="width:155.2px"></i><span>30.179 €</span></div><em class="dif mas">+10.240 €</em></div>
+    <div class="fila" style="top:96px"><div class="nom"><b>Cantabria°</b><small>autonómico</small></div><div class="bar" style="width:356.2px"><i class="exc" style="width:53.9px"></i><span>23.493 €</span></div><em class="dif mas">+3.554 €</em></div>
+    <div class="fila" style="top:192px"><div class="nom"><b>Jaén</b><small>provincial</small></div><div class="bar" style="width:326.0px"><i class="exc" style="width:23.7px"></i><span>21.500 €</span></div><em class="dif mas">+1.560 €</em></div>
+    <div class="fila" style="top:288px"><div class="nom"><b>Aragón</b><small>autonómico</small></div><div class="bar" style="width:304.5px"><i class="exc" style="width:2.2px"></i><span>20.085 €</span></div><em class="dif mas">+146 €</em></div>
+    <div class="fila" style="top:384px"><div class="nom"><b>Madrid</b><small>autonómico</small></div><div class="bar mad" style="width:302.3px"><span>19.940 €</span></div><em class="dif ref">referencia</em></div>
+    <div class="fila" style="top:480px"><div class="nom"><b>A Coruña°</b><small>provincial</small></div><div class="bar" style="width:302.2px"><span>19.931 €</span></div><em class="dif menos">−8 €</em></div>
+    <div class="fila" style="top:576px"><div class="nom"><b>Asturias</b><small>autonómico</small></div><div class="bar" style="width:297.6px"><span>19.632 €</span></div><em class="dif menos">−308 €</em></div>
+    <div class="fila" style="top:672px"><div class="nom"><b>Huelva°</b><small>provincial</small></div><div class="bar" style="width:292.3px"><span>19.280 €</span></div><em class="dif menos">−660 €</em></div>
+  </div>
+  <p class="a nota" style="top:1490px">Salario base y pluses fijos de convenio por número de pagas, sin antigüedad ni pluses por turnos. ° Dato de un resumen que cita el boletín oficial; el resto, leído en el convenio o el boletín. Sin tabla 2026 comparable: Valladolid, Sevilla, Comunidad Valenciana, Cádiz y País Vasco.</p>
+  <div class="a" style="top:1620px; font-weight:700; font-size:28px">@_raulferrer</div>
+</section>
+</body></html>
