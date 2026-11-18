@@ -26,5 +26,5 @@ Te contesto en un reel, que en un comentario no cabe. Veamos qué hay de cierto 
 - Portada sugerida: `salida/portada-reel.jpg` (las dos clínicas a final de mes).
 - Ejemplo mensual: 6 sesiones al día × 21 días × 60 € = 7.560 €. Clínica B: convenio de Madrid 2026 (1.424,25 € × 14 / 12 = 1.661,63 € brutos al mes) con cotizaciones empresariales de en torno al 32 %, unos 2.200 €. Clínica A paga unos 700 € más de coste mensual. Los 3.000 € de otros costes son ilustrativos.
 - Madrid frente a Cataluña: tablas 2026 de cada convenio (Madrid leído en el texto oficial; Cataluña, según resumen que cita el DOGC 9719 de 30/07/2026). Precio por sesión: horquilla de 40 a 70 € que repiten varias guías de precios para Madrid y Barcelona; es orientativa, no un estudio oficial.
-- El resto de datos de convenios está en `datos/convenios-2026.csv`.
+- El resto de datos de convenios está en `datos/convenios-sanidad-privada-2026.csv`.
 - El comentario se cita sin nombre de usuario ni el insulto.

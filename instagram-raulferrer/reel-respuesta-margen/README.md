@@ -11,4 +11,4 @@ Guion por bloques: el comentario citado sin nombre, «veamos qué hay de cierto�
 
 Regenerar: `npx hyperframes check && npx hyperframes render -q delivery -f 30 -o salida/reel-margen-y-sueldos.mp4`
 
-- `datos/convenios-2026.csv`: tablas 2026 de ocho convenios de sanidad privada, con fuente y nivel de verificación.
+- `datos/convenios-sanidad-privada-2026.csv`: tablas aplicables en 2026 de 24 convenios de sanidad privada, con fuente, año de la tabla y nivel de verificación.
