@@ -4070,6 +4070,9 @@ $("#cc").addEventListener("click",function(e){var t=e.target;
       bio:CC.bio,feats:[CC_BG[CC.bg].d],traits:CC_SP[CC.sp].r,tool:CC_BG[CC.bg].h,xp:LVX[lv-1]||0};
     sheetCalc(p);S.party.push(p);logAct("Personaje creado con el asistente: "+p.name);touch();
     CC={sp:CC.sp,cl:CC.cl,bg:CC.bg,b2:"",b1:"",sk:[],ex:"",tr:[],cj:[],name:"",lv:1,bio:"",chat:[],q:null,busy:false,msg:"Creado: "+p.name+", "+p.race+" "+p.cls.toLowerCase()+" de nivel "+lv+". Ya está en la lista, con la ficha completa."};ccDraw()}});
+/* ---- modelos con razonamiento (Qwen3, DeepSeek R1…): se quita el bloque <think> ---- */
+function stripThink(t){t=String(t||"");t=t.replace(/<think>[\s\S]*?<\/think>\s*/gi,"");var i=t.search(/<think>/i);if(i>=0)t=t.slice(0,i);return t.replace(/^\s+/,"")}
+var otherAN=other;other=function(input,o){o=o||{};var on=o.onText;if(on)o.onText=function(u){var x=stripThink(u&&u.text);on({text:x})};return otherAN(input,o).then(function(r){if(r&&typeof r.text==="string")r.text=stripThink(r.text);return r})};
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
