@@ -176,3 +176,9 @@ Las claves quedaron guardadas en el entorno de la sesión, no en el repositorio:
 - Vista propia para cada jugador en su móvil.
 - Muros finos entre casillas y puertas que se abren.
 - Probar la coherencia con un modelo pequeño real: las marcas de misión y de hechos dependen de que el modelo las escriba bien.
+
+## Hitos colados entre los PNJ
+
+- La revisión de coherencia avisa cuando un PNJ es en realidad una tarea o un hito, por ejemplo «Entregar la carta a la familia de Nyx». Ofrece pasarlo a hito de la misión principal, sin duplicar si ya existe, o quitarlo de los PNJ. Con varios, hay un botón para pasarlos todos.
+- La corrección automática ya no puede renombrar un PNJ con el texto de una tarea, y tiene una operación propia para marcar un hito como cumplido.
+- Al generar una historia o importar material con IA se descartan los PNJ que son tareas, y el prompt pide que en «pnj» solo vayan personas o criaturas con nombre.
