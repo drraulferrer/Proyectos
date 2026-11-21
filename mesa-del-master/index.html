@@ -402,6 +402,30 @@ body.doc-file{background:#fbf8f1;margin:0}
 @media print{body.doc-on>*:not(#doc-view){display:none!important}body.doc-on #doc-view{position:static;overflow:visible;background:#fff;padding:0}.doc-bar{display:none!important}#doc-body{max-width:none;padding:0;background:#fff}}
 .srd-l li{display:flex;gap:10px;align-items:center;justify-content:space-between}.srd-l li>span{min-width:0}.srd5{margin-top:8px}
 
+
+/* panel como cuadro de mando */
+.dash{display:flex;flex-direction:column;gap:16px}.dash-old{display:none!important}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px}
+.dcard{display:flex;flex-direction:column;gap:10px;min-width:0}.dhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px}.dhead h2{margin:0;font-size:1.1rem}
+.dlink{font-size:.85rem;color:var(--brass);text-decoration:none;white-space:nowrap}.dlink:hover{text-decoration:underline}
+.dstat{color:var(--muted)}.dstat b{color:var(--ink)}
+.mtr{height:8px;border-radius:4px;background:var(--raised);overflow:hidden;margin:3px 0 2px}.mtr i{display:block;height:100%;border-radius:4px;background:var(--brass);transition:width .4s}
+.mtr.hp i{background:var(--heal)}.mtr.half i{background:var(--warn)}.mtr.low i,.mtr.down i,.mtr.enem i{background:var(--hurt)}.mtr.xp i{background:#8d7ad1}.mtr.q i{background:var(--brass)}
+.rowb.sm{font-size:.85rem;margin-top:4px}.rowb.sm span{color:var(--muted)}
+.dlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}.dlist li{display:flex;flex-direction:column;gap:2px}.dlist .chip{font-size:.7rem;padding:1px 6px;min-height:0}
+.dparty{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.dpc2{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:12px;background:var(--raised)}.dpc2-b{flex:1;min-width:0;display:flex;flex-direction:column}.dpc2 .chips{margin-top:6px}.dpc2 .chip{font-size:.72rem}
+.up{color:var(--heal)}
+.dchap{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}.dchap li{display:flex;gap:10px;align-items:center}.dchap li span{flex:0 0 auto;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;border:2px solid var(--divider);color:var(--muted)}
+.dchap li.hecho span{background:var(--heal);border-color:var(--heal);color:#10140f}.dchap li.curso span{border-color:var(--brass);color:var(--brass)}.dchap li.curso b{color:var(--brass)}.dchap li.hecho b{color:var(--muted);font-weight:500}
+.dlog{margin:4px 0 0;padding-left:1.1em;font-size:.85rem;color:var(--muted)}.dlog li{margin:2px 0}
+.dalert{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}.dalert li{display:flex;gap:10px;align-items:flex-start;font-size:.92rem}.dalert li>span:nth-child(2){flex:1}
+.dalert .ic{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.8rem;background:var(--raised)}
+.dalert .err .ic{background:var(--hurt);color:#1a0d0c}.dalert .warn .ic{background:var(--warn);color:#1a1206}.dalert .ok .ic{background:var(--heal);color:#0e150f}
+.dminis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.dmini{display:flex;flex-direction:column;padding:10px;border-radius:10px;background:var(--raised);text-decoration:none;color:var(--ink)}.dmini b{font-size:1.4rem}.dmini span{font-size:.8rem;color:var(--muted)}.dmini:hover{outline:1px solid var(--brass)}
+.dshort{display:flex;flex-wrap:wrap;gap:8px}.dshort .btn{display:inline-flex;align-items:center;text-decoration:none}
+@media (max-width:640px){.dminis{grid-template-columns:repeat(2,1fr)}}
+
 /* deshacer */
 #undo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 32px)}
 #undo[hidden]{display:none}
@@ -3816,6 +3840,47 @@ function srdImport(f){var msg=$("#srd-msg");if(!f)return;var r=new FileReader();
     if(!hp||ac==null||cr==null)return;var k=String(ty||"").toLowerCase();out.push([String(m.name).slice(0,60),String(m.name).slice(0,60),TY5[k]||k||"",String((m.size||[""])[0]||""),int(ac,12),int(hp,10),Math.floor((int(m.dex,10)-10)/2),String(cr),best?bh:0,best?best.d.slice(0,20):"",n,best?best.n.toLowerCase().slice(0,40):"",String(m.source||""),0,Math.floor((int(m.wis,10)-10)/2),Math.floor((int(m.con,10)-10)/2),1])});
   if(!out.length){msg.textContent="No he podido leer ninguna criatura con CA, PG y VD.";return}var names={};MY5E.forEach(function(x){names[x[0]+"|"+x[12]]=1});out.forEach(function(x){if(!names[x[0]+"|"+x[12]])MY5E.push(x)});
   idbPut("bestiario-5e",MY5E).then(function(){msg.textContent=out.length+" criaturas cargadas. Ya aparecen en la búsqueda."},function(){msg.textContent="No se ha podido guardar en este navegador."});srdDraw()};r.readAsText(f)}
+/* ---- Panel como cuadro de mando ---- */
+(function(){var g=$("#p-cont");g=g&&g.closest(".grid2");if(g)g.insertAdjacentHTML("afterend",'<div id="dash" class="dash"></div>');var pp=$("#p-party");if(pp){var c=pp.closest(".card");if(c)c.classList.add("dash-old")}})();
+function meter(v,max,cls,lab){var r=max>0?Math.max(0,Math.min(1,v/max)):0;return'<div class="mtr'+(cls?" "+cls:"")+'" role="img" aria-label="'+esc(lab||(v+" de "+max))+'" title="'+esc(lab||(v+" de "+max))+'"><i style="width:'+Math.round(r*100)+'%"></i></div>'}
+function dCard(id,title,body,link){return'<section class="card dcard" id="'+id+'"><div class="dhead"><h2>'+title+'</h2>'+(link?'<a href="'+link[0]+'" class="dlink">'+link[1]+' →</a>':"")+'</div>'+body+'</section>'}
+function qState(q){var st=flat(q.st||"");return/hech|cumpl/.test(st)?"done":/fall/.test(st)?"fail":"open"}
+function dashQuests(s){var Q=(s.quests||[]).slice().sort(function(a,b){return(b.main?1:0)-(a.main?1:0)}),open=Q.filter(function(q){return qState(q)==="open"}),done=Q.length-open.length;
+  if(!Q.length)return'<p class="sub">Esta historia no tiene misiones. Son el objetivo del juego: añádelas en la ficha de la historia.</p>';
+  return'<div class="dstat"><b>'+open.length+'</b> abiertas · <b>'+done+'</b> cerradas</div><ul class="dlist">'+open.slice(0,6).map(function(q){var S2=q.steps||[],d=S2.filter(function(x){return x.done}).length,nx=S2.filter(function(x){return!x.done})[0];
+    return'<li><div class="rowb"><b>'+esc(q.title)+(q.main?' <span class="chip">principal</span>':"")+'</b><span class="sub">'+(S2.length?d+" de "+S2.length+" hitos":"sin hitos")+'</span></div>'+(S2.length?meter(d,S2.length,"q",d+" de "+S2.length+" hitos cumplidos"):"")+(nx?'<span class="sub">Siguiente: '+esc(nx.x)+'</span>':"")+'</li>'}).join("")+'</ul>'+(open.length>6?'<p class="sub">Y '+(open.length-6)+' más en la ficha.</p>':"")}
+function dashChapters(s){if(!s.chapters.length)return'<p class="sub">Sin capítulos todavía.</p>';
+  return'<ol class="dchap">'+s.chapters.map(function(c,i){return'<li class="'+(c.st||"pend")+'" title="'+esc(c.title)+' · '+esc(STL[c.st]||"pendiente")+'"><span>'+(i+1)+'</span><b>'+esc(c.title)+'</b></li>'}).join("")+'</ol>'}
+function dashParty(R){if(!R.length)return'<p class="sub">No hay personajes en esta historia. Repártelos en «Personajes».</p>';
+  var inC={};(S.combat.list||[]).forEach(function(c){if(c.pcId)inC[c.pcId]=c});
+  return'<div class="dparty">'+R.map(function(p){var c=inC[p.id],hp=c&&c.hp!=null?c.hp:p.hp,mx=p.max||hp||1,h=int(hp,int(mx,1)),lv=int(p.level,1),x=int(p.xp,0),a=LVX[lv-1]||0,b=lv<20?LVX[lv]:x,cn=(c&&c.conds||[]).concat(GUARRO?(p.ets||[]):[]).filter(function(k,i,A){return A.indexOf(k)===i});
+    return'<div class="dpc2">'+pcAva(p)+'<div class="dpc2-b"><b>'+esc(p.name)+'</b><span class="sub">'+esc(pcSub(p))+' · nivel '+lv+' · CA '+esc(p.ac!=null?p.ac:"?")+'</span>'+
+      '<div class="rowb sm"><span>PG</span><b>'+h+' / '+int(mx,1)+'</b></div>'+meter(h,int(mx,1),h<=0?"down":h<=mx/4?"low":h<=mx/2?"half":"hp",h+" de "+mx+" PG")+
+      '<div class="rowb sm"><span>Experiencia</span><b>'+(canLevel(p)?'<span class="up">¡Puede subir de nivel!</span>':fmt(x)+(lv<20?" / "+fmt(b):""))+'</b></div>'+meter(x-a,Math.max(1,b-a),"xp",fmt(x)+" PX")+
+      (cn.length?'<div class="chips">'+cn.map(function(k){return'<span class="chip'+(isPox(k)?" pox":"")+'">'+esc(k)+'</span>'}).join("")+'</div>':"")+'</div></div>'}).join("")+'</div>'}
+function dashCombat(){var C=S.combat,L=C.list||[];if(!L.length)return'<p class="sub">No hay ningún combate montado.</p><div class="bar"><a class="btn" href="#combate">Preparar un combate</a></div>';
+  var F=L.filter(function(c){return!isPc(c)&&!c.ally}),up=F.filter(function(c){return hpOf(c)>0&&!c.fled}).length,st=C.over==="win"?"Victoria":C.over==="lose"?"Derrota":C.round?"En curso, ronda "+C.round:"Montado, sin empezar",log=(C.log||[]).slice(-3);
+  return'<div class="dstat"><b>'+esc(st)+'</b>'+(C.goal&&C.goal.k&&C.goal.k!=="all"?' · objetivo: '+esc(goalTxt(C.goal)):"")+'</div><div class="rowb sm"><span>Enemigos en pie</span><b>'+up+' de '+F.length+'</b></div>'+meter(up,F.length||1,"enem",up+" de "+F.length+" enemigos en pie")+
+    (C.sim&&!C.over?'<p class="sub">Pronóstico: '+esc(C.sim.lab||"")+', '+C.sim.w+' % de victoria</p>':"")+(log.length?'<ul class="dlog">'+log.map(function(t){return'<li>'+esc(String(typeof t==="string"?t:t.t||"").slice(0,180))+'</li>'}).join("")+'</ul>':"")}
+function dashAlerts(s,R){var A=[];
+  if(s){try{storyCheck(s).forEach(function(x){if(x.l==="err"||x.l==="warn")A.push([x.l,x.t,"#historia"])})}catch(e){}if(!s.next.date)A.push(["info","No hay fecha para la próxima sesión.","#historia"])}
+  R.forEach(function(p){if(canLevel(p))A.push(["ok",p.name+" puede subir de nivel.","#personajes"]);if(int(p.hp,1)<=0)A.push(["err",p.name+" está a 0 PG.","#personajes"]);if(GUARRO&&(p.ets||[]).length)A.push(["warn",p.name+" tiene "+p.ets.join(", ")+". Se cura en esta misma página.","#panel"])});
+  if(!A.length)return'<p class="sub">Todo en orden. No hay nada pendiente.</p>';var IC={err:"!",warn:"!",info:"i",ok:"✓"},LB={err:"Importante",warn:"Revisar",info:"Aviso",ok:"Bien"};
+  return'<ul class="dalert">'+A.slice(0,7).map(function(a){return'<li class="'+a[0]+'"><span class="ic" aria-hidden="true">'+IC[a[0]]+'</span><span><b>'+LB[a[0]]+':</b> '+esc(a[1])+'</span><a href="'+a[2]+'" class="dlink">Ver</a></li>'}).join("")+'</ul>'+(A.length>7?'<p class="sub">Y '+(A.length-7)+' avisos más.</p>':"")}
+function dashWorld(s){var m=curMap(),n=function(v,l,h){return'<a class="dmini" href="'+h+'"><b>'+v+'</b><span>'+l+'</span></a>'};
+  return'<div class="dminis">'+n(s.npcs.length,"PNJ","#historia")+n((s.places||[]).length,"lugares","#historia")+n(s.mons.length,"criaturas","#historia")+n((s.loot||[]).length,"objetos de botín","#historia")+n((s.facts||[]).length,"hechos","#historia")+n(s.notes.length,"notas","#historia")+'</div>'+
+    '<div class="rowb sm"><span>Mapa en uso</span><b>'+esc(m&&m.name||"Sin mapa")+'</b></div><span class="sub">'+(m&&m.tokens?m.tokens.length:0)+' figuras en el mapa</span>'}
+function dashShort(){var L=[["#mesa","Mesa de juego"],["#ia","Máster IA"],["#combate","Combate"],["#mapa","Mapa"],["#personajes","Personajes"],["#chuleta","Reglas"]];
+  return'<div class="dshort">'+L.map(function(x){return'<a class="btn" href="'+x[0]+'">'+x[1]+'</a>'}).join("")+'<button type="button" data-dash="players">Pantalla de jugadores</button><button type="button" data-dash="dice">Dados</button>'+(story()?'<button type="button" data-doc="story">Documentación</button>':"")+'</div>'}
+function dashDraw(){var el=$("#dash");if(!el)return;var s=story(),R=roster();if(!s){el.innerHTML=dCard("d-short","Atajos",dashShort());return}
+  el.innerHTML='<div class="dgrid">'+dCard("d-quests","Misiones",dashQuests(s),["#historia","Ver todas"])+dCard("d-alerts","Pendiente",dashAlerts(s,R))+'</div>'+
+    dCard("d-party","El grupo",dashParty(R),["#personajes","Fichas"])+
+    '<div class="dgrid">'+dCard("d-chap","Capítulos",dashChapters(s),["#historia","Abrir"])+dCard("d-combat","Combate",dashCombat(),["#combate","Ir"])+'</div>'+
+    '<div class="dgrid">'+dCard("d-world","El mundo de la historia",dashWorld(s))+dCard("d-short","Atajos",dashShort())+'</div>'}
+$("#tab-panel").addEventListener("click",function(e){var b=e.target.closest("[data-dash]");if(!b)return;if(b.dataset.dash==="players")$("#btn-players").click();else $("#btn-dice").click()});
+var drawPanelAJ=drawPanel;drawPanel=function(){drawPanelAJ();dashDraw();var s=story(),R=roster(),k=$("#kpis");if(!k||!s)return;
+  var Q=s.quests||[],qo=Q.filter(function(q){return qState(q)==="open"}).length,hp=0,mx=0;R.forEach(function(p){hp+=Math.max(0,int(p.hp,0));mx+=int(p.max,0)});
+  k.insertAdjacentHTML("beforeend",'<div class="kpi"><span>Misiones abiertas</span><b>'+qo+'</b><small>'+(Q.length-qo)+' cerradas</small></div><div class="kpi"><span>Salud del grupo</span><b>'+(mx?Math.round(hp/mx*100):0)+' %</b><small>'+hp+' de '+mx+' PG</small></div>')};
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
