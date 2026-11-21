@@ -187,3 +187,10 @@ Las claves quedaron guardadas en el entorno de la sesión, no en el repositorio:
 
 - Al editar un personaje hay un campo «Historia personal y trasfondo». Se guarda al escribir, se ve plegada en la tarjeta y sale en la documentación de personajes. El desplegable que antes se llamaba «Historia» ahora se llama «Campaña en la que juega», para no confundirlos.
 - El botón «Retrato con Kie.ai» está también en la tarjeta, sin entrar a editar, y se ve siempre. Sin clave de Kie.ai, lleva al apartado donde se pone. En la versión de claude.ai explica que Kie.ai solo funciona en la web.
+
+## Máster con IA usando créditos de Kie.ai
+
+- Nuevo preajuste «Kie.ai, con tus créditos (Claude, Gemini, GPT)» en el grupo de pago. Al elegirlo copia la clave del generador de imágenes de Kie.ai y pone claude-sonnet-5-5 como modelo.
+- El modelo decide el formato: claude-… usa /claude/v1/messages, gpt-… usa /codex/v1/responses y gemini-… usa /<modelo>-openai/v1/chat/completions. Las tres respuestas llegan por streaming.
+- «Probar y ver modelos» lista los Claude y GPT que Kie.ai ofrece y añade los Gemini conocidos. Si Kie.ai retira un modelo (código 410) o faltan créditos, sale un aviso claro.
+- Kie.ai solo deja pasar las cabeceras Authorization y Content-Type desde el navegador, por eso no se usa el SDK de Anthropic con este proveedor.
