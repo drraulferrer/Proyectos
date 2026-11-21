@@ -382,6 +382,26 @@ body.solo-cb #cb-stage .lfx,body.solo-cb #cb-stage .hang{width:min(100%,900px);m
 .cast-r .ava.sm{width:34px;height:34px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font-size:.8rem;background:var(--card2,#222)}.cast-r .ava.sm img{width:100%;height:100%;object-fit:cover}
 @media (max-width:640px){.cast-r{grid-template-columns:auto auto minmax(0,1fr)}.cast-r select{grid-column:1/-1}}
 
+
+/* borrar historias, documentación y bestiario */
+.scw{position:relative;display:flex}.scw>.scard{flex:1;min-width:0}
+.scdel{position:absolute;top:10px;right:10px;z-index:2;min-height:0;width:34px;height:34px;padding:0;display:grid;place-items:center;border-radius:50%;background:rgba(10,10,16,.72);color:#fff;border:1px solid rgba(255,255,255,.25);opacity:.8}
+.scdel:hover,.scdel:focus-visible{opacity:1;background:#b3264a}
+.sd-tools{margin:8px 0 0}
+#doc-view{position:fixed;inset:0;z-index:80;background:var(--bg,#111);overflow:auto;padding:0 0 40px}
+.doc-bar{position:sticky;top:0;z-index:1;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px max(16px,env(safe-area-inset-left,0px));background:var(--panel,#181820);border-bottom:1px solid var(--divider)}
+#doc-body{max-width:860px;margin:0 auto;padding:24px 16px;background:#fbf8f1;color:#1d1a16;font:15px/1.55 Georgia,"Times New Roman",serif;border-radius:0 0 8px 8px}
+#doc-body h1{font-size:2rem;margin:.2em 0;color:#1d1a16}#doc-body h2{font-size:1.25rem;margin:1.4em 0 .4em;border-bottom:2px solid #c9b88f;padding-bottom:3px;color:#4a2c12}#doc-body h3{margin:0 0 .2em;font-size:1.15rem;color:#1d1a16}
+#doc-body ul,#doc-body ol{padding-left:1.3em}#doc-body li{margin:.35em 0}.dkick{text-transform:uppercase;letter-spacing:.08em;font-size:.75rem;color:#7a6a4f;margin:0}.dmeta{color:#5d513e;margin:.2em 0}
+.dst{font-size:.78rem;padding:1px 6px;border-radius:6px;background:#ece3cf;color:#5d513e}.dsteps{color:#5d513e;font-size:.9rem}
+.dpc{border:1px solid #d9ccad;border-radius:10px;padding:12px 14px;margin:12px 0;overflow:hidden;break-inside:avoid}.dpic{float:right;width:92px;height:92px;object-fit:cover;border-radius:10px;margin:0 0 8px 12px}
+.dab{border-collapse:collapse;margin:6px 0;width:auto}.dab td{border:1px solid #d9ccad;padding:4px 8px;text-align:center;font-size:.85rem}.dmon{border-collapse:collapse;width:100%}.dmon th,.dmon td{border-bottom:1px solid #d9ccad;padding:4px 6px;text-align:left;font-size:.9rem}
+#doc-body .g18{font-size:.8rem}
+body.doc-on{overflow:hidden}
+body.doc-file{background:#fbf8f1;margin:0}
+@media print{body.doc-on>*:not(#doc-view){display:none!important}body.doc-on #doc-view{position:static;overflow:visible;background:#fff;padding:0}.doc-bar{display:none!important}#doc-body{max-width:none;padding:0;background:#fff}}
+.srd-l li{display:flex;gap:10px;align-items:center;justify-content:space-between}.srd-l li>span{min-width:0}.srd5{margin-top:8px}
+
 /* deshacer */
 #undo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 32px)}
 #undo[hidden]{display:none}
@@ -3715,6 +3735,87 @@ var drawStoryAH=drawStory;drawStory=function(){drawStoryAH();var s=story(),sum=$
   var host=sum.closest(".card")||sum;host.insertAdjacentHTML("afterend",'<div class="card dm" id="sd-cast"><h2>Personajes en esta historia</h2><p class="sub">Pulsa para meter o sacar a un personaje. Si estaba en otra historia, se mueve a esta.</p><div class="chips">'+
     S.party.map(function(p){var on=p.story===s.id,o=!on&&storyById(p.story);return'<button type="button" class="fchip" data-sdcast="'+esc(p.id)+'" aria-pressed="'+on+'">'+esc(p.name)+(o?' <span class="sub">('+esc(o.title)+')</span>':"")+'</button>'}).join("")+'</div></div>')};
 document.addEventListener("click",function(e){var b=e.target.closest("[data-sdcast]");if(!b)return;var s=story(),p=pc(b.dataset.sdcast);if(!s||!p)return;p.story=p.story===s.id?"":s.id;touch();draw()});
+/* ---- borrar historias ---- */
+RMK["data-stdel"]="Historia eliminada";
+function stDelete(id){var s=storyById(id);if(!s)return;
+  if(!confirm("¿Eliminar «"+s.title+"»?\n\nSe borran sus capítulos, PNJ, misiones, notas y sesiones. Sus personajes se quedan sin historia. Tendrás unos segundos para deshacerlo."))return;
+  S.stories=S.stories.filter(function(x){return x!==s});S.party.forEach(function(p){if(p.story===s.id)p.story=""});if(S.storyId===s.id)S.storyId=S.stories[0]?S.stories[0].id:null;
+  logAct("Historia eliminada: "+s.title);touch(false);if(location.hash==="#historia")location.hash="historias";draw()}
+document.addEventListener("click",function(e){var b=e.target.closest("[data-stdel]");if(!b)return;e.preventDefault();e.stopPropagation();stDelete(b.dataset.stdel)});
+var drawStoriesAI=drawStories;drawStories=function(){drawStoriesAI();[].forEach.call(document.querySelectorAll("#st-cards .scard[data-story]"),function(b){if(b.parentNode.classList.contains("scw"))return;
+  var w=document.createElement("div");w.className="scw";b.parentNode.insertBefore(w,b);w.appendChild(b);
+  w.insertAdjacentHTML("beforeend",'<button type="button" class="scdel" data-stdel="'+esc(b.dataset.story)+'" title="Eliminar esta historia" aria-label="Eliminar esta historia"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></button>')})};
+
+/* ---- documentación de historias y personajes ---- */
+var STL={hecho:"hecho",curso:"en curso",pend:"pendiente"},NPCST={aliado:"aliado",neutral:"neutral",hostil:"hostil",enemigo:"enemigo"};
+function dTxt(o){return o==null?"":String(o.x||o.text||o.t&&typeof o.t==="string"&&o.t||o.desc||o.sum||o.note||"")}
+function pcDoc(p){sheet(p);var A=ABK.map(function(k){return'<td><b>'+ABN[k]+'</b><br>'+p.ab[k]+' ('+sgn(abMod(p,k))+')</td>'}).join(""),u=pcPic(p)||(S.thumbs&&S.thumbs["pc-"+p.id])||"",st=storyById(p.story);
+  var sk=(p.sk||[]).map(function(n){var i=-1;SKL.forEach(function(x,j){if(x[0]===n)i=j});return n+(i>=0?" "+sgn(skillBonus(p,i)):"")}),sv=(p.sv||[]).map(function(k){return(ABN[k]||k)+" "+sgn(saveBonus(p,k))});
+  return'<section class="dpc">'+(u?'<img class="dpic" src="'+esc(u)+'" alt="">':"")+'<h3>'+esc(p.name)+'</h3><p class="dmeta">'+esc([p.race,p.cls,"nivel "+int(p.level,1)].filter(Boolean).join(" · "))+(p.player?" · juega "+esc(p.player):"")+(st?" · historia: "+esc(st.title):"")+'</p>'+
+    '<p><b>PG</b> '+esc(p.hp!=null?p.hp:"?")+' / '+esc(p.max!=null?p.max:"?")+' · <b>CA</b> '+esc(p.ac!=null?p.ac:"?")+' · <b>Velocidad</b> '+fmt(p.speed||9)+' m · <b>Competencia</b> '+sgn(prof(p))+'</p><table class="dab"><tr>'+A+'</tr></table>'+
+    (sv.length?'<p><b>Salvaciones:</b> '+esc(sv.join(", "))+'</p>':"")+(sk.length?'<p><b>Habilidades:</b> '+esc(sk.join(", "))+'</p>':"")+((p.spells||[]).length?'<p><b>Conjuros:</b> '+esc(p.spells.join(", "))+'</p>':"")+
+    (GUARRO&&((p.pos||[]).length||(p.ets||[]).length||p.kids)?'<p><b>+18:</b> '+esc([(p.pos||[]).length?"posturas: "+posOf(p).join(", "):"",(p.ets||[]).length?"enfermedades: "+p.ets.join(", "):"",p.kids?"herederos en camino: "+p.kids:""].filter(Boolean).join(" · "))+'</p>':"")+'</section>'}
+function storyDoc(s){var P=S.party.filter(function(p){return p.story===s.id}),L=[],sec=function(t,b){if(b)L.push('<h2>'+t+'</h2>'+b)},ul=function(A,f){return A.length?'<ul>'+A.map(f).join("")+'</ul>':""};
+  L.push('<header><p class="dkick">Documentación de la historia · '+esc(new Date().toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric"}))+'</p><h1>'+esc(s.title)+(adultStory(s)?' <span class="g18">+18</span>':"")+'</h1><p class="dmeta">'+esc([s.system||"D&D 5.5",s.status,s.sessions.length+(s.sessions.length===1?" sesión":" sesiones"),P.length+(P.length===1?" personaje":" personajes")].join(" · "))+'</p></header>');
+  sec("De qué va",s.desc?'<p>'+esc(s.desc)+'</p>':"");sec("Introducción para los jugadores",s.zero?'<p>'+esc(s.zero)+'</p>':"");
+  sec("Capítulos",s.chapters.length?'<ol>'+s.chapters.map(function(c){return'<li><b>'+esc(c.title)+'</b> <span class="dst">'+esc(STL[c.st]||c.st||"")+'</span>'+(c.goal||c.desc?'<br>'+esc(c.goal||c.desc):"")+'</li>'}).join("")+'</ol>':"");
+  var Q=s.quests||[];sec("Misiones",ul(Q,function(q){var steps=(q.steps||[]).map(function(x){return(x.done?"✔ ":"○ ")+x.x});return'<li><b>'+esc(q.title)+'</b>'+(q.main?" (principal)":"")+' <span class="dst">'+esc(q.st||"")+'</span>'+(q.giver?' · encarga '+esc(q.giver):"")+(q.reward?' · recompensa: '+esc(q.reward):"")+(steps.length?'<br><span class="dsteps">Hitos: '+esc(steps.join(" · "))+'</span>':"")+'</li>'}));
+  sec("Personajes no jugadores",ul(s.npcs,function(n){return'<li><b>'+esc(n.name)+'</b>'+(n.role?', '+esc(n.role):"")+(n.st?' <span class="dst">'+esc(NPCST[n.st]||n.st)+'</span>':"")+[n.where?"Dónde: "+n.where:"",n.wants?"Qué quiere: "+n.wants:"",n.secret?"Secreto (solo el máster): "+n.secret:""].filter(Boolean).map(function(x){return'<br>'+esc(x)}).join("")+'</li>'}));
+  sec("Lugares",ul(s.places||[],function(p){return'<li><b>'+esc(p.title)+'</b>'+(p.mapHint||p.note?'<br>'+esc(p.mapHint||p.note):"")+'</li>'}));
+  sec("Criaturas",s.mons.length?'<table class="dmon"><tr><th>Criatura</th><th>CA</th><th>PG</th><th>VD</th><th>Ataque</th></tr>'+s.mons.map(function(m){return'<tr><td>'+esc(m[0])+'</td><td>'+m[1]+'</td><td>'+m[2]+'</td><td>'+esc(m[4])+'</td><td>'+sgn(m[5])+', '+esc(m[6])+(m[7]>1?" ×"+m[7]:"")+'</td></tr>'}).join("")+'</table>':"");
+  sec("Hechos establecidos",ul(s.facts||[],function(f){return'<li>'+esc(dTxt(f))+'</li>'}));
+  sec("Botín",ul(s.loot||[],function(o){return'<li>'+esc(o.x)+'</li>'}));
+  sec("Sesiones",ul(s.sessions,function(x){return'<li><b>'+esc(x.d||"")+'</b>'+(x.h?' · '+esc(fmt(x.h))+' h':"")+(x.x?'<br>'+esc(x.x):"")+'</li>'}));
+  sec("Notas",ul(s.notes,function(n){return'<li><b>'+esc(n.title||"Nota")+'</b><br>'+esc(n.text||"")+'</li>'}));
+  if(P.length)L.push('<h2>Personajes</h2>'+P.map(pcDoc).join(""));
+  return L.join("")}
+function charsDoc(P,title){return'<header><p class="dkick">Documentación de personajes · '+esc(new Date().toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric"}))+'</p><h1>'+esc(title)+'</h1><p class="dmeta">'+P.length+(P.length===1?" personaje":" personajes")+'</p></header>'+P.map(pcDoc).join("")}
+(function(){var d=document.createElement("div");d.id="doc-view";d.hidden=true;d.setAttribute("role","dialog");d.setAttribute("aria-label","Documentación");
+  d.innerHTML='<div class="doc-bar"><b id="doc-t">Documentación</b><span style="flex:1"></span><button type="button" class="pri" id="doc-print">Imprimir o guardar en PDF</button><button type="button" id="doc-dl"'+(inArtifact?" hidden":"")+'>Descargar</button><button type="button" class="ghost" id="doc-x">Cerrar</button></div><article id="doc-body"></article>';document.body.appendChild(d)})();
+var docName="documentacion";
+function docOpen(html,title){$("#doc-body").innerHTML=html;$("#doc-t").textContent=title;docName=slug(title)||"documentacion";$("#doc-view").hidden=false;document.body.classList.add("doc-on");$("#doc-view").scrollTop=0}
+$("#doc-x").onclick=function(){$("#doc-view").hidden=true;document.body.classList.remove("doc-on")};
+$("#doc-print").onclick=function(){window.print()};
+$("#doc-dl").onclick=function(){var css=[].map.call(document.querySelectorAll("style"),function(x){return x.textContent}).join("\n"),h='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>'+esc($("#doc-t").textContent)+'</title><style>'+css+'</style></head><body class="doc-file"><article id="doc-body">'+$("#doc-body").innerHTML+'</article></body></html>',
+  a=document.createElement("a");a.href=URL.createObjectURL(new Blob([h],{type:"text/html"}));a.download=docName+".html";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1000)};
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!$("#doc-view").hidden)$("#doc-x").click()});
+document.addEventListener("click",function(e){var b=e.target.closest("[data-doc]");if(!b)return;var k=b.dataset.doc;
+  if(k==="story"){var s=story();if(s)docOpen(storyDoc(s),s.title)}
+  else if(k==="chars"){var f=typeof chFilter!=="undefined"&&chFilter?storyById(chFilter):null,P=S.party.filter(function(p){return!f||p.story===f.id});if(P.length)docOpen(charsDoc(P,f?"Personajes de «"+f.title+"»":"Todos los personajes"),f?"Personajes de "+f.title:"Personajes")}
+  else if(k==="pc"){var p=pc(b.dataset.id);if(p)docOpen(charsDoc([p],p.name),p.name)}});
+var drawStoryAI=drawStory;drawStory=function(){drawStoryAI();var s=story(),bn=$("#sd-banner");if(!s||!bn)return;var old=$("#sd-tools");if(old)old.remove();
+  bn.insertAdjacentHTML("afterend",'<div class="bar sd-tools" id="sd-tools"><button type="button" data-doc="story">Documentación de la historia</button><span style="flex:1"></span><button type="button" class="ghost hurt dm" data-stdel="'+esc(s.id)+'">Eliminar historia</button></div>')};
+(function(){var a=$("#tab-personajes .acts");if(a)a.insertAdjacentHTML("afterbegin",'<button type="button" data-doc="chars" title="Fichas listas para imprimir o guardar en PDF">Documentación</button>')})();
+
+/* ---- bestiario SRD y bestiario propio en formato 5e.tools ---- */
+var SRD=null,MY5E=[],srdBusy=false,TY5={aberration:"Aberración",beast:"Bestia",celestial:"Celestial",construct:"Autómata",dragon:"Dragón",elemental:"Elemental",fey:"Feérico",fiend:"Infernal",giant:"Gigante",humanoid:"Humanoide",monstrosity:"Monstruosidad",ooze:"Cieno",plant:"Planta",undead:"No muerto"};
+function srdLoad(){if(SRD||srdBusy)return;srdBusy=true;fetch("data/srd-monstruos.json").then(function(r){return r.json()}).then(function(d){SRD=d.m||[];srdBusy=false;srdDraw()},function(){srdBusy=false;var o=$("#srd-out");if(o)o.innerHTML='<p class="sub">No se ha podido cargar el bestiario. Comprueba la conexión y vuelve a abrir este apartado.</p>'});
+  idbGet("bestiario-5e").then(function(v){if(Array.isArray(v)){MY5E=v;srdDraw()}},function(){})}
+(function(){var mi=$("#mi");if(!mi)return;var crs=["0","1/8","1/4","1/2"];for(var i=1;i<=30;i++)crs.push(String(i));
+  mi.insertAdjacentHTML("beforebegin",'<details class="dm" id="srd"><summary>Bestiario libre: 332 criaturas del SRD con sus estadísticas</summary><div class="bar" style="margin-top:8px"><label style="flex:1 1 10em">Nombre o tipo<input id="srd-q" placeholder="goblin, dragón, no muerto…" style="width:100%"></label><label>VD<select id="srd-cr"><option value="">Todos</option>'+crs.map(function(c){return'<option>'+c+'</option>'}).join("")+'</select></label></div>'+
+    '<div id="srd-out"></div><p class="small muted">Datos del <i>System Reference Document 5.1</i> de Wizards of the Coast, con licencia CC-BY-4.0. Al añadir una criatura a la historia, entra en el generador de encuentros con su CA, PG, VD y su mejor ataque.</p>'+
+    '<details class="srd5"><summary>Cargar mi propio bestiario de 5e.tools</summary><p class="sub">Si tienes un archivo de bestiario en formato JSON de 5e.tools (por ejemplo, de un libro que tengas), cárgalo aquí. Se queda solo en este navegador, no se sube a ningún sitio, y sus criaturas aparecen en esta misma búsqueda marcadas como «tuyas».</p><div class="bar"><input id="srd-file" type="file" accept="application/json,.json"><button type="button" class="ghost" id="srd-clear" hidden>Borrar mi bestiario</button></div><p class="sub" id="srd-msg" role="status"></p></details></details>');
+  $("#srd").addEventListener("toggle",function(){if(this.open)srdLoad()})})();
+function srdAll(){return(SRD||[]).concat(MY5E)}
+function srdDraw(){var el=$("#srd-out");if(!el)return;$("#srd-clear").hidden=!MY5E.length;$("#srd-msg").textContent=MY5E.length?"Tu bestiario: "+MY5E.length+" criaturas cargadas en este navegador.":"";
+  if(!SRD){el.innerHTML='<p class="sub">Cargando el bestiario…</p>';return}var q=flat($("#srd-q").value.trim()),cr=$("#srd-cr").value;if(!q&&!cr){el.innerHTML='<p class="sub">Escribe un nombre o un tipo, o elige un VD.</p>';return}
+  var A=srdAll(),L=A.filter(function(m){return(!cr||m[7]===cr)&&(!q||flat(m[0]+" "+m[1]+" "+m[2]).indexOf(q)>=0)});
+  el.innerHTML=L.length?'<ul class="list srd-l">'+L.slice(0,40).map(function(m){return'<li><span><b>'+esc(m[0])+'</b>'+(m[0]!==m[1]?' <span class="sub">('+esc(m[1])+')</span>':"")+(m[16]?' <span class="chip">tuya</span>':"")+'<br><span class="sub">'+esc([m[2],m[3],"VD "+m[7],"CA "+m[4],m[5]+" PG",m[9]?"ataque "+sgn(m[8])+", "+m[9]+(m[10]>1?" ×"+m[10]:""):"sin ataque directo",m[12]].filter(Boolean).join(" · "))+'</span></span><button type="button" data-srd="'+A.indexOf(m)+'">Añadir a la historia</button></li>'}).join("")+'</ul>'+(L.length>40?'<p class="sub">Hay '+L.length+' resultados; se muestran 40. Afina la búsqueda.</p>':"")
+    :'<p class="sub">Ninguna criatura coincide.</p>'}
+$("#srd").addEventListener("input",function(e){if(e.target.id==="srd-q")srdDraw()});
+$("#srd").addEventListener("change",function(e){if(e.target.id==="srd-cr")srdDraw();if(e.target.id==="srd-file")srdImport(e.target.files[0])});
+$("#srd").addEventListener("click",function(e){var b=e.target.closest("[data-srd]");if(b){var m=srdAll()[+b.dataset.srd],s=story();if(!m)return;if(!s){alert("Abre antes una historia para añadirle la criatura.");return}
+    stEdit(function(st){st.mons.push(monArr({nombre:m[0],ca:m[4],pg:m[5],iniciativa:m[6],vd:m[7],ataque:m[8]||2,dano:m[9]||"1d4",ataques:m[10],nombre_ataque:m[11]||"su ataque",descripcion:[m[2],m[3],m[12]].filter(Boolean).join(", ")}))});b.textContent="Añadida";b.disabled=true}
+  if(e.target.closest("#srd-clear")){MY5E=[];idbPut("bestiario-5e",[]).then(null,function(){});srdDraw()}});
+function t5(s){return String(s||"").replace(/\{@\w+\s*([^}|]*)[^}]*\}/g,"$1")}
+function srdImport(f){var msg=$("#srd-msg");if(!f)return;var r=new FileReader();r.onload=function(){var d;try{d=JSON.parse(r.result)}catch(e){msg.textContent="Ese archivo no es un JSON válido.";return}
+  var A=Array.isArray(d)?d:Array.isArray(d.monster)?d.monster:[];if(!A.length){msg.textContent="No encuentro criaturas en ese archivo. Debe ser un bestiario de 5e.tools, con una lista «monster».";return}
+  var out=[];A.forEach(function(m){if(!m||!m.name||m._copy)return;var cr=typeof m.cr==="object"&&m.cr?m.cr.cr:m.cr,ty=typeof m.type==="object"&&m.type?m.type.type:m.type,ac=Array.isArray(m.ac)?(typeof m.ac[0]==="object"?m.ac[0].ac:m.ac[0]):m.ac,hp=m.hp&&m.hp.average,acts=Array.isArray(m.action)?m.action:[],best=null,bh=-99,n=1;
+    acts.forEach(function(a){var tx=JSON.stringify(a.entries||""),h=/\{@hit (-?\d+)\}/.exec(tx),dm=tx.match(/\{@damage ([^}]+)\}/g);if(/multiattack/i.test(a.name||"")){var w=/(two|three|four|five)/i.exec(tx);n=w?{two:2,three:3,four:4,five:5}[w[1].toLowerCase()]:2}
+      if(h&&dm&&+h[1]>bh){bh=+h[1];best={n:t5(a.name),d:dm.slice(0,2).map(function(x){return x.replace(/\{@damage |\}|\s/g,"")}).join("+")}}});
+    if(!hp||ac==null||cr==null)return;var k=String(ty||"").toLowerCase();out.push([String(m.name).slice(0,60),String(m.name).slice(0,60),TY5[k]||k||"",String((m.size||[""])[0]||""),int(ac,12),int(hp,10),Math.floor((int(m.dex,10)-10)/2),String(cr),best?bh:0,best?best.d.slice(0,20):"",n,best?best.n.toLowerCase().slice(0,40):"",String(m.source||""),0,Math.floor((int(m.wis,10)-10)/2),Math.floor((int(m.con,10)-10)/2),1])});
+  if(!out.length){msg.textContent="No he podido leer ninguna criatura con CA, PG y VD.";return}var names={};MY5E.forEach(function(x){names[x[0]+"|"+x[12]]=1});out.forEach(function(x){if(!names[x[0]+"|"+x[12]])MY5E.push(x)});
+  idbPut("bestiario-5e",MY5E).then(function(){msg.textContent=out.length+" criaturas cargadas. Ya aparecen en la búsqueda."},function(){msg.textContent="No se ha podido guardar en este navegador."});srdDraw()};r.readAsText(f)}
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
