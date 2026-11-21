@@ -4146,6 +4146,52 @@ document.addEventListener("click",function(e){var b=e.target.closest("[data-pc-k
   var m=$("#ch-msg"),art=!!(window.claude&&window.claude.use);if(art){if(m)m.textContent="Kie.ai solo funciona en la versión web, en drraulferrer.github.io. Aquí usa «Generar imagen» para copiar el prompt o sube un retrato.";return}if(m)m.textContent="Para generar retratos con Kie.ai, pon tu clave de Kie.ai en la pestaña del máster con IA, apartado «Generador de imágenes: Kie.ai». Se queda solo en este navegador.";
   var k=$("#kie");if(k){location.hash="ia";setTimeout(function(){k.hidden=false;k.open=true;k.scrollIntoView({block:"start",behavior:"smooth"})},120)}},true);
 $("#ch-cards").addEventListener("input",function(e){var t=e.target;if(t.dataset.f!=="bio")return;var p=pc(t.dataset.pc);if(!p)return;p.bio=t.value.slice(0,3000);touch(false)});
+/* ---- máster con IA usando los créditos de Kie.ai (Claude, Gemini y GPT) ---- */
+var KIE_BASE="https://api.kie.ai",KIE_GEM=["gemini-3-8-flash","gemini-4-argon","gemini-4-neon","gemini-4-carbon","gemini-4-hydrogen"],KIE_DEF="claude-sonnet-5-5";
+PAID[KIE_BASE]={n:"Kie.ai",model:KIE_DEF,hint:"Gasta créditos de tu cuenta de Kie.ai. Usa la misma clave que el generador de imágenes. Modelos: claude-…, gemini-… y gpt-…; «Probar y ver modelos» los lista."};
+setTimeout(function(){MSG.kie_gone="Kie.ai ha retirado ese modelo. Pulsa «Probar y ver modelos» y elige otro de la lista.";
+MSG.kie_credits="No te quedan créditos suficientes en Kie.ai. Recarga en kie.ai o cambia de motor."},0);
+(function(){var g=document.querySelector('#mo-preset optgroup[label^="De pago"]');if(g)g.insertAdjacentHTML("afterbegin",'<option value="'+KIE_BASE+'">Kie.ai, con tus créditos (Claude, Gemini, GPT)</option>')})();
+function isKie(){return/^https:\/\/api\.kie\.ai\/?$/i.test(String(cfg.base||"").trim())}
+function kieKey(){return cfg.key||kie.key||""}
+function kieFill(force){if(!isKie())return;var ch=false,kv=$("#mo-key").value.trim();if(kie.key&&kv!==kie.key&&(force||!kv)){$("#mo-key").value=kie.key;ch=true}
+  var m=$("#mo-model").value.trim();if(!/^(claude|gemini|gpt)-/.test(m)){$("#mo-model").value=KIE_DEF;ch=true}if(ch)saveCfg();if(typeof paidNote==="function")paidNote()}
+$("#mo-preset").addEventListener("change",function(){setTimeout(function(){setTimeout(function(){kieFill(true)},0)},0)});$("#mo-base").addEventListener("change",function(){setTimeout(kieFill,0)});
+function kieErr(c,msg){c=+c||0;return c===410?"kie_gone":c===402||/credit|balance|insufficient/i.test(msg||"")?"kie_credits":httpCode(c)}
+function kieSSE(res,onData){var rd=res.body.getReader(),dec=new TextDecoder(),buf="";
+  function pump(){return rd.read().then(function(x){if(x.done){if(buf.trim())line(buf);return}buf+=dec.decode(x.value,{stream:true});var L=buf.split(/\r?\n/);buf=L.pop();L.forEach(line);return pump()})}
+  function line(l){l=l.trim();if(l.indexOf("data:")!==0)return;var d=l.slice(5).trim();if(!d||d==="[DONE]")return;var j;try{j=JSON.parse(d)}catch(e){return}onData(j)}
+  return pump()}
+function kieCall(input,o){var model=cfg.model||KIE_DEF,M=anthMsgs(input,o.img),full="",trunc=false,fail=null,url,body;
+  if(/^claude-/.test(model)){url=KIE_BASE+"/claude/v1/messages";body={model:model,max_tokens:16000,stream:true,messages:M.messages};if(M.system)body.system=M.system}
+  else if(/^gpt-/.test(model)){url=KIE_BASE+"/codex/v1/responses";body={model:model,stream:true,reasoning:{effort:"low"},input:(M.system?[{role:"system",content:M.system}]:[]).concat(M.messages.map(function(m){
+      if(typeof m.content==="string")return{role:m.role,content:m.content};return{role:m.role,content:m.content.map(function(c){return c.type==="image"?{type:"input_image",image_url:c.source.type==="base64"?"data:"+c.source.media_type+";base64,"+c.source.data:c.source.url}:{type:"input_text",text:c.text}})}}))}}
+  else{url=KIE_BASE+"/"+model.replace(/-openai$/,"")+"-openai/v1/chat/completions";body={stream:true,messages:(M.system?[{role:"system",content:M.system}]:[]).concat(M.messages.map(function(m){
+      if(typeof m.content==="string")return{role:m.role,content:m.content};return{role:m.role,content:m.content.map(function(c){return c.type==="image"?{type:"image_url",image_url:{url:c.source.type==="base64"?"data:"+c.source.media_type+";base64,"+c.source.data:c.source.url}}:{type:"text",text:c.text}})}}))}}
+  function add(t){if(!t)return;full+=t;if(o.onText)o.onText({text:full})}
+  return fetch(url,{method:"POST",headers:{"Authorization":"Bearer "+kieKey(),"Content-Type":"application/json"},body:JSON.stringify(body),signal:o.signal}).then(function(res){
+    if(!res.ok)return res.text().then(function(t){var j={};try{j=JSON.parse(t)}catch(e){}throw{code:kieErr(res.status,j.msg||t)}});
+    if(/json/i.test(res.headers.get("content-type")||""))return res.json().then(function(j){if(j&&j.code&&j.code!==200)throw{code:kieErr(j.code,j.msg)};
+      var t=j&&j.content?j.content.map(function(c){return c.text||""}).join(""):j&&j.choices?((j.choices[0]||{}).message||{}).content:"";add(t||"")});
+    return kieSSE(res,function(j){if(j.code&&j.msg&&!j.type&&!j.choices){fail=kieErr(j.code,j.msg);return}
+      if(j.type==="content_block_delta"&&j.delta&&j.delta.type==="text_delta")add(j.delta.text);
+      else if(j.type==="message_delta"&&j.delta&&j.delta.stop_reason==="max_tokens")trunc=true;
+      else if(j.type==="message_delta"&&j.delta&&j.delta.stop_reason==="refusal")fail="refused";
+      else if(j.type==="response.output_text.delta")add(j.delta);
+      else if(j.type==="response.incomplete")trunc=true;
+      else if(j.type==="response.failed")fail="upstream_error";
+      else if(j.choices&&j.choices[0]){var c=j.choices[0];if(c.delta&&c.delta.content)add(c.delta.content);if(c.finish_reason==="length")trunc=true}})})
+  .then(function(){if(fail)throw{code:fail};var t=full.trim();if(!t)throw{code:"empty_completion"};return{text:t,truncated:trunc}})
+  .catch(function(e){var c=e&&typeof e.code==="string"?e.code:e&&e.name==="AbortError"?"cancelled":"network";throw{code:c,text:full.trim()}})}
+var otherAR=other;other=function(input,o){return isKie()?kieCall(input,o||{}):otherAR(input,o)};
+setTimeout(function(){var testAR=$("#mo-test").onclick;$("#mo-test").onclick=function(){if(!isKie())return testAR.apply(this,arguments);saveCfg();kieFill();var m=$("#mo-msg");
+  if(!kieKey()){m.textContent="Pon tu clave de Kie.ai aquí o en el apartado «Generador de imágenes: Kie.ai».";return}m.textContent="Probando…";
+  var H={headers:{"Authorization":"Bearer "+kieKey()}},ids=[];function ls(u){return fetch(KIE_BASE+u,H).then(function(r){if(!r.ok)throw{status:r.status};return r.json()}).then(function(j){if(j&&j.code&&j.code!==200)throw{status:j.code};(j.data||[]).forEach(function(x){if(x&&x.id)ids.push(String(x.id))})})}
+  Promise.all([ls("/anthropic/v1/models"),ls("/openai/v1/models").catch(function(){})]).then(function(){ids=ids.concat(KIE_GEM);
+    $("#mo-models").innerHTML=ids.map(function(i){return'<option value="'+esc(i)+'">'}).join("");
+    m.textContent="Conexión correcta con Kie.ai: "+ids.length+" modelos. Recomendado para narrar: "+KIE_DEF+". Más barato: gemini-3-8-flash. Cada respuesta gasta créditos."},
+    function(e){m.textContent=MSG[e&&e.status?kieErr(e.status):"network"]||MSG.network})}},0);
+setTimeout(function(){if(isKie()&&!cfg.key&&kie.key){$("#mo-key").value=kie.key;saveCfg()}},0);
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
