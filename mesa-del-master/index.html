@@ -437,6 +437,15 @@ body.doc-file{background:#fbf8f1;margin:0}
 .srdx details{margin:8px 0}.srdx .gl-t{font-weight:600}.srdx .gl-d{white-space:pre-line;color:var(--ink);font-size:.95rem;margin:6px 0 10px}.srdx .sp-h{display:flex;flex-wrap:wrap;gap:6px;align-items:baseline}.srdx .sp-h .sub{font-size:.85rem}
 .srdx .sp-m{font-size:.85rem;color:var(--muted);margin:4px 0}.srdx .attr{font-size:.78rem;color:var(--muted);margin-top:10px}
 
+
+/* creador de personajes */
+#cc summary{cursor:pointer;font-weight:600}#cc .cc-start{margin:10px 0;padding:12px;border-radius:12px;background:var(--raised)}
+.cc-log{list-style:none;margin:8px 0;padding:0;display:flex;flex-direction:column;gap:6px}.cc-log li{padding:8px 12px;border-radius:12px;max-width:85%}.cc-log li.ia{background:var(--surface);border:1px solid var(--divider)}.cc-log li.yo{align-self:flex-end;background:rgba(201,164,92,.18)}
+.cc-q{margin:8px 0 4px}.cc-opts button{white-space:normal;text-align:left}
+.cc-form{margin-top:12px}#cc fieldset{border:1px solid var(--divider);border-radius:10px;padding:8px 12px;margin:10px 0;display:flex;flex-wrap:wrap;gap:4px 16px}#cc legend{padding:0 6px;font-weight:600}
+.cc-spl{display:flex;flex-wrap:wrap;gap:4px 16px;width:100%}.cc-spl+.cc-spl{border-top:1px dashed var(--divider);padding-top:6px}
+.cc-prev{margin:10px 0;padding:10px 12px;border-radius:10px;background:var(--raised);font-size:.92rem;line-height:1.6}
+
 /* deshacer */
 #undo{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 32px)}
 #undo[hidden]{display:none}
@@ -3963,6 +3972,104 @@ $("#srdx").addEventListener("input",function(){sxLoad();sxDraw()});$("#srdx").ad
 function mesaBarFix(){var b=$("#mesa-bar");if(b&&location.hash!=="#mesa")b.hidden=true}
 window.addEventListener("hashchange",function(){setTimeout(mesaBarFix,0)});setTimeout(mesaBarFix,0);
 var drawAL=draw;draw=function(){drawAL();mesaBarFix()};
+/* ---- creador de personajes guiado (SRD 5.2.1) ---- */
+var CC_SP={"Dracónido":{t:"Mediano",v:9,r:"Linaje dracónico, Ataque de aliento, Resistencia al daño de su linaje, Visión en la oscuridad 18 m"},
+  "Elfo":{t:"Mediano",v:9,r:"Visión en la oscuridad 18 m, Linaje élfico, Ascendencia feérica, Sentidos agudos, Trance",sk:["Perspicacia","Percepción","Supervivencia"]},
+  "Enano":{t:"Mediano",v:9,r:"Visión en la oscuridad 36 m, Resistencia enana, Dureza enana (+1 PG por nivel), Afinidad con la piedra",hp:1},
+  "Gnomo":{t:"Pequeño",v:9,r:"Visión en la oscuridad 18 m, Astucia gnómica, Linaje gnómico"},
+  "Goliat":{t:"Mediano",v:10.5,r:"Ascendencia gigante, Forma grande (desde nivel 5), Constitución poderosa"},
+  "Humano":{t:"Mediano o Pequeño",v:9,r:"Ingenioso (inspiración heroica tras un descanso largo), Hábil (una habilidad más), Versátil (una dote de origen más)",sk:SKL.map(function(x){return x[0]})},
+  "Mediano":{t:"Pequeño",v:9,r:"Valiente, Agilidad mediana, Suerte, Sigilo natural"},
+  "Orco":{t:"Mediano",v:9,r:"Descarga de adrenalina, Visión en la oscuridad 36 m, Aguante incansable"},
+  "Tiefling":{t:"Mediano o Pequeño",v:9,r:"Visión en la oscuridad 18 m, Legado infernal, Presencia sobrenatural"}};
+var CC_BG={"Acólito":{ab:["int","sab","car"],d:"Iniciado en la magia (clérigo)",sk:["Perspicacia","Religión"],h:"suministros de calígrafo"},
+  "Criminal":{ab:["des","con","int"],d:"Alerta",sk:["Juego de manos","Sigilo"],h:"herramientas de ladrón"},
+  "Erudito":{ab:["con","int","sab"],d:"Iniciado en la magia (mago)",sk:["Conocimiento arcano","Historia"],h:"suministros de calígrafo"},
+  "Soldado":{ab:["fue","des","con"],d:"Atacante salvaje",sk:["Atletismo","Intimidación"],h:"un tipo de juego"}};
+var ALLSK=SKL.map(function(x){return x[0]});
+// dado de golpe, prioridad de características, salvaciones, nº de habilidades, lista, característica mágica, CA, arma, trucos, conjuros de nivel 1, papel
+var CC_CL={"Bárbaro":{hd:12,p:["fue","con","des","sab","car","int"],sv:["fue","con"],n:2,sk:["Trato con animales","Atletismo","Intimidación","Naturaleza","Percepción","Supervivencia"],ca:function(a){return 10+ccM(a.des)+ccM(a.con)},w:["Gran hacha","1d12","fue"],r:"golpea fuerte y aguanta mucho"},
+  "Bardo":{hd:8,p:["car","des","con","sab","int","fue"],sv:["des","car"],n:3,sk:ALLSK,c:"car",ca:function(a){return 11+ccM(a.des)},w:["Daga","1d4","des"],t:2,l:4,r:"apoya, encanta y se le da bien todo"},
+  "Brujo":{hd:8,p:["car","con","des","sab","int","fue"],sv:["sab","car"],n:2,sk:["Conocimiento arcano","Engaño","Historia","Intimidación","Investigación","Naturaleza","Religión"],c:"car",ca:function(a){return 11+ccM(a.des)},w:["Daga","1d4","des"],t:2,l:2,r:"magia de un pacto con un ser poderoso"},
+  "Clérigo":{hd:8,p:["sab","con","fue","car","des","int"],sv:["sab","car"],n:2,sk:["Historia","Perspicacia","Medicina","Persuasión","Religión"],c:"sab",ca:function(a){return 13+Math.min(2,ccM(a.des))+2},w:["Maza","1d6","fue"],t:3,l:4,r:"cura, protege y castiga con magia divina"},
+  "Druida":{hd:8,p:["sab","con","des","int","car","fue"],sv:["int","sab"],n:2,sk:["Conocimiento arcano","Trato con animales","Perspicacia","Medicina","Naturaleza","Percepción","Religión","Supervivencia"],c:"sab",ca:function(a){return 11+ccM(a.des)+2},w:["Hoz","1d4","fue"],t:2,l:4,r:"magia de la naturaleza y formas animales"},
+  "Explorador":{hd:10,p:["des","sab","con","fue","int","car"],sv:["fue","des"],n:3,sk:["Trato con animales","Atletismo","Perspicacia","Investigación","Naturaleza","Percepción","Sigilo","Supervivencia"],c:"sab",ca:function(a){return 12+ccM(a.des)},w:["Arco largo","1d8","des"],l:2,r:"rastrea, dispara de lejos y conoce la naturaleza"},
+  "Guerrero":{hd:10,p:["fue","con","des","sab","car","int"],sv:["fue","con"],n:2,sk:["Acrobacias","Trato con animales","Atletismo","Historia","Perspicacia","Intimidación","Persuasión","Percepción","Supervivencia"],ca:function(a){return 16},w:["Mandoble","2d6","fue"],r:"el mejor con las armas y la armadura"},
+  "Hechicero":{hd:6,p:["car","con","des","sab","int","fue"],sv:["con","car"],n:2,sk:["Conocimiento arcano","Engaño","Perspicacia","Intimidación","Persuasión","Religión"],c:"car",ca:function(a){return 10+ccM(a.des)},w:["Daga","1d4","des"],t:4,l:2,r:"magia innata y explosiva"},
+  "Mago":{hd:6,p:["int","con","des","sab","car","fue"],sv:["int","sab"],n:2,sk:["Conocimiento arcano","Historia","Perspicacia","Investigación","Medicina","Naturaleza","Religión"],c:"int",ca:function(a){return 10+ccM(a.des)},w:["Daga","1d4","des"],t:3,l:4,r:"la magia más versátil, estudiada en libros"},
+  "Monje":{hd:8,p:["des","sab","con","fue","int","car"],sv:["fue","des"],n:2,sk:["Acrobacias","Atletismo","Historia","Perspicacia","Religión","Sigilo"],ca:function(a){return 10+ccM(a.des)+ccM(a.sab)},w:["Artes marciales","1d6","des"],r:"rápido, ágil y lucha sin armas"},
+  "Paladín":{hd:10,p:["fue","car","con","sab","des","int"],sv:["sab","car"],n:2,sk:["Atletismo","Perspicacia","Intimidación","Medicina","Persuasión","Religión"],c:"car",ca:function(a){return 18},w:["Espada larga","1d8","fue"],l:2,r:"guerrero sagrado que protege y cura"},
+  "Pícaro":{hd:8,p:["des","con","int","sab","car","fue"],sv:["des","int"],n:4,sk:["Acrobacias","Atletismo","Engaño","Perspicacia","Intimidación","Investigación","Percepción","Persuasión","Juego de manos","Sigilo"],ca:function(a){return 11+ccM(a.des)},w:["Estoque","1d8","des"],r:"sigilo, trampas y golpes certeros"}};
+function ccM(v){return Math.floor((int(v,10)-10)/2)}
+var CC={sp:"Humano",cl:"Guerrero",bg:"Soldado",b2:"",b1:"",sk:[],ex:"",tr:[],cj:[],name:"",lv:1,bio:"",chat:[],q:null,busy:false,msg:""},CCSP=null,CCOR=null;
+function ccLoad(){if(!CCSP)fetch("data/srd-conjuros.json").then(function(r){return r.json()}).then(function(d){CCSP=d.c||[];ccDraw()},function(){});if(!CCOR)fetch("data/srd-origenes.json").then(function(r){return r.json()}).then(function(d){CCOR=d},function(){})}
+function ccAb(){var c=CC_CL[CC.cl],b=CC_BG[CC.bg],A={},arr=[15,14,13,12,10,8];c.p.forEach(function(k,i){A[k]=arr[i]});
+  var b2=b.ab.indexOf(CC.b2)>=0?CC.b2:b.ab.slice().sort(function(x,y){return c.p.indexOf(x)-c.p.indexOf(y)})[0],b1=b.ab.indexOf(CC.b1)>=0&&CC.b1!==b2?CC.b1:b.ab.filter(function(x){return x!==b2}).sort(function(x,y){return c.p.indexOf(x)-c.p.indexOf(y)})[0];
+  CC.b2=b2;CC.b1=b1;A[b2]=Math.min(20,A[b2]+2);A[b1]=Math.min(20,A[b1]+1);return A}
+function ccSkills(){var c=CC_CL[CC.cl],b=CC_BG[CC.bg],fix=b.sk.slice(),pool=(c.sk||ALLSK).filter(function(x){return fix.indexOf(x)<0});CC.sk=CC.sk.filter(function(x){return pool.indexOf(x)>=0}).slice(0,c.n);
+  var sp=CC_SP[CC.sp];if(!sp.sk||sp.sk.indexOf(CC.ex)<0||fix.indexOf(CC.ex)>=0||CC.sk.indexOf(CC.ex)>=0)CC.ex=sp.sk?(sp.sk.filter(function(x){return fix.indexOf(x)<0&&CC.sk.indexOf(x)<0})[0]||""):"";
+  return{fix:fix,pool:pool,n:c.n}}
+function ccSpellOpts(lv){var c=CC_CL[CC.cl],k=flat(CC.cl);if(!CCSP||!c.c)return[];return CCSP.filter(function(s){return s[1]===lv&&s[3].some(function(x){return flat(x)===k})}).map(function(s){return s[0]})}
+function ccSheet(){var c=CC_CL[CC.cl],A=ccAb(),lv=Math.max(1,Math.min(20,int(CC.lv,1))),con=ccM(A.con),sp=CC_SP[CC.sp],hp=c.hd+con+(lv-1)*(Math.floor(c.hd/2)+1+con)+(sp.hp?lv:0),S2=ccSkills();
+  return{A:A,hp:Math.max(1,hp),ca:c.ca(A),sk:S2.fix.concat(CC.sk).concat(CC.ex?[CC.ex]:[]),pb:2+Math.floor((lv-1)/4)}}
+function ccHtml(){var c=CC_CL[CC.cl],b=CC_BG[CC.bg],sp=CC_SP[CC.sp],sh=ccSheet(),S2=ccSkills(),o=function(L,v){return L.map(function(x){return'<option'+(x===v?" selected":"")+'>'+esc(x)+'</option>'}).join("")},ab=function(L,v){return L.map(function(k){return'<option value="'+k+'"'+(k===v?" selected":"")+'>'+ABL[k]+'</option>'}).join("")};
+  var ai=canAsk(),q=CC.q;
+  var chat='<div class="cc-chat">'+(CC.chat.length?'<ol class="cc-log">'+CC.chat.map(function(x){return'<li class="'+x.r+'">'+esc(x.t)+'</li>'}).join("")+'</ol>':"")+
+    (CC.busy?'<p class="sub">Pensando…</p>':q?'<p class="cc-q"><b>'+esc(q.pregunta)+'</b></p><div class="bar cc-opts">'+(q.opciones||[]).map(function(x){return'<button type="button" data-cco="'+esc(x)+'">'+esc(x)+'</button>'}).join("")+'</div><div class="bar"><input id="cc-free" placeholder="O escribe tu respuesta" style="flex:1 1 14em"><button type="button" data-cco="">Responder</button></div>':"")+
+    (CC.msg?'<p class="sub" role="status">'+esc(CC.msg)+'</p>':"")+'</div>';
+  var tr=ccSpellOpts(0),cj=ccSpellOpts(1);
+  return'<summary>Crear un personaje paso a paso</summary><p class="sub">Elige especie, clase y trasfondo de la SRD 5.2.1 (reglas de 2024) o deja que el máster IA te pregunte y proponga una combinación. Todo se puede retocar antes de crear la ficha.</p>'+
+    '<div class="cc-start"><label class="wide">Tu idea, en una frase<input id="cc-idea" placeholder="Un enano gruñón que cura a sus amigos pero odia a los nigromantes" value="'+esc(CC.idea||"")+'"></label><div class="bar"><button type="button" class="pri" id="cc-ask"'+(ai?"":" disabled")+'>'+(CC.chat.length?"Volver a empezar con la IA":"Que me pregunte la IA")+'</button>'+(ai?"":'<span class="sub">Para usar la IA, configura el motor en «Máster IA» (sirve cualquier modelo, por ejemplo Qwen en Ollama u OpenRouter).</span>')+'</div>'+chat+'</div>'+
+    '<div class="fgrid cc-form"><label>Nombre<input id="cc-name" value="'+esc(CC.name)+'" placeholder="Dorna Pedernal"></label><label>Nivel<input id="cc-lv" type="number" min="1" max="20" value="'+int(CC.lv,1)+'"></label>'+
+    '<label>Especie<select id="cc-sp">'+o(Object.keys(CC_SP),CC.sp)+'</select></label><label>Clase<select id="cc-cl">'+o(Object.keys(CC_CL),CC.cl)+'</select></label><label>Trasfondo<select id="cc-bg">'+o(Object.keys(CC_BG),CC.bg)+'</select></label>'+
+    '<label>+2 a<select id="cc-b2">'+ab(b.ab,CC.b2)+'</select></label><label>+1 a<select id="cc-b1">'+ab(b.ab.filter(function(k){return k!==CC.b2}),CC.b1)+'</select></label></div>'+
+    '<p class="sub"><b>'+esc(CC.sp)+':</b> '+esc(sp.r)+'. '+esc(sp.t)+', '+fmt(sp.v)+' m.<br><b>'+esc(CC.cl)+':</b> '+esc(c.r)+'. Dado de golpe d'+c.hd+'.<br><b>'+esc(CC.bg)+':</b> dote '+esc(b.d)+', habilidades '+esc(b.sk.join(" y "))+', herramienta: '+esc(b.h)+'.</p>'+
+    '<fieldset class="cc-sk"><legend>Habilidades de clase: elige '+S2.n+' ('+CC.sk.length+' de '+S2.n+')</legend>'+S2.pool.map(function(x){var on=CC.sk.indexOf(x)>=0;return'<label class="ck"><input type="checkbox" data-ccsk="'+esc(x)+'"'+(on?" checked":"")+(!on&&CC.sk.length>=S2.n?" disabled":"")+'> '+esc(x)+'</label>'}).join("")+'</fieldset>'+
+    (sp.sk?'<label>'+(CC.sp==="Elfo"?"Sentidos agudos":"Hábil")+': una habilidad más<select id="cc-ex">'+o(sp.sk.filter(function(x){return S2.fix.indexOf(x)<0&&CC.sk.indexOf(x)<0}),CC.ex)+'</select></label>':"")+
+    (c.c&&(tr.length||cj.length)?'<fieldset class="cc-sp"><legend>Conjuros'+(c.t?': '+c.t+' trucos':"")+(c.l?(c.t?" y ":": ")+c.l+' de nivel 1':"")+'</legend>'+
+      (c.t?'<div class="cc-spl">'+tr.map(function(x){var on=CC.tr.indexOf(x)>=0;return'<label class="ck"><input type="checkbox" data-cctr="'+esc(x)+'"'+(on?" checked":"")+(!on&&CC.tr.length>=c.t?" disabled":"")+'> '+esc(x)+'</label>'}).join("")+'</div>':"")+
+      (c.l?'<div class="cc-spl">'+cj.map(function(x){var on=CC.cj.indexOf(x)>=0;return'<label class="ck"><input type="checkbox" data-cccj="'+esc(x)+'"'+(on?" checked":"")+(!on&&CC.cj.length>=c.l?" disabled":"")+'> '+esc(x)+'</label>'}).join("")+'</div>':"")+'</fieldset>':"")+
+    '<label class="wide">Personalidad e historia<textarea id="cc-bio" rows="3" placeholder="Qué quiere, qué teme, de dónde viene">'+esc(CC.bio)+'</textarea></label>'+
+    '<div class="cc-prev"><b>Resultado:</b> '+ABK.map(function(k){return ABN[k]+' '+sh.A[k]+' ('+sgn(ccM(sh.A[k]))+')'}).join(" · ")+'<br>PG '+sh.hp+' · CA '+sh.ca+' · competencia '+sgn(sh.pb)+' · salvaciones '+c.sv.map(function(k){return ABN[k]}).join(" y ")+' · arma: '+esc(c.w[0])+' '+c.w[1]+sgn(ccM(sh.A[c.w[2]]))+'<br>Habilidades: '+esc(sh.sk.join(", "))+'</div>'+
+    '<div class="bar"><button type="button" class="pri" id="cc-make">Crear este personaje</button></div>'}
+function ccDraw(){var el=$("#cc");if(!el)return;var open=el.open,f=document.activeElement&&document.activeElement.id,v=f==="cc-free"?$("#cc-free").value:null;el.innerHTML=ccHtml();el.open=open;if(f&&$("#"+f)){var x=$("#"+f);x.focus();if(v!=null)x.value=v}}
+(function(){var r=$("#rest-box")||$("#ch-msg");if(r)r.insertAdjacentHTML("beforebegin",'<details class="card dm" id="cc"></details>');var a=$("#tab-personajes .acts");if(a)a.insertAdjacentHTML("beforeend",'<button type="button" id="cc-open">Crear con ayuda</button>')})();
+$("#cc-open").onclick=function(){var el=$("#cc");el.open=true;ccLoad();ccDraw();el.scrollIntoView({block:"start",behavior:"smooth"})};
+$("#cc").addEventListener("toggle",function(){if(this.open){ccLoad();if(!this.innerHTML.trim()||!$("#cc-sp"))ccDraw()}});
+$("#cc").addEventListener("change",function(e){var t=e.target,id=t.id;
+  if(id==="cc-sp"){CC.sp=t.value;CC.ex=""}else if(id==="cc-cl"){CC.cl=t.value;CC.sk=[];CC.tr=[];CC.cj=[];CC.b2=CC.b1=""}else if(id==="cc-bg"){CC.bg=t.value;CC.b2=CC.b1=""}
+  else if(id==="cc-b2"){CC.b2=t.value;if(CC.b1===CC.b2)CC.b1=""}else if(id==="cc-b1")CC.b1=t.value;else if(id==="cc-ex")CC.ex=t.value;else if(id==="cc-lv")CC.lv=Math.max(1,Math.min(20,int(t.value,1)));
+  else if(id==="cc-name"){CC.name=t.value;return}else if(id==="cc-bio"){CC.bio=t.value;return}else if(id==="cc-idea"){CC.idea=t.value;return}
+  else if(t.dataset.ccsk){CC.sk=CC.sk.filter(function(x){return x!==t.dataset.ccsk});if(t.checked)CC.sk.push(t.dataset.ccsk)}
+  else if(t.dataset.cctr){CC.tr=CC.tr.filter(function(x){return x!==t.dataset.cctr});if(t.checked)CC.tr.push(t.dataset.cctr)}
+  else if(t.dataset.cccj){CC.cj=CC.cj.filter(function(x){return x!==t.dataset.cccj});if(t.checked)CC.cj.push(t.dataset.cccj)}else return;ccDraw()});
+$("#cc").addEventListener("input",function(e){var id=e.target.id;if(id==="cc-name")CC.name=e.target.value;else if(id==="cc-bio")CC.bio=e.target.value;else if(id==="cc-idea")CC.idea=e.target.value});
+function ccPrompt(){var R=CCOR||{};return"Eres un asesor que ayuda a crear un personaje de Dungeons & Dragons 5.5 (reglas de 2024, SRD 5.2.1 en español) a alguien que puede ser novato. Habla en español de España, con frases cortas y sin tecnicismos innecesarios.\n\n"+
+  "SOLO puedes proponer estas opciones:\nESPECIES: "+Object.keys(CC_SP).map(function(k){return k+" ("+CC_SP[k].r+")"}).join("; ")+"\nCLASES: "+Object.keys(CC_CL).map(function(k){return k+" ("+CC_CL[k].r+"; característica principal "+ABL[CC_CL[k].p[0]]+")"}).join("; ")+
+  "\nTRASFONDOS: "+Object.keys(CC_BG).map(function(k){var b=CC_BG[k];return k+" (aumenta "+b.ab.map(function(x){return ABL[x]}).join(", ")+"; dote "+b.d+"; habilidades "+b.sk.join(" y ")+")"}).join("; ")+
+  "\nHABILIDADES: "+ALLSK.join(", ")+(CCSP?"\n\nCONJUROS POR CLASE (usa estos nombres exactos):\n"+Object.keys(CC_CL).filter(function(k){return CC_CL[k].c}).map(function(k){var kk=flat(k),f=function(l){return CCSP.filter(function(s){return s[1]===l&&s[3].some(function(x){return flat(x)===kk})}).map(function(s){return s[0]}).join(", ")};return k+": trucos: "+(f(0)||"ninguno")+". Nivel 1: "+f(1)+"."}).join("\n"):"")+(R.dotes_origen?"\n\nDOTES DE ORIGEN (texto de la SRD 5.2.1):\n"+R.dotes_origen.slice(0,1800):"")+
+  "\n\nCómo trabajar: haz UNA pregunta cada vez para entender qué personaje quiere (papel en el grupo, estilo de combate o magia, personalidad, de dónde viene). Da de 2 a 5 opciones cortas y concretas. Ten en cuenta las combinaciones que funcionan bien: que la característica que suba el trasfondo coincida con la principal de la clase, y que la especie aporte algo útil. Tras 3 a 6 preguntas, propón el personaje.\n"+
+  "Responde SOLO con JSON, sin texto alrededor. Para preguntar: {\"pregunta\":\"...\",\"opciones\":[\"...\",\"...\"]}. Para proponer: {\"personaje\":{\"nombre\":\"...\",\"especie\":\"...\",\"clase\":\"...\",\"trasfondo\":\"...\",\"aumento2\":\"fue|des|con|int|sab|car\",\"aumento1\":\"fue|des|con|int|sab|car\",\"habilidades\":[\"...\"],\"trucos\":[\"...\"],\"conjuros\":[\"...\"],\"historia\":\"3 o 4 frases sobre quién es y qué quiere\",\"por_que\":\"1 o 2 frases explicando por qué esta combinación funciona\"}}"}
+function ccTurn(){if(CC.busy)return;CC.busy=true;CC.msg="";ccDraw();var tx=CC.chat.map(function(x){return(x.r==="ia"?"ASESOR: ":"JUGADOR: ")+x.t}).join("\n"),
+  pr=ccPrompt()+"\n\nIDEA INICIAL DEL JUGADOR: "+(CC.idea||"(ninguna, pregúntale)")+(tx?"\n\nCONVERSACIÓN HASTA AHORA:\n"+tx:"")+"\n\nTu siguiente respuesta en JSON:",box=document.createElement("p");
+  askJSON(pr,box).then(function(j){CC.busy=false;if(!j){CC.msg=box.textContent||"La IA no ha respondido. Prueba otra vez.";ccDraw();return}
+    if(j.personaje){ccApply(j.personaje);CC.q=null;CC.chat.push({r:"ia",t:"Propuesta: "+[j.personaje.nombre,j.personaje.especie,j.personaje.clase,j.personaje.trasfondo].filter(Boolean).join(", ")+". "+(j.personaje.por_que||"")});CC.msg="Revisa la propuesta abajo y cambia lo que quieras antes de crearla."}
+    else if(j.pregunta){CC.q={pregunta:String(j.pregunta).slice(0,300),opciones:(Array.isArray(j.opciones)?j.opciones:[]).slice(0,5).map(function(x){return String(x).slice(0,120)})};CC.chat.push({r:"ia",t:CC.q.pregunta})}
+    else CC.msg="La IA ha respondido algo que no entiendo. Prueba otra vez.";ccDraw()})}
+function ccPick(L,v){v=flat(v||"");return L.filter(function(x){return flat(x)===v})[0]||L.filter(function(x){return v&&(flat(x).indexOf(v)>=0||v.indexOf(flat(x))>=0)})[0]||""}
+function ccApply(p){var sp=ccPick(Object.keys(CC_SP),p.especie),cl=ccPick(Object.keys(CC_CL),p.clase),bg=ccPick(Object.keys(CC_BG),p.trasfondo);if(sp)CC.sp=sp;if(cl)CC.cl=cl;if(bg)CC.bg=bg;
+  var ab=function(x){x=flat(x||"").slice(0,3);return ABK.indexOf(x)>=0?x:""};CC.b2=ab(p.aumento2);CC.b1=ab(p.aumento1);CC.name=String(p.nombre||CC.name||"").slice(0,60);CC.bio=String(p.historia||CC.bio||"").slice(0,800);
+  var S2=ccSkills();CC.sk=(p.habilidades||[]).map(function(x){return ccPick(S2.pool,x)}).filter(function(x,i,A){return x&&A.indexOf(x)===i}).slice(0,S2.n);
+  var c=CC_CL[CC.cl];CC.tr=(p.trucos||[]).map(function(x){return ccPick(ccSpellOpts(0),x)}).filter(Boolean).slice(0,c.t||0);CC.cj=(p.conjuros||[]).map(function(x){return ccPick(ccSpellOpts(1),x)}).filter(Boolean).slice(0,c.l||0)}
+$("#cc").addEventListener("click",function(e){var t=e.target;
+  if(t.closest("#cc-ask")){CC.chat=[];CC.q=null;CC.idea=($("#cc-idea")||{}).value||CC.idea||"";if(!canAsk()){CC.msg="Configura primero el motor de IA en «Máster IA».";ccDraw();return}ccTurn();return}
+  var b=t.closest("[data-cco]");if(b){var a=b.dataset.cco||(($("#cc-free")||{}).value||"").trim();if(!a)return;CC.chat.push({r:"yo",t:a});CC.q=null;ccTurn();return}
+  if(t.closest("#cc-make")){var c=CC_CL[CC.cl],sh=ccSheet(),s=story(),A=sh.A,lv=Math.max(1,Math.min(20,int(CC.lv,1)));
+    var p={id:uid(),name:(CC.name||"").trim()||"Sin nombre",race:CC.sp,cls:CC.cl,bg:CC.bg,player:"",level:lv,ac:sh.ca,hp:sh.hp,max:sh.hp,pp:10,init:0,story:chFilter||(s?s.id:""),status:"activo",
+      ab:A,sv:c.sv.slice(),sk:sh.sk.slice(),spells:CC.tr.concat(CC.cj),cast:c.c||"",speed:CC_SP[CC.sp].v,dmg:c.w[1]+(ccM(A[c.w[2]])?sgn(ccM(A[c.w[2]])):""),
+      bio:CC.bio,feats:[CC_BG[CC.bg].d],traits:CC_SP[CC.sp].r,tool:CC_BG[CC.bg].h,xp:LVX[lv-1]||0};
+    sheetCalc(p);S.party.push(p);logAct("Personaje creado con el asistente: "+p.name);touch();
+    CC={sp:CC.sp,cl:CC.cl,bg:CC.bg,b2:"",b1:"",sk:[],ex:"",tr:[],cj:[],name:"",lv:1,bio:"",chat:[],q:null,busy:false,msg:"Creado: "+p.name+", "+p.race+" "+p.cls.toLowerCase()+" de nivel "+lv+". Ya está en la lista, con la ficha completa."};ccDraw()}});
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
