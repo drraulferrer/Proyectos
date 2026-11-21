@@ -4073,6 +4073,45 @@ $("#cc").addEventListener("click",function(e){var t=e.target;
 /* ---- modelos con razonamiento (Qwen3, DeepSeek R1…): se quita el bloque <think> ---- */
 function stripThink(t){t=String(t||"");t=t.replace(/<think>[\s\S]*?<\/think>\s*/gi,"");var i=t.search(/<think>/i);if(i>=0)t=t.slice(0,i);return t.replace(/^\s+/,"")}
 var otherAN=other;other=function(input,o){o=o||{};var on=o.onText;if(on)o.onText=function(u){var x=stripThink(u&&u.text);on({text:x})};return otherAN(input,o).then(function(r){if(r&&typeof r.text==="string")r.text=stripThink(r.text);return r})};
+/* ---- motores de pago: OpenAI, xAI (Grok) y Claude de Anthropic ---- */
+var PAID={"https://api.openai.com/v1":{n:"OpenAI",hint:"Pulsa «Probar y ver modelos» y elige uno de la lista."},
+  "https://api.x.ai/v1":{n:"xAI (Grok)",hint:"Pulsa «Probar y ver modelos» y elige un modelo Grok de la lista."},
+  "https://api.anthropic.com":{n:"Claude (Anthropic)",model:"claude-opus-5-5",hint:"Modelo por defecto: claude-opus-5-5. «Probar y ver modelos» lista los demás."}};
+(function(){var s=$("#mo-preset");if(!s)return;var free=document.createElement("optgroup");free.label="Gratis o en tu ordenador";
+  [].slice.call(s.querySelectorAll("option")).forEach(function(o){if(o.value)free.appendChild(o)});s.appendChild(free);
+  var paid=document.createElement("optgroup");paid.label="De pago, con tu clave de API";
+  paid.innerHTML='<option value="https://api.openai.com/v1">OpenAI (ChatGPT por API)</option><option value="https://api.anthropic.com">Claude de Anthropic (API)</option><option value="https://api.x.ai/v1">xAI Grok (API)</option>';s.appendChild(paid);
+  var k=$("#mo-key");if(k)k.closest("label").insertAdjacentHTML("afterend",'<p class="small muted" id="mo-paid" hidden></p>')})();
+function isAnth(){return/^https:\/\/api\.anthropic\.com/i.test(String(cfg.base||""))}
+function paidNote(){var el=$("#mo-paid");if(!el)return;var p=PAID[String(cfg.base||"").replace(/\/+$/,"")];el.hidden=!p;
+  if(p)el.textContent=p.n+": se paga por uso con tu propia clave, que solo se guarda en este navegador. Pon un límite de gasto en tu cuenta del proveedor. "+p.hint}
+$("#mo-preset").addEventListener("change",function(){var v=this.value;setTimeout(function(){var p=PAID[v];if(p&&p.model&&!/^claude-/.test(cfg.model||"")){$("#mo-model").value=p.model;saveCfg()}
+  if(p&&!p.model&&/^claude-/.test(cfg.model||"")){$("#mo-model").value="";saveCfg()}paidNote()},0)});
+$("#mo-base").addEventListener("change",paidNote);setTimeout(paidNote,0);
+
+// Claude por la API de Anthropic, con el SDK oficial cargado en el navegador
+var anthP=null;
+function anthClient(){if(!anthP)anthP=import("https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@1.6.0/+esm").then(function(m){return m.default||m.Anthropic},function(e){anthP=null;throw e});
+  return anthP.then(function(Anthropic){return new Anthropic({apiKey:cfg.key,dangerouslyAllowBrowser:true})})}
+var FALLBACK_OK=["claude-fable-5-2","claude-fable-5-1","claude-opus-5-5","claude-opus-5","claude-sonnet-5-5"];
+function anthMsgs(input,img){var sys="",L=typeof input==="string"?[{role:"user",content:input}]:input.map(function(m,i){return{role:i===0?"system":m.role,content:String(m.content||"")}}),out=[];
+  L.forEach(function(m){if(m.role==="system"){sys+=(sys?"\n\n":"")+m.content;return}var r=m.role==="assistant"?"assistant":"user",l=out[out.length-1];if(l&&l.role===r)l.content+="\n\n"+m.content;else out.push({role:r,content:m.content})});
+  if(!out.length||out[0].role!=="user")out.unshift({role:"user",content:"Empieza."});
+  if(out[out.length-1].role!=="user")out.push({role:"user",content:"Continúa."});
+  if(img){var lm=out[out.length-1],d=/^data:([^;]+);base64,(.*)$/.exec(img),src=d?{type:"base64",media_type:d[1],data:d[2]}:{type:"url",url:img};lm.content=[{type:"image",source:src},{type:"text",text:lm.content}]}
+  return{system:sys,messages:out}}
+function anthCall(input,o){var full="",model=cfg.model||"claude-opus-5-5",M=anthMsgs(input,o.img),P={model:model,max_tokens:64000,messages:M.messages};if(M.system)P.system=M.system;
+  var fb=FALLBACK_OK.indexOf(model)>=0;
+  return anthClient().then(function(client){var stream=fb?client.beta.messages.stream(Object.assign({betas:["server-side-fallback-2026-07-01"],fallbacks:"default"},P),{signal:o.signal}):client.messages.stream(P,{signal:o.signal});
+    function pump(it){return it.next().then(function(x){if(x.done)return;var ev=x.value;if(ev.type==="content_block_delta"&&ev.delta.type==="text_delta"){full+=ev.delta.text;if(o.onText)o.onText({text:full})}return pump(it)})}
+    return pump(stream[Symbol.asyncIterator]()).then(function(){return stream.finalMessage()})}).then(function(msg){
+      if(msg.stop_reason==="refusal")throw{code:"refused"};var t=full.trim();if(!t)throw{code:"empty_completion"};return{text:t,truncated:msg.stop_reason==="max_tokens"}})
+  .catch(function(e){if(e&&e.code&&typeof e.code==="string"&&!e.status)throw{code:e.code,text:full.trim()};var c=e&&(e.name==="AbortError"||/Abort/.test(e.constructor&&e.constructor.name||""))?"cancelled":e&&e.status?httpCode(e.status):"network";throw{code:c,text:full.trim()}})}
+var otherAO=other;other=function(input,o){return isAnth()?anthCall(input,o||{}):otherAO(input,o)};
+setTimeout(function(){var moTestAO=$("#mo-test").onclick;$("#mo-test").onclick=function(){if(!isAnth())return moTestAO.apply(this,arguments);saveCfg();var m=$("#mo-msg");if(!cfg.key){m.textContent="Escribe tu clave de API de Anthropic.";return}m.textContent="Probando…";
+  anthClient().then(function(client){var ids=[],it=client.models.list()[Symbol.asyncIterator]();function step(){return it.next().then(function(x){if(x.done||ids.length>=200)return ids;ids.push(String(x.value.id));return step()})}return step()}).then(function(ids){
+    $("#mo-models").innerHTML=ids.map(function(i){return'<option value="'+esc(i)+'">'}).join("");if(!cfg.model){$("#mo-model").value="claude-opus-5-5";saveCfg()}
+    m.textContent="Conexión correcta: "+ids.length+" modelos de Claude. El recomendado es claude-opus-5-5."},function(e){m.textContent=MSG[e&&e.status?httpCode(e.status):"network"]||MSG.network})}},0);
 /* ---- iniciar historia ---- */
 var START="Empieza la aventura con una escena inicial que presente el lugar y dé a los personajes un motivo para actuar.";
 function iaBind(){if(busy)return;var s=story(),id=s?s.id:null;if(S.ia.sid===undefined){S.ia.sid=id;return}if(S.ia.sid===id)return;
