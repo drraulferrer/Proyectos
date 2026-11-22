@@ -1,0 +1,4 @@
+id,dimension,texto,sentido
+I01,D1,"Texto del primer ítem",directo
+I02,D1,"Texto del segundo ítem",inverso
+I03,D2,"Texto del tercer ítem",directo
