@@ -2,9 +2,19 @@
 name: consenso-jueces
 description: Validez de contenido de un instrumento de autoinforme mediante un panel de jueces. Crea jueces expertos simulados con perfiles profesionales definidos por el usuario, que puntúan a ciegas claridad, coherencia, relevancia y suficiencia en una escala de 1 a 4, con asignación ciega a dimensión e ítems trampa. Calcula la V de Aiken con IC, I-CVI, S-CVI y kappa modificado, y redacta un informe con decisiones por ítem. También analiza las puntuaciones de un panel humano real. Úsala cuando el usuario quiera validar el contenido de una escala, un cuestionario o un test, depurar ítems antes de un juicio de expertos o analizar las valoraciones de sus jueces.
 argument-hint: "[carpeta del estudio o archivo del instrumento]"
+model: opus
 ---
 
 # Panel de jueces para validez de contenido
+
+## Reparto de modelos
+
+Este reparto es un requisito del diseño y no se negocia con el usuario ni se cambia por comodidad:
+
+- **Opus coordina**: la entrevista, el diseño de los perfiles y sus narrativas, la redacción de los ítems trampa, la interpretación de los resultados y el informe. La skill declara `model: opus` para que todo esto lo haga Opus aunque la sesión use otro modelo.
+- **Sonnet juzga**: todos los jueces, tanto la evaluación como la asignación ciega, se lanzan con `model: "sonnet"`. Nunca uses otro modelo para un juez.
+
+Si al empezar detectas que no estás funcionando con Opus (por ejemplo, porque el entorno no permite cambiar de modelo), díselo al usuario antes de la entrevista y pregúntale si quiere continuar.
 
 Esta skill tiene dos modos:
 
@@ -72,11 +82,9 @@ Si elige "Other", recoge un criterio personalizado: clave sin espacios, nombre, 
 
 **6. Ítems trampa.** Explica qué son y propón usarlos. Si acepta, redáctalos tú siguiendo `${CLAUDE_SKILL_DIR}/referencias/items-trampa.md`, guárdalos en `trampas.csv` y muéstraselos para que los apruebe.
 
-**7. Modelos.** Pregunta con AskUserQuestion. Opciones: todos con Sonnet (recomendado), mezcla de Sonnet y Haiku, mezcla de Sonnet y Opus. La mezcla reduce algo la homogeneidad de los juicios, pero no la elimina.
+**7. Umbrales.** Muestra los umbrales por defecto y pregunta si quiere cambiarlos: V de Aiken ≥ 0,70, límite inferior del IC al 95 % ≥ 0,50, I-CVI ≥ 0,78 (1,00 con 5 jueces o menos), V < 0,50 en coherencia o relevancia para proponer eliminar, asignación ciega correcta ≥ 70 %.
 
-**8. Umbrales.** Muestra los umbrales por defecto y pregunta si quiere cambiarlos: V de Aiken ≥ 0,70, límite inferior del IC al 95 % ≥ 0,50, I-CVI ≥ 0,78 (1,00 con 5 jueces o menos), V < 0,50 en coherencia o relevancia para proponer eliminar, asignación ciega correcta ≥ 70 %.
-
-Escribe `config.json` siguiendo `${CLAUDE_SKILL_DIR}/plantillas/config-ejemplo.json`. En `perfil` incluye los campos y la `narrativa`. Fija una semilla y anótala, para que el estudio sea reproducible.
+Escribe `config.json` siguiendo `${CLAUDE_SKILL_DIR}/plantillas/config-ejemplo.json`. En `perfil` incluye los campos y la `narrativa`. El campo `modelo` de cada juez es siempre `sonnet`; `preparar.py` rechaza cualquier otro valor. Fija una semilla y anótala, para que el estudio sea reproducible.
 
 ## Fase 2. Preparación
 
@@ -93,7 +101,7 @@ No leas los cuadernillos completos ni los muestres: no hace falta y gastan conte
 Lanza **todos** los subagentes de la lista en un solo mensaje, para que trabajen en paralelo y ninguno vea la salida de otro. Por cada línea de la lista:
 
 - `subagent_type`: `general-purpose`
-- `model`: el de la lista
+- `model`: `sonnet`, siempre
 - `description`: `<juez> <tarea>`
 - `prompt`: `Lee el archivo <ruta del prompt> y sigue sus instrucciones al pie de la letra. No leas ningún otro archivo salvo el cuadernillo que ese archivo indica.`
 
@@ -139,7 +147,7 @@ Lee `tablas.md` y `comentarios.md`. No hace falta leer los CSV.
 Escribe `resultados/informe.md` con estas secciones:
 
 1. **Resumen**: número de ítems que se mantienen, se revisan y se proponen para eliminar, e índices globales de la escala.
-2. **Método**: modo, número y perfil de los jueces (tabla), criterios y anclas, escala, procedimiento ciego, ítems trampa, índices, umbrales y semilla. En el modo simulado incluye este párrafo, adaptado: "Los jueces de este estudio son agentes de inteligencia artificial con perfiles profesionales simulados. Sus valoraciones no son independientes, porque proceden de modelos con un entrenamiento común, y no constituyen evidencia de validez de contenido. Este análisis tiene la función de depurar los ítems antes de someterlos a un panel de jueces humanos."
+2. **Método**: modo, reparto de modelos (perfiles, ítems trampa e informe con Claude Opus; jueces con Claude Sonnet), número y perfil de los jueces (tabla), criterios y anclas, escala, procedimiento ciego, ítems trampa, índices, umbrales y semilla. En el modo simulado incluye este párrafo, adaptado: "Los jueces de este estudio son agentes de inteligencia artificial con perfiles profesionales simulados. Sus valoraciones no son independientes, porque proceden de modelos con un entrenamiento común, y no constituyen evidencia de validez de contenido. Este análisis tiene la función de depurar los ítems antes de someterlos a un panel de jueces humanos."
 3. **Calidad del panel**: detección de ítems trampa por juez y por tipo de defecto, jueces muy indulgentes o muy alejados del panel, y qué implica para fiarse del resto de resultados.
 4. **Resultados por ítem**: para cada ítem que no se mantiene, los índices que fallan, una síntesis de los comentarios de los jueces y una o dos propuestas de redacción. Los ítems que se mantienen van en una tabla.
 5. **Asignación ciega**: ítems que los jueces asignan a otra dimensión y qué sugiere eso sobre la estructura.

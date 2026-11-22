@@ -53,6 +53,10 @@ def main():
     jueces = cfg.get("jueces", [])
     if len(jueces) < 3:
         error("Se necesitan al menos 3 jueces")
+    for j in jueces:
+        if j.get("modelo", "sonnet") != "sonnet":
+            error(f"El juez {j.get('id')} usa el modelo '{j['modelo']}'. Todos los jueces deben ser 'sonnet'")
+        j["modelo"] = "sonnet"
     ids_j = [j["id"] for j in jueces]
     if len(set(ids_j)) != len(ids_j):
         error("Hay identificadores de juez repetidos")
