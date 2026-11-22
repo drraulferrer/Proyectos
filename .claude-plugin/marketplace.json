@@ -1,0 +1,11 @@
+{
+  "name": "proyectos",
+  "owner": { "name": "drraulferrer" },
+  "plugins": [
+    {
+      "name": "consenso-jueces",
+      "source": "./consenso-jueces",
+      "description": "Validez de contenido con panel de jueces sintéticos o humanos: evaluación ciega, ítems trampa, V de Aiken, I-CVI y kappa modificado."
+    }
+  ]
+}

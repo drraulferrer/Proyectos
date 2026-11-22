@@ -1,0 +1,46 @@
+{
+  "_fuente": "Escobar-Pérez, J. y Cuervo-Martínez, Á. (2008). Validez de contenido y juicio de expertos: una aproximación a su utilización. Avances en Medición, 6, 27-36.",
+  "criterios_item": {
+    "claridad": {
+      "nombre": "Claridad",
+      "definicion": "El ítem se comprende fácilmente, es decir, su sintaxis y su semántica son adecuadas.",
+      "anclas": {
+        "1": "El ítem no es claro.",
+        "2": "El ítem requiere bastantes modificaciones o una modificación muy grande en el uso de las palabras, por su significado o por su orden.",
+        "3": "Se requiere una modificación muy específica de algunos de los términos del ítem.",
+        "4": "El ítem es claro, tiene una semántica y una sintaxis adecuadas."
+      }
+    },
+    "coherencia": {
+      "nombre": "Coherencia",
+      "definicion": "El ítem tiene relación lógica con la dimensión o el indicador que está midiendo.",
+      "anclas": {
+        "1": "El ítem no tiene relación lógica con la dimensión.",
+        "2": "El ítem tiene una relación tangencial con la dimensión.",
+        "3": "El ítem tiene una relación moderada con la dimensión que está midiendo.",
+        "4": "El ítem se encuentra completamente relacionado con la dimensión que está midiendo."
+      }
+    },
+    "relevancia": {
+      "nombre": "Relevancia",
+      "definicion": "El ítem es esencial o importante, es decir, debe ser incluido.",
+      "anclas": {
+        "1": "El ítem puede ser eliminado sin que se vea afectada la medición de la dimensión.",
+        "2": "El ítem tiene alguna relevancia, pero otro ítem puede estar incluyendo lo que mide este.",
+        "3": "El ítem es relativamente importante.",
+        "4": "El ítem es muy relevante y debe ser incluido."
+      }
+    }
+  },
+  "criterio_dimension": {
+    "clave": "suficiencia",
+    "nombre": "Suficiencia",
+    "definicion": "Los ítems que pertenecen a una misma dimensión bastan para obtener la medición de esta.",
+    "anclas": {
+      "1": "Los ítems no son suficientes para medir la dimensión.",
+      "2": "Los ítems miden algún aspecto de la dimensión, pero no corresponden a la dimensión total.",
+      "3": "Se deben incrementar algunos ítems para poder evaluar la dimensión completamente.",
+      "4": "Los ítems son suficientes."
+    }
+  }
+}

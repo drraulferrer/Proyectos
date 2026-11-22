@@ -1,0 +1,6 @@
+juez,tipo,id,criterio,puntuacion,comentario
+experto-01,item,I01,claridad,4,
+experto-01,item,I01,coherencia,3,"Encaja mejor en D2"
+experto-01,item,I01,relevancia,4,
+experto-01,dimension,D1,suficiencia,3,"Falta un ítem sobre el componente conductual"
+experto-01,asignacion,I01,dimension,D1,

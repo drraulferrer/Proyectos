@@ -1,0 +1,7 @@
+{
+  "name": "consenso-jueces",
+  "version": "1.0.0",
+  "description": "Validez de contenido de instrumentos de autoinforme con un panel de jueces sintéticos (Opus coordina, Sonnet juzga) o con un panel humano: evaluación ciega, ítems trampa, V de Aiken, I-CVI y kappa modificado.",
+  "author": { "name": "drraulferrer" },
+  "keywords": ["psicometria", "validez-de-contenido", "juicio-de-expertos", "aiken"]
+}

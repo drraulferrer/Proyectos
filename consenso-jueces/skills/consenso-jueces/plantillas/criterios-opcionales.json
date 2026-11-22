@@ -1,0 +1,33 @@
+{
+  "_nota": "Todos los criterios están orientados de forma que 4 es el valor óptimo, para que los índices se calculen igual que en los criterios base. Un criterio personalizado debe seguir la misma orientación.",
+  "adecuacion_poblacion": {
+    "nombre": "Adecuación a la población diana",
+    "definicion": "El vocabulario, el nivel de lectura, las referencias culturales y las situaciones que describe el ítem son apropiados para la población a la que va dirigido el instrumento.",
+    "anclas": {
+      "1": "El ítem no es apropiado para la población diana: una parte importante no lo entendería o no se reconocería en él.",
+      "2": "El ítem contiene vocabulario, referencias o situaciones que una parte de la población diana no compartiría.",
+      "3": "El ítem es apropiado en general, pero algún término o referencia debería ajustarse.",
+      "4": "El ítem es plenamente apropiado para la población diana."
+    }
+  },
+  "deseabilidad_social": {
+    "nombre": "Neutralidad ante la deseabilidad social",
+    "definicion": "El ítem permite responder con sinceridad sin que una de las respuestas resulte socialmente obvia, deseable o estigmatizante.",
+    "anclas": {
+      "1": "La respuesta socialmente deseable es evidente y es muy probable que sesgue la respuesta.",
+      "2": "Existe una presión clara hacia una respuesta, aunque algunas personas responderían con sinceridad.",
+      "3": "Existe una ligera presión hacia una respuesta que no debería afectar a la mayoría.",
+      "4": "El ítem es neutro, ninguna respuesta resulta socialmente obvia."
+    }
+  },
+  "formato_respuesta": {
+    "nombre": "Ajuste al formato de respuesta",
+    "definicion": "El enunciado del ítem encaja con las opciones de respuesta y con el marco temporal indicado en las instrucciones del instrumento.",
+    "anclas": {
+      "1": "El enunciado no puede responderse con las opciones de respuesta disponibles.",
+      "2": "El enunciado y las opciones encajan mal, por ejemplo por un marco temporal o una frecuencia incompatibles.",
+      "3": "El enunciado encaja con las opciones, pero requiere un ajuste menor.",
+      "4": "El enunciado encaja plenamente con las opciones de respuesta y con el marco temporal."
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "estudio": "escala-ejemplo",
+  "modo": "simulado",
+  "proposito": "Depuración de ítems antes del panel de jueces humanos",
+  "constructo": {
+    "nombre": "Nombre del constructo",
+    "definicion": "Definición conceptual del constructo."
+  },
+  "poblacion": "Descripción de la población diana: edad, contexto, nivel educativo.",
+  "idioma": "español de España",
+  "instrumento": {
+    "instrucciones": "Instrucciones que leerá la persona que responde.",
+    "formato_respuesta": "Escala de 1 (Nunca) a 5 (Siempre)",
+    "marco_temporal": "Durante las últimas dos semanas"
+  },
+  "semilla": 20261122,
+  "criterios_item": ["claridad", "coherencia", "relevancia"],
+  "criterios_personalizados": [],
+  "suficiencia": true,
+  "asignacion_ciega": true,
+  "jueces": [
+    {
+      "id": "juez-01",
+      "modelo": "sonnet",
+      "perfil": {
+        "titulo": "Psicometrista",
+        "formacion": "Doctorado en Metodología de las Ciencias del Comportamiento",
+        "experiencia_anios": 15,
+        "ambito": "Universidad, construcción y adaptación de escalas",
+        "enfoque": "Teoría clásica de los tests y teoría de respuesta al ítem",
+        "prioridades": "Ítems dobles, negaciones, ambigüedad del formato de respuesta y solapamiento entre ítems"
+      }
+    }
+  ],
+  "umbrales": {
+    "v_aiken_min": 0.70,
+    "ic_inferior_min": 0.50,
+    "icvi_min": 0.78,
+    "v_eliminar": 0.50,
+    "asignacion_min": 0.70,
+    "nivel_confianza": 0.95
+  },
+  "archivos": {
+    "instrumento": "instrumento.csv",
+    "dimensiones": "dimensiones.csv",
+    "trampas": "trampas.csv"
+  }
+}
