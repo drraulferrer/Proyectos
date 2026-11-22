@@ -29,7 +29,7 @@ Proyectos/
 | Proyecto | Descripción | Estado |
 |----------|-------------|--------|
 | [panel-claude](panel-claude/) | Panel web local sobre Claude Code: informe diario, botones de un clic (habilidades y automatizaciones) y registro de sesiones. Pensado para usarse sin terminal. | En uso |
-| [consenso-jueces](.claude/skills/consenso-jueces/) | Skill `/consenso-jueces` para la validez de contenido de instrumentos de autoinforme: panel de jueces simulados con perfiles definidos por el usuario, evaluación ciega, ítems trampa, V de Aiken, I-CVI y kappa modificado. También analiza paneles humanos. | Nuevo |
+| [consenso-jueces](consenso-jueces/) | Plugin con la skill `/consenso-jueces` para la validez de contenido de instrumentos de autoinforme: panel de jueces simulados con perfiles definidos por el usuario, evaluación ciega, ítems trampa, V de Aiken, I-CVI y kappa modificado. También analiza paneles humanos. | Nuevo |
 | [skillspector](skillspector/) | Escáner de seguridad de NVIDIA para revisar habilidades (*Skills*) de Claude Code antes de instalarlas: detecta instrucciones ocultas, fugas de datos y código malicioso. | En uso |
 
 ## Notas
