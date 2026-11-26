@@ -1,0 +1,17 @@
+{
+  "name": "Crónicas D&D · Mesa del máster",
+  "short_name": "Crónicas D&D",
+  "description": "Mesa del máster para partidas de Dungeons & Dragons: historias, personajes, combate, mapas y máster con IA.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "background_color": "#16131f",
+  "theme_color": "#16131f",
+  "icons": [
+    {"src": "img/app/icono-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "img/app/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "img/app/icono-mascara-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

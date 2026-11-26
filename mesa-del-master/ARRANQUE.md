@@ -194,3 +194,9 @@ Las claves quedaron guardadas en el entorno de la sesión, no en el repositorio:
 - El modelo decide el formato: claude-… usa /claude/v1/messages, gpt-… usa /codex/v1/responses y gemini-… usa /<modelo>-openai/v1/chat/completions. Las tres respuestas llegan por streaming.
 - «Probar y ver modelos» lista los Claude y GPT que Kie.ai ofrece y añade los Gemini conocidos. Si Kie.ai retira un modelo (código 410) o faltan créditos, sale un aviso claro.
 - Kie.ai solo deja pasar las cabeceras Authorization y Content-Type desde el navegador, por eso no se usa el SDK de Anthropic con este proveedor.
+
+## Instalar como app
+
+- La web es una app instalable (PWA): `manifest.webmanifest`, iconos en `img/app/` y `sw.js`.
+- `sw.js` guarda una copia para abrir sin conexión. La página se pide siempre primero a la red, así que las actualizaciones llegan solas. Imágenes, sonidos y datos se sirven de la copia y se refrescan en segundo plano. Las llamadas a motores de IA y a Kie.ai no pasan por él.
+- La cabecera y el registro del service worker están en `head.html` y `tail.html` del directorio de trabajo; los parches los añaden al generar `index.html`. El artefacto de claude.ai no los lleva.
