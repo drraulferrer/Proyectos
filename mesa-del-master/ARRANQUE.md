@@ -200,3 +200,11 @@ Las claves quedaron guardadas en el entorno de la sesión, no en el repositorio:
 - La web es una app instalable (PWA): `manifest.webmanifest`, iconos en `img/app/` y `sw.js`.
 - `sw.js` guarda una copia para abrir sin conexión. La página se pide siempre primero a la red, así que las actualizaciones llegan solas. Imágenes, sonidos y datos se sirven de la copia y se refrescan en segundo plano. Las llamadas a motores de IA y a Kie.ai no pasan por él.
 - La cabecera y el registro del service worker están en `head.html` y `tail.html` del directorio de trabajo; los parches los añaden al generar `index.html`. El artefacto de claude.ai no los lleva.
+
+## App de Mac desde Claude (artefacto instalado)
+
+- El artefacto declara la capacidad `desktop` y pide `full-access` en la etiqueta `claude-artifacts-manifest`. Dentro de claude.ai muestra el botón «Instalar como app de Mac».
+- En la app instalada aparece «Quién narra»: Claude de tu cuenta o «Otro motor». Con otro motor, LM Studio, Ollama, Kie.ai, OpenAI, Claude por API y Grok funcionan igual que en la web, y también los retratos con Kie.ai.
+- Las peticiones a otros servidores pasan por `curl` en el Mac, con el permiso «Acceso completo». Las cabeceras y las claves van por la entrada estándar, nunca en la línea de comandos. El cuerpo va a un archivo temporal en `~/Library/Caches/CronicasDnD`, que se borra al terminar. Las descargas binarias, como las imágenes, se guardan primero en archivo y luego se leen.
+- Sin «Acceso completo» solo funciona Claude de tu cuenta, y el aviso explica cómo cambiarlo.
+- El icono del Dock es el d20 de `img/app`, incrustado en la página.
